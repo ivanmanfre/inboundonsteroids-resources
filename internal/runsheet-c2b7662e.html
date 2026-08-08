@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>AI Orientation Session — Call Guide (internal)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700&family=DM+Serif+Display&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F7F4EF; --sunk:#EFEBE3; --ink:#1A1A1A; --soft:#46443F; --mute:#6B6861;
+    --accent:#2A8F65; --accent-deep:#1F6E4D; --line:rgba(26,26,26,.12);
+    --sans:'Source Serif 4',Georgia,serif; --display:'DM Serif Display',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+    font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:720px;margin:0 auto;padding:30px 16px 80px}
+
+  .internal{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+    background:#F2E0DE;color:#9a3b32;border:1px solid #e3b3ad;padding:4px 8px;border-radius:3px;margin-bottom:14px}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(25px,5.2vw,36px);line-height:1.05;margin:0 0 8px}
+  .lead{font-size:15px;color:var(--soft);margin:8px 0 0}
+  .how{background:var(--sunk);border-radius:7px;padding:13px 15px;margin:18px 0 0;font-size:14px;line-height:1.45}
+  .how b{color:var(--ink)}
+  .legend{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:10px;font-size:12.5px;color:var(--mute)}
+  .legend span{display:inline-flex;align-items:center;gap:6px}
+  .dot{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none}
+
+  .part{margin-top:30px;padding-top:16px;border-top:1.5px solid var(--line)}
+  .part:first-of-type{border-top:none;margin-top:20px}
+  .phead{display:flex;align-items:baseline;gap:10px;margin-bottom:4px}
+  .pnum{font-family:var(--mono);font-weight:600;font-size:12.5px;color:#fff;background:var(--ink);
+    border-radius:5px;padding:3px 8px;flex:none}
+  .ptime{margin-left:auto;font-family:var(--mono);font-size:11px;letter-spacing:.04em;text-transform:uppercase;color:var(--accent-deep);flex:none}
+  h2{font-family:var(--display);font-weight:400;font-size:22px;line-height:1.12;margin:0}
+  h3{font-weight:600;font-size:15.5px;margin:16px 0 5px}
+  p{margin:0 0 10px}
+  ul,ol{margin:0 0 10px;padding-left:21px}
+  li{margin-bottom:5px}
+  li::marker{color:var(--accent)}
+  b{font-weight:600}
+
+  .say{background:#E9F2EC;border-left:3px solid var(--accent);border-radius:0 6px 6px 0;
+    padding:10px 13px;margin:11px 0;font-style:italic;font-size:15px;line-height:1.45}
+  .say::before{content:"He tells Claude:";display:block;font-style:normal;font-family:var(--mono);
+    font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:4px}
+  .type{background:#15201b;color:#cfe6d8;border-radius:6px;padding:10px 12px;margin:11px 0;
+    font-family:var(--mono);font-size:13px;line-height:1.45;overflow-x:auto;white-space:pre-wrap}
+  .type .c{color:#7fd0a6}
+  .warn{background:#F6E7E5;border-left:3px solid #b24a40;border-radius:0 6px 6px 0;padding:10px 13px;margin:11px 0;font-size:14.5px;line-height:1.45}
+  .warn b{color:#9a3b32}
+  .tip{background:var(--sunk);border-left:3px solid var(--accent);border-radius:0 6px 6px 0;padding:10px 13px;margin:11px 0;font-size:14.5px;line-height:1.45}
+  code{font-family:var(--mono);font-size:.84em;background:var(--sunk);padding:1px 5px;border-radius:4px}
+  .opt{font-family:var(--mono);font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:#9a6b00;
+    background:#F6ECCF;padding:1px 7px;border-radius:4px;vertical-align:middle}
+  details{border:1px solid var(--line);border-radius:6px;margin:7px 0;background:rgba(255,255,255,.45)}
+  summary{cursor:pointer;padding:9px 12px;font-weight:600;font-size:14.5px;list-style:none;display:flex;align-items:center;gap:8px}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"\25B8";color:var(--accent);font-size:11px;flex:none}
+  details[open] summary::before{content:"\25BE"}
+  details .body{padding:0 14px 11px;font-size:14px;line-height:1.45}
+  details .body ol,details .body ul{margin:5px 0;padding-left:19px}
+  details .body li{margin-bottom:4px}
+  footer{margin-top:46px;padding-top:14px;border-top:1.5px solid var(--line);color:var(--mute);font-size:12px;font-family:var(--mono)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <span class="internal">Internal · your call guide · not for clients</span>
+  <h1>AI Orientation Session — Call Guide</h1>
+  <p class="lead">$500 · 90 min. Follow top to bottom. Goal: get Derek running Claude Code himself, and build one real thing.</p>
+
+  <div class="how">
+    <b>How this works:</b> you direct, Derek drives — <b>he</b> types, you talk him through it. He almost never runs a command himself; he tells Claude what he wants in plain English and Claude does it.
+    <div class="legend">
+      <span><span class="dot" style="background:var(--accent)"></span> Green = what Derek <b>tells Claude</b></span>
+      <span><span class="dot" style="background:#15201b"></span> Dark = type once</span>
+      <span><span class="dot" style="background:#b24a40"></span> Red = say out loud</span>
+    </div>
+  </div>
+
+  <!-- 0 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">0</span><h2>Before the call</h2><span class="ptime">prep</span></div>
+    <ul>
+      <li>Confirm his payment landed + he got the booking email (he did — delivered).</li>
+      <li>He should be at a <b>laptop on Zoom</b> (not his phone), tools open, with the one workflow eating his week + a sample doc handy.</li>
+      <li>Confirm he has a <b>Claude Pro or Max plan</b> — Claude Code won't run without one.</li>
+      <li><b>You:</b> do a 10-min Ollama dry run on your own Mac first (install, pull an 8B model, chat once) so you're not learning it live.</li>
+    </ul>
+  </section>
+
+  <!-- 1 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">1</span><h2>Open the call</h2><span class="ptime">~10 min</span></div>
+    <p>Frame it: <b>"We set up your tools, then build one real thing. You drive, I steer. After this you get a written plan."</b></p>
+    <p><b>Screen:</b> he shares his screen and drives. In Zoom you can <b>Request Remote Control</b> to grab the keyboard for a tricky step — use it sparingly, he should be the one doing it.</p>
+    <p>Ask the two questions that decide everything:</p>
+    <ol>
+      <li><b>"Is the data you'd automate something you <i>can't</i> send to the cloud?"</b> → decides Mac vs cloud.</li>
+      <li><b>"What's the one job eating the most of your week?"</b> → that's the first build.</li>
+    </ol>
+    <div class="tip"><b>Discovery:</b> ask what he already uses. He mentioned <b>"Hermes"</b> (a premade agent) and <b>"Claude Cowork"</b> (a Claude tool) — find out what they are and what he uses them for, so you build on what he's got instead of duplicating it.</div>
+  </section>
+
+  <!-- 2 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">2</span><h2>Install the tools</h2><span class="ptime">~10 min</span></div>
+    <ul>
+      <li>Download <b>VS Code</b> from <code>code.visualstudio.com</code> and install it.</li>
+      <li>Inside VS Code, install the <b>Claude Code</b> extension and sign in to Claude.</li>
+    </ul>
+    <div class="warn"><b>Blocker check:</b> no Claude Pro/Max plan = Claude Code won't run. Sort it before anything else.</div>
+  </section>
+
+  <!-- 3 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">3</span><h2>Project, GitHub + CLAUDE.md</h2><span class="ptime">~15 min</span></div>
+    <p>Open his project folder in VS Code. From here it's all plain English. First, make it a private synced repo:</p>
+    <div class="say">Turn this folder into a git repo, add a .gitignore that keeps my .env and API keys out, and push it to a new private GitHub repo called [name].</div>
+    <p><b>GitHub sign-in is not a command he learns.</b> The first time Claude pushes, a browser pops up to sign into GitHub — he clicks <b>approve</b>. That one click is the only manual bit.</p>
+    <p style="font-size:13.5px;color:var(--mute);margin-bottom:6px">Fallback if Claude can't trigger the sign-in — type this once (it opens the same approve-popup):</p>
+    <div class="type"><span class="c">gh</span> auth login</div>
+    <p>Then give Claude a memory of his setup:</p>
+    <div class="say">Write a CLAUDE.md for this project — my tools, how I work day to day, and the rules ("never do X"). Keep it short.</div>
+    <p>Read it together, fix anything wrong. <b>This file is the highest-value thing</b> — Claude reads it every session, so he never re-explains his setup.</p>
+  </section>
+
+  <!-- 4 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">4</span><h2>Permissions (so Claude stops asking)</h2><span class="ptime">~8 min</span></div>
+    <p>By default Claude asks before every command — exhausting for a beginner. Fix it:</p>
+    <ul>
+      <li>Type <code>/permissions</code> to see + edit what Claude can do on its own.</li>
+      <li><b>Allowlist</b> his routine-safe commands so it stops asking (git, ollama, etc.).</li>
+      <li><b>Modes</b> — press <code>Shift+Tab</code> to cycle: <b>default</b> (asks) → <b>accept-edits</b> (auto-approves edits, once he trusts it). Start on default.</li>
+    </ul>
+    <div class="warn"><b>Never</b> turn on "bypass permissions" — that runs anything with no check.</div>
+    <p>He can just tell Claude to write the settings file:</p>
+    <div class="say">Create a .claude/settings.json that allows my git and ollama commands and sets the model to opus.</div>
+  </section>
+
+  <!-- 5 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">5</span><h2>Memory (it's automatic)</h2><span class="ptime">~4 min</span></div>
+    <p>Nothing to build. Claude Code remembers his project on its own (on by default). Type <code>/memory</code> to see it. Durable rules go in <b>CLAUDE.md</b>; the rest saves itself.</p>
+    <div class="tip"><b>Say it:</b> "You do NOT need a database or a memory system. Built-in is enough until you're way bigger." Telling him what <b>not</b> to build is half the value.</div>
+  </section>
+
+  <!-- 6 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">6</span><h2>Skills + commands</h2><span class="ptime">~15 min</span></div>
+    <div class="warn"><b>Clear the #1 confusion:</b> you do <b>not</b> install a skill by telling Claude "install X." That does nothing. Skills come from the <code>/plugin</code> menu, or they're just files in a folder.</div>
+
+    <h3>A. Install Superpowers (free pack)</h3>
+    <div class="type">/plugin marketplace add anthropics/claude-plugins-official
+/plugin install superpowers@claude-plugins-official</div>
+    <p>Adds disciplined workflows — planning, debugging, double-checking work.</p>
+
+    <h3>B. Get my shared starter commands</h3>
+    <p>My 4 stochastic commands, made generic. They live in my public repo. He pulls them in plain English:</p>
+    <div class="say">Download the 4 command files from github.com/ivanmanfre/resources (folder starter-skills/.claude/commands) and copy them into this project's .claude/commands folder.</div>
+    <p>Now he has <code>/stochastic-decision</code>, <code>/stochastic-research</code>, <code>/stochastic-audit</code>, <code>/stochastic-red-team</code>. They're in his repo, so they sync to both his machines automatically.</p>
+    <div class="warn"><b>For you, not him:</b> never hand over your own business skills — <code>recall</code>, <code>brain</code>, <code>negotiate</code>, <code>proposals</code>, <code>clickup-searcher</code>, <code>leverage-radar</code>, <code>n8n-execs</code>. They're wired to your systems and they're your edge. Demo the <i>idea</i>, never the files.</div>
+
+    <h3>C. Commands he'll use daily</h3>
+    <ul>
+      <li><code>/init</code> — first time in a project: writes the CLAUDE.md for him.</li>
+      <li><b>Plan mode</b> (<code>Shift+Tab</code> to "plan") — <i>"plan it before you build."</i> He reviews, then says go. Safest habit.</li>
+      <li><code>/clear</code> — start fresh when he switches tasks.</li>
+      <li><code>/compact</code> — shrink a long chat without losing the thread.</li>
+    </ul>
+
+    <h3>D. Tools for his stack</h3>
+    <p><b>n8nac</b> — a CLI that lets Claude manage his n8n workflows as code + look up node configs (so it doesn't guess). Worth it since he's building in n8n:</p>
+    <div class="type"><span class="c">npm</span> install -g n8nac</div>
+    <p style="font-size:14px"><b>Also install:</b></p>
+    <ul style="font-size:14.5px">
+      <li><b>deep-research</b> — multi-source, fact-checked answers. Same <code>/plugin</code> marketplace as Superpowers.</li>
+      <li><b>Playwright</b> (browser automation) — Claude opens sites, screenshots, scrapes (e.g. pull from regulatory portals). Add the Playwright MCP.</li>
+      <li><b>computer-control MCP</b> — lets Claude actually drive his screen + clicks, for tasks with no API. He says <i>"add the computer-control MCP."</i> macOS will ask for screen + accessibility access — grant it. <span class="opt">watch it the first few runs</span></li>
+    </ul>
+  </section>
+
+  <!-- 7 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">7</span><h2>Let Claude peek at Pipedrive + n8n</h2><span class="ptime">~10 min</span></div>
+    <p>Where it gets useful — let Claude read his real tools. He runs <b>Pipedrive</b> (CRM) and <b>n8n</b>. Each needs an API key: a one-time grab from the tool's settings, saved in his <code>.env</code> (git-ignored, never pushed).</p>
+    <h3>Pipedrive (his CRM)</h3>
+    <p>Get the key: Pipedrive → Settings → Personal preferences → API → copy the token. Then:</p>
+    <div class="say">Save my Pipedrive API token in .env and use it to read my deals and leads.</div>
+    <p>Now he can ask: <i>"Show me my hottest leads I haven't contacted yet."</i></p>
+    <h3>n8n</h3>
+    <p>Get the key: n8n → Settings → n8n API → create an API key. Then:</p>
+    <div class="say">Save my n8n API key and URL in .env and use them to check my workflows.</div>
+    <p>Now: <i>"What failed in n8n today?"</i> · <i>"Is [workflow] running right now?"</i></p>
+    <div class="warn"><b>Keys go in .env</b> — git-ignored, so they never reach GitHub. (Pipedrive + n8n both have MCP servers too, but the API-key route is the simplest to teach.)</div>
+  </section>
+
+  <!-- 8 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">8</span><h2>The local model</h2><span class="ptime">~10 min</span></div>
+    <p>Only if Part 1 flagged private data. It's simpler than it sounds: install one app, download one model.</p>
+    <ol>
+      <li>Install <b>Ollama</b> from <code>ollama.com</code> (or say <i>"install Ollama"</i>).</li>
+      <li>Pull a model: <code>ollama pull llama3.1:8b</code> (or have Claude do it). 8B fits most Macs; the Studio runs bigger.</li>
+      <li>It runs at <code>localhost:11434</code> — the address n8n points to for private parsing.</li>
+    </ol>
+    <div class="tip"><b>Plain terms:</b> Ollama is the engine; the model (Llama, Qwen…) is what it runs.<br><b>The routing rule:</b> private or bulk work → the local model. Anything needing real thinking → Claude. Don't make the local model do the reasoning.</div>
+  </section>
+
+  <!-- 9 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">9</span><h2>Both machines (Mac + PC)</h2><span class="ptime">~5 min</span></div>
+    <p>He doesn't choose a machine — the repo lives on both. Install the tools on each, then it's plain English:</p>
+    <div class="say">Clone my private repo [name] and set it up here.</div>
+    <div class="say">Pull my latest from GitHub.</div>
+    <div class="warn"><b>Say out loud:</b> secrets never go to GitHub (git-ignored) · the local model stays on the Mac · memory is per-machine, but CLAUDE.md syncs.</div>
+  </section>
+
+  <!-- 10 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">10</span><h2>Build one real thing</h2><span class="ptime">~20 min</span></div>
+    <p>The part he remembers. Pick <b>one</b> — the rest is backlog. My pick is the daily brief: recurring value, and it shows off the whole stack.</p>
+
+    <h3>A — Daily brief <span class="opt">recommended</span></h3>
+    <p>A workflow that messages him every morning with what needs him today.</p>
+    <p><b>The n8n flow:</b> Schedule (7am) → pull Pipedrive (new + uncontacted leads, deals gone quiet) + n8n (overnight failures) + his site data (inspections due) → Claude summarizes → send.</p>
+    <p>Reads like: <i>"3 new leads to chase · 1 deal gone quiet · 2 sites due for inspection · 0 automations failed."</i></p>
+    <p style="font-size:13.5px;color:var(--mute)">Pick the channel + expand its steps (Derek has Slack):</p>
+
+    <details>
+      <summary>Slack &nbsp;<span class="opt">his workspace</span></summary>
+      <div class="body">
+        <ol>
+          <li>Go to <code>api.slack.com/apps</code> → <b>Create New App</b> → From scratch → pick his workspace.</li>
+          <li>Features → <b>Incoming Webhooks</b> → toggle On → <b>Add New Webhook to Workspace</b> → pick a channel → copy the Webhook URL.</li>
+          <li>In n8n: use the <b>Slack</b> node (or an HTTP Request node) to post the brief to that Webhook URL.</li>
+        </ol>
+        <p style="font-size:12.5px;color:var(--mute);margin:0">Private DM instead of a channel? Use a bot token with the <code>chat:write</code> scope.</p>
+      </div>
+    </details>
+    <details>
+      <summary>Telegram &nbsp;<span class="opt">simplest · phone push</span></summary>
+      <div class="body">
+        <ol>
+          <li>In Telegram, message <b>@BotFather</b> → <code>/newbot</code> → name it → copy the bot <b>token</b>.</li>
+          <li>Message the new bot once (say hi). Get his chat ID from <b>@userinfobot</b>.</li>
+          <li>In n8n: add the Telegram credential (paste token) → <b>Telegram → Send Message</b> node with his chat ID.</li>
+        </ol>
+      </div>
+    </details>
+    <details>
+      <summary>Email &nbsp;<span class="opt">no bot</span></summary>
+      <div class="body">
+        <ol>
+          <li>In n8n: add an email credential — SMTP (his email) or a service like Resend (API key).</li>
+          <li>Use the <b>Send Email</b> node → to his address, subject "Morning Brief", body = Claude's summary.</li>
+        </ol>
+      </div>
+    </details>
+
+    <h3>B — Inspection-report parser</h3>
+    <p>Field notes/PDFs → clean compliance fields. Best private + bulk payoff; runs on the local model.</p>
+    <h3>C — Hottest untouched leads</h3>
+    <p>Pull from Pipedrive, rank the un-contacted ones. Fast money win; runs on Claude.</p>
+
+    <div class="tip"><b>★ Make Claude prove it:</b> he can't read code, so he says — <i>"test it end-to-end and show me the message it would send."</i> That's how a non-dev trusts the output.</div>
+  </section>
+
+  <!-- 11 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">11</span><h2>Optional: a live dashboard <span class="opt">if hungry</span></h2><span class="ptime">bonus</span></div>
+    <p>If the build lands and there's appetite, the wow-moment is a simple always-on web page. Keep it to <b>one useful number</b> (e.g. "sites needing inspection this week" or "what ran / failed today").</p>
+    <div class="say">Build a simple one-page web dashboard showing [the one number], and deploy it to Railway so it's always online at a link.</div>
+    <p>Claude builds it + walks him through deploying to <b>Railway</b> (free to start). One number, one page — don't over-scope.</p>
+  </section>
+
+  <!-- 12 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">12</span><h2>The 5 habits + 3 traps</h2></div>
+    <h3>Drill these habits</h3>
+    <ol>
+      <li><b>CLAUDE.md first</b> — short and current.</li>
+      <li><b>Plan before building</b> — review, then go.</li>
+      <li><b>Point at files</b> — <code>@filename</code>, don't describe.</li>
+      <li><b>Make it verify</b> — "test it, show me."</li>
+      <li><b>Commit often</b> — checkpoints to roll back to.</li>
+    </ol>
+    <h3>Warn him off these traps</h3>
+    <ul>
+      <li><b>Kitchen-sink chat</b> (10 tasks in one session → Claude loses the thread) → <code>/clear</code> between tasks.</li>
+      <li><b>Bloated CLAUDE.md</b> (whole docs pasted → rules buried) → keep it tight.</li>
+      <li><b>Trusting without checking</b> → always make it test/show.</li>
+    </ul>
+  </section>
+
+  <!-- 13 -->
+  <section class="part">
+    <div class="phead"><span class="pnum">13</span><h2>Leave alone + close</h2></div>
+    <h3>What NOT to build (yet)</h3>
+    <ul>
+      <li>No database / "memory brain" — built-in memory is enough.</li>
+      <li>Don't force everything onto the local model — let Claude think.</li>
+      <li>Don't build all the skills at once — one working thing beats ten half-built.</li>
+    </ul>
+    <h3>His next steps this week</h3>
+    <ul>
+      <li>VS Code + Claude Code + his CLAUDE.md.</li>
+      <li>Ollama + a model on the Mac (if private data).</li>
+      <li>Finish the one build you started.</li>
+      <li>Watch for the written plan you'll send.</li>
+    </ul>
+  </section>
+
+  <footer>Iván Manfredi · internal call guide · AI Orientation Session</footer>
+
+</div>
+</body>
+</html>

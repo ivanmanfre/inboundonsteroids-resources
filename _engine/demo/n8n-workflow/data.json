@@ -1,0 +1,20 @@
+{
+  "slug": "demo-n8n-workflow",
+  "format": "n8n_workflow",
+  "title": "Demo workflow",
+  "subtitle": "Webhook → enrichment → output",
+  "estimated_minutes": 5,
+  "brand": { "hero_badge": "n8n Workflow" },
+  "workflow_file": "workflow.json",
+  "node_count": 3,
+  "credentials_required": ["Demo API"],
+  "env_vars": ["DEMO_TOKEN"],
+  "what_it_does": "<p>A 3-node demo workflow showing the engine.</p>",
+  "sections": [
+    {"id": "trigger", "title": "Trigger", "html": "<p>Webhook fires on POST.</p>"},
+    {"id": "enrich", "title": "Enrich", "html": "<p>HTTP call to demo API.</p>"},
+    {"id": "output", "title": "Output", "html": "<p>Returns JSON.</p>"}
+  ],
+  "ctas": [{"id": "demo_cta", "headline": "Want one built for you?", "url": "https://calendly.com/ivan-intelligents/30min", "button": "Talk to me"}],
+  "data_version": 1
+}

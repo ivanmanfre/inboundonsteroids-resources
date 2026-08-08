@@ -1,0 +1,112 @@
+=== COMMITS ===
+2992a14 feat(editor): stack-picker+guide field coverage
+
+=== STAT ===
+ _engine/guide.js        | 15 +++++++++++++++
+ _engine/stack-picker.js | 10 ++++++++--
+ 2 files changed, 23 insertions(+), 2 deletions(-)
+
+=== DIFF ===
+diff --git a/_engine/guide.js b/_engine/guide.js
+index baefdc7..786c7d5 100644
+--- a/_engine/guide.js
++++ b/_engine/guide.js
+@@ -167,18 +167,20 @@
+     root.appendChild(L.buildHero(data, {
+       badge: (data.brand && data.brand.hero_badge) || "Guide",
+       metaChips: chips,
+     }));
+ 
+     // Editor hooks: wrap hero title + subtitle for inline edit
+     var heroH1 = root.querySelector(".lmc-h1");
+     var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
+     if (heroH1 && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroH1, "title");
+     if (heroSub && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroSub, "subtitle");
++    if (heroBadge && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadge, "brand.hero_badge");
+     // Intro bullets also adapt to feature state
+     var introBullets = data.enable_self_placement === true
+       ? {
+           defaultValueBullet: "Rate your team's current practice at the bottom of each section",
+           defaultNextBullet: "End-of-guide summary shows which chapters to revisit. Emailed if you want",
+           defaultNote: "",
+         }
+       : {
+@@ -315,16 +317,29 @@
+             return '<li><a href="' + L.esc(anchor) + '" data-section-id="' + L.esc(sid) + '">' +
+               '<span class="lmg-toc-dot"></span>' +
+               '<span class="lmg-toc-text">' + L.esc(s.title || ("Section " + (i + 1))) + '</span>' +
+             '</a></li>';
+           }).join('') +
+           '</ol>' +
+         '</div>';
+       root.appendChild(toc);
++      // TOC entry text is a second view of sections[i].title (same field as
++      // the section h2) — only register when data-derived (s.title truthy),
++      // guarding against the "Section N" fallback literal. Precedent: dual
++      // registration of one field across two DOM surfaces (architecture.js
++      // mobile-list twin, task A4).
++      if (window.LM && window.LM.editMode) {
++        var tocTextEls = toc.querySelectorAll(".lmg-toc-text");
++        (data.sections || []).forEach(function (s, i) {
++          if (s.title && tocTextEls[i]) {
++            window.LM.editMode.registerField(tocTextEls[i], "sections[" + i + "].title");
++          }
++        });
++      }
+       var tocToggle = toc.querySelector(".lmg-toc-toggle");
+       var tocIcon = toc.querySelector(".lmg-toc-toggle-icon");
+       tocToggle.addEventListener("click", function () {
+         var nowCollapsed = !toc.classList.contains("collapsed");
+         toc.classList.toggle("collapsed", nowCollapsed);
+         tocToggle.setAttribute("aria-expanded", nowCollapsed ? "false" : "true");
+         if (tocIcon) tocIcon.innerHTML = nowCollapsed ? "&#9776;" : "&#10005;";
+         try { localStorage.setItem(tocCollapsedKey, nowCollapsed ? "1" : "0"); } catch (_) {}
+diff --git a/_engine/stack-picker.js b/_engine/stack-picker.js
+index 3176eb0..d54fca2 100644
+--- a/_engine/stack-picker.js
++++ b/_engine/stack-picker.js
+@@ -196,16 +196,18 @@
+             return s;
+           })();
+       // Register hero edit fields
+       if (window.LM && window.LM.editMode) {
+         var h1El = hero.querySelector(".lmc-h1");
+         if (h1El) window.LM.editMode.registerField(h1El, "title");
+         var subEl = hero.querySelector(".lmc-sub");
+         if (subEl) window.LM.editMode.registerField(subEl, "subtitle");
++        var badgeEl = hero.querySelector(".lmc-badge");
++        if (badgeEl) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
+       }
+       root.appendChild(hero);
+ 
+       var intro = window.LM && window.LM.buildIntro
+         ? window.LM.buildIntro(data, ".lmc-sp-stage", {
+             tool_type: TOOL,
+             startLabel: "Start the decision tree",
+             defaultValueBullet: "Built to give you one opinionated answer in 90 seconds",
+@@ -325,18 +327,22 @@
+     if (window.LM && window.LM.editMode) {
+       window.LM.editMode.registerField(h, "tree.nodes." + nodeId + ".headline");
+     }
+     card.appendChild(h);
+ 
+     // Stack chips
+     if (node.stack && node.stack.length) {
+       var chipWrap = make("div", { class: "lmc-sp-stack" });
+-      node.stack.forEach(function (s) {
+-        chipWrap.appendChild(make("span", { class: "lmc-sp-chip" }, esc(s)));
++      node.stack.forEach(function (s, i) {
++        var chipEl = make("span", { class: "lmc-sp-chip" }, esc(s));
++        if (window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(chipEl, "tree.nodes." + nodeId + ".stack[" + i + "]");
++        }
++        chipWrap.appendChild(chipEl);
+       });
+       if (window.LM && window.LM.editMode) {
+         window.LM.editMode.registerArray(chipWrap, "tree.nodes." + nodeId + ".stack", {
+           itemLabel: "tool",
+           template: "New tool"
+         });
+       }
+       card.appendChild(chipWrap);

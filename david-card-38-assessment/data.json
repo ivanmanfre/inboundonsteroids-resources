@@ -1,0 +1,503 @@
+{
+ "slug": "david-card-38-assessment",
+ "title": "The Brand Control Score",
+ "subtitle": "Measures how well your brand holds up when AI puts creation tools in every team member's hands.",
+ "brand": {
+  "accent": "#ffd541",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "standards_that_survive",
+   "name": "Standards That Survive",
+   "questions": [
+    {
+     "id": "q1_brand_docs",
+     "text": "How documented are your brand standards right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing written down — it lives in my head",
+       "score": 1
+      },
+      {
+       "label": "A PDF style guide most people have never opened",
+       "score": 2
+      },
+      {
+       "label": "Some shared files and informal rules that circulate",
+       "score": 3
+      },
+      {
+       "label": "Standards that are actively shared and referenced by the team",
+       "score": 4
+      },
+      {
+       "label": "Living documentation — guidelines, markdown files, or AI-ready brand kits the team actually uses",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2_new_hire",
+     "text": "If a new sales hire needed to build a one-pager tomorrow without asking anyone, what would happen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They'd figure something out on their own and I'd never see it",
+       "score": 1
+      },
+      {
+       "label": "They'd grab something and cobble it together — probably off-brand",
+       "score": 2
+      },
+      {
+       "label": "They'd use an old template that may or may not still be current",
+       "score": 3
+      },
+      {
+       "label": "They'd have a template but might drift in fonts, colors, or tone",
+       "score": 4
+      },
+      {
+       "label": "They'd have everything they need: templates, guidelines, and clear standards to follow",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3_catch",
+     "text": "How are off-brand materials caught and corrected in your organization?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They usually aren't — I find out when it's already out in the world",
+       "score": 1
+      },
+      {
+       "label": "Someone occasionally flags it, but there's no real process",
+       "score": 2
+      },
+      {
+       "label": "I catch most things before they go out, but it's all on me",
+       "score": 3
+      },
+      {
+       "label": "We have informal checkpoints that depend on who's looking",
+       "score": 4
+      },
+      {
+       "label": "We have a clear review process and documented standards anyone can check against",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand standards aren't surviving the night shift.",
+     "text": "If what good looks like only exists in one person's head, your brand is one vacation away from chaos. AI tools make this worse, not better — now anyone can make anything, at any hour, in whatever shade of almost-right felt good at the time.",
+     "steps": [
+      "Write down the three things that must never change about your brand: the exact color hex codes, the type stack, the one-line positioning. Start there, not with a 40-page style guide.",
+      "Create a one-page brand quick reference anyone can use in five minutes, and put it somewhere the team can actually find it.",
+      "Build one AI-specific resource: a design markdown file with your exact standards, or a set of brand-calibrated prompts your team can copy and use."
+     ]
+    },
+    "mid": {
+     "headline": "You have the foundation. Now make it survive without you.",
+     "text": "Standards that live in a PDF or depend on one person reviewing are better than nothing, but they don't scale. You need brand control that works at 2am when nobody's in Slack.",
+     "steps": [
+      "Audit your existing guidelines: could a new hire make an on-brand asset from them alone? If not, find the gaps and fill them.",
+      "Move standards out of PDFs into living, searchable formats — a design .md file or a shared doc that gets updated when things change.",
+      "Build a review checkpoint into the workflow before anything goes external. Not a gatekeeper — a shared agreement about what good looks like."
+     ]
+    },
+    "high": {
+     "headline": "Your brand standards can survive distributed creation.",
+     "text": "You've built the thing most brands skip: a shared agreement about what you don't change. That's the foundation everything else runs on.",
+     "steps": [
+      "Review your standards quarterly. A brand that evolves but never updates its documentation drifts just as fast as one with no documentation.",
+      "Extend your guidelines explicitly to AI tools: what prompts produce on-brand outputs? What outputs should never leave the building?",
+      "Make standards visible in the workflow itself, not just in a doc. If the team isn't referencing them before they create, the standards don't exist in practice."
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_and_distributed_creat",
+   "name": "AI and Distributed Creation Readiness",
+   "questions": [
+    {
+     "id": "asset_creators",
+     "type": "number",
+     "text": "How many people on your team create brand assets without a designer's review before they go out?",
+     "hint": "Count anyone making slides, social graphics, one-pagers, or AI-generated visuals that reach clients or prospects without sign-off.",
+     "suffix": "people",
+     "min": 0,
+     "max": 200,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "x <= 1 ? 100 : x <= 3 ? 75 : x <= 8 ? 50 : x <= 20 ? 25 : 10"
+    },
+    {
+     "id": "q5_ai_output",
+     "text": "When someone on your team uses an AI tool to create a brand asset, what's the usual result?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It goes straight to clients or gets used without my input",
+       "score": 1
+      },
+      {
+       "label": "It's usually off in some way: wrong color, font, or feel",
+       "score": 2
+      },
+      {
+       "label": "It's passable but has the generic AI look — too-perfect gradients, center-everything layout, the badge it invented",
+       "score": 3
+      },
+      {
+       "label": "It's usable but needs a designer's touch to feel right",
+       "score": 4
+      },
+      {
+       "label": "We have AI-specific brand guidance, so the output is reliably on-brand",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6_ai_guidance",
+     "text": "Do you have brand resources built specifically for AI tools — design markdown files, brand-calibrated prompts, or Claude skills for your brand?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing like that — figuring it out as we go",
+       "score": 1
+      },
+      {
+       "label": "We've talked about it but haven't built anything",
+       "score": 2
+      },
+      {
+       "label": "We have rough notes, but nothing structured or tested",
+       "score": 3
+      },
+      {
+       "label": "We have general guidelines that help, but they're not AI-specific",
+       "score": 4
+      },
+      {
+       "label": "We have brand-specific AI resources that actually shape the output",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "AI just handed a spray can to everyone in the building.",
+     "text": "You can't take the tools away. That fight is over. But you can define what good looks like clearly enough that it survives fifty people making things without asking anyone. Right now, you haven't done that yet.",
+     "steps": [
+      "Find out who on your team is already creating assets without oversight. The list is probably longer than you think.",
+      "Pull 10 things your team made in the last 30 days and line them up. The variance will show you exactly what your brand looks like in the market.",
+      "Start with a one-page design brief document your team can check before opening any AI tool."
+     ]
+    },
+    "mid": {
+     "headline": "You're aware of the problem. Now build the infrastructure.",
+     "text": "Knowing the AI house style exists doesn't protect your brand from it. You need specific resources that shape output before it leaves the building.",
+     "steps": [
+      "Write a design .md file: exact color hex codes, acceptable fonts, logo usage rules, and specific prompts that produce on-brand AI outputs.",
+      "Run one team session on what your brand looks like and why the AI default doesn't get you there.",
+      "Pick two or three tools your team actually uses and build brand-specific prompt templates for each one."
+     ]
+    },
+    "high": {
+     "headline": "You've built for the world where anyone can make anything.",
+     "text": "Most brands are still running on the old accident — the system where only designers had the software. You've replaced that with something intentional.",
+     "steps": [
+      "Keep your AI guidelines updated as the tools evolve. What works in the current generation of tools may need adjusting in six months.",
+      "Document which AI outputs are approved versus which need review. Clear lines prevent the 2am mistakes.",
+      "Consider publishing your approach. Founders who figure this out are the ones their audiences trust to teach it."
+     ]
+    }
+   }
+  },
+  {
+   "id": "visual_coherence_in_the_",
+   "name": "Visual Coherence in the Wild",
+   "questions": [
+    {
+     "id": "q7_consistency",
+     "text": "If you pulled 10 assets your team created in the last 30 days, how consistent would they look side by side?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "All over the place — like multiple different brands",
+       "score": 1
+      },
+      {
+       "label": "Similar enough to guess they're related, but lots of drift",
+       "score": 2
+      },
+      {
+       "label": "Mostly consistent with a few outliers",
+       "score": 3
+      },
+      {
+       "label": "Consistent in the big things, with drift in the details",
+       "score": 4
+      },
+      {
+       "label": "Visually coherent across all formats and touchpoints",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8_almost_right",
+     "text": "How often do you see 'almost right' — a slightly wrong color, an off font, a misused logo — in team-made materials?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Constantly — it's the norm, not the exception",
+       "score": 1
+      },
+      {
+       "label": "Often enough that it's a running problem",
+       "score": 2
+      },
+      {
+       "label": "A few times a month",
+       "score": 3
+      },
+      {
+       "label": "Rarely — maybe once in a while",
+       "score": 4
+      },
+      {
+       "label": "Almost never — the team knows what good looks like",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_fix_hours",
+     "type": "number",
+     "text": "How many hours per week does someone at your company spend fixing, correcting, or recreating off-brand materials?",
+     "hint": "Include time spent catching errors, requesting revisions, or redoing assets. We'll estimate the cost at $65/hr, a typical loaded rate for a coordinator-level role.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "x <= 0 ? 100 : x <= 1 ? 85 : x <= 3 ? 65 : x <= 6 ? 40 : x <= 10 ? 20 : 5"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand looks different every time someone makes something.",
+     "text": "The 'almost right' problem is expensive in ways that don't show up on a budget line — it shows up in the half-second read a prospect takes before scrolling past. 'Fine' signals 'nobody cared,' and your audience feels the not-caring before they read a word.",
+     "steps": [
+      "Do the asset audit: pull 10 recent team-made files and line them up. What's drifting? Start your fix list there.",
+      "Find the source of the drift: is it missing templates, unclear color specs, or no review step? Each one has a different fix.",
+      "Make the correct assets easy to find. Most brand entropy comes from people using old files because they can't locate the current ones."
+     ]
+    },
+    "mid": {
+     "headline": "You're catching the big things, but the details are drifting.",
+     "text": "Consistency in the headline elements — logo, main color — masks how much the brand drifts in practice. Fonts, spacing, photography style, tone. The details accumulate into an impression, and trained eyes see it.",
+     "steps": [
+      "Get specific in your guidelines: exact hex codes, not 'navy blue.' Exact font weights, not 'use the sans-serif.'",
+      "Create a simple brand QA checklist anyone can run before a file leaves the building.",
+      "Pick your highest-volume touchpoint — decks, or social — and make that one format airtight before fixing everything else."
+     ]
+    },
+    "high": {
+     "headline": "Your brand looks like someone cared — and that's the point.",
+     "text": "In a world where AI makes it easy to produce a lot that looks fine, looking like someone cared is the differentiator. You're doing that.",
+     "steps": [
+      "Document what's working so you can replicate it as the team grows.",
+      "Extend the same visual discipline to new formats as they appear: short video, AI-generated images, AI-assisted decks.",
+      "Run a quarterly brand audit to catch drift before it compounds."
+     ]
+    }
+   }
+  },
+  {
+   "id": "trust_signals_and_market",
+   "name": "Trust Signals and Market Positioning",
+   "questions": [
+    {
+     "id": "q10_first_impression",
+     "text": "When a prospect sees your brand for the first time — website, deck, or social post — what's the likely read in the first three seconds?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They probably can't tell what we do or who we're for",
+       "score": 1
+      },
+      {
+       "label": "They get a general sense, but nothing stands out",
+       "score": 2
+      },
+      {
+       "label": "They understand it, but we blend in with the competition",
+       "score": 3
+      },
+      {
+       "label": "They get it and it feels credible, but not distinctive",
+       "score": 4
+      },
+      {
+       "label": "They get it immediately, and something about it earns trust",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q11_differentiation",
+     "text": "How differentiated is your brand from your top three competitors?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Put our logos side by side and we'd look like the same company",
+       "score": 1
+      },
+      {
+       "label": "There are differences, but subtle — hard to see at a glance",
+       "score": 2
+      },
+      {
+       "label": "We're distinct in some ways, similar in others",
+       "score": 3
+      },
+      {
+       "label": "We're clearly different, but not in a way that ties back to our positioning",
+       "score": 4
+      },
+      {
+       "label": "Our brand signals exactly who we're for and why we're different",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12_brand_quality",
+     "text": "Does the quality of your brand reflect the quality of what you actually deliver?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No — what we deliver is better than what our brand suggests",
+       "score": 1
+      },
+      {
+       "label": "The brand is catching up to the product, but we're not there yet",
+       "score": 2
+      },
+      {
+       "label": "They're about even, but both could be stronger",
+       "score": 3
+      },
+      {
+       "label": "Our brand holds up, though it doesn't fully capture what makes us different",
+       "score": 4
+      },
+      {
+       "label": "Our brand earns the trust our product then has to deliver on",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand isn't doing the trust work your product needs it to.",
+     "text": "Startups earn trust fast or they don't earn it at all. A brand that doesn't immediately signal who it's for and why it's different makes your sales team's job harder on every call, every demo, every deck they send.",
+     "steps": [
+      "Map your top three competitors visually: colors, type, photography, tone. Then find the open space. That's the brief.",
+      "Define the one thing your brand must communicate in the first three seconds. Not three things. One.",
+      "Get an honest outside read from someone who doesn't know your company — ask them what your brand communicates. Most founders are too close to see it clearly."
+     ]
+    },
+    "mid": {
+     "headline": "You're credible. Now get distinctive.",
+     "text": "Credible gets you considered. Distinctive gets you chosen. The gap between them is usually specific: a positioning decision that hasn't been made yet, or a visual direction that hasn't been pushed far enough.",
+     "steps": [
+      "Write down the one thing your best clients always say about working with you. Make sure your brand says it before they do.",
+      "Review your website and your deck: are they saying the same thing, in the same voice, at the same level of visual quality?",
+      "Look at what your competitors look like. If you're in the same color space with the same stock photography style, change one of those before the next campaign."
+     ]
+    },
+    "high": {
+     "headline": "Your brand earns trust before you're in the room.",
+     "text": "That's the job. A brand that earns trust fast makes every sales conversation easier, every proposal stronger, every referral more likely to close. You've built that.",
+     "steps": [
+      "Keep the brand aligned with where the company is going. A brand that was right at Series A needs a check-in at Series B.",
+      "Document what makes it work so it can be protected as you scale and new people join.",
+      "Use your brand strength as a filter: are the clients you're attracting the ones you want to keep working with?"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_brand_entropy_cost",
+   "label": "Annual cost of brand entropy",
+   "format": "currency_per_period",
+   "formula": "weekly_fix_hours * 65 * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these is closest to your situation?",
+  "answers": [
+   {
+    "label": "Founder or CEO — I own the brand vision but others execute it",
+    "tag": "founder"
+   },
+   {
+    "label": "Marketing leader — I'm responsible for brand consistency across the company",
+    "tag": "marketing-lead"
+   },
+   {
+    "label": "Brand or design lead — I'm the maker and the standard-setter",
+    "tag": "brand-lead"
+   },
+   {
+    "label": "Consultant or advisor — I help organizations manage their brands",
+    "tag": "consultant"
+   }
+  ]
+ }
+}

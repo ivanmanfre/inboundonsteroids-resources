@@ -1,0 +1,646 @@
+{
+  "slug": "ai-agent-readiness-audit-is-your-firm-ready-for-workflow-automation",
+  "title": "AI Agent Readiness Audit: Is Your Firm Ready for Workflow Automation?",
+  "subtitle": "Score your firm in 12 minutes. Get a tier, a category breakdown, and a specific next move per workflow category.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 12,
+  "persona_selector": {
+    "id": "role",
+    "text": "Which role best describes you?",
+    "answers": [
+      {
+        "label": "Owner / Founder / Managing Partner",
+        "tag": "owner"
+      },
+      {
+        "label": "Operations Lead / COO / Head of Delivery",
+        "tag": "ops"
+      },
+      {
+        "label": "Individual Contributor (PM, Analyst, Coordinator)",
+        "tag": "ic"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "data_readiness",
+      "name": "Data Readiness",
+      "questions": [
+        {
+          "id": "data_location",
+          "text": "Where does the data for your most painful workflow currently live?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Single source of truth in one system",
+              "score": 5
+            },
+            {
+              "label": "2-3 connected systems with clean handoffs",
+              "score": 4
+            },
+            {
+              "label": "2-3 systems but handoffs break weekly",
+              "score": 2
+            },
+            {
+              "label": "4+ systems, some in spreadsheets or email",
+              "score": 1
+            },
+            {
+              "label": "Nobody can fully map where it lives",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "intake_structure",
+          "text": "When a new client, case, or project enters your pipeline, what percent of the intake data is structured (dropdowns, dates, numbers) vs. free text?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "80%+ structured",
+              "score": 5
+            },
+            {
+              "label": "50-80% structured",
+              "score": 3
+            },
+            {
+              "label": "Mostly free text, some fields",
+              "score": 1
+            },
+            {
+              "label": "Free-form email or phone call",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "data_cleanup",
+          "text": "If you exported the last 90 days of intake data, how much manual cleanup would it need before an agent could process it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Under an hour",
+              "score": 5
+            },
+            {
+              "label": "Half a day",
+              "score": 3
+            },
+            {
+              "label": "2-3 days",
+              "score": 1
+            },
+            {
+              "label": "A week or more, honestly",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your data is not agent-ready yet",
+          "text": "Agents trained on messy, scattered inputs hallucinate, miss cases, and create more cleanup than they save. Fix the pipes before you hire the robot.",
+          "steps": [
+            "Pick one workflow and map every data source it touches in a single diagram this week",
+            "Replace free-text intake fields with structured dropdowns and required fields in your primary system",
+            "Run a 90-day data audit to identify which fields are reliably populated vs. theatrical"
+          ]
+        },
+        "mid": {
+          "headline": "Foundation is there, edges are rough",
+          "text": "You have the right systems but the seams leak. Agents will work on the happy path and fail on the 20% that needs cleanup. That ratio determines ROI.",
+          "steps": [
+            "Document the 3 most common data quality failures and add validation at the source",
+            "Consolidate the 2-3 systems into a primary record with one-way sync from secondaries",
+            "Build a weekly 30-minute data hygiene ritual before automating anything downstream"
+          ]
+        },
+        "high": {
+          "headline": "Your data layer is automation-grade",
+          "text": "Clean inputs, structured fields, traceable sources. This is the substrate agents need. The bottleneck for you is not data, it is somewhere else in the audit.",
+          "steps": [
+            "Pick your highest-volume workflow and pilot an agent on the last 90 days of data",
+            "Set up logging so every agent decision is queryable against the source record",
+            "Add anomaly detection on intake fields so data drift is caught before it poisons agents"
+          ]
+        }
+      }
+    },
+    {
+      "id": "decision_logic",
+      "name": "Decision Logic",
+      "questions": [
+        {
+          "id": "documented_judgment",
+          "text": "Can your best person explain, in a document, how they decide outcomes for this workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, it's already documented and current",
+              "score": 5
+            },
+            {
+              "label": "They could write it in a day",
+              "score": 4
+            },
+            {
+              "label": "They'd struggle but could get 70% of it",
+              "score": 2
+            },
+            {
+              "label": "They'd say I just know",
+              "score": 1
+            },
+            {
+              "label": "Two senior people would give different answers",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "predictability",
+          "text": "What percent of cases in this workflow follow a predictable pattern vs. require creative judgment?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "90%+ predictable",
+              "score": 5
+            },
+            {
+              "label": "70-90% predictable",
+              "score": 4
+            },
+            {
+              "label": "50-70% predictable",
+              "score": 2
+            },
+            {
+              "label": "Mostly judgment calls",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "error_tracing",
+          "text": "When a case goes wrong in this workflow, can you trace exactly which decision broke it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, we have a post-mortem process",
+              "score": 5
+            },
+            {
+              "label": "Usually, if we look hard",
+              "score": 3
+            },
+            {
+              "label": "Rarely, it just goes bad",
+              "score": 1
+            },
+            {
+              "label": "We argue about what went wrong",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "decision_alignment",
+          "text": "How many of your top 3 decision-makers for this workflow would agree on the same edge case?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "3 of 3",
+              "score": 5
+            },
+            {
+              "label": "2 of 3",
+              "score": 3
+            },
+            {
+              "label": "1 of 3",
+              "score": 1
+            },
+            {
+              "label": "They would all disagree",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The logic lives in heads, not systems",
+          "text": "You cannot automate a decision that no two senior people make the same way. This is the most common reason agent pilots fail. Decisions must be written before they are coded.",
+          "steps": [
+            "Sit your top 2 decision-makers down and walk through 10 recent cases on the whiteboard",
+            "Write a decision tree in plain language, not a flowchart, with the actual thresholds",
+            "Test the document by having a junior person apply it to 5 new cases and check the deltas"
+          ]
+        },
+        "mid": {
+          "headline": "Documented but not battle-tested",
+          "text": "You have logic on paper but it has not been pressure-tested against edge cases. Agents will copy whatever ambiguity is in your doc, just faster and at scale.",
+          "steps": [
+            "Run 20 historical cases through your documented logic and flag every disagreement",
+            "Add explicit branching for the top 3 edge cases that currently get handled by exception",
+            "Pilot the agent in shadow mode for 2 weeks before letting it act on its own"
+          ]
+        },
+        "high": {
+          "headline": "Decision logic is ready to be encoded",
+          "text": "Documented, consistent, traceable. This is the layer most firms get stuck on and you are past it. Your agent can encode actual judgment, not just rules.",
+          "steps": [
+            "Convert your decision doc into prompt format with explicit thresholds and examples",
+            "Build a feedback loop where the agent flags low-confidence calls for human review",
+            "Set a quarterly review where the decision-makers update the logic based on new patterns"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workflow_volume",
+      "name": "Workflow Volume and ROI",
+      "questions": [
+        {
+          "id": "weekly_volume",
+          "text": "How many times per week does the workflow you have in mind run across the team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "100+ times per week",
+              "score": 5
+            },
+            {
+              "label": "30-100 times per week",
+              "score": 4
+            },
+            {
+              "label": "10-30 times per week",
+              "score": 2
+            },
+            {
+              "label": "Under 10 times per week",
+              "score": 1
+            },
+            {
+              "label": "Highly variable, hard to count",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "time_per_case",
+          "text": "How much human time does one run of this workflow consume on average?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "30+ minutes per run",
+              "score": 5
+            },
+            {
+              "label": "15-30 minutes per run",
+              "score": 4
+            },
+            {
+              "label": "5-15 minutes per run",
+              "score": 2
+            },
+            {
+              "label": "Under 5 minutes per run",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "cost_of_delay",
+          "text": "What is the business cost of a 24-hour delay on a single case in this workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Lost revenue or contract risk over $1,000",
+              "score": 5
+            },
+            {
+              "label": "Client friction, possible churn signal",
+              "score": 3
+            },
+            {
+              "label": "Mild annoyance, no real impact",
+              "score": 1
+            },
+            {
+              "label": "Nobody would notice",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Low-volume workflows are not worth automating yet",
+          "text": "Agent builds carry a fixed cost in design, prompt engineering, and monitoring. Under a certain volume, automation is a hobby project, not a business decision.",
+          "steps": [
+            "List your top 10 workflows by total weekly hours consumed across the team",
+            "Drop anything under 5 hours per week from the automation candidate list",
+            "Look at consolidating low-volume workflows into a shared template before automating"
+          ]
+        },
+        "mid": {
+          "headline": "Volume is real but ROI is borderline",
+          "text": "You are in the zone where automation pays off in 6-9 months, not 6-9 weeks. The deciding factor is whether the workflow is growing or flat.",
+          "steps": [
+            "Forecast whether this workflow doubles in the next 12 months based on pipeline",
+            "If growing, build now while the design effort is amortized over more future runs",
+            "If flat, consider a lightweight Zapier or n8n template before a full agent build"
+          ]
+        },
+        "high": {
+          "headline": "High-volume, high-cost workflow worth automating",
+          "text": "This is exactly the workflow profile where agents pay back in weeks not quarters. Your bottleneck is sequencing, not justification.",
+          "steps": [
+            "Calculate the all-in monthly hours and multiply by a fully-loaded hourly cost in USD",
+            "Scope a 4-week pilot covering the 80% happy path, not the 20% edge cases",
+            "Set a success metric in hours-saved-per-week and review it weekly during the pilot"
+          ]
+        }
+      }
+    },
+    {
+      "id": "tech_stack",
+      "name": "Tech Stack and Integration",
+      "questions": [
+        {
+          "id": "api_access",
+          "text": "Do the systems involved in this workflow have APIs or modern integrations you can use today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "All systems have documented APIs we have used",
+              "score": 5
+            },
+            {
+              "label": "Most have APIs, one is a screen-scrape job",
+              "score": 3
+            },
+            {
+              "label": "Half APIs, half manual",
+              "score": 1
+            },
+            {
+              "label": "Mostly legacy software with no API",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "auth_governance",
+          "text": "Does your IT or security function have clear policy on AI tools accessing your internal data?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, documented and we have an approved vendor",
+              "score": 5
+            },
+            {
+              "label": "In progress, we have a working policy",
+              "score": 3
+            },
+            {
+              "label": "No policy but the owner can make the call",
+              "score": 2
+            },
+            {
+              "label": "Locked down, every tool needs a 3-month review",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "existing_automation",
+          "text": "How much automation infrastructure (Zapier, Make, n8n, custom scripts) is already running in your firm?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Mature stack with 10+ active workflows",
+              "score": 5
+            },
+            {
+              "label": "Some automations, 3-10 running",
+              "score": 4
+            },
+            {
+              "label": "A few Zapier zaps held together with hope",
+              "score": 2
+            },
+            {
+              "label": "Nothing automated, everything is manual",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "technical_owner",
+          "text": "Who would own the agent technically once it is live?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A dedicated automation or ops engineer",
+              "score": 5
+            },
+            {
+              "label": "An ops lead with technical comfort",
+              "score": 4
+            },
+            {
+              "label": "The owner, in between client work",
+              "score": 2
+            },
+            {
+              "label": "Nobody clearly, we would hope it just runs",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your stack will fight you on this",
+          "text": "Legacy systems, no APIs, and no clear owner means every agent build becomes a custom integration project. Costs balloon and reliability suffers. Fix the foundation first.",
+          "steps": [
+            "Audit your current systems and tag each one as API-ready, scrapeable, or blocked",
+            "Add a Zapier or n8n instance and use it for 2-3 simple automations to build muscle",
+            "Identify or hire one person whose job includes owning automations end to end"
+          ]
+        },
+        "mid": {
+          "headline": "Stack works, ownership is the gap",
+          "text": "You have the tools but not the operator. Agents that nobody owns end up unmonitored, drift in quality, and quietly create more work than they save.",
+          "steps": [
+            "Name one person as the automation owner with at least 20% of their week protected",
+            "Set up a monthly review of all active automations with metrics on uptime and saved hours",
+            "Standardize on one platform (n8n or Make) rather than spreading across 3 tools"
+          ]
+        },
+        "high": {
+          "headline": "Infrastructure ready for production agents",
+          "text": "APIs, governance, mature automation stack, clear ownership. You can ship agents in 4-6 weeks instead of 4-6 months. The build is the easy part now.",
+          "steps": [
+            "Add observability tooling so every agent run is logged, queryable, and alertable",
+            "Build a reusable agent template (prompt, tools, error handling) you can fork per workflow",
+            "Create a quarterly automation roadmap tied to business OKRs, not opportunistic builds"
+          ]
+        }
+      }
+    },
+    {
+      "id": "change_readiness",
+      "name": "Change Readiness and Culture",
+      "questions": [
+        {
+          "id": "team_buy_in",
+          "text": "How does your team feel about AI doing parts of their current job?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Excited, they have asked for it",
+              "score": 5
+            },
+            {
+              "label": "Curious, willing to pilot",
+              "score": 4
+            },
+            {
+              "label": "Mixed, some quiet resistance",
+              "score": 2
+            },
+            {
+              "label": "Anxious or actively opposed",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "failure_tolerance",
+          "text": "If an agent gets a case wrong 1 out of 20 times in pilot, how does leadership react?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "That is expected, we will iterate",
+              "score": 5
+            },
+            {
+              "label": "Concerned but supportive of the pilot",
+              "score": 3
+            },
+            {
+              "label": "We would pause and reassess",
+              "score": 1
+            },
+            {
+              "label": "We would kill the project",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "feedback_loop",
+          "text": "Do you have a habit of running pilots, measuring, and iterating on internal tools?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, every quarter we ship and review",
+              "score": 5
+            },
+            {
+              "label": "Sometimes, when leadership pushes it",
+              "score": 3
+            },
+            {
+              "label": "Rarely, we tend to set and forget",
+              "score": 1
+            },
+            {
+              "label": "Never done a formal pilot",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "job_redesign",
+          "text": "Are you ready to redesign roles around what agents handle vs. what humans handle?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, role redesign is already on the roadmap",
+              "score": 5
+            },
+            {
+              "label": "Open to it, no plan yet",
+              "score": 3
+            },
+            {
+              "label": "We would prefer to keep current roles intact",
+              "score": 1
+            },
+            {
+              "label": "Role changes are politically off the table",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Culture will sink the build before tech does",
+          "text": "Agent deployments fail more from change resistance than from model errors. If the team is anxious and leadership is intolerant of pilot mistakes, you are not ready.",
+          "steps": [
+            "Run a 60-minute session with the team to surface concerns about AI before any build",
+            "Pick a low-stakes workflow for the first pilot so failure costs are bounded",
+            "Have leadership publicly commit to a learning frame, not a perfection frame, on pilots"
+          ]
+        },
+        "mid": {
+          "headline": "Open to change, light on muscle memory",
+          "text": "The team is curious but you have not built the iteration habit yet. The first pilot will be slower than expected. Treat it as capacity-building, not just an automation.",
+          "steps": [
+            "Run the first pilot with a clear success metric and a 2-week iteration cycle",
+            "Share weekly pilot updates internally so the team sees how the agent improves",
+            "Plan a role conversation at week 6 about what humans now focus on instead"
+          ]
+        },
+        "high": {
+          "headline": "Culture is your competitive advantage",
+          "text": "Team is bought in, leadership tolerates pilot variance, you iterate as a habit. This is rarer than technical readiness and it is why your agent builds will compound.",
+          "steps": [
+            "Set a goal of one new agent pilot per quarter with named owner and metric",
+            "Create a shared library of agent prompts and patterns the team can reuse and improve",
+            "Tie agent outcomes to comp or recognition so the iteration habit stays alive"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Ready to map your agent roadmap?",
+    "description": "Book a 30-minute strategy call. We will walk through your audit results and identify the 1-2 workflows that will pay back fastest in your firm.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

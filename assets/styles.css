@@ -1,0 +1,415 @@
+/* Resource Page Styles — resources.inboundonsteroids.com
+   Single source of truth: brand page 2ky5ezad-1693 (Brand Visual Rules).
+   Warm paper + softened black + sage accent (punctuation only). */
+
+:root {
+  --paper: #F7F4EF;
+  --ink: #1A1A1A;
+  --sage: #2A8F65;
+  --zinc-200: #e4e4e7;
+  --zinc-300: #d4d4d8;
+  --zinc-500: #71717a;
+  --zinc-600: #52525b;
+  --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+html, body { background: var(--paper); color: var(--ink); }
+
+/* ── Base content rhythm ── */
+.resource-content {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--ink);
+}
+.resource-content h2 {
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin: 3.5rem 0 1.25rem;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+.resource-content h3 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 2.5rem 0 1rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+.resource-content h2 em,
+.resource-content h3 em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.resource-content p {
+  margin: 1rem 0;
+  line-height: 1.8;
+}
+.resource-content ul,
+.resource-content ol {
+  margin: 1.25rem 0;
+  padding-left: 1.5rem;
+}
+.resource-content ul { list-style: none; padding-left: 0; }
+.resource-content ul > li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin: 0.55rem 0;
+  line-height: 1.7;
+}
+.resource-content ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 0.55rem;
+  height: 0.55rem;
+  background: var(--sage);
+}
+.resource-content ol > li {
+  margin: 0.55rem 0;
+  line-height: 1.7;
+}
+.resource-content strong { color: var(--ink); font-weight: 700; }
+.resource-content a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--sage);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* ── Hero headline (page top) ── */
+.hero-title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.03em !important;
+  line-height: 0.98 !important;
+  text-align: left;
+  color: var(--ink);
+  border-left: 2px solid var(--sage);
+  padding-left: 1.25rem;
+  display: block;
+  width: 100%;
+}
+.hero-title em,
+.hero-title .pivot {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+.hero-intro {
+  font-size: 1.2rem !important;
+  line-height: 1.6 !important;
+  text-align: left !important;
+  max-width: 720px;
+  margin-top: 1.25rem !important;
+  color: var(--zinc-600);
+}
+
+/* ── Horizontal rules ── */
+.resource-content hr {
+  border: none;
+  height: 1px;
+  background: var(--zinc-200);
+  margin: 3rem 0;
+}
+
+/* ── Blockquotes / pull quotes ── */
+.resource-content blockquote {
+  border-left: 2px solid var(--sage);
+  padding: 0.25rem 0 0.25rem 1.5rem;
+  margin: 2rem 0;
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.55;
+  color: var(--ink);
+  background: transparent;
+  font-style: normal;
+}
+.resource-content blockquote p { margin: 0.35rem 0; }
+
+/* ── Key Takeaway block (solid ink with sage accent) ── */
+.resource-content .key-takeaway,
+.resource-content [data-type="takeaway"] {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 1.5rem 1.75rem;
+  margin: 2.5rem 0;
+  font-weight: 500;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  border-radius: 0;
+  border-left: 4px solid var(--sage);
+}
+.resource-content .key-takeaway strong,
+.resource-content [data-type="takeaway"] strong {
+  color: var(--paper);
+  border-bottom: 2px solid var(--sage);
+  padding-bottom: 1px;
+}
+
+/* ── Tip / Warning / Info (muted editorial callouts) ── */
+.resource-content .tip-box,
+.resource-content [data-type="tip"],
+.resource-content .warning-box,
+.resource-content [data-type="warning"] {
+  border-left: 2px solid var(--sage);
+  padding: 1rem 0 1rem 1.5rem;
+  margin: 2rem 0;
+  background: transparent;
+  color: var(--ink);
+  border-radius: 0;
+}
+.resource-content .tip-box .label,
+.resource-content .warning-box .label {
+  display: block;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--zinc-600);
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+/* ── Phase / Step cards ── */
+.resource-content .phase-card {
+  display: flex;
+  gap: 1.25rem;
+  margin: 1.25rem 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--zinc-200);
+  box-shadow: var(--shadow-soft);
+  background: var(--paper);
+  border-radius: 0;
+  transition: none;
+}
+.resource-content .phase-card:hover {
+  transform: none;
+  box-shadow: var(--shadow-soft);
+}
+.resource-content .phase-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 48px;
+  height: 48px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  border-radius: 0;
+  border: none;
+  flex-shrink: 0;
+}
+
+/* ── Before / After comparison ── */
+.resource-content .comparison-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 2rem 0;
+  border: 1px solid var(--zinc-200);
+  overflow: hidden;
+  border-radius: 0;
+  box-shadow: var(--shadow-soft);
+}
+.resource-content .comparison-grid .bad,
+.resource-content .comparison-grid .good {
+  background: var(--paper);
+  padding: 1.5rem;
+}
+.resource-content .comparison-grid .bad { border-right: 1px solid var(--sage); }
+.resource-content .comparison-grid .label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+  color: var(--zinc-600);
+}
+.resource-content .comparison-grid .bad .label,
+.resource-content .comparison-grid .good .label { color: var(--zinc-600); }
+
+/* ── Stats / Numbers row ── */
+.resource-content .stats-row {
+  display: flex;
+  gap: 1rem;
+  margin: 2.5rem 0;
+  flex-wrap: wrap;
+}
+.resource-content .stat-card {
+  flex: 1;
+  min-width: 160px;
+  padding: 1.5rem 1.25rem;
+  border: 1px solid var(--zinc-200);
+  box-shadow: var(--shadow-soft);
+  background: var(--paper);
+  text-align: left;
+  border-radius: 0;
+}
+.resource-content .stat-card .number {
+  font-size: 2.75rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.resource-content .stat-card .number em {
+  font-family: 'DM Serif Display', serif;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+}
+.resource-content .stat-card .label {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-top: 0.5rem;
+  color: var(--zinc-600);
+}
+
+/* ── Mermaid diagrams ── */
+.mermaid {
+  margin: 2.5rem 0;
+  padding: 1.75rem;
+  border: 1px solid var(--zinc-200);
+  box-shadow: var(--shadow-soft);
+  background: var(--paper);
+  text-align: center;
+  overflow-x: auto;
+  border-radius: 0;
+}
+
+/* ── Tables ── */
+.resource-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  border: 1px solid var(--zinc-200);
+  background: var(--paper);
+  box-shadow: var(--shadow-soft);
+}
+.resource-content th {
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.9rem 1.1rem;
+  text-align: left;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 0.8rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.resource-content td {
+  padding: 0.9rem 1.1rem;
+  border-bottom: 1px solid var(--zinc-200);
+}
+.resource-content tr:last-child td { border-bottom: none; }
+.resource-content tr:hover td { background: rgba(42, 143, 101, 0.04); }
+
+/* ── Inline + block code ── */
+.resource-content code {
+  background: rgba(26, 26, 26, 0.06);
+  padding: 0.15rem 0.45rem;
+  border-radius: 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.9em;
+  color: var(--ink);
+  border: none;
+}
+.resource-content pre {
+  background: var(--paper);
+  color: var(--ink);
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--zinc-200);
+  box-shadow: var(--shadow-soft);
+  overflow-x: auto;
+  margin: 2rem 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  border-radius: 0;
+}
+.resource-content pre code {
+  background: transparent;
+  padding: 0;
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+/* ── Author bio block ── */
+.resource-content .author-bio {
+  display: flex;
+  gap: 1.75rem;
+  align-items: flex-start;
+  margin: 2.5rem 0;
+  padding: 1.75rem;
+  border: 1px solid var(--zinc-200);
+  box-shadow: var(--shadow-soft);
+  background: var(--paper);
+  border-radius: 0;
+}
+.resource-content .author-bio img {
+  width: 112px;
+  height: 112px;
+  object-fit: cover;
+  object-position: top;
+  border: none;
+  border-radius: 12px;
+  box-shadow: var(--shadow-soft);
+  flex-shrink: 0;
+}
+.resource-content .author-bio .bio-text { flex: 1; }
+.resource-content .author-bio .bio-text h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.3rem;
+  text-transform: none;
+}
+.resource-content .author-bio .bio-text p {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--zinc-600);
+}
+
+/* ── Small monospace labels (01 / FRAGILE / PLATFORM AUDIT etc.) ── */
+.resource-content .mono-label,
+.resource-content [data-type="label"] {
+  display: inline-block;
+  padding: 6px 12px;
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .resource-content h2 { font-size: 1.85rem; margin: 2.5rem 0 1rem; }
+  .resource-content h3 { font-size: 1.4rem; }
+  .resource-content { font-size: 1.1rem; }
+  .comparison-grid { grid-template-columns: 1fr !important; }
+  .comparison-grid .bad {
+    border-right: none !important;
+    border-bottom: 1px solid var(--sage);
+  }
+  .stats-row { flex-direction: column; }
+  .phase-card { flex-direction: column; }
+  .author-bio { flex-direction: column; align-items: flex-start; text-align: left; }
+  .author-bio img { width: 96px; height: 96px; }
+}

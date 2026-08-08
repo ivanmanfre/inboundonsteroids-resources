@@ -1,0 +1,178 @@
+{
+  "slug": "workflow-audit-checklist-for-service-businesses",
+  "title": "Workflow Audit Checklist for Service Businesses",
+  "subtitle": "Find the broken processes bleeding time and money from your $1M-$20M service business in 60-90 minutes.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 75,
+  "sections": [
+    {
+      "id": "intake-onboarding",
+      "title": "Client Intake & Onboarding",
+      "description": "This is where most service businesses start losing time before they even deliver anything. Every manual step here multiplies across every new client.",
+      "items": [
+        {
+          "id": "1-1",
+          "text": "Capture new client information in one system instead of scattering it across email, forms, and Slack",
+          "tip": "If your team searches three places to find a client detail, you have a data problem, not a memory problem.",
+          "impact": "high"
+        },
+        {
+          "id": "1-2",
+          "text": "Template onboarding tasks and assign them automatically when a deal closes",
+          "tip": "Map your last 5 onboardings and look for tasks that repeated every single time. Those are automation candidates.",
+          "impact": "high"
+        },
+        {
+          "id": "1-3",
+          "text": "Trigger welcome emails and kickoff materials without anyone manually hitting send",
+          "tip": "Tie the trigger to a CRM stage change so nothing depends on someone remembering.",
+          "impact": "medium"
+        },
+        {
+          "id": "1-4",
+          "text": "Provision client access to portals, folders, and tools without opening an IT ticket",
+          "tip": "A shared access template per client type cuts provisioning from hours to minutes.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "project-management",
+      "title": "Project & Job Management",
+      "description": "If your team is copy-pasting job details between systems or chasing down status updates, you are paying for coordination instead of execution.",
+      "items": [
+        {
+          "id": "2-1",
+          "text": "Create jobs once and push tasks into all relevant systems automatically",
+          "tip": "Count how many tools receive the same job data today. Every duplicate entry is a failure point.",
+          "impact": "high"
+        },
+        {
+          "id": "2-2",
+          "text": "Route status updates to one place instead of siloing them in email threads or DMs",
+          "tip": "Pick one system as the source of truth and make every other tool read from it.",
+          "impact": "high"
+        },
+        {
+          "id": "2-3",
+          "text": "Log handoffs between team members so they are visible rather than verbal or assumed",
+          "tip": "Dropped handoffs are the single biggest source of rework in service delivery.",
+          "impact": "medium"
+        },
+        {
+          "id": "2-4",
+          "text": "Build reusable project templates for repeatable work instead of recreating them each time",
+          "tip": "If 70% of your projects follow a similar shape, a template pays for itself in the first use.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "title": "Communication & Notifications",
+      "description": "Most communication problems are actually workflow problems. If people need to ask for updates, the system is not doing its job.",
+      "items": [
+        {
+          "id": "3-1",
+          "text": "Send clients automated updates at key milestones rather than waiting for someone to remember",
+          "tip": "Clients rarely complain about too many updates. They complain about silence.",
+          "impact": "high"
+        },
+        {
+          "id": "3-2",
+          "text": "Trigger internal notifications from workflow events instead of manual pings",
+          "tip": "Every manual ping is a small tax on focus. Multiply it by your team size and it adds up fast.",
+          "impact": "medium"
+        },
+        {
+          "id": "3-3",
+          "text": "Maintain a single source of truth for client communication history",
+          "tip": "If onboarding a new account manager requires forwarding emails, your history is broken.",
+          "impact": "medium"
+        },
+        {
+          "id": "3-4",
+          "text": "Escalate automatically when deadlines slip or tasks stall past a threshold",
+          "tip": "Define the threshold in days or hours so the system can enforce it without a human watching.",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "billing",
+      "title": "Billing & Invoicing",
+      "description": "I have seen companies leave 10-15% of revenue on the table because invoicing is manual and inconsistent. This section finds that leak.",
+      "items": [
+        {
+          "id": "4-1",
+          "text": "Generate invoices automatically from completed work or project milestones",
+          "tip": "Tie invoice creation to a status change so billing never waits on a human checklist.",
+          "impact": "high"
+        },
+        {
+          "id": "4-2",
+          "text": "Reconcile payments against invoices without manual spreadsheet matching",
+          "tip": "Unreconciled payments hide revenue leaks worth thousands of USD per month.",
+          "impact": "high"
+        },
+        {
+          "id": "4-3",
+          "text": "Trigger payment reminders on a schedule rather than when someone notices an overdue balance",
+          "tip": "A 3-step reminder sequence typically recovers 40% of late invoices without a human touch.",
+          "impact": "high"
+        },
+        {
+          "id": "4-4",
+          "text": "Surface revenue and AR data in one dashboard instead of pulling reports manually",
+          "tip": "If your finance lead exports CSVs every Monday, that is a 52-hour-per-year automation opportunity.",
+          "impact": "medium"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "You found the leaks. Now fix the biggest one.",
+    "description": "Every unchecked box is a workflow costing you time, money, or client trust. Pick the 3 highest-impact items you flagged and build or automate them first. If you want help designing the systems that replace those broken processes, reply to the email that sent you here and we will map your next automation together."
+  },
+  "ctas": [
+    {
+      "id": "high_gaps_blueprint",
+      "when": "gap_pct > 70",
+      "headline": "You found a system-wide leak. Want it mapped, not patched?",
+      "description": "Over 70% of these workflow controls are unchecked. At that gap level, fixing them one at a time is how leaks come back. The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I audit your client intake, project management, communication, and billing flows end-to-end, then deliver a 90-day deployment plan with sequenced fixes, vendor shortlists, and a phase-1 stop-loss gate. Budget-defensible whether or not you build with me.",
+      "button": "See the Blueprint →",
+      "url": "https://resources.inboundonsteroids.com/assessment",
+      "secondary": {
+        "button": "Or book a 30-min working call",
+        "url": "https://calendly.com/ivan-intelligents/30min"
+      }
+    },
+    {
+      "id": "mid_gaps_lms",
+      "when": "gap_pct >= 30 && gap_pct <= 70",
+      "headline": "Several real gaps, none catastrophic. See the system that closes them.",
+      "description": "30-70% gaps means your workflows are mostly there — but the unchecked items compound across every client. Tour the Lead Magnet System and Content System to see how I deployed pre-built n8n + Claude pipelines for service firms in your range. You can plug in the components your audit flagged.",
+      "button": "Tour the Lead Magnet System →",
+      "url": "https://ivanmanfredi.com/lead-magnet-system",
+      "secondary": {
+        "button": "Get the weekly ops teardown",
+        "url": "https://www.linkedin.com/in/ivanmanfredi/"
+      }
+    },
+    {
+      "id": "low_gaps_newsletter",
+      "headline": "You're running tight. Stay sharp — here's what firms like yours fix next.",
+      "description": "Under 30% gaps means the obvious leaks are closed. The next gains are in the kind of work most service firms never get to: event-sourced decision logs, capacity accounting, and confidence-gated review. Subscribe to the Agent-Ready Letter — one tactical n8n teardown + one ops case study per week.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/",
+      "secondary": {
+        "button": "Browse other resources",
+        "url": "https://resources.inboundonsteroids.com"
+      }
+    }
+  ],
+  "data_version": 4
+}

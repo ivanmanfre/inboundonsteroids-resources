@@ -1,0 +1,554 @@
+{
+ "slug": "richard-fowler-af-assessment",
+ "title": "The Referral-Free Growth Scorecard",
+ "subtitle": "Measures how ready your financial services firm is to build a predictable, marketing-driven pipeline that does not depend on introductions.",
+ "brand": {
+  "accent": "#7c05f4",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "referral_dependency",
+   "name": "Referral Dependency",
+   "questions": [
+    {
+     "id": "referral_pct",
+     "type": "number",
+     "text": "What percentage of new clients did your firm win through referrals or word-of-mouth in the last 12 months?",
+     "hint": "Include introductions from existing clients, accountants, solicitors, or any personal contact. Be honest — most firms are higher than they expect.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 5,
+     "default": 80,
+     "normalize_formula": "100 - x"
+    },
+    {
+     "id": "new_clients_annual",
+     "type": "number",
+     "text": "How many new clients did your firm win in the last 12 months?",
+     "hint": "Count any client or mandate won, regardless of how they found you. We use 20 as a benchmark for a firm with a healthy, active pipeline.",
+     "suffix": "clients",
+     "min": 0,
+     "max": 500,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.min(100, (x / 20) * 100)"
+    },
+    {
+     "id": "pipeline-start",
+     "text": "When a new client conversation starts at your firm, how did the relationship typically begin?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost always through a personal referral or introduction — we haven't built any other channel",
+       "score": 1
+      },
+      {
+       "label": "Mostly referrals, with the occasional inbound enquiry that we couldn't predict or repeat",
+       "score": 2
+      },
+      {
+       "label": "A mix of referrals and digital enquiries, roughly equal but neither is reliable on its own",
+       "score": 3
+      },
+      {
+       "label": "More often from our content, website, or social presence than from referrals",
+       "score": 4
+      },
+      {
+       "label": "We have a structured pipeline that delivers regular inbound enquiries independent of referrals",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "referral-resilience",
+     "text": "If your top three referral sources stopped sending introductions tomorrow, how ready is your firm to replace that pipeline?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would be in serious trouble — there is no backup and no plan",
+       "score": 1
+      },
+      {
+       "label": "It would hurt significantly and we would not know where to start rebuilding",
+       "score": 2
+      },
+      {
+       "label": "We would manage, but recovery would be slow and uncertain",
+       "score": 3
+      },
+      {
+       "label": "Our marketing would help bridge the gap within a few months",
+       "score": 4
+      },
+      {
+       "label": "Our pipeline is diversified enough that we would not miss a beat",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your firm is built on borrowed time",
+     "text": "Almost everything your firm wins comes through personal introductions, which means your growth is in other people's hands. That is a comfortable position right up until it is not. A key introducer retires, a referral relationship sours, or a competitor earns their loyalty instead. The firms we see move fastest start by making this dependency visible, then building one inbound channel before they need it.",
+     "steps": [
+      "Map every client won in the last 24 months to its source — you need to see the dependency written down before you can change it",
+      "Identify one non-referral channel (website SEO, LinkedIn content, or a niche sector directory) and commit to a 90-day test before you judge it",
+      "Set a firm target: within 12 months, at least 20% of new client conversations should come from outside your referral network"
+     ]
+    },
+    "mid": {
+     "headline": "You have started reducing dependency — now make it structural",
+     "text": "You are not fully reliant on referrals, but your marketing-driven pipeline is not reliable enough yet to feel confident walking away from introductions. The next step is not doing more — it is making what is already working more repeatable and measurable so you can build on it with confidence.",
+     "steps": [
+      "Identify which non-referral channel has produced the best leads so far and concentrate your effort there rather than spreading thin",
+      "Set up basic tracking so you know exactly how many enquiries your website and content are generating each month",
+      "Build a 12-month content plan around the questions your best clients asked before they signed with you"
+     ]
+    },
+    "high": {
+     "headline": "You have done the hard work — now protect and compound it",
+     "text": "Your pipeline has real breadth. The risk at this stage is complacency — assuming what works today will keep working without continued investment. The firms that sustain this level of pipeline maturity treat their marketing as seriously as their service delivery.",
+     "steps": [
+      "Review your channel mix quarterly and make sure no single source accounts for more than 40% of new conversations",
+      "Document what is working so the firm's pipeline is not dependent on any one person's activity or network",
+      "Consider adding one new channel — paid search, sector PR, or a downloadable lead magnet — to compound what is already performing"
+     ]
+    }
+   }
+  },
+  {
+   "id": "website_and_digital_pres",
+   "name": "Website and Digital Presence",
+   "questions": [
+    {
+     "id": "avg_retainer_value",
+     "type": "number",
+     "text": "What is your average annual client value — the fee or revenue each client relationship typically generates per year?",
+     "hint": "Use your typical retainer, annual advisory fee, or AUM-based revenue per client. We use £30,000 as a reference point for a growth-stage financial services firm.",
+     "suffix": "£/year",
+     "min": 0,
+     "max": 1000000,
+     "step": 1000,
+     "default": 30000,
+     "normalize_formula": "Math.min(100, (x / 30000) * 100)"
+    },
+    {
+     "id": "website-quality",
+     "text": "How well does your firm's website represent the quality of service you actually deliver?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It is outdated and we are not proud to share it with prospects — it does not reflect who we are now",
+       "score": 1
+      },
+      {
+       "label": "It does the basics but would not hold its own next to a strong competitor's site",
+       "score": 2
+      },
+      {
+       "label": "It looks professional, though it does not actively generate enquiries on its own",
+       "score": 3
+      },
+      {
+       "label": "It is polished, clearly positions our expertise, and tells the right visitor exactly who we help",
+       "score": 4
+      },
+      {
+       "label": "It consistently converts visitors into enquiries and we have the data to prove it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "google-presence",
+     "text": "When a prospect searches your firm's name for the first time, what do they find?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very little — a basic listing or a site with no real content that builds confidence",
+       "score": 1
+      },
+      {
+       "label": "A website, but nothing that answers their questions before they contact us",
+       "score": 2
+      },
+      {
+       "label": "A decent site plus a few reviews or social profiles that add some credibility",
+       "score": 3
+      },
+      {
+       "label": "A strong site, active social presence, and credible third-party mentions that build trust fast",
+       "score": 4
+      },
+      {
+       "label": "A comprehensive digital footprint that answers their questions before they pick up the phone",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "inbound-enquiries",
+     "text": "How often does your website or digital presence generate enquiries without any personal outreach from your team?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely or never — our website is a brochure, not a lead generator",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, but not in any pattern we could predict or plan around",
+       "score": 2
+      },
+      {
+       "label": "A few times a month, though the quality and consistency vary significantly",
+       "score": 3
+      },
+      {
+       "label": "Regularly — digital enquiries are a meaningful and growing part of our pipeline",
+       "score": 4
+      },
+      {
+       "label": "Consistently — we know exactly how many qualified leads our digital presence generates each month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your website is losing you business every day",
+     "text": "Prospects check your website before they ever pick up the phone. If what they find does not build confidence quickly, they move on without telling you. A firm with a referral-only pipeline can survive a weak website. A firm that wants to grow beyond referrals cannot — because the website is the first thing a cold prospect sees, and it is doing the job your introducer used to do.",
+     "steps": [
+      "Put your website next to your top two competitors and be honest about which firm you would call based on first impressions alone",
+      "Rewrite your homepage to answer three questions immediately: who you help, what you do differently, and what the prospect should do next",
+      "Add a clear call to action on every service page — most financial services sites give interested visitors no obvious next step"
+     ]
+    },
+    "mid": {
+     "headline": "Your digital presence is working — but not working hard enough",
+     "text": "You have the foundations. The gap is conversion: turning visitors who are already interested into enquiries. Small improvements to clarity and credibility at this stage tend to have an outsized effect, because the traffic is already there — you just need to give it somewhere to go.",
+     "steps": [
+      "Review your website analytics and identify the pages where visitors drop off — fix the biggest gap first rather than rebuilding everything",
+      "Add social proof specific to the clients you most want more of: sector, firm size, and the specific problem you solved",
+      "Test one new content type — a case study, an FAQ page, or a downloadable guide — and track whether it increases enquiry volume over 90 days"
+     ]
+    },
+    "high": {
+     "headline": "Your digital presence is a genuine asset — keep investing in it",
+     "text": "A high-performing website and active digital footprint compound over time. The longer you maintain them, the harder it becomes for competitors to catch up. The risk at this stage is letting maintenance slip as the business grows — which is exactly when most firms take their foot off the pedal.",
+     "steps": [
+      "Review your website performance quarterly and check that conversion rates, traffic, and enquiry quality are all moving in the right direction",
+      "Keep your content current — out-of-date case studies and stale blog posts erode the credibility you have built faster than people expect",
+      "Invest in SEO so that prospects searching for your services find you before they find your competitors, not after"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_and_thought_lead",
+   "name": "Content and Thought Leadership",
+   "questions": [
+    {
+     "id": "content-consistency",
+     "text": "How consistently does your firm publish content that demonstrates its expertise to the market?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We publish nothing — or so rarely it makes no practical difference to our visibility",
+       "score": 1
+      },
+      {
+       "label": "We post occasionally when someone finds the time, with no real plan behind it",
+       "score": 2
+      },
+      {
+       "label": "We publish regularly, though without a clear audience or business objective in mind",
+       "score": 3
+      },
+      {
+       "label": "We publish consistently and the content is tied to specific challenges our ideal clients face",
+       "score": 4
+      },
+      {
+       "label": "We have a documented content strategy that positions us as the firm to call in our sector",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "differentiation-pitch",
+     "text": "When a prospect asks 'why should I choose your firm over anyone else?', what happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We struggle to give a clear answer that is not just 'experience and good service'",
+       "score": 1
+      },
+      {
+       "label": "We have an answer, but if we are honest it sounds like what every other firm in our sector would say",
+       "score": 2
+      },
+      {
+       "label": "We can articulate what makes us different, though it does not always land clearly with prospects",
+       "score": 3
+      },
+      {
+       "label": "We have a clear and specific positioning that resonates with the clients we most want to work with",
+       "score": 4
+      },
+      {
+       "label": "Our positioning is clear enough that the right prospects self-select before we have even spoken to them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "seo-visibility",
+     "text": "When your ideal client searches for the service your firm offers — not your firm name, but the problem they need solving — where do you appear?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not appear — we have never focused on being found through search",
+       "score": 1
+      },
+      {
+       "label": "We appear somewhere in the results but not on the first page where decisions get made",
+       "score": 2
+      },
+      {
+       "label": "We rank for our firm name and a few broad terms, but not for the specific problems we solve",
+       "score": 3
+      },
+      {
+       "label": "We appear on the first page for several of our target search terms",
+       "score": 4
+      },
+      {
+       "label": "We rank prominently for the terms our ideal clients search and it drives regular, qualified enquiries",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are invisible to prospects who do not already know you",
+     "text": "If your firm cannot be found when a prospect is actively looking, you are not in the conversation. Content and search visibility are not optional extras for firms that want to move beyond referrals — they are the foundation of any pipeline that works without a personal introduction to kick it off.",
+     "steps": [
+      "Write down the five questions your best clients asked before they signed with you — these are your first five content topics, and they are already proven to matter",
+      "Choose one platform (LinkedIn or your firm's blog) and commit to publishing one useful piece every two weeks for 90 days before you judge the results",
+      "Identify three search terms your ideal clients would use to find a firm like yours and check where you currently rank for each one"
+     ]
+    },
+    "mid": {
+     "headline": "You are producing content — now make it work harder",
+     "text": "You are putting content out there, but it may not be positioning you specifically enough to convert interested readers into enquiries. At this stage, specificity matters more than volume — a well-aimed piece that speaks directly to one type of client's problem will outperform ten generic posts every time.",
+     "steps": [
+      "Review your last ten pieces of content and ask honestly: does each one speak to a specific problem a specific type of client faces, or is it useful to everyone and compelling to no one?",
+      "Add a clear next step to every piece of content — a discovery call, a relevant guide, or a contact form link — so interested readers have somewhere to go",
+      "Focus your SEO effort on two or three high-intent search terms rather than broad industry keywords that attract the wrong traffic"
+     ]
+    },
+    "high": {
+     "headline": "Your content is a genuine competitive advantage — compound it",
+     "text": "You have built a content and search presence that most firms in your sector have not. The firms that pull furthest ahead are the ones that treat this as an ongoing investment rather than a project with a finish line.",
+     "steps": [
+      "Review your content performance quarterly and cut what is not generating traffic or enquiries — quality over volume at this stage",
+      "Build a content calendar for the next 12 months tied to the seasonal questions your clients ask as their financial year progresses",
+      "Consider producing one signature piece — a comprehensive guide, a research report, or a proprietary framework — that no competitor has and that establishes your firm as the definitive voice on your core topic"
+     ]
+    }
+   }
+  },
+  {
+   "id": "brand_and_market_positio",
+   "name": "Brand and Market Positioning",
+   "questions": [
+    {
+     "id": "brand-differentiation",
+     "text": "How clearly does your firm's identity and messaging separate you from competitors in your sector?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look and sound like every other firm — professional, safe, and interchangeable",
+       "score": 1
+      },
+      {
+       "label": "We have a professional look but nothing that makes us memorable or easy to choose",
+       "score": 2
+      },
+      {
+       "label": "Our brand is distinct, though our messaging does not always carry that clarity through to prospects",
+       "score": 3
+      },
+      {
+       "label": "Our brand clearly signals who we serve and what we do differently — the right clients recognise it",
+       "score": 4
+      },
+      {
+       "label": "Prospects regularly tell us we stood out before we had even spoken — that is the brand doing its job",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ideal-client-clarity",
+     "text": "How clearly defined is the specific type of client your firm is best placed to serve?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We take whoever comes — we have not defined an ideal client and our marketing reflects that",
+       "score": 1
+      },
+      {
+       "label": "We have a general sense of who we work best with but have not written it down or built marketing around it",
+       "score": 2
+      },
+      {
+       "label": "We have identified our ideal client profile but do not consistently lead with it in our marketing",
+       "score": 3
+      },
+      {
+       "label": "Our ideal client is clearly defined and our marketing speaks directly and specifically to them",
+       "score": 4
+      },
+      {
+       "label": "Our positioning is specific enough that the wrong type of client self-selects out before they even contact us",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "marketing-strategy",
+     "text": "How structured is your firm's approach to marketing?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have no marketing strategy — activity happens ad hoc when we feel pipeline pressure",
+       "score": 1
+      },
+      {
+       "label": "We have some activities in place but they are not connected to a clear growth objective",
+       "score": 2
+      },
+      {
+       "label": "We have a rough plan, though it is not consistently followed or measured against targets",
+       "score": 3
+      },
+      {
+       "label": "We have a documented strategy with clear objectives, defined activities, and quarterly reviews",
+       "score": 4
+      },
+      {
+       "label": "Our marketing strategy is as disciplined as our service delivery — with targets, tracking, and regular review",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Without a clear position, every prospect comparison goes to price",
+     "text": "Firms that look and sound like everyone else compete on price — because price is the only clear difference a prospect can see. Financial services firms that carve out a specific position for a specific type of client compete on fit, and they win work they could never win on price alone. This is the single most important shift ambitious firms make.",
+     "steps": [
+      "Write a one-sentence positioning statement: 'We help [specific client type] achieve [specific outcome] through [your distinctive approach]' — if you cannot write it clearly in one sentence, it is not clear enough yet",
+      "Review your website homepage with this question: within ten seconds, does a first-time visitor know exactly who you help and what makes you different from the firm two doors down?",
+      "Brief your whole team on the positioning so every prospect conversation reinforces the same message"
+     ]
+    },
+    "mid": {
+     "headline": "You know who you are — now tell the market consistently",
+     "text": "You have done the thinking on positioning. The gap is consistency: your brand and messaging may not be carrying that clarity through every prospect touchpoint. Small gaps in how you show up across your website, LinkedIn, and proposals erode trust before a conversation even starts.",
+     "steps": [
+      "Audit every prospect-facing touchpoint — website, LinkedIn profile, email signature, proposal template — and check that your positioning is consistent across all of them",
+      "Revisit your homepage headline and make sure it communicates your positioning, not just a list of your services",
+      "Define three things your firm believes about your sector that your competitors would not say — these are the foundation of a distinctive and credible voice"
+     ]
+    },
+    "high": {
+     "headline": "You have the positioning to grow — make sure your investment reflects it",
+     "text": "Clear positioning is rare in financial services. You have built something most of your competitors have not. The opportunity now is to amplify that positioning through content, search, and consistent visibility so more of the right prospects find you — before someone else finds them first.",
+     "steps": [
+      "Review your marketing budget and ask whether your spend reflects the quality of your positioning — strong positioning with weak investment is an opportunity left on the table",
+      "Test your positioning with cold enquiries, not just referrals — feedback from prospects who found you without an introduction is the most honest signal you will get",
+      "Consider whether your positioning can support a premium pricing approach — clear differentiation and higher fees tend to move together in this sector"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "referral-revenue-at-risk",
+   "label": "Estimated annual revenue at risk from referral dependency",
+   "format": "currency",
+   "formula": "(referral_pct / 100) * new_clients_annual * avg_retainer_value",
+   "show_in_result": true
+  },
+  {
+   "id": "active-marketing-share",
+   "label": "Share of new business currently coming from active marketing",
+   "format": "percent",
+   "formula": "100 - referral_pct",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your firm?",
+  "answers": [
+   {
+    "label": "Financial advice or IFA practice",
+    "tag": "financial-advice"
+   },
+   {
+    "label": "Asset or wealth management firm",
+    "tag": "asset-management"
+   },
+   {
+    "label": "Commercial finance or lending firm",
+    "tag": "commercial-finance"
+   },
+   {
+    "label": "Accounting or tax practice",
+    "tag": "accounting-tax"
+   },
+   {
+    "label": "FinTech or capital markets firm",
+    "tag": "fintech-capital"
+   }
+  ]
+ }
+}

@@ -1,0 +1,648 @@
+{
+ "slug": "matt-cope-7e-assessment",
+ "title": "The B2B SaaS Website Readiness Score",
+ "subtitle": "Find out whether your website is winning you deals or quietly costing you them — and exactly where to focus next.",
+ "brand": {
+  "accent": "#517be8",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "brand_product_fit",
+   "name": "Brand-Product Fit",
+   "questions": [
+    {
+     "id": "brand_product_fit_q1",
+     "text": "If a prospect sees your website before a sales call, what typically happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They cancel, don't show, or arrive very confused about what we do",
+       "score": 1
+      },
+      {
+       "label": "They arrive but seem uncertain about what we actually offer",
+       "score": 2
+      },
+      {
+       "label": "They show up with okay expectations but a few misalignments",
+       "score": 3
+      },
+      {
+       "label": "They arrive pre-warmed and ask good, informed questions",
+       "score": 4
+      },
+      {
+       "label": "They show up already sold on us and reference specific things they saw",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_product_fit_q2",
+     "text": "How well does your current brand reflect the stage your company is actually at today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look like a side project; we've grown well past this",
+       "score": 1
+      },
+      {
+       "label": "Still feels early-stage; we're further along than the brand suggests",
+       "score": 2
+      },
+      {
+       "label": "Close, but it still feels like last year's version of us",
+       "score": 3
+      },
+      {
+       "label": "Mostly landing; misses some of where our product has moved",
+       "score": 4
+      },
+      {
+       "label": "Visitors immediately understand our ambition and take us seriously",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_product_fit_q3",
+     "text": "How often do prospects mistake you for a smaller or less credible company than you are?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nearly every intro call involves correcting this impression",
+       "score": 1
+      },
+      {
+       "label": "More often than I'd like",
+       "score": 2
+      },
+      {
+       "label": "Occasionally, and usually cleared up quickly",
+       "score": 3
+      },
+      {
+       "label": "Rarely — when it happens it's not really about the brand",
+       "score": 4
+      },
+      {
+       "label": "Almost never; our brand earns its room in the conversation",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your website is selling yesterday's company",
+     "text": "There is a gap between what your product actually is and what your site communicates — and prospects are feeling it before you have said a word. This is not about aesthetics. It is about the credibility cost of asking someone to take you seriously while your site tells a different story. Every intro call where you are correcting a misperception is a call your website should have handled.",
+     "steps": [
+      "Audit your hero section against where your company actually is today — not where it was when you last redesigned",
+      "List the three most common misperceptions you hear on intro calls, then check whether your homepage is creating them",
+      "Submit your URL for a free hero redesign — we will show you what the gap looks like closed in five days, no strings attached"
+     ]
+    },
+    "mid": {
+     "headline": "You are close, but the brand is lagging behind the product",
+     "text": "Your positioning is not wrong, but it is not current. The product has moved; the site has not kept pace. That gap shows up on calls where you spend time correcting perceptions that a sharper site would have handled before the calendar invite was accepted.",
+     "steps": [
+      "Identify the two or three things that have changed most about your product in the last 12 months",
+      "Check your hero section: does it reflect those things, or does it still describe where you were?",
+      "Book a homepage audit — we will tell you exactly which pages are holding back your credibility and what to fix first"
+     ]
+    },
+    "high": {
+     "headline": "Your brand is doing real work — keep it earning",
+     "text": "Your brand is aligned with where your company is, and prospects feel that before the first call. The risk from here is sitting still. Brand-product fit degrades as the product moves forward and the site does not. Build a regular review cycle now, before the gap opens again.",
+     "steps": [
+      "Set a quarterly hero section review against new product releases and recent client wins",
+      "Document the exact language your best clients use to describe you — that belongs on your site, not in a Notion doc",
+      "Identify where on-demand design support could help you keep the site current as the product evolves"
+     ]
+    }
+   }
+  },
+  {
+   "id": "messaging_positioning",
+   "name": "Messaging & Positioning",
+   "questions": [
+    {
+     "id": "messaging_positioning_q1",
+     "text": "A first-time visitor lands on your homepage. Within 10 seconds, can they tell exactly who you are for and what you do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Probably not — we hear 'what exactly do you do?' on most first calls",
+       "score": 1
+      },
+      {
+       "label": "Our category is clear but our specific buyer is not obvious",
+       "score": 2
+      },
+      {
+       "label": "Most people get it, but we lose some visitors right at the hero",
+       "score": 3
+      },
+      {
+       "label": "Clear for our core buyer; occasionally misses on edge cases",
+       "score": 4
+      },
+      {
+       "label": "We regularly hear 'this is exactly what I was looking for'",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "messaging_positioning_q2",
+     "text": "How specifically does your hero section speak to the pain your buyer is in right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It mostly describes us — what we do, our values — not their problem",
+       "score": 1
+      },
+      {
+       "label": "It mentions their category but not their actual situation",
+       "score": 2
+      },
+      {
+       "label": "It names the problem but in language we share with every competitor",
+       "score": 3
+      },
+      {
+       "label": "It names the problem and hints at our specific angle on it",
+       "score": 4
+      },
+      {
+       "label": "It names their exact situation in words they would use themselves",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "messaging_positioning_q3",
+     "text": "Compared to your three closest competitors, how differentiated does your website messaging look?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look similar — I could not name our differentiator from the copy alone",
+       "score": 1
+      },
+      {
+       "label": "We have a different angle but it is buried below the fold",
+       "score": 2
+      },
+      {
+       "label": "We stand out in one area but are fairly generic everywhere else",
+       "score": 3
+      },
+      {
+       "label": "Our positioning is clear and defensible across most pages",
+       "score": 4
+      },
+      {
+       "label": "Our site is the one prospects send their co-founder saying 'this is how we should position'",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your messaging is describing you, not converting them",
+     "text": "If your homepage talks more about what you do than about the problem your buyer is living with right now, you are losing them in the first 10 seconds. The most common version of this: a hero that lists capabilities without ever naming the specific pain. Visitors do not convert from competence claims. They convert when they feel seen.",
+     "steps": [
+      "Rewrite your hero headline to name the specific situation your best clients were in before they found you",
+      "Pull exact phrases from your last five sales calls where clients described their problem — those belong in your copy",
+      "Submit your URL for a free hero redesign to see what sharper messaging looks like in your actual context"
+     ]
+    },
+    "mid": {
+     "headline": "You are getting the category right but missing the buyer specifics",
+     "text": "People understand what you do, but not why you are the right choice for them specifically. The fix is usually moving from capability language to situation language — less 'we design websites for SaaS companies' and more 'you have outgrown your website and it is getting in the way of sales.'",
+     "steps": [
+      "Write down the three most common client situations that led to hiring you — make those the lead in your hero section",
+      "Check whether your differentiator is visible above the fold or hidden in an about page nobody reads",
+      "Book a homepage audit to identify exactly which messaging gaps are costing you conversions"
+     ]
+    },
+    "high": {
+     "headline": "Your messaging is doing the qualifying work for you",
+     "text": "You are in the minority of B2B SaaS sites that speaks to a specific buyer in specific language. That earns you better qualified inbound and shorter sales cycles. The next move is making sure it stays current as your ICP sharpens and your product evolves.",
+     "steps": [
+      "Review your hero copy every six months against your last 10 closed deals — does it still describe who is actually converting?",
+      "Look for pages below the hero (features, pricing, case studies) where messaging quality may have drifted",
+      "Consider whether your current positioning would hold up in a new segment you are moving into"
+     ]
+    }
+   }
+  },
+  {
+   "id": "website_as_a_sales_asset",
+   "name": "Website as a Sales Asset",
+   "questions": [
+    {
+     "id": "website_as_a_sales_asset_q1",
+     "text": "How does your website perform as a sales tool between conversations?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It does not — people only engage after I have spoken to them directly",
+       "score": 1
+      },
+      {
+       "label": "It occasionally confirms what I have said on a call",
+       "score": 2
+      },
+      {
+       "label": "We get some inbound but most leads still need heavy qualification",
+       "score": 3
+      },
+      {
+       "label": "It handles a meaningful portion of pre-qualification before the first call",
+       "score": 4
+      },
+      {
+       "label": "Our site generates qualified inbound consistently without us doing anything",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "website_as_a_sales_asset_q2",
+     "text": "How often do you proactively use your website in the sales process itself?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — I would rather walk them through a deck",
+       "score": 1
+      },
+      {
+       "label": "Sometimes, as a back-up reference after a call",
+       "score": 2
+      },
+      {
+       "label": "We send it but do not rely on it to do much selling work",
+       "score": 3
+      },
+      {
+       "label": "We direct prospects to specific pages that handle real objections",
+       "score": 4
+      },
+      {
+       "label": "Our website is central to the sales process and we treat it that way",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_visitors",
+     "type": "number",
+     "text": "How many unique visitors does your website get per month?",
+     "hint": "Check your analytics dashboard — Google Analytics, Plausible, or Fathom. A rough estimate is fine.",
+     "suffix": "visitors / month",
+     "min": 100,
+     "max": 100000,
+     "step": 100,
+     "default": 1000,
+     "normalize_formula": "x >= 5000 ? 100 : (x / 5000 * 100)"
+    },
+    {
+     "id": "avg_deal_value",
+     "type": "number",
+     "text": "What is your average client retainer or project value in £ per month?",
+     "hint": "For one-off projects, divide the total project value by 12 to get a monthly equivalent.",
+     "suffix": "£ / month",
+     "min": 500,
+     "max": 50000,
+     "step": 500,
+     "default": 3000,
+     "normalize_formula": "x >= 10000 ? 100 : (x / 10000 * 100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your website is a brochure, not a sales asset",
+     "text": "If you are still sending decks because you do not trust your site to do the work, or if prospects only engage after a call, you are doing sales manually at every stage. Every qualified prospect who lands on your site before speaking to you is a test. Right now most of them are leaving without converting.",
+     "steps": [
+      "List the three most common objections you handle on calls and check whether your website addresses any of them",
+      "Create at least one page or section that speaks directly to your best buyer's specific situation, not just your services",
+      "Submit your URL for a free hero redesign to see what it looks like when your site starts the sales conversation for you"
+     ]
+    },
+    "mid": {
+     "headline": "Your site is in the conversation — now make it earn its keep",
+     "text": "You are sending prospects to your website and it is doing some work, but it is not yet handling the heavy lifting. The gap between 'confirms what I said on a call' and 'pre-qualifies before the call' is usually in the specificity of the messaging and the quality of the conversion path.",
+     "steps": [
+      "Map the journey from homepage to booking a call — count the clicks, read the copy at each step, look for where you lose people",
+      "Add one page or section specifically designed to handle your single most common sales objection",
+      "Send your website URL to prospects before a call this week and ask them what questions it raised — those gaps are your content brief"
+     ]
+    },
+    "high": {
+     "headline": "Your website is pulling its weight in the sales process",
+     "text": "You are in the group where the website is genuinely contributing to sales outcomes, not just existing. The next lever is usually improving the quality of inbound rather than the volume — sharper targeting, cleaner qualification, and more specific case study content.",
+     "steps": [
+      "Review your case studies: are they outcome-led with real numbers, or are they still describing the process?",
+      "Look at which pages have the highest exit rates — those are the ones losing qualified prospects who arrived ready",
+      "Consider an on-demand design support retainer to keep the site current as your sales positioning sharpens"
+     ]
+    }
+   }
+  },
+  {
+   "id": "cta_conversion",
+   "name": "CTA & Conversion",
+   "questions": [
+    {
+     "id": "cta_conversion_q1",
+     "text": "How deliberate are the calls to action across your website?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have a 'Contact Us' button somewhere; that is about it",
+       "score": 1
+      },
+      {
+       "label": "We have CTAs but they are all the same and have never been tested",
+       "score": 2
+      },
+      {
+       "label": "We have thought about it but have not run any real tests",
+       "score": 3
+      },
+      {
+       "label": "We have tested our primary CTA and have data on what works",
+       "score": 4
+      },
+      {
+       "label": "We run continuous CTA tests across multiple pages with clear, tracked results",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "cta_conversion_q2",
+     "text": "How well do your CTAs match where a visitor actually is in their buying decision?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We ask everyone for the same commitment regardless of where they are",
+       "score": 1
+      },
+      {
+       "label": "We have 'get in touch' and 'learn more' but nothing more strategic than that",
+       "score": 2
+      },
+      {
+       "label": "We try to differentiate hard vs soft CTAs but it is based on instinct not data",
+       "score": 3
+      },
+      {
+       "label": "We use a mix of hard and soft CTAs mapped to different intent levels",
+       "score": 4
+      },
+      {
+       "label": "Every CTA maps to a buyer stage and we have data on what each one is doing",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "conversion_rate",
+     "type": "number",
+     "text": "What percentage of website visitors currently submit a demo request, trial signup, or contact form?",
+     "hint": "Total monthly form submissions ÷ total monthly visitors × 100. A typical B2B SaaS homepage converts at 1–3%.",
+     "suffix": "% conversion rate",
+     "min": 0,
+     "max": 20,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "x >= 5 ? 100 : (x / 5 * 100)"
+    },
+    {
+     "id": "cta_conversion_q4",
+     "text": "How confident are you that your homepage is converting as well as it could be right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not at all — I know there is significant conversion being left on the table",
+       "score": 1
+      },
+      {
+       "label": "Low confidence — I have not looked seriously at the data",
+       "score": 2
+      },
+      {
+       "label": "Uncertain — we get conversions but I could not tell you if that is good or not",
+       "score": 3
+      },
+      {
+       "label": "Fairly confident — we have done some work here and have rough benchmarks",
+       "score": 4
+      },
+      {
+       "label": "Very confident — we track it closely and our numbers are strong",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your CTAs are asking everyone for everything — and converting no one",
+     "text": "A single 'Contact Us' button asks a cold visitor for the same commitment as someone who has been on three calls with you. The gap between hard CTAs (book a call, start a trial) and soft CTAs (free audit, see examples) is often the difference between a site that converts at 1% and one that converts at 4%. You are leaving qualified prospects on the table every day.",
+     "steps": [
+      "Identify which of your current CTAs are hard (high commitment) and which are soft (low commitment) — and whether you have both",
+      "Add one low-friction soft CTA to your hero section for visitors who are not ready to book a call yet",
+      "Get a free homepage audit from us: we will tell you exactly which CTA changes would move your conversion rate"
+     ]
+    },
+    "mid": {
+     "headline": "You have CTAs — now make them work harder with data",
+     "text": "You have thought about conversion, but without testing there is a ceiling on how far instinct takes you. The optimal button text, the right mix of hard and soft CTAs, the placement on the page — these are answerable with data. Right now you are leaving some of that on the table.",
+     "steps": [
+      "Run a simple A/B test on your primary CTA text — even two weeks of data with basic analytics will tell you something useful",
+      "Map your pages to buyer intent: high-intent pages (pricing, case studies) get hard CTAs; discovery pages get soft",
+      "Book a homepage audit to get specific, data-grounded CTA recommendations for your site"
+     ]
+    },
+    "high": {
+     "headline": "Your conversion thinking is ahead of most B2B SaaS sites",
+     "text": "You are testing, mapping intent, and tracking results. That is not common. The next level is usually extending this discipline beyond the homepage to case study pages, feature pages, and content pages where buying intent can be high but the CTA is typically an afterthought.",
+     "steps": [
+      "Audit your secondary pages (case studies, integrations, features) for CTA relevance and intent match",
+      "Check whether your soft CTAs are genuinely low-friction or whether they are still asking for more than the visitor is ready to give",
+      "Look at exit pages in your analytics — where are high-intent visitors leaving without converting?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "design_content_velocity",
+   "name": "Design & Content Velocity",
+   "questions": [
+    {
+     "id": "design_content_velocity_q1",
+     "text": "When you win a significant deal or launch a new feature, how long does it take to reflect that on your website?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Months — or it never gets updated at all",
+       "score": 1
+      },
+      {
+       "label": "Several weeks and significant back-and-forth with whoever manages the site",
+       "score": 2
+      },
+      {
+       "label": "A couple of weeks if we make it a priority",
+       "score": 3
+      },
+      {
+       "label": "About a week with some friction in the process",
+       "score": 4
+      },
+      {
+       "label": "Days — our setup makes it straightforward to ship updates fast",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "design_content_velocity_q2",
+     "text": "How easily can your team update copy and design on the website without going to a developer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing gets changed without a developer; it is a bottleneck we have accepted",
+       "score": 1
+      },
+      {
+       "label": "Technically possible but painful enough that we avoid it",
+       "score": 2
+      },
+      {
+       "label": "Basic copy changes are fine; anything visual requires outside help",
+       "score": 3
+      },
+      {
+       "label": "The team handles most updates and escalates only the bigger changes",
+       "score": 4
+      },
+      {
+       "label": "Fully self-sufficient — we move fast without needing external resource",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your website cannot keep up with your company — and that gap is compounding",
+     "text": "When it takes months to update your site after a major win or product launch, prospects are seeing an outdated version of your company every single day. The harder your product team works, the wider the gap gets. This is not a design problem — it is a process and infrastructure problem. The answer is a website setup that moves as fast as your business does.",
+     "steps": [
+      "Identify the last three significant wins or product updates that are not reflected on your site and add them this week",
+      "Work out whether your current CMS or platform is the constraint, or whether it is a process and resource gap",
+      "Ask us about Webflow development and migration — it is specifically built for teams that need to move without a developer in the loop"
+     ]
+    },
+    "mid": {
+     "headline": "You can update the site — but it costs you time you do not have",
+     "text": "The ability to update is there, but the friction means you are making trade-off calls: is this update worth the two-week turnaround? That calculus is slowly letting your site fall behind. The real cost is not the update you cannot make — it is the one you decide is not worth the hassle.",
+     "steps": [
+      "Map the actual process for making a change to your site — count the steps, the people, and the days",
+      "Identify the one type of update you avoid most because of friction — that is your first priority to fix",
+      "Look at on-demand design support as a way to remove the bottleneck without the overhead of a full-time hire"
+     ]
+    },
+    "high": {
+     "headline": "You have the velocity — use it as a competitive advantage",
+     "text": "Moving fast on your website is a genuine edge that most B2B SaaS companies do not have. The companies that stay ahead are the ones that ship new case studies quickly, update their messaging when the ICP shifts, and reflect new product capabilities before competitors notice. You have the infrastructure. Keep using it deliberately.",
+     "steps": [
+      "Make a quarterly website update a standing agenda item — planned, not reactive",
+      "Build a running library of updated product shots, client quotes, and feature highlights so updates take minutes, not days",
+      "Consider a CRO optimisation retainer to keep the conversion layer improving at the same pace as the design"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "current_monthly_leads",
+   "label": "Leads your website is generating right now (per month)",
+   "format": "integer",
+   "formula": "Math.round(monthly_visitors * (conversion_rate / 100))",
+   "show_in_result": true
+  },
+  {
+   "id": "current_annual_revenue_from_web",
+   "label": "Estimated annual revenue from website conversions at your current rate",
+   "format": "currency_per_period",
+   "formula": "Math.round(monthly_visitors * (conversion_rate / 100) * avg_deal_value * 12)",
+   "show_in_result": true
+  },
+  {
+   "id": "revenue_uplift_per_1pp",
+   "label": "Additional annual revenue from a 1-percentage-point improvement in conversion rate",
+   "format": "currency_per_period",
+   "formula": "Math.round(monthly_visitors * (1 / 100) * avg_deal_value * 12)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "Pre-seed / just launched — getting first customers",
+    "tag": "pre-seed"
+   },
+   {
+    "label": "Seed / early traction — proving the model",
+    "tag": "seed"
+   },
+   {
+    "label": "Series A / scaling — building the sales machine",
+    "tag": "series-a"
+   },
+   {
+    "label": "Growth stage — optimising and expanding",
+    "tag": "growth"
+   }
+  ]
+ }
+}

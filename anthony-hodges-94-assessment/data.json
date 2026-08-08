@@ -1,0 +1,578 @@
+{
+ "slug": "anthony-hodges-94-assessment",
+ "title": "The Campaign Maturity Score",
+ "subtitle": "Find out whether your brand is building work people actually stop to watch, or just filling a calendar.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "story_before_format",
+   "name": "Story Before Format",
+   "questions": [
+    {
+     "id": "story_before_format_q1",
+     "text": "When you start a new campaign, what does the first approved brief actually look like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A deliverable list with formats and deadlines",
+       "score": 1
+      },
+      {
+       "label": "Key messages and product features we need to cover",
+       "score": 2
+      },
+      {
+       "label": "A target audience and a breakdown of which channels we are hitting",
+       "score": 3
+      },
+      {
+       "label": "A single story idea and the feeling we want the audience to walk away with",
+       "score": 4
+      },
+      {
+       "label": "A clear story premise, the audience reaction we are engineering, and the one thing we need them to feel — locked before anything else is decided",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "story_before_format_q2",
+     "text": "How would you describe the emotional core of your most recent campaign?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We did not explicitly define one",
+       "score": 1
+      },
+      {
+       "label": "It was implied but never written down",
+       "score": 2
+      },
+      {
+       "label": "We discussed it in briefing but it was not locked in before production started",
+       "score": 3
+      },
+      {
+       "label": "It was clear and the whole creative built around it",
+       "score": 4
+      },
+      {
+       "label": "Every decision, from shot selection to pacing, traced back to a single emotional idea we defined before we built anything",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "story_before_format_q3",
+     "text": "What happens when a concept feels flat during creative review?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We push it through. The deadline wins.",
+       "score": 1
+      },
+      {
+       "label": "We adjust the visuals and try again",
+       "score": 2
+      },
+      {
+       "label": "We revisit the messaging and tighten something up",
+       "score": 3
+      },
+      {
+       "label": "We go back to the story brief and find where it stops landing",
+       "score": 4
+      },
+      {
+       "label": "We stop, rebuild from the idea up, and do not move forward until it earns attention in the room",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are making content. You are not yet telling stories.",
+     "text": "The brief drives the creative. Right now your brief is built around deliverables and deadlines, not around an idea worth watching. Every great commercial starts with a single clear feeling. Until that is locked in before production begins, you are producing output, not work.",
+     "steps": [
+      "Before the next brief gets approved, write one sentence: what do we want the audience to feel the moment this ends? If you cannot write that sentence, the brief is not ready.",
+      "Pull up your last three campaigns. Find the emotional idea at the center of each one. If there is not one, that is the diagnosis.",
+      "Make the story the first agenda item in every briefing, not the last. Format and deliverables come after the idea is locked."
+     ]
+    },
+    "mid": {
+     "headline": "The story instinct is there. The process is not protecting it yet.",
+     "text": "You understand that story matters. But somewhere between briefing and production the emotional idea gets diluted by format decisions, channel requirements, and deadline pressure. The goal is to make the story non-negotiable before anything else is decided.",
+     "steps": [
+      "Add a story lock to your creative brief. One line. One feeling. No approval until it is there.",
+      "In creative review, ask this first: does this still deliver the original feeling? Not does it look good. Does it make people feel the thing?",
+      "After your next campaign runs, check whether the audience felt what you intended. The gap between intention and response tells you exactly where the story broke down."
+     ]
+    },
+    "high": {
+     "headline": "Your creative starts with the story. Keep it that way.",
+     "text": "You are running a story-first process. That is rarer than it sounds. The brands that stick in people's minds are not always the ones with the biggest budgets. They are the ones that got the idea right before anything else. Your job now is to protect that standard as your team and volume grow.",
+     "steps": [
+      "Document the story-lock process so it survives handoffs and new team members. It is the most valuable thing in your workflow.",
+      "Start tracking which campaigns land emotionally versus which ones just performed. The pattern will show you where your story instinct is strongest.",
+      "Use story quality as a filter before you commit production budget, not after. The best time to catch a weak idea is before a dollar is spent."
+     ]
+    }
+   }
+  },
+  {
+   "id": "production_velocity",
+   "name": "Production Velocity",
+   "questions": [
+    {
+     "id": "production_velocity_q1",
+     "text": "How fast does your team go from an approved concept to first rough creative outputs?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Four or more weeks",
+       "score": 1
+      },
+      {
+       "label": "Two to four weeks",
+       "score": 2
+      },
+      {
+       "label": "One to two weeks",
+       "score": 3
+      },
+      {
+       "label": "Three to seven days",
+       "score": 4
+      },
+      {
+       "label": "First concepts in under 48 hours",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "production_velocity_q2",
+     "text": "If a live campaign is underperforming, how fast can you get a new creative direction in front of the audience?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would need to restart the full production process. Months.",
+       "score": 1
+      },
+      {
+       "label": "Four to six weeks if we reprioritize",
+       "score": 2
+      },
+      {
+       "label": "Two to four weeks",
+       "score": 3
+      },
+      {
+       "label": "Under a week",
+       "score": 4
+      },
+      {
+       "label": "Days. We can test a new direction before the current one stops running.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "production_velocity_q3",
+     "text": "How many distinct creative directions do you test before committing budget to a full production run?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We go with the first direction that gets approved",
+       "score": 1
+      },
+      {
+       "label": "We usually present two options and pick one",
+       "score": 2
+      },
+      {
+       "label": "We compare two to three concepts before deciding",
+       "score": 3
+      },
+      {
+       "label": "We produce and review three to five lightweight versions before committing",
+       "score": 4
+      },
+      {
+       "label": "We run structured concept tests across multiple directions. Budget commits after testing, not before.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weeks_per_campaign",
+     "type": "number",
+     "text": "How many weeks does a typical campaign take from approved brief to final delivery?",
+     "hint": "Include concept development, production, revisions, and final sign-off in your count.",
+     "suffix": "weeks",
+     "min": 1,
+     "max": 52,
+     "step": 1,
+     "default": 8,
+     "normalize_formula": "x <= 1 ? 100 : x <= 2 ? 90 : x <= 4 ? 75 : x <= 8 ? 55 : x <= 12 ? 35 : 15"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your production timeline is controlling your creative output.",
+     "text": "When a campaign takes months to produce, you cannot test, you cannot learn, and you cannot respond to what is actually working. You are committing budget before you have evidence. That math only works if every campaign is perfect. None are.",
+     "steps": [
+      "Map your current production process step by step. Find the two or three steps that eat the most time and ask whether they genuinely require what they currently require.",
+      "Separate concept development from full production. Build a fast-concept phase that lets you stress-test the idea before committing to the full run.",
+      "Set a target: first concepts within 72 hours of brief approval. Not final work. Just enough to know if the idea is worth building."
+     ]
+    },
+    "mid": {
+     "headline": "You are moving, but not fast enough to learn.",
+     "text": "You can produce work in a reasonable window. The goal now is closing the gap between concept and first output so you can test more directions before committing. Speed at the concept stage is where creative quality compounds.",
+     "steps": [
+      "Build a fast-concept workflow that runs separately from your full production process. The goal is to cut your first-concept time in half.",
+      "Track time by phase: concept, production, review, revisions. You will see exactly where the weeks go.",
+      "Challenge the team to test three directions before the next brief moves into full production. See what breaks and why."
+     ]
+    },
+    "high": {
+     "headline": "You move at creative speed. Protect it.",
+     "text": "Fast is not just efficient. It means you can test more ideas, learn faster, and respond before a campaign burns budget. Most brands do not have this. The ones that do build stronger creative over time because every short cycle teaches them something slow-cycle brands will not know for months.",
+     "steps": [
+      "Document your fast-cycle workflow so it does not live only in your head or in one team member.",
+      "Use your speed deliberately. When something is not landing, cut it fast and put the saved time into a new direction.",
+      "Start tracking whether your speed is compounding creative quality. Check concept-to-conversion by campaign and look for the trend."
+     ]
+    }
+   }
+  },
+  {
+   "id": "demand_creation",
+   "name": "Demand Creation",
+   "questions": [
+    {
+     "id": "demand_creation_q1",
+     "text": "How directly does your campaign brief name the business outcome it needs to move?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The brief focuses on creative quality and brand consistency",
+       "score": 1
+      },
+      {
+       "label": "We reference awareness or reach targets",
+       "score": 2
+      },
+      {
+       "label": "We mention a broader goal like traffic or lead generation",
+       "score": 3
+      },
+      {
+       "label": "We name a specific demand or revenue number the campaign is built to hit",
+       "score": 4
+      },
+      {
+       "label": "Every creative decision traces back to one measurable commercial outcome. The brief does not get approved without it.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "demand_creation_q2",
+     "text": "After a campaign runs, which number gets looked at first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Views, reach, or impressions",
+       "score": 1
+      },
+      {
+       "label": "Engagement rate or social interactions",
+       "score": 2
+      },
+      {
+       "label": "Traffic directly from the campaign",
+       "score": 3
+      },
+      {
+       "label": "Qualified leads or pipeline tied to the creative",
+       "score": 4
+      },
+      {
+       "label": "Revenue or demand lift directly attributed to the campaign",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "demand_creation_q3",
+     "text": "How well does your creative team understand what they are actually being hired to do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They know the deliverables. The business outcome is not part of the brief they receive.",
+       "score": 1
+      },
+      {
+       "label": "They get a general sense of the campaign goal",
+       "score": 2
+      },
+      {
+       "label": "They know the product and the target audience",
+       "score": 3
+      },
+      {
+       "label": "They know the specific outcome the brand is trying to move",
+       "score": 4
+      },
+      {
+       "label": "They ask about the outcome before they ask about the visual direction. Every time.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "budget_per_campaign",
+     "type": "number",
+     "text": "What does an average commercial campaign cost you to produce?",
+     "hint": "Include all production costs: creative development, production, talent, and post. Enter total in USD.",
+     "suffix": "$",
+     "min": 500,
+     "max": 500000,
+     "step": 500,
+     "default": 25000,
+     "normalize_formula": "x <= 5000 ? 100 : x <= 15000 ? 80 : x <= 30000 ? 60 : x <= 75000 ? 40 : 20"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are measuring reach. Reach is not demand.",
+     "text": "Views and impressions tell you the creative ran. They do not tell you whether it created any pull toward a purchase. Brands that confuse exposure with demand creation keep spending on content that looks good and converts nothing. The brief needs to name what is supposed to happen after someone watches.",
+     "steps": [
+      "For your next campaign, write the outcome sentence first: after someone watches this, what should they do, feel, or believe that they did not before? That sentence drives the brief.",
+      "Add one downstream metric to every campaign debrief that is not views or engagement. Even a rough signal, like direct message volume or product page traffic, is better than reach alone.",
+      "Walk your creative team through the last campaign's business results. Not the creative quality. The actual commercial outcome. Make it a standing habit."
+     ]
+    },
+    "mid": {
+     "headline": "You are connecting creative to outcomes. Tighten the link.",
+     "text": "You understand that campaigns need to move something beyond brand awareness. The gap is usually in how tightly the brief connects creative decisions to the specific outcome. When the link is loose, creative drifts toward looks great and away from works.",
+     "steps": [
+      "Add an outcome gate to your creative brief: one sentence, one metric, approved before a single concept is built.",
+      "In creative review, ask directly: how does this specific choice move the audience toward the stated outcome? If no one can answer, the choice gets reconsidered.",
+      "After three campaigns, review which creative decisions correlated with outcome movement. Start making those decisions deliberately."
+     ]
+    },
+    "high": {
+     "headline": "Your creative is built to create demand. That is the work that pays.",
+     "text": "You are measuring what matters and your briefs connect story decisions to commercial outcomes. Most creative teams never get here because the link between a visual choice and a revenue number feels abstract. You have made it concrete. Keep pushing the specificity of that connection.",
+     "steps": [
+      "Start documenting which creative approaches move your specific audience to action. You are building a body of evidence most brands will never have.",
+      "Use your outcome data to get better at predicting which story angles will perform before production starts.",
+      "Share outcome results with your creative partners. When the people building the work can see what moved the needle, the next brief gets sharper."
+     ]
+    }
+   }
+  },
+  {
+   "id": "production_system",
+   "name": "Production System",
+   "questions": [
+    {
+     "id": "production_system_q1",
+     "text": "How would you describe your production workflow from brief to delivery?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Different every project. We figure it out as we go.",
+       "score": 1
+      },
+      {
+       "label": "Some standard steps, but they shift based on who is on the project",
+       "score": 2
+      },
+      {
+       "label": "A loose process that usually holds",
+       "score": 3
+      },
+      {
+       "label": "A documented workflow we review and improve after every project",
+       "score": 4
+      },
+      {
+       "label": "A repeatable system — strategy, story, production, delivery — that gets tighter with every iteration",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "production_system_q2",
+     "text": "How does your team capture and apply what it learned from the last campaign?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not have a formal way to do this",
+       "score": 1
+      },
+      {
+       "label": "We debrief informally and move on",
+       "score": 2
+      },
+      {
+       "label": "We track some notes that sometimes make it into the next project",
+       "score": 3
+      },
+      {
+       "label": "We run a structured post-mortem that feeds directly into the next brief",
+       "score": 4
+      },
+      {
+       "label": "Every project makes the next workflow faster. We have a living system that compounds.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "production_system_q3",
+     "text": "If you needed three distinct campaign concepts ready for review by the end of next week, what actually happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "That would be impossible with our current setup",
+       "score": 1
+      },
+      {
+       "label": "We could produce one if we cleared everything else",
+       "score": 2
+      },
+      {
+       "label": "We could do two with significant scrambling",
+       "score": 3
+      },
+      {
+       "label": "We could do three, but it would strain the team",
+       "score": 4
+      },
+      {
+       "label": "We have the workflow to concept, produce, and deliver multiple campaigns in days. Three concepts in a week is a normal sprint.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "campaigns_per_year",
+     "type": "number",
+     "text": "How many commercial campaigns does your brand produce in a year?",
+     "hint": "Count distinct campaigns, not individual assets. A campaign with five ad variations counts as one.",
+     "suffix": "campaigns",
+     "min": 1,
+     "max": 52,
+     "step": 1,
+     "default": 4,
+     "normalize_formula": "x >= 24 ? 100 : x >= 12 ? 80 : x >= 8 ? 65 : x >= 4 ? 45 : x >= 2 ? 25 : 10"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Every project is starting from scratch.",
+     "text": "Without a repeatable workflow, speed and quality both depend on whoever happens to be on the project that week. You cannot improve what does not repeat. The work speaks louder than the tools, but the work needs a system behind it to compound.",
+     "steps": [
+      "Map the last project end to end: every step, every decision, every handoff. That map is the skeleton of your first workflow.",
+      "Pick the three steps that are always the same regardless of project size. Lock those in first. Build the rest around them.",
+      "After the next project, spend 30 minutes answering two questions: what took longer than it should have, and what would I do differently in the first hour of the next one? Write both down."
+     ]
+    },
+    "mid": {
+     "headline": "You have a process. Make it compound.",
+     "text": "You are not starting from zero every time. There is a workflow, even if it is loose. The gap is in making each iteration feed the next one. A process that does not improve after each project is a process that stays average.",
+     "steps": [
+      "Add a formal step to your post-project review: what gets faster next time? One decision per project. That is all it takes.",
+      "Write down the workflow you are already running. When it is documented, you can improve it. When it is only in someone's head, you cannot.",
+      "Identify the one phase of production that slows down most often. Fix that first. The constraint is where your effort pays off."
+     ]
+    },
+    "high": {
+     "headline": "You have a system. Now run it faster.",
+     "text": "A repeatable production system is what lets quality compound over time. Every iteration teaches you something the brands without a system will not learn. The next push is speed at the concept phase and tighter feedback loops between what ran and what gets built next.",
+     "steps": [
+      "Start tracking your cycle times by phase. The data will show you exactly where the next efficiency lives.",
+      "Build a concept library from past campaigns: patterns that worked, angles that did not, story structures that moved the audience. Use it to brief faster.",
+      "Ask yourself: what would it take to double the number of concepts we test per campaign without adding headcount? That is the question an AI-first workflow answers."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_production_spend",
+   "label": "Annual Production Spend",
+   "format": "currency",
+   "formula": "budget_per_campaign * campaigns_per_year",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_production_weeks",
+   "label": "Weeks Per Year Locked in Production",
+   "format": "integer",
+   "formula": "weeks_per_campaign * campaigns_per_year",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes you?",
+  "answers": [
+   {
+    "label": "Brand Founder — I own the brand and the marketing decisions",
+    "tag": "founder"
+   },
+   {
+    "label": "Head of Marketing or CMO — I lead the team and set the strategy",
+    "tag": "cmo"
+   },
+   {
+    "label": "Creative Director — I own the creative vision and production",
+    "tag": "creative-director"
+   },
+   {
+    "label": "Agency or Production Partner — I build campaigns for brands",
+    "tag": "agency"
+   }
+  ]
+ }
+}

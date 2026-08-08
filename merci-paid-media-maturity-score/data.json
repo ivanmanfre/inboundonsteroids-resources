@@ -1,0 +1,695 @@
+{
+  "slug": "merci-paid-media-maturity-score",
+  "client": {
+    "id": "merci",
+    "name": "Alex Ayre",
+    "short_name": "Alex",
+    "portrait": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/merci-alex-portrait.jpg",
+    "site_label": "Founder, Merci",
+    "accent": "#65c8c0",
+    "ink": "#000000",
+    "booking_url": "https://bemerci.com/contact",
+    "cta_label": "Let's Connect"
+  },
+  "title": "The Paid Media Maturity Score",
+  "subtitle": "A five part read on whether your reporting can be trusted with the next dollar of spend.",
+  "brand": {
+    "accent": "#65c8c0",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 8,
+  "intro": {
+    "paragraph": "Five categories, covering the places paid media accounts leak. It takes about eight minutes and the result names the two worth fixing first.",
+    "note": "Built from twelve years and $50MM+ in managed spend across Google, Meta, LinkedIn and YouTube.",
+    "point_time": "8 minutes, at your pace",
+    "point_value": "Answer from how the account actually runs, not how it was designed to run.",
+    "point_next": "Your score and tier are free. Email unlocks the per category breakdown and the fixes to prioritise."
+  },
+  "persona_selector": {
+    "id": "role",
+    "text": "Which best describes your situation right now?",
+    "answers": [
+      {
+        "label": "In-house marketing leader (CMO, VP, Director)",
+        "tag": "inhouse_leader"
+      },
+      {
+        "label": "Paid media manager or specialist",
+        "tag": "paid_specialist"
+      },
+      {
+        "label": "Founder running paid media directly",
+        "tag": "founder"
+      },
+      {
+        "label": "Agency owner or consultant",
+        "tag": "agency"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "measurement_integrity",
+      "name": "Measurement Integrity",
+      "scoring_formula": "((conversion_audit_score||0) + (primary_actions_score||0) + (source_of_truth_score||0)) / 3",
+      "questions": [
+        {
+          "id": "monthly_spend",
+          "type": "number",
+          "text": "Roughly how much do you put through paid media in a month, across every platform?",
+          "hint": "All channels combined, media only. This is used to show what your current setup is responsible for. It does not affect your score.",
+          "suffix": "per month",
+          "min": 0,
+          "max": 500000,
+          "step": 1000,
+          "default": 25000
+        },
+        {
+          "id": "conversion_audit",
+          "text": "When did someone last open your conversion actions and confirm each one still counts what it was built to count?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "I could not tell you. Nobody owns that check.",
+              "score": 1
+            },
+            {
+              "label": "At setup, and not since.",
+              "score": 2
+            },
+            {
+              "label": "Someone looks when a number moves in a way we cannot explain.",
+              "score": 3
+            },
+            {
+              "label": "Sometime in the last year, as part of a wider review.",
+              "score": 4
+            },
+            {
+              "label": "Within the last quarter, on a scheduled check with a named owner.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "primary_actions",
+          "text": "How many conversion actions are set to primary and feeding bidding right now?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Whatever was there when the account was built.",
+              "score": 1
+            },
+            {
+              "label": "Several, and I could not list them from memory.",
+              "score": 2
+            },
+            {
+              "label": "A few, and I know roughly which ones matter.",
+              "score": 3
+            },
+            {
+              "label": "A short set I can name, though soft signals are still mixed in.",
+              "score": 4
+            },
+            {
+              "label": "A deliberate set I can name, and every one maps to something sales would call a buyer.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "source_of_truth",
+          "text": "Where does your team go to verify what is actually happening in your campaigns?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "The ad platforms. That is the number we report.",
+              "score": 1
+            },
+            {
+              "label": "The platforms, cross-checked against analytics when they disagree.",
+              "score": 2
+            },
+            {
+              "label": "Analytics is the reference, and the CRM gets consulted occasionally.",
+              "score": 3
+            },
+            {
+              "label": "The CRM holds the outcome, though campaign data does not always reach it.",
+              "score": 4
+            },
+            {
+              "label": "The CRM is the source of truth and campaign source rides on every record.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your reporting cannot yet be trusted with a budget decision.",
+          "text": "Ad platforms have an interest in claiming credit, and right now they are the record. Budget decisions are being made on numbers built to look good. This is the cheapest category on the list to fix and it gates every other one.",
+          "steps": [
+            "Open every conversion action and read the last recorded conversion date next to the last event ping. Those two dates separate a broken tag from a slow week.",
+            "Cut the primary conversion set down to actions sales would recognise as a buyer signal. Site visits and video views come out of bidding.",
+            "Pick a source of truth outside the platforms. For lead gen that is the CRM. Get campaign source onto every record before you touch budget again."
+          ]
+        },
+        "mid": {
+          "headline": "The foundation holds, and nothing checks it on a schedule.",
+          "text": "Conversions are tied to real outcomes and there is a reference point outside the platforms. What is missing is a scheduled check, so drift surfaces in a review instead of in a quarter of bad decisions.",
+          "steps": [
+            "Put a conversion action audit on the calendar every quarter with a named owner.",
+            "Pull the last 90 days and confirm every primary conversion maps to something sales would call a real buyer signal.",
+            "Watch for label changes on the platform side. Google moved to statuses like misconfigured for cases the old wording called no recent conversions, and on a low volume lead gen account that shows up red during a completely normal week."
+          ]
+        },
+        "high": {
+          "headline": "Your measurement holds up, so every other read on this page is worth trusting.",
+          "text": "Clean measurement is what makes the rest of the score meaningful. The work from here is keeping it accurate while platforms rename statuses, change interfaces, and introduce conversion types nobody asked for.",
+          "steps": [
+            "Keep the quarterly audit running. Tag drift and new campaign types introduce conversion actions on their own.",
+            "Document what each primary action means, so the next person inherits the logic rather than the settings.",
+            "Read platform release notes for conversion and attribution changes. A renamed status can trigger a panic that costs more than the thing it describes."
+          ]
+        }
+      }
+    },
+    {
+      "id": "lead_quality_loop",
+      "name": "Lead Quality Loop",
+      "questions": [
+        {
+          "id": "outcome_return",
+          "text": "Does what happens to a lead after the form, qualified, booked, closed, ever travel back into the ad platform?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No. The platform only ever sees the form fill.",
+              "score": 1
+            },
+            {
+              "label": "We have talked about offline conversion imports and not built them.",
+              "score": 2
+            },
+            {
+              "label": "Some outcomes go back manually, in batches, when someone remembers.",
+              "score": 3
+            },
+            {
+              "label": "Offline conversions import on a schedule for the main channel.",
+              "score": 4
+            },
+            {
+              "label": "Closed won values import automatically across every channel and bidding runs on them.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "last_closed_customer",
+          "text": "Can you name the campaign that produced your last closed customer?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No.",
+              "score": 1
+            },
+            {
+              "label": "We could guess the channel.",
+              "score": 2
+            },
+            {
+              "label": "By channel, with reasonable confidence.",
+              "score": 3
+            },
+            {
+              "label": "By campaign, after someone digs for an hour.",
+              "score": 4
+            },
+            {
+              "label": "By campaign and keyword, from a report that already exists.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "cut_or_scale",
+          "text": "When you decide whether to cut or scale a campaign, what is the signal that actually decides it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Lead volume and cost per lead.",
+              "score": 1
+            },
+            {
+              "label": "Cost per lead, weighted by a feeling about quality.",
+              "score": 2
+            },
+            {
+              "label": "MQL counts pulled from the CRM.",
+              "score": 3
+            },
+            {
+              "label": "Opportunities created, with pipeline value where we have it.",
+              "score": 4
+            },
+            {
+              "label": "Pipeline and closed won revenue by campaign, which is why we have kept expensive campaigns before.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Bidding is optimising toward form fills and nobody is telling it otherwise.",
+          "text": "When outcome data never returns to the platform, the algorithm chases whoever submits. That is how one campaign delivers 120 leads at $40 and closes nothing, while a campaign at $175 a lead quietly carries $185,000 in pipeline and gets paused first.",
+          "steps": [
+            "Tag every paid lead with a source and campaign ID at the point it enters the CRM.",
+            "Agree with sales on what qualified actually looks like, in writing, before anything flows back to the platforms.",
+            "Set up offline conversion imports so bidding optimises toward buyers."
+          ]
+        },
+        "mid": {
+          "headline": "Your CRM knows which campaigns produce revenue and bidding has never been told.",
+          "text": "The CRM knows which campaigns produce revenue while the ad platforms do not, so the algorithm keeps buying the wrong leads efficiently. Closing that loop is the highest value change available to you right now.",
+          "steps": [
+            "Import closed won values, not only qualified stages, so bidding has a number to chase.",
+            "Build one report that ranks campaigns by pipeline instead of lead volume and take it to the next budget meeting.",
+            "Check your sales cycle length against the platform conversion window. A cycle longer than the window means the model learns from a fraction of the data unless you allow for the lag."
+          ]
+        },
+        "high": {
+          "headline": "Outcome data reaches bidding, which is where the compounding happens.",
+          "text": "With closed won values importing, the platform is optimising toward the same thing you are. The remaining work is keeping the definition of qualified honest while the business changes underneath it.",
+          "steps": [
+            "Revisit the qualified definition with sales twice a year. Segments shift and the definition goes stale quietly.",
+            "Watch for segments the model starves because their cycle is long. A slow high value segment can get squeezed out by a fast cheap one.",
+            "Put pipeline by campaign and spend by campaign in the same view, so the budget conversation starts from revenue."
+          ]
+        }
+      }
+    },
+    {
+      "id": "structure_and_signal",
+      "name": "Structure and Signal Hygiene",
+      "questions": [
+        {
+          "id": "signal_mixing",
+          "text": "When a campaign carries both soft signals like site visits and hard signals like form submissions, how are they set up?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Both count as conversions and the campaign optimises across them.",
+              "score": 1
+            },
+            {
+              "label": "Both count, and we have wondered whether that is a problem.",
+              "score": 2
+            },
+            {
+              "label": "Soft signals are tracked, and I am not certain they are excluded from bidding.",
+              "score": 3
+            },
+            {
+              "label": "Only hard conversions are primary. Soft signals are observation only.",
+              "score": 4
+            },
+            {
+              "label": "Only hard conversions are primary, and they carry values so bidding chases the bigger ones.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "structure_age",
+          "text": "When was the account structure last rebuilt rather than adjusted?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Never since launch.",
+              "score": 1
+            },
+            {
+              "label": "Longer ago than two years.",
+              "score": 2
+            },
+            {
+              "label": "One to two years ago.",
+              "score": 3
+            },
+            {
+              "label": "Within the last year, in part.",
+              "score": 4
+            },
+            {
+              "label": "Within the last year, deliberately, against a thesis I could defend.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "search_terms",
+          "text": "When did someone last read the raw search terms or placement report end to end?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Not that I know of.",
+              "score": 1
+            },
+            {
+              "label": "Once, a long time ago.",
+              "score": 2
+            },
+            {
+              "label": "When performance drops and someone goes looking.",
+              "score": 3
+            },
+            {
+              "label": "Last quarter.",
+              "score": 4
+            },
+            {
+              "label": "Last month, on a standing cadence, and it changed something.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your campaigns are being pulled toward the easiest conversion on the list.",
+          "text": "Ask a platform to maximise conversions across a site visit and a lead form and it takes the path of least resistance. Site visits are easy to generate. Lead forms are not. That is how an account reports thousands of conversions and produces two actual leads.",
+          "steps": [
+            "Demote every soft signal to secondary. Only actions that represent a real buyer stay primary.",
+            "Move to value based bidding with real values, so the model has a reason to prefer the harder conversion.",
+            "Read the raw search terms and placements end to end once. It is the fastest way to see what the structure is actually buying."
+          ]
+        },
+        "mid": {
+          "headline": "The signals are clean and the structure around them has drifted.",
+          "text": "Bidding is pointed at the right actions, and the shape of the account is still carrying decisions made for a business that has since changed. Budget splits that were deliberate two years ago are now just historical.",
+          "steps": [
+            "Write down what each campaign is for in one sentence. Anything you cannot finish is a candidate for consolidation.",
+            "Rebuild budget allocation against a current thesis rather than last year's split.",
+            "Put the search terms and placement review on a monthly cadence with a named owner."
+          ]
+        },
+        "high": {
+          "headline": "The structure is current and the signals are pointed at buyers.",
+          "text": "This is the state where platform automation works for you, because the thing it is optimising toward is the thing you want. Keep the review cadence so the structure stays deliberate as the account grows.",
+          "steps": [
+            "Re-run the one sentence test on every campaign each quarter. Purpose drift shows up there first.",
+            "Watch new campaign types for conversion actions they add on their own.",
+            "Keep a written record of why the budget is split the way it is, so the next reallocation starts from a thesis."
+          ]
+        }
+      }
+    },
+    {
+      "id": "assist_and_incrementality",
+      "name": "Assist and Incrementality",
+      "questions": [
+        {
+          "id": "last_click_social",
+          "text": "Your last click report says social contributes almost nothing. What happens next?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Social budget gets cut.",
+              "score": 1
+            },
+            {
+              "label": "Social gets defended in one meeting and cut by the next.",
+              "score": 2
+            },
+            {
+              "label": "We trust the report and stay uneasy about it.",
+              "score": 3
+            },
+            {
+              "label": "We treat it as a limit of last click and look at assisted paths.",
+              "score": 4
+            },
+            {
+              "label": "We hold the budget and test the claim, because we have a read on assisted revenue we trust.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "holdout",
+          "text": "Have you ever turned a channel off on purpose to see what happened to total revenue?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, and it has not come up.",
+              "score": 1
+            },
+            {
+              "label": "It gets suggested and never scheduled.",
+              "score": 2
+            },
+            {
+              "label": "A channel went dark by accident once and we learned something from it.",
+              "score": 3
+            },
+            {
+              "label": "Yes, once, on one channel.",
+              "score": 4
+            },
+            {
+              "label": "Yes, as a planned holdout, and the result changed how we budget.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "branded_search",
+          "text": "Do you separate branded search from everything else when you judge performance?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No. It sits inside the blended number.",
+              "score": 1
+            },
+            {
+              "label": "We know it flatters the average and have not split it out.",
+              "score": 2
+            },
+            {
+              "label": "Sometimes, when someone asks.",
+              "score": 3
+            },
+            {
+              "label": "Yes, in reporting.",
+              "score": 4
+            },
+            {
+              "label": "Yes, and we watch branded volume as a downstream read on upper funnel work.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Last click is setting your budget and it only ever sees the last step.",
+          "text": "Search is the running back crossing the goal line. Social is the offensive line that made it possible. Coaches can watch film. Your report cannot, so it credits the back and cuts the line the moment budget tightens, and the offense stops working a quarter later.",
+          "steps": [
+            "Pull assisted conversion paths before the next budget cut and count how often social appears earlier in the path.",
+            "Agree an attribution model with the team before campaigns launch, so the argument happens once.",
+            "Watch branded search volume. When upper funnel work lands it moves, and that read is already sitting in your account."
+          ]
+        },
+        "mid": {
+          "headline": "You know last click is incomplete and you have not put a number on what it misses.",
+          "text": "Assisted paths give you an argument for upper funnel spend, and a holdout gives you a number. The number is what survives the day someone senior asks you to defend a channel showing no direct return.",
+          "steps": [
+            "Schedule one geo or audience holdout on the channel you defend most often, with a start date and an end date.",
+            "Split branded search out of every performance report permanently.",
+            "Track total revenue against total spend at the account level. It is the number a holdout actually moves."
+          ]
+        },
+        "high": {
+          "headline": "You can defend upper funnel spend with a number.",
+          "text": "Holdout results and clean branded splits are what keep a full funnel budget intact through a tight quarter. Platforms are moving toward journey aware bidding, which makes this the read that ages best.",
+          "steps": [
+            "Re-run the holdout annually. Incrementality moves as the mix and the market move.",
+            "Feed the incremental read into planning, so upper funnel budget is set from evidence rather than defended after the fact.",
+            "Keep branded search as a standing indicator on the same dashboard as spend."
+          ]
+        }
+      }
+    },
+    {
+      "id": "planning_and_judgment",
+      "name": "Planning and Judgment",
+      "questions": [
+        {
+          "id": "heavy_quarter",
+          "text": "How far ahead of your heaviest quarter is the account structurally ready?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We handle it inside the quarter.",
+              "score": 1
+            },
+            {
+              "label": "A couple of weeks out.",
+              "score": 2
+            },
+            {
+              "label": "Roughly a month out, creative first.",
+              "score": 3
+            },
+            {
+              "label": "Two months out, with budget and structure agreed.",
+              "score": 4
+            },
+            {
+              "label": "Two months or more, with budget, structure, offer and landing pages all locked.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "platform_recs",
+          "text": "When Google or Meta surfaces an automated recommendation, what does your team do with it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Auto apply is switched on.",
+              "score": 1
+            },
+            {
+              "label": "We apply the ones that look reasonable.",
+              "score": 2
+            },
+            {
+              "label": "Someone reviews them, without a clear standard.",
+              "score": 3
+            },
+            {
+              "label": "We review each one against our own thesis and reject most.",
+              "score": 4
+            },
+            {
+              "label": "We review each one, reject most, and have caught the platform recommending settings that cannot be used together.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        },
+        {
+          "id": "defend_campaign",
+          "text": "A campaign brings fewer leads at a higher cost per lead with strong pipeline behind it. Budget pressure hits. Can you defend it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No. It gets cut on cost per lead.",
+              "score": 1
+            },
+            {
+              "label": "I would argue for it and lose.",
+              "score": 2
+            },
+            {
+              "label": "I could make the case out loud without data to back it.",
+              "score": 3
+            },
+            {
+              "label": "Yes, with a report I would have to build first.",
+              "score": 4
+            },
+            {
+              "label": "Yes, with a report leadership already sees every month.",
+              "score": 5
+            }
+          ],
+          "type": "likert"
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your heaviest quarter is being decided two months before it starts.",
+          "text": "Structure, offer and landing pages get built during the season, when the cost of a mistake is highest and there is no time to test. The brands that come out ahead of a spike knew the moment was coming and showed up with something worth choosing.",
+          "steps": [
+            "Put a date on the calendar eight weeks before your peak. Structure, budget and landing pages are locked by then or the peak runs on last year's setup.",
+            "Turn auto apply off. Platform recommendations optimise for platform outcomes, and their incentives and yours are not the same.",
+            "Build the pipeline by campaign report before budget season. Building it under pressure is how it arrives late and gets ignored."
+          ]
+        },
+        "mid": {
+          "headline": "You plan ahead, and the case for the plan still lives in your head.",
+          "text": "You prepare ahead and you screen platform advice, and the case for a higher cost per lead campaign still lives in your head rather than in a report leadership already reads. That gap is where good campaigns get cut.",
+          "steps": [
+            "Move the peak season prep from a few weeks out to eight weeks out, including offer and landing pages.",
+            "Write a standard for accepting or rejecting platform recommendations, so the review does not depend on who is looking.",
+            "Put pipeline by campaign into the monthly leadership report before the next budget cycle, not during it."
+          ]
+        },
+        "high": {
+          "headline": "You can plan ahead and defend the plan with numbers already on the table.",
+          "text": "Preparation plus a report leadership reads is what protects a campaign that looks expensive and produces revenue. Automation keeps getting better at execution, and this is the layer it still cannot do for you.",
+          "steps": [
+            "Keep the eight week lead time on peak seasons and treat it as a hard date rather than a target.",
+            "Log the platform recommendations you reject and what happened. That record is what makes the next rejection easy to defend.",
+            "Frame the monthly report in pipeline and revenue terms, so the budget conversation starts where you want it to end."
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 39,
+    "mid": 69,
+    "low_label": "Flying Blind",
+    "mid_label": "Half Instrumented",
+    "high_label": "Measured"
+  },
+  "tier_names": {
+    "low": "Flying Blind",
+    "mid": "Half Instrumented",
+    "high": "Measured"
+  },
+  "headline_formula": "Your weakest area is <strong>{weakest_category_name}</strong> at {weakest_category_score} out of 100, and that is where the next dollar of spend leaks first.",
+  "capture_gate": {
+    "headline_html": "Unlock your full report",
+    "description": "Enter your email and we will send the per category breakdown, the recommendations for your score, and the three fixes we would prioritise based on your weakest category.",
+    "button": "Unlock report",
+    "note": "One email with your report. Nothing else unless you ask.",
+    "placeholder": "you@company.com"
+  },
+  "computed_outputs": [
+    {
+      "id": "annual_spend",
+      "label": "Annual spend running through this setup",
+      "format": "currency",
+      "formula": "monthly_spend * 12",
+      "show_in_result": true
+    }
+  ],
+  "cta": {
+    "headline": "Want the plan behind the score?",
+    "description": "Bring your result to a 30 minute call and we will walk the two categories that scored lowest, inside your account, with your numbers. Merci runs paid media for brands that need the reporting to survive a leadership meeting.",
+    "button": "Book a Call",
+    "url": "https://bemerci.com/contact"
+  },
+  "schema_version": "v2"
+}

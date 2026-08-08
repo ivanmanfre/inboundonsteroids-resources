@@ -1,0 +1,634 @@
+{
+  "slug": "ai-governance-readiness-scorecard-for-professional-services",
+  "title": "AI Governance Readiness Scorecard for Professional Services",
+  "subtitle": "Score your firm against the 4 gates that separate the 6% cutting costs from the 94% collecting subscriptions. Takes 6 minutes.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 6,
+  "persona_selector": {
+    "id": "role",
+    "text": "Which best describes your seat at the firm?",
+    "answers": [
+      {
+        "label": "Owner / Managing Partner",
+        "tag": "owner"
+      },
+      {
+        "label": "Operations Lead / COO / Practice Manager",
+        "tag": "ops"
+      },
+      {
+        "label": "Individual Contributor (Senior Associate, Manager, Analyst)",
+        "tag": "ic"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "data_foundation",
+      "name": "Gate 1: Data Foundation",
+      "questions": [
+        {
+          "id": "data_location",
+          "text": "Where does your client data actually live today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "One unified system with clean records",
+              "score": 5
+            },
+            {
+              "label": "Two systems that sync reliably",
+              "score": 4
+            },
+            {
+              "label": "3 to 5 systems with manual reconciliation",
+              "score": 2
+            },
+            {
+              "label": "6+ systems and nobody fully trusts any of them",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "data_retrieval",
+          "text": "If a partner asked 'show me every active matter for client X across billing, documents, and email,' how long would that take?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Under 2 minutes via search",
+              "score": 5
+            },
+            {
+              "label": "10 to 30 minutes of digging across tools",
+              "score": 3
+            },
+            {
+              "label": "Hours, and someone has to assemble it manually",
+              "score": 1
+            },
+            {
+              "label": "We genuinely could not produce it",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "intake_structure",
+          "text": "What percentage of your intake forms collect structured data (dropdowns, defined fields) versus free-text?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "80%+ structured",
+              "score": 5
+            },
+            {
+              "label": "Roughly half and half",
+              "score": 3
+            },
+            {
+              "label": "Mostly free-text",
+              "score": 1
+            },
+            {
+              "label": "Paper or email threads",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "data_audit",
+          "text": "When was the last time you audited duplicate or conflicting client records?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Within the last 6 months",
+              "score": 5
+            },
+            {
+              "label": "Within the last 2 years",
+              "score": 3
+            },
+            {
+              "label": "More than 2 years ago",
+              "score": 1
+            },
+            {
+              "label": "Never, or we do not know how",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your data is not ready for AI yet",
+          "text": "Pointing an AI tool at fragmented data produces confident, wrong answers. The fix is not a smarter model, it is one source of truth before any pilot starts.",
+          "steps": [
+            "Map every system holding client data this week and rank by trustworthiness",
+            "Pick the single workflow with the worst data sprawl and consolidate it into one system",
+            "Stand up a quarterly duplicate-record audit before evaluating any AI vendor"
+          ]
+        },
+        "mid": {
+          "headline": "You have a foundation but the seams will leak",
+          "text": "Two-system syncs and half-structured intake work for humans because humans fill the gaps. AI will not. Tighten the seams before you scale.",
+          "steps": [
+            "Convert remaining free-text intake fields into structured dropdowns within 30 days",
+            "Document exactly which fields sync between your two systems and which do not",
+            "Run a duplicate-record sweep and set a recurring 6-month cadence"
+          ]
+        },
+        "high": {
+          "headline": "Your data foundation can carry an AI rollout",
+          "text": "Unified records and fast retrieval are the leading indicator that AI pilots will produce measurable cost cuts rather than vibes.",
+          "steps": [
+            "Document your data model and share it with any AI vendor you evaluate",
+            "Use this foundation to pilot one high-volume workflow this quarter",
+            "Add automated data quality alerts so the foundation does not erode"
+          ]
+        }
+      }
+    },
+    {
+      "id": "process_documentation",
+      "name": "Gate 2: Process Documentation",
+      "questions": [
+        {
+          "id": "workflow_docs",
+          "text": "Pick a recurring workflow (intake, billing, client reporting). Is it documented end-to-end with decision points?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, written down and current",
+              "score": 5
+            },
+            {
+              "label": "Partially documented, mostly tribal knowledge",
+              "score": 3
+            },
+            {
+              "label": "Lives in one person's head",
+              "score": 1
+            },
+            {
+              "label": "Different staff run it differently",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "senior_knowledge",
+          "text": "If your most experienced senior left tomorrow, how much of their judgment is captured in writing?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "70%+ documented as rules or examples",
+              "score": 5
+            },
+            {
+              "label": "Roughly 30%, the rest is intuition",
+              "score": 3
+            },
+            {
+              "label": "Almost nothing",
+              "score": 1
+            },
+            {
+              "label": "We would scramble for months",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "exceptions",
+          "text": "How do exceptions and edge cases get handled today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Logged and reviewed quarterly",
+              "score": 5
+            },
+            {
+              "label": "Handled ad hoc but tracked",
+              "score": 3
+            },
+            {
+              "label": "Handled ad hoc and forgotten",
+              "score": 1
+            },
+            {
+              "label": "We do not distinguish exceptions from normal work",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "AI cannot automate what is not written down",
+          "text": "Tribal knowledge is the single biggest reason AI pilots stall in professional services. The model needs the rules your seniors carry in their heads.",
+          "steps": [
+            "Pick one recurring workflow and document it end-to-end with decision points this month",
+            "Interview your top 2 seniors and capture 20 representative edge cases in writing",
+            "Start a simple exception log so patterns surface within 90 days"
+          ]
+        },
+        "mid": {
+          "headline": "You document the happy path but lose the edges",
+          "text": "Partial documentation gives AI enough to be dangerous. It will handle the 80% you wrote down and fail invisibly on the 20% you did not.",
+          "steps": [
+            "Promote your best partial SOP into a versioned, reviewed document",
+            "Spend 2 hours capturing the exception patterns your team handles weekly",
+            "Add a quarterly review where exceptions become rules"
+          ]
+        },
+        "high": {
+          "headline": "Your processes are ready for automation",
+          "text": "Documented workflows with captured exceptions are exactly what AI agents need. You can move directly to pilot scoping.",
+          "steps": [
+            "Identify the 3 documented workflows with the highest hour-cost and rank for automation",
+            "Convert your exception log into training examples for any AI tool you deploy",
+            "Keep the documentation review cadence so it does not decay"
+          ]
+        }
+      }
+    },
+    {
+      "id": "governance_risk",
+      "name": "Gate 3: Governance & Risk Controls",
+      "questions": [
+        {
+          "id": "ai_policy",
+          "text": "Does your firm have a written policy for what AI tools staff can and cannot use with client data?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, written and enforced",
+              "score": 5
+            },
+            {
+              "label": "Written but not enforced",
+              "score": 3
+            },
+            {
+              "label": "Verbal guidance only",
+              "score": 2
+            },
+            {
+              "label": "No policy yet",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "output_review",
+          "text": "Who reviews AI-generated outputs before they reach a client?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A defined reviewer with checklist",
+              "score": 5
+            },
+            {
+              "label": "Whoever is closest to the matter",
+              "score": 3
+            },
+            {
+              "label": "Reviewed inconsistently",
+              "score": 1
+            },
+            {
+              "label": "Outputs go out unreviewed, or we do not use AI yet",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "audit_trail",
+          "text": "Do you have an audit trail showing which staff used which AI tool on which matter?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Yes, logged automatically",
+              "score": 5
+            },
+            {
+              "label": "Logged manually and inconsistently",
+              "score": 2
+            },
+            {
+              "label": "Only for some tools",
+              "score": 1
+            },
+            {
+              "label": "No tracking exists",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "data_residency",
+          "text": "How does your firm handle data residency and confidentiality for AI vendors?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Vetted vendors with signed DPAs and known data locations",
+              "score": 5
+            },
+            {
+              "label": "Reviewed informally by partners",
+              "score": 3
+            },
+            {
+              "label": "We trust vendor marketing pages",
+              "score": 1
+            },
+            {
+              "label": "We have not considered it",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are one screenshot away from a client complaint",
+          "text": "Staff are already using AI tools whether you sanctioned them or not. Without a written policy and audit trail, you cannot prove what happened when something goes wrong.",
+          "steps": [
+            "Draft a one-page AI use policy this week covering allowed tools and prohibited data",
+            "Require all client-facing AI outputs to be reviewed by a named human",
+            "Inventory which AI vendors staff are currently using and where data flows"
+          ]
+        },
+        "mid": {
+          "headline": "Your controls exist on paper but not in practice",
+          "text": "Verbal guidance and inconsistent review fail the moment a client asks how their data was handled. Governance only counts if it is enforced.",
+          "steps": [
+            "Convert verbal guidance into a signed, versioned policy with quarterly attestation",
+            "Assign a single reviewer role for AI outputs with a documented checklist",
+            "Pick one AI tool and turn on full audit logging as a template for others"
+          ]
+        },
+        "high": {
+          "headline": "Your governance posture is a competitive advantage",
+          "text": "Most mid-market firms cannot answer governance questions in a sales cycle. You can. Use it.",
+          "steps": [
+            "Publish a one-page AI governance summary you can share with clients on request",
+            "Run a quarterly review of audit logs to spot drift before it becomes incident",
+            "Renew DPAs annually and re-vet any vendor whose data residency changes"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workflow_orchestration",
+      "name": "Gate 4: Workflow Orchestration",
+      "questions": [
+        {
+          "id": "tool_integration",
+          "text": "How well do your current tools talk to each other?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Connected via APIs or middleware, data flows automatically",
+              "score": 5
+            },
+            {
+              "label": "Some integrations, mostly through Zapier or similar glue",
+              "score": 3
+            },
+            {
+              "label": "A few manual exports between tools",
+              "score": 1
+            },
+            {
+              "label": "Staff copy and paste between systems daily",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "automation_today",
+          "text": "What percentage of repeatable tasks at your firm run without human touch today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 40%",
+              "score": 5
+            },
+            {
+              "label": "15 to 40%",
+              "score": 3
+            },
+            {
+              "label": "Under 15%",
+              "score": 1
+            },
+            {
+              "label": "Effectively zero",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "workflow_owner",
+          "text": "Who owns workflow automation at the firm?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A named internal lead or external partner with a roadmap",
+              "score": 5
+            },
+            {
+              "label": "Shared informally between ops and IT",
+              "score": 3
+            },
+            {
+              "label": "Whoever has time that week",
+              "score": 1
+            },
+            {
+              "label": "Nobody owns it",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You have no chassis to put AI on",
+          "text": "AI sitting next to manual copy-paste does not cut costs, it adds another tool to manage. You need an orchestration layer before AI can compound.",
+          "steps": [
+            "Map the top 5 tasks where staff copy data between systems and estimate hours lost",
+            "Pilot one orchestration platform (n8n, Make, or similar) on the highest-volume task",
+            "Name a single owner for workflow automation with a 90-day roadmap"
+          ]
+        },
+        "mid": {
+          "headline": "You have glue but not a system",
+          "text": "Zapier-style integrations get you started but break under volume and edge cases. AI plugged into brittle glue magnifies the brittleness.",
+          "steps": [
+            "Audit your existing integrations for failure points and downtime over the last 90 days",
+            "Consolidate the top 3 workflows onto a more durable orchestration layer",
+            "Move workflow ownership from informal to a named lead with monthly review"
+          ]
+        },
+        "high": {
+          "headline": "You are positioned to compound",
+          "text": "With real orchestration and a named owner, every AI pilot you run stacks on the previous one. This is where the 20% cost cuts actually appear.",
+          "steps": [
+            "Pick the workflow with the highest annual hours and design an AI augmentation",
+            "Set a quarterly target for percentage of repeatable tasks running untouched",
+            "Build a shared library of reusable automation components across workflows"
+          ]
+        }
+      }
+    },
+    {
+      "id": "change_capacity",
+      "name": "Gate 5: Change Capacity",
+      "questions": [
+        {
+          "id": "training_budget",
+          "text": "How much time and budget does the firm allocate to staff training on new tools each year?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Dedicated budget and protected training hours",
+              "score": 5
+            },
+            {
+              "label": "Ad hoc training when a tool launches",
+              "score": 3
+            },
+            {
+              "label": "Staff figure it out on their own",
+              "score": 1
+            },
+            {
+              "label": "No training happens",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "pilot_history",
+          "text": "How does your firm typically run a software pilot?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Defined success metrics, timeline, and go/no-go review",
+              "score": 5
+            },
+            {
+              "label": "Loose pilot with informal feedback",
+              "score": 3
+            },
+            {
+              "label": "We buy and hope",
+              "score": 1
+            },
+            {
+              "label": "We have not piloted anything recently",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "partner_buyin",
+          "text": "How aligned are partners on using AI to change how work gets done?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "All-in with budget committed",
+              "score": 5
+            },
+            {
+              "label": "Most are supportive, a few skeptics",
+              "score": 3
+            },
+            {
+              "label": "Split roughly evenly",
+              "score": 1
+            },
+            {
+              "label": "Active resistance from key partners",
+              "score": 0
+            }
+          ]
+        },
+        {
+          "id": "measurement",
+          "text": "How do you measure whether a new tool actually reduced cost or time?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Tracked before-and-after with specific hour and dollar metrics",
+              "score": 5
+            },
+            {
+              "label": "Anecdotal feedback from staff",
+              "score": 3
+            },
+            {
+              "label": "Gut feel after a few months",
+              "score": 1
+            },
+            {
+              "label": "We do not measure",
+              "score": 0
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your firm cannot absorb the change AI requires",
+          "text": "AI does not fail because the technology is bad, it fails because nobody adopts it. Without training, pilot discipline, and measurement, every tool becomes shelfware.",
+          "steps": [
+            "Allocate a small but protected training budget per staff member for the next 12 months",
+            "Define a written pilot template with success metrics and a 60-day review gate",
+            "Get partner alignment in writing before scoping any AI initiative"
+          ]
+        },
+        "mid": {
+          "headline": "You can absorb change but not measure it",
+          "text": "Informal pilots and anecdotal feedback let leadership believe AI is working when it might not be. Discipline on measurement is what turns pilots into proof.",
+          "steps": [
+            "Add specific hour and dollar baselines to every pilot before it starts",
+            "Schedule a formal go/no-go review at 60 and 90 days for any new tool",
+            "Document one win with hard numbers and use it to win over skeptical partners"
+          ]
+        },
+        "high": {
+          "headline": "Your firm is built to compound AI wins",
+          "text": "Training budget, disciplined pilots, partner alignment, and real measurement are the rare combination that turns AI from cost center into margin expansion.",
+          "steps": [
+            "Build a 4-quarter AI roadmap with named owners and dollar targets per quarter",
+            "Publish internal case studies after each pilot to compound institutional learning",
+            "Tie a portion of partner comp or ops bonus to measured automation outcomes"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Want a walkthrough of your score and the one workflow to fix first?",
+    "description": "Book a 30-minute strategy call. I will review your category scores live and identify the single highest-impact workflow your firm should automate next. No pitch, just a roadmap.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

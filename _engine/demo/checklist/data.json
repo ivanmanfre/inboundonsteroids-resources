@@ -1,0 +1,46 @@
+{
+  "slug": "demo-checklist",
+  "title": "The 47-Point Service Firm Ops Audit",
+  "subtitle": "A focused 30-minute self-audit for 11–50 employee service firms. Find the 3 automations that free up the most hours this quarter.",
+  "brand": { "accent": "#00E676", "hero_badge": "Action Checklist" },
+  "estimated_minutes": 30,
+  "sections": [
+    {
+      "id": "intake",
+      "title": "Client Intake & Kickoff",
+      "description": "Where the first 4 hours of every new client disappear.",
+      "items": [
+        { "id": "intake-1", "text": "Intake form auto-creates a client record in your CRM (zero manual retyping)", "tip": "If a human retypes the form into your CRM, that's 10-15 min/client.", "impact": "high" },
+        { "id": "intake-2", "text": "Welcome email sends automatically within 60 seconds of form submit", "tip": "Delay past 5 minutes cuts response rate by ~40%.", "impact": "high" },
+        { "id": "intake-3", "text": "Kickoff call scheduled without manual calendar ping-pong", "tip": "Use Cal.com or SavvyCal native round-robin.", "impact": "medium" },
+        { "id": "intake-4", "text": "Engagement letter auto-populates from CRM fields and sends via e-sign", "impact": "medium" }
+      ]
+    },
+    {
+      "id": "delivery",
+      "title": "Project Delivery Ops",
+      "description": "Where margin leaks between kickoff and invoice.",
+      "items": [
+        { "id": "del-1", "text": "Project kickoff doc is generated from intake data (not written from scratch)", "impact": "high" },
+        { "id": "del-2", "text": "Status updates to client are automated weekly from PM tool data", "impact": "high" },
+        { "id": "del-3", "text": "Time tracking auto-syncs from PM tool to billing system", "impact": "medium" },
+        { "id": "del-4", "text": "QA checklist runs before every deliverable handoff", "impact": "medium" }
+      ]
+    },
+    {
+      "id": "admin",
+      "title": "Back-Office Admin",
+      "description": "Invoicing, renewals, compliance — the silent time-eaters.",
+      "items": [
+        { "id": "adm-1", "text": "Invoices generate automatically from completed project milestones", "impact": "high" },
+        { "id": "adm-2", "text": "Renewal reminders fire 45 / 30 / 7 days before contract end", "impact": "medium" },
+        { "id": "adm-3", "text": "Expense receipts auto-match to client projects", "impact": "low" },
+        { "id": "adm-4", "text": "Monthly financial summary compiled from accounting software without manual copy-paste", "impact": "medium" }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "Want me to score your ops?",
+    "description": "Send me which items you couldn't check and I'll reply with the 3 automations I'd prioritize for your firm's size and stack — no sales call required."
+  }
+}

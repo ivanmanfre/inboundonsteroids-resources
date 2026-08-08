@@ -1,0 +1,153 @@
+{
+  "slug": "a-checklist-for-scoping-billing-automation-projects-that-prevents-scope-creep-and-sets-clear-boundaries",
+  "title": "Billing Automation Readiness Diagnostic",
+  "subtitle": "A 5-section diagnostic to confirm your billing automation project is ready to build before you spend $50,000 finding out it isn't",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 40,
+  "sections": [
+    {
+      "id": "pricing-structure-clarity",
+      "title": "Pricing Structure Clarity",
+      "description": "Confirm every pricing scenario is documented before anyone writes code.",
+      "items": [
+        {
+          "id": "list-pricing-tiers",
+          "text": "List every pricing tier you use (transfer, renewal, new, custom) in under 60 seconds without checking a spreadsheet",
+          "tip": "If you need to ask someone else, your pricing isn't documented yet.",
+          "impact": "high"
+        },
+        {
+          "id": "written-markup-rules",
+          "text": "Document the markup or discount rule for every pricing tier in writing",
+          "tip": "Any rule that lives in someone's head will become a 2-week delay during build.",
+          "impact": "high"
+        },
+        {
+          "id": "count-custom-pricing",
+          "text": "Quantify exactly how many customers have custom pricing outside standard tiers",
+          "tip": "If the answer is 'a few' or 'not sure,' run a query before scoping.",
+          "impact": "high"
+        },
+        {
+          "id": "confirm-pricing-owner",
+          "text": "Confirm the person who knows pricing exceptions is available for the full project duration",
+          "tip": "If they're on leave or leaving the company, pause and document first.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "data-source-readiness",
+      "title": "Data Source Readiness",
+      "description": "Verify the source of truth exists, is accessible, and is accurate.",
+      "items": [
+        {
+          "id": "identify-source-of-truth",
+          "text": "Identify a single source of truth for usage and customer data with API or export access",
+          "tip": "If data lives in 3 systems with no master, fix that before automating.",
+          "impact": "high"
+        },
+        {
+          "id": "validate-data-accuracy",
+          "text": "Spot-check 20 recent records to confirm the data matches what gets invoiced today",
+          "tip": "Manual cleanup happening in spreadsheets is hidden scope you must surface now.",
+          "impact": "high"
+        },
+        {
+          "id": "confirm-api-access",
+          "text": "Verify API credentials, rate limits, and authentication method for every source system",
+          "tip": "Budget 1 week for procurement if credentials don't exist yet.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "exception-handling",
+      "title": "Exception Handling",
+      "description": "Surface the edge cases that blow up timelines.",
+      "items": [
+        {
+          "id": "document-edge-cases",
+          "text": "Write down every billing edge case from the last 6 months with how it was resolved",
+          "tip": "Pull 6 months of invoice adjustments from accounting to find them.",
+          "impact": "high"
+        },
+        {
+          "id": "define-rounding-rules",
+          "text": "Define rounding, proration, and partial-month rules in writing",
+          "tip": "These cause more revisions than any other category.",
+          "impact": "medium"
+        },
+        {
+          "id": "set-exception-threshold",
+          "text": "Set a dollar threshold above which invoices route to manual review",
+          "tip": "A $500 threshold prevents 90% of automation disasters in the first 3 months.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "integration-requirements",
+      "title": "Integration Requirements",
+      "description": "Confirm where data needs to go and how.",
+      "items": [
+        {
+          "id": "map-invoice-destination",
+          "text": "Map the exact destination system (Xero, QuickBooks, NetSuite) and required invoice fields",
+          "tip": "Export a sample invoice and label every field's source.",
+          "impact": "high"
+        },
+        {
+          "id": "confirm-delivery-method",
+          "text": "Confirm how invoices reach customers (email, portal, PDF attachment) and who triggers send",
+          "tip": "Auto-send vs review-then-send is a 40-hour build difference.",
+          "impact": "medium"
+        },
+        {
+          "id": "plan-failure-handling",
+          "text": "Plan how the system handles API failures, duplicates, and partial syncs",
+          "tip": "Decide retry logic and alert recipients before the build starts.",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "validation-approval-process",
+      "title": "Validation & Approval Process",
+      "description": "Define who checks what before invoices go out.",
+      "items": [
+        {
+          "id": "name-approver",
+          "text": "Name the single person who approves invoice batches before they send",
+          "tip": "Committees create bottlenecks; one named approver ships invoices on time.",
+          "impact": "high"
+        },
+        {
+          "id": "define-qa-checks",
+          "text": "Define the 3 to 5 QA checks that must pass before an invoice batch is approved",
+          "tip": "Examples: totals match usage data, customer count matches active accounts, no $0 invoices.",
+          "impact": "high"
+        },
+        {
+          "id": "set-rollback-plan",
+          "text": "Document the rollback procedure if a bad invoice batch ships to customers",
+          "tip": "Know in advance who issues credits and how customers are notified.",
+          "impact": "medium"
+        },
+        {
+          "id": "schedule-first-month-review",
+          "text": "Schedule a 30-minute review at week 1, week 2, and week 4 after launch",
+          "tip": "Most automation errors surface in the first billing cycle; catch them before month 2.",
+          "impact": "medium"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "You finished the diagnostic. Now what?",
+    "description": "If you answered every item in under 2 minutes, you're ready to scope a billing automation project. If you flagged 3 or more items, do the homework first; that homework saves you 6 figures and 4 months. Either way, you just avoided the most expensive mistake in billing automation: starting before you were ready."
+  }
+}

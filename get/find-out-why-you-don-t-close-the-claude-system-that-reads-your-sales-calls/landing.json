@@ -1,0 +1,21 @@
+{
+  "slug": "find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls",
+  "format_label": "AI Kit",
+  "category": "Deal Intelligence",
+  "headline": "Find out why you don't close",
+  "headline_emphasis": "why you don't close",
+  "subhead": "A Claude system that reads any sales-call transcript and shows you the exact moment the deal slipped — scored against your own best closes, not a generic framework.",
+  "subhead_secondary": "Paste a transcript, get the objection you missed and the one follow-up line to send next.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/find-out-why-you-don-t-close-the-claude-system-that-reads-yo-portrait.png",
+  "inside": [
+    "A Claude skill that ingests your call transcript",
+    "Flags the exact spot an objection went unhandled",
+    "Scores the call against your own best closes, not some generic framework",
+    "Hands you the one follow-up line to send next"
+  ],
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
+  "resource_url": "https://resources.inboundonsteroids.com/find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls",
+  "gate_keyword": "CLOSER",
+  "cta_label": "Email me the system",
+  "proof_avatar_alt": "Ivan Manfredi"
+}

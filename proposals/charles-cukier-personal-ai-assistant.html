@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Personal AI Assistant • Proposal</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--paper:#F7F4EF;--paper-sunk:#EFEBE3;--paper-raise:#FFFFFF;--ink:#1A1A1A;--ink-soft:#4A4A48;--ink-mute:#5A5752;--hairline:rgba(26,26,26,.15);--hairline-bold:rgba(26,26,26,.25);--accent:#4C6E3D;--accent-ink:#344B29;--accent-soft:rgba(76,110,61,.08)}
+html{scroll-behavior:smooth}
+body{font-family:'Space Grotesk',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
+a{color:inherit}
+
+/* COVER */
+.cover{min-height:100vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:64px;align-items:end}
+.cover-nav{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:40px;height:40px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.05em;color:var(--ink)}
+.logo-text{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.cover-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-tag{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px}
+.cover h1{font-family:'Space Grotesk',sans-serif;font-size:clamp(44px,6vw,84px);font-weight:700;line-height:.95;letter-spacing:-.03em;color:var(--ink);margin-bottom:32px;max-width:680px}
+.cover-sub{font-size:18px;line-height:1.7;color:var(--ink-soft);max-width:520px;margin-bottom:0;border-left:2px solid var(--accent);padding-left:20px}
+.cover-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;text-align:right}
+.cover-numeral{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(140px,18vw,260px);line-height:.85;color:var(--accent);letter-spacing:-.04em;margin-bottom:12px}
+.cover-monthyear{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink)}
+.cover-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:36px;margin-top:64px;border-top:1px solid var(--hairline);grid-column:1 / -1}
+.cover-detail{display:flex;flex-direction:column;gap:8px;min-width:0}
+.cover-detail-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-detail-value{font-size:16px;font-weight:600;color:var(--ink);line-height:1.4}
+
+/* SECTION */
+.section{padding:80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;position:relative}
+.section-number{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,4vw,52px);font-weight:700;line-height:1;letter-spacing:-.02em;margin-bottom:32px;color:var(--ink);max-width:900px}
+.section h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-top:56px;margin-bottom:20px;padding-left:14px;border-left:2px solid var(--accent);font-family:'IBM Plex Mono',monospace}
+.section p{font-size:16px;color:var(--ink-soft);line-height:1.75;max-width:720px;margin-bottom:20px}
+.section p strong{color:var(--ink);font-weight:600}
+
+/* PROBLEM */
+.problem-card{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:32px 40px;margin:32px 0;max-width:840px}
+.problem-card p{color:var(--ink);font-size:18px;line-height:1.7;max-width:none;margin:0}
+
+/* FLOW */
+.flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.flow-step{padding:36px 40px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.flow-step-number{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:56px;line-height:.95;color:var(--accent);display:block;margin-bottom:16px;letter-spacing:-.02em}
+.flow-step-title{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;color:var(--ink);font-family:'IBM Plex Mono',monospace}
+.flow-step-desc{font-size:15px;color:var(--ink-soft);line-height:1.7}
+
+/* SCOPE */
+.scope-grid{margin:0;border-top:1px solid var(--hairline)}
+.scope-group{margin:32px 0 40px}
+.scope-group:first-of-type{margin-top:24px}
+.scope-group-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.scope-item{display:flex;align-items:flex-start;gap:14px;padding:16px 0;border-bottom:1px solid var(--hairline);font-size:15px;line-height:1.6;color:var(--ink)}
+.scope-check{width:11px;height:11px;min-width:11px;background:var(--accent);margin-top:7px;flex-shrink:0}
+.scope-item.excluded{opacity:.45;color:var(--ink-mute)}
+.scope-item.excluded .scope-check{background:transparent;border:1px solid var(--hairline-bold)}
+
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+@media(max-width:1100px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.skill-card{padding:32px 28px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:48px;line-height:.95;color:var(--accent);display:block;margin-bottom:14px;letter-spacing:-.02em}
+.skill-name{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em;line-height:1.25}
+.skill-outcome{font-size:14px;color:var(--ink-soft);line-height:1.65}
+
+/* STACK */
+.stack-group{margin:24px 0 32px}
+.stack-cat{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.stack-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--hairline)}
+.stack-list li{padding:14px 0;border-bottom:1px solid var(--hairline);font-size:15px;color:var(--ink);line-height:1.6;display:flex;align-items:flex-start;gap:14px}
+.stack-list li::before{content:"";width:11px;height:11px;background:var(--accent);flex-shrink:0;margin-top:7px}
+
+/* TIMELINE */
+.timeline-table{width:100%;border-collapse:collapse;margin:32px 0}
+.timeline-table th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-mute);letter-spacing:.2em;text-transform:uppercase;padding:14px 24px 14px 0;border-bottom:2px solid var(--ink)}
+.timeline-table td{padding:24px 24px 24px 0;font-size:15px;border-bottom:1px solid var(--hairline);vertical-align:top;color:var(--ink-soft);line-height:1.65}
+.timeline-table tr:last-child td{border-bottom:none}
+.timeline-table .phase-name{font-weight:700;color:var(--ink)}
+.timeline-table .phase-duration{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);font-weight:500;white-space:nowrap}
+.timeline-table .phase-deliverable{color:var(--ink-soft)}
+.timeline-total{display:inline-block;background:var(--ink);color:var(--paper);padding:8px 16px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-top:8px}
+
+/* INVESTMENT */
+.investment-box{display:grid;grid-template-columns:auto minmax(0,1fr);gap:64px;margin:32px 0;padding:48px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);align-items:center}
+.investment-price{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(72px,9vw,128px);line-height:.9;color:var(--ink);letter-spacing:-.04em;white-space:nowrap}
+.investment-currency{font-family:'DM Serif Display',serif;font-style:italic;font-size:.42em;color:var(--accent);vertical-align:top;margin-right:6px;letter-spacing:0;line-height:1}
+.investment-right{display:flex;flex-direction:column;gap:24px;min-width:0}
+.investment-model{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:520px}
+.investment-terms{display:flex;gap:40px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--hairline)}
+.investment-term{display:flex;flex-direction:column;gap:8px;min-width:160px}
+.investment-term-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+.investment-term-value{font-size:14px;font-weight:600;color:var(--ink);line-height:1.5}
+.investment-recurring{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:28px 32px;margin-top:32px;color:var(--ink);max-width:none}
+.investment-recurring-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
+.investment-recurring-lead{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin-bottom:16px;max-width:none}
+.investment-recurring-list{list-style:none;padding:0;margin:0}
+.investment-recurring-list li{padding:10px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft);line-height:1.6}
+.investment-recurring-list li:last-child{border-bottom:none}
+
+/* ROI */
+.roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.roi-stat{padding:40px 32px 40px 0;border-right:1px solid var(--hairline)}
+.roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:32px}
+.roi-stat:last-child{border-right:none}
+.roi-stat-value{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:96px;line-height:.9;color:var(--ink);letter-spacing:-.03em;margin-bottom:8px}
+.roi-stat-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+
+/* ACCESS LIST */
+.access-list{list-style:none;margin:32px 0;border-top:1px solid var(--hairline)}
+.access-list li{padding:18px 0;border-bottom:1px solid var(--hairline);font-size:15px;color:var(--ink);display:flex;align-items:flex-start;gap:14px;line-height:1.65}
+.access-list li::before{content:'';width:11px;height:11px;background:var(--accent);flex-shrink:0;margin-top:7px}
+
+/* AGREEMENT */
+.agreement-section{background:var(--paper-sunk)}
+.terms-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.term-item{padding:28px 32px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.term-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.term-text{font-size:14px;color:var(--ink-soft);line-height:1.7}
+.agreement-footnote{margin-top:32px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);letter-spacing:.05em}
+
+/* CTA */
+.cta-section{padding:96px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;text-align:left}
+.cta-section h2{font-family:'Space Grotesk',sans-serif;font-size:clamp(40px,5vw,72px);font-weight:700;line-height:1;letter-spacing:-.02em;margin-bottom:24px;color:var(--ink);max-width:800px}
+.cta-section p{font-size:17px;color:var(--ink-soft);margin-bottom:40px;max-width:520px;line-height:1.7}
+.cta-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:18px 32px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s ease}
+.btn-primary:hover{background:var(--accent-ink)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink);padding:18px 32px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);cursor:pointer;transition:background .2s ease,color .2s ease}
+.btn-secondary:hover{background:var(--ink);color:var(--paper)}
+
+/* UPSELL */
+.upsell-box{margin-top:64px;padding:32px 40px;background:var(--paper-sunk);border-left:2px solid var(--accent)}
+.upsell-box h3{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 16px;border-left:none;padding-left:0}
+.upsell-box p{font-size:15px;color:var(--ink-soft);line-height:1.75;margin:0;max-width:none}
+
+/* FOOTER */
+.footer{padding:32px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-left{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--ink-mute);text-decoration:none;transition:color .2s ease}
+.footer-right a:hover{color:var(--accent)}
+
+/* PROGRESS BAR */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9999;transition:width .1s linear;width:0}
+
+/* ANIMATIONS */
+.section,.cover,.cta-section,.agreement-section,.footer{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.section.visible,.cover.visible,.cta-section.visible,.agreement-section.visible,.footer.visible{opacity:1;transform:translateY(0)}
+
+/* TABLE SCROLL */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .skills-grid{grid-template-columns:1fr}
+  .cover{grid-template-columns:1fr;padding:120px 32px 48px;gap:32px}
+  .cover-nav{left:32px;right:32px;top:24px;flex-wrap:wrap;gap:8px}
+  .cover h1{font-size:44px}
+  .cover-numeral{font-size:120px}
+  .cover-right{align-items:flex-start;text-align:left}
+  .cover-details{grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px}
+  .section{padding:48px 32px}
+  .cta-section{padding:48px 32px}
+  .flow-grid,.terms-grid{grid-template-columns:1fr}
+  .roi-grid{grid-template-columns:1fr}
+  .roi-stat{border-right:none;border-bottom:1px solid var(--hairline);padding:32px 0}
+  .roi-stat:last-child{border-bottom:none}
+  .roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:0}
+  .roi-stat-value{font-size:64px}
+  .investment-box{grid-template-columns:1fr;gap:24px}
+  .investment-price{font-size:64px}
+  .footer{flex-direction:column;align-items:flex-start;padding:32px}
+}
+
+/* MOBILE TIMELINE: stack table rows into cards */
+@media(max-width:600px){
+  .timeline-table thead{display:none}
+  .timeline-table,.timeline-table tbody,.timeline-table tr,.timeline-table td{display:block;width:100%}
+  .timeline-table tr{padding:24px 0;border-bottom:1px solid var(--hairline)}
+  .timeline-table tr:last-child{border-bottom:none}
+  .timeline-table td{padding:0;border:none;margin:0}
+  .timeline-table .phase-name{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.2}
+  .timeline-table .phase-duration{display:inline-block;background:var(--paper-sunk);padding:4px 10px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;margin-bottom:10px;color:var(--accent);white-space:nowrap}
+  .timeline-table .phase-deliverable{font-size:14px;line-height:1.7;color:var(--ink-soft)}
+}
+
+/* PRINT */
+@media print{
+  *{background:transparent !important;box-shadow:none !important}
+  body{font-size:11pt;color:#000 !important;background:#fff !important}
+  .cover{min-height:auto;page-break-after:always;padding:48px}
+  .section{page-break-inside:avoid;padding:32px 48px}
+  .scroll-progress{display:none}
+  .section,.cover,.cta-section,.agreement-section,.footer{opacity:1 !important;transform:none !important}
+}
+</style>
+<noscript><style>.section,.cover,.cta-section,.agreement-section,.footer{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+<div class="scroll-progress"></div>
+<div class="cover">
+    <div class="cover-nav">
+      <div class="logo">
+        <div class="logo-mark">IM</div>
+        <span class="logo-text">Iván Manfredi</span>
+      </div>
+      <span class="cover-meta">Proposal • April 27, 2026</span>
+    </div>
+    <div class="cover-left">
+      <div class="cover-tag">AI &amp; Automation Architect</div>
+      <h1>Personal AI Assistant</h1>
+      <p class="cover-sub">One WhatsApp number, one AI, one brain. You text or voice-note anything and it sorts itself.</p>
+    </div>
+    <div class="cover-right">
+      <div class="cover-numeral">27</div>
+      <div class="cover-monthyear">APRIL 2026</div>
+    </div>
+    <div class="cover-details">
+      <div class="cover-detail"><span class="cover-detail-label">Prepared For</span><span class="cover-detail-value">Charles Cukier</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Engagement</span><span class="cover-detail-value">Personal</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Delivery</span><span class="cover-detail-value">2 Weeks</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Ownership</span><span class="cover-detail-value">100% Yours</span></div>
+      
+    </div>
+  </div>
+<div class="section">
+    <span class="section-number">01 • The Problem</span>
+    <h2>What’s costing you time</h2>
+    <div class="problem-card"><p>You're juggling people, properties, follow-ups, research, and HubSpot busywork across too many tools. The cost isn't time so much as cognitive load: ideas dropped in the car, follow-ups slipping past their due date, twenty minutes of HubSpot setup every time you want to run a sequence, and a list of properties, grants, and market questions you've asked yourself to look into that never quite gets answered.</p></div>
+    <p>Currently absorbing approximately <strong>15+ hours per week</strong> in manual work, with the additional cost of dropped follow-ups and missed context.</p>
+  </div>
+<div class="section">
+    <span class="section-number">02 • The Solution</span>
+    <h2>What we’re building</h2>
+    <p>Random thoughts, reminders, research requests, PDFs to process, HubSpot jobs  -  everything lands in one chat. The brain figures out what you want, picks the right tool, and replies. No bot teams. No routing mazes. No picking which app to open.</p>
+    <p>Built on <strong>Claude + n8n</strong>, integrated with WhatsApp, HubSpot, Google Calendar, Gmail, Fireflies, Google Drive. Designed to remove manual touchpoints while keeping you in full control.</p>
+    
+    <h3>System Flow</h3>
+    <div class="flow-grid">
+      <div class="flow-step"><span class="flow-step-number">01</span><div class="flow-step-title">Triggers</div><div class="flow-step-desc">Three ways the assistant kicks in. (1) Inbound: you text or voice-note the WhatsApp number any time, in English or French. (2) Scheduled: cron jobs fire on their own  -  daily 7 AM digest, Monday chase digest, reminders firing at their set time, hourly Gmail and HubSpot polls. (3) Async events: research memos finishing, a chased reply landing, the brain pings you when something is ready.</div></div>
+      <div class="flow-step"><span class="flow-step-number">02</span><div class="flow-step-title">Process</div><div class="flow-step-desc">The brain reads or transcribes your message, figures out intent (capture, reminder, research, HubSpot job, pre-meeting brief), pulls memory of relevant people and properties, and picks the right tool from its toolbox.</div></div>
+      <div class="flow-step"><span class="flow-step-number">03</span><div class="flow-step-title">Output</div><div class="flow-step-desc">The answer comes back in WhatsApp, in whichever language you texted in. Reminders fire on time with the why attached. Memos arrive when ready. Briefs return in seconds. HubSpot jobs are prepared and shown to you before they run.</div></div>
+      <div class="flow-step"><span class="flow-step-number">04</span><div class="flow-step-title">Confirm</div><div class="flow-step-desc">Anything that sends a message, creates a record, or touches HubSpot waits for your explicit yes. No outbound action without confirmation, ever.</div></div>
+    </div>
+    
+    <h3>Stack</h3>
+    
+      <div class="stack-group">
+        <div class="stack-cat">Built with</div>
+        <ul class="stack-list"><li>AI brain — Claude (by Anthropic, the same family powering most serious AI assistants today)</li><li>Workflow automation and scheduled jobs — n8n</li><li>WhatsApp infrastructure on a new dedicated number — Whapi</li><li>Voice-note transcription, sub-second turnaround — Groq Whisper</li><li>Your private memory database for people, properties, captures, follow-ups, and memos — Supabase</li><li>Property listing data from Centris and realtor.ca on a schedule — Apify</li><li>Web research and citation-backed lookups — Firecrawl + Perplexity Sonar Pro</li></ul>
+      </div>
+      <div class="stack-group">
+        <div class="stack-cat">Connects to</div>
+        <ul class="stack-list"><li>HubSpot — your CRM (contacts, tags, sequences)</li><li>Google Calendar — meetings for daily digest and pre-meeting briefs</li><li>Gmail — detects when chased replies land</li><li>Google Drive — read and write your documents (rent rolls, contracts, proformas)</li><li>Fireflies — meeting transcripts feed pre-meeting briefs and waiting-on items</li></ul>
+      </div>
+    
+  </div>
+<div class="section">
+      <span class="section-number">03 • The Skills</span>
+      <h2>What it actually does</h2>
+      <p>Nine skills, one brain. The assistant knows when each one fires  -  you don't pick which to use, you just text or talk.</p>
+      <div class="skills-grid">
+        
+          <div class="skill-card">
+            <span class="skill-num">01</span>
+            <div class="skill-name">Capture</div>
+            <div class="skill-outcome">Voice or text → auto-filed by person, property, idea, or follow-up. Searchable on demand.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">02</span>
+            <div class="skill-name">Pre-meeting brief</div>
+            <div class="skill-outcome">Text 'walking to Evan' and get back 5 to 15 bullets in seconds  -  open follow-ups, recent activity, last meeting.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">03</span>
+            <div class="skill-name">Reminders</div>
+            <div class="skill-outcome">Timed reminders that include the why, not just the what. 'Call Peter  -  papers (waiting 9 days).'</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">04</span>
+            <div class="skill-name">Waiting-on tracker</div>
+            <div class="skill-outcome">Live list of every chase, Monday digest of overdue items, auto-drafted follow-ups, tap-to-confirm closure.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">05</span>
+            <div class="skill-name">Daily morning digest</div>
+            <div class="skill-outcome">7 AM brief  -  meetings with one-line context, overdue chases, research ready, yesterday's captures. Reply 'more' for details, or just go.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">06</span>
+            <div class="skill-name">Research memos</div>
+            <div class="skill-outcome">Topic in, structured memo out within 1 to 6 hours. Summary, key facts, opportunities, risks, sources.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">07</span>
+            <div class="skill-name">Document parsing</div>
+            <div class="skill-outcome">Contract → key-terms summary. Rent roll → proforma in a Google Sheet. Broker PDF → clean contacts ready for HubSpot.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">08</span>
+            <div class="skill-name">HubSpot chat-ops</div>
+            <div class="skill-outcome">Forward a broker PDF or paste contacts. Assistant extracts, dedupes, adds to HubSpot with your tags, queues the sequence. You reply yes, it runs.</div>
+          </div>
+        
+          <div class="skill-card">
+            <span class="skill-num">09</span>
+            <div class="skill-name">Bilingual EN/FR</div>
+            <div class="skill-outcome">Text or voice-note in English, French, or franglais. Replies come back in the language you used.</div>
+          </div>
+        
+      </div>
+    </div>
+<div class="section">
+      <span class="section-number">04 • Scope of Work</span>
+      <h2>What’s included</h2>
+      
+        <div class="scope-group">
+          <div class="scope-group-label">Channel &amp; Memory</div>
+          <div class="scope-grid">
+            <div class="scope-item"><div class="scope-check"></div><div>WhatsApp inbound + outbound on a new dedicated Whapi number we provision (no SIM or phone needed on your side)</div></div><div class="scope-item"><div class="scope-check"></div><div>Voice-note transcription, sub-second on most messages</div></div><div class="scope-item"><div class="scope-check"></div><div>Single Claude-based brain with tool routing</div></div><div class="scope-item"><div class="scope-check"></div><div>Private memory database in your Supabase account (people, properties, ideas, follow-ups, captures, research memos)</div></div><div class="scope-item"><div class="scope-check"></div><div>Database export endpoint so you can pull all your data any time, any format</div></div>
+          </div>
+        </div>
+        <div class="scope-group">
+          <div class="scope-group-label">Integrations</div>
+          <div class="scope-grid">
+            <div class="scope-item"><div class="scope-check"></div><div>HubSpot read + write (contacts, properties, tags, sequences)</div></div><div class="scope-item"><div class="scope-check"></div><div>Google Calendar read for digest and meeting context</div></div><div class="scope-item"><div class="scope-check"></div><div>Gmail read so the brain detects when a chased reply lands and prompts you to close the item</div></div><div class="scope-item"><div class="scope-check"></div><div>Google Drive read + write for documents and proformas</div></div><div class="scope-item"><div class="scope-check"></div><div>Fireflies transcript pull so meeting notes feed pre-meeting briefs and waiting-on items</div></div>
+          </div>
+        </div>
+        <div class="scope-group">
+          <div class="scope-group-label">Not Included</div>
+          <div class="scope-grid">
+            <div class="scope-item excluded"><div class="scope-check"></div><div>Phase 2 Live Meeting Coach (Zoom/Meet auto-join, real-time hints, post-call summary)  -  separate add-on</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Owner identification on Quebec property data (redacted by provincial privacy law)</div></div><div class="scope-item excluded"><div class="scope-check"></div><div>Real-time listing-change alerts (we poll daily, not real-time)</div></div>
+          </div>
+        </div>
+      
+    </div>
+<div class="section">
+      <span class="section-number">05 • Timeline</span>
+      <h2>Delivery schedule</h2>
+      <div class="table-scroll">
+        <table class="timeline-table">
+          <thead><tr><th>Phase</th><th>Duration</th><th>Deliverable</th></tr></thead>
+          <tbody><tr><td class="phase-name">Foundation</td><td class="phase-duration">Week 1, Days 1 to 4</td><td class="phase-deliverable">New dedicated WhatsApp number provisioned via Whapi, Claude brain wired up in n8n, Supabase memory deployed, voice transcription live, capture skill working end-to-end so text and voice both file under the right person or property.</td></tr><tr><td class="phase-name">Skills + Tools</td><td class="phase-duration">Week 1 to 2, Days 5 to 10</td><td class="phase-deliverable">Pre-meeting brief, reminders, waiting-on tracker, daily morning digest, research memos (all 6 topic types from your brief), document parser, HubSpot chat-ops, and Calendar + Gmail + Fireflies + Drive integrations all online and tested.</td></tr><tr><td class="phase-name">Polish + Handoff</td><td class="phase-duration">Week 2, Days 11 to 14</td><td class="phase-deliverable">Approval gates verified across every outbound action, edge cases ironed out, async walkthrough video sent over, written reference card for how to talk to the assistant. 30-day support window begins.</td></tr></tbody>
+        </table>
+      </div>
+      <div class="timeline-total">Total: 2 Weeks</div>
+    </div>
+<div class="section">
+    <span class="section-number">06 • Expected ROI</span>
+    <h2>What you get back</h2>
+    <p>The real return is reclaimed cognitive load: nothing slips, nothing gets re-asked, follow-ups fire themselves, the list of properties and grants you've asked yourself to look into actually clears. On pure time, voice-note capture plus chat-ops HubSpot work alone returns a clear 10 to 15 hours a month. The compounding value is in deals you don't drop and ideas you don't lose.</p>
+    <div class="roi-grid">
+      <div class="roi-stat"><div class="roi-stat-value">15+</div><div class="roi-stat-label">Hours Saved / Month</div></div>
+      <div class="roi-stat"><div class="roi-stat-value">0</div><div class="roi-stat-label">Manual Errors</div></div>
+      <div class="roi-stat"><div class="roi-stat-value">5x</div><div class="roi-stat-label">Scale Capacity</div></div>
+    </div>
+  </div>
+<div class="section">
+    <span class="section-number">07 • Investment</span>
+    <h2>Pricing</h2>
+    <div class="investment-box">
+      <div class="investment-price"><span class="investment-currency">$</span>5500</div>
+      <div class="investment-right">
+        <div class="investment-model">Fixed fee, all-inclusive build via Upwork. Covers design, build, testing, and walkthrough. Ongoing tool costs (listed below) are direct provider charges, not billed by me.</div>
+        <div class="investment-terms">
+          <div class="investment-term"><span class="investment-term-label">Payment Terms</span><span class="investment-term-value">Handled by Upwork escrow, milestone-based</span></div>
+          <div class="investment-term"><span class="investment-term-label">Support Included</span><span class="investment-term-value">30 days post-delivery, including bug fixes, prompt tuning, and small adjustments</span></div>
+          <div class="investment-term"><span class="investment-term-label">Start Date</span><span class="investment-term-value">Upon Upwork contract acceptance</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="investment-recurring">
+        <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
+        <p class="investment-recurring-lead">Estimated $185 to $225 per month at typical usage.</p>
+        <ul class="investment-recurring-list"><li>n8n (orchestration, self-hosted on a small instance) ~$60.</li><li>Claude API (the brain) ~$10 to $40 depending on volume.</li><li>Apify (Centris listing detail + realtor.ca actors) ~$40.</li><li>ZenRows (Cloudflare bypass for property research) $69.</li><li>Groq Whisper (voice transcription) ~$5 to $15.</li><li>Whapi (WhatsApp infrastructure) free at our usage tier.</li><li>Supabase (memory database) free tier covers it.</li><li>Research APIs (Polymarket, Kalshi, Manifold, Données Québec, CanadaBuys, Montreal open data, SEAO Quebec mirror) are free public APIs.</li><li>Existing subscriptions you already pay for (HubSpot, Google Workspace, Fireflies) are unchanged.</li></ul>
+      </div>
+  </div>
+<div class="section">
+      <span class="section-number">08 • Requirements</span>
+      <h2>What I need from you</h2>
+      <ul class="access-list"><li>Anthropic API key (for Claude) — created in your account at console.anthropic.com so you own the billing</li><li>HubSpot admin access or admin-level API token</li><li>One Google sign-in click — I send you a single link, you click it once to give the assistant permission to read your Calendar, Gmail, and Drive (takes 30 seconds)</li><li>Fireflies API key</li><li>Apify account (or I create one in your name) for property listing data</li><li>ZenRows account (or I create one in your name) — only used as a fallback for property research</li><li>Supabase project — I provision and deploy the schema, the project lives under your account</li><li>Whapi account — I set up the new dedicated WhatsApp number on your account so the number and billing stay yours</li></ul>
+    </div>
+<div class="cta-section">
+    
+      <h2>Let’s build this</h2>
+      <p>Reply on Upwork to get started, or send any questions through the platform.</p>
+    
+    <div class="upsell-box"><h3>Future Opportunities</h3><p>After the 30-day support window, an optional care plan covers ongoing prompt tuning, new skills, integration maintenance, and any third-party API changes. Pricing on request, retainer or hourly. Specialized recurring scan modules: daily density-arbitrage monitor for a fixed target zone, daily SEAO Quebec keyword monitor for matching tenders. Phase 2 Live Meeting Coach (auto-joins Zoom/Meet, whispers real-time hints to a second screen, post-call summary and action items in WhatsApp).</p></div>
+  </div>
+<div class="footer">
+  <div class="footer-left">Iván Manfredi • AI &amp; Automation Architect</div>
+  
+</div>
+<script>
+(function(){
+  const bar=document.querySelector('.scroll-progress');
+  if(bar){window.addEventListener('scroll',()=>{
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=h>0?(window.scrollY/h*100)+'%':'0';
+  },{passive:true})}
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.section,.cover,.cta-section,.agreement-section,.footer').forEach(el=>obs.observe(el));
+  const numObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target;
+      const text=el.textContent.trim();
+      const num=parseFloat(text.replace(/[^0-9.]/g,''));
+      if(isNaN(num)||num===0)return;
+      const suffix=text.replace(/[0-9.,]/g,'');
+      const isInt=!text.includes('.');
+      let start=0;
+      const duration=1200;
+      const startTime=performance.now();
+      function tick(now){
+        const p=Math.min((now-startTime)/duration,1);
+        const ease=1-Math.pow(1-p,3);
+        const val=start+(num-start)*ease;
+        el.textContent=(isInt?Math.round(val):val.toFixed(1))+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      numObs.unobserve(el);
+    })
+  },{threshold:0.5});
+  document.querySelectorAll('.roi-stat-value').forEach(el=>numObs.observe(el));
+  const cover=document.querySelector('.cover');
+  if(cover)setTimeout(()=>cover.classList.add('visible'),100);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+=== COMMITS ===
+6f99066 feat(editor): complete checklist+calculator field coverage (impact locked)
+a3270f6 docs(sdd): task A1 report + progress ledger update
+
+=== STAT ===
+ .superpowers/sdd/progress.md       |  16 +-
+ .superpowers/sdd/review-A1.txt     | 523 +++++++++++++++++++++++++++++++++++++
+ .superpowers/sdd/task-A1-report.md |  66 +++++
+ .superpowers/sdd/task-A2-brief.md  |  35 +++
+ .superpowers/sdd/task-A2-report.md |  73 ++++++
+ _engine/calculator.js              |  32 ++-
+ _engine/checklist.js               |   5 +-
+ 7 files changed, 741 insertions(+), 9 deletions(-)
+
+=== DIFF ===
+diff --git a/_engine/calculator.js b/_engine/calculator.js
+index cfe9c8c..bd4e4b7 100644
+--- a/_engine/calculator.js
++++ b/_engine/calculator.js
+@@ -170,17 +170,19 @@
+     window.__lm_data = data;
+     window.__lm_format = "calculator";
+     if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
+     root.innerHTML = "";
+ 
+     // Hero
+     var hero = make("section", { class: "lmc-hero" });
+     var inner = make("div", { class: "lmc-container" });
+-    inner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Interactive Calculator")));
++    var badgeEl = make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Interactive Calculator"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
++    inner.appendChild(badgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Calculator") : escapeHtml(data.title || "Calculator");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     inner.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, escapeHtml(data.subtitle));
+       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
+       inner.appendChild(sub);
+@@ -218,35 +220,44 @@
+       labelRow.appendChild(lbl);
+       var hintBtn = null;
+       if (inp.hint) {
+         hintBtn = make("button", { type: "button", class: "lmc-hint-btn", "aria-label": "Show hint", "aria-expanded": "false" }, "?");
+         labelRow.appendChild(hintBtn);
+       }
+       field.appendChild(labelRow);
+       var wrap = make("div", { class: "lmc-input-wrap" });
+-      if (inp.prefix) wrap.appendChild(make("span", { class: "lmc-prefix" }, escapeHtml(inp.prefix)));
++      if (inp.prefix) {
++        var prefixEl = make("span", { class: "lmc-prefix" }, escapeHtml(inp.prefix));
++        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(prefixEl, "inputs[" + idx + "].prefix");
++        wrap.appendChild(prefixEl);
++      }
+       var attrs = { id: labelId, class: "lmc-input", name: inp.id, type: inp.type === "range" ? "number" : (inp.type || "number"), inputmode: inp.type === "text" ? "text" : "decimal" };
+       if (inp.min != null) attrs.min = inp.min;
+       if (inp.max != null) attrs.max = inp.max;
+       if (inp.step != null) attrs.step = inp.step;
+       if (inp.placeholder) attrs.placeholder = inp.placeholder;
+       var el = make("input", attrs);
+       el.value = inp.default != null ? inp.default : "";
+       wrap.appendChild(el);
+-      if (inp.suffix) wrap.appendChild(make("span", { class: "lmc-suffix" }, escapeHtml(inp.suffix)));
++      if (inp.suffix) {
++        var suffixEl = make("span", { class: "lmc-suffix" }, escapeHtml(inp.suffix));
++        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(suffixEl, "inputs[" + idx + "].suffix");
++        wrap.appendChild(suffixEl);
++      }
+       field.appendChild(wrap);
+       if (inp.type === "range" || inp.slider) {
+         var r = make("input", { type: "range", class: "lmc-range", min: inp.min != null ? inp.min : 0, max: inp.max != null ? inp.max : 100, step: inp.step != null ? inp.step : 1, value: inp.default != null ? inp.default : 0 });
+         r.addEventListener("input", function () { el.value = r.value; el.dispatchEvent(new Event("input", { bubbles: true })); });
+         el.addEventListener("input", function () { if (!isNaN(Number(el.value))) r.value = el.value; });
+         field.appendChild(r);
+       }
+       if (inp.hint) {
+         var hintEl = make("span", { class: "hint" }, escapeHtml(inp.hint));
++        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(hintEl, "inputs[" + idx + "].hint");
+         field.appendChild(hintEl);
+         if (hintBtn) {
+           hintBtn.addEventListener("click", function () {
+             var open = field.classList.toggle("hint-open");
+             hintBtn.setAttribute("aria-expanded", open ? "true" : "false");
+           });
+         }
+       }
+@@ -254,20 +265,23 @@
+     });
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(inputsCard, "inputs", { itemLabel: "input", template: { id: "", label: "New input", type: "number", default: 0 } });
+     grid.appendChild(inputsCard);
+ 
+     // RIGHT: outputs
+     var outputsCard = make("div", { class: "lmc-card", id: "lmc-outputs" });
+     outputsCard.appendChild(make("h2", null, "Your result"));
+     var primary = (data.outputs || []).find(function (o) { return o.primary; }) || (data.outputs || [])[0];
++    var primaryIdx = (data.outputs || []).indexOf(primary);
+     if (primary) {
+       var ring = make("div", { class: "lmc-output-ring" });
+       ring.appendChild(make("div", { class: "lmc-big-num", id: "lmc-big-num" }, "—"));
+-      ring.appendChild(make("div", { class: "lmc-big-unit" }, escapeHtml(primary.label || "")));
++      var bigUnitEl = make("div", { class: "lmc-big-unit" }, escapeHtml(primary.label || ""));
++      if (window.LM && window.LM.editMode && primaryIdx >= 0) window.LM.editMode.registerField(bigUnitEl, "outputs[" + primaryIdx + "].label");
++      ring.appendChild(bigUnitEl);
+       ring.appendChild(make("span", { class: "lmc-tier-pill", id: "lmc-tier" }, "Fill in the numbers"));
+       outputsCard.appendChild(ring);
+     }
+     var secondaryWrap = make("div", { id: "lmc-secondary-outputs" });
+     var heroSeen = false;
+     (data.outputs || []).forEach(function (out, idx) {
+       if (out === primary) return;
+       var isHero = !heroSeen;
+@@ -288,16 +302,18 @@
+     // D2.3: Benchmark slot (only populated if primary.show_benchmark === true)
+     var benchSlot = make("div", { id: "lmc-benchmark", class: "lmc-benchmark", hidden: "hidden" });
+     outputsCard.appendChild(benchSlot);
+     // D2.4: Top-3-fixes toggle — opt-in via data.fixes_scenario block
+     if (data.fixes_scenario && Array.isArray(data.fixes_scenario.input_overrides) && data.fixes_scenario.input_overrides.length) {
+       var fixToggle = make("label", { class: "lmc-fix-toggle", for: "lmc-fix-on" });
+       var fixLabel = (data.fixes_scenario.label || "See what happens with the top 3 fixes");
+       fixToggle.innerHTML = '<input type="checkbox" id="lmc-fix-on" /> <span>' + escapeHtml(fixLabel) + '</span>';
++      var fixLabelEl = fixToggle.querySelector("span");
++      if (window.LM && window.LM.editMode && fixLabelEl) window.LM.editMode.registerField(fixLabelEl, "fixes_scenario.label");
+       outputsCard.appendChild(fixToggle);
+     }
+     // Recommendations
+     var recsWrap = make("div", { class: "lmc-recs", id: "lmc-recs" });
+     outputsCard.appendChild(recsWrap);
+     grid.appendChild(outputsCard);
+ 
+     container.appendChild(grid);
+@@ -389,20 +405,24 @@
+       var matched = recs.filter(function (r) { return r.when ? !!safeEval(r.when, Object.assign({}, ctx, results)) : false; }).slice(0, 3);
+       var rcEl = $("#lmc-recs");
+       if (rcEl) {
+         rcEl.innerHTML = "";
+         if (matched.length > 0) {
+           rcEl.appendChild(make("h3", null, "What to do next"));
+           matched.forEach(function (m) {
+             var recDiv = make("div", { class: "lmc-rec" });
+-            recDiv.appendChild(make("strong", null, escapeHtml(m.tag || "Recommended")));
++            var origIdx = recs.indexOf(m);
++            var tagEl = make("strong", null, escapeHtml(m.tag || "Recommended"));
++            if (window.LM && window.LM.editMode && origIdx >= 0) {
++              window.LM.editMode.registerField(tagEl, "recommendations[" + origIdx + "].tag");
++            }
++            recDiv.appendChild(tagEl);
+             var textNode = document.createTextNode(m.text || "");
+             recDiv.appendChild(textNode);
+-            var origIdx = recs.indexOf(m);
+             if (window.LM && window.LM.editMode && origIdx >= 0) {
+               window.LM.editMode.registerField(recDiv, "recommendations[" + origIdx + "].text");
+             }
+             rcEl.appendChild(recDiv);
+           });
+         }
+       }
+       // D2.2: Sensitivity bars (only shows when primary + ≥ 2 numeric inputs)
+diff --git a/_engine/checklist.js b/_engine/checklist.js
+index a64e6f4..21ce6d8 100644
+--- a/_engine/checklist.js
++++ b/_engine/checklist.js
+@@ -162,17 +162,19 @@
+     window.__lm_format = "checklist";
+     if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
+     var state = readState(data.slug);
+     root.innerHTML = "";
+ 
+     // Hero
+     var hero = make("section", { class: "lmc-hero" });
+     var heroInner = make("div", { class: "lmc-container" });
+-    heroInner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist")));
++    var badgeEl = make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
++    heroInner.appendChild(badgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = buildItalicizedTitle(data.title || "Checklist");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     heroInner.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, escapeHtml(data.subtitle));
+       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
+       heroInner.appendChild(sub);
+@@ -235,16 +237,17 @@
+         txt.appendChild(textSpan);
+         if (it.tip) {
+           var tipSpan = make("span", { class: "lmc-tip" }, escapeHtml(it.tip));
+           if (window.LM && window.LM.editMode) window.LM.editMode.registerField(tipSpan, "sections[" + sIdx + "].items[" + iIdx + "].tip");
+           txt.appendChild(tipSpan);
+         }
+         if (it.impact) {
+           var imp = make("span", { class: "lmc-impact lmc-impact-" + it.impact }, (it.impact || "").toUpperCase() + " IMPACT");
++          if (window.LM && window.LM.editMode) window.LM.editMode.registerField(imp, "sections[" + sIdx + "].items[" + iIdx + "].impact", { locked: true });
+           txt.appendChild(imp);
+         }
+         row.appendChild(box); row.appendChild(txt);
+         itemsContainer.appendChild(row);
+       });
+       if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(itemsContainer, "sections[" + sIdx + "].items", {
+         itemLabel: "checklist item",
+         template: { id: "", text: "New item" },

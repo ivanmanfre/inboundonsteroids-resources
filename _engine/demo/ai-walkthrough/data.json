@@ -1,0 +1,28 @@
+{
+  "slug": "demo-ai-walkthrough",
+  "data_version": 1,
+  "title": "Show me your onboarding process — I'll mark the automations",
+  "subtitle": "Paste it (one step per line, rough is fine). Live AI analysis. ~30 seconds.",
+  "input": {
+    "placeholder": "1. Send welcome email\n2. Create Google Drive folder\n3. Add to PM tool\n4. Schedule kickoff call\n5. Send NDA via DocuSign",
+    "min_steps": 3,
+    "max_steps": 20
+  },
+  "system_prompt_clickup_page_id": "REPLACE_AT_PUBLISH_TIME",
+  "system_prompt": "You are an Onboarding Process Analyst for service businesses. The user will paste their client onboarding steps (one per line). For EACH step, return a JSON object with: step (the original text), verdict (one of: automate_now, automate_later, keep_human), reasoning (1-2 sentences, concrete, no fluff), tools (array of 1-3 specific tool names — n8n, Zapier, Make, ClickUp, Notion, DocuSign, Loom, Calendly, etc.). Also return a 1-sentence summary and top_3_quick_wins as an array of 3 short imperative sentences. Be opinionated. Reject steps that don't read like a process step. Output ONLY valid JSON matching: {\"summary\":\"...\",\"steps\":[{\"step\":\"...\",\"verdict\":\"automate_now\",\"reasoning\":\"...\",\"tools\":[\"n8n\"]}],\"top_3_quick_wins\":[\"...\",\"...\",\"...\"]}",
+  "model": "claude-sonnet-4-6",
+  "max_tokens": 2000,
+  "output_schema": {
+    "summary": "string",
+    "steps": [{ "step": "string", "verdict": "automate_now | automate_later | keep_human", "reasoning": "string", "tools": ["string"] }],
+    "top_3_quick_wins": ["string"]
+  },
+  "render": {
+    "verdict_colors": { "automate_now": "green", "automate_later": "amber", "keep_human": "gray" },
+    "verdict_labels": { "automate_now": "Automate now", "automate_later": "Automate later", "keep_human": "Keep human" }
+  },
+  "ctas": [
+    { "id": "build_for_me", "headline": "Want me to build the top 3?", "button": "Book a 30-min call", "url": "https://calendly.com/ivan-intelligents/30min", "when": "automate_now_count >= 3" },
+    { "id": "diy_kit", "headline": "Grab the n8n templates for these", "button": "Get the kit", "url": "https://ivanmanfredi.com/resources" }
+  ]
+}

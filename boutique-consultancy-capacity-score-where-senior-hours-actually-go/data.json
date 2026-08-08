@@ -1,0 +1,641 @@
+{
+  "slug": "boutique-consultancy-capacity-score-where-senior-hours-actually-go",
+  "title": "Boutique Consultancy Capacity Score",
+  "subtitle": "Where Senior Hours Actually Go",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 7,
+  "persona_selector": {
+    "id": "persona",
+    "text": "What's your role at the firm?",
+    "answers": [
+      {
+        "label": "Founder / Managing Partner",
+        "tag": "managing_partner"
+      },
+      {
+        "label": "Partner (non-managing)",
+        "tag": "partner"
+      },
+      {
+        "label": "COO / Head of Operations",
+        "tag": "coo"
+      },
+      {
+        "label": "Senior Consultant / IC",
+        "tag": "senior_ic"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "firm_profile",
+      "name": "Firm Profile",
+      "questions": [
+        {
+          "id": "headcount",
+          "text": "How many staff total, including partners?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1-7 (below boutique threshold)",
+              "score": 2
+            },
+            {
+              "label": "8-15",
+              "score": 5
+            },
+            {
+              "label": "16-30",
+              "score": 5
+            },
+            {
+              "label": "31+ (above boutique threshold)",
+              "score": 3
+            }
+          ]
+        },
+        {
+          "id": "revenue",
+          "text": "What's your annual revenue band?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Under $1M",
+              "score": 2
+            },
+            {
+              "label": "$1M-$3M",
+              "score": 4
+            },
+            {
+              "label": "$3M-$8M",
+              "score": 5
+            },
+            {
+              "label": "$8M-$20M",
+              "score": 5
+            },
+            {
+              "label": "$20M+",
+              "score": 4
+            }
+          ]
+        },
+        {
+          "id": "partner_count",
+          "text": "How many partners are in the firm?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 partner doing everything",
+              "score": 1
+            },
+            {
+              "label": "2 partners, roughly equal load",
+              "score": 3
+            },
+            {
+              "label": "3-4 partners with defined lanes",
+              "score": 5
+            },
+            {
+              "label": "5+ partners with formal practice areas",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your firm structure is fighting you",
+          "text": "At your size and revenue band, senior hours are the only real asset. The structure suggests partners are still wearing every hat, which caps growth at whatever a partner can personally execute in a week.",
+          "steps": [
+            "Map every recurring task partners touch in a 2-week window and tag each as billable, sales, ops, or admin",
+            "Identify the 3 tasks consuming the most partner hours that a $40-60 per hour resource could handle with a checklist",
+            "Hire or contract one operations person within 60 days whose only job is removing those 3 tasks from partner calendars"
+          ]
+        },
+        "mid": {
+          "headline": "You're sized right, but lanes are blurry",
+          "text": "You have the headcount to specialize but partners are still cross-functional out of habit. The next jump in capacity comes from defining who owns what, not from adding people.",
+          "steps": [
+            "Write a one-page RACI for the 10 most common firm activities from intake through invoicing",
+            "Assign each partner a primary practice area or function and hold a 30-day commitment to not cross lanes",
+            "Review at day 30 which lane crossings happened and why, then redesign the support around them"
+          ]
+        },
+        "high": {
+          "headline": "Structure is sound, focus on demand",
+          "text": "Your firm profile suggests the operational base is in place. The constraint is no longer headcount or lanes, it's pipeline quality and pricing power.",
+          "steps": [
+            "Audit your last 12 months of closed deals and rank by margin per partner hour",
+            "Cut or reprice the bottom quartile and reinvest that capacity into higher-margin work",
+            "Build a named-account list of 25 ideal future clients and assign one partner to own outbound to it"
+          ]
+        }
+      }
+    },
+    {
+      "id": "intake_scoping",
+      "name": "Intake and Scoping",
+      "questions": [
+        {
+          "id": "lead_response",
+          "text": "When a qualified inbound lead lands, how long until they have a scoping call on the calendar?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Same day",
+              "score": 5
+            },
+            {
+              "label": "1-2 business days",
+              "score": 4
+            },
+            {
+              "label": "3-5 business days",
+              "score": 3
+            },
+            {
+              "label": "6-10 business days",
+              "score": 2
+            },
+            {
+              "label": "More than 10 days, or it depends who picks it up",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "proposal_drafter",
+          "text": "Who writes the first draft of a scoping doc or proposal?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A junior pulls it together from a structured intake form, partner edits",
+              "score": 5
+            },
+            {
+              "label": "An associate, partner reviews and rewrites half of it",
+              "score": 3
+            },
+            {
+              "label": "The partner writes it from scratch every time",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "proposal_speed",
+          "text": "How long does a typical proposal take from yes-send-me-one to delivered?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Under 4 hours of total work",
+              "score": 5
+            },
+            {
+              "label": "4-8 hours",
+              "score": 4
+            },
+            {
+              "label": "8-16 hours",
+              "score": 3
+            },
+            {
+              "label": "16-24 hours",
+              "score": 2
+            },
+            {
+              "label": "More than 24 hours, or it sits for a week",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "proposal_reuse",
+          "text": "Across the last 5 proposals, what percent were copy-paste-able from a previous proposal with structural edits only?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "70%+",
+              "score": 5
+            },
+            {
+              "label": "50-70%",
+              "score": 4
+            },
+            {
+              "label": "30-50%",
+              "score": 3
+            },
+            {
+              "label": "10-30%",
+              "score": 2
+            },
+            {
+              "label": "Every proposal is custom from zero",
+              "score": 1
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your sales process is a partner bottleneck",
+          "text": "Every qualified lead currently requires partner hours to convert. That means your growth ceiling is exactly equal to how much selling your partners can do alongside delivery, which is never enough.",
+          "steps": [
+            "Build a structured intake form that captures budget, timeline, decision-makers, and 5 problem-specific questions before any call",
+            "Create a proposal template library with 4-6 reusable scope modules priced in advance",
+            "Route all first responses through a non-partner who books the scoping call within 1 business day"
+          ]
+        },
+        "mid": {
+          "headline": "Proposals are systemized but not productized",
+          "text": "You've solved the obvious sales drag, but partners are still rewriting too much per deal. The leak is in custom scoping for projects that are 80% identical to prior work.",
+          "steps": [
+            "Pick your top 3 service lines and define a fixed-scope, fixed-price version of each",
+            "Move custom scoping behind a paid discovery sprint so partners only do bespoke work for paying clients",
+            "Track proposal-to-close cycle time monthly and cut the median by 30% over the next quarter"
+          ]
+        },
+        "high": {
+          "headline": "Sales motion is tight, raise the floor",
+          "text": "Your intake and proposal process is already efficient relative to peers. The next gain is qualification, not speed ,  say no faster to the wrong-fit work.",
+          "steps": [
+            "Define a written ideal-client profile with hard disqualifiers and apply it before scoping calls",
+            "Raise minimum engagement size by 25-40% and watch close rate, not just volume",
+            "A/B test two proposal formats over 10 deals and keep the one with shorter time-to-signature"
+          ]
+        }
+      }
+    },
+    {
+      "id": "delivery_senior_time",
+      "name": "Delivery and Senior Time",
+      "questions": [
+        {
+          "id": "partner_billable",
+          "text": "In a normal week, what percent of partner hours are billable?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "60%+",
+              "score": 5
+            },
+            {
+              "label": "45-60%",
+              "score": 4
+            },
+            {
+              "label": "30-45%",
+              "score": 3
+            },
+            {
+              "label": "15-30%",
+              "score": 2
+            },
+            {
+              "label": "Under 15%",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "deliverable_drafter",
+          "text": "Who builds the first draft of client-facing slides or deliverables?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A junior, from a documented template plus brief",
+              "score": 5
+            },
+            {
+              "label": "A junior, from a verbal brief that gets re-explained twice",
+              "score": 3
+            },
+            {
+              "label": "The partner, because it's faster than explaining",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "partner_low_value_tasks",
+          "text": "How often does a partner do something a $40 per hour person could do (formatting, scheduling, data entry, status updates)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Almost never, that work is routed",
+              "score": 5
+            },
+            {
+              "label": "A few times a week",
+              "score": 3
+            },
+            {
+              "label": "Multiple times every day",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "template_reuse",
+          "text": "How much of a typical deliverable is reused from prior engagements versus built from scratch?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "60%+ reused from templates and prior frameworks",
+              "score": 5
+            },
+            {
+              "label": "30-60% reused",
+              "score": 3
+            },
+            {
+              "label": "Under 30%, mostly built fresh",
+              "score": 1
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're paying partner rates for junior work",
+          "text": "More than half of partner hours are going to work that doesn't require a partner. The fix isn't motivation or time management, it's a routing problem with a structural answer.",
+          "steps": [
+            "Run a 2-week time audit where partners categorize every 30-minute block by who could have done it",
+            "Hire a delivery coordinator or senior associate within 60 days to absorb formatting, status updates, and scheduling",
+            "Build a deliverable template library so partners review and customize rather than build from blank"
+          ]
+        },
+        "mid": {
+          "headline": "use exists but isn't compounding",
+          "text": "Juniors are involved but partners still rescue too many drafts. That pattern means templates are incomplete or briefs are verbal, and both are fixable in weeks not quarters.",
+          "steps": [
+            "Document the top 5 deliverables with structured templates, decision points, and example outputs",
+            "Require written briefs from partners before any junior starts a draft, even a 5-line one",
+            "Hold a weekly 30-minute review where partners surface where they had to redo junior work and why"
+          ]
+        },
+        "high": {
+          "headline": "Senior hours are protected, push the ceiling",
+          "text": "Partner time is already going to high-value work. The next move is to compound that use with automation or fractional expertise.",
+          "steps": [
+            "Identify the 3 most repeated analytical or research steps in delivery and automate them with AI tooling",
+            "Add a fractional senior specialist (data, design, research) so partners stop being the last resort on edge work",
+            "Set a target of 65%+ partner billable utilization and review monthly against it"
+          ]
+        }
+      }
+    },
+    {
+      "id": "client_ops",
+      "name": "Client Operations",
+      "questions": [
+        {
+          "id": "status_updates",
+          "text": "How are client status updates produced each week?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Auto-generated from project tracking, partner reviews in 10 minutes",
+              "score": 5
+            },
+            {
+              "label": "Junior drafts in a template, partner edits",
+              "score": 4
+            },
+            {
+              "label": "Partner writes them personally each week",
+              "score": 2
+            },
+            {
+              "label": "Ad hoc, whenever a client asks",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "client_questions",
+          "text": "When a client sends a quick question at 9pm, what typically happens?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "It hits a shared inbox and gets triaged the next morning",
+              "score": 5
+            },
+            {
+              "label": "A partner answers within an hour because they saw the notification",
+              "score": 2
+            },
+            {
+              "label": "The partner answers immediately every time",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "meeting_load",
+          "text": "How many recurring client meetings does each partner sit in per week?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Under 5",
+              "score": 5
+            },
+            {
+              "label": "5-10",
+              "score": 4
+            },
+            {
+              "label": "10-15",
+              "score": 2
+            },
+            {
+              "label": "15+",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "scope_creep",
+          "text": "How often does scope creep happen without a change order or repricing?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Almost never, every change goes through a documented process",
+              "score": 5
+            },
+            {
+              "label": "Occasionally on small items",
+              "score": 3
+            },
+            {
+              "label": "Most engagements quietly expand without a paper trail",
+              "score": 1
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Clients are running your calendar",
+          "text": "Reactive client ops is the single biggest hidden tax on senior hours. Each 9pm reply and unplanned meeting is a small thing that adds up to roughly a day a week per partner.",
+          "steps": [
+            "Set explicit response-time SLAs in every engagement letter (24 business hours for non-urgent) and enforce them",
+            "Move all client communication to a shared channel or inbox that a non-partner triages first",
+            "Implement a written change-order process for any scope addition over 2 hours of work"
+          ]
+        },
+        "mid": {
+          "headline": "Boundaries exist, enforcement is patchy",
+          "text": "You've set some norms but partners still get pulled in too often. The leak now is cultural more than structural ,  clients learn what they can get away with within the first 30 days.",
+          "steps": [
+            "Run a 30-day kickoff playbook that sets communication norms, change-order rules, and meeting cadence in writing",
+            "Reduce recurring client meetings by 30% and replace with async written updates",
+            "Audit the last 5 engagements for unbilled scope and reprice or close the gap on the next renewal"
+          ]
+        },
+        "high": {
+          "headline": "Operations are clean, raise the bar",
+          "text": "Your client ops are already protecting partner time well. The next gain is using that protected time for higher-use work, not just more delivery.",
+          "steps": [
+            "Cap recurring meetings per partner at 6 per week and protect 2 half-days for strategic work",
+            "Productize one of your status update or reporting flows so it becomes a sellable add-on, not a cost center",
+            "Use the saved hours on thought leadership, IP development, or senior hiring pipeline"
+          ]
+        }
+      }
+    },
+    {
+      "id": "systems_leverage",
+      "name": "Systems and use",
+      "questions": [
+        {
+          "id": "knowledge_capture",
+          "text": "Where does institutional knowledge live (frameworks, past analyses, client learnings)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Centralized, searchable knowledge base used weekly",
+              "score": 5
+            },
+            {
+              "label": "Shared drive with reasonable folder structure",
+              "score": 3
+            },
+            {
+              "label": "In partners' heads and personal laptops",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "ai_automation_use",
+          "text": "How much of your repeat work (research, drafting, summaries, formatting) currently uses AI or automation?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Embedded in daily delivery with documented workflows",
+              "score": 5
+            },
+            {
+              "label": "Individual partners use it personally, no standard",
+              "score": 3
+            },
+            {
+              "label": "Almost none, or actively avoided",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "tooling_stack",
+          "text": "How would you describe your current tooling for project management and delivery?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Single source of truth, everyone uses it, dashboards are real",
+              "score": 5
+            },
+            {
+              "label": "Multiple tools, some overlap, partners check them weekly",
+              "score": 3
+            },
+            {
+              "label": "Email, spreadsheets, and tribal knowledge",
+              "score": 1
+            }
+          ]
+        },
+        {
+          "id": "productized_offerings",
+          "text": "How much of your revenue comes from productized or repeatable offerings versus fully custom engagements?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "50%+ from productized or near-productized offerings",
+              "score": 5
+            },
+            {
+              "label": "20-50%",
+              "score": 3
+            },
+            {
+              "label": "Under 20%, almost everything is custom",
+              "score": 1
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're rebuilding the wheel every engagement",
+          "text": "Without systems, every project starts close to zero and partners are the only ones who can fill the gaps. That's why senior hours feel so scarce ,  they're being spent recreating work that already exists in someone's head.",
+          "steps": [
+            "Stand up one centralized knowledge base (Notion, ClickUp, or similar) and migrate the top 20 frameworks within 30 days",
+            "Pick one repeatable workflow (proposal generation, weekly client report, research synthesis) and automate it with AI tools in 60 days",
+            "Identify one service that could be packaged as a fixed-scope offering and pilot it with 2 clients"
+          ]
+        },
+        "mid": {
+          "headline": "Tools exist, use doesn't",
+          "text": "You have the pieces but they don't compound. Knowledge lives in too many places, AI is used by individuals not the firm, and productization is stuck at the talking stage.",
+          "steps": [
+            "Consolidate to one project management tool and sunset the others within 45 days",
+            "Define 3 AI-assisted workflows that every consultant uses (research briefs, deck drafting, meeting synthesis) and train the firm",
+            "Convert your most repeatable service into a fixed-scope productized version with published pricing"
+          ]
+        },
+        "high": {
+          "headline": "Systems are working, scale the moat",
+          "text": "You've built real operational use. The next move is using systems as a differentiator in sales and a barrier to peer competition.",
+          "steps": [
+            "Package one of your internal workflows as a client-facing offering (audit, diagnostic, or implementation sprint)",
+            "Build a proprietary data or benchmark asset that clients can only get by working with you",
+            "Document your delivery system well enough that a new senior hire can deliver an engagement within 60 days of joining"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "See exactly where your senior hours are leaking",
+    "description": "Book a 30-minute working session. We'll walk through your scores category by category, identify the 2-3 highest-impact fixes for your firm specifically, and you'll leave with a one-page action plan whether or not we work together.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

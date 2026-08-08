@@ -1,0 +1,617 @@
+{
+ "slug": "rudra-ghosh-98-assessment",
+ "title": "B2B SaaS Website GTM Readiness Score",
+ "subtitle": "Measures whether your website is working as active GTM infrastructure or just a digital brochure your sales team apologizes for.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "gtm_message_clarity",
+   "name": "GTM Message Clarity",
+   "questions": [
+    {
+     "id": "gtm_message_clarity_q1",
+     "text": "When a B2B buyer lands on your homepage, how quickly does it communicate who you help and what outcome they get?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Instantly — the hero tells them exactly who it's for and what changes for them",
+       "score": 5
+      },
+      {
+       "label": "They get the gist but have to read further before it fully clicks",
+       "score": 4
+      },
+      {
+       "label": "It takes a few scrolls to understand the actual value",
+       "score": 3
+      },
+      {
+       "label": "It only makes sense once you reach the features or product section",
+       "score": 2
+      },
+      {
+       "label": "The homepage is mostly about us, not about them",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "gtm_message_clarity_q2",
+     "text": "How closely does your website copy match the exact language your buyers use to describe their problem?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Every headline maps to something a real buyer said on a sales call",
+       "score": 5
+      },
+      {
+       "label": "Most copy resonates, with a few sections that drift into feature-speak",
+       "score": 4
+      },
+      {
+       "label": "We have buyer-centric copy but it's mixed with product descriptions",
+       "score": 3
+      },
+      {
+       "label": "The copy mostly describes what the product does, not what the buyer gets",
+       "score": 2
+      },
+      {
+       "label": "The copy was written from our perspective and we haven't tested it with real buyers",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "gtm_message_clarity_q3",
+     "text": "How well does your above-the-fold section differentiate you from the three closest competitors in your space?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The hero immediately shows what makes us different, not just what we do",
+       "score": 5
+      },
+      {
+       "label": "We have a differentiator but it's buried below the first scroll",
+       "score": 4
+      },
+      {
+       "label": "Our hero communicates what we do but reads similarly to competitors",
+       "score": 3
+      },
+      {
+       "label": "We focus on features and could be confused with two or three other tools",
+       "score": 2
+      },
+      {
+       "label": "Our hero is generic — another SaaS company could copy it word for word",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "gtm_message_clarity_q4",
+     "text": "How specifically does your website speak to your target ICP vs. a broad potential audience?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The site speaks to a specific company size, role, and problem — and actively excludes everyone else",
+       "score": 5
+      },
+      {
+       "label": "We reference our ICP but the messaging could be tighter and more specific",
+       "score": 4
+      },
+      {
+       "label": "We try to speak to multiple buyer types and the message feels diluted",
+       "score": 3
+      },
+      {
+       "label": "Our site targets anyone who might buy software in our category",
+       "score": 2
+      },
+      {
+       "label": "We haven't designed the site around a defined ICP",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your message isn't landing — fix this before touching the design",
+     "text": "Before you change a single color or layout, get your positioning clear. A buyer who can't tell who you help and what they get in three seconds will bounce — and better design won't fix that. The work here is positioning, not pixels.",
+     "steps": [
+      "Pull the last 10 discovery call transcripts and extract the exact words your buyers use to describe their problem",
+      "Write your hero headline using those exact words — not your internal product language",
+      "Test your new hero copy with 3 people who fit your ICP before any design work begins",
+      "Cut any homepage section that talks about you rather than what the buyer gets",
+      "Make your competitive differentiator visible in the first 100 words, not buried in a comparison table"
+     ]
+    },
+    "mid": {
+     "headline": "Close — the message is there but it's buried or diluted",
+     "text": "Run this test: show your homepage to someone who fits your ICP for five seconds, then close the tab. Ask them: who is this for and what does it do? If the answer is fuzzy, the hero needs a rewrite. You don't have a design problem yet — you have a clarity problem.",
+     "steps": [
+      "Run the 5-second test with 3 people in your ICP and record exactly what they take away",
+      "Find the one section that best speaks your buyer's language and make the rest match that standard",
+      "Remove or rewrite sections that try to speak to multiple buyer types — pick one ICP and go all in",
+      "Make sure your differentiator is in the first scroll, not sitting behind a 'Why Us' section no one reads"
+     ]
+    },
+    "high": {
+     "headline": "Strong GTM clarity — now spread this precision across every page",
+     "text": "Your homepage is doing the positioning work. Now make sure every page carries the same precision. Product pages, case studies, and pricing should all speak your buyer's language. The homepage got them interested — the rest of the site has to close.",
+     "steps": [
+      "Audit your product and pricing pages against the same buyer-language standard you've applied to the homepage",
+      "Check that your case studies lead with outcomes your ICP cares about, not features or timelines",
+      "Align your meta titles and descriptions so search-intent buyers land on the right page, not just the homepage"
+     ]
+    }
+   }
+  },
+  {
+   "id": "first_impression_credibi",
+   "name": "First Impression & Credibility",
+   "questions": [
+    {
+     "id": "first_impression_credibi_q1",
+     "text": "If an enterprise buyer opened your site for the first time, how would the design make them feel about working with you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Immediately credible — the design signals we operate at their level",
+       "score": 5
+      },
+      {
+       "label": "Professional, but we blend in with a dozen other options in the category",
+       "score": 4
+      },
+      {
+       "label": "Decent enough — not a reason to bounce, but not a reason to stay",
+       "score": 3
+      },
+      {
+       "label": "It looks early-stage, which actively works against us in enterprise conversations",
+       "score": 2
+      },
+      {
+       "label": "I'm honestly hesitant to send cold prospects directly to our site",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "first_impression_credibi_q2",
+     "text": "How quickly does your website establish trust before a prospect reads a single line of copy?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Customer logos, design quality, and social proof are visible immediately on load",
+       "score": 5
+      },
+      {
+       "label": "We have trust signals but they're not front and center",
+       "score": 4
+      },
+      {
+       "label": "Our trust signals are scattered — you'd have to look for them",
+       "score": 3
+      },
+      {
+       "label": "We rely on copy to build credibility because the visual design doesn't do it",
+       "score": 2
+      },
+      {
+       "label": "There's nothing on the site that signals credibility at a glance",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "first_impression_credibi_q3",
+     "text": "How polished and intentional does the visual design feel — not just functionally, but as a credibility signal?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Every element — spacing, typography, imagery — feels deliberate and premium",
+       "score": 5
+      },
+      {
+       "label": "The design is clean and professional but plays it safe",
+       "score": 4
+      },
+      {
+       "label": "It's functional and readable but nothing that would make someone pause and take us seriously",
+       "score": 3
+      },
+      {
+       "label": "The design feels assembled from templates rather than built for our brand",
+       "score": 2
+      },
+      {
+       "label": "It looks dated or inconsistent — different pages feel like different companies",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your design is losing deals before the sales conversation starts",
+     "text": "If you're selling to enterprise buyers, your website shouldn't look early-stage. The first impression isn't just aesthetic — it's a credibility signal. Buyers make a judgment in under three seconds, and a weak design tells them you're not operating at their level. That's a hard perception to recover from, even with a great sales team.",
+     "steps": [
+      "Audit your homepage for the three biggest visual trust gaps: logo quality, typography consistency, and social proof placement",
+      "Move your strongest customer logo or most recognizable social proof above the fold — not buried in a dedicated section below",
+      "Fix loading speed first: a slow site signals poor quality before the design even renders",
+      "Get a professional design audit focused specifically on the gap between how you present and the buyers you're targeting"
+     ]
+    },
+    "mid": {
+     "headline": "You're professional, but you're blending in when you need to stand out",
+     "text": "The site is credible enough to not actively hurt you. But 'not hurting you' isn't the same as working for you. Enterprise buyers compare you to the best thing they've seen, not the average. The goal is a site that makes choosing you feel like an obvious decision.",
+     "steps": [
+      "Identify one area where your real-world quality outpaces the site quality and start the upgrade there",
+      "Tighten spacing and typography — the difference between 'decent' and 'premium' is usually whitespace and font hierarchy",
+      "Move your best customer result or case study to the first scroll; don't make buyers earn trust signals",
+      "Open three competitor sites alongside yours and ask: where do they beat you on first impression? That's your priority."
+     ]
+    },
+    "high": {
+     "headline": "Strong first impression — now make sure it holds across the full journey",
+     "text": "The front door is working. Now walk the full buyer journey — product pages, case studies, pricing — and make sure the same quality holds. A premium homepage that leads to a mediocre case study page breaks the trust you just built.",
+     "steps": [
+      "Audit the full buyer journey beyond the homepage for visual consistency",
+      "Check that your mobile experience matches the desktop quality — enterprise buyers review sites on phones before they book from desktop",
+      "Use the visual credibility you've built to put your strongest outcome claims front and center — strong design amplifies strong proof"
+     ]
+    }
+   }
+  },
+  {
+   "id": "conversion_architecture",
+   "name": "Conversion Architecture",
+   "questions": [
+    {
+     "id": "conversion_architecture_q1",
+     "text": "How clear and friction-free is your primary conversion action — booking a demo, starting a trial, or requesting a call?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "One clear CTA, above the fold, no competing distractions, with an obvious next step after clicking",
+       "score": 5
+      },
+      {
+       "label": "We have a primary CTA but it competes with secondary options at the same visual weight",
+       "score": 4
+      },
+      {
+       "label": "There are multiple CTAs with no clear hierarchy, so buyers aren't sure what to do first",
+       "score": 3
+      },
+      {
+       "label": "The CTA is present but easy to miss, and the path after clicking adds friction",
+       "score": 2
+      },
+      {
+       "label": "We don't have a clear primary conversion goal the whole page is designed around",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "conversion_architecture_q2",
+     "text": "How well does your site guide a qualified visitor from landing to conversion without your team having to intervene?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The journey from landing to booking or signing up feels effortless without any sales assist",
+       "score": 5
+      },
+      {
+       "label": "Most visitors find the path, but there are a few spots where we see drop-off",
+       "score": 4
+      },
+      {
+       "label": "There are multiple friction points between landing and converting, and we rely on outreach to close the gap",
+       "score": 3
+      },
+      {
+       "label": "We get traffic but our conversion numbers tell us the site isn't doing the work",
+       "score": 2
+      },
+      {
+       "label": "We haven't intentionally designed the site around a conversion path — it evolved organically",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "n_visitors",
+     "type": "number",
+     "text": "How many unique visitors does your website receive per month?",
+     "hint": "Check Google Analytics or your web host dashboard for monthly uniques. Estimate if you don't track this yet.",
+     "suffix": "visitors/month",
+     "min": 0,
+     "max": 500000,
+     "step": 100,
+     "default": 1000,
+     "normalize_formula": "x < 200 ? 10 : x < 1000 ? 30 : x < 5000 ? 55 : x < 20000 ? 75 : 90"
+    },
+    {
+     "id": "n_conversion_rate",
+     "type": "number",
+     "text": "What percentage of those visitors convert — booking a demo, starting a trial, or completing your primary CTA?",
+     "hint": "Divide total monthly CTA completions by total monthly visitors, then multiply by 100. Industry average for B2B SaaS is 1 to 3 percent.",
+     "suffix": "%",
+     "min": 0,
+     "max": 20,
+     "step": 0.1,
+     "default": 1.5,
+     "normalize_formula": "x <= 0 ? 5 : x < 1 ? 20 : x < 2 ? 45 : x < 4 ? 65 : x < 7 ? 85 : 95"
+    },
+    {
+     "id": "n_acv",
+     "type": "number",
+     "text": "What is your average contract value (ACV) or monthly retainer per new customer?",
+     "hint": "Enter the average value of a new deal in USD. For monthly retainers, enter the monthly amount. For annual contracts, enter the annual total.",
+     "suffix": "USD",
+     "min": 0,
+     "max": 1000000,
+     "step": 1000,
+     "default": 10000,
+     "normalize_formula": "x < 1000 ? 20 : x < 5000 ? 40 : x < 15000 ? 60 : x < 50000 ? 80 : 95"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your site has traffic but no engine — it's not converting",
+     "text": "Getting visitors to a site that doesn't convert is like filling a leaky bucket. Before spending more on ads or SEO, fix the conversion architecture. One clear CTA, one conversion path, one objective per page. The site needs a job to do — give it one.",
+     "steps": [
+      "Pick one primary CTA and make everything else on the homepage support it — remove or demote anything that competes",
+      "Put the CTA in the hero, in the middle of the page, and at the bottom — don't make visitors hunt for it",
+      "Remove unnecessary form fields from your demo or trial request — every extra field drops conversion rate",
+      "Set up a simple funnel view in Analytics to see exactly where visitors drop off between landing and converting",
+      "Test one change at a time — headline, CTA copy, button color, form length — so you know what's actually moving the number"
+     ]
+    },
+    "mid": {
+     "headline": "You have a conversion path — now remove the friction from it",
+     "text": "The structure is there. Now it's about reducing the resistance between a qualified visitor and your CTA. Often it comes down to three things: too many competing options, a CTA that doesn't make the next step obvious, and a post-click experience that doesn't match what drove the click.",
+     "steps": [
+      "Run a session recording tool (Hotjar, Microsoft Clarity) for two weeks and find the exact scroll depth where visitors stop engaging",
+      "Rewrite your CTA copy to describe what happens next, not just the action — 'Book a 30-min strategy call' beats 'Get Started'",
+      "Audit your post-click experience: does the thank-you page or next step feel as premium as the homepage?",
+      "Check your mobile conversion path — most buyers review you on mobile before they ever book from desktop"
+     ]
+    },
+    "high": {
+     "headline": "Solid conversion architecture — now optimize for qualified conversions, not just volume",
+     "text": "The site is converting. Now the question is quality: are the right buyers converting? A high conversion rate from the wrong ICP wastes your sales team's time. The next level is using the site to pre-qualify — so every demo is with someone who already understands what you do and why it matters for them.",
+     "steps": [
+      "Add one or two qualifying questions to your demo request form to filter by company size, role, or use case",
+      "Build persona-specific landing pages for your top traffic sources so the conversion path matches each buyer's context",
+      "Set up lead scoring to distinguish between high-intent conversions and low-intent form fills"
+     ]
+    }
+   }
+  },
+  {
+   "id": "brand_distinctiveness",
+   "name": "Brand Distinctiveness",
+   "questions": [
+    {
+     "id": "brand_distinctiveness_q1",
+     "text": "If you opened five competitor websites side by side with yours, how different would yours look?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Immediately distinct — the visual direction is unmistakably ours, not a category default",
+       "score": 5
+      },
+      {
+       "label": "A few things stand out, but we share DNA with two or three competitors",
+       "score": 4
+      },
+      {
+       "label": "Similar layouts, similar colors — we blend in more than we stand out",
+       "score": 3
+      },
+      {
+       "label": "We use the same SaaS design patterns as most tools in our space",
+       "score": 2
+      },
+      {
+       "label": "We're visually interchangeable with at least three direct competitors",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_distinctiveness_q2",
+     "text": "How would you describe your current visual brand identity as expressed through the website?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Bold and specific to us — built from a clear point of view on what our brand should feel like",
+       "score": 5
+      },
+      {
+       "label": "We have a defined brand but the website plays it too safe to express it",
+       "score": 4
+      },
+      {
+       "label": "Minimal and clean — inoffensive and professional, but forgettable",
+       "score": 3
+      },
+      {
+       "label": "We went with what looked like it was working for others — same gradient, same layout, same clean sans-serif",
+       "score": 2
+      },
+      {
+       "label": "We don't have a defined visual identity; the design just happened over time",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_distinctiveness_q3",
+     "text": "How well does your website reflect the real quality and intentionality of what you actually deliver?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The site quality matches or exceeds what we deliver — it sets the right expectation before the call",
+       "score": 5
+      },
+      {
+       "label": "Close, but the site slightly undersells what we actually do",
+       "score": 4
+      },
+      {
+       "label": "There's a real gap — the product or service is significantly better than the site suggests",
+       "score": 3
+      },
+      {
+       "label": "We've lost deals we later found out were lost at the website, before the sales conversation started",
+       "score": 2
+      },
+      {
+       "label": "Our best sales asset is the call or the demo — the website is something we work around",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_distinctiveness_q4",
+     "text": "How much has your visual design been shaped by deliberate creative exploration vs. following what already exists in your category?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We explored multiple visual directions, made intentional choices, and rejected the category defaults",
+       "score": 5
+      },
+      {
+       "label": "We did some exploration but defaulted to safe choices when it mattered",
+       "score": 4
+      },
+      {
+       "label": "We mostly referenced successful competitors and adapted what seemed to work for them",
+       "score": 3
+      },
+      {
+       "label": "We picked a template that looked professional and moved on — design wasn't a priority at the time",
+       "score": 2
+      },
+      {
+       "label": "The design was done fast to get something up — we've been meaning to revisit it ever since",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You look like everyone else — and buyers can't remember what they can't distinguish",
+     "text": "Right now, too many B2B SaaS sites look like twins. Same purple gradient, same black-and-white layout, same clean-but-forgettable design. AI made it easier to create — and it also made too many brands look identical. Boring design doesn't build brands. Memorable design does. If you blend in, you're asking buyers to choose you on the merits of your copy and sales team alone.",
+     "steps": [
+      "Open five competitor sites, screenshot their hero sections, and build a visual brief for exactly what you don't want to be",
+      "Explore at least three completely different visual directions before committing to one — not variations of the same idea",
+      "Look outside your category for inspiration: editorial design, architecture, consumer brands that are doing something interesting",
+      "Define your brand personality in three concrete words — not 'professional, trustworthy, innovative' — and use them to filter every design decision",
+      "Iterate deliberately: great visual work doesn't happen in the first version or the second. Keep going until the vision actually feels real."
+     ]
+    },
+    "mid": {
+     "headline": "You have a brand — now give it permission to actually show up",
+     "text": "The identity is there, but the website plays it too safe to express it. This is common: a brand that's bold in the deck becomes cautious on the website because everyone's afraid of going too far. The irony is that playing it safe is the riskiest move in a crowded category.",
+     "steps": [
+      "Pull your brand guidelines and compare each element — color, type, tone — against what's actually live on the site. Find where the site pulls back.",
+      "Pick one section to push further creatively — not the whole site, just one. See if it works, then do the next one.",
+      "Bring in fresh eyes: someone outside your team who fits your ICP, and ask them what the site makes them feel in the first five seconds",
+      "Look at where the safe choices live — the CTA buttons, section headers, imagery — and ask which ones could be bolder without losing clarity"
+     ]
+    },
+    "high": {
+     "headline": "Strong visual identity — protect it as you scale and add pages",
+     "text": "You've done the hard work of building something distinct. The risk now is that it dilutes as you grow. New pages get added without the same level of intentionality, and slowly the distinctive feel becomes average again. Treat the visual standard as a product decision, not a design task.",
+     "steps": [
+      "Document the design decisions that make your site distinctive so any new page starts from those constraints, not from a blank canvas",
+      "Set a quarterly audit cadence to make sure new pages and content match the visual standard you've built",
+      "Use your distinctiveness actively in your content and sales process — show the thinking behind it. The design story is part of the brand story."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly_pipeline",
+   "label": "Monthly pipeline your website currently generates",
+   "format": "currency",
+   "formula": "n_visitors * (n_conversion_rate / 100) * n_acv",
+   "show_in_result": true
+  },
+  {
+   "id": "value_per_conversion_point",
+   "label": "Monthly pipeline added by each 1% improvement in conversion rate",
+   "format": "currency_per_period",
+   "formula": "n_visitors * 0.01 * n_acv",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role right now?",
+  "answers": [
+   {
+    "label": "Founder / CEO",
+    "tag": "founder"
+   },
+   {
+    "label": "Head of Marketing / VP Marketing",
+    "tag": "marketing-lead"
+   },
+   {
+    "label": "Growth / Demand Gen Lead",
+    "tag": "growth"
+   },
+   {
+    "label": "Product Lead / CTO",
+    "tag": "product"
+   }
+  ]
+ }
+}

@@ -1,0 +1,520 @@
+=== COMMITS ===
+5708b4f feat(editor): AI rewrite proposal loop (Keep/Try again) with in-place apply
+
+=== STAT ===
+ _engine/edit-mode.css | 177 +++++++++++++++++++++++++++++++++++++++
+ _engine/edit-mode.js  | 225 +++++++++++++++++++++++++++++++++++++++++++++++++-
+ 2 files changed, 401 insertions(+), 1 deletion(-)
+
+=== DIFF ===
+diff --git a/_engine/edit-mode.css b/_engine/edit-mode.css
+index 80cc24b..5dbc857 100644
+--- a/_engine/edit-mode.css
++++ b/_engine/edit-mode.css
+@@ -284,10 +284,187 @@
+ /* Between-item add button (insert mid-array) */
+ .lme-add-between {
+   display: block;
+   margin: 8px auto;
+   font-size: 11px;
+   padding: 4px 12px;
+   opacity: 0.55;
+   transition: opacity .15s ease, transform .15s ease;
+ }
+ .lme-add-between:hover { opacity: 1; transform: scale(1.05); }
++
++/* ── AI rewrite (✨) ──────────────────────────────────────────────────── */
++
++/* Single floating chip, repositioned to whichever field is hovered/focused.
++   Never a child of the field element — must not pollute its textContent
++   or innerHTML, which are read back into state.data on commit. */
++.lme-ai-chip {
++  position: fixed;
++  z-index: 99997;
++  width: 22px;
++  height: 22px;
++  border-radius: 4px;
++  border: 1px solid rgba(76, 110, 61, 0.35);
++  background: rgba(247, 244, 239, 0.95);
++  color: #4C6E3D;
++  font-size: 12px;
++  line-height: 1;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  cursor: pointer;
++  opacity: 0;
++  pointer-events: none;
++  transform: translateY(-2px);
++  transition: opacity 120ms ease, transform 120ms ease, background 120ms ease;
++}
++.lme-ai-chip-visible {
++  opacity: 0.85;
++  pointer-events: auto;
++  transform: translateY(0);
++}
++.lme-ai-chip:hover {
++  opacity: 1;
++  background: rgba(76, 110, 61, 0.12);
++}
++
++/* Prompt / loading / proposal panel */
++.lme-ai-backdrop {
++  position: fixed;
++  inset: 0;
++  background: rgba(38, 30, 20, 0.35);
++  z-index: 99999;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++}
++.lme-ai-panel {
++  background: #FBF8F2;
++  border: 1px solid rgba(76, 110, 61, 0.25);
++  border-radius: 8px;
++  width: min(480px, 92vw);
++  max-height: 82vh;
++  display: flex;
++  flex-direction: column;
++  overflow: hidden;
++  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
++  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
++}
++.lme-ai-panel-header {
++  padding: 12px 16px;
++  border-bottom: 1px solid rgba(76, 110, 61, 0.15);
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++}
++.lme-ai-panel-title { font-weight: 700; font-size: 13px; color: #33402A; }
++.lme-ai-panel-close {
++  background: none;
++  border: none;
++  font-size: 18px;
++  line-height: 1;
++  cursor: pointer;
++  color: #888;
++}
++.lme-ai-panel-close:hover { color: #4C6E3D; }
++.lme-ai-panel-body { padding: 16px; overflow: auto; }
++
++.lme-ai-input {
++  display: block;
++  width: 100%;
++  font: inherit;
++  font-size: 13px;
++  padding: 8px 10px;
++  border: 1px solid rgba(76, 110, 61, 0.35);
++  border-radius: 4px;
++  background: #fff;
++  box-sizing: border-box;
++  outline: none;
++}
++.lme-ai-input:focus { border-color: #4C6E3D; }
++.lme-ai-chips {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 6px;
++  margin-top: 10px;
++}
++.lme-ai-preset {
++  border: 1px solid rgba(76, 110, 61, 0.35);
++  background: rgba(76, 110, 61, 0.06);
++  color: #4C6E3D;
++  border-radius: 4px;
++  padding: 4px 10px;
++  font-size: 12px;
++  font-weight: 600;
++  cursor: pointer;
++  transition: background 80ms;
++}
++.lme-ai-preset:hover { background: rgba(76, 110, 61, 0.14); }
++
++.lme-ai-actions {
++  display: flex;
++  justify-content: flex-end;
++  gap: 8px;
++  margin-top: 16px;
++}
++.lme-ai-btn {
++  background: transparent;
++  border: 1px solid rgba(0, 0, 0, 0.15);
++  color: #33402A;
++  border-radius: 4px;
++  padding: 6px 12px;
++  font-size: 12px;
++  font-weight: 600;
++  cursor: pointer;
++}
++.lme-ai-btn:hover { background: rgba(0, 0, 0, 0.04); }
++.lme-ai-btn-primary { background: #4C6E3D; border-color: #4C6E3D; color: #fff; }
++.lme-ai-btn-primary:hover { background: #3d5931; }
++
++.lme-ai-loading {
++  display: flex;
++  align-items: center;
++  gap: 10px;
++  padding: 12px 0;
++  font-size: 13px;
++  color: #33402A;
++}
++.lme-ai-spinner {
++  width: 16px;
++  height: 16px;
++  border: 2px solid rgba(76, 110, 61, 0.25);
++  border-top-color: #4C6E3D;
++  border-radius: 50%;
++  animation: lme-ai-spin 700ms linear infinite;
++}
++@media (prefers-reduced-motion: reduce) {
++  .lme-ai-spinner { animation: none; }
++}
++@keyframes lme-ai-spin {
++  to { transform: rotate(360deg); }
++}
++
++.lme-ai-block { margin-bottom: 14px; }
++.lme-ai-block-label {
++  font-size: 11px;
++  font-weight: 700;
++  text-transform: uppercase;
++  letter-spacing: 0.4px;
++  color: #888;
++  margin-bottom: 4px;
++}
++.lme-ai-block-content {
++  font-size: 13px;
++  line-height: 1.5;
++  color: #222;
++  padding: 8px 10px;
++  border-radius: 4px;
++  background: rgba(0, 0, 0, 0.03);
++  border: 1px solid rgba(0, 0, 0, 0.06);
++  max-height: 180px;
++  overflow: auto;
++}
++.lme-ai-block-proposed .lme-ai-block-content {
++  background: rgba(76, 110, 61, 0.06);
++  border-color: rgba(76, 110, 61, 0.25);
++}
++.lme-ai-block-proposed .lme-ai-block-label { color: #4C6E3D; }
+diff --git a/_engine/edit-mode.js b/_engine/edit-mode.js
+index d509893..0ca1502 100644
+--- a/_engine/edit-mode.js
++++ b/_engine/edit-mode.js
+@@ -5,20 +5,21 @@
+  *   - attachArray(el, arrayPath, opts)
+  *   - mount({ token, slug, format, data })
+  */
+ (function () {
+   "use strict";
+ 
+   // ── Configuration ─────────────────────────────────────────────────────
+   var EDIT_WEBHOOK = "https://n8n.ivanmanfredi.com/webhook/edit-lm";
+   var GITHUB_REPO = "ivanmanfredi/resources";
+   var GITHUB_API = "https://api.github.com";
++  var REWRITE_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-copy-rewrite";
+ 
+   // ── State ─────────────────────────────────────────────────────────────
+   var state = {
+     token: null,
+     slug: null,
+     format: null,
+     data: null,           // working copy (mutated by edits)
+     originalData: null,   // pristine snapshot for "discard"
+     dirty: false,
+     fieldEls: [],         // [{el, path}]
+@@ -167,69 +168,291 @@
+       });
+     }
+     // Fallback: strip script/style tags only. DOMPurify lazy-loads on mount
+     // so by the time a user blurs a contenteditable field, it should be ready.
+     return String(html || "")
+       .replace(/<\/?script[^>]*>/gi, "")
+       .replace(/<\/?style[^>]*>/gi, "")
+       .replace(/\son\w+=("[^"]*"|'[^']*')/gi, "");
+   }
+ 
++  // ── AI rewrite (✨) ───────────────────────────────────────────────────
++  // Client-facing proposal loop: hover any unlocked field, click ✨, type or
++  // pick an instruction, get a Now/Proposed panel. Nothing touches el or
++  // state.data until the user clicks Keep. A single floating chip is reused
++  // across all fields (cheaper than wrapping every field's DOM, and safe —
++  // it never becomes a child of el, so it can't pollute el.textContent /
++  // el.innerHTML, which are the values read back into state.data on commit).
++  var AI_PRESETS = ["Punchier", "Shorter", "More specific", "In my voice"];
++  var aiChip = null;
++  var aiChipTarget = null;
++  var aiChipHideTimer = null;
++
++  function ensureAiChip() {
++    if (aiChip) return aiChip;
++    aiChip = make("button", {
++      class: "lme-ai-chip",
++      type: "button",
++      title: "Rewrite with AI",
++      "aria-label": "Rewrite with AI",
++    }, "✨");
++    document.body.appendChild(aiChip);
++    aiChip.addEventListener("mouseenter", function () {
++      if (aiChipHideTimer) { clearTimeout(aiChipHideTimer); aiChipHideTimer = null; }
++    });
++    aiChip.addEventListener("mouseleave", scheduleHideAiChip);
++    aiChip.addEventListener("click", function (e) {
++      e.preventDefault();
++      e.stopPropagation();
++      if (!aiChipTarget) return;
++      var t = aiChipTarget;
++      hideAiChipNow();
++      openAiPanel(t.el, t.path, t.opts);
++    });
++    window.addEventListener("scroll", function () {
++      if (aiChipTarget && aiChip.classList.contains("lme-ai-chip-visible")) positionAiChip(aiChipTarget.el);
++    }, true);
++    return aiChip;
++  }
++  function positionAiChip(el) {
++    var chip = ensureAiChip();
++    var r = el.getBoundingClientRect();
++    chip.style.top = Math.max(4, r.top + 4) + "px";
++    chip.style.left = Math.max(4, r.right - chip.offsetWidth - 4) + "px";
++  }
++  function showAiChip(el, path, opts) {
++    var chip = ensureAiChip();
++    aiChipTarget = { el: el, path: path, opts: opts || {} };
++    positionAiChip(el);
++    chip.classList.add("lme-ai-chip-visible");
++    if (aiChipHideTimer) { clearTimeout(aiChipHideTimer); aiChipHideTimer = null; }
++  }
++  function scheduleHideAiChip() {
++    if (aiChipHideTimer) clearTimeout(aiChipHideTimer);
++    aiChipHideTimer = setTimeout(hideAiChipNow, 180);
++  }
++  function hideAiChipNow() {
++    if (aiChip) aiChip.classList.remove("lme-ai-chip-visible");
++    aiChipTarget = null;
++  }
++  // Wires hover/focus listeners that surface the shared ✨ chip for one field.
++  // Guarded by data-lme-ai so re-running attachField for the same DOM node
++  // (engines re-attach across partial re-renders) never double-wires it.
++  function wireAiAffordance(el, path, opts) {
++    if (!el || (opts && opts.locked)) return;
++    if (el.getAttribute("data-lme-ai") === "1") return;
++    el.setAttribute("data-lme-ai", "1");
++    function maybeShow() {
++      if (el.hasAttribute("data-lme-field-editing")) return;
++      showAiChip(el, path, opts);
++    }
++    el.addEventListener("mouseenter", maybeShow);
++    el.addEventListener("mouseleave", scheduleHideAiChip);
++    el.addEventListener("focus", maybeShow);
++    el.addEventListener("blur", scheduleHideAiChip);
++  }
++  // Opens the prompt → loading → proposal panel for one field. `original` is
++  // captured once here and never reassigned, so Try again / Cancel can never
++  // drift from the true pre-rewrite value. state.data / el are only ever
++  // written inside the Keep handler.
++  function openAiPanel(el, path, opts) {
++    var isHtml = !!(opts && opts.contenteditable);
++    var original = isHtml ? el.innerHTML : el.textContent;
++    var lastInstruction = "";
++    var closed = false;
++
++    var backdrop = make("div", { class: "lme-ai-backdrop" });
++    var panel = make("div", { class: "lme-ai-panel" });
++    var header = make("div", { class: "lme-ai-panel-header" });
++    header.appendChild(make("span", { class: "lme-ai-panel-title" }, "✨ Rewrite"));
++    var closeBtn = make("button", { class: "lme-ai-panel-close", type: "button", "aria-label": "Close" }, "×");
++    header.appendChild(closeBtn);
++    var body = make("div", { class: "lme-ai-panel-body" });
++    panel.appendChild(header);
++    panel.appendChild(body);
++    backdrop.appendChild(panel);
++
++    function close() {
++      if (closed) return;
++      closed = true;
++      document.removeEventListener("keydown", onKeydown);
++      if (backdrop.parentNode) backdrop.parentNode.removeChild(backdrop);
++    }
++    function onKeydown(e) {
++      if (e.key === "Escape") close();
++    }
++    closeBtn.addEventListener("click", close);
++    backdrop.addEventListener("click", function (e) { if (e.target === backdrop) close(); });
++    document.addEventListener("keydown", onKeydown);
++
++    function showPrompt() {
++      body.innerHTML = "";
++      var input = make("input", { type: "text", class: "lme-ai-input", placeholder: "e.g. punchier, shorter, more specific, in my voice" });
++      input.value = lastInstruction;
++      var chips = make("div", { class: "lme-ai-chips" });
++      AI_PRESETS.forEach(function (label) {
++        var chip = make("button", { class: "lme-ai-preset", type: "button" }, label);
++        chip.addEventListener("click", function () { submit(label.toLowerCase()); });
++        chips.appendChild(chip);
++      });
++      var actions = make("div", { class: "lme-ai-actions" });
++      var cancelBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Cancel");
++      var submitBtn = make("button", { class: "lme-ai-btn lme-ai-btn-primary", type: "button" }, "Rewrite");
++      cancelBtn.addEventListener("click", close);
++      submitBtn.addEventListener("click", function () { submit(input.value.trim()); });
++      input.addEventListener("keydown", function (e) {
++        if (e.key === "Enter") { e.preventDefault(); submit(input.value.trim()); }
++      });
++      actions.appendChild(cancelBtn);
++      actions.appendChild(submitBtn);
++      body.appendChild(input);
++      body.appendChild(chips);
++      body.appendChild(actions);
++      input.focus();
++    }
++
++    function showLoading() {
++      body.innerHTML = "";
++      var loading = make("div", { class: "lme-ai-loading" });
++      loading.appendChild(make("span", { class: "lme-ai-spinner" }));
++      loading.appendChild(make("span", {}, "Rewriting…"));
++      body.appendChild(loading);
++    }
++
++    function showProposal(rewritten) {
++      body.innerHTML = "";
++      var nowBlock = make("div", { class: "lme-ai-block" });
++      nowBlock.appendChild(make("div", { class: "lme-ai-block-label" }, "Now"));
++      var nowPreview = make("div", { class: "lme-ai-block-content" });
++      if (isHtml) nowPreview.innerHTML = sanitizeHtml(original); else nowPreview.textContent = original;
++      nowBlock.appendChild(nowPreview);
++
++      var proposedBlock = make("div", { class: "lme-ai-block lme-ai-block-proposed" });
++      proposedBlock.appendChild(make("div", { class: "lme-ai-block-label" }, "Proposed"));
++      var proposedPreview = make("div", { class: "lme-ai-block-content" });
++      if (isHtml) proposedPreview.innerHTML = sanitizeHtml(rewritten); else proposedPreview.textContent = rewritten;
++      proposedBlock.appendChild(proposedPreview);
++
++      var actions = make("div", { class: "lme-ai-actions" });
++      var cancelBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Cancel");
++      var retryBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Try again");
++      var keepBtn = make("button", { class: "lme-ai-btn lme-ai-btn-primary", type: "button" }, "Keep");
++      cancelBtn.addEventListener("click", close);
++      retryBtn.addEventListener("click", showPrompt);
++      keepBtn.addEventListener("click", function () {
++        // The ONLY place this panel writes to el / state.data.
++        if (isHtml) {
++          var clean = sanitizeHtml(rewritten);
++          el.innerHTML = clean;
++          setByPath(state.data, path, clean);
++        } else {
++          el.textContent = rewritten;
++          setByPath(state.data, path, rewritten);
++        }
++        markDirty();
++        close();
++        showToast("Rewrite applied · Publish to go live");
++      });
++      actions.appendChild(cancelBtn);
++      actions.appendChild(retryBtn);
++      actions.appendChild(keepBtn);
++
++      body.appendChild(nowBlock);
++      body.appendChild(proposedBlock);
++      body.appendChild(actions);
++    }
++
++    function submit(instruction) {
++      if (!instruction) return;
++      lastInstruction = instruction;
++      showLoading();
++      var context = (state.data && state.data.title) || "";
++      fetch(REWRITE_URL, {
++        method: "POST",
++        headers: { "Content-Type": "application/json" },
++        body: JSON.stringify({ text: original, instruction: instruction, context: context }),
++      })
++        .then(function (r) {
++          return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; });
++        })
++        .then(function (res) {
++          if (closed) return;
++          if (res.status !== 200 || !res.body || !res.body.rewritten) {
++            showToast("Rewrite failed. Original kept.", true);
++            showPrompt();
++            return;
++          }
++          showProposal(res.body.rewritten);
++        })
++        .catch(function () {
++          if (closed) return;
++          showToast("Rewrite failed. Original kept.", true);
++          showPrompt();
++        });
++    }
++
++    document.body.appendChild(backdrop);
++    showPrompt();
++  }
++
+   // ── Field attach ──────────────────────────────────────────────────────
+   function attachField(el, path, opts) {
+     if (!el) return;
+     state.fieldEls.push({ el: el, path: path });
+     el.setAttribute("data-lme-field", path);
+     if (opts && opts.locked) el.classList.add("lme-field-locked");
+ 
+     // contenteditable path — for rich HTML editing (guide section bodies).
+     // Direct contentEditable on the element, sanitize on blur.
+     if (opts && opts.contenteditable) {
+       el.contentEditable = "true";
+       el.spellcheck = true;
+       el.classList.add("lme-field-contenteditable");
+-      el.addEventListener("focus", function () { el.setAttribute("data-lme-field-editing", "true"); });
++      el.addEventListener("focus", function () { el.setAttribute("data-lme-field-editing", "true"); hideAiChipNow(); });
+       el.addEventListener("blur", function () {
+         el.removeAttribute("data-lme-field-editing");
+         var raw = el.innerHTML;
+         var clean = sanitizeHtml(raw);
+         if (clean !== raw) el.innerHTML = clean;
+         setByPath(state.data, path, clean);
+         markDirty();
+       });
+       // Plain-text paste so users don't drop styled HTML from Word/Notion.
+       el.addEventListener("paste", function (e) {
+         e.preventDefault();
+         var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+         document.execCommand("insertText", false, text);
+       });
++      wireAiAffordance(el, path, opts);
+       return;
+     }
+ 
+     el.addEventListener("click", function (e) {
+       // Don't trigger on nested links/buttons
+       if (e.target !== el && (e.target.closest("a") || e.target.closest("button"))) return;
+       if (el.hasAttribute("data-lme-field-editing")) return;
+       if (opts && opts.locked) { showToast("This field is locked (stable ID)", true); return; }
+       e.preventDefault(); e.stopPropagation();
+       enterEditField(el, path, opts || {});
+     });
++    wireAiAffordance(el, path, opts);
+   }
+   function enterEditField(el, path, opts) {
+     var original = el.textContent;
+     var useTextarea = opts.multiline || original.length > 80;
+     var input = make(useTextarea ? "textarea" : "input", {
+       class: useTextarea ? "lme-inline-textarea" : "lme-inline-input",
+       type: useTextarea ? undefined : "text",
+     });
+     input.value = original;
+     el.setAttribute("data-lme-field-editing", "true");
++    hideAiChipNow();
+     el.innerHTML = "";
+     el.appendChild(input);
+     input.focus();
+     if (!useTextarea) input.select();
+     function commit() {
+       var newVal = input.value;
+       el.removeAttribute("data-lme-field-editing");
+       el.textContent = newVal;
+       if (newVal !== original) {
+         setByPath(state.data, path, newVal);

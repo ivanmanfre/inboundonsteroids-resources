@@ -1,0 +1,21 @@
+{
+  "slug": "anti-ai-patterns-guide-the-tells-that-make-ai-written-content-obvious-and-how-to",
+  "format_label": "Guide",
+  "category": "Anti-AI Patterns",
+  "headline": "The tells that make AI-written content obvious",
+  "headline_emphasis": "obvious",
+  "subhead": "The 14 specific patterns that flag your copy as machine-written, and the exact find-and-strip fix for each one.",
+  "subhead_secondary": "Drop the rules straight into a Claude skill you run on every draft.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/anti-ai-patterns-guide-the-tells-that-make-ai-written-content-obvious-and-how-to-portrait.png",
+  "inside": [
+    "The 14 specific tells that flag content as machine-written",
+    "The exact find-and-strip instruction for each one",
+    "Before/after lines so you can watch the fix land",
+    "The rules dropped straight into a Claude skill you run on every draft"
+  ],
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
+  "resource_url": "https://resources.inboundonsteroids.com/anti-ai-patterns-guide-the-tells-that-make-ai-written-content-obvious-and-how-to",
+  "gate_keyword": "TELLS",
+  "cta_label": "Email me the guide",
+  "proof_avatar_alt": "Ivan Manfredi"
+}

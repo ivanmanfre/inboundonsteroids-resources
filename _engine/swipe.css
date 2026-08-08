@@ -1,0 +1,56 @@
+/* Swipe File Engine — filterable list of copy-ready examples with "Take" mechanic. */
+@import url("./shared.css");
+
+.lms-root { font-family: 'Source Serif 4', Georgia, serif; }
+
+/* Tag filter bar */
+.lms-filters { position: sticky; top: 0; z-index: 30; background: rgba(255, 255, 255, 0.92); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--hairline); padding: .85rem 1.5rem; }
+.lms-filters-inner { max-width: 860px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: .5rem; align-items: center; }
+.lms-filter-label { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--ink-mute); margin-right: .75rem; }
+.lms-filter { padding: .35rem .85rem; background: transparent; color: var(--ink-soft); font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border: 1px solid var(--hairline); border-radius: 2px; cursor: pointer; transition: background .15s, color .15s, border-color .15s; }
+.lms-filter:hover { background: rgba(19, 18, 16,0.04); border-color: var(--hairline-bold); }
+.lms-filter.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.lms-taken-count { margin-left: auto; font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; color: var(--ink-mute); letter-spacing: .08em; text-transform: uppercase; font-weight: 600; }
+.lms-taken-count strong { color: var(--accent); font-weight: 600; }
+
+/* Example list */
+.lms-list { display: grid; gap: 0; padding: 3rem 0; }
+.lms-example {
+  padding: 1.75rem 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(19, 18, 16,0.08);
+  border-radius: 0;
+  box-shadow: none;
+  transition: opacity .3s var(--ease), background .15s;
+  opacity: 0;
+  transform: translateY(8px);
+}
+.lms-example:first-of-type { border-top: none; }
+.lms-example.in-view { opacity: 1; transform: translateY(0); }
+.lms-example:hover { background: rgba(19, 18, 16,0.02); }
+.lms-example.dimmed { opacity: .35; }
+.lms-example.taken { background: transparent; border-color: rgba(19, 18, 16,0.08); border-left: 4px solid var(--accent); padding-left: 1rem; margin-left: -1rem; }
+.lms-ex-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; margin-bottom: .85rem; flex-wrap: wrap; }
+.lms-ex-title { font-family: 'Schibsted Grotesk', Georgia, serif; font-size: 1.35rem; font-weight: 400; color: var(--ink); margin: 0; letter-spacing: -0.01em; line-height: 1.2; }
+.lms-ex-title em { font-family: 'Schibsted Grotesk', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); }
+.lms-ex-tags { display: flex; gap: .35rem; flex-wrap: wrap; }
+.lms-ex-tag { padding: 0; background: transparent; color: var(--ink-mute); font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; border: none; border-radius: 0; }
+.lms-ex-tag::before { content: ""; display: inline-block; width: 4px; height: 4px; background: var(--accent); margin-right: 6px; vertical-align: middle; }
+.lms-ex-body { background: transparent; padding: 1rem 0 1rem 1rem; border-left: 2px solid rgba(19, 18, 16,0.35); border-radius: 0; font-family: 'Source Serif 4', Georgia, serif; font-size: 1.0625rem; line-height: 1.65; color: var(--ink); margin: 0 0 1rem; white-space: pre-wrap; word-break: break-word; }
+.lms-ex-why { font-family: 'Source Serif 4', Georgia, serif; font-size: .95rem; color: var(--ink-soft); line-height: 1.6; padding-left: 0; border-left: none; margin: 0 0 1rem; font-style: italic; }
+.lms-ex-why::before { content: "Why it works"; display: block; font-family: 'Source Serif 4', Georgia, serif; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: .35rem; font-style: normal; }
+.lms-ex-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.lms-take-btn { padding: 10px 22px; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-size: 15px; font-weight: 600; letter-spacing: 0; border: none; border-radius: 0; cursor: pointer; transition: background 80ms; }
+.lms-take-btn:hover { background: #000; color: var(--paper); }
+.lms-example.taken .lms-take-btn { background: var(--accent); color: var(--paper); }
+.lms-example.taken .lms-take-btn::before { content: "\u2713  "; }
+
+/* Export footer bar (appears when at least one taken) */
+.lms-export-bar { display: none; position: sticky; bottom: 1rem; z-index: 40; background: var(--paper-raise); border: 1px solid var(--hairline); border-radius: 4px; box-shadow: 0 8px 24px rgba(19, 18, 16,0.10); padding: 1rem 1.25rem; margin: 2rem auto; max-width: 860px; align-items: center; gap: 1rem; flex-wrap: wrap; }
+.lms-root.has-taken .lms-export-bar { display: flex; animation: slide-up .3s var(--ease); }
+@keyframes slide-up { from { transform: translateY(8px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.lms-export-text { flex: 1 1 auto; font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; color: var(--ink-soft); }
+.lms-export-text strong { color: var(--ink); font-weight: 600; }
+.lms-export-btn { padding: 12px 24px; background: var(--ink); color: var(--paper); font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; border: none; border-radius: 0; cursor: pointer; font-size: 15px; letter-spacing: 0; transition: background 80ms; }
+.lms-export-btn:hover { background: #000; color: var(--paper); }

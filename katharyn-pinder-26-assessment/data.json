@@ -1,0 +1,540 @@
+{
+ "slug": "katharyn-pinder-26-assessment",
+ "title": "Your Communication Impact Score",
+ "subtitle": "Measures how fully you are using your voice to drive passion, civic engagement, and lasting community change.",
+ "brand": {
+  "accent": "#ad640c",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "communicating_with_passi",
+   "name": "Communicating with Passion",
+   "questions": [
+    {
+     "id": "communicating_with_passi_q1",
+     "text": "When you share your organization's message publicly, how would you describe the energy behind it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I share what is expected but do not feel strongly connected to it",
+       "score": 1
+      },
+      {
+       "label": "I believe in the work but my delivery comes across as flat or routine",
+       "score": 2
+      },
+      {
+       "label": "I communicate with conviction most of the time",
+       "score": 3
+      },
+      {
+       "label": "My passion comes through clearly and people feel it",
+       "score": 4
+      },
+      {
+       "label": "Every message I put out reflects genuine fire for the work",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "communicating_with_passi_q2",
+     "text": "How often do you actively choose formats and channels that excite you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I use whatever is easiest or expected",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, when I have extra time",
+       "score": 2
+      },
+      {
+       "label": "About half the time",
+       "score": 3
+      },
+      {
+       "label": "Most of the time I pick formats I can bring real energy to",
+       "score": 4
+      },
+      {
+       "label": "Always. The medium is part of the message for me",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "communicating_with_passi_q3",
+     "text": "When you speak publicly about work that matters to you, how does your audience typically respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Polite but not particularly moved",
+       "score": 1
+      },
+      {
+       "label": "Interested but rarely take action",
+       "score": 2
+      },
+      {
+       "label": "Engaged and ask questions",
+       "score": 3
+      },
+      {
+       "label": "They share it or bring others into the conversation",
+       "score": 4
+      },
+      {
+       "label": "Consistently moved to act or share further",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Reconnect with why this work matters to you",
+     "text": "The passion has to come before the platform. If your message feels flat, your audience will feel it too. Start by getting honest about what genuinely fires you up about this work, before you write a single word.",
+     "steps": [
+      "Write down three things about your mission that still give you energy. The real version, not the polished one",
+      "Record yourself talking about your work for 60 seconds with zero editing",
+      "Find one story from the past year that reminded you why you do this and build your next piece around it"
+     ]
+    },
+    "mid": {
+     "headline": "Your passion is there. Give it more room",
+     "text": "You believe in the work. The gap is usually in letting that belief come through in the format and delivery, not just the content itself.",
+     "steps": [
+      "Identify which communication format makes you feel most alive and do more of it this quarter",
+      "Cut one safe, formulaic piece per month and replace it with something that actually excites you",
+      "Ask someone who knows you well to describe what you sound like when you talk about the work you love most"
+     ]
+    },
+    "high": {
+     "headline": "You communicate with real conviction. Protect it",
+     "text": "Passion-driven communication is rare and it shows. Your job now is to protect that energy and channel it consistently, especially when the work gets routine.",
+     "steps": [
+      "Document what conditions help you show up at your most energized so you can recreate them",
+      "Be intentional about which projects and platforms deserve your highest-energy presence",
+      "Mentor someone who is still finding their communication voice"
+     ]
+    }
+   }
+  },
+  {
+   "id": "civic_voice_and_communit",
+   "name": "Civic Voice and Community Action",
+   "questions": [
+    {
+     "id": "civic_voice_and_communit_q1",
+     "text": "How actively does your communication address real barriers your community faces, such as access, time, or awareness?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I focus on my organization's goals, not broader barriers",
+       "score": 1
+      },
+      {
+       "label": "I acknowledge barriers occasionally but do not build campaigns around them",
+       "score": 2
+      },
+      {
+       "label": "I factor in my community's real constraints when I am planning",
+       "score": 3
+      },
+      {
+       "label": "Removing barriers is a regular part of how I frame and share content",
+       "score": 4
+      },
+      {
+       "label": "Barrier-removal is central to every campaign I design",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "civic_voice_and_communit_q2",
+     "text": "When a cause or crisis matters to your community, how quickly and authentically can you respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I usually wait to see how others respond first",
+       "score": 1
+      },
+      {
+       "label": "I respond but it often feels rushed or disconnected from my voice",
+       "score": 2
+      },
+      {
+       "label": "I respond with something genuine within a few days",
+       "score": 3
+      },
+      {
+       "label": "I have a process that lets me respond quickly and stay true to myself",
+       "score": 4
+      },
+      {
+       "label": "My audience already expects me to respond because I consistently show up",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "civic_voice_and_communit_q3",
+     "text": "How clearly does your communication connect your audience to a concrete action, beyond awareness alone?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I share information but rarely point to a next step",
+       "score": 1
+      },
+      {
+       "label": "I include a call to action sometimes but it feels like an afterthought",
+       "score": 2
+      },
+      {
+       "label": "Most pieces include a clear action",
+       "score": 3
+      },
+      {
+       "label": "Every campaign is built around a specific action I want people to take",
+       "score": 4
+      },
+      {
+       "label": "I track whether people actually take the action and adjust accordingly",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your community needs your voice, direct and personal",
+     "text": "Showing up for your community in public, especially when it costs something, is what builds trust that no ad budget can replicate. Start with one cause that genuinely moves you and make the ask specific.",
+     "steps": [
+      "Identify one systemic barrier your audience faces and make it the focus of your next campaign",
+      "Share one clear, specific call to action this week. Not 'learn more' but an actual step with a link",
+      "Commit to responding when something affects your community, even when the message is still forming"
+     ]
+    },
+    "mid": {
+     "headline": "You are showing up. Now make the action clearer",
+     "text": "Your community knows you care. The next level is making it easier for them to do something with that care. Every message needs one clear door.",
+     "steps": [
+      "Audit your last five pieces of content. How many had a clear, specific action attached?",
+      "Build a simple response template for community crises so you can move fast without losing your voice",
+      "Add one concrete resource, a link, a number, or a form, to every awareness piece you publish"
+     ]
+    },
+    "high": {
+     "headline": "You are a civic voice your community trusts",
+     "text": "You show up, you connect to action, and you move fast when it matters. That is a position most communicators never reach. Use it with intention.",
+     "steps": [
+      "Document the process behind your fastest and most authentic community responses so others can learn from it",
+      "Actively amplify others in your community who are doing the same work",
+      "Consider how your platform can lower the barrier for others to find and use their own civic voice"
+     ]
+    }
+   }
+  },
+  {
+   "id": "strategic_rest_and_creat",
+   "name": "Strategic Rest and Creative Renewal",
+   "questions": [
+    {
+     "id": "strategic_rest_and_creat_q1",
+     "text": "How intentional are you about taking real breaks from your communication work?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I do not take breaks. There is always more to do",
+       "score": 1
+      },
+      {
+       "label": "I take breaks when forced to but feel guilty about them",
+       "score": 2
+      },
+      {
+       "label": "I take some downtime but do not plan for it",
+       "score": 3
+      },
+      {
+       "label": "I schedule breaks and treat them as part of my creative process",
+       "score": 4
+      },
+      {
+       "label": "Rest is built into my workflow and I can trace it directly to my best ideas",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "strategic_rest_and_creat_q2",
+     "text": "When you return from time away from work, what typically happens to your output?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I spend the first week catching up on what I missed",
+       "score": 1
+      },
+      {
+       "label": "Output stays about the same",
+       "score": 2
+      },
+      {
+       "label": "I feel slightly refreshed but it does not show much in the work",
+       "score": 3
+      },
+      {
+       "label": "I come back with clearer thinking and stronger ideas",
+       "score": 4
+      },
+      {
+       "label": "Some of my most important work has come directly after stepping away",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "strategic_rest_and_creat_q3",
+     "text": "How well does your current schedule protect time for non-work input, such as reading, conversation, or new experiences, that feeds your thinking?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I do not have time for that right now",
+       "score": 1
+      },
+      {
+       "label": "It happens occasionally but by accident, not design",
+       "score": 2
+      },
+      {
+       "label": "I try to carve out time a few times a month",
+       "score": 3
+      },
+      {
+       "label": "I have a regular practice that consistently refills my thinking",
+       "score": 4
+      },
+      {
+       "label": "My best communication ideas come from what I am taking in outside of work",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Brilliance needs space to breathe",
+     "text": "Rest is not a reward for finishing the work. It is part of the work. You cannot communicate with creativity and precision when you are running on fumes. That gap shows up in the output.",
+     "steps": [
+      "Block one full day in the next two weeks with no deliverables and no guilt attached to it",
+      "Pick one source of non-work input, a book, a person, a walk, and commit to it weekly",
+      "Track the quality of your ideas the day after genuine rest versus a depleted stretch and compare"
+     ]
+    },
+    "mid": {
+     "headline": "You are resting. Now make it feed the work",
+     "text": "You have the instinct to step back. Now make it structural so your breaks actively contribute to the work rather than simply pausing it.",
+     "steps": [
+      "Keep a simple note of ideas that arrive during or right after downtime",
+      "Shift from reactive rest (crashing when burned out) to proactive rest (scheduled before you need it)",
+      "Identify the specific conditions under which your best ideas tend to arrive"
+     ]
+    },
+    "high": {
+     "headline": "You have made rest part of your creative process",
+     "text": "This is one of the most underrated advantages in communication work. You understand that the quality of your message depends on the quality of your thinking, and that thinking needs space to develop.",
+     "steps": [
+      "Document and share your rest-to-brilliance rhythm with your team or clients",
+      "Protect your rest practices as your workload grows. They will be the first thing pressure tries to cut",
+      "When your output quality dips, trace it back. Rest is usually the variable"
+     ]
+    }
+   }
+  },
+  {
+   "id": "building_for_the_future",
+   "name": "Building for the Future",
+   "questions": [
+    {
+     "id": "building_for_the_future_q1",
+     "text": "How much of your current communication work is building toward something beyond this quarter?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I am focused on what is immediately in front of me",
+       "score": 1
+      },
+      {
+       "label": "I have vague long-term goals but they are not connected to my communication plan",
+       "score": 2
+      },
+      {
+       "label": "I am starting to connect my current content to a longer arc",
+       "score": 3
+      },
+      {
+       "label": "Most of what I publish is building toward a clear future vision",
+       "score": 4
+      },
+      {
+       "label": "Every campaign is consciously part of a larger future I am constructing",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "building_for_the_future_q2",
+     "text": "How clearly can you articulate what you want your communication legacy to be, what you want to be known for building?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have not thought much about it yet",
+       "score": 1
+      },
+      {
+       "label": "I have a rough sense but struggle to put it into words",
+       "score": 2
+      },
+      {
+       "label": "I can describe it but it does not shape my daily decisions much",
+       "score": 3
+      },
+      {
+       "label": "I have a clear answer and it influences how I spend my communication time",
+       "score": 4
+      },
+      {
+       "label": "My legacy vision is explicit, shared with others, and shows up in the work I prioritize",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "building_for_the_future_q3",
+     "text": "When you face a major transition, personally or professionally, how does it affect your communication output?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I go quiet and it takes a long time to return",
+       "score": 1
+      },
+      {
+       "label": "I keep going but the work feels disconnected from what actually matters",
+       "score": 2
+      },
+      {
+       "label": "I slow down but find my way back within a few weeks",
+       "score": 3
+      },
+      {
+       "label": "I can reframe transitions and often produce meaningful work because of them",
+       "score": 4
+      },
+      {
+       "label": "Transitions fuel some of my most resonant work. I have learned to use them",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "building_for_the_future_q4",
+     "text": "How actively are you investing in the next generation of communicators or advocates in your field?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not currently. I do not have the bandwidth",
+       "score": 1
+      },
+      {
+       "label": "I would like to but have not made it happen yet",
+       "score": 2
+      },
+      {
+       "label": "I informally support a few people when they reach out",
+       "score": 3
+      },
+      {
+       "label": "I have an intentional practice of mentoring or amplifying emerging voices",
+       "score": 4
+      },
+      {
+       "label": "Developing other communicators is a core part of how I define my work",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Start building for tomorrow, not just today",
+     "text": "The work that lasts is built with a future in mind. That does not require a grand plan. It starts with one honest question: what do you want this body of work to add up to?",
+     "steps": [
+      "Write one sentence describing what you want to be known for in five years",
+      "Identify one piece of content from the past year you are proud of and trace what made it matter",
+      "Find one person you can invest ten minutes in this month. A question, a referral, a share"
+     ]
+    },
+    "mid": {
+     "headline": "You are building. Now make the arc visible",
+     "text": "You have a future orientation. The gap is usually in connecting your daily output to the larger vision so the pattern is clear, both to your audience and to you.",
+     "steps": [
+      "Define three communication themes you want to own for the next 12 months",
+      "Look at your last 30 days of content and ask how much of it is building toward those themes",
+      "Make one intentional investment in another communicator's growth this quarter"
+     ]
+    },
+    "high": {
+     "headline": "You are building something that outlasts the campaign",
+     "text": "Your communication has a trajectory, not just a calendar. That is how movements get built. Keep going with the same intention and bring others along.",
+     "steps": [
+      "Document the arc you have built so far. It is a story worth sharing publicly",
+      "Be explicit with your audience about what you are building and why it matters to you",
+      "Scale your investment in others. Your future is partly in who you bring with you"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "Brand or communications leader",
+    "tag": "comm_leader"
+   },
+   {
+    "label": "Nonprofit or advocacy professional",
+    "tag": "advocate"
+   },
+   {
+    "label": "Founder or entrepreneur building something new",
+    "tag": "founder"
+   },
+   {
+    "label": "Community organizer or civic voice",
+    "tag": "civic"
+   }
+  ]
+ }
+}

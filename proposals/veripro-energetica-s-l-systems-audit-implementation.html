@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VeriPro Systems Audit &amp; Implementation / Proposal</title>
+<meta name="description" content="Systems audit and implementation proposal for VeriPro Energetica S.L. Airtable restructure, automation mapping, and permission architecture for scalable operations.">
+<meta property="og:title" content="VeriPro Systems Audit & Implementation - Proposal">
+<meta property="og:description" content="Comprehensive operational audit and phased implementation to prepare VeriPro's infrastructure for 100+ daily installations.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://resources.inboundonsteroids.com/proposals/veripro-energetica-s-l-systems-audit-implementation.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>IM</text></svg>">
+<style>@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');*{margin:0;padding:0;box-sizing:border-box}:root{--black:#0A0A0A;--dark:#111111;--card:#161616;--border:#2A2A2A;--border-light:#333333;--text:#FFFFFF;--text-dim:#999999;--text-muted:#888888;--green:#00E676;--green-dark:#00C853;--green-glow:rgba(0,230,118,.15);--green-glow-strong:rgba(0,230,118,.25)}body{overflow-x:hidden;font-family:'Space Grotesk',sans-serif;background:var(--black);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}.cover{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:80px 60px;position:relative;max-width:1140px;margin:0 auto}.cover::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,var(--green-glow) 0%,transparent 70%);pointer-events:none}.cover-nav{position:absolute;top:40px;left:60px;right:60px;display:flex;justify-content:space-between;align-items:center}.logo{display:flex;align-items:center;gap:14px}.logo-mark{width:44px;height:44px;border:2px solid var(--text);border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;letter-spacing:1px}.logo-text{font-size:14px;font-weight:600;letter-spacing:3px;text-transform:uppercase}.cover-meta{font-size:13px;color:var(--text-dim);letter-spacing:1px}.cover-tag{display:inline-block;background:var(--green);color:var(--black);padding:6px 16px;font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:32px}.cover h1{font-size:clamp(48px,6vw,72px);font-weight:700;line-height:1.05;letter-spacing:-2px;text-transform:uppercase;margin-bottom:24px;max-width:800px}.cover h1 .highlight{display:inline;background:var(--green);color:var(--black);padding:4px 12px;box-decoration-break:clone;-webkit-box-decoration-break:clone}.cover-sub{font-size:18px;color:var(--text-dim);max-width:600px;line-height:1.7;margin-bottom:48px}.cover-details{display:flex;gap:48px;padding-top:32px;border-top:1px solid var(--border)}.cover-detail{display:flex;flex-direction:column;gap:4px}.cover-detail-label{font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase}.cover-detail-value{font-size:15px;font-weight:600}.section{padding:72px 60px;border-top:1px solid var(--border);position:relative;max-width:1140px;margin:0 auto}.section-number{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--green);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;display:block}.section h2{font-size:36px;font-weight:700;text-transform:uppercase;letter-spacing:-1px;margin-bottom:32px;line-height:1.1}.section h3{font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;margin-top:40px;color:var(--green)}.section p{font-size:16px;color:var(--text-dim);line-height:1.8;max-width:720px;margin-bottom:20px}.section p strong{color:var(--text);font-weight:600}.problem-card{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--green);padding:32px 40px;margin:32px 0;border-radius:0 8px 8px 0}.problem-card p{color:var(--text);font-size:16px;line-height:1.8;max-width:none;margin-bottom:0}.problem-card ul{list-style:none;margin:16px 0 0 0;padding:0}.problem-card li{padding:8px 0;color:var(--text-dim);font-size:15px;display:flex;align-items:flex-start;gap:12px;line-height:1.6}.problem-card li::before{content:'\2192';color:var(--green);font-weight:700;flex-shrink:0;margin-top:1px}.risk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0}.risk-card{background:var(--card);border:1px solid var(--border);padding:28px 32px;border-radius:8px}.risk-label{font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px;display:inline-block;padding:3px 10px;font-weight:700}.risk-critical{background:#ff1744;color:#fff}.risk-high{background:#ff9100;color:#000}.risk-medium{background:#ffd600;color:#000}.risk-title{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;margin-top:12px}.risk-desc{font-size:14px;color:var(--text-dim);line-height:1.6}.overview-table{width:100%;border-collapse:collapse;margin:24px 0}.overview-table th{text-align:left;font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;padding:12px 20px;border-bottom:2px solid var(--green)}.overview-table td{padding:14px 20px;font-size:14px;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text-dim)}.overview-table td:first-child{font-weight:600;color:var(--text)}.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}.overview-table td:last-child{color:var(--text-muted);font-size:13px}.phase-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0}.phase-card{background:var(--card);border:1px solid var(--border);padding:28px 32px;border-radius:8px;transition:border-color .3s,transform .3s,box-shadow .3s}.phase-card:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 8px 32px rgba(0,230,118,.08)}.phase-card.deferred{opacity:.5;border-style:dashed}.phase-number{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--green);letter-spacing:2px;margin-bottom:10px;display:block}.phase-title{font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px}.phase-duration{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--green);margin-bottom:12px;display:block}.phase-desc{font-size:14px;color:var(--text-dim);line-height:1.6}.scope-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:24px 0}.scope-item{display:flex;align-items:flex-start;gap:12px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:14px;line-height:1.5;transition:transform .3s,border-color .3s,box-shadow .3s}.scope-item:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 8px 32px rgba(0,230,118,.08)}.scope-check{width:20px;height:20px;min-width:20px;border:2px solid var(--green);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--green);margin-top:1px}.scope-item.excluded{opacity:.4;border-color:var(--border);text-decoration:line-through;color:var(--text-muted)}.scope-item.excluded .scope-check{border-color:var(--text-muted);color:var(--text-muted)}.timeline-table{width:100%;border-collapse:collapse;margin:24px 0}.timeline-table th{text-align:left;font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;padding:12px 20px;border-bottom:2px solid var(--green)}.timeline-table td{padding:18px 20px;font-size:15px;border-bottom:1px solid var(--border);vertical-align:top}.timeline-table tr:last-child td{border-bottom:none}.timeline-table .phase-name{font-weight:700;color:var(--text)}.timeline-table .phase-dur{color:var(--green);font-family:'JetBrains Mono',monospace;font-size:14px}.timeline-table .phase-del{color:var(--text-dim)}.timeline-total{display:inline-block;background:var(--green);color:var(--black);padding:8px 20px;font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;margin-top:16px}.invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:32px 0}.invest-box{background:var(--card);border:2px solid var(--green);padding:40px;text-align:center;position:relative;overflow:hidden;border-radius:8px}.invest-box::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,var(--green-glow) 0%,transparent 50%);pointer-events:none}.invest-box.secondary{border-color:var(--border-light);border-style:dashed}.invest-box.secondary::before{display:none}.invest-label{font-size:12px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;position:relative}.invest-price{font-size:48px;font-weight:700;letter-spacing:-2px;margin-bottom:4px;position:relative}.invest-price .currency{font-size:20px;color:var(--green);vertical-align:super}.invest-note{font-size:14px;color:var(--text-dim);position:relative;line-height:1.6}.invest-terms{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin:32px 0}.invest-term{text-align:center;padding:20px;background:var(--card);border:1px solid var(--border);border-radius:6px}.invest-term-label{font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;display:block;margin-bottom:8px}.invest-term-value{font-size:14px;font-weight:600;line-height:1.5}.callout-box{background:var(--card);border:1px solid var(--border);border-left:4px solid var(--green);padding:24px 32px;margin:24px 0;border-radius:0 8px 8px 0}.callout-box p{color:var(--text-dim);font-size:14px;line-height:1.7;max-width:none;margin-bottom:0}.callout-box strong{color:var(--text)}.roi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}.roi-stat{border:1px solid var(--border);padding:32px 24px;text-align:center;transition:transform .3s,border-color .3s,box-shadow .3s}.roi-stat:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 8px 32px rgba(0,230,118,.08)}.roi-stat-value{font-size:40px;font-weight:700;letter-spacing:-1px;margin-bottom:4px;color:var(--green)}.roi-stat-label{font-size:11px;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase}.access-list{list-style:none;margin:24px 0}.access-list li{padding:12px 0;border-bottom:1px solid var(--border);font-size:15px;color:var(--text-dim);display:flex;align-items:center;gap:12px}.access-list li::before{content:'\2192';color:var(--green);font-weight:700}.terms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:32px 0}.term-item{background:var(--card);border:1px solid var(--border);padding:24px;border-radius:6px;transition:transform .3s,border-color .3s,box-shadow .3s}.term-item:hover{transform:translateY(-4px);border-color:var(--green);box-shadow:0 8px 32px rgba(0,230,118,.08)}.term-title{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--green);margin-bottom:8px}.term-text{font-size:14px;color:var(--text-dim);line-height:1.7}.cta-section{text-align:center;padding:72px 60px;border-top:1px solid var(--border);max-width:1140px;margin:0 auto}.cta-section h2{font-size:36px;font-weight:700;text-transform:uppercase;letter-spacing:-1px;margin-bottom:16px}.cta-section p{font-size:16px;color:var(--text-dim);margin:0 auto 32px;max-width:480px}.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:var(--black);padding:20px 48px;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:transform .2s,box-shadow .2s}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,230,118,.3)}.btn-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--text);padding:16px 32px;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;text-decoration:none;border:2px solid var(--border-light);cursor:pointer;transition:border-color .2s,color .2s}.btn-secondary:hover{border-color:var(--green);color:var(--green)}.footer{padding:40px 60px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;max-width:1140px;margin:0 auto}.footer-left{font-size:13px;color:var(--text-muted)}.footer-right{font-size:13px;color:var(--text-muted);display:flex;gap:24px}.footer a{color:var(--text-dim);text-decoration:none}.upsell-box{background:var(--card);border:1px dashed var(--border-light);padding:32px 40px;margin-top:40px;border-radius:8px;text-align:left}.upsell-box h3{font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:12px}.upsell-box p{font-size:15px;color:var(--text-dim);line-height:1.7;margin-bottom:0;max-width:none}@media(max-width:768px){.cover{padding:32px 24px}.cover-nav{left:24px;right:24px;top:24px;flex-wrap:wrap;gap:8px}.cover h1{font-size:36px}.section{padding:32px 24px}.cta-section{padding:32px 24px}.risk-grid,.phase-grid,.scope-grid,.terms-grid{grid-template-columns:1fr}.roi-grid,.invest-terms{grid-template-columns:1fr}.invest-grid{grid-template-columns:1fr}.cover-details{flex-direction:column;gap:20px}.invest-box{padding:32px}.invest-price{font-size:36px}.footer{flex-direction:column;gap:16px;padding:32px 24px}.callout-box{padding:20px 20px}.problem-card{padding:24px 20px}.upsell-box{padding:24px 20px}}@media print{*{background:transparent!important;color:#000!important;box-shadow:none!important}body{font-size:12pt}.cover{min-height:auto;page-break-after:always}.section{page-break-inside:avoid;border-top:1px solid #ccc}.scroll-progress,.dot-bg{display:none}.cover::before{display:none}.section,.cover,.cta-section,.footer{opacity:1!important;transform:none!important}.scope-item,.risk-card,.term-item,.callout-box,.invest-box{border-color:#ccc}.risk-critical,.risk-high,.risk-medium{color:#000;border:1px solid #000;background:transparent!important}.btn-primary{background:#000!important;color:#fff!important;padding:8px 16px}.btn-secondary{border-color:#000}}.section,.cover,.cta-section,.footer{opacity:0;transform:translateY(32px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}.section.visible,.cover.visible,.cta-section.visible,.footer.visible{opacity:1;transform:translateY(0)}.cover .cover-tag{opacity:0;transform:translateY(20px);animation:fadeUp .6s .3s cubic-bezier(.16,1,.3,1) forwards}.cover h1{opacity:0;transform:translateY(20px);animation:fadeUp .6s .5s cubic-bezier(.16,1,.3,1) forwards}.cover .cover-sub{opacity:0;transform:translateY(20px);animation:fadeUp .6s .7s cubic-bezier(.16,1,.3,1) forwards}.cover .cover-details{opacity:0;transform:translateY(20px);animation:fadeUp .6s .9s cubic-bezier(.16,1,.3,1) forwards}@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}.cover-nav{opacity:0;animation:fadeIn .8s .1s forwards}@keyframes fadeIn{to{opacity:1}}.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--green),var(--green-dark));z-index:9999;transition:width .1s linear;width:0}.dot-bg{position:fixed;inset:0;z-index:-1;background-image:radial-gradient(circle,rgba(255,255,255,.03) 1px,transparent 1px);background-size:32px 32px}</style>
+<noscript><style>.section,.cover,.cta-section,.footer{opacity:1!important;transform:none!important}.cover .cover-tag,.cover h1,.cover .cover-sub,.cover .cover-details,.cover-nav{opacity:1!important;transform:none!important;animation:none!important}</style></noscript>
+</head>
+<body>
+<div class="scroll-progress"></div><div class="dot-bg"></div>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-nav"><div class="logo"><div class="logo-mark">IM</div><span class="logo-text">Ivan Manfredi</span></div><span class="cover-meta">PROPOSAL / April 2026 &mdash; Valid through April 28, 2026</span></div>
+  <div class="cover-tag">AI &amp; Automation Architect</div>
+  <h1>Systems Audit &amp; <span class="highlight">Implementation</span></h1>
+  <p class="cover-sub">A comprehensive operational audit of VeriPro's automation infrastructure, database architecture, and data flows, followed by a phased implementation to prepare the system for industrial-scale operations.</p>
+  <div class="cover-details">
+    <div class="cover-detail"><span class="cover-detail-label">Prepared For</span><span class="cover-detail-value">Theo</span></div>
+    <div class="cover-detail"><span class="cover-detail-label">Company</span><span class="cover-detail-value">VeriPro Energetica S.L.</span></div>
+    <div class="cover-detail"><span class="cover-detail-label">Audit</span><span class="cover-detail-value">3-4 Days</span></div>
+    <div class="cover-detail"><span class="cover-detail-label">Full Delivery</span><span class="cover-detail-value">~3 Weeks</span></div>
+  </div>
+</div>
+
+<!-- 01 EXECUTIVE SUMMARY -->
+<div class="section">
+  <span class="section-number">01 / Executive Summary</span>
+  <h2>The Situation</h2>
+  <p>VeriPro is the leading energy renovation operator in Spain under the CAE program, executing 40-45 installations per day with <strong>6,000+ client records</strong> in the database and a target of 100+ per day in 2026. The operational stack was built rapidly over the past year and has reached a point where it needs to be cleaned up, documented, and restructured for scale.</p>
+  <p>With new external sales teams onboarding in the coming weeks and an expected intake of <strong>80-150 new client entries per day</strong>, the current architecture presents critical risks around data permissions, automation reliability, and system fragility.</p>
+  <p>This proposal covers a <strong>paid audit</strong> followed by a <strong>phased implementation</strong> to resolve these risks and prepare VeriPro's infrastructure for industrial-scale operations.</p>
+</div>
+
+<!-- 02 CURRENT SYSTEM -->
+<div class="section">
+  <span class="section-number">02 / Current System</span>
+  <h2>Overview</h2>
+  <div class="table-scroll"><table class="overview-table">
+    <thead><tr><th>Tool</th><th>Role</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Airtable</td><td>Central database. Client records, planning, install tracking, signatures, commissions, reporting.</td><td>82-field monolith. 2 poorly structured tables.</td></tr>
+      <tr><td>Make</td><td>Automations. WhatsApp/email confirmations, daily stats, signature flows, route distribution.</td><td>Unmapped. No error alerting.</td></tr>
+      <tr><td>Fillout</td><td>Field forms for client acquisition. Contact directories.</td><td>Functional.</td></tr>
+      <tr><td>WhatsApp</td><td>Client comms, team notifications, inbound bot (Meta Business API).</td><td>Bot feeds poorly structured table.</td></tr>
+      <tr><td>VeriPro App</td><td>Sales rep mobile app for clients and stats. Built on Airtable interface designer.</td><td>Functional.</td></tr>
+      <tr><td>Ringover</td><td>Phone system for confirmation team.</td><td>Functional.</td></tr>
+      <tr><td>Gmail</td><td>Transactional emails from admin@veripro.es.</td><td>Functional.</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- 03 KEY RISKS -->
+<div class="section">
+  <span class="section-number">03 / Key Risks</span>
+  <h2>What Needs to Be Fixed</h2>
+  <div class="risk-grid">
+    <div class="risk-card">
+      <span class="risk-label risk-critical">Critical</span>
+      <div class="risk-title">Monolithic CLIENTES Table</div>
+      <div class="risk-desc">82 fields combining client data, installation tracking, digital signatures, commission calculations, communication triggers, and automation fields. Creates permission exposure, automation noise, performance degradation at scale, and onboarding friction.</div>
+    </div>
+    <div class="risk-card">
+      <span class="risk-label risk-critical">Urgent</span>
+      <div class="risk-title">Shared Editor Access</div>
+      <div class="risk-desc">External sales team leaders have the same editor-level access as the founder. With multiple new teams onboarding, this model cannot scale without risk of accidental data corruption or unauthorized changes to critical fields.</div>
+    </div>
+    <div class="risk-card">
+      <span class="risk-label risk-high">High</span>
+      <div class="risk-title">Unmapped Automations</div>
+      <div class="risk-desc">Multiple Make scenarios running in production with no documentation, no centralized registry, and no error alerting. Silent failures mean missed confirmations, missing stats, and broken routes.</div>
+    </div>
+    <div class="risk-card">
+      <span class="risk-label risk-medium">Medium</span>
+      <div class="risk-title">Poorly Structured Tables</div>
+      <div class="risk-desc">LEADS (website form entries) and WHATSAPP (inbound bot entries) are poorly structured and need full rebuilds to support proper lead tracking and inbound request management.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 04 SCOPE -->
+<div class="section">
+  <span class="section-number">04 / Scope of Work</span>
+  <h2>What's Included</h2>
+
+  <h3>Phase 0 - Systems Audit</h3>
+  <div class="scope-grid">
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Full mapping of all Make automation scenarios (active, paused, triggers, dependencies)</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Airtable architecture review: field audit, table relationships, view logic, permissions</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>CLIENTES table 82-field classification by function</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>LEADS and WHATSAPP table structure assessment</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Fillout form inventory and data flow mapping</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>WhatsApp automation flow documentation</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>VeriPro App interface review</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Dead field and orphaned automation identification</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Permission structure risk assessment</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Written findings report with phased implementation plan</div>
+  </div>
+
+  <h3>Phase 1 - Airtable Restructure &amp; Permissions</h3>
+  <div class="scope-grid">
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Permission structure redesign for multi-team scaling (delivered first)</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Decompose CLIENTES monolith into properly linked tables</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Rebuild LEADS and WHATSAPP tables from scratch</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Migrate and rebuild operational views</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Update VeriPro App to reflect new table architecture</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Update all Fillout forms to push data to correct tables</div>
+  </div>
+
+  <h3>Phase 2 - Automation Restructure</h3>
+  <div class="scope-grid">
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Refactor or rebuild all automation scenarios for new structure</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Error alerting and failure notifications across all flows</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>Centralized automation registry with documentation</div>
+    <div class="scope-item"><div class="scope-check">&#10003;</div>WhatsApp, email, and route distribution flows rebuilt</div>
+  </div>
+
+  <h3>Not Included</h3>
+  <div class="scope-grid">
+    <div class="scope-item excluded"><div class="scope-check">&times;</div>AI integration layer (Phase 3, scoped separately)</div>
+    <div class="scope-item excluded"><div class="scope-check">&times;</div>Ringover phone system internals</div>
+    <div class="scope-item excluded"><div class="scope-check">&times;</div>Social media workflows</div>
+    <div class="scope-item excluded"><div class="scope-check">&times;</div>Website redesign or lead capture changes</div>
+  </div>
+</div>
+
+<!-- 05 TIMELINE -->
+<div class="section">
+  <span class="section-number">05 / Timeline</span>
+  <h2>Delivery Schedule</h2>
+  <div class="table-scroll"><table class="timeline-table">
+    <thead><tr><th>Phase</th><th>Duration</th><th>Deliverable</th></tr></thead>
+    <tbody>
+      <tr><td class="phase-name">Phase 0 - Systems Audit</td><td class="phase-dur">3-4 Days</td><td class="phase-del">Written findings report with risk classification, automation map, field audit, and phased action plan.</td></tr>
+      <tr><td class="phase-name">Phase 1 - Airtable Restructure &amp; Permissions</td><td class="phase-dur">1-2 Weeks</td><td class="phase-del">Permissions fix delivered first. Table decomposition, LEADS/WHATSAPP rebuild, view migration, VeriPro App update. Parallel build, zero downtime.</td></tr>
+      <tr><td class="phase-name">Phase 2 - Automation Restructure</td><td class="phase-dur">1-2 Weeks</td><td class="phase-del">All automations rebuilt for new structure. Error alerting, centralized registry, WhatsApp/email/route flows.</td></tr>
+      <tr><td class="phase-name">Phase 3 - AI Integration</td><td class="phase-dur">TBD</td><td class="phase-del">Scoped and quoted separately after Phases 1-2 are complete.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="timeline-total">Total (Phases 0-2): ~3 Weeks</div>
+  <p style="margin-top:24px"><strong>Permission urgency:</strong> The access and permission restructure is the most time-sensitive deliverable. It will be addressed first within Phase 1, independent of the broader table restructure, to be in place before new sales teams onboard.</p>
+</div>
+
+<!-- 06 INVESTMENT -->
+<div class="section">
+  <span class="section-number">06 / Investment</span>
+  <h2>Pricing</h2>
+  <div class="invest-grid">
+    <div class="invest-box">
+      <div class="invest-label">Phase 0 - Systems Audit</div>
+      <div class="invest-price"><span class="currency">$</span>800</div>
+      <div class="invest-note">Fixed fee. Full payment upfront.</div>
+    </div>
+    <div class="invest-box secondary">
+      <div class="invest-label">Phases 1 + 2 - Implementation</div>
+      <div class="invest-price"><span class="currency">$</span>8,000 - 12,000</div>
+      <div class="invest-note">Exact fixed price confirmed with audit findings.</div>
+    </div>
+  </div>
+  <div class="invest-terms">
+    <div class="invest-term">
+      <span class="invest-term-label">Audit Payment</span>
+      <span class="invest-term-value">$800 upfront</span>
+    </div>
+    <div class="invest-term">
+      <span class="invest-term-label">Implementation</span>
+      <span class="invest-term-value">50% on scope confirmation, 50% on delivery</span>
+    </div>
+    <div class="invest-term">
+      <span class="invest-term-label">Start</span>
+      <span class="invest-term-value">Upon payment + access</span>
+    </div>
+  </div>
+  <p style="margin-top:24px"><strong>Ongoing costs (client-side):</strong> Existing Airtable and Make subscriptions. No new tool costs required unless n8n migration is recommended (audit will clarify).</p>
+</div>
+
+<!-- 07 IMPORTANT CONSIDERATIONS -->
+<div class="section">
+  <span class="section-number">07 / Important Considerations</span>
+  <h2>How This Works</h2>
+  <div class="callout-box">
+    <p><strong>Live system, zero downtime.</strong> VeriPro executes 40-45 installations per day. All restructuring work uses a parallel-build approach: the new architecture is built and validated alongside the existing system before any cutover. Daily operations will not be interrupted.</p>
+  </div>
+  <div class="callout-box">
+    <p><strong>Permission urgency.</strong> With new external sales teams onboarding in the coming weeks, the access and permission structure is the most time-sensitive deliverable. This will be addressed first within Phase 1, independent of the broader table restructure.</p>
+  </div>
+  <div class="callout-box">
+    <p><strong>Existing freelancer work.</strong> The current automations and architecture were built over the past year by a freelance developer. The audit will document everything that exists before any changes are made, ensuring no functionality is lost during restructuring.</p>
+  </div>
+  <div class="callout-box">
+    <p><strong>AI readiness.</strong> AI integration (Phase 3) is intentionally deferred until the data layer is clean and well-structured. Building AI workflows on top of disorganized data produces unreliable results. The right sequence is: clean architecture first, then AI.</p>
+  </div>
+</div>
+
+<!-- 08 REQUIREMENTS -->
+<div class="section">
+  <span class="section-number">08 / Requirements</span>
+  <h2>What I Need From You</h2>
+  <ul class="access-list">
+    <li>Airtable - Temporary admin access to the workspace</li>
+    <li>Make - Admin access to the organization (all scenarios)</li>
+    <li>Fillout - Admin access (all forms)</li>
+    <li>WhatsApp - Access to the bot platform (if managed outside of Make)</li>
+    <li>Any existing documentation from the current freelancer</li>
+  </ul>
+  <p>Audit work begins immediately upon receiving access. Findings report delivered within 3-4 business days.</p>
+</div>
+
+<!-- 09 AGREEMENT -->
+<div class="section">
+  <span class="section-number">09 / Agreement &amp; Terms</span>
+  <h2>Terms of Engagement</h2>
+  <p>Both parties agree to the following terms governing this engagement:</p>
+  <div class="terms-grid">
+    <div class="term-item"><div class="term-title">Scope of Work</div><div class="term-text">This proposal defines the complete scope. Any work beyond what is described requires a separate agreement or amendment.</div></div>
+    <div class="term-item"><div class="term-title">Payment Terms</div><div class="term-text">Audit: $800 full payment upfront. Implementation phases: 50% on scope confirmation, 50% on delivery. Invoices are due within 14 days of issuance.</div></div>
+    <div class="term-item"><div class="term-title">Intellectual Property</div><div class="term-text">Upon full payment, all deliverables and custom configurations become the exclusive property of the Client. Ivan Manfredi retains the right to reference the project in portfolios and case studies (without disclosing confidential data).</div></div>
+    <div class="term-item"><div class="term-title">Post-Delivery Support</div><div class="term-text">This engagement includes 15 days of post-delivery support after final handoff. Issues, adjustments, and questions related to delivered work are covered within this period at no additional cost.</div></div>
+    <div class="term-item"><div class="term-title">Cancellation</div><div class="term-text">Either party may terminate with 7 days written notice. Work completed up to the cancellation date will be invoiced proportionally.</div></div>
+    <div class="term-item"><div class="term-title">Confidentiality</div><div class="term-text">Both parties agree to keep confidential any proprietary information shared during this engagement. This obligation survives termination of the agreement.</div></div>
+    <div class="term-item"><div class="term-title">Liability</div><div class="term-text">Total liability under this engagement is limited to the total fees paid by the Client. Neither party shall be liable for indirect, incidental, or consequential damages.</div></div>
+    <div class="term-item"><div class="term-title">Data Protection</div><div class="term-text">The Service Provider will handle all client data accessed during the engagement in accordance with applicable data protection regulations, including GDPR. Access credentials will be used solely for the purposes described in this proposal and will not be retained after the engagement concludes.</div></div>
+  </div>
+  <p style="margin-top:24px;font-size:13px;color:var(--text-muted)">This agreement is governed by the laws of Spain. Any disputes shall be resolved through good-faith negotiation before pursuing formal proceedings.</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <span class="section-number">NEXT STEP</span>
+  <h2>Start the Audit</h2>
+  <p>Pay the $800 audit fee to begin. I'll start the moment I have payment and access.</p>
+  <a href="https://buy.stripe.com/14A6oz1M71Rf1WCa5BfEk0D" class="btn-primary" target="_blank" rel="noopener">Pay $800 &amp; Start Audit &rarr;</a>
+  <p style="font-size:12px;color:var(--text-muted);margin-top:12px">Secure payment via Stripe. A formal invoice will be issued to VeriPro Energetica S.L. upon request.</p>
+  <p style="font-size:11px;color:var(--text-muted);margin-top:8px">By making payment, you confirm acceptance of the terms in Section 09.</p>
+  <div style="margin-top:48px;padding-top:32px;border-top:1px solid var(--border)">
+    <p style="color:var(--text-dim);margin-bottom:16px">Have questions first?</p>
+    <a href="mailto:ivan@intelligents.agency" class="btn-secondary">Reply via Email</a>
+  </div>
+  <div class="upsell-box">
+    <h3>After the Audit</h3>
+    <p>The findings report will include a phased implementation plan with exact scope, timeline, and pricing. Priority items (permission restructure, error alerting) can begin immediately. AI workflow integration (Phase 3) will be scoped once the system architecture is clean and stable.</p>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">Ivan Manfredi / AI &amp; Automation Architect</div>
+  <div class="footer-right"><a href="https://inboundonsteroids.com">inboundonsteroids.com</a><a href="mailto:im@ivanmanfredi.com">im@ivanmanfredi.com</a><a href="mailto:ivan@intelligents.agency">ivan@intelligents.agency</a></div>
+</div>
+
+<script>
+(function(){
+  var bar=document.querySelector('.scroll-progress');
+  if(bar){window.addEventListener('scroll',function(){
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=h>0?(window.scrollY/h*100)+'%':'0';
+  },{passive:true})}
+  var obs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.section,.cover,.cta-section,.footer').forEach(function(el){obs.observe(el)});
+  var numObs=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var el=e.target;var text=el.textContent.trim();
+      var num=parseFloat(text.replace(/[^0-9.]/g,''));
+      if(isNaN(num)||num===0)return;
+      var suffix=text.replace(/[0-9.,]/g,'');
+      var isInt=text.indexOf('.')===-1;
+      var duration=1200;var startTime=performance.now();
+      function tick(now){
+        var p=Math.min((now-startTime)/duration,1);
+        var ease=1-Math.pow(1-p,3);
+        var val=num*ease;
+        el.textContent=(isInt?Math.round(val):val.toFixed(1))+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);numObs.unobserve(el);
+    })
+  },{threshold:0.5});
+  document.querySelectorAll('.roi-stat-value').forEach(function(el){numObs.observe(el)});
+  var cover=document.querySelector('.cover');
+  if(cover)setTimeout(function(){cover.classList.add('visible')},100);
+})();
+</script>
+</body>
+</html>

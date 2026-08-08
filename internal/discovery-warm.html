@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Discovery Warm v1 · Live Call View</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#F7F4EF;
+  --paper-sunk:#EFEBE3;
+  --paper-raise:#FFFFFF;
+  --ink:#1A1A1A;
+  --ink-soft:#4A4A48;
+  --ink-mute:#5A5752;
+  --hairline:rgba(26,26,26,.15);
+  --hairline-bold:rgba(26,26,26,.3);
+  --accent:#4C6E3D;
+  --accent-ink:#344B29;
+  --accent-soft:rgba(76,110,61,.12);
+  --warm:#B85C38;
+  --warm-soft:rgba(184,92,56,.12);
+  --hot:#C9442E;
+  --hot-soft:rgba(201,68,46,.1);
+}
+html,body{height:100%}
+body{
+  font-family:'Source Serif 4',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  font-size:17px;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.topbar{
+  background:var(--warm);
+  color:var(--paper);
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  z-index:100;
+  position:sticky;
+  top:0;
+}
+.brand{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand .ver{
+  background:rgba(255,255,255,.18);
+  padding:3px 8px;
+  border-radius:2px;
+  font-size:10px;
+}
+.topbar-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.switch-link{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  color:white;
+  padding:7px 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  border-radius:4px;
+  text-decoration:none;
+  transition:background .15s;
+}
+.switch-link:hover{background:rgba(255,255,255,.22)}
+.show-all-toggle{
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.25);
+  color:white;
+  padding:7px 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:4px;
+}
+.show-all-toggle.active{
+  background:white;
+  color:var(--warm);
+}
+
+.stepper{
+  background:var(--paper-sunk);
+  border-bottom:1px solid var(--hairline);
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow-x:auto;
+  position:sticky;
+  top:48px;
+  z-index:99;
+  scrollbar-width:thin;
+}
+.stepper::-webkit-scrollbar{height:4px}
+.stepper::-webkit-scrollbar-thumb{background:var(--hairline-bold);border-radius:2px}
+.step{
+  flex-shrink:0;
+  background:transparent;
+  border:1.5px solid var(--hairline-bold);
+  color:var(--ink-mute);
+  padding:6px 10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  cursor:pointer;
+  border-radius:4px;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.step:hover{border-color:var(--ink);color:var(--ink)}
+.step.active{
+  background:var(--warm);
+  border-color:var(--warm);
+  color:white;
+}
+.step.danger{border-color:var(--hot);color:var(--hot)}
+.step.danger.active{background:var(--hot);border-color:var(--hot);color:white}
+.step.pitch{border-color:var(--warm);color:var(--warm);font-weight:700}
+.step.pitch.active{background:var(--warm);border-color:var(--warm);color:white}
+
+.phase-area{
+  flex:1;
+  padding:30px 24px 100px;
+  max-width:900px;
+  margin:0 auto;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+}
+.phase-card{
+  background:var(--paper-raise);
+  border-radius:6px;
+  padding:32px 36px;
+  box-shadow:0 1px 0 rgba(0,0,0,.04), 0 4px 24px rgba(0,0,0,.04);
+  border:1px solid var(--hairline);
+  display:none;
+  animation:fadeIn .15s ease-out;
+}
+.phase-card.visible{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+.phase-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--ink);
+  color:var(--paper);
+  padding:5px 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  border-radius:3px;
+}
+.phase-tag.warm{background:var(--warm)}
+.phase-tag.danger{background:var(--hot)}
+.phase-tag .duration{
+  background:rgba(255,255,255,.18);
+  padding:2px 6px;
+  border-radius:2px;
+  font-size:9px;
+}
+.phase-title{
+  font-family:'DM Serif Display',serif;
+  font-size:36px;
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.015em;
+  margin-bottom:8px;
+  color:var(--ink);
+}
+.phase-title em{color:var(--warm);font-style:italic}
+.phase-meta{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:20px;
+}
+.phase-meta.critical{color:var(--hot)}
+
+.phase-body p{margin:12px 0;color:var(--ink-soft);font-size:16px;line-height:1.6}
+.phase-body p strong{color:var(--ink);font-weight:600}
+.phase-body p em{color:var(--ink-mute);font-style:italic}
+
+.phase-body h3{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin:24px 0 10px;
+  padding-left:10px;
+  border-left:2px solid var(--warm);
+}
+.phase-body h4{
+  font-family:'DM Serif Display',serif;
+  font-style:italic;
+  font-size:22px;
+  font-weight:400;
+  margin:20px 0 10px;
+  color:var(--ink);
+}
+
+.phase-body ul,.phase-body ol{margin:10px 0 14px 22px;color:var(--ink-soft)}
+.phase-body li{margin:6px 0;line-height:1.5}
+.phase-body li strong{color:var(--ink);font-weight:600}
+.phase-body li em{color:var(--ink-mute);font-style:italic}
+
+.phase-body blockquote{
+  margin:14px 0;
+  padding:16px 22px;
+  background:var(--warm-soft);
+  border-left:3px solid var(--warm);
+  font-size:17px;
+  line-height:1.55;
+  color:var(--ink);
+  border-radius:2px;
+}
+.phase-body blockquote p{margin:6px 0;color:var(--ink);font-size:17px}
+.phase-body blockquote strong{color:var(--ink);font-weight:700}
+
+.callout{
+  margin:18px 0;
+  padding:14px 18px;
+  background:var(--paper-sunk);
+  border-left:3px solid var(--ink-mute);
+  font-size:14.5px;
+  line-height:1.5;
+  border-radius:0 3px 3px 0;
+  color:var(--ink-soft);
+}
+.callout-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:4px;
+}
+.callout strong{color:var(--ink);font-weight:600}
+
+.options-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:20px 0}
+.option-card{
+  padding:22px 24px;
+  border-radius:6px;
+  border:1.5px solid var(--hairline);
+  background:var(--paper-raise);
+}
+.option-card.recommended{
+  border-color:var(--warm);
+  background:linear-gradient(180deg, var(--warm-soft) 0%, var(--paper-raise) 60%);
+  position:relative;
+}
+.option-card.recommended::before{
+  content:'+ $2,500';
+  position:absolute;
+  top:-12px;
+  right:18px;
+  background:var(--warm);
+  color:white;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  padding:4px 10px;
+  border-radius:3px;
+}
+.option-card-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:4px;
+}
+.option-card-name{
+  font-family:'DM Serif Display',serif;
+  font-size:22px;
+  font-weight:400;
+  margin-bottom:4px;
+}
+.option-card-price{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:12px;
+  color:var(--ink);
+}
+.option-card ul{margin:10px 0 0 18px;font-size:14px;list-style:disc}
+.option-card li{margin:6px 0;line-height:1.45;color:var(--ink-soft)}
+.option-card li strong{color:var(--ink);font-weight:600}
+
+.watch-list{margin:14px 0;list-style:none;padding:0;counter-reset:watch}
+.watch-list li{
+  padding:12px 16px 12px 44px;
+  margin:8px 0;
+  background:var(--paper);
+  border-left:3px solid var(--hairline-bold);
+  border-radius:0 4px 4px 0;
+  position:relative;
+  font-size:15px;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+.watch-list li::before{
+  content:counter(watch);
+  counter-increment:watch;
+  position:absolute;
+  left:12px;
+  top:12px;
+  width:24px;
+  height:24px;
+  background:var(--warm);
+  color:white;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+}
+.watch-list li strong{color:var(--ink);font-weight:600}
+
+.nav-footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:var(--paper-raise);
+  border-top:1px solid var(--hairline);
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  z-index:100;
+  box-shadow:0 -2px 12px rgba(0,0,0,.04);
+}
+.nav-btn{
+  background:var(--ink);
+  color:var(--paper);
+  border:none;
+  padding:12px 22px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:4px;
+  transition:all .15s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.nav-btn:hover{background:var(--warm)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed;background:var(--ink)}
+.nav-btn.secondary{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.nav-btn.secondary:hover{background:var(--ink);color:var(--paper)}
+.nav-position{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+}
+.nav-position .current{color:var(--ink)}
+
+.keyboard-hint{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-left:8px;
+}
+kbd{font-family:'IBM Plex Mono',monospace;background:var(--ink);color:var(--paper);padding:1px 5px;border-radius:2px;font-size:10px;font-weight:700}
+
+body.show-all .phase-card{display:block;margin-bottom:24px}
+body.show-all .nav-footer{display:none}
+body.show-all .phase-area{padding-bottom:60px}
+body.show-all .stepper{position:static}
+
+@media (max-width:700px){
+  .topbar{padding:8px 12px}
+  .brand .ver{display:none}
+  .stepper{padding:8px 12px;top:42px}
+  .step{font-size:10px;padding:5px 8px}
+  .phase-area{padding:20px 12px 100px}
+  .phase-card{padding:22px 18px}
+  .phase-title{font-size:26px}
+  .options-grid{grid-template-columns:1fr;gap:24px}
+  .nav-footer{padding:10px 12px}
+  .nav-btn{padding:10px 14px;font-size:11px}
+  .keyboard-hint{display:none}
+}
+
+@media print{
+  .topbar,.stepper,.nav-footer{display:none}
+  body{background:white;font-size:11pt}
+  .phase-card{display:block!important;page-break-inside:avoid;margin:20px 0;box-shadow:none;border:1px solid #ddd}
+  .phase-area{padding:0;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    Discovery — Warm Referral
+    <span class="ver">v1</span>
+  </div>
+  <div class="topbar-controls">
+    <a href="/internal/discovery-script.html" class="switch-link">← Cold view</a>
+    <button class="show-all-toggle" id="show-all-btn">Show all <span class="keyboard-hint" style="margin-left:4px"><kbd>A</kbd></span></button>
+  </div>
+</div>
+
+<div class="stepper" id="stepper"></div>
+
+<div class="phase-area" id="phase-area">
+
+<!-- PHASE 0 -->
+<article class="phase-card" data-step-label="0 · Context">
+  <div class="phase-tag">Phase 0 · Pre-call <span class="duration">2 min</span></div>
+  <h1 class="phase-title">Context (silent, before dialing)</h1>
+  <div class="phase-body">
+    <p>Write down silently — never reveal you have this intel:</p>
+    <ul>
+      <li><strong>Who referred them</strong> + what the referrer said about their business</li>
+      <li><strong>What they likely came for</strong> (booking form, referrer notes) — LMs, content, automation, audit</li>
+      <li><strong>Partner alignment</strong> — do they have a co-founder, is that person joining?</li>
+    </ul>
+    <div class="callout">
+      <div class="callout-label">Critical rule</div>
+      Treat them as if you know nothing about their business. Ask open questions that elicit the same info the referrer already gave you. Never say "Kyle mentioned X" — that breaks the referral pipeline.
+    </div>
+  </div>
+</article>
+
+<!-- PHASE 1 -->
+<article class="phase-card" data-step-label="1 · Open">
+  <div class="phase-tag warm">Phase 1 · Open + context confirm <span class="duration">2-3 min</span></div>
+  <h1 class="phase-title">Open + context confirm</h1>
+  <div class="phase-body">
+    <blockquote>
+      <p>"Hey, thanks for hopping on. [Referrer] mentioned you're looking at [thing they came for]. Before I pitch anything, I want to make sure I understand the business and where you actually feel friction. I'll keep this to ~30 min."</p>
+    </blockquote>
+    <p>Then 2-3 open questions to validate context (you already know — they need to surface in their words):</p>
+    <ul>
+      <li><strong>"Tell me about [their business] — who you sell to, what you sell, where revenue comes from."</strong></li>
+      <li><strong>"What are you currently doing for [content / LMs / outbound]? How does it get produced today?"</strong></li>
+      <li><strong>"If you had to name one thing you keep saying 'we should do that' and never get to — what comes up first?"</strong></li>
+    </ul>
+    <p><em>Listen for their actual pain in their words, what they prioritize, what they're embarrassed about. Referrer intel maps to ~70% — the other 30% is your edge.</em></p>
+  </div>
+</article>
+
+<!-- PHASE 2 -->
+<article class="phase-card" data-step-label="2 · Pain">
+  <div class="phase-tag warm">Phase 2 · Pain + bottleneck + capacity <span class="duration">8-10 min</span></div>
+  <h1 class="phase-title">Pain + capacity test</h1>
+  <div class="phase-body">
+    <blockquote>
+      <p>"Where's the bottleneck in your week right now — sales, delivery, ops, content?"</p>
+    </blockquote>
+
+    <h3>Labels to deploy (pattern-interrupt)</h3>
+    <ul>
+      <li>"Everything goes through me" → <strong>"Sounds like you ARE the business then."</strong></li>
+      <li>"Team handles delivery but I touch sales" → <strong>"3 days a week not growing the business."</strong></li>
+      <li>"We have systems but inconsistent" → <strong>"Works at $X but not $Y. So it breaks at scale."</strong></li>
+    </ul>
+
+    <h3>Capacity test (the big one)</h3>
+    <blockquote>
+      <p><strong>"If someone sent you 5 perfect-fit clients tomorrow, could you actually take them on? Or would it just make things worse?"</strong></p>
+    </blockquote>
+    <ul>
+      <li>"We'd manage" → "How? What breaks first?" → forces them to name the bottleneck</li>
+      <li>"No, we'd break" → that IS the bottleneck. Anchor everything around solving it.</li>
+    </ul>
+
+    <h3>Quantify (only if pain is time/cost)</h3>
+    <blockquote>
+      <p>"Roughly how many hours per week is [pain] eating? At [their hourly rate or founder time value]? Over 12 months that's [$ amount]. Sound right?"</p>
+    </blockquote>
+
+    <h3>Save vs Gain (you infer from their answers, don't ask separately)</h3>
+    <ul>
+      <li>TIME/EFFICIENCY pain → Save → <strong>"What would you do with [X hours] back?"</strong></li>
+      <li>OUTPUT/CEILING pain → Gain → <strong>"If the ceiling moved to [Y], what changes?"</strong></li>
+    </ul>
+  </div>
+</article>
+
+<!-- PHASE 3 -->
+<article class="phase-card" data-step-label="3 · Trigger">
+  <div class="phase-tag danger">Phase 3 · Trigger event <span class="duration">2 min · do not skip</span></div>
+  <h1 class="phase-title">Why now?</h1>
+  <div class="phase-meta critical">88% of closes have a trigger event</div>
+  <div class="phase-body">
+    <blockquote>
+      <p><strong>"Why are you looking at this now versus 6 months ago?"</strong></p>
+    </blockquote>
+    <h3>Probe for triggers</h3>
+    <ul>
+      <li>New hire that didn't deliver</li>
+      <li>Lost a client</li>
+      <li>Competitor shipped something</li>
+      <li>Hit revenue plateau</li>
+      <li>Partner pressure ("[partner] keeps asking when we're going to fix X")</li>
+      <li>AI-curious moment</li>
+    </ul>
+
+    <h3>If "later" / vague</h3>
+    <blockquote>
+      <p>"When's the last time things calmed down for more than a week?"</p>
+      <p>"The thing you're waiting to finish — what is it? After that, what's next?"</p>
+      <p>"Founders who wait for the right time are still waiting two years later. The work happens <em>while</em> it's busy."</p>
+    </blockquote>
+
+    <div class="callout">
+      <div class="callout-label">Hard DQ (Kyle's language — use when they keep resisting)</div>
+      <p><strong>"You're not ready. Call me when the pain beats the excuse."</strong> Walks away. Protects your time + perceived value.</p>
+    </div>
+  </div>
+</article>
+
+<!-- PHASE 4 -->
+<article class="phase-card" data-step-label="4 · Recap">
+  <div class="phase-tag warm">Phase 4 · Quantified summary <span class="duration">2 min</span></div>
+  <h1 class="phase-title">Recap + screen-share</h1>
+  <div class="phase-body">
+    <p>Recap in <strong>their</strong> words:</p>
+    <blockquote>
+      <p>"So you're [pain in their words], you want [outcome in their words], trigger is [trigger]. <strong>What did I miss?</strong>"</p>
+    </blockquote>
+    <p>Wait for them to add or correct. Then:</p>
+    <blockquote>
+      <p>"Cool. Mind if I share my screen?"</p>
+    </blockquote>
+    <div class="callout">
+      <div class="callout-label">Screen-share target</div>
+      Open <strong><code>ivanmanfredi.com/fractional</code></strong> as the visual backdrop for Phase 5. Don't read the page — use it to anchor the structure.
+    </div>
+  </div>
+</article>
+
+<!-- PHASE 5 -->
+<article class="phase-card" data-step-label="5 · Pitch">
+  <div class="phase-tag warm">Phase 5 · Two-option pitch <span class="duration">5-7 min</span></div>
+  <h1 class="phase-title">Two options · <em>$2.5k delta = no-brainer</em></h1>
+  <div class="phase-body">
+
+    <div class="options-grid">
+      <div class="option-card">
+        <div class="option-card-label">Option 1</div>
+        <div class="option-card-name">Lead magnet + content system</div>
+        <div class="option-card-price">~$7,500</div>
+        <ul>
+          <li>Lead magnet engine</li>
+          <li>Content generation system</li>
+          <li>Branded resource pages</li>
+          <li>Email capture</li>
+          <li><strong>1 month post-launch support</strong></li>
+          <li>End at Day 45 — hands-off</li>
+        </ul>
+      </div>
+
+      <div class="option-card recommended">
+        <div class="option-card-label">Option 2 — Fractional M1</div>
+        <div class="option-card-name">Everything in Option 1, plus 3 game-changers</div>
+        <div class="option-card-price">$10,000</div>
+        <ul>
+          <li><strong>Custom operations panel</strong> — LM/content metrics in one place + base for any future systems</li>
+          <li><strong>Fully built newsletter system</strong> — campaigns + automations + ideas drafting</li>
+          <li><strong>Free 90-Day Blueprint audit + implementation plan</strong></li>
+        </ul>
+      </div>
+    </div>
+
+    <h3>The verbal pitch</h3>
+    <blockquote>
+      <p>"Two options for you guys.</p>
+      <p><strong>Option 1 — Lead magnet + content system, around $7,500.</strong> You get the lead magnet engine, content generation system, branded resource pages, email capture, and 1 month of post-launch support. End of engagement at Day 45 — hands-off after that. That's it.</p>
+      <p><strong>Option 2 — Fractional Month 1, $10,000.</strong> Everything in Option 1, <strong>plus three things that change the math:</strong></p>
+      <p><strong>1. Custom operations panel</strong> — you see all the metrics of your lead magnets and LinkedIn content in one place. Interactions, comments, engagement, conversions. But more importantly, it works as the base for any future systems I build for you — every workflow I ship plugs into the same panel, so you have ONE surface to see everything running.</p>
+      <p><strong>2. Fully built newsletter system</strong> — campaigns + automations on ConvertKit, with ideas drafting baked in so you're not staring at a blank page each week.</p>
+      <p><strong>3. Free 90-Day Blueprint audit + implementation plan.</strong> I audit your full business — content, outbound, production, partnerships — and deliver a 90-day roadmap. Based on that, I propose next months' plans. Could be the $6,500 Active build tier. Could be <strong>nothing</strong> if there's not enough to justify it. The audit is yours regardless of whether you continue.</p>
+      <p><strong>For $2,500 more you get all three.</strong> It's a no-brainer if there's anything beyond the lead magnet that's worth building — and the audit tells us exactly what's worth building."</p>
+    </blockquote>
+
+    <div class="callout">
+      <div class="callout-label">Honesty anchor (the brand differentiator — don't skip)</div>
+      "And I want to flag — based on the audit, I might tell you straight that there's not enough to justify continuation. You'd graduate to a Care Plan at $1k/mo for ongoing maintenance, or just walk. <strong>I'd rather lose a month of revenue than ship a padded roadmap.</strong>"
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Pace-to-absorption</div>
+      "If we end up continuing past m1, I pace to your team's absorption — not my delivery speed. Each month we ship only what you can actually integrate."
+    </div>
+  </div>
+</article>
+
+<!-- PHASE 6 -->
+<article class="phase-card" data-step-label="6 · Close">
+  <div class="phase-tag warm">Phase 6 · Close <span class="duration">3 min</span></div>
+  <h1 class="phase-title">Close + onboarding sequence</h1>
+  <div class="phase-body">
+    <blockquote>
+      <p>"Want to start with Option 1 or Option 2? Standard onboarding either way:</p>
+      <p>• Discovery done today (we're here now)<br>
+         • You get the intake link in the next 24 hours — ~20 min conversation with an AI agent that walks you through your business<br>
+         • Kickoff + audit walkthrough call within the first week<br>
+         • Builds start shipping in days<br>
+         • <strong>90-Day Plan Review at week 3-4</strong> — if Option 2, this is when we look at the audit findings together and decide on the next plan. No surprises, it's already on the calendar from day one.</p>
+      <p>Want me to send the engagement letter + payment link?"</p>
+    </blockquote>
+
+    <h3>If "let me think"</h3>
+    <blockquote>
+      <p>"Totally fair. What specifically? Sometimes I can answer it right now. The audit (Option 2) is yours regardless — only commitment is the m1 build, which I refund if I don't deliver."</p>
+    </blockquote>
+
+    <h3>If "let me discuss with [partner]"</h3>
+    <blockquote>
+      <p>"Cool. What's your decision process from here? When can you get [partner] on a 20-min call so I can walk them through what we discussed?"</p>
+      <p>"Let's lock the follow-up call now — what's [day] look like?"</p>
+    </blockquote>
+  </div>
+</article>
+
+<!-- WATCH FOR -->
+<article class="phase-card" data-step-label="⚠ Watch">
+  <div class="phase-tag danger">Watch For</div>
+  <h1 class="phase-title">Failure modes (warm-specific)</h1>
+  <div class="phase-body">
+    <ol class="watch-list">
+      <li><strong>Don't run full cold discovery.</strong> Warm leads bought trust from the referrer. Don't re-establish it for 45 min — close in 30. If you find yourself going through cold script's Phases 1-10, stop. You're over-pitching.</li>
+      <li><strong>Never reveal referrer intel.</strong> "Kyle mentioned X" breaks the referral pipeline. Ask open questions that surface the same info in their words.</li>
+      <li><strong>Match the pitch to what they came for.</strong> If they booked because they want LMs, lead with LM scope. Don't pitch the kitchen sink.</li>
+      <li><strong>$2.5k delta math is the close lever.</strong> "For $2.5k more you get panel + newsletter + audit." Make it explicit. Don't bury it.</li>
+      <li><strong>Audit is the deliverable, not the bait.</strong> "Yours regardless of whether you continue." Never promise it will find m2-3 work. Promise it will be honest. The honesty IS the brand.</li>
+      <li><strong>Don't auto-discount on pushback.</strong> $7.5k single firm. $10k m1 firm. $6.5k m2-3 firm. Single-project IS the downsell — don't drop the $10k rate.</li>
+      <li><strong>Operations panel is content/automation results, NOT Kyle's lane.</strong> Safe to mention for Kyle referrals. It's a results dashboard for systems YOU build, not ops/management/playbook infra.</li>
+      <li><strong>Lock follow-up on the call.</strong> Never end with "I'll email you to schedule." If they need to think, schedule the follow-up before hanging up.</li>
+    </ol>
+  </div>
+</article>
+
+</div>
+
+<div class="nav-footer">
+  <button class="nav-btn secondary" id="prev-btn">← Prev <span class="keyboard-hint" style="margin-left:4px"><kbd>←</kbd></span></button>
+  <div class="nav-position">
+    Phase <span class="current" id="current-num">0</span> / <span id="total-num">8</span>
+  </div>
+  <button class="nav-btn" id="next-btn">Next <span class="keyboard-hint" style="margin-left:4px"><kbd>→</kbd></span> →</button>
+</div>
+
+<script>
+(function() {
+  const cards = Array.from(document.querySelectorAll('.phase-card'));
+  const stepper = document.getElementById('stepper');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const currentNum = document.getElementById('current-num');
+  const totalNum = document.getElementById('total-num');
+  const showAllBtn = document.getElementById('show-all-btn');
+
+  let currentIndex = 0;
+  let showAll = false;
+
+  function buildStepper() {
+    stepper.innerHTML = '';
+    cards.forEach((card, i) => {
+      const isDanger = card.querySelector('.phase-tag.danger') !== null;
+      const isPitch = (card.dataset.stepLabel || '').includes('Pitch');
+      const btn = document.createElement('button');
+      btn.className = 'step' + (isDanger ? ' danger' : '') + (isPitch ? ' pitch' : '');
+      btn.textContent = card.dataset.stepLabel || ('P' + i);
+      btn.dataset.cardIndex = i;
+      btn.addEventListener('click', () => goTo(i));
+      stepper.appendChild(btn);
+    });
+    updateNav();
+  }
+
+  function updateNav() {
+    cards.forEach((card, i) => card.classList.toggle('visible', !showAll && i === currentIndex || showAll));
+    document.querySelectorAll('.step').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.cardIndex) === currentIndex);
+    });
+    currentNum.textContent = currentIndex + 1;
+    totalNum.textContent = cards.length;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === cards.length - 1;
+    const activeStep = document.querySelector('.step.active');
+    if (activeStep) activeStep.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    if (!showAll) window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  function goTo(index) {
+    if (showAll) return;
+    currentIndex = Math.max(0, Math.min(cards.length - 1, index));
+    updateNav();
+  }
+
+  function toggleShowAll() {
+    showAll = !showAll;
+    document.body.classList.toggle('show-all', showAll);
+    showAllBtn.classList.toggle('active', showAll);
+    if (!showAll) updateNav();
+  }
+
+  prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+  nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+  showAllBtn.addEventListener('click', toggleShowAll);
+
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'j' || e.key === 'J') { e.preventDefault(); goTo(currentIndex + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'k' || e.key === 'K') { e.preventDefault(); goTo(currentIndex - 1); }
+    if (e.key === 'a' || e.key === 'A') { e.preventDefault(); toggleShowAll(); }
+    if (e.key >= '1' && e.key <= '9') {
+      e.preventDefault();
+      const idx = parseInt(e.key) - 1;
+      if (cards[idx]) goTo(idx);
+    }
+  });
+
+  buildStepper();
+})();
+</script>
+
+</body>
+</html>

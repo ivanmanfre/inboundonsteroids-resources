@@ -1,0 +1,48 @@
+/* Landing engine — shared gated opt-in front door for every resource.
+ * One layout, copy driven by landing.json. Brand: green #131210 / paper #FFFFFF
+ * / ink #131210; Bodoni Moda (serif), Space Grotesk (sans), IBM Plex Mono (labels). */
+:root{
+  --green:#131210; --green-deep:#131210; --paper:#FFFFFF; --paper-2:#FFFFFF;
+  --ink:#131210; --muted:#6B675E; --line:rgba(19, 18, 16,.14); --card:#FFFFFF;
+}
+.lp{max-width:1080px;margin:0 auto;padding:0 1.5rem;color:var(--ink)}
+.lp *{box-sizing:border-box}
+
+/* hero */
+.lp-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center;padding:3.5rem 0 3rem}
+.lp-eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.74rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green-deep);margin:0 0 1.1rem}
+.lp-h1{font-family:'Bodoni Moda',Georgia,serif;font-weight:500;font-size:clamp(2rem,4.4vw,3rem);line-height:1.07;letter-spacing:-.01em;margin:0 0 1.1rem}
+.lp-h1 em{font-style:italic;color:var(--green-deep)}
+.lp-sub{font-size:1.12rem;line-height:1.55;color:#4A463E;margin:0 0 .7rem;max-width:32em}
+.lp-sub-2{font-size:.98rem;line-height:1.55;color:var(--muted);margin:0;max-width:32em}
+
+/* form card */
+.lp-form-card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.6rem;box-shadow:0 14px 40px rgba(40,36,24,.10)}
+.lp-cover{display:block;width:100%;height:220px;object-fit:cover;object-position:center top;border-radius:10px;margin-bottom:1.2rem;background:var(--paper-2)}
+.lp-cover-fallback{display:flex;align-items:center;justify-content:center;text-align:center;padding:0 1.2rem;height:220px;border-radius:10px;margin-bottom:1.2rem;background:linear-gradient(135deg,var(--green-deep),#131210);color:#F4F2EC;font-family:'Bodoni Moda',serif;font-style:italic;font-size:1.05rem}
+.lp-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 .4rem}
+.lp-input{width:100%;padding:.8rem .9rem;border:1px solid var(--line);border-radius:9px;font-size:1rem;font-family:'Space Grotesk',sans-serif;background:#fff;margin-bottom:.9rem;color:var(--ink)}
+.lp-input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(19, 18, 16,.15)}
+.lp-cta{width:100%;padding:.95rem 1rem;border:0;border-radius:9px;background:var(--green);color:var(--paper);font-size:1rem;font-weight:700;font-family:'Space Grotesk',sans-serif;letter-spacing:.02em;cursor:pointer;transition:transform .18s,box-shadow .18s,background .18s}
+.lp-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(19, 18, 16,.28);background:var(--green-deep)}
+.lp-cta:disabled{opacity:.7;cursor:default;transform:none;box-shadow:none}
+.lp-micro{font-size:.8rem;color:var(--muted);text-align:center;margin:.8rem 0 0}
+.lp-err{color:#C8361B;font-size:.85rem;margin:.5rem 0 0;min-height:1em;text-align:center}
+
+/* inside */
+.lp-inside{padding:1rem 0 3rem;border-top:1px solid var(--line);margin-top:1rem}
+.lp-inside h2{font-family:'Bodoni Moda',serif;font-weight:500;font-size:1.6rem;margin:2rem 0 1.4rem}
+.lp-bullets{display:grid;grid-template-columns:1fr 1fr;gap:1rem 2.4rem;list-style:none;padding:0;margin:0}
+.lp-b{display:flex;gap:.85rem;align-items:flex-start;font-size:1.02rem;color:#4A463E;line-height:1.45}
+.lp-b .n{font-family:'Bodoni Moda',serif;font-style:italic;color:var(--green-deep);font-size:1.3rem;line-height:1;min-width:1.4rem}
+
+/* proof */
+.lp-proof{display:flex;align-items:center;gap:1.1rem;padding:1.6rem 0;border-top:1px solid var(--line)}
+.lp-ava{width:54px;height:54px;border-radius:50%;object-fit:cover;background:var(--green);flex:none}
+.lp-proof p{margin:0;font-size:.98rem;color:#4A463E;line-height:1.5}
+.lp-proof b{color:var(--ink)}
+
+@media(max-width:760px){
+  .lp-hero{grid-template-columns:1fr;gap:1.8rem;padding:2.2rem 0}
+  .lp-bullets{grid-template-columns:1fr}
+}

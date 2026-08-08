@@ -1,0 +1,613 @@
+{
+ "slug": "stefan-boyle-6a-assessment",
+ "title": "The TTWYK Authority Score",
+ "subtitle": "Find out how much LinkedIn authority is sitting untapped in your founder story — and what is getting in the way of it.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "your_story_asset",
+   "name": "Your Story Asset",
+   "questions": [
+    {
+     "id": "story_clarity",
+     "text": "If someone asked you right now to describe the defining moment that shaped how you run your business, what would happen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I would struggle — I have not really thought about it in those terms",
+       "score": 1
+      },
+      {
+       "label": "I have a rough idea but I have never put it into words properly",
+       "score": 2
+      },
+      {
+       "label": "I could describe it but it comes out differently every time I tell it",
+       "score": 3
+      },
+      {
+       "label": "I have a clear story and I know the key moments in it",
+       "score": 4
+      },
+      {
+       "label": "I have a clear story and I have already used it to win clients",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "story_in_content",
+     "text": "When you think about what you have built, lost, or learned the hard way — how much of that actually shows up in your content?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None of it — my content is all tips and information",
+       "score": 1
+      },
+      {
+       "label": "Very little — I mention real experiences occasionally but it is not the main thing",
+       "score": 2
+      },
+      {
+       "label": "Some of it — I share stories but not the ones that really matter",
+       "score": 3
+      },
+      {
+       "label": "A decent amount — real experiences come through in most posts",
+       "score": 4
+      },
+      {
+       "label": "Almost all of it — my story is the backbone of everything I put out",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "founder_opinions",
+     "text": "How strong are your actual opinions about your industry — the things you would say in a room full of peers that might make someone shift in their seat?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I keep my opinions to myself on LinkedIn — it feels too risky",
+       "score": 1
+      },
+      {
+       "label": "I have opinions but I soften them to avoid upsetting anyone",
+       "score": 2
+      },
+      {
+       "label": "I will share a view if someone asks but I do not lead with them",
+       "score": 3
+      },
+      {
+       "label": "I have clear views and I am comfortable putting them out there",
+       "score": 4
+      },
+      {
+       "label": "I lead with strong opinions and it is part of what I am known for",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your story is there — it just has not been found yet",
+     "text": "Every founder has lived through something that shapes how they work. The problem is not that your story does not exist — it is that you have never had the right conversation to pull it out. The deals won and lost, the years of graft, the things learned the hard way. That is the content. But you would never have written it down. You would have told it.",
+     "steps": [
+      "Write down the three hardest decisions you have made in your business and what you know now that you did not know then",
+      "Ask yourself: what do I believe about my industry that most people in it will not say out loud?",
+      "Find one story you told on a call recently that got a strong reaction — that is the post waiting to be written"
+     ]
+    },
+    "mid": {
+     "headline": "You have got a story — you are just not using all of it",
+     "text": "You know what you have been through. The gap is between what you know privately and what is showing up in your content. The graft, the setbacks, the moments that changed how you work — that is the bit that makes someone actually want to work with you. Tips do not do that.",
+     "steps": [
+      "Take your last five posts and ask honestly: could anyone else in your industry put their name on these?",
+      "Pick one real experience — a client, a loss, a lesson — and write it out in full before you try to turn it into a post",
+      "Start treating your opinions as the product, not the preamble to the product"
+     ]
+    },
+    "high": {
+     "headline": "You have got the raw material — the question is how fast you can turn it into content",
+     "text": "When your story is strong and your opinions are clear, the constraint is not material. It is capacity and consistency. You know what you stand for. The question is whether you have got a system that does not require you to sit down and write it from scratch every single time.",
+     "steps": [
+      "Map the key themes in your story so you are not reinventing the framework every week",
+      "Look at the gap between how you communicate in conversation and how you write — that gap is usually where the gold is",
+      "Think about whether your output is matching the strength of what you actually know"
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_authenticity_test",
+   "name": "The Authenticity Test",
+   "questions": [
+    {
+     "id": "content_could_be_anyone",
+     "text": "Look at your last few LinkedIn posts. Could someone in your industry swap their name onto them and not look out of place?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly, yes — most of them would work for almost anyone",
+       "score": 1
+      },
+      {
+       "label": "A few of them maybe — some are more generic than others",
+       "score": 2
+      },
+      {
+       "label": "One or two might work but most have my stamp on them",
+       "score": 3
+      },
+      {
+       "label": "They would struggle — my specific experience and views come through",
+       "score": 4
+      },
+      {
+       "label": "No chance — nobody else could have written them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_creation_process",
+     "text": "When you write a LinkedIn post, what does the process usually look like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I put a topic into an AI tool and post what comes back",
+       "score": 1
+      },
+      {
+       "label": "I use AI to draft it and edit it a bit before posting",
+       "score": 2
+      },
+      {
+       "label": "I write it myself but I am drawing on formats or templates I have seen work",
+       "score": 3
+      },
+      {
+       "label": "I write it myself, usually starting from something real that has happened",
+       "score": 4
+      },
+      {
+       "label": "I start from a real experience or conversation and it flows from there",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "meeting_vs_linkedin",
+     "text": "How would a client who knows you well describe the gap between how you come across in a meeting and how you come across on LinkedIn?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Completely different — the LinkedIn version and the real version are not the same person",
+       "score": 1
+      },
+      {
+       "label": "There is a noticeable gap — I am more polished online than I am in person",
+       "score": 2
+      },
+      {
+       "label": "Broadly similar but LinkedIn is a slightly toned-down version of me",
+       "score": 3
+      },
+      {
+       "label": "Pretty close — they would recognise me from my posts",
+       "score": 4
+      },
+      {
+       "label": "Identical — clients say my posts sound exactly like me in a meeting",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Right now, your content is doing the opposite of what it should",
+     "text": "People are quietly walking away from AI content and most of the people posting it have no idea. Polished, perfect, obviously generated stuff gets scrolled past without a second thought. If your posts could have anyone's name on them, they are being forgotten before you have closed your laptop. Your actual voice is the only thing that fixes this — not better templates, not more polished writing. You saying the thing you would say in a meeting.",
+     "steps": [
+      "Read your last post out loud and ask: would I actually say this in a meeting?",
+      "Write one post this week that starts with something that genuinely happened to you — not a topic, an event",
+      "Try writing the first draft as if you are explaining it to a client on a call, then tidy it up"
+     ]
+    },
+    "mid": {
+     "headline": "You are on the right track — but there is still a version of you being left behind",
+     "text": "The difference between content that gets remembered and content that gets scrolled past is usually small. It is the specific detail that could only come from you. The opinion that might make someone uncomfortable. The thing you would say in the room that you would soften online. Closing that gap is where the real traction is.",
+     "steps": [
+      "For your next three posts, add one specific detail that only you would know",
+      "Leave one opinion in that you would normally soften — and see what happens",
+      "Ask a client or a peer: do I sound like myself in my posts?"
+     ]
+    },
+    "high": {
+     "headline": "Your authenticity is already there — protect it as you scale",
+     "text": "When your content sounds genuinely like you, that is the hardest thing to keep as you try to produce more of it. The trap is reaching for shortcuts that chip away at the thing that is working. More of the same quality beats more output at any cost.",
+     "steps": [
+      "Keep a note of your best-performing posts and what they had in common",
+      "Be careful with any tool or process that removes you from the first draft",
+      "The thing your audience is buying is you — keep it that way"
+     ]
+    }
+   }
+  },
+  {
+   "id": "consistency_capacity",
+   "name": "Consistency & Capacity",
+   "questions": [
+    {
+     "id": "posting_history",
+     "text": "What does your LinkedIn posting history actually look like over the last six months?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost nothing — a handful of posts at most",
+       "score": 1
+      },
+      {
+       "label": "A few bursts of activity with long gaps in between",
+       "score": 2
+      },
+      {
+       "label": "Reasonably regular but nowhere near consistent",
+       "score": 3
+      },
+      {
+       "label": "Fairly consistent — maybe a few quiet weeks but mostly showing up",
+       "score": 4
+      },
+      {
+       "label": "Consistent every week, without fail",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_effort_honest",
+     "text": "When you think about the effort of producing LinkedIn content consistently, what is your honest reaction?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have tried and burned out — I know what it costs and I have stopped",
+       "score": 1
+      },
+      {
+       "label": "It feels like too much on top of everything else in the business",
+       "score": 2
+      },
+      {
+       "label": "I can manage it for a while but it always drops off eventually",
+       "score": 3
+      },
+      {
+       "label": "It is manageable — I have found a rhythm that mostly works",
+       "score": 4
+      },
+      {
+       "label": "I have a system and it does not drain me to maintain it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_content_hours",
+     "type": "number",
+     "text": "Roughly how many hours a week do you currently spend on LinkedIn content — writing, thinking about what to post, editing, or staring at a blank screen?",
+     "hint": "Include all the time that goes into it, not just the time you are actually typing",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 20,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "x === 0 ? 100 : x <= 2 ? 80 : x <= 4 ? 60 : x <= 6 ? 40 : x <= 10 ? 20 : 0"
+    },
+    {
+     "id": "hourly_rate",
+     "type": "number",
+     "text": "What is an hour of your time worth to your business? (If you bill by the day, divide your day rate by 8. If you pay yourself a salary, divide your annual drawings by 2000.)",
+     "hint": "No judgement on the number — this is just to calculate what your content time is actually costing you each month",
+     "suffix": "£/hour",
+     "min": 50,
+     "max": 2000,
+     "step": 50,
+     "default": 200,
+     "normalize_formula": "x >= 400 ? 80 : x >= 200 ? 60 : x >= 100 ? 40 : 20"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You have burned the energy but not got the results — that is the system, not you",
+     "text": "Most founders have watched themselves go hard on LinkedIn for a few weeks, then run out of steam and disappear. When the only way to produce content is to sit down and write it from scratch every time, it will always lose to the twenty other things in your business that are actually on fire. The question is not how to be more disciplined. It is how to build something that does not require that much discipline to sustain.",
+     "steps": [
+      "Work out how many hours you have spent on LinkedIn content in the last month that produced nothing you are proud of",
+      "Ask yourself honestly: is the current approach ever going to be sustainable, or are you waiting for the next burst of motivation?",
+      "Think about what a system would look like where the content does not start with you staring at a blank screen"
+     ]
+    },
+    "mid": {
+     "headline": "You are showing up — but it is costing more than it should",
+     "text": "You have got some consistency going. The question is whether you can sustain it without it grinding you down. The founders who disappear from LinkedIn do not run out of things to say. They run out of capacity to keep writing them from scratch. The goal is content that does not cost you six hours every week to produce.",
+     "steps": [
+      "Track how long content actually takes you this week — most founders underestimate it by a long way",
+      "Work out where the time is going: is it the ideas, the writing, the editing, or the second-guessing?",
+      "Think about whether a conversation-first approach could solve the blank-page problem permanently"
+     ]
+    },
+    "high": {
+     "headline": "You have cracked consistency — now check whether the content is as strong as it could be",
+     "text": "Showing up reliably is half the battle and you have done it. The thing worth checking now is whether the consistency is producing the right results — not just views, but the right people reaching out about the right things.",
+     "steps": [
+      "Check whether your most consistent content is also your most authentic content",
+      "Look at who is actually engaging — are they your ideal clients or just other founders and suppliers?",
+      "Ask whether more output is the answer or whether sharper content would do more with what you have already got"
+     ]
+    }
+   }
+  },
+  {
+   "id": "authority_inbound",
+   "name": "Authority & Inbound",
+   "questions": [
+    {
+     "id": "prospect_impression",
+     "text": "When a potential client checks your LinkedIn profile before a call, what impression do they get of you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not much — there is barely any content there",
+       "score": 1
+      },
+      {
+       "label": "They would see some posts but nothing that would really move the needle",
+       "score": 2
+      },
+      {
+       "label": "They would get a reasonable picture of what I do but not much about who I am",
+       "score": 3
+      },
+      {
+       "label": "They would get a solid sense of my views and my approach",
+       "score": 4
+      },
+      {
+       "label": "They arrive on the call already sold — they feel like they know me",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "dream_clients_visibility",
+     "text": "When you think about the people you most want to work with — the names on your dream client list — what is your honest assessment of whether they see your content?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They almost certainly do not — I am not visible enough",
+       "score": 1
+      },
+      {
+       "label": "A few of them might follow me but I do not think it is moving anything",
+       "score": 2
+      },
+      {
+       "label": "Some of them engage occasionally but it has not turned into work",
+       "score": 3
+      },
+      {
+       "label": "Several of them engage with my content and it has opened conversations",
+       "score": 4
+      },
+      {
+       "label": "My content puts me directly in front of them and they come to me",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_linkedin_leads",
+     "type": "number",
+     "text": "How many qualified leads per month are you currently getting from LinkedIn specifically?",
+     "hint": "A qualified lead means someone who fits your ideal client profile and reached out because of something they saw from you on LinkedIn",
+     "suffix": "leads/month",
+     "min": 0,
+     "max": 30,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "x === 0 ? 0 : x <= 2 ? 30 : x <= 5 ? 60 : x <= 10 ? 80 : 100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Right now, LinkedIn is a black hole — time going in, nothing coming out",
+     "text": "There are roughly 1.3 billion people on LinkedIn and a serious chunk of them have real spending power. They are on your dream client list. The problem is they are scrolling past content that does not stop them. Authority is not built by posting regularly. It is built by being the person they feel they already know when they need what you do.",
+     "steps": [
+      "Check whether your content is designed to be found by your ideal clients or whether it is just being put out there",
+      "Pick one type of client you want more of and ask: what would I need to post for them to feel like they know me before we speak?",
+      "Think about the last time a client said 'I have been following you for a while' before you had ever spoken — what did they read?"
+     ]
+    },
+    "mid": {
+     "headline": "You are getting some traction — the question is whether you can make it reliable",
+     "text": "When LinkedIn starts generating leads, even occasionally, that is proof the model works. The gap between occasional and consistent is usually not more posting. It is more of the kind of content that made the leads happen in the first place.",
+     "steps": [
+      "Look at the posts that generated leads and work out what they had in common",
+      "Make sure the content that brought those leads in is still being produced",
+      "Talk to the leads that came in and find out what specifically made them reach out"
+     ]
+    },
+    "high": {
+     "headline": "You have built something real — now think about whether you can sustain it",
+     "text": "Consistent inbound from LinkedIn is what everyone on the platform is trying to build and you are already there. The risk at this stage is that it is still dependent on you putting in the hours every week. The question worth asking is how you maintain the quality and the authority without it owning your calendar.",
+     "steps": [
+      "Map which content types are driving the most relevant inbound",
+      "Make sure your system can sustain the output without burning you out",
+      "Think about whether you are fully capitalising on the authority you have already built"
+     ]
+    }
+   }
+  },
+  {
+   "id": "the_founder_voice_test",
+   "name": "The Founder Voice Test",
+   "questions": [
+    {
+     "id": "conversation_vs_content",
+     "text": "When you have a conversation with a client or peer about something happening in your industry, how does it compare to what you post on LinkedIn?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Completely different — I am much more direct and specific in conversation",
+       "score": 1
+      },
+      {
+       "label": "The conversation is better — I say things in meetings I would never post",
+       "score": 2
+      },
+      {
+       "label": "There is a gap but I am aware of it and trying to close it",
+       "score": 3
+      },
+      {
+       "label": "They are fairly similar — my posts mostly reflect how I actually think",
+       "score": 4
+      },
+      {
+       "label": "The conversation is basically the post — I talk and it becomes content",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "puts_words_to_it",
+     "text": "Think about the last time someone said you had put into words something they had been thinking but could not articulate. Did that happen in a conversation or in a LinkedIn post?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It happens in conversation all the time — almost never in a post",
+       "score": 1
+      },
+      {
+       "label": "More in conversation than on LinkedIn by a long way",
+       "score": 2
+      },
+      {
+       "label": "About the same in both — it does happen in posts occasionally",
+       "score": 3
+      },
+      {
+       "label": "It happens regularly in posts as well as in conversation",
+       "score": 4
+      },
+      {
+       "label": "My posts consistently hit that nerve — it is a regular response I get",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The best version of your content is already happening — just not on LinkedIn",
+     "text": "The conversations where you say exactly what you think, where you are direct about what is wrong and what needs to happen — those are already happening. Every week. The gap is between what you say in a room and what ends up on the platform. That gap is costing you every single week.",
+     "steps": [
+      "After your next strong client conversation, write down the three most direct things you said",
+      "Ask yourself: would I post that? And if not, why not?",
+      "Think about whether starting from the conversation and working backwards to content would get you closer to your real voice"
+     ]
+    },
+    "mid": {
+     "headline": "You are getting there — the voice is coming through but not consistently enough",
+     "text": "When it works, it works. People respond to the content that sounds like you in a meeting. The challenge is making that the default rather than the exception. The posts that land are usually the ones where you stopped worrying about getting it right and just said the thing.",
+     "steps": [
+      "Find the last post that really sounded like you — what made it different from the others?",
+      "Try to build that same approach into how you start the next five posts",
+      "Think about how many strong client conversations you have each week that never make it into content"
+     ]
+    },
+    "high": {
+     "headline": "Getting your real voice onto LinkedIn consistently is the hardest part — and you have done it",
+     "text": "Most founders never close the gap between how they are in a room and how they are on the platform. You have. The question now is capacity. Can you turn out content at the rate your audience deserves without it becoming a grind?",
+     "steps": [
+      "Make sure you have a way to capture the strong conversations before they disappear",
+      "Think about how much content is sitting in your existing conversations that has never been turned into anything",
+      "The system should be working with your voice by now, not working around it"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly_content_cost",
+   "label": "Monthly cost of your current LinkedIn content time (hours per week x your hourly rate x 4 weeks)",
+   "format": "currency_per_period",
+   "formula": "weekly_content_hours * hourly_rate * 4",
+   "show_in_result": true
+  },
+  {
+   "id": "cost_per_lead",
+   "label": "What each LinkedIn lead is currently costing you in founder time (or your full monthly spend if leads are at zero)",
+   "format": "currency",
+   "formula": "monthly_linkedin_leads > 0 ? weekly_content_hours * hourly_rate * 4 / monthly_linkedin_leads : weekly_content_hours * hourly_rate * 4",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these sounds most like you right now?",
+  "answers": [
+   {
+    "label": "I know I should be on LinkedIn but I have barely started",
+    "tag": "not_started"
+   },
+   {
+    "label": "I have gone hard on it before, burned out, and stopped",
+    "tag": "burned_out"
+   },
+   {
+    "label": "I am posting but it is inconsistent and I do not think it is working",
+    "tag": "inconsistent"
+   },
+   {
+    "label": "I am posting regularly but not getting the clients I want from it",
+    "tag": "no_results"
+   }
+  ]
+ }
+}

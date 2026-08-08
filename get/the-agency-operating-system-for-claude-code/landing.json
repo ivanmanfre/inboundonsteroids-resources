@@ -1,0 +1,22 @@
+{
+  "slug": "the-agency-operating-system-for-claude-code",
+  "format_label": "AI Kit",
+  "category": "Claude Code agency setup",
+  "headline": "Run your agency on Claude Code in 15 minutes",
+  "headline_emphasis": "in 15 minutes",
+  "subhead": "The exact memory, skills, and guardrails I use to run my agency, packaged to drop into Claude Code.",
+  "subhead_secondary": "Copy it, point it at your work, and start today.",
+  "cover_url": null,
+  "inside": [
+    "The memory files that keep Claude grounded in how your agency actually works",
+    "The skills I run daily for proposals, content, and client ops",
+    "The guardrails that stop Claude from going off the rails",
+    "A 15-minute setup so it works on your machine, not just mine",
+    "The exact folder structure to drop it all into"
+  ],
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
+  "resource_url": "https://resources.inboundonsteroids.com/the-agency-operating-system-for-claude-code",
+  "gate_keyword": "SPINE",
+  "cta_label": "Email me the AI Kit",
+  "proof_avatar_alt": "Ivan Manfredi"
+}

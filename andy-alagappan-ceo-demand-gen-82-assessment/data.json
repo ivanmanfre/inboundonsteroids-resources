@@ -1,0 +1,664 @@
+{
+ "slug": "andy-alagappan-ceo-demand-gen-82-assessment",
+ "title": "B2B Visibility and Pipeline Readiness Score",
+ "subtitle": "Find out where friction is costing you deals and whether your pipeline runs on assets you own or attention you rent.",
+ "brand": {
+  "accent": "#428bca",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "messaging_clarity",
+   "name": "Messaging Clarity",
+   "questions": [
+    {
+     "id": "messaging_clarity_q1",
+     "text": "When a cold prospect lands on your website or LinkedIn profile, what do they find?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Generic language that could apply to most companies in my space",
+       "score": 1
+      },
+      {
+       "label": "A clear description of what I do but nothing specific about who it is for",
+       "score": 2
+      },
+      {
+       "label": "Clear on what I do and who I serve but vague on the outcome they get",
+       "score": 3
+      },
+      {
+       "label": "Specific on service, audience, and outcome. Most visitors get it immediately.",
+       "score": 4
+      },
+      {
+       "label": "Specific and validated. Prospects tell me unprompted it spoke directly to their problem.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "messaging_clarity_q2",
+     "text": "If you asked five recent prospects to describe your service in their own words, how consistent would their answers be?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very inconsistent. Everyone describes it differently.",
+       "score": 1
+      },
+      {
+       "label": "Mostly inconsistent. A few overlap on the general idea.",
+       "score": 2
+      },
+      {
+       "label": "Two or three would say something similar.",
+       "score": 3
+      },
+      {
+       "label": "Most would describe it the same way.",
+       "score": 4
+      },
+      {
+       "label": "All five would use language I would recognize as mine.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "messaging_clarity_q3",
+     "text": "When your B2B prospects search for the problem you solve, what do they find?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing. I have not looked into where I rank for the searches my buyers run.",
+       "score": 1
+      },
+      {
+       "label": "My brand name shows up but not the problems my buyers actually search for.",
+       "score": 2
+      },
+      {
+       "label": "I appear on page one for a few long-tail searches but not the primary ones.",
+       "score": 3
+      },
+      {
+       "label": "I rank on page one for several searches my buyers run during the evaluation stage.",
+       "score": 4
+      },
+      {
+       "label": "Prospects searching for the problem I solve find me before they find my competitors.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "messaging_clarity_q4",
+     "text": "How quickly does a first-time visitor to your site understand the specific problem you solve?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They need to read through several pages to piece it together.",
+       "score": 1
+      },
+      {
+       "label": "It is on the homepage but buried below the fold.",
+       "score": 2
+      },
+      {
+       "label": "It is above the fold but written in general terms.",
+       "score": 3
+      },
+      {
+       "label": "It is above the fold with a specific outcome stated clearly.",
+       "score": 4
+      },
+      {
+       "label": "Within five seconds a visitor can name the problem and who it is for.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Confusion is costing you deals you do not know you are losing.",
+     "text": "When a buyer cannot quickly understand what you do and who it is for, they do not object. They just move on. The friction is invisible to you because confused buyers rarely say they are confused. They just do not convert.",
+     "steps": [
+      "Audit your homepage and LinkedIn headline. Can a cold visitor name the problem you solve in under ten seconds?",
+      "Interview three recent buyers and ask them to describe your service in their own words. Record every phrase they use.",
+      "Rewrite your primary messaging using the buyer's language, not your internal language.",
+      "Test one specific outcome statement above the fold before changing anything else.",
+      "Search for the top three questions your buyers ask before hiring someone like you. If you do not show up for those searches, that is where to start."
+     ]
+    },
+    "mid": {
+     "headline": "Your message is mostly there. The gaps are in the details.",
+     "text": "Buyers get the general picture but lose confidence somewhere in the specifics. That gap is often where deals stall. Not a hard no. Just a slow drift into no decision.",
+     "steps": [
+      "Identify which part of your offer buyers most often misunderstand and address it earlier in your materials.",
+      "Add one concrete outcome with a number to your primary messaging. Vague claims of value still read as vague.",
+      "Check whether your messaging is consistent across website, LinkedIn, and sales conversations. Inconsistency reads as confusion to buyers.",
+      "Expand your page one presence to the searches your buyers run before they even know they need you."
+     ]
+    },
+    "high": {
+     "headline": "Your messaging is working. Protect it as you scale.",
+     "text": "Clear messaging is an asset. The risk at this stage is drift. New offers, new team members, or pressure to expand upmarket can blur the specificity that makes it work. Keep auditing it the way you built it.",
+     "steps": [
+      "Document the exact language your best buyers use to describe the problem. That is your benchmark.",
+      "Run a clarity check any time you add a new service or expand to a new audience.",
+      "Use your best-converting messaging as the control when testing anything new.",
+      "Track your page one rankings quarterly. Search visibility that compounds is an asset. Letting it drift lets competitors close the gap quietly."
+     ]
+    }
+   }
+  },
+  {
+   "id": "conversion_path",
+   "name": "Conversion Path",
+   "questions": [
+    {
+     "id": "conversion_path_q1",
+     "text": "How many steps does a prospect take to go from first contact to a real sales conversation with you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Five or more steps with forms, confirmation emails, scheduling, reminders, and an intake form",
+       "score": 1
+      },
+      {
+       "label": "Three to four steps with some manual back-and-forth required",
+       "score": 2
+      },
+      {
+       "label": "Two to three steps but at least one causes visible drop-off",
+       "score": 3
+      },
+      {
+       "label": "Two steps. One clear action, then a scheduled call.",
+       "score": 4
+      },
+      {
+       "label": "One clear action that gets them directly into my calendar or inbox",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "conversion_path_q2",
+     "text": "What does a prospect find when they research you before making a decision?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost nothing. No reviews, case studies, or third-party mentions.",
+       "score": 1
+      },
+      {
+       "label": "My website but no independent proof.",
+       "score": 2
+      },
+      {
+       "label": "A few testimonials but nothing that removes doubt about outcomes.",
+       "score": 3
+      },
+      {
+       "label": "Multiple proof points in the form of case studies, client results, and media mentions.",
+       "score": 4
+      },
+      {
+       "label": "Strong independent proof that answers the questions buyers typically ask before they ask them.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "conversion_path_q3",
+     "text": "How much perceived risk does a first-time buyer carry when they decide to work with you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "High risk. Large upfront commitment, no guarantee, no way to evaluate before committing.",
+       "score": 1
+      },
+      {
+       "label": "Moderate risk. Some commitment required and a few success stories but nothing that removes doubt.",
+       "score": 2
+      },
+      {
+       "label": "Lower risk. Solid testimonials but no formal mechanism to reduce uncertainty.",
+       "score": 3
+      },
+      {
+       "label": "Low risk. Case studies, clear expectations, and some form of pilot or guarantee.",
+       "score": 4
+      },
+      {
+       "label": "Very low risk. Buyers know exactly what they are getting, what success looks like, and what happens if it does not work.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Buyers are interested. The path forward is stopping them.",
+     "text": "Effort and risk are the two friction types that kill deals from interested buyers. When moving forward feels like too much work, or the outcome feels too uncertain, delay becomes the default. Most delays become losses.",
+     "steps": [
+      "Map every step a prospect takes from first click to booked call. Cut any step that is not doing a specific job.",
+      "Add one concrete proof element: a case study with a number, a short client video, or a written outcome statement from a past client.",
+      "Create a low-risk entry point. A paid audit, a pilot engagement, or a clear first-30-days deliverable lets buyers evaluate you before a full commitment.",
+      "Before you redesign your offer, find which friction type is doing the most damage. Effort and risk need different fixes."
+     ]
+    },
+    "mid": {
+     "headline": "Most buyers can get through. The outliers are telling you where the leak is.",
+     "text": "When some buyers convert easily and others stall at the same stage, that stall point is worth diagnosing. It is usually a missing proof element or one extra step that feels disproportionately hard relative to what came before it.",
+     "steps": [
+      "Ask the last three buyers who went quiet what the moment of hesitation was. The ones who disappeared, not the ones who said no.",
+      "Figure out whether risk or effort is the bigger factor. They often get confused for each other, and they need different fixes.",
+      "If risk is the problem, add proof. If effort is the problem, cut a step."
+     ]
+    },
+    "high": {
+     "headline": "Your path to yes is clear. The work now is volume.",
+     "text": "When friction is low, conversion rate is rarely the bottleneck. What matters now is how many qualified buyers are entering the path in the first place.",
+     "steps": [
+      "Measure your conversion rate from first contact to booked call and set a baseline so you know when it changes.",
+      "Put investment into bringing more of the right buyers to the top of your path. The bottom of the funnel is working.",
+      "Do not redesign what is working because it feels like it should be more sophisticated."
+     ]
+    }
+   }
+  },
+  {
+   "id": "pipeline_assets",
+   "name": "Pipeline Assets",
+   "questions": [
+    {
+     "id": "pipeline_assets_q1",
+     "text": "If you stopped all paid advertising tomorrow, how would your pipeline change in 90 days?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It would collapse. Paid ads are the main source of inquiries.",
+       "score": 1
+      },
+      {
+       "label": "It would drop significantly. I have some referrals but not enough to hold it.",
+       "score": 2
+      },
+      {
+       "label": "It would drop noticeably but I have organic content and referral volume keeping some of it.",
+       "score": 3
+      },
+      {
+       "label": "A modest drop. The majority of my pipeline comes from channels I own.",
+       "score": 4
+      },
+      {
+       "label": "Minimal impact. Organic search, content, and my owned list generate consistent inbound.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "pipeline_assets_q2",
+     "text": "How much of your current inbound comes from content or search assets you built over time?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost none. Most inbound comes from paid ads or direct outbound.",
+       "score": 1
+      },
+      {
+       "label": "A small amount. A few posts or pages drive occasional traffic.",
+       "score": 2
+      },
+      {
+       "label": "Some. I show up for a few searches but nothing consistent.",
+       "score": 3
+      },
+      {
+       "label": "Meaningful. A third or more of inbound traces back to content or search.",
+       "score": 4
+      },
+      {
+       "label": "Primary. Organic search and content are my largest consistent inbound sources.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "pipeline_assets_q3",
+     "text": "Do you have an owned list you could reach today without paying a platform?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No list. My audience lives entirely on social platforms I do not control.",
+       "score": 1
+      },
+      {
+       "label": "A small list I have not emailed in months.",
+       "score": 2
+      },
+      {
+       "label": "An active list under 500 people.",
+       "score": 3
+      },
+      {
+       "label": "An active list that generates regular engagement and occasional inbound.",
+       "score": 4
+      },
+      {
+       "label": "A growing, engaged list I treat as a core business asset.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are renting your pipeline. The day you pause, it pauses.",
+     "text": "A pipeline built on paid ads belongs to the platform. The spend stops, the results stop. That is a subscription model for leads, and it builds in a ceiling on both your margin and your stability.",
+     "steps": [
+      "Identify the two or three questions your best buyers search for before they find someone like you. Start there with content.",
+      "Pick one organic channel and commit to it for 90 days before adding another. SEO, LinkedIn content, and email are the most common starting points for B2B service businesses.",
+      "Start building a list this week, even if it is small. A list you own compounds. A follower count you rent does not.",
+      "The goal is assets that keep running after you stop paying. Paid ads stay in the mix. They just stop being the whole system."
+     ]
+    },
+    "mid": {
+     "headline": "You have the foundation. The gap is consistency and compound time.",
+     "text": "Owned pipeline assets take longer to show up, but they keep working after you stop actively pushing. The founders who get past the first plateau are the ones who stayed patient while the compounding ran.",
+     "steps": [
+      "Find what is already working organically. One piece of content or one page driving real traffic. Double down on that format.",
+      "Set a 90-day content cadence you can realistically hold.",
+      "Grow your list deliberately: add a content upgrade, a lead magnet, or a direct CTA to every piece you publish."
+     ]
+    },
+    "high": {
+     "headline": "Your pipeline runs on assets you own. Protect the compounding.",
+     "text": "Owned pipeline is the most durable form of lead generation. The risk at this stage is treating it like a completed project. It stays durable because someone keeps building it.",
+     "steps": [
+      "Identify which owned channel carries the highest buyer intent and make sure it points at your clearest conversion path.",
+      "Add a borrowed credibility layer: partnerships or guest appearances accelerate early-stage awareness while your owned assets keep compounding.",
+      "Track list growth and organic traffic monthly so you catch any decay before it reaches the pipeline."
+     ]
+    }
+   }
+  },
+  {
+   "id": "channel_coverage",
+   "name": "Channel Coverage",
+   "questions": [
+    {
+     "id": "channel_coverage_q1",
+     "text": "How many distinct channels are currently generating consistent, qualified inbound for your business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "One. Everything runs through a single source.",
+       "score": 1
+      },
+      {
+       "label": "Two. A primary channel and one inconsistent secondary.",
+       "score": 2
+      },
+      {
+       "label": "Two to three, each generating meaningful volume on its own.",
+       "score": 3
+      },
+      {
+       "label": "Three or more, covering different stages of the buyer's decision.",
+       "score": 4
+      },
+      {
+       "label": "Four or more channels covering organic search, social, referral, and outbound.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "channel_coverage_q2",
+     "text": "If your best channel had a bad month due to algorithm changes or increased competition, how would your pipeline hold up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It would collapse. That channel is the pipeline.",
+       "score": 1
+      },
+      {
+       "label": "It would drop significantly and I would scramble to compensate.",
+       "score": 2
+      },
+      {
+       "label": "It would dip but I could hold it with extra effort on other channels.",
+       "score": 3
+      },
+      {
+       "label": "Manageable. Other channels absorb most of the drop.",
+       "score": 4
+      },
+      {
+       "label": "Minimal disruption. I built for this scenario and the coverage holds.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "channel_coverage_q3",
+     "text": "Is your current channel mix a deliberate system or a result of whatever worked first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Entirely whatever worked first. I have not changed it since.",
+       "score": 1
+      },
+      {
+       "label": "Mostly instinct. I know I should do more but have not acted on it.",
+       "score": 2
+      },
+      {
+       "label": "Some intention. I added a second channel but without a clear strategy for why.",
+       "score": 3
+      },
+      {
+       "label": "Deliberate. I can explain why each channel is in the mix and what stage of the buyer journey it covers.",
+       "score": 4
+      },
+      {
+       "label": "Fully mapped. I know what each channel does, what it covers, and what the gap would be if it dropped out.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "One channel is a bet, not a strategy.",
+     "text": "Every channel gets more expensive or more saturated over time. When all the weight sits on one source, a single bad month on that platform becomes a pipeline problem. Building coverage is the fix.",
+     "steps": [
+      "Map where your buyers are at each stage of their decision: awareness, consideration, evaluation. Find which stages have no channel covering them.",
+      "Pick one compounding channel to add alongside what you already run. Organic search or LinkedIn content are the most common anchors for B2B service businesses.",
+      "Do not abandon what is working. Add alongside it while the new channel matures.",
+      "Build for the scenario where your best channel has a bad quarter. That is when the coverage pays off."
+     ]
+    },
+    "mid": {
+     "headline": "Coverage is forming. The gap is the system.",
+     "text": "Running two or three channels beats running one. The risk is treating them independently rather than as a system. Channels that cover different buyer stages compound each other. Channels running in parallel without coordination just add cost.",
+     "steps": [
+      "Map each channel to a stage of the buyer decision: awareness, consideration, or evaluation. Fill any uncovered stage.",
+      "Add borrowed credibility to accelerate early-stage awareness while your owned channels build.",
+      "Track leads by channel monthly. When one drops, you want to know fast enough to respond."
+     ]
+    },
+    "high": {
+     "headline": "Your omni-channel system is working. The work now is refinement.",
+     "text": "Full channel coverage is where most B2B founders never get. A bad month on one platform no longer threatens the quarter. The question now is which channel is doing the most work and whether the others are earning their place.",
+     "steps": [
+      "Attribute pipeline by channel and find which source produces the highest close rate, not just the most volume.",
+      "Look for stage gaps: a channel driving awareness with nothing converting that awareness into consideration.",
+      "Keep building borrowed credibility. Partnerships and referrals accelerate the early stages that owned channels take the longest to reach."
+     ]
+    }
+   }
+  },
+  {
+   "id": "borrowed_credibility",
+   "name": "Borrowed Credibility",
+   "questions": [
+    {
+     "id": "borrowed_credibility_q1",
+     "text": "How often do prospects contact you already knowing who you are and why you are relevant?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely. Most outreach arrives to a complete stranger.",
+       "score": 1
+      },
+      {
+       "label": "Occasionally. A referral comes through a few times a year.",
+       "score": 2
+      },
+      {
+       "label": "Sometimes. Roughly one in five prospects arrives with prior context about me.",
+       "score": 3
+      },
+      {
+       "label": "Often. A meaningful portion of inbound comes through people or platforms my buyers already trust.",
+       "score": 4
+      },
+      {
+       "label": "Consistently. Buyers regularly arrive having heard about me through someone they trust before we even speak.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "borrowed_credibility_q2",
+     "text": "How many active partnerships or referral relationships are generating warm introductions right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None. I have not built formal referral or partner relationships.",
+       "score": 1
+      },
+      {
+       "label": "One or two informal relationships that send the occasional referral.",
+       "score": 2
+      },
+      {
+       "label": "Two to three relationships that produce a few warm introductions per quarter.",
+       "score": 3
+      },
+      {
+       "label": "Four or more active relationships each producing regular introductions.",
+       "score": 4
+      },
+      {
+       "label": "A formal partner or referral network I actively manage and track.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "borrowed_credibility_q3",
+     "text": "In the past six months, how many times have you appeared in front of an audience your buyers already trust?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Zero. My presence is limited to my own channels.",
+       "score": 1
+      },
+      {
+       "label": "Once. A one-off appearance I have not followed up on.",
+       "score": 2
+      },
+      {
+       "label": "Two or three appearances with inconsistent follow-through.",
+       "score": 3
+      },
+      {
+       "label": "Four or more, with a clear reason why each audience was the right one.",
+       "score": 4
+      },
+      {
+       "label": "A regular cadence of appearances in front of audiences where my buyers are already paying attention.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Every buyer you reach is starting from zero with you.",
+     "text": "Cold audiences make you earn every inch of trust. When a buyer arrives through someone they already trust, months of skepticism collapse into a single conversation. The fastest-growing B2B businesses I work with run owned audience building and borrowed credibility in parallel.",
+     "steps": [
+      "List five people whose audiences overlap with your buyers. Those are your first partnership targets.",
+      "Pitch one appearance in the next 30 days: a podcast episode, a newsletter feature, or a co-authored piece.",
+      "Ask two or three past clients directly whether they know someone you should be talking to. Most will tell you if asked.",
+      "Borrowed credibility does not build passively. You have to show up in the spaces where buyers are already paying attention."
+     ]
+    },
+    "mid": {
+     "headline": "The groundwork is there. The gap is intentionality.",
+     "text": "A few referrals and the occasional appearance beats starting from zero every time. But inconsistency here means buyers arrive with borrowed context sometimes and without it most of the time. The opportunity is turning this into something you run on purpose.",
+     "steps": [
+      "Identify which partnership or referral source has sent you the best introductions and put more into that relationship.",
+      "Build a simple appearance pipeline: two or three targets per quarter, each mapped to an audience your buyers are already in.",
+      "Create a follow-up process so appearances keep working after the episode or article goes live."
+     ]
+    },
+    "high": {
+     "headline": "Buyers arrive warm. Protect and expand that.",
+     "text": "You have built something most B2B founders do not reach. Borrowed credibility compresses timelines and reduces the skepticism that cold channels have to earn out the hard way. The risk now is complacency. Relationships and appearances need consistent attention to keep producing.",
+     "steps": [
+      "Track which borrowed channels produce the shortest time-to-conversation and the highest close rates.",
+      "Add your borrowed credibility activities to your calendar so they do not slip when the business gets busy.",
+      "Look for better-fit borrowed audiences: communities, publications, or partners where your buyers are concentrated rather than scattered."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "In 30 minutes I'll show you which two gaps to fix first, based on your score and your stage. No pitch deck, just the sequencing.",
+  "button": "Book a call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "persona_selector": {
+  "id": "role",
+  "text": "Which of these best describes your current situation?",
+  "answers": [
+   {
+    "label": "Founder handling sales and marketing myself",
+    "tag": "founder_operator"
+   },
+   {
+    "label": "Agency or consultancy owner with a small team",
+    "tag": "agency_owner"
+   },
+   {
+    "label": "B2B service business with a dedicated marketing hire",
+    "tag": "marketing_led"
+   },
+   {
+    "label": "Scaling B2B company trying to build a predictable lead system",
+    "tag": "scaling_b2b"
+   }
+  ]
+ }
+}

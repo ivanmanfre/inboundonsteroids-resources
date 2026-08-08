@@ -1,0 +1,70 @@
+{
+  "slug": "client-content-brief-generator-from-call-transcripts",
+  "title": "Client Content Brief Generator from Call Transcripts",
+  "subtitle": "N8n workflow template that extracts insights from client call transcripts and generates strategic content briefs automatically. Built for agency teams.",
+  "estimated_minutes": 10,
+  "brand": {
+    "hero_badge": "Guide"
+  },
+  "intro": {
+    "paragraph": "You made the right call grabbing this one. This n8n workflow pulls the strategic insights from your client calls and turns them into briefs your team can actually execute - no more digging through transcripts trying to remember what mattered. Import it, customize the prompts to your content pillars, and test with a couple real transcripts before rolling it out to the whole team.",
+    "bio_html": "<div class=\"lmg-bio\"><p>So who am I and why should you trust me? I'll keep this quick so we can get to the good stuff...</p>\n<ul><li>AI ops operator - designed and deployed systems for 100+ companies</li>\n<li>Built AI agents and n8n workflows that save teams 20+ hours every single week</li>\n<li>Helped businesses 3-5x their operational efficiency through smart automation</li>\n<li>Building and shipping AI solutions before most people knew what an LLM was</li>\n<li>Fueled by espresso and mass amounts of automation nodes</li>\n</ul></div>"
+  },
+  "sections": [
+    {
+      "id": "what-to-do-with-this",
+      "title": "What To Do With This",
+      "html": "<ul><li><strong>Time to implement:</strong> 2-4 hours for the base workflow, another 1-2 hours for customization</li>\n<li><strong>What you'll need:</strong> n8n instance (cloud or self-hosted), OpenAI or Claude API access, meeting transcription tool (Fireflies, Otter, or similar), and a task management system (ClickUp, Notion, Asana - whatever you use)</li>\n<li><strong>How to use it:</strong> Follow the workflow structure below, adapt the prompts to your content pillars and client voice profiles, then test with 2-3 real transcripts before rolling out</li>\n</ul>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "why-this-workflow-matters",
+      "title": "Why This Workflow Matters",
+      "html": "<p>Here's what I see with agencies all the time: you've got client calls where golden insights drop - content ideas, objections to address, specific language the client uses, strategic priorities. But by the time someone gets around to writing the content brief, half of that context is gone.</p>\n<p>The other problem? Consistency. One strategist writes briefs one way, another does it differently. The content team is constantly asking clarifying questions because the brief didn't include enough context.</p>\n<p>This workflow solves both problems. It extracts the insights programmatically, applies consistent brief formatting, and can even match the client's tone of voice if you've got that documented. The AI does the extraction and organization work. Your team focuses on the creative strategy.</p>\n<p>I built something similar for a consultant who was pulling content from his masterclass recordings and call transcripts. We embedded all that source material into a vector database so the AI had full context when generating briefs and lead magnets. Same principle applies here - you're giving the AI access to the actual words your client used, not your memory of what they said.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "how-it-works",
+      "title": "How It Works",
+      "html": "<p>The workflow follows a simple pipeline:</p>\n<ul>\n<li><strong>Trigger:</strong> A webhook fires when a new call transcript lands (works with Fireflies, Otter, Fathom, or manual upload to Google Drive)</li>\n<li><strong>Client Detection:</strong> AI identifies which client the call belongs to and pulls their folder structure from Google Drive</li>\n<li><strong>Transcript Storage:</strong> The cleaned transcript gets saved as a Google Doc in the client's Transcripts folder (created automatically if it doesn't exist)</li>\n<li><strong>Brief Generation:</strong> Claude reads the full transcript and generates structured content briefs - extracting topics, language patterns, content opportunities, strategic context, and quotable moments</li>\n<li><strong>Output &amp; Notify:</strong> Briefs are saved as formatted Google Docs, shared with your team, and a Slack notification goes out with a summary</li>\n</ul>\n<p>Each brief includes: content objective, target audience, key messages, content angle, supporting points, client voice notes, format recommendation, and open questions for the client. Everything grounded in what was actually said on the call - no hallucinated data points.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "making-it-multi-client-ready",
+      "title": "Making It Multi-Client Ready",
+      "html": "<p>If you're running this for multiple clients, you need a lookup system for client-specific context.</p>\n<p><strong>Set up a client database with:</strong></p>\n<ul><li><strong>client_id</strong> - Unique identifier</li><li><strong>client_name</strong> - Display name</li><li><strong>voice_profile</strong> - Tone, vocabulary, style notes</li><li><strong>content_pillars</strong> - 3-5 strategic themes</li><li><strong>posting_cadence</strong> - How often they post</li><li><strong>platform_focus</strong> - LinkedIn, Twitter, blog, etc.</li><li><strong>recent_topics</strong> - Last 10 content pieces (to avoid repetition)</li></ul>\n<strong>Add a lookup node</strong>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "error-handling",
+      "title": "Error Handling",
+      "html": "<p>Things will break. Here's how to handle it:</p>\n<strong>Transcript too long:</strong>\n<ul><li>Gemini handles up to 1M tokens, but for Claude or GPT-4, you'll hit limits around 100k-128k</li>\n<li>Add a conditional that chunks long transcripts or summarizes them first</li>\n<li>For really long calls (2+ hours), consider extracting only the portions with the most speaker changes - that's usually where the good stuff is</li>\n</ul>\n<strong>Missing client in database:</strong>\n<ul><li>Route to a manual review queue instead of failing silently</li>\n<li>Send a Slack notification: \"New transcript from unknown client - needs manual processing\"</li>\n</ul>\n<strong>API failures:</strong>\n<ul><li>Add retry logic with exponential backoff (n8n has this built in)</li>\n<li>After 3 failures, route to manual queue and notify</li>\n</ul>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "what-this-actually-saves-you",
+      "title": "What This Actually Saves You",
+      "html": "<p>Let me give you real numbers from similar workflows:</p>\n<strong>Before automation:</strong>\n<ul><li>Listen to call recording or read transcript: 30-45 min</li>\n<li>Extract relevant insights: 20-30 min</li>\n<li>Write content brief: 30-45 min</li>\n<li>Format and add to task management: 10-15 min</li>\n</ul>\n<strong>Total per call: 1.5-2.5 hours</strong>\n<strong>After automation:</strong>\n<ul><li>Workflow runs automatically: 0 min active time</li>\n<li>Review generated brief: 10-15 min</li>\n<li>Make edits and approve: 5-10 min</li>\n</ul>\n<strong>Total per call: 15-25 min</strong>\n<p>If you're doing 10 client calls a week, that's 15-25 hours saved weekly. Even accounting for setup time and occasional fixes, you're net positive within the first month.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "common-customizations",
+      "title": "Common Customizations",
+      "html": "<p><strong>Add landing page generation:</strong><br>One of the agencies I showed this to got excited about auto-generating Webflow landing pages from the briefs. That's a whole additional workflow, but it's doable - the brief feeds into a page generation agent, which outputs structured content that maps to your Webflow component library.</p>\n<p><strong>Connect to a knowledge base:</strong><br>If you have a vector database with the client's past content, webinars, or training materials (like the masterclass embedding setup I mentioned), you can give the brief generation agent access to that context. Richer source material = more specific briefs.</p>\n<p><strong>Add competitor monitoring:</strong><br>If the client mentions competitors on the call, trigger a secondary workflow that scrapes those competitor profiles and adds relevant insights to the brief.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "your-next-7-days",
+      "title": "Your Next 7 Days",
+      "html": "<p><strong>Day 1-2:</strong> Set up your n8n instance and connect your transcription tool. Get the trigger working with a test transcript.</p>\n<p><strong>Day 3-4:</strong> Build the insight extraction and anti-AI filter agents. Test with 3-4 real transcripts and refine the prompts.</p>\n<p><strong>Day 5:</strong> Add the brief generation node and connect to your task management system.</p>\n<p><strong>Day 6:</strong> Build the notification flow and test end-to-end with a live call.</p>\n<p><strong>Day 7:</strong> Run it on 2-3 real calls. Review the output quality. Make prompt adjustments based on what's missing or off.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "need-help-building-this",
+      "title": "Need Help Building This?",
+      "html": "<p>If you want help implementing this workflow for your agency - or you've got a different automation challenge you're trying to solve - reach out: <a href=\"https://calendly.com/ivan-intelligents/30min\" target=\"_blank\" rel=\"noopener noreferrer\">Get in Touch</a></p>\n<p>I build these systems for a living. Happy to look at your specific setup and tell you what's possible.</p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ],
+  "data_version": 1
+}

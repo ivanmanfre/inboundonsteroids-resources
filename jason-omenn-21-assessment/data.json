@@ -1,0 +1,574 @@
+{
+ "slug": "jason-omenn-21-assessment",
+ "title": "AEO Readiness Score",
+ "subtitle": "Measures how clearly your brand makes the AI shortlist before the first buyer call.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "citation_tracking_measur",
+   "name": "Citation Tracking & Measurement",
+   "questions": [
+    {
+     "id": "q-track-visibility",
+     "text": "How do you currently track AI search visibility?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't track it at all",
+       "score": 1
+      },
+      {
+       "label": "I check ChatGPT manually, occasionally",
+       "score": 2
+      },
+      {
+       "label": "We track AI traffic and brand mentions in a tool",
+       "score": 3
+      },
+      {
+       "label": "We track when our owned pages get cited in AI engine responses",
+       "score": 4
+      },
+      {
+       "label": "We have a dashboard showing citation rate across ChatGPT, Perplexity, and Gemini",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-deal-attribution",
+     "text": "When a deal closes, do you know if the buyer found you through AI search first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't track deal sourcing at all",
+       "score": 1
+      },
+      {
+       "label": "We ask sometimes in discovery calls",
+       "score": 2
+      },
+      {
+       "label": "We ask every prospect and log the answer",
+       "score": 3
+      },
+      {
+       "label": "We ask, log it, and compare close rates by source",
+       "score": 4
+      },
+      {
+       "label": "We track it against deal velocity and use it to direct content effort",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-benchmark",
+     "text": "What do you actually benchmark for AI search performance?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing specific -- no benchmark yet",
+       "score": 1
+      },
+      {
+       "label": "Traffic referred from AI-linked sources",
+       "score": 2
+      },
+      {
+       "label": "Volume of brand mentions in AI outputs",
+       "score": 3
+      },
+      {
+       "label": "Citation volume, tracked separately from mention volume",
+       "score": 4
+      },
+      {
+       "label": "How often owned pages get cited when buyers run category questions in AI tools",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "quarterly_deals",
+     "type": "number",
+     "text": "How many deals did you close last quarter?",
+     "hint": "Count all closed-won deals regardless of channel",
+     "suffix": "deals",
+     "min": 0,
+     "max": 500,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.min(x * 5, 100)"
+    },
+    {
+     "id": "ai_deals_count",
+     "type": "number",
+     "text": "Of those deals, how many buyers mentioned finding you through an AI tool (ChatGPT, Perplexity, Gemini, or Google AI Overviews)?",
+     "hint": "Include any deal where the buyer referenced AI search in discovery, attribution, or conversation -- even if you only started asking recently",
+     "suffix": "deals",
+     "min": 0,
+     "max": 500,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "Math.min(x * 20, 100)"
+    },
+    {
+     "id": "avg_deal_value",
+     "type": "number",
+     "text": "What is your average deal or retainer value?",
+     "hint": "Used to calculate the dollar volume of pipeline closed outside AI channels. Use annual contract value or one-time deal size -- whichever you track internally.",
+     "suffix": "$",
+     "min": 0,
+     "max": 1000000,
+     "step": 1000,
+     "default": 25000,
+     "normalize_formula": "Math.min(x / 500, 100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're flying blind on the metric that predicts pipeline quality",
+     "text": "Mentions don't convert. Citations do. Right now you have no line of sight on whether AI engines treat your content as an authoritative source -- or skip you entirely. That's a shortlist problem you can't see yet.",
+     "steps": [
+      "Pick one question your buyers ask before a first call. Run it in ChatGPT, Perplexity, and Gemini. Note whether your owned content shows up as a cited source -- not just a mention.",
+      "Add one question to your next discovery call: 'Did you look us up in ChatGPT or any AI tool before reaching out?' Log every answer for 30 days.",
+      "Set up a weekly citation check: 5 buyer prompts, 3 engines, 10 minutes. Track whether the number goes up over time."
+     ]
+    },
+    "mid": {
+     "headline": "You're tracking the right signal -- now connect it to pipeline outcomes",
+     "text": "You're measuring more than most. The next move is linking citation data to deal velocity. Until citation rate maps to close time and pipeline quality, it's still a vanity metric dressed up differently.",
+     "steps": [
+      "Tag every inbound lead with sourcing. If they mention ChatGPT or Perplexity, flag it. Track close rate and days-to-close for that segment separately from the rest.",
+      "Build a citation-to-pipeline view: which owned pages are getting cited and which closed deals trace back to AI-sourced discovery?",
+      "Set a quarterly target: what citation rate on category questions would actually move the shortlist needle for your business?"
+     ]
+    },
+    "high": {
+     "headline": "You're measuring what matters. Now make sure the content engine can sustain it.",
+     "text": "Citation rate tied to deal velocity is the right KPI. The question is whether your content engine can improve that number systematically -- or whether you got here partly by accident.",
+     "steps": [
+      "Map your top 5 cited pages to the buyer prompts they answer. Are the right questions covered, or are you getting cited for the wrong things?",
+      "Build a brief template that targets a specific buyer prompt -- not a topic. Every new piece should answer something a buyer types before a call.",
+      "Share the citation-to-velocity data with your team. The people who publish under their names need to see why structure matters."
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_architecture_for",
+   "name": "Content Architecture for AI Extraction",
+   "questions": [
+    {
+     "id": "q-buyer-prompts",
+     "text": "How closely does your published content match the questions buyers actually run in AI tools before a call?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We publish what we know -- not mapped to buyer prompts",
+       "score": 1
+      },
+      {
+       "label": "Some posts touch buyer questions but it's not systematic",
+       "score": 2
+      },
+      {
+       "label": "We map common buyer questions and build content around them",
+       "score": 3
+      },
+      {
+       "label": "We research the 10-15 prompts buyers run in AI tools and answer those directly",
+       "score": 4
+      },
+      {
+       "label": "We research prompts, answer them with structured content, and verify AI engines cite us for those answers",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-structure",
+     "text": "How is your content structured when it goes out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Standard prose -- no specific structure designed for extraction",
+       "score": 1
+      },
+      {
+       "label": "Headers and bullets, but not designed for AI to pull from",
+       "score": 2
+      },
+      {
+       "label": "We lead with the direct answer before any setup or context",
+       "score": 3
+      },
+      {
+       "label": "Direct answer first, then bullets, then real deal context",
+       "score": 4
+      },
+      {
+       "label": "Structured to be extracted: direct answer, clear bullets, anonymized outcomes -- written like a final explanation, not a brand update",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-deal-context",
+     "text": "How much real deal context shows up in your published content?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Mostly general -- no specific numbers or outcomes from real deals",
+       "score": 1
+      },
+      {
+       "label": "We reference outcomes occasionally but keep the numbers vague",
+       "score": 2
+      },
+      {
+       "label": "Some deal data appears but we avoid committing to specifics",
+       "score": 3
+      },
+      {
+       "label": "Anonymized outcomes and patterns across real deals appear regularly",
+       "score": 4
+      },
+      {
+       "label": "Specific patterns from real calls -- close rates, timelines, what we observed across the last 20 conversations",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your content earns visits. AI engines need content that completes decisions.",
+     "text": "Vague inspiration gets ignored by AI engines. They extract clear structure, direct answers, and specific evidence. If your content doesn't lead with the answer, doesn't include real numbers, and isn't mapped to what a buyer actually types -- it won't get cited.",
+     "steps": [
+      "Take one existing piece of content. Rewrite the first two sentences to answer a buyer question fully -- before any setup, context, or brand framing.",
+      "Add one real deal detail to that same piece: an anonymized outcome, a timeline, a pattern you observed across three client conversations.",
+      "Run the buyer prompt that piece is supposed to answer in ChatGPT. See what gets cited. Read that source. Match its structure on your next piece."
+     ]
+    },
+    "mid": {
+     "headline": "The structure is there. Add the specificity AI trusts.",
+     "text": "You're leading with answers and using structure. The gap is usually specificity. 'Most clients see improvement' is invisible to AI engines. '17 of the last 20 audits showed the same gap' is citable. Specificity is what AI trusts.",
+     "steps": [
+      "Go through your top 10 pieces. Identify one concrete number or outcome you could add to each -- no invention, only what you've actually seen.",
+      "Write one piece that starts from a buyer prompt and works backward to the structure. The prompt is the title. The answer is the first sentence.",
+      "Test it: run the prompt in Perplexity. Does your piece show up? If not, what source does? Read it. Match that structure on your next piece."
+     ]
+    },
+    "high": {
+     "headline": "You're building content AI engines can actually use.",
+     "text": "Mapped prompts, structured output, real deal context -- that's the combination that earns citations. The risk at this stage is drift: the system works until someone stops following the brief.",
+     "steps": [
+      "Document the brief as a template so anyone on your team can reproduce the structure without guessing. One page is enough.",
+      "Build a backlog of the 15 buyer prompts you haven't answered yet. Prioritize by how often you hear them on calls.",
+      "For each new piece, run the buyer prompt in ChatGPT 48 hours after publishing. Log whether the piece gets cited. That's your quality signal."
+     ]
+    }
+   }
+  },
+  {
+   "id": "authority_signal_depth",
+   "name": "Authority Signal Depth",
+   "questions": [
+    {
+     "id": "q-source-presence",
+     "text": "Where does your brand have an authoritative presence that AI systems can find and index?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Mainly our website -- maybe a LinkedIn company page",
+       "score": 1
+      },
+      {
+       "label": "Website plus one or two media mentions or review sites",
+       "score": 2
+      },
+      {
+       "label": "Multiple sources: website, LinkedIn, press, industry directories",
+       "score": 3
+      },
+      {
+       "label": "Entity presence across sources AI systems already index -- website, LinkedIn, third-party corroboration",
+       "score": 4
+      },
+      {
+       "label": "Consistent topical coverage across multiple indexed sources with clear entity clarity -- one well-structured site isn't enough and we know it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-platform-dependency",
+     "text": "How platform-dependent is your AI search visibility?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Everything runs through one channel -- if the platform changes, we're exposed",
+       "score": 1
+      },
+      {
+       "label": "Primarily one channel with light presence elsewhere",
+       "score": 2
+      },
+      {
+       "label": "Two or three channels but no coordination between them",
+       "score": 3
+      },
+      {
+       "label": "Content that gets cited across multiple AI engines independently",
+       "score": 4
+      },
+      {
+       "label": "Authority signals that work across ChatGPT, Perplexity, Gemini, and Google AI Overviews -- platform user counts fluctuate, our content authority doesn't",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-category-ownership",
+     "text": "How clearly does AI associate your brand with a specific category or question set?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We cover many topics -- no clear category ownership",
+       "score": 1
+      },
+      {
+       "label": "Associated with our industry generally but not a specific question set",
+       "score": 2
+      },
+      {
+       "label": "We own 2-3 topics and have some depth there",
+       "score": 3
+      },
+      {
+       "label": "Clear category ownership with interconnected content on the topic",
+       "score": 4
+      },
+      {
+       "label": "AI engines cite us when buyers ask category-specific questions -- entity clarity is consistent across sources",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "One source isn't enough. The signal has to exist in places AI already trusts.",
+     "text": "Perplexity retrieves from sources it already trusts before the user types the query. That trust comes from entity clarity, consistent topical coverage, and third-party corroboration -- not from which plan you're on or how clean your website is. A single well-structured site gets you nowhere if the signal isn't corroborated elsewhere.",
+     "steps": [
+      "Map where your brand currently exists in writing online: website, LinkedIn, directories, press, reviews, partner pages. Anything an AI can index.",
+      "Identify two or three sources you're absent from that carry weight in your category -- trade publications, well-indexed directories, industry round-ups.",
+      "Pick one topic you can fully own. Write 5 pieces that go deep on it across different platforms. Consistent topical coverage across multiple sources is what builds the entity signal."
+     ]
+    },
+    "mid": {
+     "headline": "The breadth is there. Deepen the entity signal and tighten the category.",
+     "text": "You have presence in multiple places. The question is whether AI engines associate you with a specific category clearly enough to cite you when a buyer asks about it. Broad presence across many topics is weaker than deep presence on one.",
+     "steps": [
+      "Run your category question in ChatGPT and Perplexity. Note which brands get cited. Check where those citations pull from. Match that source mix.",
+      "Pick your clearest category claim and map all your content against it. Deprioritize anything that dilutes the signal.",
+      "Build one piece of third-party corroboration: a guest post, an industry feature, a well-indexed mention that confirms the entity association from outside your own domain."
+     ]
+    },
+    "high": {
+     "headline": "Your authority signal is durable. Now stress-test it.",
+     "text": "Platform-agnostic authority is the ceiling most brands never reach. The brands with durable AI visibility aren't optimizing for any one engine's interface -- they're building the underlying signals that make every engine cite them.",
+     "steps": [
+      "Run a platform rotation test: query the same 5 buyer prompts in ChatGPT, Perplexity, Gemini, and Google AI Overviews. Note where you show up and where you're absent.",
+      "Identify which of your sources contributes most to citations. Invest more there -- and identify a second source that could carry similar weight.",
+      "Document what you built. Your AEO signal is an owned asset. If key team members left tomorrow, could someone rebuild it from your internal brief?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "team_publishing_lane_str",
+   "name": "Team Publishing & Lane Structure",
+   "questions": [
+    {
+     "id": "q-employee-publishing",
+     "text": "Do your employees publish content under their own names in your category?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No -- only company accounts post",
+       "score": 1
+      },
+      {
+       "label": "A few people post occasionally, nothing systematic",
+       "score": 2
+      },
+      {
+       "label": "Team members post but without a shared brief or structure",
+       "score": 3
+      },
+      {
+       "label": "Team members publish in defined lanes -- sales owns buying behavior, product owns implementation",
+       "score": 4
+      },
+      {
+       "label": "Each person answers buyer questions in their lane, structured for extraction, with real deal context",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-team-brief",
+     "text": "When your team publishes, how close is the content to what buyers actually search in AI tools?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Team posts whatever they find interesting -- no buyer prompt mapping",
+       "score": 1
+      },
+      {
+       "label": "We share topic ideas but they're general, not buyer-question-driven",
+       "score": 2
+      },
+      {
+       "label": "We map buyer questions and point team members toward them",
+       "score": 3
+      },
+      {
+       "label": "We identify prompts buyers run and assign lanes so each person owns the answers that match their role",
+       "score": 4
+      },
+      {
+       "label": "Mapped prompts, defined lanes, structured brief -- every post is designed to earn a citation, not just a like",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q-buyer-discovery",
+     "text": "If a prospect researches your category in ChatGPT right now, what do they find from your team?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We've never tested it -- no idea what comes up",
+       "score": 1
+      },
+      {
+       "label": "I've searched and our content doesn't show up",
+       "score": 2
+      },
+      {
+       "label": "Company content appears occasionally",
+       "score": 3
+      },
+      {
+       "label": "Our owned pages and one or two employee posts show up reliably",
+       "score": 4
+      },
+      {
+       "label": "Multiple team members and owned sources appear -- buyer arrives pre-qualified before the first call",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your team is a visibility asset you're not using.",
+     "text": "Buying behavior is shifting. AI engines cite LinkedIn URLs when buyers research vendors. Across 86K of those cited URLs, employee-generated content shows up as a real visibility driver. If your team isn't publishing answers, a competitor's team is filling those slots.",
+     "steps": [
+      "List the 10-15 prompts your buyers run in ChatGPT and Perplexity before a first call. Those prompts are assignments.",
+      "Pick one person -- ideally someone in sales who hears these questions every week. Have them answer one buyer question this week. Lead with the direct answer. Include one real number from a deal.",
+      "Define lanes before you scale: sales owns buying behavior, product owns implementation, founder owns category framing. Authority builds when the signal is consistent and attributed."
+     ]
+    },
+    "mid": {
+     "headline": "Team is publishing -- now make it citation-worthy.",
+     "text": "You have publishing activity. The gap is usually the brief: team members default to generic thought leadership because no one told them the real goal is a citation, not a like. The playbook works when the brief is specific.",
+     "steps": [
+      "Run every team member's recent posts through one test: does the first sentence answer a buyer question fully? If not, that's the brief gap.",
+      "Give each person one lane and a backlog of 10 buyer prompts they own. The prompt is the title. The answer is the first sentence.",
+      "Check: for the last 30 days of team publishing, how many of those posts show up when you run buyer prompts in ChatGPT? That number is your baseline."
+     ]
+    },
+    "high": {
+     "headline": "Your team is building citations. Protect the structure.",
+     "text": "A team that publishes in defined lanes, on buyer prompts, with structured content is one of the most durable visibility assets a brand can build. The risk is that it breaks when someone new joins and doesn't get the brief.",
+     "steps": [
+      "Document the lane structure, the buyer prompts, and the format brief as an onboarding doc. One page is enough.",
+      "Set a monthly citation check: run your top 10 buyer prompts in ChatGPT and Perplexity. Note which team member's posts show up and which prompts have no coverage.",
+      "Expand the map: what prompts are buyers running that your team isn't answering yet? Those are the next 10 assignments."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "ai_citation_share",
+   "label": "Share of last quarter's deals sourced from AI search",
+   "format": "percent",
+   "formula": "quarterly_deals > 0 ? (ai_deals_count / quarterly_deals * 100) : 0",
+   "show_in_result": true
+  },
+  {
+   "id": "non_ai_pipeline",
+   "label": "Revenue closed last quarter outside AI search channels",
+   "format": "currency",
+   "formula": "(quarterly_deals - ai_deals_count) * avg_deal_value",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you're coming from?",
+  "answers": [
+   {
+    "label": "Brand owner or founder",
+    "tag": "founder"
+   },
+   {
+    "label": "Marketing lead at a scaling company",
+    "tag": "marketer"
+   },
+   {
+    "label": "Agency or consultant advising clients",
+    "tag": "agency"
+   }
+  ]
+ }
+}

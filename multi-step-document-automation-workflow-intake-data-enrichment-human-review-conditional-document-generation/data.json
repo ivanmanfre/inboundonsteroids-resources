@@ -1,0 +1,34 @@
+{
+  "slug": "multi-step-document-automation-workflow-intake-data-enrichment-human-review-conditional-document-generation",
+  "title": "Multi-Step Document Automation Workflow: Intake → Data Enrichment → Human Review → Conditional Document Generation",
+  "subtitle": "N8N workflow template for multi-step document automation - intake, data enrichment, human review, and conditional generation. Built for teams who need it to actually work.",
+  "estimated_minutes": 10,
+  "brand": {
+    "hero_badge": "Guide"
+  },
+  "intro": {
+    "paragraph": "This workflow contains 15 nodes.Node Types UsedwebhookstickyNotecodeifhttpRequestmergeemailSendrespondToWebhookHey, this is Ivan, and I'm about to give you the N8N Workflow Blueprint for building a multi-step document automation system that handles intake, enrichment, human revie",
+    "bio_html": "<div class=\"lmg-bio\"><ul><li>AI AI ops operator</li>\n<li>Built AI-built automation systems for 50+ businesses</li>\n<li>Designed workflows that save teams 20+ hours per week</li>\n<li>Created document automation pipelines handling everything from construction SWPPs to marketing lead magnets</li>\n<li>The guy who's debugged more broken PDF workflows than I care to admit</li>\n</ul></div>"
+  },
+  "sections": [
+    {
+      "id": "what-to-do-with-this",
+      "title": "What To Do With This",
+      "html": "<p>Spend 2-3 hours setting up each stage of this workflow. You can build it all in one sitting or spread it across a few days. The blueprint walks you through every node, every connection, and every decision point.</p>\n<p>The goal: take a document request from intake to finished output with minimal manual touching. Human review stays in the loop where it matters - you're not removing people, you're removing the tedious parts.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "why-this-workflow-matters",
+      "title": "Why This Workflow Matters",
+      "html": "<p>Most document automation fails because people try to automate the whole thing end-to-end on day one. They build a massive workflow, it breaks somewhere in the middle, and nobody can figure out where.</p>\n<p>The reality I see with clients: document generation isn't one problem. It's four problems stitched together:</p>\n<p>1. Getting the right inputs in a consistent format<br>2. Enriching those inputs with data from other sources<br>3. Making sure a human can catch errors before they compound<br>4. Generating the right document based on what the data tells you</p>\n<p>Each stage has different failure modes. Each stage needs different error handling. When you build them as separate chunks that talk to each other, you can actually debug the thing.</p>\n<p>This workflow handles all four stages with clear handoffs between them. When something breaks - and something always breaks - you'll know exactly where to look.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "the-complete-workflow-architecture",
+      "title": "The Complete Workflow Architecture",
+      "html": "<h3>Stage 1: Intake System</h3>\n<p><strong>Purpose:</strong> Capture document requests in a structured format that downstream processes can actually use.</p>\n<p><strong>Trigger Node: Webhook or Form Submission</strong></p>\n<code>\nNode Type: Webhook (or n8n Form Trigger)\nConfiguration:\n<ul><li>HTTP Method: POST</li>\n<li>Path: /document-intake</li>\n<li>Response Mode: Last Node</li>\n<li>Authentication: Header Auth (recommended)</li>\n</ul></code>\n<code>\n<p><strong>What you're capturing at intake:</strong></p>\n<table><thead><tr><th>Field</th><th>Type</th><th>Required</th><th>Notes</th></tr></thead><tbody><tr><td>request_id</td><td>Auto-generated</td><td>Yes</td><td>UUID for tracking</td></tr><tr><td>client_name</td><td>Text</td><td>Yes</td><td>Company or individual</td></tr><tr><td>client_email</td><td>Email</td><td>Yes</td><td>For notifications</td></tr><tr><td>document_type</td><td>Dropdown</td><td>Yes</td><td>Determines which template fires</td></tr><tr><td>project_name</td><td>Text</td><td>Yes</td><td>Reference identifier</td></tr><tr><td>deadline</td><td>Date</td><td>No</td><td>Triggers priority routing</td></tr><tr><td>source_files</td><td>File Upload</td><td>Conditional</td><td>PDFs, spreadsheets, etc.</td></tr><tr><td>special_instructions</td><td>Long Text</td><td>No</td><td>Catches edge cases</td></tr></tbody></table><strong>Validation Node: Check Required Fields</strong>\n</code>\n<code>\nNode Type: IF\nConditions:\n<ul><li>client_name is not empty</li>\n<li>client_email contains @</li>\n<li>document_type is not empty</li>\n<li>project_name is not empty</li>\n</ul>\nTrue Branch: Continue to enrichment\nFalse Branch: Send error response + notify requester\n</code>\n<code>\n<blockquote>Tip: The most common intake failure I see is letting people submit incomplete requests. Validate upfront or you'll spend more time chasing missing info than you save with automation.</blockquote>\n<p><strong>File Handling Node: Process Uploads</strong></p>\n</code>\n<p><code></code>`<code><br>Node Type: IF (check if files exist)<br>True Branch: <br>  - Move to Google Drive/S3 folder<br>  - Extract file metadata<br>  - Store file URLs for later reference<br>False Branch: Continue without files<br></code>`<code></code></p>\n<code>\n<p>For large PDFs - and I've seen clients upload 300-page construction drawings - you need to think about this differently. Create an automated folder structure:</p>\n</code>\n<p><code></code>`<code><br>/Projects/<br>  /[Project_Name]/<br>    /Source_Files/<br>    /Generated_Documents/<br>    /Review_Notes/<br></code>`<code></code></p>\n<code>\n<p>The AI can reference the folder path instead of processing massive files inline. This is especially important if you're using Gemini or Claude to read documents - they handle file references better than trying to process 100MB PDFs directly.</p>\n<p><strong>Output of Stage 1:</strong></p>\n</code>\n<p><code></code>``json<br>{<br>  \"request_id\": \"uuid-here\",<br>  \"client_name\": \"Acme Corp\",<br>  \"client_email\": \"contact@acme.com\",</p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ],
+  "data_version": 1
+}

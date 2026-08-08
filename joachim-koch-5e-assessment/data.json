@@ -1,0 +1,613 @@
+{
+ "slug": "joachim-koch-5e-assessment",
+ "title": "Revenue Engine Readiness Score",
+ "subtitle": "Measure how well your B2B sales and marketing machine is built to convert, scale, and stay visible in the AI era.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "quote_to_cash_efficiency",
+   "name": "Quote-to-Cash Efficiency",
+   "questions": [
+    {
+     "id": "rep_count",
+     "type": "number",
+     "text": "How many quota-carrying sales reps are on your team?",
+     "hint": "Include all AEs, BDRs who close, and overlay reps",
+     "suffix": "reps",
+     "min": 1,
+     "max": 500,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "admin_hours",
+     "type": "number",
+     "text": "On average, how many hours per week does each sales rep spend on non-selling tasks — quoting, CRM updates, internal approvals, and admin?",
+     "hint": "Research puts the industry average at about 26 hours per week — 66% of a 40-hour week. Where does your team land?",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 20,
+     "normalize_formula": "Math.max(0, Math.min(100, (40 - x) / 40 * 100))"
+    },
+    {
+     "id": "hourly_rate",
+     "type": "number",
+     "text": "What is the fully loaded hourly cost of a sales rep at your company (base salary + commission target + benefits + overhead, divided by 2,080 hours per year)?",
+     "hint": "For a rep with $120,000 total comp and 30% overhead burden, that works out to about $75/hour",
+     "suffix": "USD/hour",
+     "min": 20,
+     "max": 500,
+     "step": 5,
+     "default": 75,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "quote_to_cash_efficiency_q4",
+     "text": "How long does it typically take your team to turn around a standard quote after a prospect requests one?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Over a week — pricing configuration, approvals, and formatting all require manual back-and-forth",
+       "score": 1
+      },
+      {
+       "label": "2–3 business days — we have the tools but the process still involves multiple handoffs",
+       "score": 2
+      },
+      {
+       "label": "Same day, but it still involves manual steps and occasional delays",
+       "score": 3
+      },
+      {
+       "label": "A few hours — some automation is in place but it's not fully connected end-to-end",
+       "score": 4
+      },
+      {
+       "label": "Under an hour — quotes are generated automatically and sent without manual intervention",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "quote_to_cash_efficiency_q5",
+     "text": "When a deal stalls unexpectedly late in the cycle, what is the most common cause?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A stakeholder we had no idea existed suddenly appears and blocks the deal",
+       "score": 1
+      },
+      {
+       "label": "Pricing or legal review takes longer than expected and the prospect goes cold while waiting",
+       "score": 2
+      },
+      {
+       "label": "We knew the stakeholder existed but engaged them too late in the process",
+       "score": 3
+      },
+      {
+       "label": "We usually catch blockers early but occasionally get surprised at the proposal stage",
+       "score": 4
+      },
+      {
+       "label": "We map the full buying committee in discovery — late-stage blockers are rare",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "quote_to_cash_efficiency_q6",
+     "text": "How much of your quoting and pricing process is handled by your CRM or an integrated CPQ tool today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost nothing — pricing lives in spreadsheets and reps assemble quotes from email threads",
+       "score": 1
+      },
+      {
+       "label": "We have templates but reps build quotes manually and errors happen regularly",
+       "score": 2
+      },
+      {
+       "label": "Our CRM stores products and pricing, but approvals and formatting are still manual steps",
+       "score": 3
+      },
+      {
+       "label": "Most standard quotes are automated; complex or custom deals still require manual work",
+       "score": 4
+      },
+      {
+       "label": "Fully integrated CPQ — reps configure and send compliant, accurate quotes in minutes without leaving HubSpot",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your Quote-to-Cash cycle is costing you deals you have already won.",
+     "text": "Manual quoting, slow approvals, and hidden stakeholders are the three most common reasons a 'sure thing' deal stalls at the one-yard line. The problem is not your reps — it is the administrative friction eating their selling time. When sales reps spend only 34% of their week actually selling, you are not running a revenue engine. You are running a paperwork operation.",
+     "steps": [
+      "Audit where quotes get stuck: is it pricing configuration, internal approvals, or formatting? Identify the single biggest bottleneck and fix that one thing first before touching anything else.",
+      "Connect your CRM to a CPQ tool so reps can generate accurate, compliant quotes without leaving HubSpot — the goal is minutes, not days.",
+      "Add a buying-committee mapping step to your discovery process. Before you reach the proposal stage, you should know every stakeholder who can say yes and every stakeholder who can say no."
+     ]
+    },
+    "mid": {
+     "headline": "You have made progress, but administrative drag is still capping your ceiling.",
+     "text": "Some friction has been removed, but your reps are still spending too much time on tasks that do not move deals forward. At this stage the opportunity is not to add more tools — it is to connect the pieces you already have so automation flows end-to-end without manual handoffs breaking the momentum.",
+     "steps": [
+      "Find the single manual approval step that takes the longest and build an automated workflow around it — one handoff eliminated compounds across every deal in your pipeline.",
+      "Deploy a Breeze Prospecting Agent to maintain deal momentum during the gaps between rep touches so prospects do not go cold while your team is handling admin.",
+      "Pull your last 10 stalled deals and identify the pattern. Was it a hidden stakeholder, a pricing delay, or a timing problem? Fix the most common cause first."
+     ]
+    },
+    "high": {
+     "headline": "Your Quote-to-Cash engine is running well — now optimize for speed at scale.",
+     "text": "You have removed most of the manual friction. The next lever is using AI to proactively identify deal risk and surface buying signals before a rep even notices a deal is cooling. You are close to a system that closes itself.",
+     "steps": [
+      "Layer AI deal-health scoring onto your pipeline to flag at-risk opportunities before they stall — early warning beats late recovery every time.",
+      "Review your CPQ configuration quarterly to make sure pricing rules reflect your current offer structures — drift here is invisible until a deal breaks.",
+      "Measure quote-to-close velocity by rep and by deal type. Use the variance to coach and standardize — your fastest reps have a process worth cloning."
+     ]
+    }
+   }
+  },
+  {
+   "id": "lead_scoring_pipeline_in",
+   "name": "Lead Scoring & Pipeline Intelligence",
+   "questions": [
+    {
+     "id": "lead_scoring_pipeline_in_q1",
+     "text": "How does your team currently decide which leads a sales rep should prioritize and call first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rep intuition and whoever came in most recently — there is no formal system",
+       "score": 1
+      },
+      {
+       "label": "A static point system built on job title, form fills, and page visits",
+       "score": 2
+      },
+      {
+       "label": "An MQL threshold we trust in principle, though conversion rates to SQL are inconsistent",
+       "score": 3
+      },
+      {
+       "label": "A combination of behavioral signals and firmographic fit scores reviewed regularly",
+       "score": 4
+      },
+      {
+       "label": "AI-driven scoring that identifies Ready-to-Buy patterns our manual rules would never catch",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "lead_scoring_pipeline_in_q2",
+     "text": "When did your team last revisit your lead scoring model or update your MQL definition?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We inherited it and have not touched it — we are not sure who built it or when",
+       "score": 1
+      },
+      {
+       "label": "Over two years ago, after someone noticed that conversion rates were dropping",
+       "score": 2
+      },
+      {
+       "label": "Within the last 12–24 months, triggered by a sales complaint rather than a data review",
+       "score": 3
+      },
+      {
+       "label": "Within the last 12 months, with actual win-rate data driving the changes",
+       "score": 4
+      },
+      {
+       "label": "It is reviewed quarterly and continuously calibrated against closed-won outcomes",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "lead_scoring_pipeline_in_q3",
+     "text": "What happens when a qualified lead goes cold or stops engaging mid-cycle?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It sits in the pipeline until a rep notices or the deal quietly expires",
+       "score": 1
+      },
+      {
+       "label": "We have a follow-up sequence, but it runs on a fixed schedule and is not personalized",
+       "score": 2
+      },
+      {
+       "label": "We trigger re-engagement based on how long a lead has been in a stage",
+       "score": 3
+      },
+      {
+       "label": "Behavioral signals like email opens and page revisits trigger personalized re-engagement automatically",
+       "score": 4
+      },
+      {
+       "label": "AI prospecting agents monitor engagement and maintain deal momentum without any rep intervention required",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "lead_scoring_pipeline_in_q4",
+     "text": "How would you honestly describe your current MQL-to-SQL conversion rate?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not track it, or it sits below 10% — most MQLs are not actually ready to talk to sales",
+       "score": 1
+      },
+      {
+       "label": "Around 10–20% — we convert some but reps waste significant time on leads that are not ready",
+       "score": 2
+      },
+      {
+       "label": "Around 20–35% — better than average but the scoring model still has gaps we know about",
+       "score": 3
+      },
+      {
+       "label": "Above 35% — our scoring is reasonably accurate and reps largely trust the queue",
+       "score": 4
+      },
+      {
+       "label": "Above 50% and improving — we calibrate regularly against actual closed-won data",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your lead scoring model is burning rep time and eroding trust in the pipeline.",
+     "text": "When 84% of businesses struggle to convert MQLs to SQLs, the culprit is almost always a scoring model that was built once and never updated. Reps stop trusting the queue, start cherry-picking leads based on gut feel, and the whole system breaks down. The traditional MQL is reaching its expiration date — and you are paying for it every time a rep calls someone who was never going to buy.",
+     "steps": [
+      "Pull your last 90 days of closed-won deals and map which specific activities and signals preceded each close. Rebuild your scoring model from that data, not from assumptions made at the last offsite.",
+      "Set a minimum quarterly review cadence for your MQL definition — tie it to actual win rates, not to subjective sales feedback.",
+      "Start with one AI-assisted scoring dimension (intent data, engagement velocity, or firmographic fit) before overhauling the whole model. One calibrated signal beats ten uncalibrated ones."
+     ]
+    },
+    "mid": {
+     "headline": "You have a scoring system, but it is not working as hard as it should.",
+     "text": "You are above average, but inconsistent MQL-to-SQL conversion tells you the model still has blind spots. Machine learning can shave 11 days off a sales cycle and boost sales-ready leads by 50% — not because it is smarter in theory, but because it catches Ready-to-Buy patterns that manual rules were never designed to see.",
+     "steps": [
+      "Find the two or three behavioral signals most correlated with a closed-won deal in your CRM history and increase their weight. Your own data is more accurate than any industry benchmark.",
+      "Add an intent data layer to catch in-market accounts before they fill out a form — third-party buying signals let you reach out when interest is at its peak.",
+      "Build a feedback loop between your closers and your scoring model. When a rep marks a lead not a fit, capture the reason and feed it back into the algorithm."
+     ]
+    },
+    "high": {
+     "headline": "Your pipeline intelligence is a competitive advantage — protect and extend it.",
+     "text": "You are scoring leads accurately and reps trust the system. The next step is using AI to proactively surface re-engagement opportunities and compress the time between shows interest and books a call — so the system is doing prospecting work that used to require rep time.",
+     "steps": [
+      "Deploy prospecting agents to handle the between-touch gap — keeping leads warm without requiring rep involvement between meaningful conversations.",
+      "Test predictive scoring on your expansion pipeline (upsell and cross-sell) where the same Ready-to-Buy signals apply with even higher confidence, since you already know the buyer.",
+      "Share your model's scoring logic with your marketing team so they are producing content that moves leads through the specific stages your model values most."
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_search_visibility",
+   "name": "AI Search Visibility",
+   "questions": [
+    {
+     "id": "ai_search_visibility_q1",
+     "text": "If a potential buyer asked an AI assistant a question your company should definitively answer, how confident are you that your brand appears as a cited source?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not confident at all — we have never optimized for AI search and our content is not structured for it",
+       "score": 1
+      },
+      {
+       "label": "We rank well in traditional search but have not thought about AI citation visibility",
+       "score": 2
+      },
+      {
+       "label": "Some of our content might surface in AI answers, but we have not measured or tested it",
+       "score": 3
+      },
+      {
+       "label": "We have started structuring content with cleaner hierarchies and clearer semantic signals",
+       "score": 4
+      },
+      {
+       "label": "We follow an Answer-First protocol and actively benchmark our citation visibility using tools like the HubSpot AEO Grader",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_search_visibility_q2",
+     "text": "How are your B2B case studies and client success stories currently formatted?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Narrative prose — story-driven, heavy on description, vague on specific data points",
+       "score": 1
+      },
+      {
+       "label": "We include numbers but structure varies across writers and no consistent template exists",
+       "score": 2
+      },
+      {
+       "label": "We use a consistent template but have not tested whether AI engines can read and cite it",
+       "score": 3
+      },
+      {
+       "label": "Case studies follow a clear structure with defined outcomes, named roles, and measurable results",
+       "score": 4
+      },
+      {
+       "label": "Every case study uses Answer-First structure with explicit semantic triples — problem, solution, measurable outcome — and we have confirmed AI engines cite them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_search_visibility_q3",
+     "text": "How are your video content and multimedia assets documented for AI discoverability?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Videos exist but have no transcripts, structured metadata, or optimized descriptions",
+       "score": 1
+      },
+      {
+       "label": "Some content has auto-generated captions but no intentional metadata or AI strategy behind it",
+       "score": 2
+      },
+      {
+       "label": "We have transcripts for some assets but have not connected them to our content or SEO strategy",
+       "score": 3
+      },
+      {
+       "label": "We use transcripts and structured metadata as a standard part of our content production process",
+       "score": 4
+      },
+      {
+       "label": "All multimedia is transcribed, tagged with structured metadata, and fully integrated into our AI search strategy",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand is invisible to the engines that are shaping buyer shortlists right now.",
+     "text": "AI search is not coming — it is here. With AI search traffic predicted to drop 25% for brands not optimized for it by 2026, narrative-heavy content without structured data is already earning a citation penalty. Generative engines skip vague, metaphor-heavy content to avoid hallucination risk. If your case studies read like stories instead of answers, AI is skipping you.",
+     "steps": [
+      "Audit your top 10 performing pages: do they answer a specific question in the first 100 words? If not, rewrite each opening to lead with the answer — context and narrative come after the answer, not before it.",
+      "Add transcripts and structured descriptions to your three highest-traffic videos this month. Video transcripts are now the backbone of AI search authority and most teams have not touched them.",
+      "Reformat your best-performing case study into Answer-First structure: problem stated explicitly, solution described precisely, measurable outcome named with real numbers. Test whether AI engines cite it within 30 days."
+     ]
+    },
+    "mid": {
+     "headline": "You are partially visible — but inconsistent structure is leaving authority signals on the table.",
+     "text": "You have done some of the work, but vague formatting and untapped multimedia assets mean AI engines are only seeing part of your expertise. The gap between sometimes cited and consistently cited is not more content. It is semantic structure applied consistently across everything you publish.",
+     "steps": [
+      "Use the HubSpot AEO Grader to benchmark your current AI citation visibility and identify the specific semantic gaps holding your best content back.",
+      "Build a case study template that enforces Answer-First structure, then reformat your three most-linked case studies against it. These are the pieces most likely to generate authority signal.",
+      "Create a metadata checklist for every new video or webinar: transcript, summary paragraph, three key questions the content answers, structured tags. Make it part of the production process, not an afterthought."
+     ]
+    },
+    "high": {
+     "headline": "You are positioned to be the definitive answer in your category — now build the system that scales it.",
+     "text": "You have built the foundation for AI search authority. The opportunity now is to extend your Answer-First protocol across every content format and every content contributor on your team — so AI engines cite you consistently, not occasionally, and across more topics than you currently own.",
+     "steps": [
+      "Expand your Answer-First protocol to cover all content types: blog posts, landing pages, email newsletters, and LinkedIn articles. Structure is not a blog-only decision.",
+      "Build a citation monitoring workflow that tracks when and where AI engines surface your brand — so you know which content types are generating authority and which ones are being skipped.",
+      "Train every content contributor on Answer-First structure and make it a non-negotiable part of your editorial brief. Consistency at team level is what converts 'sometimes cited' to 'always cited.'"
+     ]
+    }
+   }
+  },
+  {
+   "id": "brand_consistency_at_sca",
+   "name": "Brand Consistency at Scale",
+   "questions": [
+    {
+     "id": "brand_consistency_at_sca_q1",
+     "text": "How consistent is your brand voice across different channels and content formats today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Every writer, channel, and format sounds different — we have no unified standard anyone follows",
+       "score": 1
+      },
+      {
+       "label": "We have a style guide but it is not enforced and most contributors have not read it",
+       "score": 2
+      },
+      {
+       "label": "Core long-form content is consistent but social, email, and ads regularly drift from brand standards",
+       "score": 3
+      },
+      {
+       "label": "We have trained our team on voice standards and conduct periodic reviews to catch drift",
+       "score": 4
+      },
+      {
+       "label": "Brand voice is enforced consistently across all channels, including any AI-assisted content we publish",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_consistency_at_sca_q2",
+     "text": "When your team uses AI tools to produce content, how do you maintain your brand voice?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not use AI for content, or we use it without guardrails and the output sounds generic",
+       "score": 1
+      },
+      {
+       "label": "We edit AI drafts heavily after the fact to fix the tone — it takes almost as long as writing from scratch",
+       "score": 2
+      },
+      {
+       "label": "We have basic prompt templates but output quality is inconsistent and depends on who is prompting",
+       "score": 3
+      },
+      {
+       "label": "We have built prompts trained on brand examples and style guide references — output is usually on-brand",
+       "score": 4
+      },
+      {
+       "label": "We have trained a private AI model on our own high-performing case studies and whitepapers — it reliably writes in our voice at scale",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "brand_consistency_at_sca_q3",
+     "text": "How do you handle quality control as content output scales?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No formal review process — whoever creates the content is also the one who approves it",
+       "score": 1
+      },
+      {
+       "label": "One person reviews everything, which creates a bottleneck as volume grows",
+       "score": 2
+      },
+      {
+       "label": "We have a review checklist but it is applied inconsistently depending on how busy the team is",
+       "score": 3
+      },
+      {
+       "label": "We have a formal review process with clear brand standards applied consistently before anything publishes",
+       "score": 4
+      },
+      {
+       "label": "Human-in-the-loop review at every stage — AI handles volume, humans handle quality judgment",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your brand voice is scattered — and inconsistency is costing you revenue you cannot see.",
+     "text": "Strict brand consistency across digital channels can increase organizational revenue by 10% to 20%. When every writer, channel, and format sounds different, prospects cannot build a coherent picture of who you are or why they should trust you. Adding AI content tools to a system without guardrails makes this worse at speed.",
+     "steps": [
+      "Before touching any AI tool, write a one-page brand voice reference: the three adjectives that describe your tone, five prohibited phrases your brand never uses, and two example sentences — one approved, one rejected — for each. This document is the seed of everything else.",
+      "Pick your single highest-traffic channel and enforce consistency there first. Get one channel right before scaling to three.",
+      "Collect your five best-performing pieces of content and identify what they have in common — sentence length, point of view, level of specificity. That pattern becomes the training data for your first AI voice layer."
+     ]
+    },
+    "mid": {
+     "headline": "You have standards, but they are not running the system — people are.",
+     "text": "A style guide that lives in a shared folder and gets consulted occasionally is not a brand consistency system. As content volume scales, the guardrails need to be built into the tools your team uses every day — not added on top as a manual review step that gets skipped when deadlines hit.",
+     "steps": [
+      "Build a custom GPT trained on your five best-performing case studies, your style guide, and three examples each of approved tone and rejected tone. Use it as the first draft layer for all new content — then review, not rewrite.",
+      "Add a brand voice gate to your content approval workflow. Not a final check that gets skipped, but a pre-publish step with a short checklist any contributor can run.",
+      "Run a quarterly brand consistency audit across your top three channels and report variance to leadership. What gets measured gets maintained."
+     ]
+    },
+    "high": {
+     "headline": "Your brand voice system is working — now use it to scale output without scaling headcount.",
+     "text": "You have built what most companies cannot: a system that maintains quality as volume grows. The next move is extending that system so you can clone your top writer's output across more formats and faster turnaround times — and keep the model fresh as your best content keeps improving.",
+     "steps": [
+      "Continuously retrain your custom AI model on new high-performing content — the model drifts if the training data does not stay current with how your thinking and voice evolve.",
+      "Extend your human-in-the-loop review to cover AI-assisted content specifically. Build a feedback loop where rejected AI drafts feed back into prompt or model improvements rather than disappearing.",
+      "Document your brand consistency system as a standalone asset. As AI content volume grows across your industry, a working voice system becomes harder to replicate and more valuable as a differentiator."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_admin_cost",
+   "label": "Annual cost of non-selling time across your team",
+   "format": "currency",
+   "formula": "admin_hours * rep_count * hourly_rate * 52",
+   "show_in_result": true
+  },
+  {
+   "id": "weekly_selling_hours_lost",
+   "label": "Selling hours lost per week across your full team",
+   "format": "hours_per_period",
+   "formula": "admin_hours * rep_count",
+   "show_in_result": true
+  },
+  {
+   "id": "selling_time_percent",
+   "label": "Percentage of each rep's week actually spent selling",
+   "format": "percent",
+   "formula": "((40 - admin_hours) / 40) * 100",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role?",
+  "answers": [
+   {
+    "label": "CEO / Founder",
+    "tag": "ceo"
+   },
+   {
+    "label": "Sales Leader (VP Sales, CRO, Head of Sales)",
+    "tag": "sales-leader"
+   },
+   {
+    "label": "Marketing Leader (CMO, VP Marketing, Head of Demand Gen)",
+    "tag": "marketing-leader"
+   },
+   {
+    "label": "RevOps / Sales Ops / Marketing Ops",
+    "tag": "revops"
+   }
+  ]
+ }
+}

@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>stack-picker unit tests</title>
+<script src="./stack-picker.js"></script>
+<script>
+const results = [];
+function eq(name, got, want) {
+  const ok = JSON.stringify(got) === JSON.stringify(want);
+  results.push({ name, ok, got, want });
+}
+const H = window.LM_SP_HASH;
+eq("encode empty", H.encode([]), "");
+eq("encode single", H.encode([{node:"team_size",branch:"medium"}]), "path=team_size:medium");
+eq("encode two", H.encode([{node:"team_size",branch:"medium"},{node:"complexity",branch:"heavy"}]), "path=team_size:medium,complexity:heavy");
+eq("decode empty", H.decode(""), []);
+eq("decode single", H.decode("path=team_size:medium"), [{node:"team_size",branch:"medium"}]);
+eq("decode two", H.decode("path=team_size:medium,complexity:heavy"), [{node:"team_size",branch:"medium"},{node:"complexity",branch:"heavy"}]);
+eq("decode strips leading #", H.decode("#path=a:b"), [{node:"a",branch:"b"}]);
+eq("decode tolerates trailing comma", H.decode("path=a:b,"), [{node:"a",branch:"b"}]);
+eq("decode rejects unknown prefix", H.decode("?other=1"), []);
+document.title = results.every(r=>r.ok) ? "PASS" : "FAIL";
+document.body.innerText = JSON.stringify(results, null, 2);
+</script>

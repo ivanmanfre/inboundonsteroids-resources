@@ -1,0 +1,629 @@
+{
+  "slug": "the-meaning-audit-does-your-brand-give-people-a-reason-to-care",
+  "title": "The Meaning Audit",
+  "subtitle": "Does your brand give people a reason to care before they read a single feature?",
+  "brand": {
+    "accent": "#3f3f46",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 6,
+  "persona_selector": {
+    "id": "brand_stage",
+    "text": "Where is your brand right now?",
+    "answers": [
+      {
+        "label": "Idea stage, brand not built yet",
+        "tag": "idea"
+      },
+      {
+        "label": "Pre-launch, shaping the brand now",
+        "tag": "prelaunch"
+      },
+      {
+        "label": "Launched, early traction",
+        "tag": "early"
+      },
+      {
+        "label": "Established, scaling and refining",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "reason_to_care",
+      "name": "The Reason to Care",
+      "questions": [
+        {
+          "id": "before_features",
+          "text": "Before you list a single feature, does your brand give someone a reason to care?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we lead with features",
+              "score": 1
+            },
+            {
+              "label": "Barely, features come first",
+              "score": 2
+            },
+            {
+              "label": "Somewhat",
+              "score": 3
+            },
+            {
+              "label": "Yes, mostly",
+              "score": 4
+            },
+            {
+              "label": "Yes, meaning always comes first",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "why_exist",
+          "text": "Can a stranger tell what you believe or stand for, not just what you sell?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, only what we sell",
+              "score": 1
+            },
+            {
+              "label": "Hard to tell",
+              "score": 2
+            },
+            {
+              "label": "A little",
+              "score": 3
+            },
+            {
+              "label": "Fairly clearly",
+              "score": 4
+            },
+            {
+              "label": "Immediately, the belief is obvious",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "emotional_first",
+          "text": "When people encounter your brand, do they feel something before they evaluate anything?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, it's purely rational",
+              "score": 1
+            },
+            {
+              "label": "Rarely",
+              "score": 2
+            },
+            {
+              "label": "Sometimes",
+              "score": 3
+            },
+            {
+              "label": "Usually",
+              "score": 4
+            },
+            {
+              "label": "Yes, the feeling lands first",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're answering 'what' before anyone asked 'why care'",
+          "text": "Right now your brand leads with what the product does, but people decide what something says about them before they care what it does. A MacBook outsells a faster, cheaper PC because it means something. Lead with features and you've quietly agreed to compete on price.",
+          "steps": [
+            "Write the one thing your brand believes, before any feature, and put it first",
+            "Replace your lead message from 'what it does' to 'why it matters to who you're for'",
+            "Make sure the first thing someone feels is a point of view, not a spec sheet"
+          ]
+        },
+        "mid": {
+          "headline": "The meaning is there, the features keep crowding it out",
+          "text": "You have a real reason to care, but features keep elbowing to the front and diluting it. Meaning is the part people pay extra for, and the part most brands bury under capabilities.",
+          "steps": [
+            "Audit your homepage and deck for where features jump ahead of meaning and reorder them",
+            "Lead every key surface with the belief, then let features prove it",
+            "Cut feature lists in half wherever the meaning can carry the weight"
+          ]
+        },
+        "high": {
+          "headline": "You lead with meaning, and it shows",
+          "text": "People get a reason to care before they hit a feature, which is exactly why a brand earns a premium instead of a price war. The work now is deepening the belief and making it unmistakably yours.",
+          "steps": [
+            "Sharpen your point of view until no competitor could credibly claim it",
+            "Let features serve as proof of the belief, never the headline",
+            "Protect the meaning-first order as you add products and pages"
+          ]
+        }
+      }
+    },
+    {
+      "id": "point_of_view",
+      "name": "Point of View",
+      "questions": [
+        {
+          "id": "has_stance",
+          "text": "Does your brand hold an actual stance, something it's for and against?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we stay neutral",
+              "score": 1
+            },
+            {
+              "label": "Vaguely",
+              "score": 2
+            },
+            {
+              "label": "A soft one",
+              "score": 3
+            },
+            {
+              "label": "A clear stance",
+              "score": 4
+            },
+            {
+              "label": "A strong, distinctive stance",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "oatly_test",
+          "text": "Could your brand 'have opinions' the way Oatly does, or is it just describing a category?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Just describing the category",
+              "score": 1
+            },
+            {
+              "label": "Mostly descriptive",
+              "score": 2
+            },
+            {
+              "label": "Some personality",
+              "score": 3
+            },
+            {
+              "label": "Yes, it has a voice",
+              "score": 4
+            },
+            {
+              "label": "Unmistakably, it has a worldview",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "polarizing",
+          "text": "Would the right customer feel 'this is for me' and the wrong one feel 'this isn't'?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we try to appeal to everyone",
+              "score": 1
+            },
+            {
+              "label": "We avoid alienating anyone",
+              "score": 2
+            },
+            {
+              "label": "A little sorting happens",
+              "score": 3
+            },
+            {
+              "label": "Yes, it sorts people",
+              "score": 4
+            },
+            {
+              "label": "Sharply, it clearly picks its people",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your brand is describing a category, not holding a view",
+          "text": "Oatly didn't win the fridge with oat-to-liquid ratios, they won by making a carton feel like a point of view. A brand with no stance is forgettable and interchangeable. Trying to be for everyone is how you become meaningful to no one.",
+          "steps": [
+            "Decide what your brand is genuinely for and against, and say it out loud",
+            "Give the brand a voice with an actual opinion, not neutral category language",
+            "Accept that the right stance will repel some people, that's the point"
+          ]
+        },
+        "mid": {
+          "headline": "There's a view in there, it's just too polite",
+          "text": "Your brand has the beginnings of a stance but keeps softening it to avoid alienating anyone. The softening is exactly what makes it forgettable. Meaning comes from conviction, not consensus.",
+          "steps": [
+            "Take your softest brand statement and rewrite it with real conviction",
+            "Find the belief your ideal customer shares and lean into it hard",
+            "Let the brand sort people, the ones it repels were never yours"
+          ]
+        },
+        "high": {
+          "headline": "Your brand has a worldview",
+          "text": "You hold a stance, sort your people, and have a voice with opinions, which is what makes a brand impossible to mistake for anyone else. The leverage now is consistency and courage, keeping the view sharp everywhere.",
+          "steps": [
+            "Make sure the stance shows up in every surface, not just the manifesto",
+            "Keep the edges sharp, don't sand them down as you grow",
+            "Use the clarity of your view to attract people competitors can't"
+          ]
+        }
+      }
+    },
+    {
+      "id": "feature_tax",
+      "name": "The Feature-First Tax",
+      "questions": [
+        {
+          "id": "competing_on_price",
+          "text": "When you win, is it on meaning and fit, or mostly on price and spec comparisons?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Almost always price/spec",
+              "score": 1
+            },
+            {
+              "label": "Usually price",
+              "score": 2
+            },
+            {
+              "label": "A mix",
+              "score": 3
+            },
+            {
+              "label": "Usually meaning/fit",
+              "score": 4
+            },
+            {
+              "label": "Almost always meaning and fit",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "interchangeable",
+          "text": "If you swapped your logo for a competitor's, would anyone notice a difference in what you stand for?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we're interchangeable",
+              "score": 1
+            },
+            {
+              "label": "Barely different",
+              "score": 2
+            },
+            {
+              "label": "Somewhat different",
+              "score": 3
+            },
+            {
+              "label": "Clearly different",
+              "score": 4
+            },
+            {
+              "label": "Unmistakably different",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "discount_pressure",
+          "text": "How often do you feel pressure to discount to close?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Constantly",
+              "score": 1
+            },
+            {
+              "label": "Often",
+              "score": 2
+            },
+            {
+              "label": "Sometimes",
+              "score": 3
+            },
+            {
+              "label": "Rarely",
+              "score": 4
+            },
+            {
+              "label": "Almost never, meaning holds the price",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Feature-first messaging is quietly costing you margin",
+          "text": "When a brand only describes the product, the only lever left is price. That's the feature-first tax: you compete on spec, you discount to close, and you train customers to shop you against cheaper alternatives. Meaning is what lets a brand hold its price.",
+          "steps": [
+            "Find where you're competing on spec and reframe around what the choice says about the buyer",
+            "Build one message that a competitor couldn't paste their logo onto",
+            "Stop leading sales conversations with features, lead with the belief and the fit"
+          ]
+        },
+        "mid": {
+          "headline": "You're half on meaning, half on price",
+          "text": "Sometimes you win on fit, sometimes you slide back into spec comparisons and discounts. Every time you compete on features you invite a cheaper option into the room.",
+          "steps": [
+            "Track your last ten deals: which were won on meaning vs price, and why",
+            "Rebuild the price-led ones around what the brand stands for",
+            "Give sales a meaning-first opener so they stop leading with specs"
+          ]
+        },
+        "high": {
+          "headline": "You win on meaning, not price",
+          "text": "You rarely compete on spec, you're not interchangeable, and you feel little discount pressure, which is what a brand with real meaning earns. Protect it: the pull toward feature-comparison never fully goes away.",
+          "steps": [
+            "Keep messaging anchored on meaning even when a prospect asks to compare specs",
+            "Reinforce what makes you un-swappable in every touchpoint",
+            "Use your pricing power to invest back into the brand, not into discounts"
+          ]
+        }
+      }
+    },
+    {
+      "id": "belonging",
+      "name": "Belonging",
+      "questions": [
+        {
+          "id": "says_about_them",
+          "text": "Does using or wearing your brand say something about the customer, the way a MacBook does?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, it's purely functional",
+              "score": 1
+            },
+            {
+              "label": "Not really",
+              "score": 2
+            },
+            {
+              "label": "A little",
+              "score": 3
+            },
+            {
+              "label": "Yes, somewhat",
+              "score": 4
+            },
+            {
+              "label": "Yes, it's part of their identity",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "community",
+          "text": "Do your customers feel like part of something, not just buyers of a product?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, they're transactions",
+              "score": 1
+            },
+            {
+              "label": "Rarely",
+              "score": 2
+            },
+            {
+              "label": "Starting to",
+              "score": 3
+            },
+            {
+              "label": "Yes, mostly",
+              "score": 4
+            },
+            {
+              "label": "Yes, there's real belonging",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "proud_to_show",
+          "text": "Would a customer proudly show your brand to others, unprompted?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No",
+              "score": 1
+            },
+            {
+              "label": "Unlikely",
+              "score": 2
+            },
+            {
+              "label": "Some would",
+              "score": 3
+            },
+            {
+              "label": "Many would",
+              "score": 4
+            },
+            {
+              "label": "Yes, they advocate on their own",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your brand is a purchase, not a badge",
+          "text": "People pay a premium for what a brand says about them. Right now yours is functional, a thing people buy, not a thing they belong to. Give people something to belong to and they'll choose you over cheaper, even better-specced options.",
+          "steps": [
+            "Define what someone is saying about themselves when they choose you",
+            "Build the brand so using it signals identity, not just utility",
+            "Create a reason for customers to feel part of something, not just a transaction"
+          ]
+        },
+        "mid": {
+          "headline": "Belonging is starting, it's not yet a badge",
+          "text": "Some customers feel a connection, but it's not strong enough that they'd show you off unprompted. The gap between 'satisfied buyer' and 'proud member' is where premium and word-of-mouth live.",
+          "steps": [
+            "Find your most loyal customers and articulate what belonging to your brand means to them",
+            "Make that identity visible and shareable in the product and brand",
+            "Give people something to advocate for, not just a product to use"
+          ]
+        },
+        "high": {
+          "headline": "People belong to your brand",
+          "text": "Customers wear you as a badge, feel part of something, and advocate unprompted, which is the strongest position a brand can hold. Keep feeding the belonging as you scale so it doesn't thin out.",
+          "steps": [
+            "Protect what the community values as you grow, don't dilute it for reach",
+            "Keep giving members new ways to signal they belong",
+            "Let advocates shape the brand, they're your most credible voice"
+          ]
+        }
+      }
+    },
+    {
+      "id": "consistency",
+      "name": "Consistency as Budget",
+      "questions": [
+        {
+          "id": "one_voice_everywhere",
+          "text": "Is your brand's voice and look consistent everywhere, or does it change surface to surface?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "It changes a lot",
+              "score": 1
+            },
+            {
+              "label": "Inconsistent in places",
+              "score": 2
+            },
+            {
+              "label": "Mostly consistent",
+              "score": 3
+            },
+            {
+              "label": "Consistent",
+              "score": 4
+            },
+            {
+              "label": "Identical everywhere, unmistakable",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "deliberate",
+          "text": "Is the thing that makes you recognizable deliberate, or accidental?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Accidental",
+              "score": 1
+            },
+            {
+              "label": "Mostly luck",
+              "score": 2
+            },
+            {
+              "label": "Half and half",
+              "score": 3
+            },
+            {
+              "label": "Largely deliberate",
+              "score": 4
+            },
+            {
+              "label": "Entirely deliberate and defended",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "small_budget_intent",
+          "text": "Do you win on intentionality (small, deliberate moves) rather than big spend?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we assume it takes big budget",
+              "score": 1
+            },
+            {
+              "label": "Rarely",
+              "score": 2
+            },
+            {
+              "label": "Sometimes",
+              "score": 3
+            },
+            {
+              "label": "Usually",
+              "score": 4
+            },
+            {
+              "label": "Yes, intent beats budget for us",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your recognizability is accidental, and it's leaking",
+          "text": "Oatly spent almost nothing on the thing that makes them unmistakable, it's just the most deliberate part of the company. One consistent voice everywhere beats one big campaign. If your brand changes surface to surface, you're paying for reach you then throw away.",
+          "steps": [
+            "Pin down the two or three deliberate moves that make you recognizable and apply them everywhere",
+            "Make consistency the budget: one voice on every surface beats one expensive push",
+            "Treat intentionality, not spend, as your competitive edge"
+          ]
+        },
+        "mid": {
+          "headline": "Consistent in places, drifting in others",
+          "text": "Your brand holds together on the main surfaces but drifts on the edges, and the drift is where recognizability leaks. Small, deliberate consistency compounds; inconsistency quietly resets it.",
+          "steps": [
+            "Find the surfaces where the brand drifts and bring them back in line",
+            "Document the few deliberate moves that make you you, so nothing dilutes them",
+            "Choose deliberate consistency over occasional big splashes"
+          ]
+        },
+        "high": {
+          "headline": "Deliberate and unmistakable",
+          "text": "Your brand is consistent everywhere and the recognizability is intentional, which is exactly how small brands out-punch big budgets. Keep defending it, consistency is the first thing that erodes under growth and new hands.",
+          "steps": [
+            "Codify the deliberate moves so new work stays unmistakably yours",
+            "Review every new surface against the system before it ships",
+            "Keep betting on intentionality over spend, it's your edge"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 45,
+    "mid": 72
+  },
+  "tier_names": {
+    "low": "Describing a Product",
+    "mid": "Halfway to Meaning",
+    "high": "A Brand People Belong To"
+  },
+  "cta": {
+    "headline": "Turn this score into a brand people belong to",
+    "description": "You can see where your brand is describing instead of meaning something. The next step is making meaning systematic, so every post, page, and product says one thing people want to belong to. Book a 30-minute call and I'll show you where to start and what to fix first.",
+    "button": "Book a Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
+}

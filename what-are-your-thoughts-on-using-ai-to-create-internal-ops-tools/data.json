@@ -1,0 +1,786 @@
+{
+  "slug": "what-are-your-thoughts-on-using-ai-to-create-internal-ops-tools",
+  "title": "The Agent-Ready Score: Will Your Internal AI Tool Still Be Running in 90 Days?",
+  "subtitle": "A 17-question readiness check for $1-10M service firm owners and ops leads sizing up the one process they want to automate first.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "professional services",
+    "locations": "the US, UK, and Canada",
+    "count_band": "11-75"
+  },
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your data sources are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules a human follows can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep.",
+      "Human-in-the-loop by design. Every output touches a person before it ships externally."
+    ],
+    "intro": "This assessment scores against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready for AI to carry weight. Miss one and any internal tool you build will quietly leak until someone abandons it."
+  },
+  "proof_card": {
+    "score_label": "Readiness Score",
+    "sample_score": 54,
+    "sample_top_leak": "client intake (~9 hrs/week recoverable, but decision logic lives in one person's head)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your firm?",
+    "answers": [
+      {
+        "label": "Solo or under 5 people",
+        "tag": "solo"
+      },
+      {
+        "label": "Boutique, 5 to 15 people",
+        "tag": "boutique"
+      },
+      {
+        "label": "Growing, 16 to 50 people",
+        "tag": "growing"
+      },
+      {
+        "label": "Established, 51 to 100+ people",
+        "tag": "established"
+      }
+    ]
+  },
+  "start_screen": {
+    "eyebrow": "90-day survival check",
+    "headline_html": "See whether your internal AI tool <em>survives past week three</em>.",
+    "description": "For $1-10M professional services owners and ops leads. Seventeen questions about the one process you want to automate, then a 0-100 readiness score and the first thing to fix before you build anything.",
+    "button": "Score my readiness",
+    "chips": [
+      "No signup to score",
+      "17 questions, scored live",
+      "Email only for the breakdown",
+      "Anonymous + auto-saved"
+    ]
+  },
+  "categories": [
+    {
+      "id": "the-bleed",
+      "name": "The Bleed",
+      "questions": [
+        {
+          "id": "weekly-time-cost",
+          "text": "How much time does this process eat per week, across everyone who touches it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Under 1 hour",
+              "score": 1
+            },
+            {
+              "label": "2. 1 to 2 hours",
+              "score": 2
+            },
+            {
+              "label": "3. 2 to 5 hours",
+              "score": 3
+            },
+            {
+              "label": "4. 5 to 15 hours",
+              "score": 4
+            },
+            {
+              "label": "5. 15+ hours and climbing",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "repeatability",
+          "text": "How often does this task run the exact same way each time?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Almost never, every run is different",
+              "score": 1
+            },
+            {
+              "label": "2. Rarely, lots of one-offs",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes the same, sometimes not",
+              "score": 3
+            },
+            {
+              "label": "4. Usually the same steps",
+              "score": 4
+            },
+            {
+              "label": "5. Same steps, same order, every time",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cost-clarity",
+          "text": "How clearly can you name the dollar cost of this process today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No idea, never measured it",
+              "score": 1
+            },
+            {
+              "label": "2. A rough guess at best",
+              "score": 2
+            },
+            {
+              "label": "3. I know the hours but not the dollars",
+              "score": 3
+            },
+            {
+              "label": "4. I have a defensible weekly number",
+              "score": 4
+            },
+            {
+              "label": "5. I know the fully-loaded cost to the dollar",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "why-now",
+          "text": "Why are you building this now?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Competitors are doing AI and we feel behind",
+              "score": 1
+            },
+            {
+              "label": "2. Leadership wants an AI win to point at",
+              "score": 2
+            },
+            {
+              "label": "3. A mix of pressure and a real pain",
+              "score": 3
+            },
+            {
+              "label": "4. One task is clearly expensive and annoying",
+              "score": 4
+            },
+            {
+              "label": "5. One task is expensive and repeats the same way every time",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're automating a guess, not a cost",
+          "text": "If you can't say what this process costs in hours or dollars, you can't tell whether a build ever pays back. The 90-Day Payback Rule starts with a real number, and right now you don't have one. Get the number before you get the tool.",
+          "steps": [
+            "Track the process for one week and log every person who touches it and for how long.",
+            "Multiply those hours by fully-loaded labor cost to get a weekly dollar figure.",
+            "If it's under 2 hours a week, park it and pick a heavier process to automate first."
+          ]
+        },
+        "mid": {
+          "headline": "You feel the bleed but haven't sized it",
+          "text": "You know this process hurts and you're not building purely on FOMO. The number is still fuzzy, though, so the build has a vibe instead of a payback target. Tighten the figure and the go or no-go decision makes itself.",
+          "steps": [
+            "Convert your hours estimate into a fully-loaded weekly cost this week.",
+            "Write one sentence: this process costs roughly $X/week and repeats Y times.",
+            "Confirm the task runs the same way most of the time before you scope a build."
+          ]
+        },
+        "high": {
+          "headline": "You know exactly what this costs",
+          "text": "Keep sharpening. Here is the frontier. You've sized the bleed and the task repeats cleanly, which means the only thing left is making sure the inputs and decision rules are ready to carry it.",
+          "steps": [
+            "Set a hard payback target: this build must return its cost in saved hours inside 90 days.",
+            "Write the kill criteria now, before you build, so you'll know when to stop if it stalls.",
+            "Move your attention upstream to inputs and decision logic, where survival is actually decided."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~9 hrs/week recoverable on the first process",
+        "lever": "Pick the single most expensive repeating task and put a real weekly dollar cost on it before anyone touches a tool.",
+        "talking_points": [
+          "We're not short on AI ideas, we're short on one process we've actually sized in dollars.",
+          "The first build only earns its slot if it pays back inside 90 days, so we need the number first.",
+          "A task that runs the same way every time is worth ten that run differently each run."
+        ],
+        "proof_of_concept": "Time-track the target process for one week and bring leadership a single weekly dollar figure before requesting any build budget."
+      }
+    },
+    {
+      "id": "clean-inputs",
+      "name": "Clean Inputs",
+      "questions": [
+        {
+          "id": "data-structure",
+          "text": "How structured is the data that feeds this process when it arrives?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Free-text and screenshots, no structure",
+              "score": 1
+            },
+            {
+              "label": "2. Mostly free-text with a few fields",
+              "score": 2
+            },
+            {
+              "label": "3. Half structured, half cleanup",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly clean fields, light cleanup",
+              "score": 4
+            },
+            {
+              "label": "5. Clean structured fields a system can read directly",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "single-source",
+          "text": "How consistently does the input live in one place instead of scattered across tools?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Spread across 5+ tools and inboxes",
+              "score": 1
+            },
+            {
+              "label": "2. Three or four places to check",
+              "score": 2
+            },
+            {
+              "label": "3. Two main places",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly one place with the odd exception",
+              "score": 4
+            },
+            {
+              "label": "5. One source of truth, every time",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "data-completeness",
+          "text": "How often is the input complete and correct when it lands?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Almost always missing something",
+              "score": 1
+            },
+            {
+              "label": "2. Usually needs chasing",
+              "score": 2
+            },
+            {
+              "label": "3. Complete about half the time",
+              "score": 3
+            },
+            {
+              "label": "4. Usually complete",
+              "score": 4
+            },
+            {
+              "label": "5. Complete and correct on arrival",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "machine-readable",
+          "text": "How readable is the input by a system without a human cleaning it up first?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. A person has to interpret it every time",
+              "score": 1
+            },
+            {
+              "label": "2. Heavy manual cleanup before anything can use it",
+              "score": 2
+            },
+            {
+              "label": "3. Some reformatting needed",
+              "score": 3
+            },
+            {
+              "label": "4. Minor tweaks, then it's usable",
+              "score": 4
+            },
+            {
+              "label": "5. A system reads it as-is",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The data pipeline is the bottleneck, not the AI",
+          "text": "If your intake is free-text scattered across five tools and half the fields are optional, no model can do this job reliably. The fix is upstream of any build. Make the input structured and consolidated first, then the tool has something real to work with.",
+          "steps": [
+            "List every place this process pulls data from. If the count is over three, that's the first project.",
+            "Pick one source of truth and route everything into it.",
+            "Turn the worst free-text intake into structured fields with the optional ones removed."
+          ]
+        },
+        "mid": {
+          "headline": "Inputs are workable but still leak",
+          "text": "Your data is half clean, which means a human still patches it before the work can happen. That patching is exactly the cost an automated tool will inherit if you build now. Close the gap on completeness before you wire anything up.",
+          "steps": [
+            "Make the fields the process depends on required at the point of capture.",
+            "Cut the number of source tools down by one this month.",
+            "Add a simple validation step so incomplete inputs get bounced back, not fixed downstream."
+          ]
+        },
+        "high": {
+          "headline": "Your inputs are ready to be an input layer",
+          "text": "Keep sharpening. Here is the frontier. Clean, consolidated, machine-readable inputs are the hardest precondition to hit and you've hit it, so the build risk now sits in decision logic and scope.",
+          "steps": [
+            "Document the exact schema the process reads so the tool maps to it cleanly.",
+            "Add monitoring that flags when input quality drifts, before it breaks the tool.",
+            "Treat any new data source as a decision, not a default, so the clean state holds."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "input cleanup is roughly 60% of the real build effort",
+        "lever": "Consolidate the process onto one source of truth and make the load-bearing fields required at capture.",
+        "talking_points": [
+          "The model isn't the risk here, the messy intake is, and that's a process fix we can start today.",
+          "Every tool we check to run this process is a place the future automation has to babysit.",
+          "Required fields at capture cost nothing and save the cleanup tax on every single run."
+        ],
+        "proof_of_concept": "Convert the worst free-text intake form into structured required fields and measure how much manual cleanup disappears in one week."
+      }
+    },
+    {
+      "id": "documented-decisions",
+      "name": "Documented Decisions",
+      "questions": [
+        {
+          "id": "sop-exists",
+          "text": "Has anyone walked this process end to end and written down every step?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No, it lives entirely in people's heads",
+              "score": 1
+            },
+            {
+              "label": "2. A couple of steps are written somewhere",
+              "score": 2
+            },
+            {
+              "label": "3. Half of it is documented, half is tribal",
+              "score": 3
+            },
+            {
+              "label": "4. There's an SOP, slightly out of date",
+              "score": 4
+            },
+            {
+              "label": "5. A current SOP someone actually follows",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "decision-rules",
+          "text": "How explicitly can your best person write down the rules they use to make the key calls?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They just know, can't explain it",
+              "score": 1
+            },
+            {
+              "label": "2. They can explain it but it's never written",
+              "score": 2
+            },
+            {
+              "label": "3. Some rules are written, the judgment calls aren't",
+              "score": 3
+            },
+            {
+              "label": "4. Most rules are written and consistent",
+              "score": 4
+            },
+            {
+              "label": "5. Every decision maps to a written rule",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "edge-cases",
+          "text": "How well documented are the exceptions and edge cases this process hits?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We rediscover them every time",
+              "score": 1
+            },
+            {
+              "label": "2. The team remembers most of them",
+              "score": 2
+            },
+            {
+              "label": "3. A few are noted, most aren't",
+              "score": 3
+            },
+            {
+              "label": "4. The common exceptions are written down",
+              "score": 4
+            },
+            {
+              "label": "5. Exceptions and their handling are fully documented",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You can't encode what nobody can explain",
+          "text": "If your best person can't write down how they decide, you don't have an AI problem, you have a tacit-knowledge problem wearing an AI costume. Tacit knowledge has to become explicit rules before any tool can carry the decision. That's the work to do first.",
+          "steps": [
+            "Sit with the person who runs this and write the decision rules as they talk through real cases.",
+            "Turn the happy path into a current SOP someone can actually follow.",
+            "Capture the three exceptions that come up most and write how each gets handled."
+          ]
+        },
+        "mid": {
+          "headline": "The steps are written, the judgment isn't",
+          "text": "You've got an SOP for the mechanical steps, but the actual decisions still rely on someone knowing. Those judgment calls are the part a tool has to reproduce, so they're the part worth documenting next.",
+          "steps": [
+            "Find the two or three points where a human makes a judgment call and write the rule behind each.",
+            "Test the rules against last month's real cases to see where they break.",
+            "Note any case the rules can't cover yet and flag it for human review by design."
+          ]
+        },
+        "high": {
+          "headline": "Your decision logic is encodable",
+          "text": "Keep sharpening. Here is the frontier. Written rules, a followed SOP, and documented exceptions mean the decision layer is ready, which is rarer than clean data and more valuable.",
+          "steps": [
+            "Version the SOP so the tool and the team stay pointed at the same logic.",
+            "Define which edge cases route to a human instead of forcing the rules to cover everything.",
+            "Review the rules quarterly so they don't drift from how the work actually runs."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "decision logic, not the model, decides 80% of tool survival",
+        "lever": "Sit with the person who runs this and convert their judgment calls into written rules tested against real cases.",
+        "talking_points": [
+          "If one person's head holds the logic, the tool and the business both break when they're out.",
+          "Writing the rules surfaces disagreements we didn't know we had about how this should run.",
+          "The exceptions we document now are the ones the tool would otherwise fail on in week three."
+        ],
+        "proof_of_concept": "Write the decision rules for the process in one sitting with your best person, then run them against last month's cases to see where they hold."
+      }
+    },
+    {
+      "id": "narrow-scope",
+      "name": "Narrow Scope",
+      "questions": [
+        {
+          "id": "first-build-scope",
+          "text": "How narrow is the first version you're picturing?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It should handle the whole process end to end",
+              "score": 1
+            },
+            {
+              "label": "2. Most of the process, with a few manual gaps",
+              "score": 2
+            },
+            {
+              "label": "3. One big chunk of the process",
+              "score": 3
+            },
+            {
+              "label": "4. A few related steps",
+              "score": 4
+            },
+            {
+              "label": "5. One decision in one workflow",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "predictable-share",
+          "text": "What share of cases follow the same predictable path?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Under a third, mostly edge cases",
+              "score": 1
+            },
+            {
+              "label": "2. About half",
+              "score": 2
+            },
+            {
+              "label": "3. Around 60%",
+              "score": 3
+            },
+            {
+              "label": "4. Around 80%",
+              "score": 4
+            },
+            {
+              "label": "5. Over 90% run the predictable way",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "mvp-willingness",
+          "text": "How willing are you to ship a first version that only handles the common path and routes the rest to a person?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It has to handle everything or it's not worth it",
+              "score": 1
+            },
+            {
+              "label": "2. Reluctant, feels half-finished",
+              "score": 2
+            },
+            {
+              "label": "3. Open to it if the gaps are small",
+              "score": 3
+            },
+            {
+              "label": "4. Comfortable shipping the 80% first",
+              "score": 4
+            },
+            {
+              "label": "5. That's exactly how I'd build it",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Day-one scope this wide breaks on edge case three",
+          "text": "A tool that tries to handle every case on day one falls over the moment a weird one shows up, and weird ones always show up. The move is to start with the predictable 80% and route the rest to a human. Narrow scope is what keeps the thing alive long enough to earn trust.",
+          "steps": [
+            "Cut the build down to a single decision in a single workflow.",
+            "Decide which cases the v1 simply won't handle and send those to a person.",
+            "Write down what done looks like for the narrow version before anyone builds it."
+          ]
+        },
+        "mid": {
+          "headline": "Almost narrow enough, still reaching",
+          "text": "You've trimmed the scope but it's still trying to do a few things at once. Each extra branch you add on day one multiplies the ways it can break. Pick the one decision that carries the most cost and ship only that.",
+          "steps": [
+            "Rank the steps by dollar cost and keep only the top one for v1.",
+            "Set an explicit line for which cases route to human review.",
+            "Plan v2 as a separate decision once v1 has run clean for a few weeks."
+          ]
+        },
+        "high": {
+          "headline": "You'd scope this the way it survives",
+          "text": "Keep sharpening. Here is the frontier. A narrow first cut with a clear human fallback is the pattern that ships and sticks, so the only risk left is scope creep once it works.",
+          "steps": [
+            "Protect the narrow scope from feature requests until v1 has proven itself.",
+            "Define the trigger that tells you v1 is stable enough to expand.",
+            "Expand by adding one new decision at a time, never a sweep."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "edge-case sprawl kills most internal tools by week 3",
+        "lever": "Cut the first build to one decision in one workflow and route everything else to a person on purpose.",
+        "talking_points": [
+          "A v1 that handles the predictable 80% ships and earns trust, a v1 that handles everything ships never.",
+          "Routing 15 to 20% of cases to a human is the design working, not the tool failing.",
+          "Every branch we add on day one is another way the tool breaks before anyone trusts it."
+        ],
+        "proof_of_concept": "Define the single decision your v1 will handle and the exact cases it will hand off to a person, on one page, before building."
+      }
+    },
+    {
+      "id": "review-owner",
+      "name": "Review Owner",
+      "questions": [
+        {
+          "id": "named-owner",
+          "text": "Is there a named person who owns reviewing the output before it ships?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No one owns it",
+              "score": 1
+            },
+            {
+              "label": "2. Whoever's around catches it",
+              "score": 2
+            },
+            {
+              "label": "3. Sort of, it's shared and fuzzy",
+              "score": 3
+            },
+            {
+              "label": "4. One person owns it most of the time",
+              "score": 4
+            },
+            {
+              "label": "5. One named owner, clear and consistent",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "review-cadence",
+          "text": "How consistently would outputs actually get checked before going external?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They wouldn't, it'd ship straight out",
+              "score": 1
+            },
+            {
+              "label": "2. Only when something looks off",
+              "score": 2
+            },
+            {
+              "label": "3. About half the time",
+              "score": 3
+            },
+            {
+              "label": "4. Most outputs get a look",
+              "score": 4
+            },
+            {
+              "label": "5. Every external output is reviewed by design",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "error-catch-speed",
+          "text": "How quickly would you catch a wrong output today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Only when a client complains",
+              "score": 1
+            },
+            {
+              "label": "2. Days later, if at all",
+              "score": 2
+            },
+            {
+              "label": "3. Same week, usually",
+              "score": 3
+            },
+            {
+              "label": "4. Same day",
+              "score": 4
+            },
+            {
+              "label": "5. Before it ever leaves the building",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "No review owner means errors ship to clients",
+          "text": "Human-in-the-loop is a design decision, and right now you don't have one. If no one owns the review, a wrong output goes straight to a client and you find out when they're annoyed. Name the owner before the tool can touch anything external.",
+          "steps": [
+            "Name one person who reviews every external output before it ships.",
+            "Build the review step into the workflow so nothing skips it.",
+            "Add a fast way to flag and pull back a bad output the moment it's caught."
+          ]
+        },
+        "mid": {
+          "headline": "Review happens, but not by design",
+          "text": "Outputs get checked when someone notices, which means the day no one notices is the day a bad one ships. Make the review a built-in step with a clear owner so it doesn't depend on luck.",
+          "steps": [
+            "Assign the review to one named person, not the whole team.",
+            "Make the review a required step the output can't bypass.",
+            "Track how often a review catches something so you know the gate is earning its place."
+          ]
+        },
+        "high": {
+          "headline": "Your human-in-the-loop is real",
+          "text": "Keep sharpening. Here is the frontier. A named owner reviewing every external output by design is the precondition most firms skip, and it's the one that keeps a tool trusted instead of quietly switched off.",
+          "steps": [
+            "Track the review approval rate so you can safely widen scope as confidence grows.",
+            "Use the catches to feed the decision rules, so the tool gets sharper over time.",
+            "Define the threshold where low-risk outputs can skip review, backed by the data."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "15 to 20% human review routing is the design, not a failure",
+        "lever": "Name one owner for output review and build that step into the workflow so nothing external skips it.",
+        "talking_points": [
+          "A wrong output with no review owner becomes a client complaint, and that's the trust we can't rebuild cheaply.",
+          "Review-by-design lets us start narrow and widen scope as the approval rate proves out.",
+          "Catching a bad output before it leaves the building costs minutes, catching it after costs the account."
+        ],
+        "proof_of_concept": "Assign one named review owner and run the current process through that gate for a week to see what it catches before clients do."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'boutique' || persona === 'growing' || persona === 'established') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your internal AI tool readiness?",
+      "description": "Drop your email + I'll review your exact answers, stack them against professional services firms your size, and send a 5-minute Loom within 48h with the ONE precondition I'd fix before you build. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'solo'",
+      "headline": "Under 5 people? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real, but the payback window is longer and the first build matters more. Follow me on LinkedIn. I post tactical professional services automation breakdowns most days. When you cross 5 to 10 people and a process starts eating real hours, come back and retake. The recommendation will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're agent-ready. Here's what firms your size miss next.",
+      "description": "At your score, the obvious preconditions are met and this tool will likely survive. The next gains come from monitoring input drift before it breaks the tool, feeding review catches back into the decision rules, and expanding scope one decision at a time instead of in a sweep. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly professional services ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market professional services firms build internal tools that survive past week three, so they scale without scaling payroll. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ]
+}

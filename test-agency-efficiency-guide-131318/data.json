@@ -1,0 +1,705 @@
+{
+  "slug": "test-agency-efficiency-guide-131318",
+  "title": "The Agency Efficiency Scorecard: Cut Admin Time 40% Without Hiring",
+  "subtitle": "A 5-minute diagnostic for agency founders with 10-40 employees who are drowning in client delivery admin and wondering whether to hire or automate.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 12,
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your agency?",
+    "answers": [
+      {
+        "label": "Solo or 1-9 employees — still building the core team",
+        "tag": "boutique"
+      },
+      {
+        "label": "10-20 employees — first layer of ops and delivery leads",
+        "tag": "growing"
+      },
+      {
+        "label": "21-40 employees — multiple delivery pods, real coordination load",
+        "tag": "established"
+      },
+      {
+        "label": "41+ employees — full ops department, multi-service lines",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "client-onboarding",
+      "name": "Client Onboarding & Intake",
+      "questions": [
+        {
+          "id": "intake-data-flow",
+          "text": "How consistently does client intake data flow into your systems without manual re-entry?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We re-type intake data into 3+ systems manually",
+              "score": 1
+            },
+            {
+              "label": "2 — Data enters one system, the rest gets copy-pasted",
+              "score": 2
+            },
+            {
+              "label": "3 — Some fields sync, but onboarding still needs a human babysitter",
+              "score": 3
+            },
+            {
+              "label": "4 — Intake triggers most downstream setup automatically",
+              "score": 4
+            },
+            {
+              "label": "5 — Intake form fires a chain that provisions everything end to end",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "kickoff-speed",
+          "text": "How quickly does a new client go from signed contract to active kickoff?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — 2+ weeks, and we routinely apologize for the lag",
+              "score": 1
+            },
+            {
+              "label": "2 — 7-10 days, lots of back-and-forth emails",
+              "score": 2
+            },
+            {
+              "label": "3 — Within a week, but it depends on who's available",
+              "score": 3
+            },
+            {
+              "label": "4 — 2-3 business days, mostly predictable",
+              "score": 4
+            },
+            {
+              "label": "5 — Same or next day, fully templated and automated",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "onboarding-template",
+          "text": "How standardized is your onboarding playbook across account managers?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Every AM runs onboarding their own way",
+              "score": 1
+            },
+            {
+              "label": "2 — We have a doc but nobody really follows it",
+              "score": 2
+            },
+            {
+              "label": "3 — A checklist exists and most of the team uses it",
+              "score": 3
+            },
+            {
+              "label": "4 — One playbook, enforced, with clear owners per step",
+              "score": 4
+            },
+            {
+              "label": "5 — Templated, automated, and measured by cycle time",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Onboarding is the #1 leak point in your agency",
+          "text": "Re-keying client data across CRM, PM, and finance tools is quietly costing you 5-8 hours per client. The first fix is a single source of truth for intake, not more coordinators. Map where a new client's name, scope, and contacts live today — you'll find 4+ systems.",
+          "steps": [
+            "Audit every tool a new client's data touches in week one",
+            "Pick ONE system as the source of truth (usually the CRM)",
+            "Build an intake form that writes into that system and webhooks the rest"
+          ]
+        },
+        "mid": {
+          "headline": "You've got the bones — now remove the human babysitter",
+          "text": "Your onboarding works, but it still needs someone to shepherd each step. The next gain is event-driven provisioning: contract signed triggers folder, kickoff invite, welcome sequence, and PM setup without a human clicking.",
+          "steps": [
+            "Wire contract-signed webhook to auto-create project folder and PM board",
+            "Auto-send kickoff scheduling link the moment the contract is countersigned",
+            "Template the kickoff deck so it populates from intake data"
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening — here's the frontier",
+          "text": "At your level, the remaining gains are in compressing time-to-first-value and surfacing onboarding cycle time as a KPI. Top agencies treat onboarding as a product with its own metrics.",
+          "steps": [
+            "Measure contract-to-kickoff cycle time weekly and set a target",
+            "Auto-brief the delivery team from intake data using an LLM",
+            "A/B test two onboarding flows and measure client NPS at day 30"
+          ]
+        }
+      }
+    },
+    {
+      "id": "project-delivery",
+      "name": "Project Delivery & Status Tracking",
+      "questions": [
+        {
+          "id": "status-updates",
+          "text": "How automated are your client status updates and reports?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — A human writes every status update from scratch",
+              "score": 1
+            },
+            {
+              "label": "2 — We copy-paste from Slack and PM tool into a doc",
+              "score": 2
+            },
+            {
+              "label": "3 — We have a template but someone fills it manually",
+              "score": 3
+            },
+            {
+              "label": "4 — Status pulls automatically from PM, human edits briefly",
+              "score": 4
+            },
+            {
+              "label": "5 — Fully automated weekly report, human only reviews",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "project-visibility",
+          "text": "How clearly can you see delivery health across all active clients right now?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — I'd need to ask each PM and wait a day",
+              "score": 1
+            },
+            {
+              "label": "2 — I can piece it together from multiple tools in 30 min",
+              "score": 2
+            },
+            {
+              "label": "3 — We have a dashboard but it's stale half the time",
+              "score": 3
+            },
+            {
+              "label": "4 — Live dashboard, mostly accurate, checked weekly",
+              "score": 4
+            },
+            {
+              "label": "5 — Real-time health scores with automated risk flags",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scope-creep",
+          "text": "How consistently do you catch scope creep before it eats margin?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We only notice when the project is already underwater",
+              "score": 1
+            },
+            {
+              "label": "2 — Sometimes the PM flags it, often too late",
+              "score": 2
+            },
+            {
+              "label": "3 — We review utilization monthly and correct after the fact",
+              "score": 3
+            },
+            {
+              "label": "4 — Weekly review catches most creep within the same week",
+              "score": 4
+            },
+            {
+              "label": "5 — Automated alerts when hours exceed scope thresholds",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "handoff-quality",
+          "text": "How smooth are handoffs between strategy, creative, and delivery?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Handoffs are meetings that regularly need redo loops",
+              "score": 1
+            },
+            {
+              "label": "2 — We have docs but context still gets lost",
+              "score": 2
+            },
+            {
+              "label": "3 — Standard brief template, works about 70% of the time",
+              "score": 3
+            },
+            {
+              "label": "4 — Structured handoff with checklist, rarely needs rework",
+              "score": 4
+            },
+            {
+              "label": "5 — Async handoff doc auto-generated from project data",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your delivery ops are running on tribal knowledge",
+          "text": "When status updates and handoffs depend on someone remembering to write them, you lose 10+ hours a week per PM and clients feel the inconsistency. The fix isn't a better PM tool — it's removing the human from the reporting loop.",
+          "steps": [
+            "Pick one PM tool as the single source of project truth",
+            "Build an automated Friday status pull that drafts the client email",
+            "Create one standard handoff template that every discipline must use"
+          ]
+        },
+        "mid": {
+          "headline": "Delivery is working — now make it observable",
+          "text": "You have the processes, but leadership can't see health in real time. Next gain is a live delivery health dashboard that flags risk before a PM has to raise a hand.",
+          "steps": [
+            "Build a single dashboard showing budget, timeline, and sentiment per account",
+            "Set automated Slack alerts when hours exceed 80% of scope",
+            "Run a weekly 15-min portfolio review using the dashboard, not slides"
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening — here's the frontier",
+          "text": "You're running tight. Next-level operators use AI to read client emails and Slack to predict churn, and auto-draft scope-change SOWs the moment hours drift.",
+          "steps": [
+            "Feed client comms into an LLM to score account health weekly",
+            "Auto-draft change orders when scope creep crosses a threshold",
+            "Build a post-mortem template that auto-populates from project data"
+          ]
+        }
+      }
+    },
+    {
+      "id": "sales-proposals",
+      "name": "Sales & Proposal Generation",
+      "questions": [
+        {
+          "id": "proposal-speed",
+          "text": "How fast can you turn a qualified lead into a sent proposal?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — 5+ business days, proposals are written from scratch",
+              "score": 1
+            },
+            {
+              "label": "2 — 2-3 days, we copy an old proposal and heavily edit",
+              "score": 2
+            },
+            {
+              "label": "3 — Within 48h using a template, but it's still manual",
+              "score": 3
+            },
+            {
+              "label": "4 — Same-day from a templated builder",
+              "score": 4
+            },
+            {
+              "label": "5 — Under 2 hours, auto-generated from discovery notes",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pricing-consistency",
+          "text": "How consistent is your pricing across AMs and service lines?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Every AM prices differently, no central logic",
+              "score": 1
+            },
+            {
+              "label": "2 — We have rate cards but people still wing it",
+              "score": 2
+            },
+            {
+              "label": "3 — Rate cards enforced for standard work, custom is a free-for-all",
+              "score": 3
+            },
+            {
+              "label": "4 — Configurator or pricing sheet used for 80%+ of deals",
+              "score": 4
+            },
+            {
+              "label": "5 — Pricing engine enforces floors and margins automatically",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "proposal-followup",
+          "text": "How reliably do proposals get followed up on without manual tracking?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We lose deals because nobody followed up",
+              "score": 1
+            },
+            {
+              "label": "2 — AMs track follow-ups in their heads or notebooks",
+              "score": 2
+            },
+            {
+              "label": "3 — CRM reminders exist, hit rate is around 50%",
+              "score": 3
+            },
+            {
+              "label": "4 — Automated follow-up sequence, human checks weekly",
+              "score": 4
+            },
+            {
+              "label": "5 — Full sequence with signal-based triggers and AI personalization",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Every slow proposal is a deal you're donating to a faster competitor",
+          "text": "If proposals take 3+ days, you're losing to agencies that send within 24h. The fix is a templated proposal system fed by structured discovery notes, not a blank Google Doc.",
+          "steps": [
+            "Build one master proposal template with modular service blocks",
+            "Create a discovery-call template that captures everything the proposal needs",
+            "Set a 48h SLA for proposal delivery and measure it weekly"
+          ]
+        },
+        "mid": {
+          "headline": "Your proposals work — now take the AM out of the builder",
+          "text": "You have templates but they still require a human to assemble. Next gain is a proposal engine that writes the first draft from discovery notes in minutes.",
+          "steps": [
+            "Pipe discovery notes through an LLM to draft the executive summary",
+            "Build a service-block library that assembles based on scope checkboxes",
+            "Auto-send a follow-up sequence the moment the proposal is opened"
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening — here's the frontier",
+          "text": "At your close rate and speed, the next edge is signal-driven proposals: personalizing pitch angles from prospect content and triggering re-engagement on intent signals.",
+          "steps": [
+            "Enrich every proposal with public prospect data via Clay or similar",
+            "Trigger re-engagement when proposal PDF is re-opened after 7+ days",
+            "Run win/loss analysis auto-tagged by proposal variant"
+          ]
+        }
+      }
+    },
+    {
+      "id": "internal-ops",
+      "name": "Internal Ops & Team Workflow",
+      "questions:": [],
+      "questions": [
+        {
+          "id": "meeting-load",
+          "text": "How intentional is your team's meeting load?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Calendars are 70%+ meetings, no-meeting blocks don't exist",
+              "score": 1
+            },
+            {
+              "label": "2 — We talk about it but never actually cut meetings",
+              "score": 2
+            },
+            {
+              "label": "3 — We have meeting-free afternoons, inconsistently honored",
+              "score": 3
+            },
+            {
+              "label": "4 — Clear meeting rules, most sync meetings replaced with async",
+              "score": 4
+            },
+            {
+              "label": "5 — Async-default culture, meetings need a written agenda or they're cancelled",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "sop-coverage",
+          "text": "How well-documented are your recurring delivery SOPs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — SOPs live in people's heads, onboarding new hires takes months",
+              "score": 1
+            },
+            {
+              "label": "2 — Some docs exist but they're out of date",
+              "score": 2
+            },
+            {
+              "label": "3 — Core SOPs documented, updated maybe twice a year",
+              "score": 3
+            },
+            {
+              "label": "4 — SOP library maintained quarterly, new hires ramp in weeks",
+              "score": 4
+            },
+            {
+              "label": "5 — Living SOPs with owners, review cadence, and embedded automations",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "tool-sprawl",
+          "text": "How tight is your stack — are tools earning their seat?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — 20+ SaaS subscriptions, nobody knows what half of them do",
+              "score": 1
+            },
+            {
+              "label": "2 — Stack is bloated, we've been meaning to audit for a year",
+              "score": 2
+            },
+            {
+              "label": "3 — Core stack is solid, fringes are messy",
+              "score": 3
+            },
+            {
+              "label": "4 — Annual stack audit, clear owner per tool",
+              "score": 4
+            },
+            {
+              "label": "5 — Every tool has an owner, ROI check, and sunset criteria",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "team-reporting",
+          "text": "How automated is your internal team reporting (utilization, capacity, hours)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Someone spends a day a week building reports by hand",
+              "score": 1
+            },
+            {
+              "label": "2 — Reports exist but are slow and often wrong",
+              "score": 2
+            },
+            {
+              "label": "3 — Dashboards pull most data, humans patch the gaps",
+              "score": 3
+            },
+            {
+              "label": "4 — Fully automated weekly reports, leadership reviews them",
+              "score": 4
+            },
+            {
+              "label": "5 — Real-time utilization and capacity views, proactive alerts",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your team's time is being eaten by ops debt",
+          "text": "Undocumented SOPs and reporting-by-hand are how a 20-person agency feels like a 40-person agency. Start with the single most repeated task in your ops and document+automate that one before touching anything else.",
+          "steps": [
+            "Track every task that happens weekly for 2 weeks — surface the top 10",
+            "Document the top 3 as SOPs with a named owner",
+            "Automate one end-to-end report that currently takes 2+ hours manually"
+          ]
+        },
+        "mid": {
+          "headline": "You have ops — now make them compound",
+          "text": "SOPs exist but they're not driving leverage. Next gain is turning every SOP into either an automation or a delegable checklist so leadership time moves upstream.",
+          "steps": [
+            "Review each SOP and mark: automate, delegate, or kill",
+            "Build a quarterly stack audit with a mandatory ROI check per tool",
+            "Replace weekly status meetings with a Loom + async comment thread"
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening — here's the frontier",
+          "text": "You're well-run. Next edge is using AI to read internal comms and flag process drift, and treating your ops stack as a product with a roadmap.",
+          "steps": [
+            "Appoint a part-time ops engineer to own the automation backlog",
+            "Use an LLM to summarize weekly team comms into leadership briefs",
+            "Publish an internal ops changelog so the team sees compounding wins"
+          ]
+        }
+      }
+    },
+    {
+      "id": "automation-ai",
+      "name": "Automation & AI Leverage",
+      "questions": [
+        {
+          "id": "automation-maturity",
+          "text": "How deeply is automation embedded in your daily delivery workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We have Zapier on a few things, mostly manual",
+              "score": 1
+            },
+            {
+              "label": "2 — A handful of automations, nobody really owns them",
+              "score": 2
+            },
+            {
+              "label": "3 — Key workflows automated, some breakage we fix reactively",
+              "score": 3
+            },
+            {
+              "label": "4 — Automation is a core discipline with an owner",
+              "score": 4
+            },
+            {
+              "label": "5 — Automation-first culture; new processes are built automated by default",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ai-usage",
+          "text": "How consistently is the team using AI in client-facing work?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — People dabble with ChatGPT, no shared practice",
+              "score": 1
+            },
+            {
+              "label": "2 — A few people use AI well, the rest don't",
+              "score": 2
+            },
+            {
+              "label": "3 — AI in our stack but usage is inconsistent across roles",
+              "score": 3
+            },
+            {
+              "label": "4 — Standardized AI workflows for key deliverables",
+              "score": 4
+            },
+            {
+              "label": "5 — Custom AI agents embedded in delivery, measured by hours saved",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "automation-roi",
+          "text": "Do you measure hours saved and dollars saved from your automations?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No measurement, automations are a vibes exercise",
+              "score": 1
+            },
+            {
+              "label": "2 — We've estimated once, never tracked",
+              "score": 2
+            },
+            {
+              "label": "3 — Rough hours-saved numbers per automation",
+              "score": 3
+            },
+            {
+              "label": "4 — Each automation has an ROI figure reviewed quarterly",
+              "score": 4
+            },
+            {
+              "label": "5 — Full portfolio view with ROI ranking and kill criteria",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're doing manually what your competitors automated 18 months ago",
+          "text": "At your scale, the gap between agencies with real automation and agencies without is 15-25 hours per person per week. Start with one painful, repeated workflow — don't try to automate everything at once.",
+          "steps": [
+            "Pick the single most-hated recurring task and document its steps",
+            "Build one end-to-end automation for it this month (n8n, Make, or Zapier)",
+            "Measure hours saved weekly and share the number with the team"
+          ]
+        },
+        "mid": {
+          "headline": "You have automation — now make it a discipline, not a hobby",
+          "text": "Individual automations exist but nobody owns the portfolio. Next gain is treating automation like a product line with an owner, a backlog, and ROI metrics.",
+          "steps": [
+            "Name an automation owner (even part-time) with a weekly cadence",
+            "Build an automation backlog ranked by hours-saved-per-week",
+            "Run a quarterly review: kill any automation under a defined ROI floor"
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening — here's the frontier",
+          "text": "You've cracked automation basics. Next level is AI agents that replace entire coordinator roles, and treating your automation stack as a productized internal platform.",
+          "steps": [
+            "Deploy AI agents for scoped workflows like QA, QBR prep, and triage",
+            "Build a 'productized ops' layer you can offer clients as a service",
+            "Instrument every automation with observability — no silent failures"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_call",
+      "when": "(persona === \"growing\" || persona === \"established\" || persona === \"scaling\") && overall_score < 70",
+      "headline": "Want a working call on your agency's ops leaks?",
+      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against agencies your size doing client delivery ops, and pinpoint the ONE fix I'd prioritize first. No pitch — if we both see signal, we keep going.",
+      "button": "Book a 30-min working call →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === \"boutique\"",
+      "headline": "Under 10 employees? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer, and the juice isn't worth the squeeze until you have a team feeling the admin load. Follow me on LinkedIn — I post tactical agency automation breakdowns 3x/week. When you cross 10 employees, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight — here's what agencies your size miss next.",
+      "description": "At your score, the low-hanging fruit is already picked. The next gains come from AI agents replacing coordinator roles, signal-driven proposals using public prospect data, and productizing your internal ops layer as a client offering. I'm writing teardowns on each — follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "headline": "Get the weekly agency ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How 10-40 person agencies run lean client delivery without adding headcount — no fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    }
+  ]
+}

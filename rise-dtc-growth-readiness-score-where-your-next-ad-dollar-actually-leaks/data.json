@@ -1,0 +1,648 @@
+{
+ "slug": "rise-dtc-growth-readiness-score-where-your-next-ad-dollar-actually-leaks",
+ "title": "The DTC Growth Readiness Score",
+ "subtitle": "A 16-question diagnostic for DTC founders. Find where growth leaks before you spend more on ads: offer economics, creative, media, retention, and site conversion.",
+ "brand": {
+  "accent": "#ffc71d",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 7,
+ "intro": {
+  "greeting": "Hey, I&rsquo;m Mattan.",
+  "no_avatar": true,
+  "paragraph": "I run RISE DTC. I built this to answer the one question every founder feels but few can name: where is your next ad dollar leaking? Sixteen questions across five parts of the business, plain answers, and you get your score for free.",
+  "point_value": "16 questions across 5 categories. Honest answers, honest result.",
+  "point_next": "Score and tier are free. Your email unlocks the per-category breakdown and the two leaks we would fix first.",
+  "note": "No signup to take it. Your answers stay private until you unlock the full report."
+ },
+ "capture_gate": {
+  "headline_html": "Unlock your <em>full breakdown</em>",
+  "description": "Drop your email and we will open the per-category breakdown, plus the two leaks we would fix first based on your weakest area.",
+  "button": "Unlock my breakdown",
+  "note": "No spam. One email with your results, then it is your call."
+ },
+ "start_screen": {
+  "eyebrow": "DTC Growth Diagnostic",
+  "headline_html": "Find <em>where your growth leaks</em> before you scale spend.",
+  "button": "Start the assessment"
+ },
+ "persona_selector": {
+  "id": "stage",
+  "text": "Where is your brand right now?",
+  "answers": [
+   {
+    "label": "Under $1M a year, still finding what sells",
+    "tag": "early"
+   },
+   {
+    "label": "$1M to $5M, ready to scale spend",
+    "tag": "scaling"
+   },
+   {
+    "label": "$5M to $20M, protecting margin while growing",
+    "tag": "growth"
+   },
+   {
+    "label": "$20M plus, tuning a mature acquisition machine",
+    "tag": "mature"
+   }
+  ]
+ },
+ "categories": [
+  {
+   "id": "offer_economics",
+   "name": "Offer & Unit Economics",
+   "questions": [
+    {
+     "id": "offer_economics_q1",
+     "text": "Do you know your contribution margin after product cost, shipping, payment fees, and returns on a typical order?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I work off revenue and a rough gross margin, nothing per order",
+       "score": 1
+      },
+      {
+       "label": "I know gross margin but not what lands after shipping and fees",
+       "score": 2
+      },
+      {
+       "label": "I know it roughly and check it a few times a year",
+       "score": 3
+      },
+      {
+       "label": "I know it per product and watch it monthly",
+       "score": 4
+      },
+      {
+       "label": "I know it per order and per channel, and I price against it",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "offer_economics_q2",
+     "text": "How much of your revenue comes from a discount code or a sitewide sale?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of it. Full-price sales are rare",
+       "score": 1
+      },
+      {
+       "label": "About half. The calendar runs on promos",
+       "score": 2
+      },
+      {
+       "label": "A third or so, mostly around launches and holidays",
+       "score": 3
+      },
+      {
+       "label": "A small slice, and I know which promos actually pay back",
+       "score": 4
+      },
+      {
+       "label": "Very little. The offer sells at full price on its own",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "offer_economics_q3",
+     "text": "How much room is there between what a new customer costs to acquire and the margin that first order brings in?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The first order usually loses money and I hope they come back",
+       "score": 1
+      },
+      {
+       "label": "It roughly breaks even, so growth depends entirely on repeat",
+       "score": 2
+      },
+      {
+       "label": "There is a little headroom on most products",
+       "score": 3
+      },
+      {
+       "label": "There is real headroom and I know it by product",
+       "score": 4
+      },
+      {
+       "label": "There is wide headroom, so I can outspend competitors to acquire",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are scaling spend on top of an offer that cannot fund it.",
+     "text": "When the first order breaks even or loses money and most sales need a code, paid growth just buys you more unprofitable customers faster. The leak is not the ad account. It is the math underneath it.",
+     "steps": [
+      "Build one contribution-margin number per order: price minus product, shipping, fees, and expected returns.",
+      "List every SKU below 40 percent contribution margin and decide to reprice, bundle, or retire it.",
+      "Pick one sale off the calendar for the next 90 days and watch full-price conversion instead."
+     ]
+    },
+    "mid": {
+     "headline": "The economics work, but they are not yet a weapon.",
+     "text": "You know your margins and you are not addicted to discounts. The next move is turning that headroom into an acquisition advantage most brands in your space cannot match.",
+     "steps": [
+      "Model contribution margin by channel, not just blended, so you know where a new dollar is safe.",
+      "Test a higher-AOV bundle or a post-purchase upsell to widen headroom on the first order.",
+      "Set a target contribution margin that every new product has to clear before launch."
+     ]
+    },
+    "high": {
+     "headline": "Your offer can fund aggressive acquisition.",
+     "text": "Wide, known headroom means you can pay more to acquire than the brand next to you and still profit. Most of your growth ceiling now lives in creative and media, not in the offer.",
+     "steps": [
+      "Set your acquisition target off contribution margin and let winning channels spend to that line.",
+      "Protect the headroom: review it monthly so cost creep does not erase the advantage.",
+      "Reinvest the margin into creative volume, the lever most correlated with scale."
+     ]
+    }
+   }
+  },
+  {
+   "id": "creative_engine",
+   "name": "Creative Engine",
+   "questions": [
+    {
+     "id": "creative_engine_q1",
+     "text": "How many genuinely new ad concepts does your brand test in a typical month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost none. We boost the same few posts",
+       "score": 1
+      },
+      {
+       "label": "One or two, when someone has time",
+       "score": 2
+      },
+      {
+       "label": "A handful, but without a real system",
+       "score": 3
+      },
+      {
+       "label": "A steady batch every week from a plan",
+       "score": 4
+      },
+      {
+       "label": "A high volume on a set cadence, briefed and tracked",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "creative_engine_q2",
+     "text": "When an ad wins, do you know why it won?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No. It works until it stops and we are not sure why",
+       "score": 1
+      },
+      {
+       "label": "We guess based on what the video showed",
+       "score": 2
+      },
+      {
+       "label": "We can point to the hook or the format sometimes",
+       "score": 3
+      },
+      {
+       "label": "We tag hooks, angles, and formats and read the pattern",
+       "score": 4
+      },
+      {
+       "label": "We have a documented library of what works and brief from it",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "creative_engine_q3",
+     "text": "How fast can you go from a new idea to a live ad?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Weeks. It waits on an agency or one freelancer",
+       "score": 1
+      },
+      {
+       "label": "A week or two, depending on who is free",
+       "score": 2
+      },
+      {
+       "label": "About a week on a good stretch",
+       "score": 3
+      },
+      {
+       "label": "A few days, with creators and editors lined up",
+       "score": 4
+      },
+      {
+       "label": "Same week, every week, as a standing pipeline",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your account is starved of new creative.",
+     "text": "On Meta, the algorithm rewards fresh concepts, and creative fatigue is the most common reason a scaling brand stalls. Testing one or two ideas a month means the account runs out of winners faster than you replace them.",
+     "steps": [
+      "Commit to a fixed number of new concepts per week and treat it like a production line, not a favor.",
+      "Write briefs around hooks and angles, not just products, so each test isolates one variable.",
+      "Line up two or three creators so output does not depend on a single person's calendar."
+     ]
+    },
+    "mid": {
+     "headline": "You produce creative, but you do not yet compound learning.",
+     "text": "A steady batch keeps the account fed. The brands that pull ahead also read why winners win and brief the next round from it, so each month starts smarter than the last.",
+     "steps": [
+      "Tag every ad by hook, angle, and format, then review the winners monthly for the pattern.",
+      "Turn the top three patterns into a repeatable brief template.",
+      "Kill fatigued winners on a schedule instead of waiting for the metrics to sag."
+     ]
+    },
+    "high": {
+     "headline": "Creative is a real engine, so protect its supply.",
+     "text": "Volume plus a documented library of what works is exactly what scaled DTC accounts run on. The risk now is a supply shock: one creator leaves, output halves. Build redundancy before you need it.",
+     "steps": [
+      "Keep a bench of creators and editors so no single exit dents output.",
+      "Feed the winning library into new hooks weekly so the pipeline never repeats itself.",
+      "Match creative volume to spend: as budget climbs, concept count has to climb with it."
+     ]
+    }
+   }
+  },
+  {
+   "id": "paid_acquisition",
+   "name": "Paid Acquisition",
+   "questions": [
+    {
+     "id": "paid_acquisition_q1",
+     "text": "How much of your new-customer revenue depends on a single channel?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nearly all of it rides on one platform",
+       "score": 1
+      },
+      {
+       "label": "One channel carries us, with a small second",
+       "score": 2
+      },
+      {
+       "label": "Two channels pull real weight",
+       "score": 3
+      },
+      {
+       "label": "Two or three channels each earn their place",
+       "score": 4
+      },
+      {
+       "label": "A balanced mix, and I know each channel's true cost",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "paid_acquisition_q2",
+     "text": "How do you know whether a channel is actually driving sales versus taking credit for them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I read the numbers inside each ad platform and trust them",
+       "score": 1
+      },
+      {
+       "label": "I glance at blended ROAS and hope it lines up",
+       "score": 2
+      },
+      {
+       "label": "I compare platform numbers against total revenue by hand",
+       "score": 3
+      },
+      {
+       "label": "I use a post-purchase survey or a measurement tool to check",
+       "score": 4
+      },
+      {
+       "label": "I run holdouts or incrementality tests before I scale a channel",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "paid_acquisition_q3",
+     "text": "What happens to your cost to acquire a customer as you increase spend?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It climbs fast and I do not have a number to stop at",
+       "score": 1
+      },
+      {
+       "label": "It climbs and I pull back on feel",
+       "score": 2
+      },
+      {
+       "label": "It climbs slowly and I roughly know my ceiling",
+       "score": 3
+      },
+      {
+       "label": "I know the point where efficiency breaks and I plan around it",
+       "score": 4
+      },
+      {
+       "label": "I scale into it deliberately against a margin-based target",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "One channel and platform-reported numbers is a fragile way to grow.",
+     "text": "Since the iOS privacy changes, ad platforms over-credit themselves, so a healthy in-app ROAS can hide a rising real cost. Leaning on a single channel means one auction shift or policy change can halve your new customers overnight.",
+     "steps": [
+      "Add a post-purchase how-did-you-hear survey to see what platform reports miss.",
+      "Stand up one second channel deliberately, even small, so you are not single-threaded.",
+      "Set a cost-to-acquire ceiling from your contribution margin and hold spend to it."
+     ]
+    },
+    "mid": {
+     "headline": "You have diversified, now sharpen how you measure truth.",
+     "text": "More than one channel earning its place is the right foundation. The brands that scale confidently know real cost, not just reported cost, so they can push the channels that actually work.",
+     "steps": [
+      "Reconcile platform-reported sales against total revenue weekly to find the over-crediting gap.",
+      "Run a small holdout on your biggest channel to see what it truly drives.",
+      "Reallocate budget toward the channel with the best incremental cost, not the best reported one."
+     ]
+    },
+    "high": {
+     "headline": "You scale on truth, not on platform credit.",
+     "text": "Incrementality-tested channels and a margin-based target are how the strongest DTC brands spend. The work now is defending that discipline as you add channels and as the team grows.",
+     "steps": [
+      "Re-run incrementality quarterly so old assumptions do not calcify.",
+      "Document the acquisition target so new hires spend against the same line.",
+      "Pressure-test a third channel before the two you rely on show fatigue."
+     ]
+    }
+   }
+  },
+  {
+   "id": "retention_ltv",
+   "name": "Retention & LTV",
+   "questions": [
+    {
+     "id": "retention_ltv_q1",
+     "text": "Do you know what share of revenue comes from customers buying a second time or more?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, I have not separated new from returning",
+       "score": 1
+      },
+      {
+       "label": "I have a rough sense but no number",
+       "score": 2
+      },
+      {
+       "label": "I know the repeat rate but do not act on it",
+       "score": 3
+      },
+      {
+       "label": "I track it and it informs the plan",
+       "score": 4
+      },
+      {
+       "label": "I know it by cohort and by acquisition source",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "retention_ltv_q2",
+     "text": "How much of your email and SMS revenue comes from automated flows versus one-off campaigns?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We barely use email or SMS",
+       "score": 1
+      },
+      {
+       "label": "Mostly manual blasts when we remember",
+       "score": 2
+      },
+      {
+       "label": "A welcome flow exists, the rest is campaigns",
+       "score": 3
+      },
+      {
+       "label": "Core flows run and earn a solid share",
+       "score": 4
+      },
+      {
+       "label": "Flows are built out by segment and drive most of the owned revenue",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "retention_ltv_q3",
+     "text": "Is there a deliberate reason for a customer to come back within 60 days?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, we hope the product is good enough",
+       "score": 1
+      },
+      {
+       "label": "Occasional promos, nothing planned",
+       "score": 2
+      },
+      {
+       "label": "A replenishment nudge on some products",
+       "score": 3
+      },
+      {
+       "label": "A post-purchase sequence built around the use cycle",
+       "score": 4
+      },
+      {
+       "label": "A designed second-purchase path, measured and tuned",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are buying customers and letting them walk.",
+     "text": "If the first order barely breaks even, the profit is supposed to come from the second and third. With no repeat visibility and few flows, you are paying acquisition prices for one-time buyers and calling it growth.",
+     "steps": [
+      "Split new versus returning revenue this week so you can see the real repeat rate.",
+      "Build the three flows that pay for themselves first: welcome, abandoned checkout, post-purchase.",
+      "Give every buyer one specific reason to return inside 60 days, tied to how the product gets used."
+     ]
+    },
+    "mid": {
+     "headline": "Retention works, but it is not yet a system.",
+     "text": "Core flows and a known repeat rate put you ahead of most brands. The next lift is treating the second purchase as a designed path, not a hope, so lifetime value climbs faster than acquisition cost.",
+     "steps": [
+      "Segment flows by first product and by stage so the message fits the buyer.",
+      "Map the natural reorder window and trigger the nudge just before it.",
+      "Track lifetime value by acquisition source so you know which new customers are worth more."
+     ]
+    },
+    "high": {
+     "headline": "Lifetime value is a lever you can pull on purpose.",
+     "text": "Cohort-level retention and built-out flows mean you can afford to acquire more aggressively because you know what a customer is worth over time. Guard that edge and feed it back into acquisition.",
+     "steps": [
+      "Feed lifetime-value-by-source back into your acquisition targets so you bid on the best cohorts.",
+      "Test a subscription or replenishment path for your highest-repeat products.",
+      "Review cohorts quarterly so a quiet drop in repeat rate never goes unseen."
+     ]
+    }
+   }
+  },
+  {
+   "id": "site_conversion",
+   "name": "Site & Conversion",
+   "questions": [
+    {
+     "id": "site_conversion_q1",
+     "text": "Do you know your conversion rate on mobile, where most of your traffic lands?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, I look at overall conversion at best",
+       "score": 1
+      },
+      {
+       "label": "I know the blended number, not mobile on its own",
+       "score": 2
+      },
+      {
+       "label": "I know mobile but have not worked on it",
+       "score": 3
+      },
+      {
+       "label": "I track mobile and test against it",
+       "score": 4
+      },
+      {
+       "label": "I know it by device and by traffic source and optimize each",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "site_conversion_q2",
+     "text": "When a paid visitor lands on a product page, does the page finish the argument the ad started?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They land on a generic page unrelated to the ad",
+       "score": 1
+      },
+      {
+       "label": "Same product page for every ad, no matter the angle",
+       "score": 2
+      },
+      {
+       "label": "The page matches the product but not the ad's angle",
+       "score": 3
+      },
+      {
+       "label": "Key ads point to pages built for their angle",
+       "score": 4
+      },
+      {
+       "label": "Landing pages are built and tested per angle and offer",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "site_conversion_q3",
+     "text": "How systematically do you test changes to the pages that carry your revenue?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We change things on instinct and hope",
+       "score": 1
+      },
+      {
+       "label": "We redesign occasionally, all at once",
+       "score": 2
+      },
+      {
+       "label": "We test now and then when someone pushes it",
+       "score": 3
+      },
+      {
+       "label": "We run a steady queue of tests on key pages",
+       "score": 4
+      },
+      {
+       "label": "Testing is constant and prioritized by revenue impact",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are paying for traffic your site cannot convert.",
+     "text": "Every point of conversion rate you leave on the table taxes every ad dollar behind it. Sending paid clicks to generic pages that ignore the ad's angle is one of the most expensive leaks in DTC, and one of the most fixable.",
+     "steps": [
+      "Pull your mobile conversion rate first, since that is where most paid traffic lands.",
+      "Match your top three ad angles to product pages that finish the same argument.",
+      "Fix the obvious friction: slow load, weak first screen, buried reviews, clumsy checkout."
+     ]
+    },
+    "mid": {
+     "headline": "The site converts, but it is not pulling its weight in the funnel.",
+     "text": "You track the right numbers and match some pages to some ads. The brands that scale efficiently treat the landing page as part of the ad, not an afterthought, and test it as hard as they test creative.",
+     "steps": [
+      "Build dedicated landing pages for your highest-spend angles and offers.",
+      "Stand up a testing queue on the pages that carry the most revenue.",
+      "Prioritize tests by revenue impact, not by whoever argues loudest."
+     ]
+    },
+    "high": {
+     "headline": "Your site is a conversion asset, keep compounding it.",
+     "text": "Per-angle landing pages and constant, prioritized testing are what separate efficient scalers from the pack. The gains get smaller from here, so the discipline is to keep testing and to protect page speed as you add tools.",
+     "steps": [
+      "Keep the testing cadence steady even when results feel good.",
+      "Watch page speed as apps and pixels pile up, since load time quietly erodes conversion.",
+      "Route every new angle through its own page so creative and site scale together."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "At Risk",
+  "mid": "Scaling-Ready",
+  "high": "Built to Scale"
+ },
+ "cta": {
+  "headline": "Want the team that turns this score into a growth plan?",
+  "description": "In 30 minutes we will show you the two leaks to fix first, based on your score and your stage. No pitch deck, just the sequencing.",
+  "button": "Book a call",
+  "url": "https://meetings.hubspot.com/mattan5/rise-intro-call--li"
+ }
+}

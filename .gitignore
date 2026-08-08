@@ -1,0 +1,11 @@
+migration-output/
+scripts/node_modules/
+*.log
+.DS_Store
+
+# n8nac CLI per-developer config (workspace IDs, instance targets)
+n8nac-config.json
+n8nac-config.v*-backup-*.json
+
+# Supabase CLI temp directory
+supabase/.temp/

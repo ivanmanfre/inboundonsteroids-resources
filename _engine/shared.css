@@ -1,0 +1,703 @@
+/* Shared brand tokens + base primitives for every LM engine.
+   Imported by checklist / assessment / calculator / template / guide / swipe. */
+
+@import url('https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400..700&family=Courier+Prime:wght@400;700&display=swap');
+
+/* Smooth scroll for anchor jumps + general navigation feel.
+   Respect user's reduced-motion preference. */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
+
+/* Global eyebrow/meta-label harmonization across all engines (2026-05-22).
+   Per brand audit 2026-05-17 — reference site has NO monospace anywhere.
+   Force every uppercase small-caps eyebrow to Source Serif 4 600 so
+   checklist/calculator/guide/assessment/swipe/stack-picker/architecture/
+   ai-walkthrough/n8n-workflow all read as one editorial system. */
+.lmc-badge, .lmc-meta-chip, .lmc-tier-pill, .lmc-big-unit,
+.lmc-celebration-badge, .lmc-toc-label, .lmc-section-title-line.label,
+.lmc-intro-badge, .lmc-tier-label, .lmc-next-label,
+.lmc-impact, .lmc-section-toggle, .lmc-progress-inner,
+.lmc-card h2, .lmc-field > label, .lmc-output-row .label, .lmc-recs h3,
+.lmw-badge, .lma-badge, .lms-badge, .lmg-badge,
+.lma-drawer-eyebrow, .lma-drawer-section-h, .lma-chip,
+.lmw-pill, .lmw-tool-chip,
+.lms-ex-tag,
+.lmc-rec strong,
+.lmc-meta-chip-text, .lmc-sens-pct, .lmc-bench-you {
+  font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif) !important;
+  font-weight: 700 !important;
+  letter-spacing: .05em !important;
+}
+
+/* ── Black Box register enforcement (2026-07-10 migration) ────────────────
+   One system across every engine: Schibsted Grotesk display + body + labels,
+   Source Serif 4 italic reserved for the clinical pivot phrase only. */
+html body { font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif); }
+.lmc-h1, .lmc-section-title, .lmc-intro-h, .lmc-capture h2, .lmc-question,
+.lmc-results-h, .lmc-result-unlock-h, .lmc-score-headline, .lmc-start-h,
+.lmc-closing-h, .lmc-sp-result-h, .lmc-sp-cta-h, .lma-h1, .lma-drawer-headline,
+.lmw-h1, .lmk-dl-h, .lmk-files-h, .lmk-qs-h, .lms-ex-title, .im-footer-h,
+.im-footer-cta h2 {
+  font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif) !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.035em !important;
+}
+/* the one clinical serif italic pivot inside a display line */
+.lmc-h1 em, .lmc-h1 i, .lmc-section-title em, .lmc-section-title i,
+.lmc-intro-h em, .lmc-intro-h i, .lmc-capture h2 em, .lmc-question em,
+.lmc-question i, .lmc-results-h em, .lmc-result-unlock-h em,
+.lmc-score-headline em, .lmc-start-h em, .lmc-closing-h em,
+.lmc-sp-result-h em, .lms-ex-title em, .im-footer-h em, .im-footer-cta h2 em,
+.lmc-mid-cta-text em, .lmg-skipped-body em, .lmc-closing-sign em {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.01em !important;
+}
+/* the display-italic numerals (section numbers, big figures) stay serif italic */
+.lmc-section-num, .lmc-big-num, .lmc-score-number, .lmc-computed-value,
+.lmc-cat-pct, .lmc-gap-rank, .lmc-leaky-value, .lmc-tier-score em,
+.lmc-toc-progress em, .lmk-qs-num, .lmc-social-proof-pct {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+}
+/* Body copy is Schibsted Grotesk (sans) — Source Serif stays for italic only.
+   Force the paragraph/UI classes that still hardcode the old editorial serif. */
+.lmc-sub, .lmc-intro-p, .lmc-intro-note, .lmc-intro-bio, .lmc-meta,
+.lmc-tier-note, .lmc-gap-text, .lmc-gap-fix, .lmc-next-move, .lmc-toast,
+.lmc-closing-p, .lmc-closing-email-p, .lmc-closing-lead, .lmc-closing-sign,
+.lmc-closing-byline span, .lmc-note, .lmc-section-desc, .lma-sub, .lmk-sub {
+  font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif) !important;
+  font-style: normal;
+}
+/* Sharp corners everywhere — Black Box law */
+.lmc-root, .lmc-root *, .im-footer, .im-footer * { border-radius: 0 !important; }
+/* dispensed-label artifact primitive (Courier Prime only inside the box) */
+.lm-disp { font-family: var(--font-mono, 'Courier Prime', ui-monospace, monospace) !important; }
+
+/* Global brand override — the per-LM HTML wrapper still ships an inline
+   `body { font-family: 'Space Grotesk' }` from the legacy n8n template. The
+   `html body` selector beats single-element specificity without !important. */
+html body {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 17px;
+  line-height: 1.55;
+  color: var(--ink, #131210);
+  background: var(--paper, #FFFFFF);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Per-LM HTML wrapper still emits a top sticky nav (.im-nav with logo +
+   "Let's Talk" CTA). Hidden globally 2026-05-21 — the content is the CTA. */
+.im-nav { display: none !important; }
+
+/* Per-LM HTML wrapper also emits a generic footer CTA card. Flatten the
+   shadow-card chrome and apply editorial brand typography. The inner copy is
+   rewritten at runtime by shared.js → LM.rebrandFooter(). */
+.im-footer {
+  background: var(--ink, #131210) !important;
+  color: var(--paper, #FFFFFF) !important;
+  padding: 4.5rem 1.5rem 2.5rem !important;
+  border-top: none !important;
+  margin-top: 4rem !important;
+}
+.im-footer-inner { max-width: 860px !important; margin: 0 auto !important; }
+.im-footer-cta {
+  background: transparent !important;
+  color: var(--paper, #FFFFFF) !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 0 3rem !important;
+  text-align: left !important;
+}
+.im-footer-label {
+  display: block;
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1.25rem;
+}
+.im-footer-cta h2,
+.im-footer-h {
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif) !important;
+  font-size: clamp(2rem, 4vw, 3rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.01em !important;
+  margin: 0 0 1.25rem !important;
+  color: var(--paper, #FFFFFF) !important;
+  max-width: 32rem;
+  text-align: left !important;
+}
+.im-footer-cta h2 em,
+.im-footer-h em {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: var(--paper, #FFFFFF) !important;
+}
+.im-footer-cta p,
+.im-footer-p {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-size: 1.0625rem !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+  margin: 0 0 1.75rem !important;
+  max-width: 38rem;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  color: rgba(255, 255, 255, 0.82) !important;
+  text-align: left !important;
+}
+.im-footer-cta a,
+.im-footer-btn {
+  display: inline-block !important;
+  padding: 15px 30px !important;
+  background: var(--paper, #FFFFFF) !important;
+  color: var(--ink, #131210) !important;
+  font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif) !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  letter-spacing: .02em !important;
+  text-transform: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  text-decoration: none !important;
+  border-radius: 0 !important;
+  transition: opacity 80ms;
+}
+.im-footer-cta a:hover,
+.im-footer-btn:hover {
+  background: var(--paper, #FFFFFF) !important;
+  color: var(--ink, #131210) !important;
+  opacity: .9 !important;
+}
+.im-footer-meta {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-size: 12px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: .08em !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+  padding-top: 2rem !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.12) !important;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.im-footer-meta a {
+  color: rgba(255, 255, 255, 0.7) !important;
+  text-decoration: none !important;
+}
+.im-footer-meta a:hover { color: var(--paper, #FFFFFF) !important; }
+
+:root {
+  /* Font tokens (added 2026-08-07 de-branding pass). Defaults reproduce the
+     pre-existing hardcoded Ivan type system byte-for-byte. A per-lead shell
+     (or client{} theme) sets these at #lmc-root / html scope to re-skin every
+     component rule below without touching this file again. */
+  --font-sans: 'Schibsted Grotesk', system-ui, sans-serif;
+  --font-drama: 'Source Serif 4', Georgia, serif;
+  --font-mono: 'Courier Prime', ui-monospace, monospace;
+  --paper: #FFFFFF;
+  --paper-sunk: #F4F2EC;
+  --paper-raise: #FFFFFF;
+  --ink: #131210;
+  --ink-soft: #4A463E;
+  --ink-mute: #6B675E;
+  --hairline: rgba(19, 18, 16, 0.12);
+  --hairline-bold: rgba(19, 18, 16, 0.22);
+  /* Sage = THE brand accent. Moss `#131210` retired 2026-05-20 — was creating
+     two-greens-on-one-page (sage punctuation + moss chrome). Brand rule §1
+     says ONE accent per surface. */
+  --accent: #131210;
+  --accent-light: #131210;
+  --accent-ink: #131210;
+  --accent-soft: rgba(19, 18, 16, 0.08);
+  --shadow-subtle: 0 1px 3px rgba(19, 18, 16,0.06), 0 1px 2px rgba(19, 18, 16,0.04);
+  --shadow-lift: 0 8px 24px rgba(19, 18, 16,0.10), 0 2px 6px rgba(19, 18, 16,0.05);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --red: #C8361B;
+  --hair-solid: #C9C2B2;
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Body texture (fractal noise) — engines opt in by applying .lmc-root */
+/* NOT var()-wrapped (deliberate, 2026-08-07): assessment.css also declares a
+   `.lmc-root { --font-sans: ... }` scope on this same element/selector. Two
+   same-specificity `.lmc-root` rules tie on source order — this file loads
+   last (shared.css self-heals its own <link> after assessment.css), so this
+   literal has always been the one that actually wins for the *base* font on
+   #lmc-root. Routing it through var(--font-sans) would make it inherit
+   assessment.css's LOCAL --font-sans instead (Georgia fallback vs this file's
+   system-ui fallback) — same font, different fallback metrics, which shifted
+   real layout height in testing. Every *visible* text style (headlines,
+   labels, buttons) already has its own explicit font-family rule elsewhere in
+   this file, all properly var()-ized and !important where it needs to beat
+   this one — so this bare rule is effectively a fallback-of-a-fallback and
+   isn't worth the cascade risk. A lead shell still re-skins everything that
+   matters via #lmc-root (ID specificity beats every .lmc-root class rule).
+*/
+.lmc-root {
+  font-family: 'Schibsted Grotesk', system-ui, sans-serif;
+  color: var(--ink);
+  background: var(--paper);
+  position: relative;
+}
+/* Black Box law: no background texture, no paper grain — pure paper. */
+.lmc-root::before { display: none !important; }
+.lmc-container { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem; position: relative; z-index: 1; }
+
+/* ── Shared hero ─────────────────────────────────────────────────────── */
+.lmc-hero {
+  padding: 5rem 1.5rem 3rem;
+  background: var(--paper);
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(19, 18, 16,0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(19, 18, 16,0.03) 1px, transparent 1px);
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+/* Sage radial backdrop on every engine's hero (matches ivanmanfredi.com
+   sage cursor-spotlight feel, static version). The brand-visual-system rule
+   §4 calls for sage as punctuation — one moment per surface. The h1 italic
+   pivot is the punctuation; this gradient is the ambient context. */
+/* Black Box law: no gradients, no ambient wash — pure paper. */
+.lmc-hero::after { display: none !important; }
+.lmc-hero > * { position: relative; z-index: 1; }
+.lmc-hero-inner { max-width: 860px; margin: 0 auto; }
+.lmc-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 1.5rem;
+  border: none;
+}
+.lmc-badge::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
+.lmc-h1 {
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif);
+  font-size: clamp(2.25rem, 6vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem;
+  max-width: 42rem;
+  color: var(--ink);
+}
+.lmc-h1 em { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0; }
+.lmc-sub {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 1.15rem;
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  max-width: 38rem;
+  margin: 0 0 2rem;
+  padding-left: 0;
+  border-left: none;
+}
+.lmc-meta { display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: 13px; color: var(--ink); font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-weight: 600; }
+.lmc-meta-chip { display: inline-flex; align-items: center; gap: 6px; letter-spacing: .08em; text-transform: uppercase; }
+.lmc-meta-chip::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
+
+/* ── Shared intro / welcome block ─────────────────────────────────────── */
+.lmc-intro {
+  position: relative;
+  background: var(--paper-sunk);
+  padding: 3.5rem 1.5rem;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+  z-index: 1;
+}
+.lmc-intro-inner { position: relative; max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: auto 1fr; gap: 2.5rem; align-items: start; }
+@media (max-width: 640px) { .lmc-intro-inner { grid-template-columns: 1fr; gap: 1.75rem; } }
+.lmc-intro-avatar {
+  flex-shrink: 0;
+  width: 148px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: top;
+  border: 1px solid var(--hairline-bold);
+  border-radius: var(--radius-lg);
+  box-shadow: none;
+  filter: saturate(0.45) sepia(0.18) contrast(1.1) brightness(0.95);
+}
+.lmc-intro-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 0;
+  background: transparent;
+  color: var(--ink);
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 1rem;
+  border: none;
+}
+.lmc-intro-badge::before { content: ""; width: 6px; height: 6px; background: var(--accent); display: inline-block; }
+.lmc-intro-h { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-size: clamp(1.6rem, 3.2vw, 2.15rem); font-weight: 400; line-height: 1.1; margin: 0 0 .85rem; color: var(--ink); letter-spacing: -0.01em; }
+.lmc-intro-h em { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-style: italic; font-weight: 400; color: var(--accent); letter-spacing: 0; }
+.lmc-intro-p { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 1.5rem; max-width: 38rem; }
+.lmc-intro-points { list-style: none; padding: 0; margin: 0 0 1.75rem; display: flex; flex-direction: column; gap: .65rem; font-size: .96rem; color: var(--ink); }
+.lmc-intro-points li { display: flex; gap: .8rem; align-items: center; }
+.lmc-intro-icon { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; background: var(--ink); color: var(--paper); font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-size: .85rem; font-weight: 600; flex-shrink: 0; border-radius: var(--radius-sm); }
+.lmc-intro-icon.a { background: var(--accent); color: var(--paper); }
+.lmc-intro-icon.b { background: var(--ink); color: var(--paper); }
+.lmc-intro-icon.c { background: transparent; color: var(--ink); border: 1px solid var(--hairline-bold); }
+.lmc-intro-start {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: 14px 28px;
+  background: var(--ink, #131210);
+  color: var(--paper, #FFFFFF);
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 17px; font-weight: 600; letter-spacing: 0;
+  border: none; cursor: pointer; text-decoration: none;
+  border-radius: 0;
+  box-shadow: none;
+  transition: background 80ms;
+}
+.lmc-intro-start:hover { background: #000; color: var(--paper, #FFFFFF); }
+.lmc-intro-note { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-size: .82rem; color: var(--ink-mute); margin-top: 1rem; max-width: 34rem; }
+
+/* ── Welcome-block bio (hoisted from "Who Am I?" sections) ───────────── */
+.lmc-intro-bio { max-width: 38rem; margin: 0 0 1.5rem; font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); color: var(--ink); font-size: 1rem; line-height: 1.6; }
+.lmc-intro-bio .lmg-bio > *:first-child { margin-top: 0; }
+.lmc-intro-bio .lmg-bio > *:last-child { margin-bottom: 0; }
+.lmc-intro-bio p { margin: 0 0 .75rem; color: var(--ink-soft); }
+.lmc-intro-bio ul, .lmc-intro-bio ol { margin: 0 0 .75rem; padding-left: 1.25rem; }
+.lmc-intro-bio li { margin: 0 0 .35rem; color: var(--ink); }
+.lmc-intro-bio li::marker { color: var(--accent); }
+.lmc-intro-bio strong { color: var(--ink); font-weight: 600; }
+
+/* ── Shared buttons ──────────────────────────────────────────────────── */
+.lmc-btn {
+  padding: 14px 28px;
+  background: var(--ink, #131210);
+  color: var(--paper, #FFFFFF);
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 17px; font-weight: 600; letter-spacing: 0;
+  border: none; cursor: pointer;
+  border-radius: 0;
+  box-shadow: none;
+  transition: background 80ms;
+}
+.lmc-btn:hover { background: #000; color: var(--paper, #FFFFFF); }
+.lmc-btn-secondary { background: transparent; color: var(--ink, #131210); border: 1px solid var(--ink, #131210); box-shadow: none; }
+.lmc-btn-secondary:hover { background: color-mix(in srgb, var(--accent) 8%, transparent); color: var(--ink, #131210); }
+
+/* ── Shared results panel tokens (tier / gaps / next move) ───────────── */
+.lmc-tier {
+  display: grid; gap: .85rem;
+  padding: 2.5rem 2rem;
+  background: transparent;
+  border: none;
+  border-left: 4px solid var(--accent);
+  border-radius: 0;
+  box-shadow: none;
+  margin-bottom: 2.5rem;
+}
+.lmc-tier-critical { border-left-color: var(--ink); }
+.lmc-tier-growth { border-left-color: var(--accent); }
+.lmc-tier-optimized { border-left-color: var(--accent); }
+.lmc-tier-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.lmc-tier-label { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-weight: 600; color: var(--ink); }
+.lmc-tier-score { display: inline-flex; align-items: baseline; gap: .15rem; color: var(--ink); }
+.lmc-tier-score em { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-style: italic; font-weight: 400; font-size: 3.25rem; line-height: 1; color: var(--accent); letter-spacing: 0; }
+.lmc-tier-score span { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-size: .85rem; color: var(--ink-mute); font-weight: 600; }
+.lmc-tier-note { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); margin: 0; color: var(--ink-soft); font-size: 1rem; line-height: 1.55; }
+
+.lmc-results-h { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-size: 1.65rem; font-weight: 400; margin: 0 0 1.25rem; letter-spacing: -0.01em; color: var(--ink); }
+.lmc-results-h em { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-style: italic; font-weight: 400; color: var(--accent); }
+.lmc-gap-list { list-style: none; padding: 0; margin: 0 0 2rem; display: grid; gap: .85rem; }
+.lmc-gap {
+  display: grid; grid-template-columns: auto 1fr; gap: 1.25rem;
+  padding: 1.5rem 0;
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(19, 18, 16,0.08);
+  border-radius: 0;
+  box-shadow: none;
+  transition: background .15s;
+}
+.lmc-gap:first-child { border-top: none; }
+.lmc-gap:hover { background: rgba(19, 18, 16,0.02); }
+.lmc-gap-rank { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-style: italic; font-weight: 400; font-size: 2.25rem; line-height: 1; color: var(--accent); letter-spacing: 0; min-width: 1.5ch; }
+.lmc-gap-body { min-width: 0; }
+.lmc-gap-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.lmc-gap-text { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-weight: 600; color: var(--ink); font-size: 1.02rem; line-height: 1.45; }
+.lmc-gap-fix { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); margin-top: .6rem; font-size: .92rem; line-height: 1.55; color: var(--ink-soft); padding-left: .9rem; border-left: 2px solid color-mix(in srgb, var(--accent) 35%, transparent); }
+.lmc-gap-fix-label { display: inline-block; font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-right: .5rem; }
+
+.lmc-next-move { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); display: block; padding: 1.5rem 1.5rem; background: var(--ink); color: var(--paper); border-radius: 0; font-size: 1rem; line-height: 1.55; margin: 0 0 1.5rem; box-shadow: none; }
+.lmc-next-label { font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); display: block; font-size: 12px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: .35rem; }
+
+/* ── Shared impact pills ─────────────────────────────────────────────── */
+.lmc-impact { display: inline-block; padding: .22rem .6rem; font-size: 12px; font-weight: 600; font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); text-transform: uppercase; letter-spacing: .08em; margin-top: .6rem; margin-right: .4rem; border-radius: 2px; }
+.lmc-impact-high { background: var(--accent); color: var(--paper); }
+.lmc-impact-medium { background: var(--ink); color: var(--paper); }
+.lmc-impact-low { background: transparent; color: var(--ink-mute); border: 1px solid var(--hairline-bold); }
+
+/* ── Shared capture block — paper-flat editorial style (2026-05-21) ───── */
+/* Unified across every engine. Per-engine .lmc-capture overrides are
+   neutralized by the !important rules below. */
+.lmc-capture {
+  padding: 3rem 0 2.5rem !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  margin: 3rem auto 2rem !important;
+  max-width: 38rem !important;
+  border: none !important;
+  border-top: 1px solid rgba(19, 18, 16, 0.08) !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  position: relative;
+  overflow: visible !important;
+  text-align: left;
+}
+.lmc-capture::before { content: none !important; }
+.lmc-capture > * { position: relative; z-index: 1; }
+.lmc-capture h2 {
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif) !important;
+  font-size: clamp(1.75rem, 3.2vw, 2.4rem) !important;
+  font-weight: 400 !important;
+  margin: 0 0 .9rem !important;
+  letter-spacing: -0.01em !important;
+  line-height: 1.15 !important;
+  color: var(--ink) !important;
+  max-width: 32rem;
+}
+.lmc-capture h2 em {
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif) !important;
+  font-style: italic !important;
+  font-weight: 400 !important;
+  color: var(--accent) !important;
+}
+.lmc-capture p {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-size: 1.0625rem !important;
+  margin: 0 0 1.75rem !important;
+  max-width: 34rem;
+  color: var(--ink-soft) !important;
+  line-height: 1.65 !important;
+}
+.lmc-form { display: flex !important; flex-direction: column !important; gap: .6rem !important; align-items: stretch !important; max-width: 32rem !important; }
+.lmc-input,
+.lmc-form .lmc-input,
+.lmc-form-input,
+.lmc-form .lmc-form-input {
+  flex: 0 0 auto !important;
+  width: 100% !important;
+  height: auto !important;
+  padding: .9rem 1rem !important;
+  border: 1px solid rgba(19, 18, 16, 0.2) !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  color: var(--ink) !important;
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+  border-radius: 0 !important;
+  box-sizing: border-box !important;
+}
+.lmc-input::placeholder,
+.lmc-form-input::placeholder {
+  color: rgba(19, 18, 16, 0.4) !important;
+}
+.lmc-input:focus,
+.lmc-form-input:focus {
+  outline: none !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent) !important;
+  background: #fff !important;
+}
+.lmc-form .lmc-btn { width: 100% !important; }
+.lmc-note {
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif) !important;
+  font-size: .85rem !important;
+  color: var(--ink-mute) !important;
+  margin-top: 1rem !important;
+  letter-spacing: 0 !important;
+}
+/* Secondary CTA inside capture cards (injected by shared.js enhanceCapture).
+   Lets high-intent readers jump to calendly without scrolling past the
+   email gate to the editorial footer. */
+.lmc-capture-alt {
+  display: inline-block;
+  margin-top: 1rem;
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: .95rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(19, 18, 16, 0.18);
+  padding-bottom: 2px;
+  transition: color 120ms, border-color 120ms;
+}
+.lmc-capture-alt strong { color: var(--ink); font-weight: 600; }
+.lmc-capture-alt:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.lmc-capture-alt:hover strong { color: var(--accent); }
+
+/* ── Closing CTA — call-first finale on every engine (2026-06-09) ─────── */
+.lmc-closing {
+  max-width: 42rem;
+  margin: 4rem auto 2.5rem;
+  padding: 2.5rem 2.25rem;
+  background: var(--paper);
+  border: 4px solid var(--ink);
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif);
+}
+.lmc-closing-label {
+  display: inline-flex; align-items: center; gap: .5em;
+  font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif);
+  font-size: 13px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em;
+  color: var(--ink); margin-bottom: 1.25rem;
+}
+.lmc-closing-label::before { content: ""; width: .62em; height: .62em; background: var(--ink); display: inline-block; }
+.lmc-closing-h {
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif);
+  font-size: clamp(1.9rem, 3.4vw, 2.55rem);
+  font-weight: 400; line-height: 1.12; letter-spacing: -0.01em;
+  color: var(--ink); margin: 0 0 1.1rem; max-width: 30ch;
+}
+.lmc-closing-h em { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-style: italic; font-weight: 400; color: var(--accent); }
+.lmc-closing-p {
+  font-size: 1.0625rem; line-height: 1.65; color: var(--ink-soft);
+  margin: 0 0 1.4rem; max-width: 36rem;
+}
+.lmc-closing-lead { font-size: 1.0625rem; font-weight: 600; color: var(--ink); margin: 0 0 .75rem; }
+.lmc-closing-points { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: .6rem; }
+.lmc-closing-points li {
+  display: flex; gap: .75rem; align-items: baseline;
+  font-size: 1.02rem; line-height: 1.55; color: var(--ink);
+}
+.lmc-closing-points li::before { content: ""; width: 6px; height: 6px; background: var(--accent); flex-shrink: 0; transform: translateY(-2px); }
+.lmc-closing-call { display: inline-flex !important; align-items: center; gap: .6rem; text-decoration: none; background: var(--red) !important; color: var(--paper, #FFFFFF) !important; font-family: var(--font-sans, 'Schibsted Grotesk', system-ui, sans-serif) !important; font-weight: 700 !important; letter-spacing: .02em !important; padding: 15px 30px !important; }
+.lmc-closing-call:hover:not([disabled]) { background: #A82D16 !important; color: var(--paper, #FFFFFF) !important; }
+.lmc-closing-divider { margin: 2.25rem 0 1.5rem; border-top: 1px solid var(--hairline-bold); }
+.lmc-closing-email-p { font-size: .98rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 .9rem; max-width: 34rem; }
+.lmc-closing-form { display: flex; gap: .5rem; max-width: 32rem; }
+.lmc-closing-form input {
+  flex: 1 1 auto; min-width: 0;
+  padding: .85rem 1rem;
+  border: 1px solid rgba(19, 18, 16, 0.2);
+  background: rgba(255, 255, 255, 0.6);
+  color: var(--ink);
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: .98rem; line-height: 1.4;
+  border-radius: 0; box-sizing: border-box;
+}
+.lmc-closing-form input::placeholder { color: rgba(19, 18, 16, 0.4); }
+.lmc-closing-form input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 15%, transparent); background: #fff; }
+.lmc-closing-form button {
+  flex: 0 0 auto;
+  padding: .85rem 1.4rem;
+  background: transparent; color: var(--ink);
+  border: 1px solid var(--ink); cursor: pointer;
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: .98rem; font-weight: 600;
+  border-radius: 0;
+  transition: background 80ms, color 80ms;
+}
+.lmc-closing-form button:hover { background: var(--ink); color: var(--paper); }
+.lmc-closing-ok { font-size: .98rem; font-weight: 600; color: var(--accent-ink); margin: 0; }
+.lmc-closing-sign { font-size: 1.05rem; line-height: 1.6; color: var(--ink); margin: 2rem 0 0; }
+.lmc-closing-sign em { font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif); font-style: italic; font-weight: 400; color: var(--accent); font-size: 1.15rem; }
+.lmc-closing-byline { display: flex; align-items: center; gap: .85rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--hairline); }
+.lmc-closing-byline img {
+  width: 44px; height: 56px; object-fit: cover; object-position: top;
+  border: 1px solid var(--hairline-bold); border-radius: var(--radius-sm);
+  filter: saturate(0.45) sepia(0.18) contrast(1.1) brightness(0.95);
+}
+.lmc-closing-byline span { display: flex; flex-direction: column; gap: 1px; font-size: .85rem; color: var(--ink-mute); }
+.lmc-closing-byline strong { font-size: .95rem; font-weight: 600; color: var(--ink); }
+@media (max-width: 640px) {
+  .lmc-closing { padding: 2rem 1.25rem; margin: 3rem auto 2rem; }
+  .lmc-closing-form { flex-direction: column; }
+  .lmc-closing-form button { width: 100%; }
+}
+
+/* ── Shared toast ────────────────────────────────────────────────────── */
+.lmc-toast { position: fixed; bottom: 1.25rem; right: 1.25rem; padding: .85rem 1.35rem; background: var(--ink); color: var(--paper); font-family: var(--font-drama, 'Source Serif 4', Georgia, serif); font-weight: 600; font-size: .9rem; border-radius: var(--radius-md); box-shadow: var(--shadow-lift); z-index: 100; opacity: 0; pointer-events: none; transition: opacity .3s var(--ease), transform .3s var(--ease); transform: translateY(12px); }
+.lmc-toast.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+
+/* ── Editorial tables (hairline, no brutal grid) — per audit 2026-05-17 ── */
+.lmc-root table, .lmg-root table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+  font-size: 16px;
+  border: none;
+  background: transparent;
+}
+.lmc-root thead th, .lmg-root thead th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink, #131210);
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 18px 12px;
+  border: none;
+  border-bottom: 1px solid var(--accent);
+  background: transparent;
+}
+.lmc-root tbody td, .lmg-root tbody td {
+  padding: 18px 12px;
+  border: none;
+  border-bottom: 1px solid rgba(19, 18, 16, 0.08);
+  color: var(--ink-soft, #4A463E);
+  vertical-align: top;
+  font-family: var(--font-drama, 'Source Serif 4', Georgia, serif);
+}
+.lmc-root tbody tr:last-child td, .lmg-root tbody tr:last-child td { border-bottom: none; }
+.lmc-root table td.num, .lmc-root table th.num,
+.lmg-root table td.num, .lmg-root table th.num {
+  text-align: right; font-feature-settings: "tnum"; font-variant-numeric: tabular-nums;
+}
+
+/* ── Motion-safe ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after { animation: none !important; transition: none !important; }
+}
+
+/* ─── Phase B: only WhatsApp share button remains. Sticky progress header
+   and resource tracker widget removed — engines own their own progress UI. ── */
+
+/* Share buttons removed 2026-05-21 — Ivan said they're not needed.
+   Hide all wrappers + WhatsApp class + any link pointing at sharing URLs. */
+.lmc-share,
+.lmg-share,
+.lm-share-whatsapp,
+a[href*="linkedin.com/sharing"],
+a[href*="wa.me"] {
+  display: none !important;
+}
+

@@ -1,0 +1,579 @@
+{
+ "slug": "rachel-woods-b5-assessment",
+ "title": "The AI Operator Readiness Score",
+ "subtitle": "Scores how much of your operation is actually running without you, and where to close the gap.",
+ "brand": {
+  "accent": "#754dcf",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "playbook_foundations",
+   "name": "Playbook Foundations",
+   "questions": [
+    {
+     "id": "playbook_foundations_q1",
+     "text": "When you get sick, go on vacation, or step away for a few days, what happens to your work?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It stops until I am back",
+       "score": 1
+      },
+      {
+       "label": "Some things keep moving, most things wait on me",
+       "score": 2
+      },
+      {
+       "label": "A few workflows run, but I am still the bottleneck on anything important",
+       "score": 3
+      },
+      {
+       "label": "Most work keeps moving and I just handle the true exceptions",
+       "score": 4
+      },
+      {
+       "label": "My work runs without me for days at a time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "playbook_foundations_q2",
+     "text": "How would you describe the current state of your work processes?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most of it lives in my head and I recreate it every time",
+       "score": 1
+      },
+      {
+       "label": "I have some notes and SOPs but they are scattered",
+       "score": 2
+      },
+      {
+       "label": "I have documented the key processes but they are not consistently followed",
+       "score": 3
+      },
+      {
+       "label": "I have playbooks for most repeating work and I actually use them",
+       "score": 4
+      },
+      {
+       "label": "Every recurring process has a playbook and AI is actively running them",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "playbook_foundations_q3",
+     "text": "When a team member or AI needs to do something you usually handle, what do you give them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A quick explanation on the fly",
+       "score": 1
+      },
+      {
+       "label": "A rough outline or bullet list",
+       "score": 2
+      },
+      {
+       "label": "A document I wrote at some point",
+       "score": 3
+      },
+      {
+       "label": "A tested playbook covering context, steps, and expected outputs",
+       "score": 4
+      },
+      {
+       "label": "A ready-to-run AI playbook with prompts, format expectations, and decision rules",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "playbook_foundations_q4",
+     "text": "How do you build a new playbook when you are creating one?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have not created a playbook yet",
+       "score": 1
+      },
+      {
+       "label": "I write down what I remember doing after I finish the task",
+       "score": 2
+      },
+      {
+       "label": "I draft it while doing the task manually for the first time",
+       "score": 3
+      },
+      {
+       "label": "I use a capable AI model to help refine and critique it before locking it in",
+       "score": 4
+      },
+      {
+       "label": "I use my most capable model to build and pressure-test it, then confirm a cheaper model can run it just as well",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your work is still stuck in your head.",
+     "text": "This is where almost everyone starts. The good news: the first playbook you write will probably be the most valuable thing you do this month. Start with the task that frustrates you the most to redo.",
+     "steps": [
+      "Pick one repeating task you did this week.",
+      "Open a doc and write down every step from memory, as if explaining it to someone smart but brand new.",
+      "Read it back and fill in the gaps. That is your first playbook.",
+      "Run the playbook with AI and see what breaks. That is where you refine it."
+     ]
+    },
+    "mid": {
+     "headline": "You have the foundation. Now make your playbooks actually run.",
+     "text": "You have some documentation, but it is sitting in a folder instead of doing work for you. The gap is almost always the same: playbooks written for humans, not for AI. Time to close that gap.",
+     "steps": [
+      "Pull out your most-used SOP or process doc.",
+      "Rewrite it as a prompt: give AI the context, the steps, and the expected output format.",
+      "Run it five times and refine based on what breaks each time.",
+      "Park the working version somewhere you will actually find it."
+     ]
+    },
+    "high": {
+     "headline": "You are close to running at the speed of your ideas.",
+     "text": "You have playbooks, you use them, and AI is doing real work for you. The next move is coverage and speed: finding the pockets of operational debt still hiding in your week and closing them fast.",
+     "steps": [
+      "Do a weekly review: what did you do manually this week that you have done before?",
+      "Build a playbook for the top item before you do it manually again.",
+      "Test your playbooks on cheaper models to cut costs without losing quality.",
+      "Start enabling your team. If your playbooks only run when you are there, they are not fully done yet."
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_context_setup",
+   "name": "AI Context Setup",
+   "questions": [
+    {
+     "id": "ai_context_setup_q1",
+     "text": "How much context does your AI have about who you are and how you think?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I start fresh every session with no setup at all",
+       "score": 1
+      },
+      {
+       "label": "I paste in a quick bio or description when I remember to",
+       "score": 2
+      },
+      {
+       "label": "I have a profile or system prompt I sometimes drop in",
+       "score": 3
+      },
+      {
+       "label": "I have a personal README covering how I think, my role, and the frameworks I trust",
+       "score": 4
+      },
+      {
+       "label": "My AI has a full personal README including my decision-making style, mental models, and a glossary of key terms",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "ai_context_setup_q2",
+     "text": "When you ask your AI for strategic advice, how well does the answer fit your actual situation?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Generic, like advice written for anyone with this type of problem",
+       "score": 1
+      },
+      {
+       "label": "Decent but clearly missing context about how I actually operate",
+       "score": 2
+      },
+      {
+       "label": "It knows my role and industry but not how I think or make decisions",
+       "score": 3
+      },
+      {
+       "label": "It reflects my communication style and how I usually approach these situations",
+       "score": 4
+      },
+      {
+       "label": "It knows my decision-making approach, the frameworks I trust, and fits my worldview instead of contradicting it",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "ai_context_setup_q3",
+     "text": "Does your AI know the key terms and vocabulary specific to your work?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, I re-explain jargon every single session",
+       "score": 1
+      },
+      {
+       "label": "I mention terms as they come up but there is no consistency",
+       "score": 2
+      },
+      {
+       "label": "I have explained my vocabulary in a longer chat once or twice",
+       "score": 3
+      },
+      {
+       "label": "I have a glossary or term list I reference occasionally",
+       "score": 4
+      },
+      {
+       "label": "My AI has a glossary of key terms built into its context by default",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your AI is operating blind.",
+     "text": "Every session you are starting from zero, which means every answer you get is generic. The fix is a personal README: a document that tells your AI who you are, how you think, and what you care about. Once it has that, everything changes.",
+     "steps": [
+      "Open a doc and write one paragraph on who you are and what you actually do.",
+      "Add a section on how you make decisions: fast or deliberate, risk-averse or move-first.",
+      "Add the key terms you use that an outsider would not know.",
+      "Drop this into your next AI session as the opening context and notice how different the answers feel."
+     ]
+    },
+    "mid": {
+     "headline": "You have some context in place. Now make it complete.",
+     "text": "You are giving your AI something to work with, but it is patchy. The missing pieces are usually the most personal ones: how you actually think, the frameworks you trust, the way you want to show up in hard situations.",
+     "steps": [
+      "Look at your current AI profile or prompt. What is missing about how you think, not just what you do?",
+      "Add your decision-making style and two or three mental models you rely on.",
+      "Add a section on how you want to handle the hardest situations: feedback conversations, client conflicts, hiring calls.",
+      "Review and update it every 90 days as your work evolves."
+     ]
+    },
+    "high": {
+     "headline": "Your AI knows you. That compounds over time.",
+     "text": "You are operating with AI that has real context, which means you are getting answers that actually fit your world. The next move is making sure that context travels with every workflow, not just the ones you personally set up.",
+     "steps": [
+      "Embed your README as a default context block in your most-used playbooks.",
+      "Share the relevant sections with anyone on your team building playbooks for you.",
+      "Audit your playbook outputs: do they sound like you, or like a generic AI? Close the gaps.",
+      "Update your glossary any time a new term becomes central to your work."
+     ]
+    }
+   }
+  },
+  {
+   "id": "tool_independence",
+   "name": "Tool Independence",
+   "questions": [
+    {
+     "id": "tool_independence_q1",
+     "text": "If your primary AI tool shut down tomorrow, what would happen to your workflows?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Everything stops. The tool is the workflow.",
+       "score": 1
+      },
+      {
+       "label": "I would lose most of what I built and have to start over",
+       "score": 2
+      },
+      {
+       "label": "I could rebuild most of it but it would take weeks",
+       "score": 3
+      },
+      {
+       "label": "My playbooks exist outside the tool and I could migrate them",
+       "score": 4
+      },
+      {
+       "label": "My playbooks live in my own system and I would have them running in a new tool within a day",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "tool_independence_q2",
+     "text": "When a new AI tool drops a feature that would improve how you work, how do you handle the transition?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I try the new thing and rebuild my setup from scratch inside it",
+       "score": 1
+      },
+      {
+       "label": "I experiment with it but it usually disrupts my existing setup",
+       "score": 2
+      },
+      {
+       "label": "I evaluate it but rarely integrate it cleanly without a lot of friction",
+       "score": 3
+      },
+      {
+       "label": "I test it against my existing playbook and slot it in if it fits",
+       "score": 4
+      },
+      {
+       "label": "I move my workflow into the better tool without rewriting my process. The playbook stays constant.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "tool_independence_q3",
+     "text": "Where do your playbooks and processes actually live right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Inside the AI tool itself. I would have to recreate them elsewhere.",
+       "score": 1
+      },
+      {
+       "label": "In my head or in the tool's chat history",
+       "score": 2
+      },
+      {
+       "label": "Scattered across notes apps, docs, and chat threads",
+       "score": 3
+      },
+      {
+       "label": "In a central doc or folder I own, outside any single AI tool",
+       "score": 4
+      },
+      {
+       "label": "In a dedicated playbook library I own and actively maintain",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are renting the process, not just the tech.",
+     "text": "If your playbooks live inside the tool, the tool owns your work. The principle is simple: own the playbook, rent the tech. Your workflow should stay yours. The tools should be interchangeable.",
+     "steps": [
+      "Pick your most valuable AI workflow right now.",
+      "Copy everything that makes it work, the prompts, the steps, the context, into a doc you own.",
+      "Test that it runs from that doc, not from the tool's saved chat or setup.",
+      "Make that the pattern going forward: build in a doc first, deploy to a tool second."
+     ]
+    },
+    "mid": {
+     "headline": "You know the principle. Now wire it in fully.",
+     "text": "You have some portability but not complete independence. Usually it is one or two workflows still stuck in a specific tool setup. Find those and free them.",
+     "steps": [
+      "Audit your top five workflows. Which ones could you not easily move to a different tool?",
+      "For each one, extract the playbook into a doc you own.",
+      "Build a simple playbook library, even just a folder in Google Drive with one doc per workflow.",
+      "Every time you adopt a new tool, ask: is my process staying mine, or am I rebuilding it for this platform?"
+     ]
+    },
+    "high": {
+     "headline": "Your work moves with you. That is the whole idea.",
+     "text": "You own the playbook and rent the tech. When tools improve, you move. When tools break, you move. Your work does not depend on any single platform staying exactly as it is.",
+     "steps": [
+      "Keep your playbook library maintained. Outdated playbooks are as bad as no playbooks.",
+      "When a better tool drops, upgrade the platform, not the process.",
+      "Document your playbook library in an index so it is searchable and handoff-ready.",
+      "Teach this principle to your team. It is the difference between one person running workflows and a whole team running them."
+     ]
+    }
+   }
+  },
+  {
+   "id": "operator_velocity",
+   "name": "Operator Velocity",
+   "questions": [
+    {
+     "id": "operator_velocity_q1",
+     "text": "How quickly do you go from having an idea for a new AI workflow to actually running it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Weeks or months. I think about it far longer than I act on it.",
+       "score": 1
+      },
+      {
+       "label": "A few days. I have to find time and figure out where to start.",
+       "score": 2
+      },
+      {
+       "label": "Same day if I block time for it",
+       "score": 3
+      },
+      {
+       "label": "Within a few hours. I know the steps to turn an idea into a working playbook.",
+       "score": 4
+      },
+      {
+       "label": "Within an hour most of the time: prototype, test, refine, deploy",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "operator_velocity_q2",
+     "text": "When you spot a repeating task in your week, what do you actually do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Do it manually again without much thought",
+       "score": 1
+      },
+      {
+       "label": "Tell myself I will automate it later",
+       "score": 2
+      },
+      {
+       "label": "Look for a tool that might handle it",
+       "score": 3
+      },
+      {
+       "label": "Draft a quick playbook before doing it the next time",
+       "score": 4
+      },
+      {
+       "label": "Playbook it immediately and test with AI before I do it manually a second time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "operator_velocity_q3",
+     "text": "Which best describes how you use AI across your week?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Occasionally, when I remember it is an option",
+       "score": 1
+      },
+      {
+       "label": "For quick tasks like drafting messages or summarizing notes",
+       "score": 2
+      },
+      {
+       "label": "Daily, but I am always in the driver's seat on every individual task",
+       "score": 3
+      },
+      {
+       "label": "AI handles entire workflows for me and I review the outputs",
+       "score": 4
+      },
+      {
+       "label": "Multiple workflows run in parallel while I focus on what only I can do",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "operator_velocity_q4",
+     "text": "How much of your operation can your team or AI execute without you being present?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost none. Everything depends on me explaining it in the moment.",
+       "score": 1
+      },
+      {
+       "label": "A few basic tasks someone could follow along on",
+       "score": 2
+      },
+      {
+       "label": "Some things, but only after I walk them through it first",
+       "score": 3
+      },
+      {
+       "label": "Most repeating tasks. I have playbooks they can follow.",
+       "score": 4
+      },
+      {
+       "label": "My team or AI can run most of my operation with no input from me",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your speed is capped by how much you can hold in your head.",
+     "text": "Right now you are the bottleneck on your own ideas. Not because you are slow, but because the systems do not exist yet to move them without you. The goal is simple: get to a place where your ideas and your execution move at the same speed.",
+     "steps": [
+      "Pick the one repeating task eating the most of your time this week.",
+      "Write the playbook today, not later.",
+      "Run it with AI and see how much you can get off your plate by Friday.",
+      "Notice the feeling when it works. That is the thing worth chasing."
+     ]
+    },
+    "mid": {
+     "headline": "You are moving. Now close the gap between ideas and execution.",
+     "text": "You have AI doing real work for you, but there is still a lag between when you have an idea and when it is actually running. Closing that lag is the whole game at this stage.",
+     "steps": [
+      "Track the time between your last three AI workflow ideas and when you actually deployed them.",
+      "Find the step where things stall. Is it writing the playbook, or testing it?",
+      "Build a quick-deploy template: a blank playbook structure you can fill in fast whenever an idea hits.",
+      "Set a personal target: idea to deployed playbook within 24 hours."
+     ]
+    },
+    "high": {
+     "headline": "You are operating at speed. The next move is scale.",
+     "text": "You move fast and AI is doing serious work in your operation. The ceiling from here is not your personal speed. It is how much of what you have built your team can run without you. That is the top 1% operator move.",
+     "steps": [
+      "Audit your playbooks: which ones only work because you personally set them up?",
+      "Document those playbooks well enough that someone else could run them cold.",
+      "Give one team member access to three of your playbooks this week and see what breaks.",
+      "Build toward a state where your ideas move at team speed, not just your own."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes how you operate right now?",
+  "answers": [
+   {
+    "label": "Solo operator or freelancer",
+    "tag": "solo_operator"
+   },
+   {
+    "label": "Founder with a small team (2-10 people)",
+    "tag": "team_founder"
+   },
+   {
+    "label": "Agency owner",
+    "tag": "agency_owner"
+   },
+   {
+    "label": "Executive or team lead inside a larger org",
+    "tag": "exec_lead"
+   }
+  ]
+ }
+}

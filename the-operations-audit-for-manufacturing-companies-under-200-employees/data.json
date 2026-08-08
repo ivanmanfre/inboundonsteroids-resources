@@ -1,0 +1,138 @@
+{
+  "_archived": true,
+  "archived": true,
+  "public": false,
+  "hide_from_library": true,
+  "slug": "the-operations-audit-for-manufacturing-companies-under-200-employees",
+  "title": "The Operations Audit for Manufacturing Companies Under 200 Employees",
+  "subtitle": "Map where your team bleeds time, money, and sanity before spending a dollar on new software or automation",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 150,
+  "sections": [
+    {
+      "id": "order-intake-and-job-routing",
+      "title": "Order Intake and Job Routing",
+      "description": "Where most manufacturing companies lose time without realizing it. Audit how orders enter, get assigned, and move before work actually starts.",
+      "items": [
+        {
+          "id": "single-intake-channel",
+          "text": "Consolidate order intake into one consistent channel instead of scattered email, phone, text, and walk-ins",
+          "tip": "Pick the channel your biggest customers already prefer and route everything else into it within 30 days",
+          "impact": "high"
+        },
+        {
+          "id": "log-before-work",
+          "text": "Log every order in one system of record before any work begins",
+          "tip": "Kill verbal instructions and sticky notes. If it is not in the system, it does not exist",
+          "impact": "high"
+        },
+        {
+          "id": "rules-based-routing",
+          "text": "Route jobs to the correct department, machine, or team using documented rules, not tribal knowledge",
+          "tip": "Write the routing logic on paper first. If one person leaving breaks it, you have a risk, not a process",
+          "impact": "high"
+        },
+        {
+          "id": "count-reentry",
+          "text": "Document how many times a single order is manually re-entered or copied between systems",
+          "tip": "Walk one live order from intake to shipping and count every keystroke of duplicated data",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "production-tracking-and-floor-visibility",
+      "title": "Production Tracking and Floor Visibility",
+      "description": "If you cannot see the floor in real time, you are managing by gut feel. That breaks around 50 employees and never recovers on its own.",
+      "items": [
+        {
+          "id": "live-job-board",
+          "text": "Display a live view of jobs in progress, queued, and blocked on a digital or physical board",
+          "tip": "A whiteboard updated hourly beats a fancy dashboard updated weekly",
+          "impact": "high"
+        },
+        {
+          "id": "realtime-status-logging",
+          "text": "Require operators to log job status changes as they happen, not at end of shift",
+          "tip": "Put the logging device within 10 feet of the machine or the data will always be late",
+          "impact": "high"
+        },
+        {
+          "id": "downtime-reason-codes",
+          "text": "Track downtime events with a specific reason code for breakdown, material shortage, or QC wait",
+          "tip": "Start with 5 reason codes maximum. You can add more once operators actually use them",
+          "impact": "medium"
+        },
+        {
+          "id": "actual-vs-estimated-report",
+          "text": "Pull a 30-day report of actual vs. estimated production time for any job without asking three people",
+          "tip": "If this takes more than 10 minutes to generate, your reporting layer is the bottleneck",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "data-and-systems-of-record",
+      "title": "Data and Systems of Record",
+      "description": "Figure out where your truth lives, who owns it, and how many duplicate versions are floating around in spreadsheets and inboxes.",
+      "items": [
+        {
+          "id": "single-source-of-truth",
+          "text": "Identify one system of record for orders, inventory, and production data",
+          "tip": "If two systems disagree, decide today which one wins and enforce it",
+          "impact": "high"
+        },
+        {
+          "id": "audit-shadow-spreadsheets",
+          "text": "Inventory every shadow spreadsheet or personal tracker your team relies on to do their job",
+          "tip": "Ask each supervisor to screen-share their daily workflow. The hidden sheets always appear",
+          "impact": "high"
+        },
+        {
+          "id": "data-owner-assigned",
+          "text": "Assign a named owner for each critical dataset so accuracy has a responsible human",
+          "tip": "No owner means no accountability. Put the name on the system, not just in a meeting",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "people-and-handoffs",
+      "title": "People and Handoffs",
+      "description": "Most ops problems are handoff problems. Audit where work changes hands, stalls, or depends on one irreplaceable person.",
+      "items": [
+        {
+          "id": "document-handoffs",
+          "text": "Document every handoff between sales, production, QC, and shipping with clear trigger events",
+          "tip": "Draw the handoff map on one page. If it needs two pages, it is already too complex",
+          "impact": "high"
+        },
+        {
+          "id": "bus-factor-check",
+          "text": "Flag any process that breaks if one specific person is out for a week",
+          "tip": "Run a dry test by having that person take an unannounced day. Watch what breaks",
+          "impact": "high"
+        },
+        {
+          "id": "sop-for-top-five",
+          "text": "Write a one-page SOP for your five most frequent recurring jobs",
+          "tip": "Record a 3-minute Loom of the person doing it today and transcribe. That is your first draft",
+          "impact": "medium"
+        },
+        {
+          "id": "cross-training-matrix",
+          "text": "Maintain a cross-training matrix showing who can cover which role in an emergency",
+          "tip": "Color-code gaps in red. Solving the reddest gap first usually has the highest payoff",
+          "impact": "low"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "You Have the Map. Now Fix in the Right Order.",
+    "description": "Review every item you flagged and rank them by impact and effort. Start with one high-impact fix before touching any new software or automation, because automating a broken process only makes the pain faster."
+  }
+}

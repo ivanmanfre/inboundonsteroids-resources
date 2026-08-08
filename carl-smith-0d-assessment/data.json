@@ -1,0 +1,650 @@
+{
+ "slug": "carl-smith-0d-assessment",
+ "title": "The Humanity in Leadership Score",
+ "subtitle": "Measures how grounded you are as a human leading other humans: your resilience pillars, the weight you carry, and how well you are lifting the people around you.",
+ "brand": {
+  "accent": "#fe6a6a",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "your_resilience_pillars",
+   "name": "Your Resilience Pillars",
+   "questions": [
+    {
+     "id": "your_resilience_pillars_q1",
+     "text": "When something knocks you flat (a client leaves, a plan fails, a team member quits), what happens next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I stay down for a while. I don't have a clear path back up.",
+       "score": 1
+      },
+      {
+       "label": "I push through on adrenaline, but there is no real foundation under it.",
+       "score": 2
+      },
+      {
+       "label": "I have a few things I go back to, but I don't lean on them consistently.",
+       "score": 3
+      },
+      {
+       "label": "I have real pillars I return to: movement, people, or something grounding.",
+       "score": 4
+      },
+      {
+       "label": "My pillars are solid and practiced. I know exactly what pulls me back.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "your_resilience_pillars_q2",
+     "text": "How honest are you with yourself when exhaustion is showing up dressed as dedication?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I rarely see it until I am already burned out.",
+       "score": 1
+      },
+      {
+       "label": "I notice it eventually, but usually long after I should have.",
+       "score": 2
+      },
+      {
+       "label": "I catch it sometimes, but I don't always do anything about it.",
+       "score": 3
+      },
+      {
+       "label": "I recognize the pattern early and usually redirect before it gets bad.",
+       "score": 4
+      },
+      {
+       "label": "I've learned to spot it quickly and I have a real practice for course-correcting.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "your_resilience_pillars_q3",
+     "text": "When struggles arrive (personal or professional), how do you tend to respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I fight them or try to make them disappear as fast as possible.",
+       "score": 1
+      },
+      {
+       "label": "I tolerate them, but I don't accept that they are part of the deal.",
+       "score": 2
+      },
+      {
+       "label": "I am getting better at sitting with difficulty, though it is still uncomfortable.",
+       "score": 3
+      },
+      {
+       "label": "I accept most struggles as part of the work. I don't try to outrun them.",
+       "score": 4
+      },
+      {
+       "label": "Struggles are information. I have learned to trust what they are telling me.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "your_resilience_pillars_q4",
+     "text": "How often do you trust your instincts alongside data when making decisions?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely. I wait for certainty that never quite comes.",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, but I second-guess myself into paralysis.",
+       "score": 2
+      },
+      {
+       "label": "I trust my gut sometimes, but I am inconsistent about it.",
+       "score": 3
+      },
+      {
+       "label": "I balance instincts and data, and I back myself more often than not.",
+       "score": 4
+      },
+      {
+       "label": "Trusting my instincts is a practice I have built. I listen and I act.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your pillars aren't holding yet. That is worth being honest about.",
+     "text": "Leaders in this spot are often running on borrowed energy. The floor is there, but the foundation under it isn't solid. That's not a character flaw. It's a gap in what you've built. The work starts with figuring out what actually pulls you back: not what should work, what actually does.",
+     "steps": [
+      "Name one thing that genuinely helps you recover when things get hard. Not what you think should work. What actually does.",
+      "Start there. Do it once this week without waiting for things to fall apart first.",
+      "Look at where you are hiding burnout as dedication. Name it out loud to someone you trust."
+     ]
+    },
+    "mid": {
+     "headline": "You have something to lean on. Now make it reliable.",
+     "text": "You've found some of your pillars. The problem is you don't always go back to them until you are already close to the edge. The goal isn't perfect resilience. It's building enough of a foundation that you catch yourself earlier, before the adrenaline runs out.",
+     "steps": [
+      "Pick the pillar that is most consistent for you and protect it as a non-negotiable, not a reward.",
+      "Start noticing the early signals before the burnout, not after. What shows up first?",
+      "Find one person who will tell you the truth when you are hiding exhaustion as dedication."
+     ]
+    },
+    "high": {
+     "headline": "Your foundation is real. Now help someone else build theirs.",
+     "text": "You've done the work of figuring out what keeps you standing. That took real honesty with yourself and real practice over time. The next move is sharing it, not as advice, but as permission. The leaders around you are watching to see if it's okay to have pillars. Show them it is.",
+     "steps": [
+      "Share what your pillars are, explicitly, with someone you lead or mentor.",
+      "Talk openly about a time your foundation didn't hold and what you built after.",
+      "Look for the person in your orbit who is running on adrenaline and help them name what might actually work for them."
+     ]
+    }
+   }
+  },
+  {
+   "id": "humanity_in_leadership",
+   "name": "Humanity in Leadership",
+   "questions": [
+    {
+     "id": "humanity_in_leadership_q1",
+     "text": "When someone on your team is struggling (not just underperforming, but actually struggling as a human), what do you do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I focus on the output problem. The personal side feels outside my role.",
+       "score": 1
+      },
+      {
+       "label": "I check in briefly, but mostly wait for them to bring it to me.",
+       "score": 2
+      },
+      {
+       "label": "I try to create space, but I am not always sure how to hold it.",
+       "score": 3
+      },
+      {
+       "label": "I notice and I reach out. The human behind the work matters to me.",
+       "score": 4
+      },
+      {
+       "label": "I make it a point to know what is actually going on. I show up for the person first.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "humanity_in_leadership_q2",
+     "text": "After a hard conversation with someone on your team, where does the weight go?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Mostly onto me. I absorb it and carry it home.",
+       "score": 1
+      },
+      {
+       "label": "I push through it, but it takes a toll I don't acknowledge.",
+       "score": 2
+      },
+      {
+       "label": "I try to process it, but it sticks with me longer than I'd like.",
+       "score": 3
+      },
+      {
+       "label": "I've found ways to work through it that don't require me to swallow it whole.",
+       "score": 4
+      },
+      {
+       "label": "I can be fully present in the hard conversation and let it go after.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "humanity_in_leadership_q3",
+     "text": "How often do you see and treat the people around you as humans first, not just their job titles?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Less often than I'd like. Work pressure makes it easy to forget.",
+       "score": 1
+      },
+      {
+       "label": "I try to, but my default is still task and role.",
+       "score": 2
+      },
+      {
+       "label": "I am intentional about it some of the time.",
+       "score": 3
+      },
+      {
+       "label": "Most of the time. It is a value I actively practice.",
+       "score": 4
+      },
+      {
+       "label": "Always. I wouldn't know how to lead another way.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are leading the work. The humans doing the work need more from you.",
+     "text": "This isn't about being a therapist or ignoring deliverables. It's about the fact that people give more of themselves and stay for leaders who actually see them. Right now, the work is getting most of your attention. The people doing it are not.",
+     "steps": [
+      "Next time someone on your team seems off, ask them directly: 'How are you actually doing?' Then wait. Don't fill the silence.",
+      "After your next hard conversation, notice where the weight goes. Did you absorb it, or did you hold the space? The difference matters.",
+      "Go into one meeting this week with the question 'who is this person?' rather than 'what do I need from them?'"
+     ]
+    },
+    "mid": {
+     "headline": "You see the humans. Now close the gap between knowing and doing.",
+     "text": "You care about the people you lead. But caring and showing up are two different things. There are probably moments where you sensed someone was struggling and let it pass because the timing felt wrong or you didn't know what to say. The timing is almost never perfect. Showing up anyway is the practice.",
+     "steps": [
+      "Name one person on your team you know is carrying something right now. Reach out this week, not about work.",
+      "After a hard conversation, notice where the weight goes. Start building a practice (a walk, a call, something) that helps you move through it instead of carrying it.",
+      "Tell your team, explicitly, that you see them as humans first. Then back it up with one real action."
+     ]
+    },
+    "high": {
+     "headline": "You lead humans as humans. That is rarer than it sounds.",
+     "text": "The thing many leaders miss is that seeing people, really seeing them, isn't soft. It's the actual work. The fact that you default to humans first is a genuine edge, and the people you lead probably feel it even if they have never said so. Keep going. And make sure you are not carrying so much of the weight that you have nothing left.",
+     "steps": [
+      "Check that your care for others isn't coming at cost to yourself. You can't pour from empty.",
+      "Model it visibly for the leaders around you. Talk about why you do it the way you do.",
+      "Find one leader in your network who leads from job titles and share what shifted it for you."
+     ]
+    }
+   }
+  },
+  {
+   "id": "connection_and_community",
+   "name": "Connection and Community",
+   "questions": [
+    {
+     "id": "connection_and_community_q1",
+     "text": "Do you have a real peer community: people who give support without expecting anything in return?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not really. My network is mostly transactional.",
+       "score": 1
+      },
+      {
+       "label": "I have some contacts I could call, but I rarely do.",
+       "score": 2
+      },
+      {
+       "label": "I have a few people, but the connection isn't consistent.",
+       "score": 3
+      },
+      {
+       "label": "Yes. I have a small but real group I can actually lean on.",
+       "score": 4
+      },
+      {
+       "label": "Community is something I invest in and return to regularly. It is not optional for me.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "connection_and_community_q2",
+     "text": "When you are going through something hard, how much of the real story do you share?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I keep it to myself. I don't want to burden anyone.",
+       "score": 1
+      },
+      {
+       "label": "I share a polished version, enough to get it off my chest without being honest.",
+       "score": 2
+      },
+      {
+       "label": "I open up with one or two people, but it is rare.",
+       "score": 3
+      },
+      {
+       "label": "I am willing to share the real version with people I trust.",
+       "score": 4
+      },
+      {
+       "label": "I share honestly. I've seen what that gives back: real support, real perspective.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "connection_and_community_q3",
+     "text": "When someone in your network shares that they are struggling, what do you do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I feel for them but don't always know what to say or do.",
+       "score": 1
+      },
+      {
+       "label": "I send something encouraging and move on.",
+       "score": 2
+      },
+      {
+       "label": "I follow up, but not always with the depth they probably need.",
+       "score": 3
+      },
+      {
+       "label": "I make time to listen and show up in whatever way I can.",
+       "score": 4
+      },
+      {
+       "label": "Supporting people in hard moments is something I actively make time for.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are going through it alone. That is a harder path than it has to be.",
+     "text": "A lot of leaders are in exactly this spot: surrounded by people but not actually connected to any of them. The network is real. The community isn't. And the difference shows up when things get hard and there is nobody to call. You don't have to build it all at once. But you have to start.",
+     "steps": [
+      "Identify one person who might be a real peer. Reach out with something honest, not something polished.",
+      "Look for a community of people in your space who are there to give, not just get. They exist.",
+      "The next time something hard happens, try sharing the real version with one person you trust. See what comes back."
+     ]
+    },
+    "mid": {
+     "headline": "You have people. Now let them actually in.",
+     "text": "You've built some real connections. But you are still filtering: sharing the broad strokes, not the real thing. Real community works both ways. The people who can actually support you can only do that if you let them see what is going on. The polished version isn't fair to you or to them.",
+     "steps": [
+      "Pick one conversation this month where you share what is actually hard, not the cleaned-up version.",
+      "When someone in your network is struggling, show up with more than an encouraging reply. A real conversation goes further.",
+      "Think about whether you are investing in communities that give back, or just staying in the ones that are comfortable."
+     ]
+    },
+    "high": {
+     "headline": "You know what real community feels like. That changes everything.",
+     "text": "You've figured out something many leaders never do: that connection is not a nice-to-have. It is a foundation. The fact that you invest in it and give back to it means you are building something durable, not just a network of useful contacts. Keep going. And keep being the person who shows up when things get hard.",
+     "steps": [
+      "Think about who in your orbit doesn't have what you have. One introduction or one honest conversation can start something real for them.",
+      "Make sure you are not just giving in your community. Ask for and receive support when you need it.",
+      "Talk about the value of community openly. Many leaders feel they should be self-sufficient. Your example is permission to not be."
+     ]
+    }
+   }
+  },
+  {
+   "id": "carrying_the_weight",
+   "name": "Carrying the Weight",
+   "questions": [
+    {
+     "id": "invisible_hours",
+     "type": "number",
+     "text": "How many hours per week do you spend on work that nobody else sees: worrying, absorbing team stress, processing hard conversations, or staying up thinking about the business?",
+     "hint": "Think about the hours that don't show up on your calendar. We use 48 working weeks per year to estimate the annual cost of this invisible load.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x <= 2 ? 100 : x <= 5 ? 80 : x <= 10 ? 60 : x <= 15 ? 35 : x <= 20 ? 15 : 0"
+    },
+    {
+     "id": "hourly_value",
+     "type": "number",
+     "text": "What is your rough hourly value as a leader: what an hour of your focused work is worth to the business?",
+     "hint": "No need to be exact. A ballpark is fine.",
+     "suffix": "$/hr",
+     "min": 25,
+     "max": 1000,
+     "step": 25,
+     "default": 100,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "carrying_the_weight_q3",
+     "text": "How often do you let others in on the weight you are actually carrying?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never. The weight is mine. That is the job.",
+       "score": 1
+      },
+      {
+       "label": "Rarely. A few people know the broad strokes.",
+       "score": 2
+      },
+      {
+       "label": "Sometimes, when it gets to be too much.",
+       "score": 3
+      },
+      {
+       "label": "Often. I have found people who can actually hold it with me.",
+       "score": 4
+      },
+      {
+       "label": "Regularly. Sharing the weight is part of how I lead.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "carrying_the_weight_q4",
+     "text": "How do you know when to ask for help?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't. I figure it out after I already needed it.",
+       "score": 1
+      },
+      {
+       "label": "I know, but asking feels like admitting I can't handle it.",
+       "score": 2
+      },
+      {
+       "label": "I am getting better at catching the signal, but I still wait too long.",
+       "score": 3
+      },
+      {
+       "label": "I have gotten reasonably good at it and I reach out before things get bad.",
+       "score": 4
+      },
+      {
+       "label": "I ask early, often, and without apology. It has made everything easier.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are holding more than you should. And it is costing you.",
+     "text": "The invisible load is real, and it compounds. Every hour spent absorbing what nobody else sees is an hour not spent on the things that move the needle. More than that: carrying it alone is what grinds you down over time. The belief that the weight is yours alone to carry is one of the hardest habits in leadership to break.",
+     "steps": [
+      "Name one thing you are currently carrying that someone else could hold, or at least know about.",
+      "This week, ask for help with one thing. It doesn't have to be big.",
+      "Look at your invisible hours number. Sit with it. That is not dedication. That is a tax on your capacity."
+     ]
+    },
+    "mid": {
+     "headline": "You are sharing some of the weight. Share more of it.",
+     "text": "You have started letting people in. But there is still a gap between what you are carrying and what others know about. That gap isn't strength. It's habit: the habit of handling it yourself before you've given anyone a chance to help. The next step is trusting the people around you with more than the edited version.",
+     "steps": [
+      "Before your next hard stretch, identify someone you can tell honestly what is coming. Not after. Before.",
+      "Practice asking for help earlier than feels comfortable. The threshold is probably lower than you've been treating it.",
+      "Look at the invisible labor number below. Consider what you would say if someone on your team had those numbers."
+     ]
+    },
+    "high": {
+     "headline": "You have learned to share the weight. That is real leadership.",
+     "text": "This is one of the hardest things for founders and leaders to do. The fact that you ask early, share honestly, and don't treat the weight as a virtue: that gets built over time with real effort. The cost of the invisible labor is still there, but you are not carrying it alone. Keep that up. And make sure the people you lead know it is okay for them to do the same.",
+     "steps": [
+      "Make it explicit to your team that asking for help is not a weakness in your culture.",
+      "Keep watching the invisible hours. Even leaders who share well can drift back into absorbing it alone during high pressure.",
+      "Help someone else figure out how to share the weight: a peer, a direct report, or someone stepping into leadership for the first time."
+     ]
+    }
+   }
+  },
+  {
+   "id": "lifting_others_up",
+   "name": "Lifting Others Up",
+   "questions": [
+    {
+     "id": "lifting_others_up_q1",
+     "text": "How intentionally do you create a sense of belonging for the people around you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I am not sure I have ever framed it that way.",
+       "score": 1
+      },
+      {
+       "label": "I try to be kind and present, but I don't actively think about belonging.",
+       "score": 2
+      },
+      {
+       "label": "I do some things, but it is not a conscious practice.",
+       "score": 3
+      },
+      {
+       "label": "I make real effort to make people feel they belong, not just on the team but in general.",
+       "score": 4
+      },
+      {
+       "label": "Creating belonging is the actual work of leadership for me. It shapes everything I do.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "lifting_others_up_q2",
+     "text": "When someone you lead does something well, what do you do?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I notice it, but I don't always say something.",
+       "score": 1
+      },
+      {
+       "label": "I give a quick acknowledgment and move on.",
+       "score": 2
+      },
+      {
+       "label": "I try to recognize it, but I am not consistent.",
+       "score": 3
+      },
+      {
+       "label": "I call it out: specifically and genuinely.",
+       "score": 4
+      },
+      {
+       "label": "I celebrate it in a way that actually matters to them, not just to me.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The people around you are doing the work. They need to know you see it.",
+     "text": "Creating belonging isn't a management technique. It is what separates a job from somewhere people want to be. Right now, recognition is inconsistent and the space you're creating doesn't feel intentional. That is fixable. But it starts with deciding that lifting others up is part of the job, not an add-on for when you have time.",
+     "steps": [
+      "This week, acknowledge one person on your team for something specific: not 'great job,' but what they actually did and why it mattered.",
+      "Think about one person who might feel on the outside of things. One conversation can shift that.",
+      "Start treating belonging as a practice, not a feeling that either happens or doesn't."
+     ]
+    },
+    "mid": {
+     "headline": "You are lifting people up. Make it a habit, not an occasion.",
+     "text": "You do this, just not consistently. Recognition shows up when you remember, not when people need it. Belonging gets created in the moments you are paying attention, and lost in the ones you are not. The gap isn't intention. It's follow-through.",
+     "steps": [
+      "Build one recurring habit around recognition: a weekly check-in, a written note, something that doesn't depend on you remembering in the moment.",
+      "Ask someone you lead directly: 'Do you feel like you belong here?' Then actually listen to the answer.",
+      "Notice who is quietly doing good work and nobody is seeing it. Go say something specific to them."
+     ]
+    },
+    "high": {
+     "headline": "You lift people up intentionally. They feel it, even when they don't say so.",
+     "text": "The leaders who build real teams are the ones who make belonging part of the job. You are doing that. The people in your orbit are probably doing better work because of you, and they might not even know how much your consistency matters. Keep going. And share how you do it, because most leaders haven't figured out that this is the actual work.",
+     "steps": [
+      "Tell the people around you, directly, that you see them. Not in a performance review. Just because it is true.",
+      "Think about someone who has never had a leader who lifted them up. You might be their first.",
+      "Share what you do and why with another leader in your network. Let them know it is okay to make belonging part of their practice too."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "invisible_labor_annual_cost",
+   "label": "Annual cost of your invisible leadership labor",
+   "format": "currency_per_period",
+   "formula": "invisible_hours * 48 * hourly_value",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "Agency owner or founder",
+    "tag": "founder"
+   },
+   {
+    "label": "Team lead or operator",
+    "tag": "team_lead"
+   },
+   {
+    "label": "Creative or delivery leader",
+    "tag": "creative_lead"
+   },
+   {
+    "label": "Stepping into leadership for the first time",
+    "tag": "emerging_leader"
+   }
+  ]
+ }
+}

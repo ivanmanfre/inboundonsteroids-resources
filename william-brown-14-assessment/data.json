@@ -1,0 +1,540 @@
+{
+ "slug": "william-brown-14-assessment",
+ "title": "The Online Education Scale Readiness Score",
+ "subtitle": "Find out whether your business is built to compound or just to survive the month",
+ "brand": {
+  "accent": "#0051c3",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "offer_structure",
+   "name": "Offer Structure",
+   "questions": [
+    {
+     "id": "offer_structure_q1",
+     "text": "When a prospect asks what you do, how do they typically respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They say it sounds interesting and ask me to send more info",
+       "score": 1
+      },
+      {
+       "label": "They ask a lot of follow-up questions about how it actually works",
+       "score": 2
+      },
+      {
+       "label": "They understand it but take time to decide if it is right for them",
+       "score": 3
+      },
+      {
+       "label": "They recognise it matches what they need and ask how to get started",
+       "score": 4
+      },
+      {
+       "label": "They show up having already decided. The call is mostly a formality.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "offer_structure_q2",
+     "text": "How did you set your current price?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I picked a number that felt comfortable and have not revisited it since",
+       "score": 1
+      },
+      {
+       "label": "I looked at competitors and priced myself slightly below them",
+       "score": 2
+      },
+      {
+       "label": "I asked my audience what they could afford and priced around that",
+       "score": 3
+      },
+      {
+       "label": "I priced based on the result I deliver, not the hours I put in",
+       "score": 4
+      },
+      {
+       "label": "My price reflects the full transformation. Clients rarely question it.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "offer_structure_q3",
+     "text": "When you run a sales call, what usually happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Most prospects say they need to think about it and then go quiet",
+       "score": 1
+      },
+      {
+       "label": "I close some but spend a lot of energy chasing follow-ups",
+       "score": 2
+      },
+      {
+       "label": "About half close on the first call. The rest need a second conversation.",
+       "score": 3
+      },
+      {
+       "label": "Most close on the first call with minimal pushback on price or fit",
+       "score": 4
+      },
+      {
+       "label": "Calls are short. Objections are rare. Most have already made the decision before we speak.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "offer_structure_q4",
+     "text": "What happens when you point more traffic at your offer, whether through content, ads, or outreach?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "More activity. Same revenue.",
+       "score": 1
+      },
+      {
+       "label": "Occasional spikes that do not hold month to month",
+       "score": 2
+      },
+      {
+       "label": "More leads come in but the close rate does not move",
+       "score": 3
+      },
+      {
+       "label": "More traffic reliably produces more booked calls",
+       "score": 4
+      },
+      {
+       "label": "Every new channel tightens fast because the offer does the work",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your offer is the bottleneck. More traffic will not fix this.",
+     "text": "When prospects go quiet after a call, most people think they need more leads. They post more. Run more ads. Same result. The issue is not volume. It is that your offer is not structured clearly enough for someone to say yes on the spot. I have watched this exact pattern with hundreds of coaches. The fix is not a new strategy. It is going back to the offer itself, defining the single transformation you deliver, and pricing it based on that outcome rather than your time or your hours.",
+     "steps": [
+      "Write one sentence that describes exactly what result your client gets and the timeframe it happens in",
+      "Rebuild your price around that outcome, not around deliverables or hours",
+      "Rewrite how you describe your offer so prospects self-qualify before you ever get on a call"
+     ]
+    },
+    "mid": {
+     "headline": "You have something that works sometimes. The goal is making it work every time.",
+     "text": "You are close. Calls close, people buy, results happen. But it is inconsistent. Some months work. Some do not. That is not an offer problem exactly. It is a structure problem. The offer works for the right person in the right frame of mind on the right day. Your job right now is to tighten the positioning until it works predictably, not occasionally. The revenue is already there. You just need to stop leaving it to chance.",
+     "steps": [
+      "Track which clients close the fastest and what they had in common before the call",
+      "Rewrite your positioning to speak directly to that person only",
+      "Remove anything from the offer description that muddies the core transformation"
+     ]
+    },
+    "high": {
+     "headline": "Your offer is doing its job. Protect it.",
+     "text": "Objections are rare. Traffic converts. Calls close fast. Most coaches never get here. The temptation now is to add more: a new offer, a new tier, a new program. Most of the time that is the wrong move. Simple scales. Complexity kills. I wore the same white t-shirt and filmed on an iPhone 13 while doing $600K months. Stay focused on what is working and build systems around it before you build anything new.",
+     "steps": [
+      "Document the exact words you use to describe your offer before anything changes",
+      "Build a case study bank from your best client results right now while they are fresh",
+      "Scale what is working before you add a single new product or tier"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_and_genuine_uity",
+   "name": "Content and Genuine-uity",
+   "questions": [
+    {
+     "id": "content_and_genuine_uity_q1",
+     "text": "If a follower read your last 10 posts without seeing your name, what would they think?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly, it could have come from anyone in my niche",
+       "score": 1
+      },
+      {
+       "label": "It sounds like me sometimes but mostly follows templates I found online",
+       "score": 2
+      },
+      {
+       "label": "Most of it sounds like me but I drift when I am posting under pressure",
+       "score": 3
+      },
+      {
+       "label": "People regularly tell me my content sounds distinctly like me in a way others do not",
+       "score": 4
+      },
+      {
+       "label": "My voice is specific enough that followers recognise it without my name on it",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "content_and_genuine_uity_q2",
+     "text": "How many qualified sales calls does your content produce each month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Fewer than 5, and most of those are not a real fit",
+       "score": 1
+      },
+      {
+       "label": "5 to 10 calls, but most do not convert to paying clients",
+       "score": 2
+      },
+      {
+       "label": "10 to 20 calls per month but the quality is inconsistent",
+       "score": 3
+      },
+      {
+       "label": "20 to 40 calls with solid close rates",
+       "score": 4
+      },
+      {
+       "label": "40 or more and the quality keeps improving over time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "content_and_genuine_uity_q3",
+     "text": "When a new lead gets on a call with you, how much do they already know about your offer?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very little. I spend most of the call explaining what I do.",
+       "score": 1
+      },
+      {
+       "label": "They know roughly what I do but arrive with a lot of questions",
+       "score": 2
+      },
+      {
+       "label": "They understand the offer but still need convincing it is right for them",
+       "score": 3
+      },
+      {
+       "label": "They have consumed my content and already trust my approach before we speak",
+       "score": 4
+      },
+      {
+       "label": "They have read or watched everything. The call is almost always a yes or no.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your content is educating people but not converting them.",
+     "text": "I have two clients who post in the same niche. One uses AI for all of it. She books 7 calls a month. The other uses his own voice and stories from his actual life. He books 48. Same audience size. The gap is not strategy. It is that one sounds human and the other does not. People do not buy from content that sounds smart. They buy from content that sounds real. Your first move is to strip out the polish and post something honest.",
+     "steps": [
+      "Write your next post about one real thing that happened in your business this week",
+      "Cut any sentence that sounds like it came from a marketing template",
+      "Add one opinion you actually hold, even if it will put some people off"
+     ]
+    },
+    "mid": {
+     "headline": "Your content is working but it is not doing the selling for you yet.",
+     "text": "You are getting calls. People know what you do. But leads still arrive on the call needing convincing. That means content is building awareness but not enough conviction. The fix is usually two things: more specificity in the results you talk about, and more of your actual opinions in your posts. People follow you because you see things differently. Give them more of that and less of the safe stuff.",
+     "steps": [
+      "Pick your best client result and write an entire post explaining exactly what changed and why, with numbers",
+      "Add a clear, specific take to your next three posts that you would be willing to defend",
+      "Track which posts book calls. Do more of that format and less of what gets views."
+     ]
+    },
+    "high": {
+     "headline": "Your content is pre-selling calls before they start.",
+     "text": "Leads arrive warm. Calls close fast. Your content is doing exactly what it should. The only risk from here is diluting what makes it work by chasing trends or optimising for views instead of calls. The coaches who stay at this level protect what is working instead of constantly reinventing it. Keep doing what makes people show up ready to buy.",
+     "steps": [
+      "Write down the 3 to 5 content formats that produce your best leads and treat them as protected",
+      "Stop measuring views. Measure calls booked per post.",
+      "You can delegate distribution but never hand off the actual writing of your posts"
+     ]
+    }
+   }
+  },
+  {
+   "id": "systems_and_predictabili",
+   "name": "Systems and Predictability",
+   "questions": [
+    {
+     "id": "systems_and_predictabili_q1",
+     "text": "How does revenue feel from one month to the next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Every month feels like starting from scratch",
+       "score": 1
+      },
+      {
+       "label": "I have some repeatable things but revenue is still unpredictable",
+       "score": 2
+      },
+      {
+       "label": "I have a rough sense of what will bring money in but it is not reliable",
+       "score": 3
+      },
+      {
+       "label": "I can estimate the month within 20 to 30 percent accuracy",
+       "score": 4
+      },
+      {
+       "label": "Revenue is consistent. I can forecast it and plan around it.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "systems_and_predictabili_q2",
+     "text": "If you took two weeks completely off right now, what would happen to your business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It would effectively stop",
+       "score": 1
+      },
+      {
+       "label": "It would slow down a lot and I would come back to a mess",
+       "score": 2
+      },
+      {
+       "label": "Some things would run but I would lose significant revenue",
+       "score": 3
+      },
+      {
+       "label": "Most of it would hold. I would miss some opportunities but the core would keep going.",
+       "score": 4
+      },
+      {
+       "label": "It would run without me. I built it that way on purpose.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "systems_and_predictabili_q3",
+     "text": "How would you describe your process for getting new clients?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I post a lot or do manual outreach when I need money. No real process.",
+       "score": 1
+      },
+      {
+       "label": "I have a rough sequence but it looks different every time I try it",
+       "score": 2
+      },
+      {
+       "label": "I have a funnel but I am tweaking it constantly because results vary",
+       "score": 3
+      },
+      {
+       "label": "I have a clear process. I know which steps produce which outcomes.",
+       "score": 4
+      },
+      {
+       "label": "Client acquisition runs predictably. I can turn it up or down like a dial.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You have a job right now. The goal is to build a business instead.",
+     "text": "When revenue stops the moment you stop, that is not a business. That is freelancing with a fancier name. I know this because I ran the first version of my company the same way. The good news is you do not need to build much to change it. Most of what you need is already in your head. You just need to write it down and make it repeatable so it works whether you are at your desk or not.",
+     "steps": [
+      "Write out every step a person takes from first seeing your content to becoming a paying client",
+      "Find the one step in that process that breaks most often and fix that one first",
+      "Set up one automated follow-up so leads do not go cold while you are busy with other clients"
+     ]
+    },
+    "mid": {
+     "headline": "You have a working process but it still depends too much on you being in the middle of it.",
+     "text": "Revenue is coming in. You have something that works. But if you look closely, most of it runs on your personal effort rather than a system. That is a ceiling. There is a version of this business where the same results happen with less of you in every step. Getting there does not mean hiring a big team. I ran one of the most profitable months of my business with almost no team at all. It means documenting what works and making it repeatable.",
+     "steps": [
+      "Document the exact process that produces your most consistent results right now",
+      "Pick one step you handle personally that could be handed off with a clear brief",
+      "Track your client acquisition numbers weekly so you catch drops before they become problems"
+     ]
+    },
+    "high": {
+     "headline": "Your business runs on systems, not effort. This is where real scale starts.",
+     "text": "You can predict revenue. You can step away. Things keep running. Very few coaches get here. You have something most people spend years trying to build. The question now is whether you want to grow it or simplify it further. Both are good answers depending on what you want your life to look like. But if you are thinking about an exit one day, what you have built right now is the foundation everything else rests on.",
+     "steps": [
+      "Map which processes are still manual and decide deliberately which ones stay that way",
+      "Calculate your actual profit margin and set a floor you will not let it drop below",
+      "Start thinking about what the business looks like with you removed from every part of it"
+     ]
+    }
+   }
+  },
+  {
+   "id": "owner_thinking_and_exit_",
+   "name": "Owner Thinking and Exit Potential",
+   "questions": [
+    {
+     "id": "owner_thinking_and_exit__q1",
+     "text": "How involved are you personally in delivering results for clients?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I do almost everything. If I stop working, results stop.",
+       "score": 1
+      },
+      {
+       "label": "I handle most delivery and outsource small tasks occasionally",
+       "score": 2
+      },
+      {
+       "label": "I have some support but I am still deeply involved in most client work",
+       "score": 3
+      },
+      {
+       "label": "My team handles most delivery. I step in for key moments only.",
+       "score": 4
+      },
+      {
+       "label": "My business runs through people and processes. I am not in the delivery.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "owner_thinking_and_exit__q2",
+     "text": "If someone offered to buy your business today, what would they actually be getting?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly, just me and my reputation. There is not much else.",
+       "score": 1
+      },
+      {
+       "label": "My client list and some content but not a documented system",
+       "score": 2
+      },
+      {
+       "label": "A working funnel and some documented processes",
+       "score": 3
+      },
+      {
+       "label": "A repeatable model with a team, documented systems, and predictable revenue",
+       "score": 4
+      },
+      {
+       "label": "A real asset: documented systems, recurring revenue, a team that runs it, and a clear growth story",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "owner_thinking_and_exit__q3",
+     "text": "When you hit a new revenue milestone, what is your first instinct?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Post about it, celebrate, and keep doing what got me here",
+       "score": 1
+      },
+      {
+       "label": "Try to figure out how to repeat it again next month",
+       "score": 2
+      },
+      {
+       "label": "Start looking for new strategies or offers to push further",
+       "score": 3
+      },
+      {
+       "label": "Document what worked and build it into a repeatable process",
+       "score": 4
+      },
+      {
+       "label": "Build a system around it so it compounds without needing more of my time",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Right now you own a job. The decision to change that is available today.",
+     "text": "The founders who build real businesses are not usually the smartest or the best marketers. They are the ones who made one decision differently from everyone else: they started thinking like an owner before they felt like one. An owner asks different questions. Not how do I get more clients this month, but how do I build something that gets clients whether I am there or not. That shift in the question changes everything you build from this point forward.",
+     "steps": [
+      "Write down the three things only you can do in your business, then question whether that is actually true",
+      "Hire or automate one task you are currently doing manually that someone else could handle with a clear brief",
+      "Ask yourself what the business would need to look like for someone to pay serious money for it one day"
+     ]
+    },
+    "mid": {
+     "headline": "You think like a builder. Now start thinking like an owner.",
+     "text": "You are making good decisions. You are building, not just executing. But if you are honest, the business still needs you in more places than it should. That is not a flaw. It is just the next thing to fix. The goal is not to remove yourself so you can sit on a beach. It is to build something that grows whether you are fully focused on it or not. That version of the business is worth far more than the one that pauses when you do.",
+     "steps": [
+      "Map every part of the business and mark which ones still need you personally to function",
+      "Pick the highest-impact role you play and start building a process or person to replace it",
+      "Set a 90-day goal to remove yourself from one critical piece of the operation completely"
+     ]
+    },
+    "high": {
+     "headline": "You are building an asset, not just an income. That is a different category entirely.",
+     "text": "Most coaches sell their time or their expertise. You are building something someone could actually buy. That changes how you think about every decision: hiring, pricing, systems, content. I built my first company to $16.4M and sold it to private equity. The business that sold was not the one I started. It was the one I built after I stopped treating it like a job and started treating it like an asset. You are already on that path.",
+     "steps": [
+      "Get a rough number on what the business is worth today as a starting point for every future decision",
+      "Identify the two or three things that would add the most to that number in the next 12 months",
+      "Start keeping clean financials now, not when you decide to sell"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "Coach or consultant selling 1:1 or group programs",
+    "tag": "coach"
+   },
+   {
+    "label": "Course creator or online educator building an audience",
+    "tag": "educator"
+   },
+   {
+    "label": "Expert with paying clients who wants to scale past $20K a month",
+    "tag": "scaling"
+   },
+   {
+    "label": "Established operator thinking about systems, team, or eventual exit",
+    "tag": "operator"
+   }
+  ]
+ }
+}

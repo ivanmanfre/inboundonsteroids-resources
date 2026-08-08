@@ -1,0 +1,795 @@
+{
+  "slug": "a-scored-audit-of-an-agency-s-reporting-stack-that-surfaces-the-specific-breakpoints-where-manual-stitching-api-drift-and-visibility-gaps-are-bleeding-hours-and-trust",
+  "title": "The Reporting Stack Audit: Find Where Your Agency Loses 8+ Hours a Week to Manual Stitching",
+  "subtitle": "A scored audit for marketing and creative agencies. Surfaces the exact breakpoints where manual stitching, API drift, and visibility gaps are bleeding hours and client trust.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "marketing and creative agency",
+    "locations": "the US, UK, and Canada",
+    "count_band": "11-100"
+  },
+  "benchmarks": [
+    {
+      "metric": "Average hours per week agencies spend on client reporting",
+      "value": "8-12 hours per account manager",
+      "source": "AgencyAnalytics State of Agency Reporting",
+      "year": "2024",
+      "url": ""
+    },
+    {
+      "metric": "Share of agencies citing data accuracy as a top client trust risk",
+      "value": "62%",
+      "source": "HubSpot Agency Pulse Report",
+      "year": "2024",
+      "url": ""
+    }
+  ],
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your data sources are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules a human follows can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep.",
+      "Human-in-the-loop by design. Every output touches a person before it ships externally."
+    ],
+    "intro": "This assessment scores your reporting stack against the four preconditions for Agent-Ready Ops. Hit all four and your reporting workflow is ready for AI to carry weight. Miss one and any AI build will leak."
+  },
+  "proof_card": {
+    "score_label": "Reporting Stack Score",
+    "sample_score": 54,
+    "sample_top_leak": "manual data stitching across 7 sources (~9 hrs/week recoverable)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your agency?",
+    "answers": [
+      {
+        "label": "Boutique (1-10 people)",
+        "tag": "boutique"
+      },
+      {
+        "label": "Growing (11-30 people)",
+        "tag": "growing"
+      },
+      {
+        "label": "Established (31-60 people)",
+        "tag": "established"
+      },
+      {
+        "label": "Scaling (61-100+ people)",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "data-source-inventory",
+      "name": "Data Source Inventory",
+      "questions": [
+        {
+          "id": "source-mapping",
+          "text": "How completely have you mapped every system that holds client-facing numbers?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Never mapped. We pull what we remember to pull.",
+              "score": 1
+            },
+            {
+              "label": "2. Partial list in someone's head, never written down.",
+              "score": 2
+            },
+            {
+              "label": "3. Documented for top clients, gaps everywhere else.",
+              "score": 3
+            },
+            {
+              "label": "4. Full list maintained, reviewed quarterly.",
+              "score": 4
+            },
+            {
+              "label": "5. Single source-of-truth registry per client, always current.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "api-connections",
+          "text": "How many of your data sources have a working API connection actually wired up and pulling?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Almost everything is copy-pasted by hand.",
+              "score": 1
+            },
+            {
+              "label": "2. One or two platforms connected, the rest manual.",
+              "score": 2
+            },
+            {
+              "label": "3. About half wired up, half still manual.",
+              "score": 3
+            },
+            {
+              "label": "4. Most sources connected, a couple of stragglers.",
+              "score": 4
+            },
+            {
+              "label": "5. Every source pulls automatically, no manual hops.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "rate-limits",
+          "text": "How well do you track rate limits and daily pull caps on your data sources?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No idea what our limits are until something breaks.",
+              "score": 1
+            },
+            {
+              "label": "2. We hit caps occasionally, scramble to fix.",
+              "score": 2
+            },
+            {
+              "label": "3. We know the big ones (Ahrefs, SEMrush) but not all.",
+              "score": 3
+            },
+            {
+              "label": "4. Documented per source with buffer headroom.",
+              "score": 4
+            },
+            {
+              "label": "5. Monitored with alerts before we hit any cap.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "schema-drift",
+          "text": "How systematically do you catch when a source's schema changes (GA4 migration, API version bumps, CRM field renames)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We find out when the dashboard breaks.",
+              "score": 1
+            },
+            {
+              "label": "2. Someone notices and posts in Slack eventually.",
+              "score": 2
+            },
+            {
+              "label": "3. We check after the fact, fix retroactively.",
+              "score": 3
+            },
+            {
+              "label": "4. Quarterly schema reviews on all sources.",
+              "score": 4
+            },
+            {
+              "label": "5. Automated schema validation runs on every pull.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You can't fix what you can't see",
+          "text": "Your reporting stack is invisible to itself. Until you have a written inventory of every source, every connection state, and every drift risk, any automation you build will leak inside the first quarter. Start with the registry, not the dashboard.",
+          "steps": [
+            "Build one spreadsheet listing every source, per client, with connection status (API vs manual).",
+            "Mark each source's rate limit and daily pull cap in the same sheet.",
+            "Add a 'last schema change' column and backfill what you know from the last 12 months."
+          ]
+        },
+        "mid": {
+          "headline": "Inventory exists, but it's stale",
+          "text": "You know roughly where the data lives, but the registry isn't load-bearing yet. The next leak will come from a source you forgot was manual, or a schema change nobody flagged. Make the registry the single thing on-call updates.",
+          "steps": [
+            "Assign one owner who updates the source registry on every new client onboarded.",
+            "Add automated schema checks on your top 3 most-used sources.",
+            "Audit which sources still get copy-pasted and pick the highest-volume one to wire up next."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Your data layer is in shape. The next gains come from making it self-healing, not just well-documented.",
+          "steps": [
+            "Add schema diff alerts that fire before the dashboard breaks, not after.",
+            "Set up daily quota-headroom checks on rate-limited sources.",
+            "Pipe source-health into a status board your account leads can see at a glance."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~6 hrs/week recoverable from copy-paste source stitching",
+        "lever": "My read: the registry is the cheapest fix that unlocks every downstream automation, do that before touching dashboards.",
+        "talking_points": [
+          "We can't quantify reporting leak until we know how many sources are still manual.",
+          "Schema drift has already cost us delivery hours we didn't track.",
+          "A one-week inventory sprint unblocks the next 6 months of reporting work."
+        ],
+        "proof_of_concept": "Spend 3 days building the per-client source registry for your top 5 accounts and tag every manual hop."
+      }
+    },
+    {
+      "id": "data-pipeline-stitching",
+      "name": "Data Pipeline & Stitching",
+      "questions": [
+        {
+          "id": "stitching-method",
+          "text": "How is data combined across sources for client reports?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Copy-paste into a master Google Sheet every week.",
+              "score": 1
+            },
+            {
+              "label": "2. CSV exports glued together by an analyst.",
+              "score": 2
+            },
+            {
+              "label": "3. Some sources auto-sync, the rest stitched by hand.",
+              "score": 3
+            },
+            {
+              "label": "4. Centralized warehouse with mostly automated joins.",
+              "score": 4
+            },
+            {
+              "label": "5. Full pipeline: warehouse, modeled tables, automated joins, tested.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "reconciliation",
+          "text": "How consistently do the numbers reconcile across sources (e.g., GA4 sessions vs ad-platform clicks vs CRM leads)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Numbers never match, we just pick one and move on.",
+              "score": 1
+            },
+            {
+              "label": "2. Reconcile when a client questions it.",
+              "score": 2
+            },
+            {
+              "label": "3. Spot-check before sending, fix what we catch.",
+              "score": 3
+            },
+            {
+              "label": "4. Automated variance checks on the top metrics.",
+              "score": 4
+            },
+            {
+              "label": "5. Reconciliation runs on every report, variances are flagged.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "pipeline-ownership",
+          "text": "How clearly is pipeline ownership defined (who fixes it when it breaks)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Nobody owns it. Whoever notices first fixes it.",
+              "score": 1
+            },
+            {
+              "label": "2. One person knows, but it's not documented.",
+              "score": 2
+            },
+            {
+              "label": "3. Owner exists, no backup if they're out.",
+              "score": 3
+            },
+            {
+              "label": "4. Primary plus backup owner, runbook documented.",
+              "score": 4
+            },
+            {
+              "label": "5. Owned by a function with monitoring and on-call rotation.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your pipeline is your analyst's Monday morning",
+          "text": "If 'the pipeline' is a person with a spreadsheet, every report is one sick day away from a client trust event. The reconciliation gap is also why your numbers feel soft when challenged.",
+          "steps": [
+            "Pick one client and rebuild their report through a centralized sheet with linked sources.",
+            "Add one variance check (e.g., sessions vs clicks) and document the acceptable threshold.",
+            "Assign a named pipeline owner with a documented fallback person."
+          ]
+        },
+        "mid": {
+          "headline": "Half-built pipeline, half-trusted numbers",
+          "text": "You've automated the obvious sources but the joins are still fragile. The variance checks need to move from manual spot-checks to automated guardrails before you scale clients further.",
+          "steps": [
+            "Move stitching out of spreadsheets into a real warehouse layer (BigQuery, Snowflake, or even Supabase).",
+            "Automate variance checks on the 3 metrics clients challenge most.",
+            "Document the pipeline runbook and rehearse a failover with the backup owner."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Your stitching layer is doing its job. Now make it audit-ready.",
+          "steps": [
+            "Add row-level lineage so any number in any report can be traced back to a source row.",
+            "Build a public-to-client data dictionary for the metrics you report on.",
+            "Add anomaly detection on metric trends, not just on variance between sources."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~8 hrs/week recoverable from manual stitching and reconciliation",
+        "lever": "What I'd do: rebuild the stitching for your highest-revenue client first, the ROI compounds across every other account on the same template.",
+        "talking_points": [
+          "Manual stitching is the single biggest hours-leak in our reporting workflow.",
+          "Reconciliation gaps are eroding client trust faster than we're measuring.",
+          "Centralizing one pipeline template lets us roll it out to the next 10 clients at near-zero marginal cost."
+        ],
+        "proof_of_concept": "Pick your top-revenue client and migrate their stitching to a centralized warehouse table in one week, then measure the time saved on the next report cycle."
+      }
+    },
+    {
+      "id": "client-reporting-cadence",
+      "name": "Client Reporting Cadence",
+      "questions": [
+        {
+          "id": "report-assembly-time",
+          "text": "How long does it take to assemble a standard client report from raw data to send?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Full day per report, sometimes longer.",
+              "score": 1
+            },
+            {
+              "label": "2. Half-day of stitching and formatting.",
+              "score": 2
+            },
+            {
+              "label": "3. A couple of hours of cleanup and commentary.",
+              "score": 3
+            },
+            {
+              "label": "4. Under an hour, mostly review and narrative.",
+              "score": 4
+            },
+            {
+              "label": "5. Templated and auto-assembled, human only reviews.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "template-consistency",
+          "text": "How consistent is the report template across clients of the same service tier?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Every client gets a custom format, no standards.",
+              "score": 1
+            },
+            {
+              "label": "2. Loose template that drifts by account manager.",
+              "score": 2
+            },
+            {
+              "label": "3. Standard sections, but layouts vary.",
+              "score": 3
+            },
+            {
+              "label": "4. Tiered templates that hold across accounts.",
+              "score": 4
+            },
+            {
+              "label": "5. Single source-of-truth template per tier, versioned.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "commentary-quality",
+          "text": "How systematic is the narrative/commentary layer in your reports?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Last-minute scramble by whoever is sending.",
+              "score": 1
+            },
+            {
+              "label": "2. Account manager writes from memory each cycle.",
+              "score": 2
+            },
+            {
+              "label": "3. We have a structure, quality varies by person.",
+              "score": 3
+            },
+            {
+              "label": "4. Prompts and frameworks drive consistent commentary.",
+              "score": 4
+            },
+            {
+              "label": "5. AI-assisted draft from data, human refines, every time.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "send-discipline",
+          "text": "How reliably do reports go out on the agreed cadence without slipping?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Frequently late, clients chase us.",
+              "score": 1
+            },
+            {
+              "label": "2. On time most months, miss a few per year.",
+              "score": 2
+            },
+            {
+              "label": "3. Mostly on time, occasional slips when busy.",
+              "score": 3
+            },
+            {
+              "label": "4. On-time delivery is the norm, slips are tracked.",
+              "score": 4
+            },
+            {
+              "label": "5. Scheduled and automated send, never late.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your reporting cadence is a tax on your best people",
+          "text": "If reports take a day each and templates drift across accounts, your senior people are spending billable-grade time on assembly work. The fix is to standardize before you automate.",
+          "steps": [
+            "Lock one report template per service tier, no per-client tweaks for 90 days.",
+            "Build a commentary checklist so the narrative section has a defined structure.",
+            "Set up calendar holds for report sends and treat slips as incidents."
+          ]
+        },
+        "mid": {
+          "headline": "Templates exist but assembly is still expensive",
+          "text": "You've got the structure, you just haven't taken the human out of assembly. The opportunity is in the narrative and the auto-fill, not in another template revision.",
+          "steps": [
+            "Wire one template to pull data automatically into the final report format.",
+            "Use a structured prompt to draft commentary from the data, then have AMs refine.",
+            "Track assembly time per report and target a 50% cut over the next quarter."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Reports are tight. Now use them as a differentiator.",
+          "steps": [
+            "Add a 'what changed and why' summary at the top, auto-generated from variance data.",
+            "Offer clients an on-demand dashboard that mirrors the report data live.",
+            "Test a quarterly insight delivery (not just a report) to push the relationship up-funnel."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~9 hrs/week recoverable across a 15-client book",
+        "lever": "Honest take: the commentary layer is where AI earns its keep here, not the data assembly, because the assembly is solvable with plumbing.",
+        "talking_points": [
+          "Senior people are spending junior-task hours on report assembly every week.",
+          "Inconsistent commentary across AMs is a quality risk we can fix with structure.",
+          "Auto-assembled reports free us to push insight delivery, which is what retains accounts."
+        ],
+        "proof_of_concept": "Take one service tier, lock the template, and ship the next reporting cycle through an automated assembly pipeline. Compare hours to last month."
+      }
+    },
+    {
+      "id": "accuracy-trust",
+      "name": "Accuracy & Client Trust",
+      "questions": [
+        {
+          "id": "error-discovery",
+          "text": "How are reporting errors typically discovered?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Client points them out to us.",
+              "score": 1
+            },
+            {
+              "label": "2. We catch them at the next cycle, send a correction.",
+              "score": 2
+            },
+            {
+              "label": "3. Spot-checks before sending catch most.",
+              "score": 3
+            },
+            {
+              "label": "4. Pre-send QA checklist catches the obvious ones.",
+              "score": 4
+            },
+            {
+              "label": "5. Automated validation flags errors before any human reviews.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "definition-alignment",
+          "text": "How aligned are metric definitions between you and the client?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We've never had the definition conversation.",
+              "score": 1
+            },
+            {
+              "label": "2. Verbal agreement, nothing documented.",
+              "score": 2
+            },
+            {
+              "label": "3. Defined in the contract, rarely revisited.",
+              "score": 3
+            },
+            {
+              "label": "4. Documented per client, reviewed at QBR.",
+              "score": 4
+            },
+            {
+              "label": "5. Data dictionary shared with every client, version-controlled.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "audit-trail",
+          "text": "If a client questions a specific number in a past report, how fast can you trace it back to the source row?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We can't reliably reproduce old numbers.",
+              "score": 1
+            },
+            {
+              "label": "2. Takes hours of digging, sometimes a day.",
+              "score": 2
+            },
+            {
+              "label": "3. We can get there in an hour with the right person.",
+              "score": 3
+            },
+            {
+              "label": "4. Lineage is documented, traceable in minutes.",
+              "score": 4
+            },
+            {
+              "label": "5. Every number in every report links to source data.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Trust leaks before churn shows up",
+          "text": "When clients are catching errors before you do, every report is a small withdrawal from the relationship account. The fix is to move QA upstream, not to apologize faster.",
+          "steps": [
+            "Build a pre-send QA checklist with the 5 most common error types.",
+            "Document metric definitions in writing for your top 3 accounts this month.",
+            "Pick one historical report and rebuild its audit trail end-to-end as practice."
+          ]
+        },
+        "mid": {
+          "headline": "QA exists, lineage doesn't",
+          "text": "You're catching most errors at send, but you can't defend a number that gets challenged 90 days later. The next risk event is a renewal conversation where you can't reproduce a metric.",
+          "steps": [
+            "Implement automated variance checks on top metrics so QA moves from manual to systemic.",
+            "Stand up a per-client data dictionary and walk through it at the next QBR.",
+            "Add lineage tagging on the pipeline so any past number can be traced in under 10 minutes."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Your accuracy story holds up under scrutiny. Make it visible.",
+          "steps": [
+            "Share the data dictionary proactively in onboarding as a trust accelerant.",
+            "Surface automated QA pass/fail status in the client-facing report.",
+            "Use lineage data to offer a 'show your work' view to procurement on renewal."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~$340K annual revenue at risk from accuracy-driven churn on a 15-client book",
+        "lever": "My read: lineage and definitions protect renewals more than any number on the report itself, that's the trust moat.",
+        "talking_points": [
+          "Every client-discovered error is a silent withdrawal from the renewal account.",
+          "Metric definition drift between us and the client is a contract risk we're not pricing.",
+          "Audit trails are cheap insurance against procurement-led renewal scrutiny."
+        ],
+        "proof_of_concept": "Pick your largest account and rebuild a full audit trail for last month's report. Show it to them at the next QBR as proof of process."
+      }
+    },
+    {
+      "id": "scalability-team-use",
+      "name": "Scalability & Team use",
+      "questions": [
+        {
+          "id": "headcount-elasticity",
+          "text": "How does reporting workload scale as you add clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Every new client adds proportional headcount.",
+              "score": 1
+            },
+            {
+              "label": "2. We stretch the team thinner each time.",
+              "score": 2
+            },
+            {
+              "label": "3. Some efficiency gains, mostly still linear.",
+              "score": 3
+            },
+            {
+              "label": "4. New clients add hours but not headcount.",
+              "score": 4
+            },
+            {
+              "label": "5. Reporting cost per client drops as we scale.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "knowledge-concentration",
+          "text": "How much of your reporting process lives in one person's head?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. One analyst is the whole pipeline.",
+              "score": 1
+            },
+            {
+              "label": "2. Two or three people know parts, no overlap.",
+              "score": 2
+            },
+            {
+              "label": "3. Documented at a high level, details still tribal.",
+              "score": 3
+            },
+            {
+              "label": "4. Process is documented and another person could run it.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully systematized, anyone trained can operate it.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ai-readiness",
+          "text": "How ready is your reporting stack for AI to take over the assembly work?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Data is too messy to feed anything automated.",
+              "score": 1
+            },
+            {
+              "label": "2. Some clean sources, lots of cleanup needed first.",
+              "score": 2
+            },
+            {
+              "label": "3. Half the stack is automation-ready, half isn't.",
+              "score": 3
+            },
+            {
+              "label": "4. Structured data, documented rules, narrow first use case.",
+              "score": 4
+            },
+            {
+              "label": "5. All four Agent-Ready Ops preconditions are met.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Every new client costs you a person",
+          "text": "Linear scaling on reporting is how agencies hit the hiring wall at 30-40 people. If the process lives in one head and the data lives in spreadsheets, you can't automate your way out, you have to systematize first.",
+          "steps": [
+            "Pick one analyst's workflow and document it step by step this month.",
+            "Identify the top 3 manual steps that repeat across every report.",
+            "Start with one of the four Agent-Ready Ops preconditions (structured input data is usually the cheapest)."
+          ]
+        },
+        "mid": {
+          "headline": "Systematized, not yet leveraged",
+          "text": "You've taken the process out of one head but you haven't pushed it into automation. The gap between 'documented' and 'agent-ready' is where most agencies stall.",
+          "steps": [
+            "Audit your reporting workflow against the four Agent-Ready Ops preconditions.",
+            "Pick the single narrowest workflow (e.g., paid media weekly report) and automate end-to-end.",
+            "Measure cost-per-client before and after, then scale the template."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "You're running lean. Now make use your pricing advantage.",
+          "steps": [
+            "Productize reporting as a tiered offer with clear margin per tier.",
+            "Add cross-client insight generation on top of the automated layer (benchmarking, anomalies).",
+            "Open a side workflow for proactive client recommendations, not just retrospective reporting."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~$180K annual payroll avoidable per 10 new clients added",
+        "lever": "What I'd do: pick one report type, hit all four Agent-Ready Ops preconditions for that one type, then template it across the book. Scale without scaling payroll.",
+        "talking_points": [
+          "Adding clients without adding headcount is the only path to margin expansion at our size.",
+          "Knowledge concentration is the silent risk: one analyst out and reporting stops.",
+          "Agent-Ready Ops gives us a 90-Day Payback Rule test for whether any AI build is worth funding."
+        ],
+        "proof_of_concept": "Take one report type, audit it against the four Agent-Ready Ops preconditions, fix the weakest one, and ship one automated cycle within 7 days."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'growing' || persona === 'established' || persona === 'scaling') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your reporting stack?",
+      "description": "Drop your email and I'll review your exact answers, stack them against marketing and creative agencies your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom",
+      "url": "https://ivanmanfredi.com/agent-ready-assessment"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'boutique'",
+      "headline": "Boutique agency? You're early for a custom audit.",
+      "description": "Automation ROI at 1-10 people is real but payback is longer than at mid-market scale. Follow me on LinkedIn. I post tactical agency automation breakdowns 3x/week. When you cross 11 people, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight. Here's what agencies your size miss next.",
+      "description": "At your score, the low-hanging fruit is already picked. The next gains come from cross-client benchmarking layers, lineage-as-a-sales-tool, and proactive insight delivery instead of retrospective reporting. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly agency ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market marketing and creative agencies run lean. No fluff, no pitch.",
+      "button": "Follow on LinkedIn",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ],
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

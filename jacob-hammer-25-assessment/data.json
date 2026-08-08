@@ -1,0 +1,641 @@
+{
+ "slug": "jacob-hammer-25-assessment",
+ "title": "Analytics Value Readiness Score",
+ "subtitle": "Measures how clearly your leadership team can see where analytics is — and isn't — creating commercial value in your business.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "profit_driver_clarity",
+   "name": "Profit Driver Clarity",
+   "questions": [
+    {
+     "id": "profit_driver_clarity_q1",
+     "text": "How clearly can your leadership team name the 3-5 activities, products, or clients that have the biggest impact on your profit right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have never mapped this out — it is not something we have formalised",
+       "score": 1
+      },
+      {
+       "label": "We have a rough sense but it is based on instinct, not data",
+       "score": 2
+      },
+      {
+       "label": "We have identified them but do not track them consistently",
+       "score": 3
+      },
+      {
+       "label": "We have them defined and review them regularly",
+       "score": 4
+      },
+      {
+       "label": "They are documented, tracked, and every leader can name them without hesitation",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "profit_driver_clarity_q2",
+     "text": "If your profit margin dropped unexpectedly next month, how quickly could your team identify where it came from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It would take weeks and a lot of manual investigation",
+       "score": 1
+      },
+      {
+       "label": "We would eventually find it but it would take significant effort",
+       "score": 2
+      },
+      {
+       "label": "We would narrow it down within a few days",
+       "score": 3
+      },
+      {
+       "label": "We would identify it within 24-48 hours",
+       "score": 4
+      },
+      {
+       "label": "We would spot it before month-end — it is in our live reporting",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "profit_driver_clarity_q3",
+     "text": "When your leadership team meets, does the conversation start with the business problem or with what the reports say?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost always the reports — we work through them and see what surfaces",
+       "score": 1
+      },
+      {
+       "label": "Usually reports, but we frame the business questions after reviewing them",
+       "score": 2
+      },
+      {
+       "label": "A mix — depends on who is running the meeting",
+       "score": 3
+      },
+      {
+       "label": "Usually a business question, with specific data pulled to answer it",
+       "score": 4
+      },
+      {
+       "label": "Always a clear commercial question — the reporting is built around it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You do not have a map yet",
+     "text": "Most leadership teams at this stage are running on instinct and experience — and it works, until the business gets complex enough that instinct is not enough. The risk is that time and money are going into reporting that does not connect to the parts of the business that actually move profit.",
+     "steps": [
+      "List the five things that most directly drive your gross profit — not revenue, profit",
+      "For each one, ask: do we have a number that tells us how this is tracking this week?",
+      "Identify which of those five has the least visibility today — that is where to start"
+     ]
+    },
+    "mid": {
+     "headline": "You have started the work but the picture is not consistent yet",
+     "text": "You know roughly which parts of the business matter most — but that clarity is not showing up consistently in how your team meets, what you measure, or how quickly you can respond when something changes. The gap is usually between knowing what drives profit and building the systems to see it clearly.",
+     "steps": [
+      "Document your top profit drivers formally — not just in your head",
+      "Check whether your current reporting covers all of them or just the ones that were easy to measure",
+      "Run your last three leadership meetings through a filter: did they start with a business problem or a report?"
+     ]
+    },
+    "high": {
+     "headline": "You are operating with a clear map",
+     "text": "Your team knows where profit comes from and you have enough visibility to act on it. The challenge at this level is keeping that clarity as the business grows — new products, new markets, and new complexity can blur the picture quickly if the measurement framework does not grow with it.",
+     "steps": [
+      "Review your profit driver framework every six months — the business changes, the map should too",
+      "Check that new team members can name the top drivers without prompting",
+      "Look for any areas where visibility has quietly dropped as the business has scaled"
+     ]
+    }
+   }
+  },
+  {
+   "id": "information_trust",
+   "name": "Information Trust",
+   "questions": [
+    {
+     "id": "information_trust_q1",
+     "text": "When your team presents a number in a leadership meeting, how often does the discussion stall because people question whether the number is right?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost every meeting — reconciling numbers takes real time",
+       "score": 1
+      },
+      {
+       "label": "Fairly often — there are usually a few numbers people push back on",
+       "score": 2
+      },
+      {
+       "label": "Occasionally — it happens but it is not the norm",
+       "score": 3
+      },
+      {
+       "label": "Rarely — the team trusts the data enough to move to decisions quickly",
+       "score": 4
+      },
+      {
+       "label": "Never — there is a single source of truth and everyone is aligned to it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "information_trust_q2",
+     "text": "How confident are you that the numbers your business reports internally reflect what is actually happening on the ground?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not confident — I know there are gaps we are not seeing",
+       "score": 1
+      },
+      {
+       "label": "Somewhat confident — but I am aware of areas we miss",
+       "score": 2
+      },
+      {
+       "label": "Moderately confident — it is close enough most of the time",
+       "score": 3
+      },
+      {
+       "label": "Fairly confident — occasional discrepancies but nothing material",
+       "score": 4
+      },
+      {
+       "label": "Very confident — our data consistently reflects what is happening",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "information_trust_q3",
+     "text": "How much time does your analytics team spend cleaning, checking, or reconciling data before they are comfortable acting on it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A lot — it is a significant chunk of the analytics workload",
+       "score": 1
+      },
+      {
+       "label": "More than it should be — it slows things down regularly",
+       "score": 2
+      },
+      {
+       "label": "Some — manageable but not nothing",
+       "score": 3
+      },
+      {
+       "label": "Very little — data arrives clean and ready to use",
+       "score": 4
+      },
+      {
+       "label": "None to speak of — the process is reliable end to end",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_per_leader_per_week",
+     "type": "number",
+     "text": "On average, how many hours per week does each leader in your team spend in data discussions that do not end in a clear decision?",
+     "hint": "Include time spent reconciling numbers, debating which figure is right, or following up to verify data after a meeting",
+     "suffix": "hours / week per leader",
+     "min": 0,
+     "max": 20,
+     "step": 1,
+     "default": 3,
+     "normalize_formula": "Math.max(0, Math.min(100, 100 - x * 10))"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Data trust is costing you decision time",
+     "text": "When leadership spends meeting time debating whether a number is right, it is not just frustrating — it is a direct cost. Every hour spent reconciling instead of deciding is an hour the business did not move forward. The issue usually is not the data itself. It is that there is no agreed single source of truth, so different teams pull different numbers from different places.",
+     "steps": [
+      "Identify the three numbers that get challenged most often in your leadership meetings",
+      "For each one, map where that number actually comes from — and whether there is more than one source",
+      "Pick one number, agree on a single source, and retire the others — work through all three over 90 days"
+     ]
+    },
+    "mid": {
+     "headline": "Trust is mostly there — but the exceptions are expensive",
+     "text": "Your team generally works from a shared picture, but the gaps that remain are costing you. Even occasional disputes about data quality slow decisions and create uncertainty at exactly the moments when you need clarity. This is usually a structural fix, not a cultural one.",
+     "steps": [
+      "Flag the data sources or reports where trust breaks down most often",
+      "Check whether those gaps sit in areas tied to your top profit drivers",
+      "Build a data quality review into your reporting cycle — even a brief monthly check changes the pattern"
+     ]
+    },
+    "high": {
+     "headline": "Your team trusts the data — protect that",
+     "text": "High data trust is genuinely rare. It means your team moves faster on decisions and spends less time in unproductive meetings. The risk is that trust erodes gradually as the business changes — new systems, new team members, new data sources. The work at this stage is maintenance, not rebuilding.",
+     "steps": [
+      "Document what you have built so the next person who joins understands the data architecture",
+      "Build a simple alert if a key metric has not updated when it should — gaps show up before trust breaks",
+      "Audit your data sources once a year as systems change — the integrity you have now can drift quietly"
+     ]
+    }
+   }
+  },
+  {
+   "id": "analytics_starting_point",
+   "name": "Analytics Starting Point",
+   "questions": [
+    {
+     "id": "analytics_starting_point_q1",
+     "text": "When someone in your business requests analytics support, how do they typically frame the request?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "\"Can you build a dashboard for this?\" — the tool request comes first",
+       "score": 1
+      },
+      {
+       "label": "Usually a reporting request, then the business question emerges later",
+       "score": 2
+      },
+      {
+       "label": "A mix — some come with a clear question, others with a vague brief",
+       "score": 3
+      },
+      {
+       "label": "Usually a clear business question they want answered",
+       "score": 4
+      },
+      {
+       "label": "Always a specific decision to be made, with the data need clearly defined",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "analytics_starting_point_q2",
+     "text": "How many dashboards or reports does your business have that nobody actively uses anymore?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have a long list — dashboard fatigue is real for us",
+       "score": 1
+      },
+      {
+       "label": "More than a few — some have definitely fallen out of use",
+       "score": 2
+      },
+      {
+       "label": "A handful — it happens but we try to keep it under control",
+       "score": 3
+      },
+      {
+       "label": "Rarely — we are fairly disciplined about what we build",
+       "score": 4
+      },
+      {
+       "label": "None — everything we have built is actively used",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "analytics_starting_point_q3",
+     "text": "Who defines what gets measured in your business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Whoever requests it first or has budget — it is reactive",
+       "score": 1
+      },
+      {
+       "label": "Largely the analytics or IT team, working independently of the business",
+       "score": 2
+      },
+      {
+       "label": "A mix — some decisions are strategic, others come from whoever is loudest",
+       "score": 3
+      },
+      {
+       "label": "Leadership sets the priorities and analytics builds to them",
+       "score": 4
+      },
+      {
+       "label": "There is a clear commercial framework — every measurement traces back to a business question",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are building dashboards before defining the problem",
+     "text": "Starting with \"can you put it in a dashboard?\" is not unusual — it is where most businesses land when analytics is treated as a service function rather than a strategic one. The result is a growing library of reporting that nobody asked the right questions to build. The fix is not fewer dashboards. It is a different starting point.",
+     "steps": [
+      "Before building any new dashboard or report, write down the specific business question it answers",
+      "If you cannot write the question in one sentence, do not build it yet",
+      "Audit your existing dashboards: for each one, ask who uses it, how often, and what decision it informs — archive anything that cannot answer all three"
+     ]
+    },
+    "mid": {
+     "headline": "The starting point is improving — the habit is not consistent yet",
+     "text": "You are asking better questions than most, but the pattern is not embedded in how your team works yet. Some requests come in well-framed, others do not — and the ones that do not often result in dashboards that drift out of use. The goal is making the business-question-first habit the default, not the exception.",
+     "steps": [
+      "Introduce a simple intake process for analytics requests: what decision does this support, who makes it, and how often",
+      "Review the last five things your analytics team built — count how many started with a clear business question",
+      "Share one example with your team where starting from the business problem led to a better outcome than starting from the data"
+     ]
+    },
+    "high": {
+     "headline": "Your team starts in the right place",
+     "text": "Starting with the business problem is harder than it sounds — it requires the discipline to slow down before building, and the trust between business and analytics to have honest conversations before anything gets built. You have that working. The next step is making sure new team members inherit the same habit.",
+     "steps": [
+      "Document the intake process so it does not live only in institutional memory",
+      "When new analytics requests come in, have a senior team member walk through the business question framing before work begins",
+      "Revisit your measurement framework quarterly — business priorities shift, and the things you are measuring should shift with them"
+     ]
+    }
+   }
+  },
+  {
+   "id": "management_visibility",
+   "name": "Management Visibility",
+   "questions": [
+    {
+     "id": "management_visibility_q1",
+     "text": "As your business has grown, how has leadership's ability to see what is happening day-to-day changed?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have lost visibility — we rely on filtered information and rarely see the detail",
+       "score": 1
+      },
+      {
+       "label": "Visibility has dropped — we know less than we did when we were smaller",
+       "score": 2
+      },
+      {
+       "label": "It has held steady — roughly the same as it was",
+       "score": 3
+      },
+      {
+       "label": "We have maintained visibility through better systems as we have scaled",
+       "score": 4
+      },
+      {
+       "label": "Visibility has improved — we see more now than when we were smaller",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "management_visibility_q2",
+     "text": "When something goes wrong — a key client at risk, a cost blowout, a delivery delay — how does leadership typically find out?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "After the fact, when the damage is already done",
+       "score": 1
+      },
+      {
+       "label": "From the team raising it, often later than we would like",
+       "score": 2
+      },
+      {
+       "label": "It varies — sometimes early, sometimes too late",
+       "score": 3
+      },
+      {
+       "label": "Early enough to respond, through regular check-ins and reporting",
+       "score": 4
+      },
+      {
+       "label": "Proactively, through live signals built into our reporting — we rarely get surprised",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "management_visibility_q3",
+     "text": "How often does your leadership team get surprised by a result they did not see coming?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Frequently — unexpected results are a regular part of the management experience",
+       "score": 1
+      },
+      {
+       "label": "Sometimes — we are caught off-guard more than we would like",
+       "score": 2
+      },
+      {
+       "label": "Occasionally — maybe once a quarter",
+       "score": 3
+      },
+      {
+       "label": "Rarely — most outcomes are anticipated",
+       "score": 4
+      },
+      {
+       "label": "Almost never — the visibility is strong enough that surprises are rare",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "leadership_team_size",
+     "type": "number",
+     "text": "How many people are in your leadership team?",
+     "hint": "Include all senior leaders who regularly attend leadership meetings",
+     "suffix": "people",
+     "min": 2,
+     "max": 50,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "average_hourly_rate",
+     "type": "number",
+     "text": "What is the approximate fully-loaded hourly cost of a leader in your team?",
+     "hint": "Use annual salary divided by 2,000 as a guide — e.g. $150,000/year is roughly $75/hr. Include super or benefits if relevant.",
+     "suffix": "$/hr",
+     "min": 25,
+     "max": 500,
+     "step": 25,
+     "default": 100,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Leadership is operating with limited visibility",
+     "text": "One of the natural costs of growth is that management moves further from the ground. When you were smaller, you knew what was happening because you were in the room. As the business scales, that direct line gets replaced by layers — and if those layers are not backed by good information, you are relying on what people choose to tell you. That is a risk.",
+     "steps": [
+      "List the five things that would most concern you if they went wrong this week — do you have a live number for each one?",
+      "For any gap, ask whether the data exists but is not visible, or whether it is not being captured at all",
+      "Build one early-warning signal for your highest-risk area before adding any new reporting"
+     ]
+    },
+    "mid": {
+     "headline": "Visibility is patchy — some areas are clear, others are dark",
+     "text": "You have coverage in some parts of the business but not others. The dangerous version of this is when the blind spots happen to be in the areas that matter most to profit. Patchwork visibility feels manageable until something goes wrong in exactly the place you cannot see.",
+     "steps": [
+      "Map your key risk areas against your current reporting — mark anything with no live number as a gap",
+      "Fill visibility gaps in areas tied to your top profit drivers first",
+      "Set a quarterly review to check whether the coverage you have is still pointing at the right things"
+     ]
+    },
+    "high": {
+     "headline": "You have kept leadership close to what is happening as the business has grown",
+     "text": "Getting visibility to improve as a business scales is not common — most businesses accept that management gets further from the detail as headcount grows. You have built the systems to keep leadership close to what is happening. The work now is keeping it sharp as the business continues to change.",
+     "steps": [
+      "Check that your visibility covers new areas the business has moved into — old systems do not always expand automatically",
+      "Bring new leaders into understanding what the reporting shows and why — institutional knowledge walks out the door",
+      "Review annually whether your early-warning signals are pointing at the right things as the business evolves"
+     ]
+    }
+   }
+  },
+  {
+   "id": "commercial_translation",
+   "name": "Commercial Translation",
+   "questions": [
+    {
+     "id": "commercial_translation_q1",
+     "text": "When your analytics team delivers an insight, how often does it lead directly to a commercial decision or action?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — insights are noted but rarely change what we do",
+       "score": 1
+      },
+      {
+       "label": "Sometimes — it depends on the insight and who is paying attention",
+       "score": 2
+      },
+      {
+       "label": "About half the time — hit and miss",
+       "score": 3
+      },
+      {
+       "label": "Often — insights regularly shape what leadership decides",
+       "score": 4
+      },
+      {
+       "label": "Almost always — every insight is framed around a decision and leads to action",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Analytics is costing without clearly returning",
+     "text": "When you cannot articulate the commercial return on analytics, it is usually because the work was never framed around commercial outcomes in the first place. Insights that do not connect to a decision are just interesting — they do not move the business. The gap here is not effort. It is about starting with the value question before the data question.",
+     "steps": [
+      "For your next three analytics outputs, ask before you start: what commercial decision will this inform?",
+      "Look back at last quarter's analytics work — identify one output that changed a decision and one that did not, then ask why",
+      "Build a simple log of insights delivered and decisions taken — even a spreadsheet — to make the return visible over time"
+     ]
+    },
+    "mid": {
+     "headline": "You are getting commercial value — but not consistently",
+     "text": "Some of your analytics work is driving real decisions. The rest is filling reports. The challenge is that both look similar on the surface — data gets produced, meetings happen, numbers get reviewed. The difference shows up in whether anything changes as a result. Closing the gap means building the commercial translation into how work gets commissioned, not just how it gets delivered.",
+     "steps": [
+      "Add one question to every analytics brief: what will we do differently if this shows X versus Y?",
+      "Review the last five insights your team delivered — for each, identify whether it led to a decision or just a discussion",
+      "Share one concrete example with your team of analytics that directly changed a commercial outcome — make the connection visible"
+     ]
+    },
+    "high": {
+     "headline": "Analytics is paying its way",
+     "text": "You can see the commercial return because you built the analytics around commercial questions in the first place. That is the right order of operations, and it is not where most businesses start. The value at this stage is in keeping that discipline as the business grows — new people, new tools, and new complexity can erode the connection between data and decisions if the framework does not hold.",
+     "steps": [
+      "Document the commercial cases your analytics has supported — they are the proof points for continued investment",
+      "As you add new capabilities or team members, make commercial context part of how analytics work gets framed from day one",
+      "Look for the next area of the business where the same approach could apply — what are you not yet measuring that has a clear commercial impact?"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "weekly_cost_of_unclear_data",
+   "label": "Weekly cost of inconclusive data discussions across your leadership team",
+   "format": "currency",
+   "formula": "hours_per_leader_per_week * leadership_team_size * average_hourly_rate",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_cost_of_unclear_data",
+   "label": "Annual cost of inconclusive data discussions across your leadership team",
+   "format": "currency_per_period",
+   "formula": "hours_per_leader_per_week * leadership_team_size * average_hourly_rate * 48",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role?",
+  "answers": [
+   {
+    "label": "CEO / Managing Director",
+    "tag": "ceo"
+   },
+   {
+    "label": "CFO / Finance Leader",
+    "tag": "cfo"
+   },
+   {
+    "label": "Head of Analytics or Data",
+    "tag": "analytics-head"
+   },
+   {
+    "label": "Commercial or Operations Leader",
+    "tag": "commercial-lead"
+   }
+  ]
+ }
+}

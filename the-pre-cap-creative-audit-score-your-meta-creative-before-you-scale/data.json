@@ -1,0 +1,634 @@
+{
+ "slug": "the-pre-cap-creative-audit-score-your-meta-creative-before-you-scale",
+ "title": "The Pre-Cap Creative Audit",
+ "subtitle": "Score whether your Meta creative can actually hold a bigger budget, before you raise the cap.",
+ "brand": {
+  "accent": "#4d65ff",
+  "accent_secondary": "#7a72b6",
+  "is_dark": true,
+  "surface": "#0b0920",
+  "font_heading": "Inter",
+  "font_body": "Inter",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 5,
+ "persona_selector": {
+  "id": "spend_level",
+  "text": "What are you spending on Meta right now?",
+  "answers": [
+   {
+    "label": "Under $5k a month",
+    "tag": "small"
+   },
+   {
+    "label": "$5k to $30k a month",
+    "tag": "scaling"
+   },
+   {
+    "label": "$30k to $100k a month",
+    "tag": "growth"
+   },
+   {
+    "label": "$100k+ a month",
+    "tag": "large"
+   }
+  ]
+ },
+ "categories": [
+  {
+   "id": "hook_strength",
+   "name": "The 3-Second Hook",
+   "questions": [
+    {
+     "id": "thumb_stop",
+     "text": "On mute, in the first 3 seconds, is it obvious what's being sold?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "frame_one",
+     "text": "Does frame one show the product or the problem, not a logo intro?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "thumbstop_rate",
+     "text": "Do you track thumb-stop rate (3s views / impressions) on cold traffic?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your hooks are losing the click before budget matters",
+     "text": "On a 5x budget jump, a weak first 3 seconds gets punished, not rewarded. If a stranger can't tell what's being sold on mute, the spend just buys more scroll-past.",
+     "steps": [
+      "Rewrite every hook so the product or problem is on-screen in second one",
+      "Cut logo intros and slow builds from the first 3 seconds",
+      "Pull thumb-stop rate per creative and cap anything under 30% on cold traffic"
+     ]
+    },
+    "mid": {
+     "headline": "The hooks work, but not all of them hold at scale",
+     "text": "Some creatives stop the scroll and some coast on warm audiences. At higher spend the coasting ones bleed. Sort by thumb-stop before you raise a cap.",
+     "steps": [
+      "Rank live creatives by thumb-stop rate, not by spend",
+      "Keep only hooks that clear your cold-traffic benchmark before scaling",
+      "Rebuild the middle of the pack instead of pushing budget through it"
+     ]
+    },
+    "high": {
+     "headline": "Your hooks are built to survive a budget jump",
+     "text": "Frame one earns the stop and the data backs it. Keep protecting the first 3 seconds as the thing you scale on.",
+     "steps": [
+      "Keep thumb-stop rate as the first gate before any budget increase",
+      "Bank your winning hook patterns into a swipe file for the next batch",
+      "Test one new hook angle a week so the account never runs dry"
+     ]
+    }
+   }
+  },
+  {
+   "id": "offer_message",
+   "name": "Offer and Message Clarity",
+   "questions": [
+    {
+     "id": "one_message",
+     "text": "Does each ad carry one clear message instead of three at once?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "offer_strength",
+     "text": "Is there a single strong offer a cold stranger would act on?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "survives_frame1",
+     "text": "Does the offer stay clear past the hook, not drop off after frame 1?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Too many messages, no single reason to act",
+     "text": "When an ad says three things it says nothing. A bigger budget just distributes the confusion faster. One ad, one message, one offer.",
+     "steps": [
+      "Strip each ad to a single message a stranger repeats back",
+      "Put one strong offer in plain language, early",
+      "Cut secondary CTAs and 'also' lines that split attention"
+     ]
+    },
+    "mid": {
+     "headline": "The message is clear, the offer isn't always sharp",
+     "text": "Your ads read cleanly but the offer sometimes hides. At scale the sharp-offer creatives carry the account, so make the offer impossible to miss.",
+     "steps": [
+      "Lead with the offer, not the brand story",
+      "Test one stronger offer against your control before scaling spend",
+      "Make sure the promise in frame one survives to the CTA"
+     ]
+    },
+    "high": {
+     "headline": "One message, one offer, holds all the way through",
+     "text": "Your creatives make a single clear promise and keep it. That's what lets budget compound instead of leak.",
+     "steps": [
+      "Keep the one-message rule as a hard gate on new creative",
+      "Rotate the offer angle before fatigue, not after",
+      "Document your best-performing offer framing for the next launch"
+     ]
+    }
+   }
+  },
+  {
+   "id": "creative_spread",
+   "name": "Format and Placement Spread",
+   "questions": [
+    {
+     "id": "ugc_vs_studio",
+     "text": "Do you run native, UGC-style creative, not just polished studio spots?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "creative_volume",
+     "text": "Are you feeding 3 to 4 strong concepts, not 20 near-identical cuts?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "placement_fit",
+     "text": "Are creatives built for placement (vertical, sound-off, mobile-first)?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The algorithm doesn't have enough real variety to work with",
+     "text": "Twenty versions of one studio spot is one bet, not a spread. Broad targeting needs genuinely different concepts to find the buyer.",
+     "steps": [
+      "Add native, UGC-style creative next to the polished spots",
+      "Narrow to 3-4 distinct concepts, then vary within each",
+      "Cut variants that are the same idea in a new font"
+     ]
+    },
+    "mid": {
+     "headline": "Decent spread, but a few formats do all the work",
+     "text": "You have variety, but placement fit and native creative are thin in spots. Fill those before you scale so the algorithm keeps options.",
+     "steps": [
+      "Add a native/UGC concept to every scaling ad set",
+      "Build for the placement: vertical, legible sound-off, mobile-first",
+      "Retire look-alike variants that just split your data"
+     ]
+    },
+    "high": {
+     "headline": "A real spread the algorithm can actually optimize",
+     "text": "Distinct concepts, native formats, built for placement. That's the creative volume a bigger budget needs to stay efficient.",
+     "steps": [
+      "Keep 3-4 live concepts and refresh one per week",
+      "Track which concept, not which variant, is winning",
+      "Feed new native angles before the current set fatigues"
+     ]
+    }
+   }
+  },
+  {
+   "id": "landing_match",
+   "name": "Message-to-Landing Match",
+   "questions": [
+    {
+     "id": "promise_match",
+     "text": "Does the landing page repeat the ad's promise in the first screen?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "page_speed",
+     "text": "Does the page load fast enough that the click survives?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "scent_trail",
+     "text": "Can a buyer tell within seconds they landed in the right place?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're paying for clicks the page then loses",
+     "text": "A strong ad into a mismatched or slow page is money spent to bounce. At scale the leak is proportional to the budget.",
+     "steps": [
+      "Make the landing headline echo the exact ad promise",
+      "Fix load speed before you raise spend, not after",
+      "Match the page's first screen to the creative a buyer just saw"
+     ]
+    },
+    "mid": {
+     "headline": "The page mostly holds, but the scent trail breaks in places",
+     "text": "Some ads hand off cleanly and some drop the buyer into a generic page. Tighten the match on your scaling creatives first.",
+     "steps": [
+      "Build a matched landing section per top creative angle",
+      "Audit load speed on mobile for your highest-spend ads",
+      "Keep the promise, proof and CTA above the fold"
+     ]
+    },
+    "high": {
+     "headline": "Ad-to-page handoff is tight enough to scale on",
+     "text": "The promise carries from creative to page and the page loads fast. That's what turns more spend into more buyers, not more bounce.",
+     "steps": [
+      "Keep a matched page section for each scaling concept",
+      "Re-check mobile speed whenever you add budget",
+      "Test one stronger above-the-fold proof point per month"
+     ]
+    }
+   }
+  },
+  {
+   "id": "scale_discipline",
+   "name": "Hold vs Break Signals",
+   "questions": [
+    {
+     "id": "kill_discipline",
+     "text": "Do you kill an ad when it stops working, not when you get bored?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "weekly_judgment",
+     "text": "Do you judge the account weekly, not by the daily panic?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "breakeven_known",
+     "text": "Do you know the break-even ROAS a creative must clear before you raise the cap?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No, never",
+       "score": 1
+      },
+      {
+       "label": "Rarely",
+       "score": 2
+      },
+      {
+       "label": "Sometimes",
+       "score": 3
+      },
+      {
+       "label": "Usually",
+       "score": 4
+      },
+      {
+       "label": "Yes, every time",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're scaling on gut, and gut breaks at $20k a day",
+     "text": "Without kill rules and a break-even number, a budget bump is a guess. Guessing is what drains a small account and blows up a big one.",
+     "steps": [
+      "Set a rule for when an ad gets killed, and follow it",
+      "Judge the account on a weekly cadence, not daily emotion",
+      "Calculate your break-even ROAS and treat it as the scaling gate"
+     ]
+    },
+    "mid": {
+     "headline": "You have discipline, it's just not consistent yet",
+     "text": "You kill losers and check the numbers, but not on a system. At scale the discipline has to be a rule, not a mood.",
+     "steps": [
+      "Write your kill and scale rules down and apply them the same way each week",
+      "Set a break-even ROAS per product and check creatives against it",
+      "Review weekly, decide weekly, stop reacting to daily swings"
+     ]
+    },
+    "high": {
+     "headline": "You scale on signals, not nerves",
+     "text": "Clear kill rules, weekly judgment, and a break-even number. That's the discipline that lets an account go from $1k to $20k a day without falling over.",
+     "steps": [
+      "Keep the weekly review as the only place scaling decisions get made",
+      "Re-check break-even ROAS whenever COGS or shipping moves",
+      "Raise caps in steps the creative has already proven it can hold"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 45,
+  "mid": 72
+ },
+ "tier_names": {
+  "low": "Not Ready to Scale",
+  "mid": "Scale With Caution",
+  "high": "Built to Hold Budget"
+ },
+ "cta": {
+  "headline": "Turn this score into creative that holds budget",
+  "description": "You can see where your creative would break under a bigger budget. The next step is a system that audits every creative before you scale and turns your best posts into content and lead magnets on autopilot. Book a 30-minute call and I'll show you where to start.",
+  "button": "Book a Call",
+  "url": "https://calendly.com/ivan-intelligents/30min"
+ }
+}

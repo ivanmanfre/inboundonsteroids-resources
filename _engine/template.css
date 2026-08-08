@@ -1,0 +1,39 @@
+/* Template Engine — stack fit check + personalized artifact download */
+@import url("./shared.css");
+
+.lmt-root { font-family: 'Source Serif 4', Georgia, serif; }
+
+/* Reuse hero / intro / container from shared */
+
+.lmt-stack { margin: 3rem 0; padding: 0; background: transparent; border: none; border-top: 1px solid rgba(19, 18, 16,0.08); border-radius: 0; box-shadow: none; padding-top: 2.5rem; }
+.lmt-stack h2 { font-family: 'Schibsted Grotesk', Georgia, serif; font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 400; margin: 0 0 .6rem; color: var(--ink); letter-spacing: -0.01em; line-height: 1.15; }
+.lmt-stack h2 em { font-family: 'Schibsted Grotesk', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); }
+.lmt-stack p { margin: 0 0 1.75rem; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.65; max-width: 38rem; font-family: 'Source Serif 4', Georgia, serif; }
+.lmt-question { margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--hairline); }
+.lmt-question:last-of-type { border-bottom: none; padding-bottom: 0; margin-bottom: 0; }
+.lmt-q-label { display: block; font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); font-weight: 600; margin-bottom: .6rem; }
+.lmt-q-options { display: flex; flex-wrap: wrap; gap: .5rem; }
+.lmt-q-opt { padding: .9rem 1.15rem; background: transparent; color: var(--ink); font-family: 'Source Serif 4', Georgia, serif; font-size: 1rem; font-weight: 500; line-height: 1.45; border: 1px solid var(--hairline); border-radius: 0; cursor: pointer; transition: background .15s, border-color .15s; }
+.lmt-q-opt:hover { background: rgba(19, 18, 16,0.03); border-color: var(--hairline-bold); }
+.lmt-q-opt.selected { background: transparent; color: var(--ink); border-color: var(--hairline); border-left: 4px solid var(--accent); padding-left: calc(1.15rem - 3px); font-weight: 600; }
+
+.lmt-result { display: none; margin: 3rem 0; padding: 2rem 0 2.5rem; background: transparent; border: none; border-top: 1px solid rgba(19, 18, 16,0.08); border-left: none; border-radius: 0; box-shadow: none; }
+.lmt-root.ready .lmt-result { display: block; }
+.lmt-result h3 { font-family: 'Schibsted Grotesk', Georgia, serif; font-size: 1.5rem; font-weight: 400; margin: 0 0 .6rem; color: var(--ink); letter-spacing: -0.01em; line-height: 1.2; }
+.lmt-result h3 em { font-family: 'Schibsted Grotesk', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); }
+.lmt-result p { margin: 0 0 1.5rem; color: var(--ink-soft); font-family: 'Source Serif 4', Georgia, serif; font-size: 1.0625rem; line-height: 1.65; }
+
+.lmt-download-wrap { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+.lmt-download { padding: 14px 28px; background: #131210; color: #FFFFFF; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; text-decoration: none; border-radius: 0; font-size: 17px; letter-spacing: 0; transition: background 80ms; border: none; cursor: pointer; box-shadow: none; }
+.lmt-download:hover { background: #000; color: #FFFFFF; }
+.lmt-download[disabled] { opacity: 0.4; cursor: not-allowed; }
+.lmt-download-meta { font-family: 'Source Serif 4', Georgia, serif; font-size: 13px; color: var(--ink-mute); letter-spacing: .08em; font-weight: 600; text-transform: uppercase; }
+
+.lmt-content { padding: 3rem 0; }
+.lmt-content h2, .lmt-content h3 { color: var(--ink); margin: 4rem 0 1.25rem; letter-spacing: -0.01em; font-family: 'Schibsted Grotesk', Georgia, serif; font-weight: 400; line-height: 1.15; }
+.lmt-content h2 { font-size: clamp(1.75rem, 3vw, 2.35rem); }
+.lmt-content h3 { font-size: 1.4rem; margin-top: 2rem; }
+.lmt-content h2 em, .lmt-content h3 em { font-family: 'Schibsted Grotesk', Georgia, serif; font-style: italic; font-weight: 400; color: var(--accent); }
+.lmt-content p { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.08rem; line-height: 1.75; color: var(--ink); margin: 0 0 1rem; }
+.lmt-content pre { background: var(--paper-sunk); border: 1px solid var(--hairline); padding: 1.25rem; border-radius: var(--radius-md); overflow-x: auto; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .9rem; line-height: 1.55; }
+.lmt-content code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: .9em; background: var(--paper-sunk); padding: .15rem .35rem; border-radius: 2px; }

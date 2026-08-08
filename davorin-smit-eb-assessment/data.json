@@ -1,0 +1,622 @@
+{
+ "slug": "davorin-smit-eb-assessment",
+ "title": "Influencer Campaign Readiness Score",
+ "subtitle": "Score your influencer marketing process across five areas and see exactly where campaigns are leaking installs and budget.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "brief_goal_setting",
+   "name": "Brief & Goal Setting",
+   "questions": [
+    {
+     "id": "q1",
+     "text": "Before a campaign launches, how do you define what success looks like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We run the campaign and evaluate what happened after",
+       "score": 1
+      },
+      {
+       "label": "We set a general goal like more awareness or more downloads",
+       "score": 2
+      },
+      {
+       "label": "We agree on a specific KPI — like CPI or ROAS — before we start",
+       "score": 3
+      },
+      {
+       "label": "We define KPIs, document benchmarks from previous campaigns, and align the whole team before briefing",
+       "score": 4
+      },
+      {
+       "label": "We set KPIs, install targets by influencer tier, and channel-level benchmarks — all locked before outreach begins",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q2",
+     "text": "How clearly do you communicate your game or app's positioning to an influencer before they go live?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We send them a download link and let them figure it out",
+       "score": 1
+      },
+      {
+       "label": "We share a short brief with the app name and a few bullet points",
+       "score": 2
+      },
+      {
+       "label": "We provide a structured brief covering key messages, tone, and what not to say",
+       "score": 3
+      },
+      {
+       "label": "We brief in detail, require a content review, and give feedback before any post goes live",
+       "score": 4
+      },
+      {
+       "label": "We co-create an onboarding kit — brand guidelines, key messages, example content — and run a review step for every activation",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q3",
+     "text": "How do you plan the budget for an influencer campaign?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We decide a number when an opportunity comes up, with no structure behind it",
+       "score": 1
+      },
+      {
+       "label": "We have a rough total in mind but no plan for how to split it",
+       "score": 2
+      },
+      {
+       "label": "We divide budget between influencer fees, content production, and a contingency buffer before the campaign starts",
+       "score": 3
+      },
+      {
+       "label": "We allocate by creator tier — micro, mid, macro — with expected output per tier",
+       "score": 4
+      },
+      {
+       "label": "We plan budget by tier and channel, each allocation tied to expected installs or ROAS, and we review the split after every campaign",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your campaigns start without a clear target — that's where installs get expensive.",
+     "text": "Without defined KPIs and a structured brief going in, you're measuring success after the fact. You can't optimize what you didn't define. The first fix is locking goals before outreach, not after.",
+     "steps": [
+      "Define your primary KPI — CPI, ROAS, or install volume — before any campaign kicks off",
+      "Set a benchmark from your last campaign or industry data so you know what good looks like",
+      "Write a one-page brief that covers goals, target audience, key messages, and budget split — share it with everyone touching the campaign before you contact a single creator"
+     ]
+    },
+    "mid": {
+     "headline": "You have goals, but the structure isn't tight enough to optimize consistently.",
+     "text": "You're setting targets, which puts you ahead of most. The gap is in how precisely those targets translate into briefing and budget allocation. Tighten that and your campaigns become repeatable, not just occasionally good.",
+     "steps": [
+      "Break your KPI down by creator tier — what CPI do you expect from a micro vs a mid-tier influencer?",
+      "Align your budget allocation to those tier-level targets before outreach begins",
+      "Add a benchmark comparison to every campaign debrief so your targets get sharper with each cycle"
+     ]
+    },
+    "high": {
+     "headline": "Strong foundation — your campaigns start with the right structure.",
+     "text": "You're setting goals, briefing precisely, and planning budget with discipline. At this level, the next move is using campaign data to make those targets sharper every time.",
+     "steps": [
+      "Build a benchmark library from past campaigns and use it to set tier-specific CPI and ROAS targets for new ones",
+      "Review brief quality as part of your post-campaign debrief — what did creators misunderstand?",
+      "Document the brief format that consistently delivers the best activation quality and make it your team's standard"
+     ]
+    }
+   }
+  },
+  {
+   "id": "influencer_scouting_fit",
+   "name": "Influencer Scouting & Fit",
+   "questions": [
+    {
+     "id": "q4",
+     "text": "How do you find influencers for your game or app campaigns?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We reach out to creators who have contacted us or who we happen to follow",
+       "score": 1
+      },
+      {
+       "label": "We search manually on one platform using basic keyword filters",
+       "score": 2
+      },
+      {
+       "label": "We cross-check follower count, engagement rate, and content type across a few platforms",
+       "score": 3
+      },
+      {
+       "label": "We vet creators for audience demographics, content quality, and past fit with games or apps before outreach",
+       "score": 4
+      },
+      {
+       "label": "We run structured scouting across platforms with defined criteria tied to our target player profile — genre, age, geography, device",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q5",
+     "text": "How do you verify that an influencer's audience matches your game's target player?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We go by gut feel and their overall channel vibe",
+       "score": 1
+      },
+      {
+       "label": "We check follower count and recent view numbers",
+       "score": 2
+      },
+      {
+       "label": "We look at the audience breakdown in their media kit",
+       "score": 3
+      },
+      {
+       "label": "We request audience analytics and check age, gender, and geography against our target player profile",
+       "score": 4
+      },
+      {
+       "label": "We verify audience data, cross-check with past game and app content performance, and filter for audience overlap with our target player before committing",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q6",
+     "text": "What does your influencer outreach process look like end to end?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We DM creators when we think of it, with no consistent process",
+       "score": 1
+      },
+      {
+       "label": "We send a standard pitch with little personalization",
+       "score": 2
+      },
+      {
+       "label": "We personalize outreach with a reference to their content and a clear value proposition",
+       "score": 3
+      },
+      {
+       "label": "We run a structured pipeline — identify, outreach, negotiate, brief, contract — with tracking at each step",
+       "score": 4
+      },
+      {
+       "label": "We run a full pipeline with tiered outreach by creator size, response rate monitoring, and a database of past creators and their campaign performance",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Reactive scouting means you're always starting campaigns with the wrong lineup.",
+     "text": "Picking influencers based on who reaches out or who you follow leads to mismatched audiences and wasted budget. The creator has to fit the game, not just the niche. That match needs a process, not gut feel.",
+     "steps": [
+      "Build a scouting brief before you open any platform: target player profile, genre fit, device type, geography",
+      "Define minimum criteria for a creator to make your list — engagement rate floor, content type, audience age range",
+      "Track every outreach attempt and outcome in a simple spreadsheet so you build a database instead of starting from scratch each campaign"
+     ]
+    },
+    "mid": {
+     "headline": "You're vetting creators, but audience verification is where installs get decided.",
+     "text": "You've moved past follower count and you're checking content quality. The next gap is audience data — a creator with 500k followers and the wrong 500k costs more per install than a micro with a perfect 50k. Verify before you commit.",
+     "steps": [
+      "Request audience analytics from every creator before signing — age, gender, geography, and device where the platform provides it",
+      "Compare their historical game or app content performance to your target genre before outreach",
+      "Score each creator on audience fit, not just size, and use that score in your negotiation"
+     ]
+    },
+    "high": {
+     "headline": "Your scouting process is a real asset — now make it compound.",
+     "text": "You're vetting precisely and running a structured outreach pipeline. The next level is turning that into a system that gets faster and more accurate with every campaign you run.",
+     "steps": [
+      "Build a creator database with performance scores, audience data, and content fit ratings — searchable across campaigns",
+      "Add response rate and negotiation speed to your creator profiles so you know who to contact first when you need a fast turnaround",
+      "Define tiered outreach sequences by creator size so your team can scale scouting without the process degrading"
+     ]
+    }
+   }
+  },
+  {
+   "id": "campaign_execution_conte",
+   "name": "Campaign Execution & Content",
+   "questions": [
+    {
+     "id": "q7",
+     "text": "How do you balance your brand guidelines with the influencer's creative freedom?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We give creators full freedom and hope the content feels on-brand",
+       "score": 1
+      },
+      {
+       "label": "We share brand guidelines and trust creators to follow them",
+       "score": 2
+      },
+      {
+       "label": "We share guidelines and require a content review before any post goes live",
+       "score": 3
+      },
+      {
+       "label": "We review content and give structured feedback with specific changes before we approve",
+       "score": 4
+      },
+      {
+       "label": "We co-create a brief that blends our requirements with the creator's format so the final content feels native to their channel, not like an ad",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q8",
+     "text": "How do you handle legal and compliance requirements across your influencer campaigns?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We handle it case by case — contracts and disclosures are informal",
+       "score": 1
+      },
+      {
+       "label": "We ask influencers to add a sponsored disclosure but don't track whether they do",
+       "score": 2
+      },
+      {
+       "label": "We include a standard contract with disclosure and usage rights clauses",
+       "score": 3
+      },
+      {
+       "label": "We use contracts with disclosure, exclusivity windows, and content rights, and we check compliance after each post goes live",
+       "score": 4
+      },
+      {
+       "label": "We have a full legal framework per activation: contracts, disclosure requirements, usage rights, exclusivity periods, and a compliance check before and after each post",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q9",
+     "text": "When a campaign goes live, how closely do you track what's happening in real time?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We check views and likes a few days after the creator posts",
+       "score": 1
+      },
+      {
+       "label": "We monitor performance manually every couple of days during the live window",
+       "score": 2
+      },
+      {
+       "label": "We track installs via UTM links or promo codes on a daily basis while the campaign runs",
+       "score": 3
+      },
+      {
+       "label": "We monitor installs, CPI, and engagement daily and flag underperforming creators to the team during the live window",
+       "score": 4
+      },
+      {
+       "label": "We track installs, CPI, engagement, and early retention signals in real time, with defined escalation steps if a creator underperforms",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Campaigns going live without a review step means brand risk and wasted budget every time.",
+     "text": "No review, no contract, no real-time tracking — that's three places where a campaign bleeds before you even know it. The fix starts with one step: nothing goes live without your approval.",
+     "steps": [
+      "Add a content review step to every campaign — every post gets checked before it's published",
+      "Set up a UTM link or promo code for every activation so you can count installs as they happen",
+      "Draft a one-page standard contract covering disclosure, content rights, and what happens if a creator misses their posting date"
+     ]
+    },
+    "mid": {
+     "headline": "Your review process is in place — now close the gap between content approval and performance tracking.",
+     "text": "You're reviewing content and running contracts. The next gap is real-time performance visibility. If a creator is underperforming on day two, you want to know on day two — not when the invoice arrives.",
+     "steps": [
+      "Set up daily tracking for installs and CPI per creator, not just campaign totals",
+      "Define a threshold: if a creator's CPI is more than 2x your target by day 3, you intervene — pause, give feedback, or reallocate",
+      "Add a compliance check post-live: did the disclosure go up, is the link still active? Log it per creator"
+     ]
+    },
+    "high": {
+     "headline": "Your execution is tight — campaigns run with control and real-time visibility.",
+     "text": "Content review, legal compliance, daily performance tracking with escalation — that's a mature execution layer. The next level is using that real-time data to optimize inside a live campaign, not only for the next one.",
+     "steps": [
+      "Define mid-campaign optimization rules: when do you push for a reshoot, a new CTA, or a follow-up post from a top performer?",
+      "Add early retention (D1/D7) to your live tracking so you can see install quality, not just install volume",
+      "Document what a high-performing activation looks like — content format, posting window, caption structure — and wire it into your next brief"
+     ]
+    }
+   }
+  },
+  {
+   "id": "performance_measurement",
+   "name": "Performance Measurement",
+   "questions": [
+    {
+     "id": "q10",
+     "text": "How do you report on campaign results to your team or clients?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We share a summary of total views and likes",
+       "score": 1
+      },
+      {
+       "label": "We pull a basic report with reach, views, and link clicks",
+       "score": 2
+      },
+      {
+       "label": "We report on installs, CPI, and ROAS at the end of each campaign",
+       "score": 3
+      },
+      {
+       "label": "We report installs, CPI, ROAS, and D1/D7 retention, broken down by creator",
+       "score": 4
+      },
+      {
+       "label": "We report a full funnel — reach, installs, CPI, ROAS, retention — with creator-level breakdown, benchmark comparison, and documented learnings for the next campaign",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_per_week",
+     "type": "number",
+     "text": "How many hours per week does your team spend on influencer outreach, tracking, and reporting manually?",
+     "hint": "Include time on emails, spreadsheet updates, status checks, and building reports. Fewer hours usually means more of this is systematized. We use this number to estimate your annual cost of manual campaign management.",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "Math.max(0, Math.min(100, 100 - (x * 5)))"
+    },
+    {
+     "id": "hourly_cost",
+     "type": "number",
+     "text": "What is the approximate loaded hourly cost (EUR) for the team member who handles this work?",
+     "hint": "Include salary, employer taxes, and a share of overhead. This is used only to calculate your annual cost of manual campaign management — it does not affect your score.",
+     "suffix": "EUR/hr",
+     "min": 10,
+     "max": 150,
+     "step": 5,
+     "default": 35,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're measuring reach, not results — and that gap is where budget disappears.",
+     "text": "Views and likes don't tell you your CPI. If you can't count the installs a campaign drove and what each install cost, you can't make a case for the budget — or improve it. Start with installs.",
+     "steps": [
+      "Add a UTM link or unique promo code to every influencer activation so installs are trackable from day one",
+      "Set up a simple reporting template: creator name, total posts, installs, CPI, ROAS — fill it for every campaign going forward",
+      "Pick one KPI to own this quarter: CPI. Track it per creator. Once you have a baseline, everything else follows"
+     ]
+    },
+    "mid": {
+     "headline": "You're tracking installs and CPI — now tie it to retention and your reporting becomes a real growth tool.",
+     "text": "Installs and ROAS are the right metrics to own. The next level is install quality: a campaign that drives 10,000 installs at half your target D7 retention isn't a win, it's a churn problem. Add retention to your dashboard.",
+     "steps": [
+      "Add D1 and D7 retention to your campaign reporting, broken down by creator where attribution allows",
+      "Set a retention floor alongside your CPI target — a campaign only clears the bar if both metrics are in range",
+      "Review your manual reporting hours and identify one step you can systematize — status tracking, creator follow-ups, or report generation"
+     ]
+    },
+    "high": {
+     "headline": "Full-funnel reporting with creator-level data — your campaigns are measurable at every step.",
+     "text": "You're tracking what matters and reporting at the right level of detail. The focus now is reducing the manual hours that go into producing this data so your team spends more time acting on it, less time collecting it.",
+     "steps": [
+      "Identify which parts of your reporting are still manual and find a tool or integration that automates the data pull",
+      "Build a creator performance score from your historical data — CPI, retention, engagement — one number per creator that updates after each campaign",
+      "Use your reporting as a client tool: a one-page results summary with creator breakdown is what turns a one-off campaign into a long-term partnership"
+     ]
+    }
+   }
+  },
+  {
+   "id": "post_campaign_optimizati",
+   "name": "Post-Campaign Optimization",
+   "questions": [
+    {
+     "id": "q11",
+     "text": "After a campaign wraps up, how do you analyse what hit the mark and what didn't?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at total views and move on to the next campaign",
+       "score": 1
+      },
+      {
+       "label": "We note which creators performed well and keep their contact details",
+       "score": 2
+      },
+      {
+       "label": "We analyse performance by creator, channel, and content format to find patterns",
+       "score": 3
+      },
+      {
+       "label": "We run a structured debrief covering what worked by creator, by format, and by audience segment",
+       "score": 4
+      },
+      {
+       "label": "We run a full post-campaign debrief with performance data, creator scoring, and documented learnings that feed directly into the next campaign brief",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q12",
+     "text": "How do you use data from past campaigns when planning a new one?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We start mostly from scratch each time",
+       "score": 1
+      },
+      {
+       "label": "We have a rough memory of what worked and try to repeat it",
+       "score": 2
+      },
+      {
+       "label": "We refer back to previous campaign reports before briefing new campaigns",
+       "score": 3
+      },
+      {
+       "label": "We use past CPI, ROAS, and creator performance data to set targets and shortlist influencers for new campaigns",
+       "score": 4
+      },
+      {
+       "label": "We have a structured playbook built on historical data: creator performance tiers, audience benchmarks, and content format results by game genre",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "q13",
+     "text": "How do you feed campaign learnings back to influencers you work with more than once?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't — each campaign starts fresh with the same creators",
+       "score": 1
+      },
+      {
+       "label": "We mention generally what worked when we re-brief them",
+       "score": 2
+      },
+      {
+       "label": "We share performance data with repeat creators and discuss what to adjust next time",
+       "score": 3
+      },
+      {
+       "label": "We run a structured creator feedback session after each campaign and use it to sharpen the next brief",
+       "score": 4
+      },
+      {
+       "label": "We maintain creator performance profiles, update them after every campaign, and use them in briefing, negotiation, and content direction for all repeat work",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Campaigns that don't feed into the next one are expensive repetition, not growth.",
+     "text": "If every campaign starts from zero, you're paying for learnings you already bought. A growth mindset isn't just about trying new things — it's about not throwing away what you already know.",
+     "steps": [
+      "Run a 30-minute debrief after every campaign: CPI per creator, which content format drove the most installs, and what you'd do differently",
+      "Document the top two creators from every campaign with their performance numbers and what made their content work",
+      "Before the next campaign kicks off, spend 15 minutes reviewing the last debrief — it will change at least one decision in your brief"
+     ]
+    },
+    "mid": {
+     "headline": "You're learning from campaigns — now make those learnings systematic, not personal.",
+     "text": "You're capturing what worked, but it's probably living in someone's head or a folder no one else opens. The value of campaign data compounds when it's structured, shared, and searchable across your team.",
+     "steps": [
+      "Build a shared campaign archive: one entry per campaign with creator list, performance numbers, and two or three key learnings",
+      "Score your creators after each campaign on a simple scale — CPI delivery, content quality, brief compliance — and store those scores in your database",
+      "Use your last three campaigns to build a first-pass content format ranking: which format drove the best CPI for your genre?"
+     ]
+    },
+    "high": {
+     "headline": "Your campaigns compound — each one sharpens the next.",
+     "text": "A structured debrief feeding into a creator database and a content playbook is what separates agencies that improve over time from ones that plateau. You're doing the work. The next question is how fast you can turn new data into sharper decisions.",
+     "steps": [
+      "Define how long it takes to go from campaign wrap to updated creator scores and brief template — that lag is your optimization speed",
+      "Test one new content format or creator tier per campaign and document the result alongside your standard formats",
+      "Share your content playbook with repeat creators so they understand what consistently performs in your campaigns — that shared context produces better activations than a brief alone"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_manual_cost",
+   "label": "Annual cost of manual campaign management",
+   "format": "currency_per_period",
+   "formula": "hours_per_week * hourly_cost * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "What best describes your role in influencer marketing for games or apps?",
+  "answers": [
+   {
+    "label": "In-house marketing team at a games studio or app company",
+    "tag": "in_house"
+   },
+   {
+    "label": "Indie developer or solo founder running your own marketing",
+    "tag": "indie"
+   },
+   {
+    "label": "Marketing agency managing influencer campaigns for games or apps clients",
+    "tag": "agency"
+   },
+   {
+    "label": "CMO, Growth Lead, or VP of Marketing at a games company",
+    "tag": "exec"
+   }
+  ]
+ }
+}

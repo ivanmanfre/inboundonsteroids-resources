@@ -1,0 +1,159 @@
+{
+  "slug": "an-importable-n8n-workflow-that-replaces-the-daily-salesforce-csv-export-with-a-scheduled-validated-sync-to-wherever-the-data-actually-needs-to-go",
+  "title": "Ship the 4-Gate Salesforce Sync: Retire the Daily CSV Export in 20 Minutes",
+  "subtitle": "For RevOps and ops leads at $1M-$20M service firms running one person's morning export as critical infrastructure. Get a scheduled, validated n8n job instead.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 30,
+  "sections": [
+    {
+      "id": "before-you-build",
+      "title": "Map what the export actually does",
+      "description": "Before you automate the morning CSV, write down what it pulls and where it lands, so the workflow matches reality and not the version in someone's head.",
+      "items": [
+        {
+          "id": "name-the-source-report",
+          "text": "Pull up the exact Salesforce report your team exports each morning and copy its filters",
+          "tip": "Write down the object, fields, and date range. This becomes your SOQL query, so 'which report did Dana use' never comes up again.",
+          "impact": "high"
+        },
+        {
+          "id": "trace-the-destination",
+          "text": "Trace where the CSV lands today and which reports read from it downstream",
+          "tip": "Sheet, warehouse, or CRM. The list of downstream readers tells you which fields are non-negotiable.",
+          "impact": "high"
+        },
+        {
+          "id": "list-required-fields",
+          "text": "List every field your downstream reports break without",
+          "tip": "Id, Name, StageName at minimum. This list goes straight into the REQUIRED schema gate.",
+          "impact": "medium"
+        },
+        {
+          "id": "record-normal-row-count",
+          "text": "Record a normal day's row count from the last week of exports",
+          "tip": "You'll set the row-count floor to roughly 50% of this number so a broken pull halts instead of publishing 12 rows.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "import-and-credentials",
+      "title": "Import the workflow and wire credentials",
+      "description": "The JSON lands inactive, so you can connect everything before a single run fires.",
+      "items": [
+        {
+          "id": "import-json",
+          "text": "Import the workflow JSON via the top-right menu in n8n",
+          "tip": "Use Import from File or paste into Import from Clipboard. It arrives inactive and prompts you to map credentials.",
+          "impact": "high"
+        },
+        {
+          "id": "connect-three-creds",
+          "text": "Connect the three credentials on the red-flagged nodes: Salesforce OAuth2, Google Sheets, Slack",
+          "tip": "Click each flagged node and pick the credential. n8n maps it everywhere the cred is used automatically.",
+          "impact": "high"
+        },
+        {
+          "id": "swap-soql-query",
+          "text": "Open Query Salesforce and swap the SOQL for your object and field list",
+          "tip": "Default pulls Opportunity modified since yesterday. Match it to the report you copied in section one.",
+          "impact": "high"
+        },
+        {
+          "id": "point-destination",
+          "text": "Drop your Sheet ID and tab name into the Write to Destination node",
+          "tip": "Google Sheets is the demo target because you can verify it in 30 seconds. Swap it later for your real target.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "the-four-gates",
+      "title": "Set the 4 validation gates",
+      "description": "This is the part that makes the job safe to run unattended. Without it, you've just automated publishing bad data faster.",
+      "items": [
+        {
+          "id": "set-row-floor",
+          "text": "Set MIN_ROWS to about half a normal day's pull in the 4-Gate Validation node",
+          "tip": "If you usually get 200 rows and one morning you get 12, that should halt, not publish.",
+          "impact": "high"
+        },
+        {
+          "id": "fill-required-array",
+          "text": "Add every downstream-critical field to the REQUIRED array",
+          "tip": "This is your early warning for a renamed or deleted Salesforce field. A blank column trips here before a chart breaks.",
+          "impact": "high"
+        },
+        {
+          "id": "tune-freshness-window",
+          "text": "Match the freshness window to your run cadence",
+          "tip": "24h assumes a daily job. Widen it for a weekly run, or the gate flags a stale pull that isn't actually stale.",
+          "impact": "medium"
+        },
+        {
+          "id": "confirm-dedupe-key",
+          "text": "Confirm the dedupe key is genuinely unique for your object",
+          "tip": "Id is the safe default. A re-run or bad join shows up here instead of double-counting pipeline at quarter-end.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "test-and-activate",
+      "title": "Test the failure path, then go live",
+      "description": "An automation you check manually anyway defeats the point. Prove the safety net catches a bad pull before you trust it at 6am.",
+      "items": [
+        {
+          "id": "test-clean-pass",
+          "text": "Trigger the workflow manually once and confirm a clean pass writes to the destination",
+          "tip": "Watch the execution. Validated rows go down the pass branch; nothing should hit the Slack alert.",
+          "impact": "high"
+        },
+        {
+          "id": "test-failure-path",
+          "text": "Set MIN_ROWS to 99999, run it, and confirm you get the Slack alert with the destination untouched",
+          "tip": "If the sheet stays empty and the alert names the exact reason, your safety net works. Set MIN_ROWS back after.",
+          "impact": "high"
+        },
+        {
+          "id": "verify-retry-config",
+          "text": "Verify the Salesforce node is set to retry 3 times with a 5-second wait",
+          "tip": "A transient API blip at 6am retries instead of firing a false alarm. It ships configured this way already.",
+          "impact": "low"
+        },
+        {
+          "id": "activate-schedule",
+          "text": "Toggle the workflow active and let the weekday 6am schedule take over",
+          "tip": "The job no longer depends on a person remembering. Sick days stop costing you a missing day of data.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "swap-real-target",
+      "title": "Swap in your real destination",
+      "description": "Once the demo run passes, replace the single pass-branch node with whatever your data actually feeds.",
+      "items": [
+        {
+          "id": "replace-destination-node",
+          "text": "Delete the Google Sheets node and wire in your real target on the pass branch",
+          "tip": "Postgres or BigQuery for a warehouse, Airtable for a base, HTTP Request for any REST endpoint. The gates and alert stay untouched.",
+          "impact": "medium"
+        },
+        {
+          "id": "upsert-for-rerun-safety",
+          "text": "Use Upsert on Id if your target is a database so re-runs stay safe",
+          "tip": "Postgres or warehouse upsert on the Salesforce Id means a second run updates rows instead of duplicating them.",
+          "impact": "medium"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "Want this tuned to your numbers?",
+    "description": "Send me your SOQL query and the destination you're syncing to. I'll return a version of this workflow with all four gates set to your real row counts and required fields."
+  }
+}

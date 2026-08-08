@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Content Engine • Proposal · Interlude Studio</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--paper:#F7F4EF;--paper-sunk:#EFEBE3;--paper-raise:#FFFFFF;--ink:#1A1A1A;--ink-soft:#4A4A48;--ink-mute:#5A5752;--hairline:rgba(26,26,26,.15);--hairline-bold:rgba(26,26,26,.25);--accent:#4C6E3D;--accent-ink:#344B29;--accent-soft:rgba(76,110,61,.08);--hl:#2A8F65;--hl-ink:#1F6E4D}
+html{overflow-x:clip}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
+a{color:inherit}
+
+/* COVER */
+.cover{min-height:100vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto}
+.cover-nav{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:40px;height:40px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.05em;color:var(--ink)}
+.logo-text{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.cover-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-tag{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px}
+.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(44px,8.5vw,108px);font-weight:400;line-height:0.96;letter-spacing:-.025em;color:var(--ink);margin-bottom:40px;max-width:920px;perspective:800px}
+.cover h1 em{font-style:italic;color:var(--ink);position:relative;display:inline-block;transform-origin:bottom;transform-style:preserve-3d;animation:em-rotateX .9s cubic-bezier(.22,.84,.36,1) .8s both}.cover h1 em::after{content:'';position:absolute;left:-2%;right:-2%;bottom:.06em;height:.54em;background:rgba(42,143,101,.5);z-index:-1;pointer-events:none;transform:scaleX(0);transform-origin:left;animation:sweep-x .7s cubic-bezier(.22,.84,.36,1) .9s both}
+@keyframes sweep-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes em-rotateX{from{transform:rotateX(28deg)}to{transform:rotateX(0deg)}}
+.cover{isolation:isolate}
+.cover::before{content:'';position:absolute;top:4%;right:-4%;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(42,143,101,.22),transparent 62%);filter:blur(34px);z-index:0;pointer-events:none}
+.cover-left,.cover-details{position:relative;z-index:1}
+.cover-nav{z-index:2}
+.cover-sub{font-size:20px;line-height:1.65;color:var(--ink);max-width:660px;margin-bottom:0;border-left:2px solid var(--accent);padding-left:20px;animation:clip-wipe 1.1s cubic-bezier(.22,.84,.36,1) 1.3s both}
+@keyframes clip-wipe{from{clip-path:inset(0 100% 0 0);opacity:0}to{clip-path:inset(0 0% 0 0);opacity:1}}
+.cover-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;text-align:right}
+.cover-numeral{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(140px,18vw,260px);line-height:.85;color:var(--accent);letter-spacing:-.04em;margin-bottom:12px}
+.cover-monthyear{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink)}
+.cover-details{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:36px;margin-top:64px;border-top:1px solid var(--hairline)}
+.cover-detail{display:flex;flex-direction:column;gap:8px;min-width:0}
+.cover-detail-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px}
+.cover-detail-value{font-size:16px;font-weight:600;color:var(--ink);line-height:1.4}
+
+/* SECTION */
+.section{padding:80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;position:relative}
+.section-number{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.4vw,46px);font-weight:400;line-height:1.08;letter-spacing:-.005em;margin-bottom:32px;color:var(--ink);max-width:900px}
+.section h2 em{font-style:italic;color:var(--accent)}
+.section h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-top:56px;margin-bottom:20px;padding-left:14px;border-left:2px solid var(--accent);font-family:'IBM Plex Mono',monospace}
+.section p{font-size:16px;color:var(--ink-soft);line-height:1.75;max-width:720px;margin-bottom:20px}
+.section p strong{color:var(--ink);font-weight:600}
+
+/* PROBLEM */
+.problem-card{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:32px 40px;margin:32px 0;max-width:840px}
+.problem-card p{color:var(--ink);font-size:18px;line-height:1.7;max-width:none;margin:0}
+.section p.lead-statement{font-family:'Source Serif 4',serif;font-size:23px;line-height:1.5;color:var(--ink);max-width:640px;margin:0 0 24px;font-weight:400}
+.section p.lead-statement em{font-style:italic;color:var(--accent)}
+.pain-list{list-style:none;margin:32px 0 0;max-width:740px;padding:0}
+.pain-list li{position:relative;padding:14px 0 14px 32px;border-bottom:1px solid var(--hairline);font-size:16px;color:var(--ink-soft);line-height:1.55}
+.pain-list li:first-child{border-top:1px solid var(--hairline)}
+.pain-list li::before{content:'\2192';position:absolute;left:0;top:14px;color:var(--accent);font-weight:600;font-family:'IBM Plex Mono',monospace}
+
+/* FLOW */
+.flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.flow-step{padding:36px 40px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.flow-step-number{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:56px;line-height:.95;color:var(--accent);display:block;margin-bottom:16px;letter-spacing:-.02em}
+.flow-step-title{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;color:var(--ink);font-family:'IBM Plex Mono',monospace}
+.flow-step-desc{font-size:15px;color:var(--ink-soft);line-height:1.7}
+
+/* SCOPE */
+.scope-grid{margin:0;border-top:1px solid var(--hairline);max-width:840px}
+.scope-group{margin:32px 0 40px}
+.scope-group:first-of-type{margin-top:24px}
+.scope-group-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.scope-item{display:flex;align-items:flex-start;gap:14px;padding:20px 0;border-bottom:1px solid var(--hairline);font-size:15px;line-height:1.65;color:var(--ink)}
+.scope-check{width:11px;height:11px;min-width:11px;background:var(--accent);margin-top:7px;flex-shrink:0}
+.scope-item.excluded{opacity:.45;color:var(--ink-mute)}
+.scope-item.excluded .scope-check{background:transparent;border:1px solid var(--hairline-bold)}
+
+/* SKILLS GRID */
+.skills-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+@media(max-width:1100px){.skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.skill-card{padding:32px 28px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:48px;line-height:.95;color:var(--accent);display:block;margin-bottom:14px;letter-spacing:-.02em}
+.skill-name{font-size:18px;font-weight:700;color:var(--ink);margin-bottom:10px;letter-spacing:-.01em;line-height:1.25}
+.skill-outcome{font-size:14px;color:var(--ink-soft);line-height:1.65}
+
+/* FORMAT CARDS */
+.format-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:36px 0 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+@media(max-width:1100px){.format-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.format-cards{grid-template-columns:1fr}}
+.format-card{background:var(--paper-raise);padding:30px 26px 28px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);position:relative;overflow:hidden;min-width:0}
+.format-card::before{content:attr(data-num);position:absolute;bottom:-58px;right:-14px;font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:184px;line-height:1;color:var(--accent);opacity:.055;letter-spacing:-.05em;pointer-events:none;user-select:none}
+.format-card-head{display:flex;align-items:baseline;gap:12px;margin-bottom:14px;position:relative;z-index:1}
+.format-card-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:34px;line-height:1;color:var(--accent);letter-spacing:-.02em;flex-shrink:0}
+.format-card-name{font-family:'DM Serif Display',serif;font-size:22px;font-weight:400;line-height:1.1;color:var(--ink);letter-spacing:-.015em;margin:0}
+.format-card-desc{font-size:14.5px;color:var(--ink-soft);line-height:1.66;margin:0 0 20px;position:relative;z-index:1}
+.format-card-ex-label{font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 10px;padding-left:10px;border-left:2px solid var(--accent);position:relative;z-index:1}
+.format-card-ex{margin:0;padding:0;list-style:none;position:relative;z-index:1}
+.format-card-ex li{font-size:13.5px;line-height:1.62;color:var(--ink);font-style:italic;padding:5px 0 5px 14px;position:relative;border-bottom:none;font-family:'Source Serif 4',Georgia,serif}
+.format-card-ex li::before{content:'·';position:absolute;left:0;color:var(--accent);font-style:normal;font-weight:400;font-size:11px;top:4px}
+
+/* STACK */
+.stack-group{margin:24px 0 32px}
+.stack-cat{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.stack-list{list-style:none;padding:0;margin:0;border-top:1px solid var(--hairline)}
+.stack-list li{padding:14px 0;border-bottom:1px solid var(--hairline);font-size:15px;color:var(--ink);line-height:1.6;display:flex;align-items:flex-start;gap:14px}
+.stack-list li::before{content:"";width:11px;height:11px;background:var(--accent);flex-shrink:0;margin-top:7px}
+
+/* TIMELINE */
+.timeline-table{width:100%;border-collapse:collapse;margin:32px 0}
+.timeline-table th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;color:var(--ink-mute);letter-spacing:.2em;text-transform:uppercase;padding:14px 24px 14px 0;border-bottom:2px solid var(--ink)}
+.timeline-table td{padding:24px 24px 24px 0;font-size:15px;border-bottom:1px solid var(--hairline);vertical-align:top;color:var(--ink-soft);line-height:1.65}
+.timeline-table tr:last-child td{border-bottom:none}
+.timeline-table .phase-name{font-weight:700;color:var(--ink)}
+.timeline-table .phase-duration{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--accent);font-weight:500;white-space:nowrap}
+.timeline-table .phase-deliverable{color:var(--ink-soft)}
+.timeline-total{display:inline-block;background:var(--ink);color:var(--paper);padding:8px 16px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-top:8px}
+
+/* INVESTMENT */
+.investment-box{display:grid;grid-template-columns:auto minmax(0,1fr);gap:64px;margin:32px 0;padding:48px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline);align-items:center}
+.investment-price{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(72px,9vw,128px);line-height:.9;color:var(--ink);letter-spacing:-.04em;white-space:nowrap}
+.investment-currency{font-family:'DM Serif Display',serif;font-style:italic;font-size:.42em;color:var(--accent);vertical-align:top;margin-right:6px;letter-spacing:0;line-height:1}
+.investment-right{display:flex;flex-direction:column;gap:24px;min-width:0}
+.investment-model{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:520px}
+.investment-terms{display:flex;gap:40px;flex-wrap:wrap;padding-top:24px;border-top:1px solid var(--hairline)}
+.investment-term{display:flex;flex-direction:column;gap:8px;min-width:160px}
+.investment-term-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+.investment-term-value{font-size:14px;font-weight:600;color:var(--ink);line-height:1.5}
+.investment-recurring{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:28px 32px;margin-top:32px;color:var(--ink);max-width:none}
+.investment-recurring-label{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px}
+.investment-recurring-lead{font-size:15px;font-weight:600;color:var(--ink);line-height:1.6;margin-bottom:16px;max-width:none}
+.investment-recurring-list{list-style:none;padding:0;margin:0}
+.investment-recurring-list li{padding:10px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft);line-height:1.6}
+.investment-recurring-list li:last-child{border-bottom:none}
+.tiers-intro{font-size:16px;color:var(--ink-soft);line-height:1.7;max-width:720px;margin:0 0 28px}
+.tiers-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:24px 0 36px;align-items:start}
+.tier-card{background:var(--paper-raise);border:1px solid var(--hairline);padding:32px 28px 28px;display:flex;flex-direction:column;gap:14px;position:relative}
+.tier-card.recommended{border:2px solid var(--accent);box-shadow:0 4px 20px rgba(42,143,101,.16)}
+.tier-card.deferred{background:var(--paper-sunk);border-style:dashed}
+.tier-badge{position:absolute;top:-11px;left:24px;background:var(--accent);color:#fff;padding:5px 11px;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase}
+.tier-name{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.tier-price-row{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.tier-price{font-family:'DM Serif Display',serif;font-size:52px;font-weight:400;line-height:1;color:var(--ink);letter-spacing:-.015em}
+.tier-price .currency{font-size:.45em;color:var(--accent);vertical-align:top;margin-right:3px;font-style:italic}
+.tier-period{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);letter-spacing:.12em;text-transform:uppercase}
+.tier-summary{font-size:14.5px;color:var(--ink-soft);line-height:1.62;margin:4px 0 8px}
+.tier-included{list-style:none;padding:0;margin:0;border-top:1px solid var(--hairline);padding-top:14px}
+.tier-included li{padding:6px 0 6px 18px;font-size:14px;color:var(--ink);line-height:1.58;position:relative}
+.tier-included li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
+.tier-included.tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 44px;border-top:1px solid var(--hairline);padding-top:16px}
+.tier-included.tier-grid li{padding-top:8px;padding-bottom:8px}
+@media(max-width:760px){.tier-included.tier-grid{grid-template-columns:1fr}}
+.tier-link{display:inline-flex;align-items:center;gap:6px;margin-top:14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);text-decoration:none;border-bottom:1px solid var(--accent);padding-bottom:3px;align-self:flex-start;transition:opacity .15s}
+.tier-link:hover{opacity:.7}
+.tier-payment-note{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;color:var(--ink-mute);margin:-4px 0 4px}
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px;margin:32px 0}
+.proof-card{background:var(--paper-raise);border:1px solid var(--hairline);overflow:hidden;display:flex;flex-direction:column}
+.proof-card img{width:100%;height:auto;display:block;border-bottom:1px solid var(--hairline)}
+.proof-card-body{padding:18px 22px}
+.proof-card-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+.proof-card-caption{font-size:14.5px;color:var(--ink);line-height:1.6}
+@media(max-width:760px){.proof-grid{grid-template-columns:1fr}}
+.investment-meta{display:block;padding:0;margin:0 0 28px}
+.investment-meta .investment-term{display:flex;flex-direction:row;align-items:baseline;gap:10px}
+@media (max-width:780px){.tiers-grid{grid-template-columns:1fr}}
+
+/* ROI */
+.roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.roi-stat{padding:56px 32px 56px 0;border-right:1px solid var(--hairline)}
+.roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:32px}
+.roi-stat:last-child{border-right:none}
+.roi-stat-value{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:104px;line-height:.9;color:var(--ink);letter-spacing:-.03em;margin-bottom:6px}
+.roi-stat-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+
+/* ACCESS LIST */
+.access-list{list-style:none;margin:32px 0;border-top:1px solid var(--hairline)}
+.access-list li{padding:18px 0;border-bottom:1px solid var(--hairline);font-size:15px;color:var(--ink);display:flex;align-items:flex-start;gap:14px;line-height:1.65}
+.access-list li::before{content:'';width:11px;height:11px;background:var(--accent);flex-shrink:0;margin-top:7px}
+
+/* AGREEMENT */
+.agreement-section{background:var(--paper-sunk)}
+.terms-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.term-item{padding:28px 32px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.term-title{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.term-text{font-size:14px;color:var(--ink-soft);line-height:1.7}
+.agreement-footnote{margin-top:32px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--ink-mute);letter-spacing:.05em}
+
+/* CTA */
+.cta-section{padding:96px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;text-align:left}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(36px,4.4vw,60px);font-weight:400;line-height:1.05;letter-spacing:-.005em;margin-bottom:24px;color:var(--ink);max-width:800px}
+.cta-section h2 em{font-style:italic;color:var(--accent)}
+.cta-section p{font-size:17px;color:var(--ink-soft);margin-bottom:40px;max-width:520px;line-height:1.7}
+.cta-section h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 20px;padding-left:14px;border-left:2px solid var(--accent);font-family:'IBM Plex Mono',monospace}
+.next-steps{list-style:none;counter-reset:ns;margin:0 0 36px;max-width:640px;padding:0}
+.next-steps li{counter-increment:ns;position:relative;padding:15px 0 15px 46px;border-bottom:1px solid var(--hairline);font-size:16px;color:var(--ink);line-height:1.5}
+.next-steps li::before{content:counter(ns);position:absolute;left:0;top:11px;font-family:'DM Serif Display',serif;font-style:italic;font-size:24px;color:var(--accent);line-height:1}
+.sig{font-size:15px;color:var(--ink-soft);line-height:1.6;margin:0}
+.sig strong{display:block;color:var(--ink);font-weight:600;font-size:17px;margin-bottom:4px;font-family:'DM Serif Display',serif;font-style:italic}
+.cta-buttons{display:flex;gap:16px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--hl-ink);color:#fff;padding:18px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s ease}
+.btn-primary:hover{background:var(--hl-ink)}
+.btn-secondary{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--ink);padding:18px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid var(--ink);cursor:pointer;transition:background .2s ease,color .2s ease}
+.btn-secondary:hover{background:var(--ink);color:var(--paper)}
+
+/* UPSELL */
+.upsell-box{margin-top:64px;padding:32px 40px;background:var(--paper-sunk);border-left:2px solid var(--accent)}
+.upsell-box h3{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin:0 0 16px;border-left:none;padding-left:0}
+.upsell-box p{font-size:15px;color:var(--ink-soft);line-height:1.75;margin:0;max-width:none}
+.upsell-list{list-style:none;padding:0;margin:0}
+.upsell-list li{padding:10px 0 10px 22px;font-size:14.5px;color:var(--ink);line-height:1.55;position:relative;border-bottom:1px solid var(--hairline)}
+.upsell-list li:last-child{border-bottom:none}
+.upsell-list li::before{content:'\2192';position:absolute;left:0;color:var(--accent);font-weight:600}
+.upsell-lead{font-size:15px;color:var(--ink-soft);line-height:1.65;margin:0 0 14px}
+.mermaid-wrap{margin:24px 0 12px;padding:32px 24px;background:var(--paper-raise);border:1px solid var(--hairline);overflow-x:auto;display:flex;justify-content:center}
+.mermaid-wrap .mermaid{font-family:'IBM Plex Mono',monospace !important;min-width:0}
+.mermaid-wrap svg{max-width:100%;height:auto}
+.mermaid-wrap .label,.mermaid-wrap .nodeLabel{font-family:'IBM Plex Mono',monospace !important;font-weight:500;font-size:12px !important}
+.mermaid-wrap .cluster rect{fill:var(--paper-sunk) !important;stroke:var(--ink-mute) !important}
+.mermaid-wrap .cluster .nodeLabel{font-family:'IBM Plex Mono',monospace !important;letter-spacing:.18em;text-transform:uppercase;font-size:10px !important;font-weight:600;fill:var(--accent)}
+.mermaid-wrap .edgeLabel{background:var(--paper-raise);font-family:'IBM Plex Mono',monospace !important;font-size:10px !important;letter-spacing:.1em;color:var(--ink-mute) !important}
+.mermaid-wrap .edgePath path{stroke:var(--accent) !important;stroke-width:1.5px !important}
+.mermaid-wrap .marker{fill:var(--accent) !important;stroke:var(--accent) !important}
+.mermaid-caption{font-size:13px;color:var(--ink-mute);font-style:italic;text-align:center;margin:0 0 32px}
+/* Custom system flow (replaces mermaid) */
+.sysflow{margin:28px 0 12px;display:grid;grid-template-columns:1fr auto 1.3fr auto 1fr;gap:0;align-items:stretch}
+.sysflow-stage{padding:28px 24px;background:var(--paper-raise);border:1px solid var(--hairline);border-top:2px solid var(--accent);position:relative;display:flex;flex-direction:column;gap:14px;min-width:0}
+.sysflow-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:52px;color:var(--accent);line-height:.9;letter-spacing:-.02em;margin-bottom:4px}
+.sysflow-title{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);border-top:1px solid var(--hairline);padding-top:12px;line-height:1.4}
+.sysflow-items{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:0}
+.sysflow-item{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px dashed var(--hairline);font-size:14.5px;line-height:1.5}
+.sysflow-item:last-child{border-bottom:none}
+.sysflow-item-text{font-weight:500;color:var(--ink)}
+.sysflow-item-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--accent);letter-spacing:.06em;white-space:nowrap}
+.sysflow-arrow{display:flex;align-items:center;justify-content:center;color:var(--accent);font-family:'DM Serif Display',serif;font-style:italic;font-size:56px;padding:0 8px;line-height:1}
+.sysflow-branch{margin-top:14px;padding:14px 16px;background:var(--accent-soft);border-left:2px dashed var(--accent);font-size:13px;color:var(--ink);line-height:1.55}
+.sysflow-branch-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+@media(max-width:880px){.sysflow{grid-template-columns:1fr}.sysflow-arrow{transform:rotate(90deg);padding:14px 0;font-size:32px}}
+
+/* FOOTER */
+.footer{padding:32px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px}
+.footer-left{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.footer-right{display:flex;gap:24px}
+.footer-right a{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.05em;color:var(--ink-mute);text-decoration:none;transition:color .2s ease}
+.footer-right a:hover{color:var(--accent)}
+@media(max-width:760px){.footer-right a{padding:8px 0;display:inline-block}.tier-link{padding-top:12px;padding-bottom:6px}.cta-section p a{padding:4px 0;display:inline-block}}
+
+/* PROGRESS BAR */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9999;transition:width .1s linear;width:0}
+
+/* ANIMATIONS */
+.section,.cover,.cta-section,.agreement-section,.footer{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.section.visible,.cover.visible,.cta-section.visible,.agreement-section.visible,.footer.visible{opacity:1;transform:translateY(0)}
+.wrd{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(12px);transition:opacity .65s cubic-bezier(.16,1,.3,1),filter .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.wrd.vis{opacity:1;filter:blur(0);transform:translateY(0)}
+
+/* TABLE SCROLL */
+.table-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .skills-grid{grid-template-columns:1fr}
+  .cover{padding:100px 32px 48px}
+  .cover-nav{left:32px;right:32px;top:24px;flex-wrap:wrap;gap:8px}
+  .cover h1{font-size:44px}
+  .cover-numeral{font-size:120px}
+  .cover-right{align-items:flex-start;text-align:left}
+  .cover-details{grid-template-columns:repeat(2,1fr);gap:24px;margin-top:24px}
+  .section{padding:48px 32px}
+  .cta-section{padding:48px 32px}
+  .flow-grid,.terms-grid{grid-template-columns:1fr}
+  .roi-grid{grid-template-columns:1fr}
+  .roi-stat{border-right:none;border-bottom:1px solid var(--hairline);padding:32px 0}
+  .roi-stat:last-child{border-bottom:none}
+  .roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:0}
+  .roi-stat-value{font-size:80px}
+  .investment-box{grid-template-columns:1fr;gap:24px}
+  .investment-price{font-size:64px}
+  .footer{flex-direction:column;align-items:flex-start;padding:32px}
+}
+
+/* MOBILE TIMELINE: stack table rows into cards */
+@media(max-width:600px){
+  .timeline-table thead{display:none}
+  .timeline-table,.timeline-table tbody,.timeline-table tr,.timeline-table td{display:block;width:100%}
+  .timeline-table tr{padding:24px 0;border-bottom:1px solid var(--hairline)}
+  .timeline-table tr:last-child{border-bottom:none}
+  .timeline-table td{padding:0;border:none;margin:0}
+  .timeline-table .phase-name{font-size:18px;font-weight:700;margin-bottom:6px;line-height:1.2}
+  .timeline-table .phase-duration{display:inline-block;background:var(--paper-sunk);padding:4px 10px;font-size:11px;font-family:'IBM Plex Mono',monospace;letter-spacing:.1em;margin-bottom:10px;color:var(--accent);white-space:nowrap}
+  .timeline-table .phase-deliverable{font-size:14px;line-height:1.7;color:var(--ink-soft)}
+}
+
+/* SOLUTION - full-width dark section, AgentReadySection pattern */
+.solution-dark-section{padding-top:0;border-top-color:rgba(247,244,239,.06)}
+
+/* Dark band: full viewport width, content aligned to page grid */
+.sysflow-wrap{
+  width:100vw;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  background:#1a1a1a;
+  padding:80px max(80px,calc((100vw - 1080px)/2)) 60px;
+  margin-bottom:0;
+  overflow:hidden;
+}
+
+/* Section label + headline inside dark zone */
+.sysflow-wrap .section-number{background:rgba(247,244,239,.1);color:rgba(247,244,239,.55);margin-bottom:24px}
+.sysflow-wrap h2{color:#F7F4EF;margin-bottom:40px}
+
+/* "System Flow" sublabel */
+.sysflow-wrap h3{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(247,244,239,.28);border-left:none;padding-left:0;
+  margin:0 0 36px;
+}
+
+/* ══ Signal-flow diagram (Solution) ══ */
+.netwrap{width:100%;overflow-x:auto;overflow-y:hidden;margin-top:8px;position:relative}
+.net-hint{display:none}
+@media(max-width:760px){
+  .netwrap::after{content:'';position:absolute;top:0;right:0;width:48px;height:100%;background:linear-gradient(to right,rgba(26,26,26,0),#1a1a1a 82%);pointer-events:none}
+  .net-hint{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#7fd0a6;margin:14px 0 0;text-align:center}
+}
+.net{display:block;width:100%;min-width:720px;height:auto}
+@media(min-width:820px){.netwrap{margin-left:-52px;margin-right:-52px;width:calc(100% + 104px)}}
+.net text{fill:#F7F4EF}
+.net .trace{fill:none;stroke:#2A8F65;stroke-width:1.4;stroke-dasharray:3 8;stroke-linecap:round;opacity:.55;animation:netflow 1.05s linear infinite}
+.net .trace.slow{animation-duration:1.5s;opacity:.42}
+.net .underglow{fill:none;stroke:#2A8F65;stroke-width:5;opacity:.07;filter:url(#soft);stroke-linecap:round}
+@keyframes netflow{to{stroke-dashoffset:-11}}
+.net .src-dot{fill:#709A5D}
+.net .src-dot.r{animation:netpulse 2.6s ease-in-out infinite}
+.net .src-dot.r2{animation:netpulse 2.6s ease-in-out .9s infinite}
+.net .src-dot.r3{animation:netpulse 2.6s ease-in-out 1.7s infinite}
+@keyframes netpulse{0%,100%{opacity:.5}50%{opacity:1}}
+.net .src-lbl{font-family:'Source Serif 4',serif;font-style:italic;font-size:17px;fill:rgba(247,244,239,.72)}
+.net .brain-ring{fill:none;stroke:#2A8F65;transform-box:fill-box;transform-origin:center}
+.net .brain-ring.p1{animation:netping 3.4s ease-out infinite}
+.net .brain-ring.p2{animation:netping 3.4s ease-out 1.7s infinite}
+@keyframes netping{0%{transform:scale(.45);opacity:.5}80%{opacity:0}100%{transform:scale(1.25);opacity:0}}
+.net .brain-core{fill:#13201a;stroke:#3aa978;stroke-width:1.6}
+.net .brain-dot{fill:#7fd0a6;animation:netpulse 2.2s ease-in-out infinite}
+.net .node{cursor:default}
+.net .bead{fill:#13201a;stroke:#5fb98a;stroke-width:1.4;transform-box:fill-box;transform-origin:center;transition:transform .25s cubic-bezier(.22,.84,.36,1),stroke .25s,filter .25s}
+.net .node:hover .bead,.net .node:focus .bead{transform:scale(1.2);stroke:#8fe0b4;filter:url(#glow)}
+.net .num{font-family:'DM Serif Display',serif;font-style:italic;font-size:21px;fill:#7fd0a6;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.net .cap{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.06em;fill:rgba(247,244,239,.6);text-anchor:middle;transition:fill .25s}
+.net .node:hover .cap{fill:rgba(247,244,239,.78)}
+.net .stg-label{font-family:'IBM Plex Mono',monospace;font-size:13px;font-weight:700;letter-spacing:.18em;fill:#F7F4EF;text-anchor:middle}
+.net .ghostn{font-family:'DM Serif Display',serif;font-style:italic;font-size:74px;fill:rgba(112,154,93,.08);text-anchor:middle;pointer-events:none;user-select:none}
+.net .detail{opacity:0;transition:opacity .25s ease;pointer-events:none}
+.net .node:hover .detail,.net .node:focus .detail{opacity:1}
+.net .detail rect{fill:rgba(18,28,23,.97);stroke:rgba(112,154,93,.45);stroke-width:1}
+.net .dconn{stroke:#7fd0a6;stroke-width:1.3;opacity:.8}
+.net .detail .dt-t{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.12em;fill:#9fe6c0}
+.net .detail .dt-b{font-family:'Source Serif 4',serif;font-size:12.5px;fill:rgba(247,244,239,.82)}
+.net .out-shape{fill:rgba(112,154,93,.1);stroke:#5fb98a;stroke-width:1.3;transform-box:fill-box;transform-origin:center;transition:transform .25s,filter .25s,fill .25s}
+.net .node:hover .out-shape{fill:rgba(112,154,93,.2);filter:url(#glow);transform:scale(1.08)}
+.net .out-lbl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:700;letter-spacing:.16em;fill:#F7F4EF;text-anchor:middle}
+.net .gate{fill:#13201a;stroke:#5fb98a;stroke-width:1.5;transform-box:fill-box;transform-origin:center;transition:transform .25s,filter .25s}
+.net .node:hover .gate{filter:url(#glow);transform:scale(1.1)}
+.net .check{stroke:#7fd0a6;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.net .fan{fill:none;stroke:#2A8F65;stroke-width:1;opacity:.32;stroke-dasharray:3 7;animation:netflow 1.5s linear infinite}
+.net .dlv-dot{fill:#5fb98a}
+.net .dlv{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.05em;fill:rgba(247,244,239,.74);text-anchor:start;dominant-baseline:central}
+/* touch: keep detail panels hidden (the bead captions carry meaning); avoids all-open overlap */
+
+/* Callout */
+.sysflow-wrap .problem-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(247,244,239,.1);
+  border-radius:4px;
+  padding:26px 30px;margin-top:36px;
+}
+.sysflow-wrap .problem-card p{
+  font-family:'Source Serif 4',serif;font-size:16px;
+  color:rgba(247,244,244,.9);line-height:1.75;max-width:none;margin:0;
+}
+.sysflow-wrap .problem-card p strong{color:#fff}
+
+@media(max-width:900px){
+  .sysflow-wrap{padding:56px max(32px,calc((100vw - 1080px)/2)) 44px}
+}
+@media(max-width:700px){
+  .arch-outputs{flex-direction:column}
+  .arch-sources{gap:6px}
+  .arch-chip{font-size:10px;padding:6px 10px}
+}
+
+/* MOBILE RECURRING TABLE: hide note col */
+@media(max-width:600px){
+  .investment-recurring table th:nth-child(3),
+  .investment-recurring table td:nth-child(3){display:none}
+  .investment-recurring table{font-size:13px}
+  .investment-recurring table td,.investment-recurring table th{padding-right:12px !important}
+}
+/* MOBILE TIER LIST: tighten */
+@media(max-width:780px){
+  .tier-included li{padding:4px 0 4px 18px;font-size:13px}
+}
+/* MOBILE PROOF: min-height */
+@media(max-width:760px){
+  .proof-card img{min-height:200px;object-fit:cover;object-position:top}
+  .proof-full img{min-height:0;object-fit:contain}
+  .proof-card-body{padding:14px 18px 18px}
+  .proof-card-caption{font-size:13.5px;line-height:1.55}
+}
+/* PRINT */
+@media print{
+  *{background:transparent !important;box-shadow:none !important}
+  body{font-size:11pt;color:#000 !important;background:#fff !important}
+  .cover{min-height:auto;page-break-after:always;padding:48px}
+  .section{page-break-inside:avoid;padding:32px 48px}
+  .scroll-progress{display:none}
+  .section,.cover,.cta-section,.agreement-section,.footer{opacity:1 !important;transform:none !important}
+}
+
+/* LIGHTBOX */
+.lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:99999;align-items:center;justify-content:center;cursor:zoom-out;padding:32px}
+.lightbox-overlay.active{display:flex}
+.lightbox-overlay img{max-width:90vw;max-height:90vh;object-fit:contain;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+.proof-card img{cursor:zoom-in;transition:opacity .15s}
+.proof-card img:hover{opacity:.9}
+.proof-card{cursor:zoom-in}
+/* === A11Y + AUDIT FIXES === */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .cover .wrd{opacity:1!important;filter:none!important;transform:none!important}
+  .cover-sub{animation:none!important;clip-path:none!important;opacity:1!important}
+  .cover h1 em::after{transform:scaleX(1)!important}
+  .section,.cover,.cta-section,.agreement-section,.footer{opacity:1!important;transform:none!important}
+}
+a:focus-visible,button:focus-visible,.btn-primary:focus-visible,.btn-secondary:focus-visible,.tier-link:focus-visible,.proof-card img:focus-visible{outline:2px solid var(--hl-ink);outline-offset:3px;border-radius:1px}
+.net .node:focus-visible .bead{stroke:#8fe0b4;stroke-width:2px}
+@media(max-width:760px){
+  .tier-card.recommended{order:-1}
+  .cta-buttons{flex-direction:column}
+  .cta-buttons a{width:100%;justify-content:center}
+  .btn-primary{order:-1}
+  .footer-right a,.cta-section p a,.tier-link,.tier-included a,.tier-card a{display:inline-block;padding:13px 0}
+}
+</style>
+<noscript><style>.section,.cover,.cta-section,.agreement-section,.footer{opacity:1!important;transform:none!important}.cover .wrd{opacity:1!important;filter:blur(0)!important;transform:none!important}.cover-sub{animation:none!important;clip-path:none!important;opacity:1!important}.cover h1 em{animation:none!important;transform:none!important}.cover h1 em::after{animation:none!important;transform:scaleX(1)!important}</style></noscript>
+</head>
+<body>
+<div class="scroll-progress"></div>
+<div id="cursor-spotlight" style="position:fixed;inset:0;pointer-events:none;z-index:9997;opacity:0;transition:opacity .5s"></div>
+<div class="cover">
+    <div class="cover-nav">
+      <div class="logo">
+        <div class="logo-mark">IM</div>
+        <span class="logo-text">Iván Manfredi</span>
+      </div>
+      <span class="cover-meta">Proposal • May 28, 2026</span>
+    </div>
+    <div class="cover-left">
+      <h1><span class="wrd">LinkedIn</span> <span class="wrd">Content</span><br><span class="wrd"><em>Engine</em></span></h1>
+      <p class="cover-sub">Every call you take is content you're not capturing. This turns them into posts <strong>in your real voice</strong>, drafted into Notion for your team to approve, plus lead magnets that bring in the founders and funds you serve.</p>
+    </div>
+
+    <div class="cover-details">
+      <div class="cover-detail"><span class="cover-detail-label">Prepared For</span><span class="cover-detail-value">Matthew</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Engagement</span><span class="cover-detail-value">Interlude Studio</span></div>
+      <div class="cover-detail"><span class="cover-detail-label">Delivery</span><span class="cover-detail-value">2-week build · 1 month support</span></div>
+      
+      <div class="cover-detail"><span class="cover-detail-label">Investment</span><span class="cover-detail-value">$7,500 to $10,000</span></div>
+    </div>
+  </div>
+<div class="section">
+    <span class="section-number">01 • The Problem</span>
+    <h2>What’s costing you time</h2>
+    <p class="lead-statement">Interlude's authority compounds in front of the founders and fund managers you design for. But every sales, partnership, and biz-dev call you take is content that <em>never makes it out</em>.</p>
+    <p>Carson drafts in Notion by hand, the case studies sit unposted, and the cadence slips behind client delivery. You want to post far more often, in your real voice, with the ideas coming from the calls you're already having.</p>
+    <ul class="pain-list">
+      <li>Every sales and partnership call goes uncaptured</li>
+      <li>Case studies pile up, unposted</li>
+      <li>Posting slips behind client delivery, week after week</li>
+      <li>The drafts that do ship read as AI-generated</li>
+    </ul>
+  </div>
+<div class="section solution-dark-section">
+    <div class="sysflow-wrap"><span class="section-number">02 • The Solution</span>
+    <h2>What we’re building</h2>
+    <div class="netwrap">
+    <svg class="net" viewBox="0 0 1180 480" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="System flow: sources feed the content brain, a six-agent pipeline drafts each post, you approve in Notion, and it splits into a scheduled LinkedIn post and a lead magnet package">
+      <defs>
+        <filter id="glow" x="-70%" y="-70%" width="240%" height="240%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        <filter id="soft" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5"/></filter>
+      </defs>
+      <text class="ghostn" x="300" y="120">01</text>
+      <text class="ghostn" x="545" y="120">02</text>
+      <text class="ghostn" x="792" y="120">03</text>
+      <path class="underglow" d="M70,96 C 160,96 188,224 256,236"/>
+      <path class="underglow" d="M70,240 C 150,240 190,240 252,240"/>
+      <path class="underglow" d="M70,384 C 160,384 188,256 256,244"/>
+      <path class="trace slow" d="M70,96 C 160,96 188,224 256,236"/>
+      <path class="trace slow" d="M70,240 C 150,240 190,240 252,240"/>
+      <path class="trace slow" d="M70,384 C 160,384 188,256 256,244"/>
+      <path class="underglow" d="M342,240 H 758"/>
+      <path class="trace" d="M342,240 H 758"/>
+      <path class="underglow" d="M806,240 C 858,240 866,150 892,146"/>
+      <path class="underglow" d="M806,240 C 858,240 866,330 892,334"/>
+      <path class="trace" d="M806,240 C 858,240 866,150 892,146"/>
+      <path class="trace" d="M806,240 C 858,240 866,330 892,334"/>
+      <g><circle class="src-dot r" cx="64" cy="96" r="5"/><text class="src-lbl" x="78" y="100">Call Transcripts</text></g>
+      <g><circle class="src-dot r2" cx="64" cy="240" r="5"/><text class="src-lbl" x="78" y="244">Manual Seeds</text></g>
+      <g><circle class="src-dot r3" cx="64" cy="384" r="5"/><text class="src-lbl" x="78" y="388">Winners Repurposing</text></g>
+      <g class="node" tabindex="0">
+        <circle class="brain-ring p1" cx="300" cy="240" r="30" stroke-width="1.2"/>
+        <circle class="brain-ring p2" cx="300" cy="240" r="30" stroke-width="1.2"/>
+        <circle class="brain-core" cx="300" cy="240" r="22"/>
+        <circle class="brain-dot" cx="300" cy="240" r="4.5"/>
+        <text class="stg-label" x="300" y="296">CONTENT BRAIN</text>
+        <g class="detail"><rect x="196" y="300" width="208" height="58" rx="3"/><text class="dt-t" x="208" y="320">RAG · SUPABASE VECTOR DB</text><text class="dt-b" x="208" y="338">Indexes your calls, post patterns</text><text class="dt-b" x="208" y="353">&amp; brand voice. Smarter every call.</text></g>
+      </g>
+      <g class="node" tabindex="0"><circle class="bead" cx="398" cy="240" r="15"/><text class="num" x="398" y="240">1</text><text class="cap" x="398" y="270">CONTEXT</text>
+        <g class="detail"><rect x="303" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="398" y1="216" x2="398" y2="225"/><text class="dt-t" x="315" y="185">CONTEXT RETRIEVAL</text><text class="dt-b" x="315" y="203">Pulls relevant past calls.</text></g></g>
+      <g class="node" tabindex="0"><circle class="bead" cx="456" cy="240" r="15"/><text class="num" x="456" y="240">2</text><text class="cap" x="456" y="270">SORT</text>
+        <g class="detail"><rect x="361" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="456" y1="216" x2="456" y2="225"/><text class="dt-t" x="373" y="185">CATEGORIZE</text><text class="dt-b" x="373" y="203">Sorts the topic to a format.</text></g></g>
+      <g class="node" tabindex="0"><circle class="bead" cx="514" cy="240" r="15"/><text class="num" x="514" y="240">3</text><text class="cap" x="514" y="270">EDIT</text>
+        <g class="detail"><rect x="419" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="514" y1="216" x2="514" y2="225"/><text class="dt-t" x="431" y="185">EDITORIAL</text><text class="dt-b" x="431" y="203">Checks it fits your ICP.</text></g></g>
+      <g class="node" tabindex="0"><circle class="bead" cx="572" cy="240" r="15"/><text class="num" x="572" y="240">4</text><text class="cap" x="572" y="270">HOOKS</text>
+        <g class="detail"><rect x="477" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="572" y1="216" x2="572" y2="225"/><text class="dt-t" x="489" y="185">HOOK GENERATOR</text><text class="dt-b" x="489" y="203">10 hook options per post.</text></g></g>
+      <g class="node" tabindex="0"><circle class="bead" cx="630" cy="240" r="15"/><text class="num" x="630" y="240">5</text><text class="cap" x="630" y="270">WRITE</text>
+        <g class="detail"><rect x="535" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="630" y1="216" x2="630" y2="225"/><text class="dt-t" x="547" y="185">COPYWRITER</text><text class="dt-b" x="547" y="203">Drafts it in your voice.</text></g></g>
+      <g class="node" tabindex="0"><circle class="bead" cx="688" cy="240" r="15"/><text class="num" x="688" y="240">6</text><text class="cap" x="688" y="270">QA</text>
+        <g class="detail"><rect x="593" y="166" width="190" height="50" rx="3"/><line class="dconn" x1="688" y1="216" x2="688" y2="225"/><text class="dt-t" x="605" y="185">QA REVIEW</text><text class="dt-b" x="605" y="203">Strips AI tells before publish.</text></g></g>
+      <g class="node" tabindex="0">
+        <path class="gate" d="M782,240 L806,216 L830,240 L806,264 Z"/>
+        <path class="check" d="M798,240 l5,6 l9,-12"/>
+        <text class="stg-label" x="806" y="296">REVIEW</text>
+        <g class="detail"><rect x="710" y="300" width="192" height="44" rx="3"/><text class="dt-t" x="722" y="319">NOTION REVIEW BOARD</text><text class="dt-b" x="722" y="337">Drafts queue. Read, tap approve.</text></g>
+      </g>
+      <g class="node" tabindex="0">
+        <rect class="out-shape" x="884" y="130" width="34" height="34" rx="6"/>
+        <text class="out-lbl" x="901" y="184">LINKEDIN</text>
+        <g class="detail"><rect x="754" y="116" width="150" height="40" rx="3"/><text class="dt-t" x="766" y="133">SCHEDULED POST</text><text class="dt-b" x="766" y="149">Unipile posts at your set time.</text></g>
+      </g>
+      <g class="node" tabindex="0">
+        <rect class="out-shape" x="884" y="318" width="34" height="34" rx="6"/>
+        <text class="out-lbl" x="901" y="372">LEAD MAGNET</text>
+        <g class="detail"><rect x="744" y="326" width="160" height="40" rx="3"/><text class="dt-t" x="756" y="343">FULL PACKAGE</text><text class="dt-b" x="756" y="359">All generated together.</text></g>
+      </g>
+      <!-- LinkedIn endpoint -->
+      <path class="fan" d="M918,147 H 988"/>
+      <circle class="dlv-dot" cx="994" cy="147" r="4"/>
+      <text class="dlv" x="1006" y="147">Published on schedule</text>
+      <!-- Lead Magnet package deliverables -->
+      <path class="fan" d="M918,335 C 956,335 962,300 988,300"/>
+      <path class="fan" d="M918,335 C 956,335 962,328 988,328"/>
+      <path class="fan" d="M918,335 C 956,335 962,356 988,356"/>
+      <path class="fan" d="M918,335 C 956,335 962,384 988,384"/>
+      <circle class="dlv-dot" cx="994" cy="300" r="4"/><text class="dlv" x="1006" y="300">Landing page</text>
+      <circle class="dlv-dot" cx="994" cy="328" r="4"/><text class="dlv" x="1006" y="328">Resource page</text>
+      <circle class="dlv-dot" cx="994" cy="356" r="4"/><text class="dlv" x="1006" y="356">Cover image</text>
+      <circle class="dlv-dot" cx="994" cy="384" r="4"/><text class="dlv" x="1006" y="384">Email capture</text>
+    </svg>
+    <p class="net-hint">Swipe to explore the full flow →</p>
+    </div>
+    <div class="problem-card" style="margin:28px 0 0"><p><strong>Once it's running, the daily lift is under 10 minutes.</strong> Posts queue up in Notion each week, drafted in your voice, grounded in your client calls and case-study back catalog. Carson reads the draft, taps approve, done. LinkedIn schedules itself. Lead magnets branch automatically from approved topics. No briefing, no writing, nothing to manage.</p></div></div>
+    
+    <h3>Six formats, applied to your audience</h3>
+    <p>Every approved post topic branches into one of six lead-magnet formats. The system picks the one that fits the topic so the library stays varied month over month. Each asset ships with a branded landing page, resource page, cover image, and ConvertKit email. More formats get built into the engine as the partnership continues.</p>
+    <div class="format-cards">
+      <div class="format-card" data-num="01">
+        <div class="format-card-head"><span class="format-card-num">01</span><h4 class="format-card-name">Guide</h4></div>
+        <p class="format-card-desc">A short, branded web essay your reader reads in one sitting. Walks away with one strong opinion on a decision they're weighing.</p>
+        <div class="format-card-ex-label">Example topics</div>
+        <ul class="format-card-ex"><li>The Five Brand Decisions That Change How VCs Read You</li><li>When To Rebrand Before A Round</li><li>Founder-to-Fund Translation Patterns</li></ul>
+      </div>
+      <div class="format-card" data-num="02">
+        <div class="format-card-head"><span class="format-card-num">02</span><h4 class="format-card-name">Interactive Assessment</h4></div>
+        <p class="format-card-desc">Your reader answers ~12 multiple-choice questions in 2 minutes, gets a scored verdict on the page and a deeper report by email.</p>
+        <div class="format-card-ex-label">Example topics</div>
+        <ul class="format-card-ex"><li>Is Your Company Brand-Ready for Series A?</li><li>Does Your Founder Narrative Travel?</li><li>How Do You Read to Fund GPs?</li></ul>
+      </div>
+      <div class="format-card" data-num="03">
+        <div class="format-card-head"><span class="format-card-num">03</span><h4 class="format-card-name">Template</h4></div>
+        <p class="format-card-desc">A Google Sheet your reader copies, fills in, and uses on real work. Structure done, blanks for their content.</p>
+        <div class="format-card-ex-label">Example topics</div>
+        <ul class="format-card-ex"><li>Founder Bio for Fund Decks</li><li>LP-Grade Case Study One-Pager</li><li>Series A Narrative Brief</li></ul>
+      </div>
+      <div class="format-card" data-num="04">
+        <div class="format-card-head"><span class="format-card-num">04</span><h4 class="format-card-name">Swipe File</h4></div>
+        <p class="format-card-desc">Your reader browses a curated library of real public examples, each one annotated with your commentary on what's working.</p>
+        <div class="format-card-ex-label">Example topics</div>
+        <ul class="format-card-ex"><li>25 Series A About Pages, Ranked</li><li>15 Founder Bios That Closed Rounds</li><li>20 LP Update Patterns</li></ul>
+      </div>
+      <div class="format-card" data-num="05">
+        <div class="format-card-head"><span class="format-card-num">05</span><h4 class="format-card-name">Checklist</h4></div>
+        <p class="format-card-desc">An interactive checklist of action items in order. Your reader ticks them off before a deadline like a raise, launch, or rebrand.</p>
+        <div class="format-card-ex-label">Example topics</div>
+        <ul class="format-card-ex"><li>Pre-Raise Brand Audit</li><li>Series A Visual System Launch</li><li>Founder LinkedIn Pre-Round Polish</li></ul>
+      </div>
+      <div class="format-card" data-num="06">
+        <div class="format-card-head"><span class="format-card-num">06</span><h4 class="format-card-name">AI Audit</h4></div>
+        <p class="format-card-desc">Your reader pastes their actual copy into a textbox. The system streams a tailored critique in your voice in under a minute.</p>
+        <div class="format-card-ex-label">Example topics</div>
+        <ul class="format-card-ex"><li>Paste Your One-Liner: 60-Sec Audit</li><li>Paste Your About Page: Live Read</li><li>Paste Your Bio: VC-Grade Audit</li></ul>
+      </div>
+    </div>
+    <p style="margin-top:24px;color:var(--ink-mute);font-size:14px;font-style:italic;max-width:720px">Topic seeds come from your calls, manual drops, and winners repurposing, the same pipeline that feeds the posts. The system picks the format that fits each topic so the library stays varied without you choosing.</p>
+    <h3>See it in practice</h3>
+    <div class="proof-grid">
+      <figure class="proof-card"><img width="3021" height="1463" src="assets/interlude/kyle-content-system.png" alt="Content system board with posts drafted from calls" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">The system, live</div><div class="proof-card-caption">Kyle Hunt's content board, running the same engine. Every row is a post drafted from his calls, with source, format, and topic strength at a glance. Kyle runs his in ClickUp, yours runs in Notion, same engine underneath.</div></figcaption></figure>
+      <figure class="proof-card"><img width="2160" height="1425" src="assets/interlude/dashboard-content.png" alt="Content control panel with publishing queue and calendar" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Your content control panel</div><div class="proof-card-caption">The operations view: every post counted, the publishing queue, and a calendar of what goes out when. One glance and you know where the content stands. Part of the Fractional build.</div></figcaption></figure>
+      <figure class="proof-card"><img width="2160" height="1425" src="assets/interlude/dashboard-newsletter.png" alt="Newsletter engine with issue queue and approvals" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Newsletter engine</div><div class="proof-card-caption">Newsletter issues drafted and queued from the same content brain. Read, tap approve, schedule. Part of the Fractional build.</div></figcaption></figure>
+      <figure class="proof-card"><img width="3152" height="1672" src="assets/interlude/kyle-guides.png" alt="Published guide lead magnet landing page" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Guide</div><div class="proof-card-caption">A published Guide, another format. Branded resource page, opinionated copy, booking CTA, all generated automatically on your subdomain.</div></figcaption></figure>
+      <figure class="proof-card"><img width="1920" height="1350" src="assets/interlude/assessment-start.png" alt="Start screen of a freshly generated interactive assessment" loading="lazy"><figcaption class="proof-card-body"><div class="proof-card-label">Where it starts</div><div class="proof-card-caption">The opening screen of a freshly generated assessment, fully on brand: scored title, the reader's own welcome, an auto-saving quiz. This is what your audience lands on.</div></figcaption></figure>
+      <figure class="proof-card"><img width="1800" height="3210" src="assets/interlude/lemonade-thankyou.png" alt="Full branded Lemonade thank-you page" loading="lazy" style="height:340px;object-fit:cover;object-position:top"><figcaption class="proof-card-body"><div class="proof-card-label">A full branded page <span style="opacity:.6;font-weight:400;text-transform:none;letter-spacing:0">· click to expand</span></div><div class="proof-card-caption">A complete thank-you page we built in Lemonade's brand, end to end. Yours match Interlude exactly.</div></figcaption></figure>
+    </div>
+    <figure class="proof-card" style="max-width:360px;margin:24px auto 0">
+      <img width="928" height="1152" src="assets/interlude/lm-cover-portrait.jpg" alt="Branded AI-generated lead magnet cover featuring a portrait" loading="lazy">
+      <figcaption class="proof-card-body"><div class="proof-card-label">Branded AI-generated covers</div><div class="proof-card-caption">A real cover from a recent lead magnet, generated end to end. Your photo, your brand.</div></figcaption>
+    </figure>
+  </div>
+<div class="section">
+      <span class="section-number">03 • Scope of Work</span>
+      <h2>What’s included</h2>
+      
+        <div class="scope-group">
+          <div class="scope-group-label">Content System</div>
+          <div class="scope-grid">
+            <div class="scope-item"><div class="scope-check"></div><div><strong>Post pipeline</strong> · 5 post types drafted daily from your calls and research. 10 hook variations per post, one tap to approve from Notion.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Lead Magnet engine</strong> · 6 formats generated from approved post topics, with more built in as the partnership continues. Each asset comes with a landing page, resource page, cover image and email draft, ready to publish.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Content Brain</strong> · the system gets smarter with every call you take. Past conversations feed directly into post quality and positioning over time.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Source pipeline</strong> · call transcripts, manual seeds, and winners repurposing fed in automatically. No manual briefing needed.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Voice profile</strong> · trained from your existing LinkedIn archive. Posts read like you wrote them. The AI-ism QA agent strips template language before anything reaches the queue.</div></div>
+          </div>
+        </div>
+        <div class="scope-group">
+          <div class="scope-group-label">Workspace</div>
+          <div class="scope-grid">
+            <div class="scope-item"><div class="scope-check"></div><div><strong>Notion workspace</strong> · review queue, published log and prompt library in one place. Tweak tone and style in-house without touching the workflow.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>LinkedIn scheduler</strong> · approved posts go straight to LinkedIn on schedule. Lead magnet DM distribution wired in.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Email capture</strong> · lead magnet signups flow into ConvertKit automatically. Lists configured and ready for newsletters when you want them.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Lead magnet pages</strong> · each asset gets a branded landing page and resource page on <strong>resources.interlude.studio</strong>. Generated automatically, no design work required.</div></div><div class="scope-item"><div class="scope-check"></div><div><strong>Handoff docs</strong> · full runbook delivered at handoff. How everything runs, how to tweak it, how to expand it.</div></div>
+          </div>
+        </div>
+      
+    </div>
+<div class="section">
+      <span class="section-number">04 • Timeline</span>
+      <h2>Delivery schedule</h2>
+      <div class="table-scroll">
+        <table class="timeline-table">
+          <thead><tr><th>Phase</th><th>Duration</th><th>Deliverable</th></tr></thead>
+          <tbody><tr><td class="phase-name">Foundation</td><td class="phase-duration">Week 1</td><td class="phase-deliverable">Your content brain set up so it learns from every call, Notion workspace ready for your team, call transcripts flowing in automatically from Circleback, and your voice profile trained from your LinkedIn archive.</td></tr><tr><td class="phase-name">Content + Lead Magnets + Distribution</td><td class="phase-duration">Week 2</td><td class="phase-deliverable">The post engine goes live (drafts from your calls, 10 hook options each, written in your voice and checked for AI tells, scheduled to LinkedIn), all 6 lead-magnet formats with a first sample of each, branded pages on resources.interlude.studio, AI-generated covers, ConvertKit capture and distribution wired, plus your full runbook and a walkthrough.</td></tr><tr><td class="phase-name">Post-launch support</td><td class="phase-duration">Weeks 3 to 6</td><td class="phase-deliverable">1 month of fixes + tuning. On Fractional, this is the active partnership month (Slack support, strategy calls, ongoing build).</td></tr></tbody>
+        </table>
+      </div>
+      <div class="timeline-total">Total: Two-week build, plus one month of post-launch support</div>
+    </div>
+<div class="section">
+    <span class="section-number">05 • Expected ROI</span>
+    <h2>What you get back</h2>
+    <p>Manual posting at the cadence your audience rewards is <strong>5+ hours per week</strong> of founder time. Every week without consistent presence is authority going to competitors who show up daily, and the founders and funds you serve are being warmed by someone else's content.</p>
+    <div class="roi-grid">
+      <div class="roi-stat"><div class="roi-stat-value">20+</div><div class="roi-stat-label">Hours Saved / Month</div></div><div class="roi-stat"><div class="roi-stat-value">Daily</div><div class="roi-stat-label">Post Cadence</div></div><div class="roi-stat"><div class="roi-stat-value">6</div><div class="roi-stat-label">Lead Magnet Formats</div></div>
+    </div>
+  </div>
+<div class="section">
+    <span class="section-number">06 • Investment</span>
+    <h2>Pricing</h2>
+    <p class="tiers-intro">Two ways to engage now, four total tiers across the full engagement lifecycle. Pick whichever matches how you want to work, both cover the full build.</p><div class="tiers-grid"><div class="tier-card">
+            
+            <div class="tier-name">Single Project</div>
+            <div class="tier-price-row">
+              <span class="tier-price"><span class="currency">$</span>7,500</span>
+              <span class="tier-period">one-time</span>
+            </div>
+            
+            <div class="tier-summary">Two-week build, followed by <strong>1 month of post-launch support</strong> for fixes and prompt tuning. After that the system is fully yours to run.</div>
+            <ul class="tier-included"><li>Everything in Scope above</li><li><strong>1 month post-launch support</strong> for fixes and prompt tuning</li><li>Editable Prompt Library so you can tweak in-house</li></ul>
+            <p style="margin-top:14px;padding-top:12px;border-top:1px solid var(--hairline);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mute)">Optional add-on: <strong style="color:var(--ink)">Care Plan $1,000/mo</strong> · fixes, prompt updates + light maintenance after the engagement closes</p>
+            
+          </div><div class="tier-card recommended">
+            <div class="tier-badge">Recommended</div>
+            <div class="tier-name">Fractional · Month 1</div>
+            <div class="tier-price-row">
+              <span class="tier-price"><span class="currency">$</span>10,000</span>
+              <span class="tier-period">month 1</span>
+            </div>
+            
+            <div class="tier-summary">Everything in Single Project, plus an embedded month of building. Includes the 90-Day Blueprint audit, yours to keep whether or not you continue.</div>
+            <ul class="tier-included"><li>Everything in Single Project</li><li><strong>Newsletter system</strong> (campaigns + automations on ConvertKit, configured for your network and client list)</li><li><strong>90-Day Blueprint audit</strong> · structured intake → working session → published deliverable. Surfaces 5-7 priority builds across content, outbound, production, and partnerships. Yours to keep regardless.</li><li><strong>Performance dashboard</strong> · post engagement, lead magnet conversions, and pipeline tracking</li><li><strong>Strategy calls</strong> + <strong>Slack support</strong> throughout the month</li><li>Continuous tuning + small additions on demand</li><li style="color:var(--ink-mute);font-style:italic">The 90-Day Blueprint is honest. If we don't find enough to justify continuation, I'll tell you straight. You graduate to Care Plan ($1k/mo) or just walk.</li></ul>
+            
+          </div><div class="tier-card deferred" style="grid-column:1/-1">
+            <div style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--hairline)">What comes next</div>
+            <div class="tier-name">Months 2 &amp; 3 · Standard</div>
+            <div class="tier-price-row">
+              <span class="tier-price"><span class="currency">$</span>6,500</span>
+              <span class="tier-period">per month</span>
+            </div>
+            
+            <div class="tier-summary">Natural continuation after Month 1, built from the 90-Day Blueprint priorities. Three ongoing tiers available ($3.5k / $6.5k / $10k) depending on cadence. Exact scope is confirmed after the audit. Feasible builds that tend to surface for a studio like yours:</div>
+            <ul class="tier-included tier-grid"><li><strong>Branded carousels</strong> · top posts auto-built into on-brand LinkedIn carousels in Interlude's design system. The visual format that lands hardest for a design studio, generated from the same approved topics.</li><li><strong>Additional custom formats</strong> · new lead-magnet types like Teardown (famous pages deconstructed in your margin notes) or Infographic, built bespoke in Interlude's visual language as the library expands.</li><li><strong>VC Portfolio Brand Audit Engine</strong> · a branded audit tool you give to fund GPs to send their portfolio companies for free. Generates a personalized brand readiness report for each company that fills it in. A direct deliverable for your fund partnership thesis. <a href="https://ivanmanfredi.com/scan/proswppp" target="_blank" style="color:var(--accent);border-bottom:1px solid currentColor">See sample →</a></li><li><strong>Case Study Extractor → animator pipeline</strong> · surfaces client wins from call transcripts, structures them into case study briefs ready for your motion animator. Closes the gap between "we should post that case study" and the queue actually moving.</li><li><strong>Cross-platform repurposing</strong> · your best LinkedIn posts automatically reformatted for Twitter, short-form video, and pitch deck slides for your sales process.</li><li>Plus engagement and distribution builds (first-comment automation, comment mining, post-intelligence loop), and strategy calls + Slack throughout. Full list in the breakdown.</li></ul>
+            <a class="tier-link" href="https://ivanmanfredi.com/fractional/" target="_blank" rel="noopener">See full tier breakdown →</a>
+          </div></div><div class="investment-meta">
+          <div class="investment-term"><span class="investment-term-label">Start Date</span><span class="investment-term-value">Monday following payment</span></div>
+        </div>
+    <div class="investment-recurring">
+        <span class="investment-recurring-label">Ongoing Tool Costs (Client-Side)</span>
+        <table style="width:100%;border-collapse:collapse;margin-top:12px">
+          <thead><tr>
+            <th style="text-align:left;padding:8px 20px 8px 0;border-bottom:2px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)">Tool</th>
+            <th style="text-align:left;padding:8px 20px 8px 0;border-bottom:2px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)">Est. Cost</th>
+            <th style="text-align:left;padding:8px 0;border-bottom:2px solid var(--ink);font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)">Note</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;font-weight:600;color:var(--ink)">Anthropic API</td><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">$50-100/mo</td><td style="padding:11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">Post + lead magnet generation</td></tr>
+            <tr><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;font-weight:600;color:var(--ink)">OpenAI Image API</td><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">$5-15/mo</td><td style="padding:11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">Lead magnet cover images</td></tr>
+            <tr><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;font-weight:600;color:var(--ink)">Unipile</td><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">$30-80/mo</td><td style="padding:11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">LinkedIn scheduling + DM distribution</td></tr>
+            <tr><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;font-weight:600;color:var(--ink)">ConvertKit</td><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">$35/mo</td><td style="padding:11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">Email capture + newsletters</td></tr>
+            <tr><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;font-weight:600;color:var(--ink)">Supabase / Notion</td><td style="padding:11px 20px 11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">Free tier</td><td style="padding:11px 0;border-bottom:1px solid var(--hairline);font-size:14px;color:var(--ink-soft)">Typically already in use</td></tr>
+            <tr><td style="padding:11px 20px 11px 0;font-size:14px;font-weight:600;color:var(--ink)">Circleback</td><td style="padding:11px 20px 11px 0;font-size:14px;color:var(--ink-soft)">Existing</td><td style="padding:11px 0;font-size:14px;color:var(--ink-soft)">Call transcripts (already in use)</td></tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+<div class="section agreement-section">
+      <span class="section-number">07 • Agreement &amp; Terms</span>
+      <h2>Terms of engagement</h2>
+      <p>Both parties agree to the following terms governing this engagement:</p>
+      <div class="terms-grid"><div class="term-item"><div class="term-title">Scope</div><div class="term-text">This proposal defines the work. Anything beyond is a separate agreement.</div></div><div class="term-item"><div class="term-title">Intellectual Property</div><div class="term-text">Upon full payment, all deliverables become the Client’s property. I retain the right to reference the project in case studies without disclosing confidential data.</div></div><div class="term-item"><div class="term-title">Cancellation</div><div class="term-text">Either party may terminate with 7 days written notice. Work completed to date is billed proportionally.</div></div></div>
+      <p class="agreement-footnote" style="font-size:11px;opacity:0.62;margin-top:16px;">Governed by the laws of Spain. Disputes resolved through good-faith negotiation before formal proceedings.</p>
+    </div>
+<div class="section">
+    <span class="section-number">Before we start</span>
+    <h2>What I'll need from you</h2>
+    <p>To kick off, here is the access and context I'll need. Most of it you already have, and I handle the wiring.</p>
+    <ul class="access-list">
+      <li><strong>Website platform</strong> (Webflow, Framer, or custom) so lead-magnet pages live on resources.interlude.studio with zero design lift on your side.</li>
+      <li><strong>Circleback access</strong> so your call transcripts flow into the content brain automatically.</li>
+      <li><strong>Notion workspace access</strong> so the review board lives where your team already works.</li>
+      <li><strong>LinkedIn account</strong> for scheduling and lead-magnet distribution (connected through Unipile).</li>
+      <li><strong>ConvertKit account</strong> for email capture and newsletters, or willingness to set one up.</li>
+      <li><strong>Brand assets</strong> (logo, fonts, colors) and brand guidelines if you have them documented.</li>
+      <li><strong>Aesthetic direction for the pages</strong>, or I use the Interlude site as the styling reference.</li>
+      <li><strong>3 to 5 LinkedIn profiles</strong> you admire in your space, so the engine learns proven patterns.</li>
+      <li><strong>Your existing LinkedIn archive</strong> for voice calibration (the more, the sharper the match).</li>
+    </ul>
+  </div>
+<div class="cta-section">
+
+      <span class="section-number">Next Step</span>
+      <h2>Pick your path</h2>
+      <p>One reason to move now: every week without consistent presence is authority going to the people who show up daily, in front of the exact founders and funds you want. Pick your path below to lock your start and begin the Monday after payment.</p>
+
+
+      <div class="cta-buttons">
+        <a href="https://buy.stripe.com/bJe00baiDcvT9p41z5fEk15" class="btn-secondary" target="_blank" rel="noopener">Single Project →</a><a href="https://buy.stripe.com/8x24grcqLfI5dFk3HdfEk16" class="btn-primary" target="_blank" rel="noopener">Fractional · Month 1 →</a>
+      </div>
+      <p style="font-size:13px;color:var(--ink-mute);margin-top:14px">Want to talk through it first? <a href="mailto:im@ivanmanfredi.com" style="color:var(--accent);text-decoration:underline">Reply via email</a> and we'll book 30 min.</p>
+
+      <h3 style="margin-top:64px">What happens next</h3>
+      <ol class="next-steps">
+        <li>Pick a path and lock your start with payment above.</li>
+        <li>Platform access and a short requirements list are sent over.</li>
+        <li>Build begins the following Monday. First posts and a sample lead magnet land by day 10.</li>
+        <li>Full system plus a walkthrough by the end of week 2, then a month of support.</li>
+        <li><strong>If Fractional:</strong> a 90-Day Blueprint audit of your operation, yours to keep.</li>
+      </ol>
+      <p class="sig"><strong>Looking forward to building this with you.</strong></p>
+
+  </div>
+<div class="footer">
+  <div class="footer-left">Iván Manfredi</div>
+  <div class="footer-right">
+    <a href="https://inboundonsteroids.com">inboundonsteroids.com</a>
+    <a href="mailto:im@ivanmanfredi.com">im@ivanmanfredi.com</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  const bar=document.querySelector('.scroll-progress');
+  if(bar){
+    let docH=document.documentElement.scrollHeight-window.innerHeight,ticking=false;
+    const paint=()=>{bar.style.width=docH>0?(window.scrollY/docH*100)+'%':'0';ticking=false;};
+    window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(paint);}},{passive:true});
+    window.addEventListener('resize',()=>{docH=document.documentElement.scrollHeight-window.innerHeight;paint();},{passive:true});
+  }
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.section,.cover,.cta-section,.agreement-section,.footer').forEach(el=>obs.observe(el));
+  const numObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target;
+      const text=el.textContent.trim();
+      const num=parseFloat(text.replace(/[^0-9.]/g,''));
+      if(isNaN(num)||num===0)return;
+      const suffix=text.replace(/[0-9.,]/g,'');
+      const isInt=!text.includes('.');
+      let start=0;
+      const duration=600;
+      const startTime=performance.now();
+      function tick(now){
+        const p=Math.min((now-startTime)/duration,1);
+        const ease=1-Math.pow(1-p,3);
+        const val=start+(num-start)*ease;
+        el.textContent=(isInt?Math.round(val):val.toFixed(1))+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      numObs.unobserve(el);
+    })
+  },{threshold:0.5});
+  document.querySelectorAll('.roi-stat-value').forEach(el=>numObs.observe(el));
+  const cover=document.querySelector('.cover');
+  if(cover){setTimeout(()=>cover.classList.add('visible'),100);document.querySelectorAll('.cover .wrd').forEach((w,i)=>{setTimeout(()=>w.classList.add('vis'),240+i*160);})}
+})();
+
+// Cursor spotlight
+if(window.matchMedia('(hover:hover)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  var sp=document.getElementById('cursor-spotlight');
+  var spx=0,spy=0,spPending=false;
+  document.addEventListener('mousemove',function(e){
+    spx=(e.clientX/window.innerWidth*100).toFixed(1);
+    spy=(e.clientY/window.innerHeight*100).toFixed(1);
+    if(!spPending){spPending=true;requestAnimationFrame(function(){
+      sp.style.background='radial-gradient(620px circle at '+spx+'% '+spy+'%, rgba(42,143,101,0.2), transparent 70%)';
+      sp.style.opacity='1';spPending=false;
+    });}
+  },{passive:true});
+}
+
+// Lightbox
+(function(){
+  var ov=document.createElement('div');ov.className='lightbox-overlay';
+  var li=document.createElement('img');ov.appendChild(li);document.body.appendChild(ov);
+  ov.addEventListener('click',function(){ov.classList.remove('active')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')ov.classList.remove('active')});
+  document.querySelectorAll('.proof-card img').forEach(function(img){
+    img.addEventListener('click',function(e){e.stopPropagation();li.src=img.src;ov.classList.add('active')});
+  });
+})();
+</script>
+</body>
+</html>

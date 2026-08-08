@@ -1,0 +1,550 @@
+{
+ "slug": "antoine-gagn-96-assessment",
+ "title": "L'Audit Croissance Meta Ads",
+ "subtitle": "Mesurez si votre infrastructure publicitaire est réellement prête à scaler de 1 000 $ à 10 000 $ par jour profitablement.",
+ "brand": {
+  "accent": "#c7ff65",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "fondation_de_l_offre",
+   "name": "Fondation de l'offre",
+   "questions": [
+    {
+     "id": "offer-clarity",
+     "text": "Comment décririez-vous votre offre principale sur Meta aujourd'hui?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On ne s'est pas vraiment posé la question — on vend ce qu'on a",
+       "score": 1
+      },
+      {
+       "label": "On teste encore plusieurs offres différentes sans avoir trouvé la bonne",
+       "score": 2
+      },
+      {
+       "label": "Notre offre est compétitive mais pas vraiment différenciée de la concurrence",
+       "score": 3
+      },
+      {
+       "label": "Notre offre est bonne et on l'explique de différentes façons selon les publicités",
+       "score": 4
+      },
+      {
+       "label": "Nos clients savent exactement pourquoi acheter chez nous plutôt qu'ailleurs — et nos publicités le prouvent",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer-validation",
+     "text": "Comment validez-vous la résonnance de votre offre avant d'augmenter les budgets publicitaires?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On ne valide pas vraiment — on lance et on espère que ça marche",
+       "score": 1
+      },
+      {
+       "label": "On teste à l'œil — si ça vend, on continue",
+       "score": 2
+      },
+      {
+       "label": "On regarde le ROAS global du compte sans distinguer les offres entre elles",
+       "score": 3
+      },
+      {
+       "label": "On analyse les métriques par offre mais sans processus formalisé ni seuil défini",
+       "score": 4
+      },
+      {
+       "label": "On valide systématiquement le CPA et le ROAS par offre avant de scaler quoi que ce soit",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer-iteration",
+     "text": "Quelle est votre approche pour améliorer votre offre une fois que les publicités tournent?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On pense que c'est le rôle des créatifs, pas de l'offre elle-même",
+       "score": 1
+      },
+      {
+       "label": "On touche à l'offre seulement quand les résultats s'effondrent",
+       "score": 2
+      },
+      {
+       "label": "On améliore surtout les visuels — on touche rarement à l'offre en elle-même",
+       "score": 3
+      },
+      {
+       "label": "On révise l'offre quelques fois par an (prix, bonus, garanties) selon les résultats",
+       "score": 4
+      },
+      {
+       "label": "L'offre est notre levier prioritaire — on l'itère régulièrement et on mesure chaque changement",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Votre offre n'est pas encore prête à scaler.",
+     "text": "Augmenter votre budget sur une offre non validée ne fera qu'accélérer vos pertes. Une bonne offre avec de mauvais créatifs battra presque toujours une offre faible avec des vidéos à 50 000 $. Le travail commence ici, pas dans les campagnes.",
+     "steps": [
+      "Identifiez les 1 à 3 raisons pour lesquelles un client choisit votre produit plutôt qu'un concurrent — si vous ne pouvez pas les nommer clairement, vos clients non plus.",
+      "Testez au moins 3 offres distinctes (prix différents, bonus ou garanties différentes) avec un budget minimal avant d'augmenter quoi que ce soit.",
+      "Lisez vos avis clients et vos sondages post-achat pour trouver les mots qu'ils utilisent eux-mêmes pour décrire votre valeur — ce sont vos meilleurs angles publicitaires."
+     ]
+    },
+    "mid": {
+     "headline": "Votre offre a du potentiel, mais elle n'est pas encore optimisée.",
+     "text": "Vous avez trouvé quelque chose qui fonctionne — c'est déjà beaucoup. Maintenant, l'enjeu est de savoir si vous pouvez itérer assez vite pour scaler de façon rentable. Le stratège créatif entre en jeu seulement après que l'offre est solide.",
+     "steps": [
+      "Comparez votre offre à vos 3 principaux concurrents : prix, bonus, garanties, délais. Trouvez le vide que vous pouvez occuper sans guerre de prix.",
+      "Ajoutez une garantie ou un bonus qui retire le risque pour votre client — c'est souvent le seul détail qui fait basculer le CPA.",
+      "Mesurez le CPA par variation d'offre, pas seulement le ROAS global. C'est comme ça qu'on trouve les vrais leviers."
+     ]
+    },
+    "high": {
+     "headline": "Votre offre est solide. Concentrez-vous maintenant sur l'architecture créative.",
+     "text": "Le fondement est en place. Le rôle du stratège créatif prend tout son sens à partir d'ici : bâtir l'architecture de contenus qui va démontrer votre offre de toutes les façons possibles, à tous vos personas.",
+     "steps": [
+      "Documentez les 5 à 7 angles les plus performants de votre offre — ils deviendront la colonne vertébrale de votre pipeline créatif.",
+      "Créez au minimum 3 personas distincts et assurez-vous d'avoir des créatifs qui parlent directement à chacun d'eux.",
+      "Revoyez votre offre chaque trimestre — même une offre performante peut se fatiguer si la concurrence rattrape son retard."
+     ]
+    }
+   }
+  },
+  {
+   "id": "pipeline_cr_atif",
+   "name": "Pipeline créatif",
+   "questions": [
+    {
+     "id": "creative-volume",
+     "text": "Combien de nouveaux créatifs uniques (nouvelles publicités) lancez-vous sur Meta par semaine?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Moins d'un par semaine — on recycle beaucoup nos anciens créatifs",
+       "score": 1
+      },
+      {
+       "label": "1 à 2 nouveaux créatifs par semaine",
+       "score": 2
+      },
+      {
+       "label": "2 à 5 nouveaux créatifs par semaine",
+       "score": 3
+      },
+      {
+       "label": "5 à 10 nouveaux créatifs par semaine",
+       "score": 4
+      },
+      {
+       "label": "Plus de 10 nouveaux créatifs uniques par semaine, en continu",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "creative-mix",
+     "text": "Comment gérez-vous l'équilibre entre déclinaisons de créatifs gagnants et nouveaux contenus originaux?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On réutilise surtout les mêmes créatifs depuis plusieurs mois",
+       "score": 1
+      },
+      {
+       "label": "On lance ce qu'on a — contenu original ou déclinaison selon ce qui est prêt",
+       "score": 2
+      },
+      {
+       "label": "On se concentre principalement sur les déclinaisons de nos meilleurs créatifs existants",
+       "score": 3
+      },
+      {
+       "label": "On mise surtout sur de nouveaux contenus originaux en continu",
+       "score": 4
+      },
+      {
+       "label": "On fait les deux en parallèle et en permanence : déclinaisons des gagnants ET nouveaux contenus",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "creative-process",
+     "text": "Comment identifiez-vous vos créatifs gagnants et décidez-vous quoi produire chaque semaine?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Quand les créatifs meurent, on improvise",
+       "score": 1
+      },
+      {
+       "label": "On crée à la demande sans vraie planification — selon ce qui est disponible",
+       "score": 2
+      },
+      {
+       "label": "On regarde les chiffres de temps en temps, sans cadence ni critère fixe",
+       "score": 3
+      },
+      {
+       "label": "On liste les créatifs performants chaque semaine mais sans pipeline vraiment formalisé",
+       "score": 4
+      },
+      {
+       "label": "On a un pipeline créatif avec briefs clairs, responsables définis et revue hebdomadaire des gagnants",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Votre pipeline créatif est en mode survie.",
+     "text": "À 3 000 $ par jour, vous avez besoin d'un flux constant de nouveaux créatifs. Sans pipeline structuré, vous allez soit tomber en panne de contenu performant, soit scaler sur des publicités fatiguées. Les deux résultats sont mauvais.",
+     "steps": [
+      "Mettez en place un calendrier de production minimal : 3 nouveaux créatifs par semaine, avec un brief écrit pour chacun avant de commencer la production.",
+      "Désignez quelqu'un responsable du pipeline créatif. Sans responsable identifié, rien ne se fait de façon consistante.",
+      "Créez une revue hebdomadaire de 30 minutes : quels créatifs performent, lesquels sont morts, et quoi produire la semaine suivante."
+     ]
+    },
+    "mid": {
+     "headline": "Vous avez un début de système, mais pas assez pour scaler sérieusement.",
+     "text": "Vous produisez du contenu, mais sans cadence ni processus clair vous allez toujours manquer de créatifs au mauvais moment. Un pipeline créatif mal structuré à l'échelle coûte aussi cher qu'un mauvais media buyer.",
+     "steps": [
+      "Fixez une cadence non négociable : combien de créatifs par semaine, qui les produit, quel délai entre le brief et la mise en ligne.",
+      "Réintégrez les déclinaisons dans votre mix — la mise à jour Andromeda ne tue pas leur valeur, elle change seulement la façon dont Meta les interprète. Ne laissez pas un changement d'algorithme vous priver d'un levier qui fonctionnait.",
+      "Créez un tableau de suivi simple (Notion, Google Sheets) pour vos créatifs actifs : performance, statut, et date de lancement."
+     ]
+    },
+    "high": {
+     "headline": "Votre pipeline créatif est un avantage compétitif réel.",
+     "text": "Vous avez ce que la plupart des comptes n'auront jamais : un flux constant de contenu, une lecture claire de vos gagnants, et un mix qui combine déclinaisons et nouveaux contenus. C'est ce qui vous permet de scaler sans paniquer.",
+     "steps": [
+      "Documentez votre processus créatif pour qu'il soit reproductible sans vous — c'est ce qui vous permet d'augmenter la vélocité sans sacrifier la qualité.",
+      "Ajoutez un rôle d'orchestrateur créatif si ce n'est pas déjà fait — même 5 heures par semaine dédié à ce rôle change tout à cette échelle.",
+      "Mesurez votre taux de rotation créative : si moins de 30 % de vos impressions viennent de créatifs lancés il y a moins de 30 jours, accélérez la production."
+     ]
+    }
+   }
+  },
+  {
+   "id": "sant_des_m_triques",
+   "name": "Santé des métriques",
+   "questions": [
+    {
+     "id": "gross_margin",
+     "type": "number",
+     "text": "Quelle est votre marge brute produit actuelle (avant coûts publicitaires et frais généraux)?",
+     "hint": "Exemple : vous vendez à 100 $, le produit vous coûte 30 $ — votre marge est de 70 %. C'est l'une des 4 métriques fondamentales d'une boutique ecommerce en santé. Si vous ne la connaissez pas, arrêtez tout et calculez-la avant d'augmenter vos budgets.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 40,
+     "normalize_formula": "Math.min(100, Math.max(0, x))"
+    },
+    {
+     "id": "repeat_revenue_pct",
+     "type": "number",
+     "text": "Quel pourcentage de vos revenus totaux provient de clients existants (achats répétés)?",
+     "hint": "Si vous ne le savez pas exactement, estimez. C'est l'une des métriques les plus importantes — et souvent la plus ignorée — pour évaluer si votre boutique peut vraiment grandir à travers le temps.",
+     "suffix": "%",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 20,
+     "normalize_formula": "Math.min(100, Math.max(0, x))"
+    },
+    {
+     "id": "attribution-understanding",
+     "text": "Comment interprétez-vous l'attribution à la vue (view-through attribution) dans vos comptes Meta?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Je ne sais pas ce que c'est",
+       "score": 1
+      },
+      {
+       "label": "Je l'ignore complètement — je suis convaincu que c'est de la triche",
+       "score": 2
+      },
+      {
+       "label": "Je m'y fie pour tout sans vraiment comprendre ce qu'elle mesure réellement",
+       "score": 3
+      },
+      {
+       "label": "Je l'inclus dans mes chiffres mais j'en questionne la valeur selon les contextes",
+       "score": 4
+      },
+      {
+       "label": "Je l'analyse en contexte : ni automatiquement acceptée, ni automatiquement rejetée — avec des tests pour valider",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "customer-source",
+     "text": "Comment déterminez-vous d'où proviennent réellement vos nouveaux clients?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On suppose que tout vient de Meta puisque c'est là qu'on investit le plus",
+       "score": 1
+      },
+      {
+       "label": "On se fie uniquement à l'attribution au clic de Meta ou à Google Analytics",
+       "score": 2
+      },
+      {
+       "label": "On analyse les données d'attribution Meta (clic et vue) mais rien d'autre",
+       "score": 3
+      },
+      {
+       "label": "On demande aux clients parfois, sans sondage post-achat formalisé",
+       "score": 4
+      },
+      {
+       "label": "On a un sondage post-achat et on croise ces réponses avec les données d'attribution — c'est notre source de vérité",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Vous scalez à l'aveugle — c'est risqué.",
+     "text": "Sans une lecture claire de votre marge, de votre CAC et de vos sources de clients, vous ne pouvez pas savoir si vous êtes réellement rentable à l'échelle. À 1 000 $ par jour, vous pouvez vous en tirer. À 5 000 $, une mauvaise lecture peut vous coûter très cher très vite.",
+     "steps": [
+      "Calculez vos 4 métriques fondamentales cette semaine : marge brute produit, coût d'acquisition client, pourcentage de revenus de clients existants, et votre métrique spécifique à votre business.",
+      "Lancez un sondage post-achat avec une seule question : 'Comment avez-vous entendu parler de nous?' C'est le moyen le plus simple et le plus fiable pour comprendre vos vraies sources de clients.",
+      "Arrêtez de piloter avec le ROAS global uniquement — segmentez par produit, par offre et par canal avant de toucher aux budgets."
+     ]
+    },
+    "mid": {
+     "headline": "Vous avez les bases, mais des angles morts subsistent.",
+     "text": "Vous suivez vos chiffres — c'est bien. Mais il reste probablement des zones d'ombre : attribution mal comprise, marge non calculée par produit, revenus récurrents ignorés. Ce sont ces angles morts qui vous empêchent d'optimiser vraiment.",
+     "steps": [
+      "Si vous n'avez pas encore de sondage post-achat, lancez-en un cette semaine. Les réponses vont probablement vous surprendre — les clients ne viennent pas toujours d'où vous pensez.",
+      "Prenez le temps de comprendre l'attribution à la vue sur vos comptes : dans quels contextes elle sur-attribue, et dans quels contextes elle est légitime. Ce n'est pas un sujet à ignorer ni à accepter sans questionnement.",
+      "Calculez votre CAC par canal — pas seulement par campagne Meta — pour avoir une vision réelle de l'efficacité de chaque dollar investi sur chaque plateforme."
+     ]
+    },
+    "high": {
+     "headline": "Vos données sont votre avantage compétitif.",
+     "text": "Vous comprenez vos chiffres mieux que 90 % des comptes que j'ai vus. C'est exactement ce qui vous permet de prendre des décisions de scaling avec confiance plutôt qu'au feeling.",
+     "steps": [
+      "Automatisez vos tableaux de bord métriques si ce n'est pas encore fait — à 3 000 $ et plus par jour, vous devez voir vos unit economics tous les matins sans effort manuel.",
+      "Croisez vos données de sondage post-achat avec vos données d'attribution sur une base mensuelle pour détecter les décalages et affiner votre pondération budgétaire entre plateformes.",
+      "Documentez vos seuils d'intervention : les métriques exactes en dessous desquelles vous coupez, au-dessus desquelles vous scalez — pour pouvoir déléguer cette lecture à votre équipe sans perdre en précision."
+     ]
+    }
+   }
+  },
+  {
+   "id": "scalabilit_et_ex_cution",
+   "name": "Scalabilité et exécution",
+   "questions": [
+    {
+     "id": "daily_spend",
+     "type": "number",
+     "text": "Quel est votre investissement publicitaire quotidien moyen sur Meta?",
+     "hint": "Basez-vous sur votre moyenne des 30 derniers jours. À 3 000 $/jour, la complexité de gestion change radicalement. L'objectif que l'on vise chez J7 Media pour nos clients : 10 000 $/jour profitablement.",
+     "suffix": "$ / jour",
+     "min": 0,
+     "max": 100000,
+     "step": 100,
+     "default": 1000,
+     "normalize_formula": "x >= 3000 ? 100 : x >= 1000 ? 60 : x >= 300 ? 30 : 10"
+    },
+    {
+     "id": "budget-weighting",
+     "text": "Comment répartissez-vous votre budget publicitaire entre Meta, Google et les autres plateformes?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On met tout sur Meta — c'est la seule plateforme qu'on maîtrise vraiment",
+       "score": 1
+      },
+      {
+       "label": "On suit des ratios standards lus quelque part (ex : 60 % Meta, 40 % Google)",
+       "score": 2
+      },
+      {
+       "label": "On répartit selon l'historique de performance, sans vraie rigueur ni révision régulière",
+       "score": 3
+      },
+      {
+       "label": "On analyse les données et on ajuste la pondération mensuellement",
+       "score": 4
+      },
+      {
+       "label": "On adapte la pondération selon le type de business ET les données de notre sondage post-achat — pas de ratio universel",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "daily-optimization",
+     "text": "À quelle fréquence faites-vous des optimisations actives sur votre compte Meta (ajustements, coupures, intégrations)?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarement — on crée les campagnes et on les laisse tourner sans intervenir",
+       "score": 1
+      },
+      {
+       "label": "Seulement quand les résultats chutent vraiment et qu'on n'a plus le choix",
+       "score": 2
+      },
+      {
+       "label": "Une à deux fois par semaine en moyenne, sans cadence précise",
+       "score": 3
+      },
+      {
+       "label": "Plusieurs fois par semaine avec un processus défini pour chaque type d'intervention",
+       "score": 4
+      },
+      {
+       "label": "Tous les jours — optimisations, nettoyage des mauvaises performances et intégration de nouveaux créatifs",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai-integration",
+     "text": "Comment votre équipe (ou vous-même) intègre-t-elle les outils d'IA dans vos opérations publicitaires?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "On n'a pas encore commencé — les outils IA ne font pas partie de notre quotidien",
+       "score": 1
+      },
+      {
+       "label": "On est sceptique — on préfère l'humain pour tout ce qui touche à nos publicités",
+       "score": 2
+      },
+      {
+       "label": "On utilise quelques outils IA mais sans processus ni intégration systématique",
+       "score": 3
+      },
+      {
+       "label": "On teste activement et on intègre les meilleurs outils dans nos processus existants",
+       "score": 4
+      },
+      {
+       "label": "L'IA est intégrée dans notre workflow — production créative, analyse, briefs, reporting — et c'est moi qui l'ai déployée en premier",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Vous n'êtes pas encore prêt pour 3 000 $/jour.",
+     "text": "À ce stade, une augmentation de budget va amplifier des problèmes existants, pas des résultats. Le travail urgent : mettre en place les optimisations quotidiennes et la structure de gestion avant de toucher aux budgets.",
+     "steps": [
+      "Établissez une routine quotidienne de gestion de compte : 30 à 60 minutes par jour pour voir les métriques, couper ce qui ne performe pas et intégrer de nouveaux créatifs.",
+      "Définissez vos seuils d'intervention avant d'augmenter quoi que ce soit : à quel CPA vous coupez, à quel ROAS vous scalez. Sans règles claires, vous prendrez des décisions émotionnelles.",
+      "Concentrez-vous sur une seule plateforme bien maîtrisée — scaler Meta en profondeur vaut mieux que disperser votre budget sur 3 plateformes mal gérées."
+     ]
+    },
+    "mid": {
+     "headline": "Vous approchez de la zone de scaling, mais il manque encore de la rigueur.",
+     "text": "Entre 1 000 $ et 3 000 $ par jour, vous pouvez encore vous en sortir en mode réactif. Au-delà de 3 000 $, vous avez besoin d'un système — pondération budgétaire claire, optimisations quotidiennes, et une intégration IA qui vous donne un avantage sur vos compétiteurs.",
+     "steps": [
+      "Définissez votre pondération budgétaire selon votre type de business — une marque avec forte intention d'achat met plus sur Google; une marque innovante que peu de gens connaissent met plus sur Meta et TikTok. Votre ratio ne ressemble pas à celui de vos voisins.",
+      "Testez un outil IA cette semaine sur un processus spécifique : briefs créatifs, analyse de performance ou reporting. Un seul processus amélioré suffit pour commencer.",
+      "Préparez votre structure de campagnes pour absorber un triplement de budget sans s'effondrer — c'est maintenant qu'on le fait, pas en plein scaling."
+     ]
+    },
+    "high": {
+     "headline": "Votre infrastructure est prête pour le scaling sérieux.",
+     "text": "Vous avez les fondations d'un compte qui peut scaler au-delà de 3 000 $ par jour : optimisations quotidiennes, pondération budgétaire stratégique, intégration IA. La prochaine bataille, c'est la croissance — pas la productivité.",
+     "steps": [
+      "Rappelez-vous que votre mandat en tant que dirigeant n'est pas de devenir plus efficace — c'est de faire croître votre entreprise. Ne laissez pas l'optimisation opérationnelle vous distraire de ce mandat principal.",
+      "Évaluez votre pondération budgétaire avec les données de votre sondage post-achat : est-ce que l'allocation actuelle reflète réellement d'où viennent vos meilleurs clients?",
+      "Devenez le Chief AI Officer de votre organisation publicitaire — testez, analysez, jetez ce qui ne marche pas, recommencez. C'est ce qui va créer un avantage compétitif durable pendant que vos compétiteurs attendent encore de voir."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly_ad_spend",
+   "label": "Votre investissement mensuel Meta actuel",
+   "format": "currency_per_period",
+   "formula": "daily_spend * 30",
+   "show_in_result": true
+  },
+  {
+   "id": "monthly_gap_to_target",
+   "label": "Budget mensuel supplémentaire pour atteindre l'objectif de 10 000 $/jour",
+   "format": "currency_per_period",
+   "formula": "Math.max(0, (10000 - daily_spend) * 30)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Quel est votre rôle principal dans la gestion des publicités Meta?",
+  "answers": [
+   {
+    "label": "Fondateur / propriétaire d'une boutique ecommerce",
+    "tag": "founder"
+   },
+   {
+    "label": "Media buyer (interne ou freelance)",
+    "tag": "media-buyer"
+   },
+   {
+    "label": "Directeur marketing ou CMO",
+    "tag": "marketing-director"
+   },
+   {
+    "label": "Entrepreneur qui gère ses publicités lui-même",
+    "tag": "solo-operator"
+   }
+  ]
+ }
+}

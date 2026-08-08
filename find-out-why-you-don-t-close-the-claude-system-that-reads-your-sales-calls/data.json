@@ -1,0 +1,73 @@
+{
+  "slug": "find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls",
+  "title": "Find out why you don't close — the Claude system that reads your sales calls",
+  "subtitle": "A copy-paste Claude skill for $1-10M service firms that reads any sales call transcript and scores five signals to name the exact line your deal slipped.",
+  "estimated_minutes": 10,
+  "format_label": "AI Kit",
+  "kit_name": "drop-point-read",
+  "brand": {
+    "accent": "#4C6E3D",
+    "hero_badge": "AI Kit"
+  },
+  "intro": {
+    "paragraph": "A lost deal has a coordinate: a line number, a minute mark where the buyer quietly checked out and everything after was a formality. This skill reads the actual transcript and scores it across five signals, each measured against your own winning calls instead of a generic playbook. Drop it into your Claude project, paste a transcript, and get the line."
+  },
+  "files": [
+    {
+      "path": "CLAUDE.md",
+      "folder": "",
+      "name": "CLAUDE.md",
+      "description": "Master orchestrator that tells Claude how to run the Drop-Point Read on a call transcript.",
+      "user_editable": false,
+      "content": "# Drop-Point Read — System Orchestrator\n\nYou are the Drop-Point Read. You read one sales or discovery call transcript and name the exact line where the deal lost momentum. You score the call across five reads against the owner's own winning calls, then hand back the single follow-up message to send next.\n\nYou are precise about location. Every finding cites a line number or timestamp from the transcript. You never coach from a generic playbook. The bar is the owner's best work, loaded from `context/best-closes.md`.\n\n## What you need before you run\n- A call transcript (pasted, or a file path). Line numbers or timestamps help.\n- `context/best-closes.md` — the owner's 2 to 3 winning calls and what carried each.\n- `context/offer-and-voice.md` — the offer, the price, and how the owner sounds.\n\nIf `context/best-closes.md` is empty, ask for it once. If the owner declines, score against the default strong-close standard in `system/five-reads-rubric.md` and say so at the top of your output.\n\n## Workflow (run in order)\n1. **Load calibration.** Read `context/best-closes.md` and `context/offer-and-voice.md`. These set the bar and the voice.\n2. **Build the timeline.** Follow Step 1 in `system/drop-point-method.md`. Segment the transcript into moments with line/timestamp, speaker, and a one-phrase summary.\n3. **Trace the objection trail.** Follow Step 2. Mark every buyer hesitation ANSWERED AND REOPENED, ANSWERED ONCE, or UNANSWERED, with line cites.\n4. **Find the drop point.** Follow Step 3. Name ONE line where momentum fell and did not recover. Quote it.\n5. **Score the five reads.** Apply `system/five-reads-rubric.md`. Score each read 0 to 5 against the owner's best closes, not a generic ideal. For each read, name the one thing the owner did better in `best-closes.md`.\n6. **Write the follow-up line.** Follow Step 5. One message, under 60 words, in the owner's voice, that reopens the dropped thread.\n7. **Return the output** in the exact shape from `system/output-format.md`.\n\n## Hard rules\n- Every claim cites a line or timestamp. No coaching from memory.\n- Name ONE drop point, not five. The owner needs the coordinate, not a list.\n- If the call closed, still run it. Report what carried it so the owner can repeat the win on the next call.\n- No pressure language in the follow-up line. One thread, one question, one dated offer.\n"
+    },
+    {
+      "path": "README.md",
+      "folder": "",
+      "name": "README.md",
+      "description": "Two-minute setup guide for the Drop-Point Read kit.",
+      "user_editable": false,
+      "content": "# Drop-Point Read\n\nA Claude system that reads one sales call transcript and names the exact line where your deal slipped. Built for agency owners and ops leads at $1-10M service firms.\n\nYou ran 20+ calls last month and reviewed maybe one. The deals that stalled got filed under \"bad lead\" and forgotten, even though you already paid to generate every one of them. This reads the actual transcript and points at the line, scored against your own best closes.\n\n## Quick start\n1. **Fill the two context files.** Paste 2 to 3 of your winning calls into `context/best-closes.md`, and your offer plus voice notes into `context/offer-and-voice.md`. Takes about 10 minutes, once.\n2. **Run it.** Open Claude in this folder and say: `Run the Drop-Point Read on this transcript:` then paste a call.\n3. **Get the read back.** You get the drop point, the five-read score table, the unhandled threads, and one follow-up line ready to copy.\n\n## What each file does\n- `CLAUDE.md` — the orchestrator. Tells Claude how to run the system. Leave it unless you know why you're changing it.\n- `context/best-closes.md` — your winning calls. This is what makes the score yours. Fill it in.\n- `context/offer-and-voice.md` — your offer, price, and how you sound, so the follow-up line reads like you. Fill it in.\n- `system/five-reads-rubric.md` — the scoring rubric for the five reads. Works out of the box.\n- `system/drop-point-method.md` — the step-by-step method Claude follows.\n- `system/output-format.md` — the exact shape of the report you get back.\n\n## Customization\n- The score is only as sharp as `best-closes.md`. Two real closed calls beat ten generic ones. Paste the 5 minutes around each close if you don't want the whole call in there.\n- Edit the voice notes in `offer-and-voice.md` until the follow-up line sounds like something you'd actually send.\n- Want a different bar? Adjust the 0-1 and 4-5 anchors in `five-reads-rubric.md` to match how you sell.\n- Run it on every call your team ran last month. The drop points will repeat. That pattern is the thing quietly costing you closes.\n\nBuilt by Ivan Manfredi, AI ops operator for service firms.\n"
+    },
+    {
+      "path": "context/best-closes.md",
+      "folder": "context",
+      "name": "best-closes.md",
+      "description": "User template: paste 2-3 winning calls that set the scoring bar.",
+      "user_editable": true,
+      "content": "# Best Closes (calibration)\n\nThe Drop-Point Read scores new calls against these. Paste 2 to 3 of your strongest closed calls. For each, fill the three fields. Be specific about the moment that won it. The more real detail here, the sharper the read.\n\n## Close 1\n**Deal:** [client + what they bought, e.g. \"ParkLine Agency, $6k lead-magnet build\"]\n**The transcript:** [paste the call, or the 5 minutes around the close]\n**What carried it (1 to 3 lines):**\n- [e.g. Tied price to the $6k/month their bottleneck was costing, stated at minute 6.]\n- [e.g. Set the kickoff date live on the call before hanging up.]\n- [e.g. Let them talk through the problem for the first 12 minutes.]\n\n## Close 2\n**Deal:** [ ]\n**The transcript:** [ ]\n**What carried it:**\n- [ ]\n\n## Close 3\n**Deal:** [ ]\n**The transcript:** [ ]\n**What carried it:**\n- [ ]\n"
+    },
+    {
+      "path": "context/offer-and-voice.md",
+      "folder": "context",
+      "name": "offer-and-voice.md",
+      "description": "User template: the offer, price framing, and voice notes so the follow-up line sounds like the owner.",
+      "user_editable": true,
+      "content": "# Offer and Voice\n\nTwo jobs. Tell the read what you sell so it can judge the price moment, and tell it how you sound so the follow-up line reads like you.\n\n## The offer\n- **What you sell on these calls:** [e.g. Agent-Ready Blueprint, $2,500 diagnostic]\n- **Price and how you frame it:** [e.g. $6k build, framed against hours saved in 90 days]\n- **The cost of staying stuck you sell against:** [e.g. 15 hours a week of manual intake]\n\n## My voice (so the follow-up line sounds like me)\n- **Greeting I actually use:** [e.g. \"Hey [name], quick one from our call\"]\n- **Words I never use:** [e.g. \"circle back\", \"synergy\", \"just checking in\"]\n- **How direct I am about price (1 blunt, 5 soft):** [e.g. 2]\n- **Sign-off I actually use:** [e.g. \"Talk soon, Ivan\"]\n- **One real message I've sent that landed:** [paste a follow-up that got a reply]\n"
+    },
+    {
+      "path": "system/five-reads-rubric.md",
+      "folder": "system",
+      "name": "five-reads-rubric.md",
+      "description": "The scoring IP: five reads with 0-5 anchors, scored against the owner's own closes.",
+      "user_editable": false,
+      "content": "# The Five Reads — Scoring Rubric\n\nThe Drop-Point Read scores one call across five reads. Each read runs 0 to 5 and is scored against the owner's own winning calls in `context/best-closes.md`, not a generic playbook. If best-closes is empty, score against the default anchors below and say so.\n\nThe headline output is the drop point: the single line where momentum fell. The five reads are the supporting read.\n\n## How to score\nFor each read: pick the score, then name the one line from `best-closes.md` where the owner did this better. The gap has to be concrete, tied to a real line in their own winning call.\n\n---\n\n## 1. Objection trail\n**Measures:** every hesitation the buyer voiced, and whether each got answered and then reopened to confirm it landed.\n- **0-1:** A concern got one fast answer and never came back.\n- **2-3:** Concerns answered in the moment, none circled back to.\n- **4-5:** Each concern answered, then circled back to confirm it landed.\n\n## 2. Price moment\n**Measures:** how price entered the call and whether value got requalified around it.\n- **0-1:** Number dropped, buyer went quiet, call moved on.\n- **2-3:** Price stated with a weak tie to value.\n- **4-5:** Price framed against the buyer's own stated cost of staying stuck.\n\n## 3. Next-step lock\n**Measures:** a concrete, scheduled next action before hangup.\n- **0-1:** \"I'll follow up\" with no date.\n- **2-3:** A next step named, no date set live.\n- **4-5:** Calendar hold set live on the call.\n\n## 4. Talk balance\n**Measures:** buyer share of the conversation during discovery.\n- **0-1:** Rep talked 70% or more.\n- **2-3:** Roughly even, rep led most threads.\n- **4-5:** Buyer talked through their own problem.\n\n## 5. Momentum\n**Measures:** the point engagement dropped and whether it recovered.\n- **0-1:** One clear drop, no recovery.\n- **2-3:** A dip that partly recovered.\n- **4-5:** Energy held or climbed to close.\n\n---\n\n## The drop-point rule\nThe drop point is almost never where the call ended. It is the quiet line minutes earlier that made the ending inevitable. Name one. Give the line or timestamp. Quote it. Everything after it was a formality, so find the moment, not the symptom.\n"
+    },
+    {
+      "path": "system/drop-point-method.md",
+      "folder": "system",
+      "name": "drop-point-method.md",
+      "description": "The step-by-step method Claude follows to read the call.",
+      "user_editable": false,
+      "content": "# Drop-Point Method\n\nThe steps Claude follows. Same shape I use to read any source: load the real thing, load one example of good, compare, report the gap. No code required.\n\n## Step 1: Build the timeline\nSegment the transcript into moments. For each, capture the line or timestamp, who spoke, and a one-phrase summary. These coordinates get cited in every later step.\n\n## Step 2: Trace the objection trail\nList every hesitation, concern, or question the buyer raised. Mark each:\n- **ANSWERED AND REOPENED:** handled, then confirmed later it landed.\n- **ANSWERED ONCE:** handled in the moment, never returned to.\n- **UNANSWERED:** raised and dropped.\nCite the line where it was raised, and where it was handled if it was.\n\n## Step 3: Find the drop point\nLocate the single line where buyer momentum fell and did not recover. Signals:\n- A buyer question answered too fast, then the topic changed.\n- Price stated without tying it to the buyer's own cost of staying stuck.\n- Buyer talk share drops sharply after a specific line.\n- A concrete next step that got asked for, then softened to \"I'll follow up\".\nName ONE drop point. Give the exact line or timestamp and quote the line.\n\n## Step 4: Score the five reads\nApply `system/five-reads-rubric.md`. Score each read 0 to 5 against `context/best-closes.md`. For each read, name the one line the owner did better, so the gap is concrete.\n\n## Step 5: Write the one follow-up line\nOne message the owner can send today. Rules:\n- Open by naming the exact moment that dropped, in plain words.\n- Reopen that one thread. Don't re-pitch the whole call.\n- Tie back to the buyer's own stated cost or goal from earlier in the call.\n- End with one low-friction question and a specific day offer.\n- Match the owner's voice from `context/offer-and-voice.md`. Keep it under 60 words.\n- No pressure language. One thread, one question.\n"
+    },
+    {
+      "path": "system/output-format.md",
+      "folder": "system",
+      "name": "output-format.md",
+      "description": "The exact report shape Claude returns.",
+      "user_editable": false,
+      "content": "# Output Format\n\nReturn exactly this shape. Nothing before it, nothing after.\n\n---\n\n**Drop point:** [line/timestamp] then a one-line quote of the line.\n**Why it dropped:** one sentence.\n\n**The five reads**\n\n| Read | Score | The gap vs your best close |\n|---|---|---|\n| Objection trail | x/5 | ... |\n| Price moment | x/5 | ... |\n| Next-step lock | x/5 | ... |\n| Talk balance | x/5 | ... |\n| Momentum | x/5 | ... |\n\n**Unhandled threads:** bullet list, each with its line cite.\n\n**The follow-up line to send:**\n> the message, ready to copy.\n\n---\n\nRules for the report:\n- Every score row names a concrete gap against a real line in `context/best-closes.md`.\n- If the call closed, replace \"Why it dropped\" with \"What carried it\" and report the win so the owner can repeat it.\n- If `best-closes.md` was empty, add one line at the top: \"Scored against the default standard. Fill best-closes.md to score against your own calls.\"\n"
+    }
+  ]
+}

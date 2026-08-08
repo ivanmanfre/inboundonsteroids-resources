@@ -1,0 +1,656 @@
+{
+  "slug": "the-10-second-clarity-test-what-an-investor-understands-before-they-lose-interest",
+  "title": "The 10-Second Clarity Test",
+  "subtitle": "What an investor understands about your startup before they lose interest",
+  "brand": {
+    "accent": "#00dd9f",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 6,
+  "persona_selector": {
+    "id": "stage",
+    "text": "Where is your startup right now?",
+    "answers": [
+      {
+        "label": "Pre-seed, still shaping the story",
+        "tag": "preseed"
+      },
+      {
+        "label": "Raising or about to raise a seed round",
+        "tag": "seed"
+      },
+      {
+        "label": "Post-seed, sharpening for Series A",
+        "tag": "seriesa"
+      },
+      {
+        "label": "Bootstrapped, selling to customers not investors",
+        "tag": "bootstrapped"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "first_ten_seconds",
+      "name": "The First Ten Seconds",
+      "questions": [
+        {
+          "id": "homepage_clarity",
+          "text": "A stranger lands on your homepage and reads for ten seconds. Can they say what you actually do?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, they'd have to guess or ask",
+              "score": 1
+            },
+            {
+              "label": "Roughly, if they read carefully",
+              "score": 2
+            },
+            {
+              "label": "The gist, but it takes a second read",
+              "score": 3
+            },
+            {
+              "label": "Yes, most people get it",
+              "score": 4
+            },
+            {
+              "label": "Instantly, in one plain sentence",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "one_sentence",
+          "text": "Can you describe what your company does in one sentence a non-expert repeats correctly?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Not really, it always needs context",
+              "score": 1
+            },
+            {
+              "label": "I have one but people still get it wrong",
+              "score": 2
+            },
+            {
+              "label": "Sometimes it lands",
+              "score": 3
+            },
+            {
+              "label": "Usually it lands",
+              "score": 4
+            },
+            {
+              "label": "Yes, and people repeat it back accurately",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "jargon_load",
+          "text": "How much industry jargon does a first-time reader have to decode to understand you?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A lot, our copy is dense",
+              "score": 1
+            },
+            {
+              "label": "More than it should be",
+              "score": 2
+            },
+            {
+              "label": "Some, but we're aware of it",
+              "score": 3
+            },
+            {
+              "label": "Little, we keep it plain",
+              "score": 4
+            },
+            {
+              "label": "Almost none, a teenager would get it",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're losing them before the product ever gets a turn",
+          "text": "Right now a first-time reader can't say what you do in the ten seconds they actually give you. It doesn't matter how good the technology is if the page loses the room on the first line. The problem is almost never the product, it's that the page is written for people who already understand it.",
+          "steps": [
+            "Rewrite the first line of your homepage to say what you do in plain words a non-customer repeats correctly",
+            "Cut every sentence a smart 15-year-old couldn't parse on the first read",
+            "Test it: show the page to five strangers for ten seconds and ask them what the company does"
+          ]
+        },
+        "mid": {
+          "headline": "The idea gets through, but it takes a second read",
+          "text": "People eventually understand you, but 'eventually' is a luxury an investor or a busy buyer doesn't grant. You're spending clarity you can't afford in the opening seconds. Tightening the first ten seconds is the single cheapest lever you have.",
+          "steps": [
+            "Move your clearest one-line explanation to the very top, above everything clever",
+            "Remove the second-read dependency: the first pass should carry the whole idea",
+            "Keep one message per screen so nothing competes with the core line"
+          ]
+        },
+        "high": {
+          "headline": "You're clear in ten seconds, now protect it",
+          "text": "Strangers get what you do fast, which puts you ahead of most startups at your stage. The risk now is drift: as you add products and audiences, the clarity erodes. Guard the opening line like a feature.",
+          "steps": [
+            "Write your one-liner down and make it the non-negotiable top of every surface",
+            "Review it every time you add a product so the page never fragments",
+            "Use the clarity you've earned to go deeper on proof, not to add more explaining"
+          ]
+        }
+      }
+    },
+    {
+      "id": "investor_five",
+      "name": "The Investor's Five Questions",
+      "questions": [
+        {
+          "id": "what_it_does",
+          "text": "By slide two of your deck, does an investor clearly understand what the product does?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, it takes most of the deck",
+              "score": 1
+            },
+            {
+              "label": "Not until several slides in",
+              "score": 2
+            },
+            {
+              "label": "Around slide three or four",
+              "score": 3
+            },
+            {
+              "label": "Yes, by slide two",
+              "score": 4
+            },
+            {
+              "label": "Yes, and by slide one",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "problem_real",
+          "text": "Does your deck make the problem feel real and urgent, not just stated?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We just assert the problem exists",
+              "score": 1
+            },
+            {
+              "label": "We state it but don't make it felt",
+              "score": 2
+            },
+            {
+              "label": "It's there but generic",
+              "score": 3
+            },
+            {
+              "label": "It lands for most readers",
+              "score": 4
+            },
+            {
+              "label": "It's visceral, they feel the pain",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "why_you",
+          "text": "Is it obvious why YOU are the team to solve this, not just anyone?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Not addressed",
+              "score": 1
+            },
+            {
+              "label": "Implied, never stated",
+              "score": 2
+            },
+            {
+              "label": "Mentioned briefly",
+              "score": 3
+            },
+            {
+              "label": "Made clearly",
+              "score": 4
+            },
+            {
+              "label": "Unmistakable, it's a core part of the story",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "can_you_ship",
+          "text": "Does the deck give evidence this team can actually build and ship?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No proof of execution",
+              "score": 1
+            },
+            {
+              "label": "Thin, mostly promises",
+              "score": 2
+            },
+            {
+              "label": "Some traction shown",
+              "score": 3
+            },
+            {
+              "label": "Solid evidence of shipping",
+              "score": 4
+            },
+            {
+              "label": "Strong track record and momentum on the page",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The deck answers the wrong questions in the wrong order",
+          "text": "An investor silently answers five questions in the first minute: do I get what this is, is the problem real, why you, can this team ship, is this worth my time. Your deck is making them wait for answers they need up front, so the technology never gets a fair hearing.",
+          "steps": [
+            "Restructure the first three slides to answer what-it-does, why-it-matters, and why-you in that order",
+            "Replace asserted problems with a concrete, specific scene of the pain",
+            "Put one piece of hard execution proof in the first third of the deck"
+          ]
+        },
+        "mid": {
+          "headline": "Most of the five land, one or two are soft",
+          "text": "Your deck gets the basics across, but at least one of the five investor questions is being answered late or weakly, usually 'why you' or 'can you ship.' Those are the ones that convert interest into a second meeting.",
+          "steps": [
+            "Audit your deck slide by slide against the five questions and flag which is weakest",
+            "Strengthen 'why you' with the specific, non-obvious reason this team wins",
+            "Move your strongest proof-of-execution earlier so momentum is felt, not inferred"
+          ]
+        },
+        "high": {
+          "headline": "Your deck answers all five, fast",
+          "text": "You're covering what a good investor needs in the order they need it, which is rare. The leverage now is compression and memorability, so a partner who wasn't in the room still gets it secondhand.",
+          "steps": [
+            "Tighten each of the five answers to a single, quotable line",
+            "Make one number or one image the thing they remember and repeat internally",
+            "Pressure-test the deck by having someone pitch it back to you from memory"
+          ]
+        }
+      }
+    },
+    {
+      "id": "one_voice",
+      "name": "One Voice, Not Four",
+      "questions": [
+        {
+          "id": "brand_site_consistency",
+          "text": "Do your brand, website, product UI, and any motion/video all say the same thing about the company?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, they feel like four different companies",
+              "score": 1
+            },
+            {
+              "label": "They clash in obvious places",
+              "score": 2
+            },
+            {
+              "label": "Mostly aligned, some drift",
+              "score": 3
+            },
+            {
+              "label": "Well aligned",
+              "score": 4
+            },
+            {
+              "label": "Seamless, one voice everywhere",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "built_in_silos",
+          "text": "Were your brand, site, product, and content built together or bolted on separately over time?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Separately, by different people at different times",
+              "score": 1
+            },
+            {
+              "label": "Mostly piecemeal",
+              "score": 2
+            },
+            {
+              "label": "A mix",
+              "score": 3
+            },
+            {
+              "label": "Largely coordinated",
+              "score": 4
+            },
+            {
+              "label": "As one coherent system",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "first_impression_match",
+          "text": "Does the feeling someone gets from your homepage match the feeling they get from the actual product?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, they're jarringly different",
+              "score": 1
+            },
+            {
+              "label": "Noticeable gap",
+              "score": 2
+            },
+            {
+              "label": "Close enough",
+              "score": 3
+            },
+            {
+              "label": "Consistent",
+              "score": 4
+            },
+            {
+              "label": "Identical, it all coheres",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You launched looking like four companies wearing one logo",
+          "text": "Branding, website, product design, and motion were each built in isolation and stitched together late. Every piece may be fine alone, but together they say four slightly different things about the same company, and the reader doesn't untangle that. They just leave.",
+          "steps": [
+            "Map what each surface (brand, site, product, video) currently implies about the company and find the contradictions",
+            "Pick one core promise and rewrite every surface to point at it",
+            "From now on, build communication as one job in one direction, not four handoffs"
+          ]
+        },
+        "mid": {
+          "headline": "Mostly one voice, with visible seams",
+          "text": "Your surfaces are broadly aligned but there are seams where the story shifts, usually between the marketing site and the product itself. Those seams are where a considering buyer starts to doubt.",
+          "steps": [
+            "Walk the full journey from ad to homepage to signup to product and note every tonal jump",
+            "Close the biggest gap first, usually the homepage-to-product handoff",
+            "Give one person final say over the through-line so it stops drifting"
+          ]
+        },
+        "high": {
+          "headline": "It reads as one product, top to bottom",
+          "text": "Brand, site, product, and motion move in one direction, which is exactly what makes a young company feel real. Keep it as you scale, because coherence is the first thing that breaks when teams grow.",
+          "steps": [
+            "Document the core voice and visual system so new hires don't fragment it",
+            "Review new surfaces against the through-line before they ship",
+            "Use the coherence as a moat, most competitors will never achieve it"
+          ]
+        }
+      }
+    },
+    {
+      "id": "proof",
+      "name": "Proof Over Claims",
+      "questions": [
+        {
+          "id": "credibility_signals",
+          "text": "When a stranger doubts you, does your page give them a reason to believe (logos, results, names, proof)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No visible proof at all",
+              "score": 1
+            },
+            {
+              "label": "Thin, easily dismissed",
+              "score": 2
+            },
+            {
+              "label": "Some proof, not prominent",
+              "score": 3
+            },
+            {
+              "label": "Clear, credible proof",
+              "score": 4
+            },
+            {
+              "label": "Strong proof placed exactly where doubt happens",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "claims_vs_evidence",
+          "text": "Are your boldest claims backed by evidence, or asked to be taken on faith?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Mostly faith",
+              "score": 1
+            },
+            {
+              "label": "More claims than proof",
+              "score": 2
+            },
+            {
+              "label": "Balanced",
+              "score": 3
+            },
+            {
+              "label": "Most claims are backed",
+              "score": 4
+            },
+            {
+              "label": "Every big claim has evidence next to it",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "specificity",
+          "text": "Is your messaging specific (real numbers, real outcomes) or generic ('cutting-edge', 'seamless')?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Very generic",
+              "score": 1
+            },
+            {
+              "label": "Leans generic",
+              "score": 2
+            },
+            {
+              "label": "Mixed",
+              "score": 3
+            },
+            {
+              "label": "Mostly specific",
+              "score": 4
+            },
+            {
+              "label": "Concrete and specific throughout",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're asking to be believed without giving a reason",
+          "text": "Your strongest claims are landing on faith. A skeptical reader, and investors are professionally skeptical, needs proof placed exactly where the doubt fires. Generic language ('cutting-edge', 'seamless') reads as the absence of anything specific to point to.",
+          "steps": [
+            "Replace your three most generic phrases with a specific number, name, or outcome",
+            "Place one proof point (a logo, a result, a testimonial) right next to your boldest claim",
+            "Cut any adjective you couldn't defend with evidence in a meeting"
+          ]
+        },
+        "mid": {
+          "headline": "You have proof, it's just underused",
+          "text": "There's credibility in your story, but it's not doing enough work, either buried or too generic to bite. Proof only converts when it sits where the reader is actively doubting.",
+          "steps": [
+            "Find the moment a reader is most likely to think 'prove it' and put your best evidence there",
+            "Swap one generic superlative for a concrete result this week",
+            "Lead with specifics; save the adjectives for when the numbers have earned them"
+          ]
+        },
+        "high": {
+          "headline": "Your claims are backed and specific",
+          "text": "You lead with evidence and concrete language, which is what makes a young company believable. The next lever is placement, making sure each proof point defuses the exact objection it's near.",
+          "steps": [
+            "Match each proof point to the specific doubt it answers",
+            "Keep collecting specific outcomes so proof scales with your claims",
+            "Use your credibility to make bigger, still-defensible claims than competitors dare"
+          ]
+        }
+      }
+    },
+    {
+      "id": "repeatable_line",
+      "name": "The Repeatable Line",
+      "questions": [
+        {
+          "id": "partner_repeat",
+          "text": "After a pitch, could someone repeat your idea accurately to a partner who wasn't in the room?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, it would get garbled",
+              "score": 1
+            },
+            {
+              "label": "Only the rough shape",
+              "score": 2
+            },
+            {
+              "label": "Partly",
+              "score": 3
+            },
+            {
+              "label": "Mostly intact",
+              "score": 4
+            },
+            {
+              "label": "Yes, cleanly and correctly",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "memorable_hook",
+          "text": "Is there one line or image people remember about you a week later?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Nothing memorable",
+              "score": 1
+            },
+            {
+              "label": "Not really",
+              "score": 2
+            },
+            {
+              "label": "Maybe one thing",
+              "score": 3
+            },
+            {
+              "label": "Yes, usually",
+              "score": 4
+            },
+            {
+              "label": "Yes, a line people quote back to us",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "clear_next_step",
+          "text": "When someone finishes your pitch or page, is the next step obvious and easy?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No clear next step",
+              "score": 1
+            },
+            {
+              "label": "Vague or buried",
+              "score": 2
+            },
+            {
+              "label": "Present but weak",
+              "score": 3
+            },
+            {
+              "label": "Clear",
+              "score": 4
+            },
+            {
+              "label": "Obvious and frictionless",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your idea can't survive the retelling",
+          "text": "Funding and deals happen in rooms you're not in. If a partner or a colleague can't repeat your idea accurately after hearing it once, the message dies the moment you leave. A complex idea has to be made simple enough to travel without you.",
+          "steps": [
+            "Craft one plain-language line that carries the whole idea and make everyone learn it",
+            "Add one memorable hook (a number, a contrast, an image) people will quote",
+            "End every pitch and page with a single obvious next step"
+          ]
+        },
+        "mid": {
+          "headline": "It travels, but loses shape on the way",
+          "text": "Your idea mostly survives a retelling, but detail leaks out and the next step isn't always obvious. Tightening the one line and the one hook makes your message spread more faithfully.",
+          "steps": [
+            "Distill your pitch to one sentence that can't be misremembered",
+            "Give people a single sticky hook so the retelling keeps its edge",
+            "Make the next step unmistakable so interest converts to action"
+          ]
+        },
+        "high": {
+          "headline": "Your message travels clean",
+          "text": "People can repeat your idea accurately, remember a line, and know what to do next. That's the whole game, your message works when you're not in the room. Keep it sharp as the story grows.",
+          "steps": [
+            "Protect the one line and one hook, don't let them dilute as you add nuance",
+            "Track how people paraphrase you and correct drift early",
+            "Make sure the next step scales with you (from 'book a call' to whatever's next)"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 45,
+    "mid": 72
+  },
+  "tier_names": {
+    "low": "They're Not Getting It",
+    "mid": "Half the Room",
+    "high": "Clear in Ten Seconds"
+  },
+  "cta": {
+    "headline": "Turn this score into a system that keeps you clear",
+    "description": "You can see where you're losing people. The next step is making clarity systematic across everything you publish, so your brand, site, deck, and content always say one thing. Book a 30-minute call and I'll show you what to fix first and how to keep it from drifting as you grow.",
+    "button": "Book a Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
+}

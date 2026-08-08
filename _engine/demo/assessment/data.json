@@ -1,0 +1,107 @@
+{
+  "slug": "demo-assessment",
+  "title": "The Service Firm Automation Readiness Score",
+  "subtitle": "A 12-minute self-assessment for owners and ops leads at 11–100 employee service businesses. Find your weakest category.",
+  "brand": { "accent": "#00E676", "hero_badge": "Interactive Assessment" },
+  "estimated_minutes": 12,
+  "persona_selector": {
+    "id": "role",
+    "text": "Which best describes you?",
+    "answers": [
+      { "label": "Owner / Founder", "tag": "owner" },
+      { "label": "Ops Lead / COO", "tag": "ops" },
+      { "label": "Individual Contributor / Specialist", "tag": "ic" }
+    ]
+  },
+  "categories": [
+    {
+      "id": "intake",
+      "name": "Client Intake",
+      "questions": [
+        { "id": "intake-1", "text": "How consistently does a new client go from inquiry to kickoff without human data entry?", "max_score": 5, "answers": [
+          { "label": "1 — Every step is manual", "score": 1 },
+          { "label": "2 — Form submit is automated; rest is manual", "score": 2 },
+          { "label": "3 — Some CRM auto-populate but gaps remain", "score": 3 },
+          { "label": "4 — Mostly automated, occasional manual fix", "score": 4 },
+          { "label": "5 — Fully automated end-to-end", "score": 5 }
+        ] },
+        { "id": "intake-2", "text": "How fast does a new lead get a personalized first response?", "max_score": 5, "answers": [
+          { "label": "1 — Days, when someone gets to it", "score": 1 },
+          { "label": "2 — Same day, generic response", "score": 2 },
+          { "label": "3 — Within 2 hours, semi-personalized", "score": 3 },
+          { "label": "4 — Under 30 minutes, personalized", "score": 4 },
+          { "label": "5 — Under 60 seconds, auto-personalized from context", "score": 5 }
+        ] },
+        { "id": "intake-3", "text": "How much of the kickoff prep (scheduling, engagement letter, kickoff doc) is automated?", "max_score": 5 }
+      ],
+      "recommendations": {
+        "low": { "headline": "Intake is eating 8-12 hrs/person/week", "text": "Every missing automation here compounds downstream. Start with form-to-CRM auto-population — it's a 2-day build that pays back in 30 days at your size.", "steps": ["Wire your intake form (Tally or Typeform) directly to your CRM via n8n", "Trigger a personalized welcome email (Claude-drafted, variable by industry) on form submit", "Auto-schedule the kickoff via Cal.com round-robin, embedded in the welcome email"] },
+        "mid": { "headline": "Intake is half-automated — the gaps compound", "text": "The biggest leak is usually between form submit and engagement letter. Most firms have the front and back automated but re-type data in the middle.", "steps": ["Audit where human retyping still happens (look for copy-paste in your team's screen recordings)", "Add a Claude-powered 'field normalizer' that extracts engagement letter variables from the intake form", "Auto-send e-sign via DocuSign or HelloSign as soon as the kickoff call is booked"] },
+        "high": { "headline": "Intake is dialed — push into engagement depth", "text": "You're ahead of most service firms. Next move: personalize the onboarding sequence by industry or size cluster.", "steps": ["Add persona branching in the welcome email based on intake form industry field", "Generate an industry-specific onboarding deck automatically (Gamma API + Claude)", "Measure form-to-kickoff-call conversion rate weekly in Supabase"] }
+      }
+    },
+    {
+      "id": "delivery",
+      "name": "Project Delivery",
+      "questions": [
+        { "id": "del-1", "text": "How consistently are weekly client status updates generated without manual writing?", "max_score": 5 },
+        { "id": "del-2", "text": "How automated is time-tracking-to-billing reconciliation?", "max_score": 5 },
+        { "id": "del-3", "text": "How consistently does QA happen on deliverables before client sees them?", "max_score": 5 }
+      ],
+      "recommendations": {
+        "low": { "headline": "Delivery ops is where margin vanishes", "text": "Manual status updates alone eat 2-4 hours per account per week. At 10 accounts, that's a part-time hire.", "steps": ["Wire your PM tool (ClickUp / Linear / Asana) to a weekly status-update workflow using Claude", "Auto-reconcile time entries to projects using a Supabase nightly job", "Standardize a QA checklist that fires on deliverable state change"] },
+        "mid": { "headline": "Solid delivery ops, one layer short", "text": "You probably have status updates or reconciliation automated — rarely both. The gap compounds at scale.", "steps": ["Close whichever is still manual (most firms have status auto, billing manual)", "Add a Claude QA pass on every deliverable before send", "Instrument client-satisfaction pulse after each major milestone"] },
+        "high": { "headline": "Delivery is tight — focus on insight layer", "text": "You're running lean. Next leverage point: turn delivery data into predictive signals.", "steps": ["Build a project-health dashboard predicting at-risk accounts", "Auto-flag accounts with late deliverables for owner attention", "Publish a quarterly delivery-ops benchmark for the firm"] }
+      }
+    },
+    {
+      "id": "sales",
+      "name": "Sales & Pipeline",
+      "questions": [
+        { "id": "sales-1", "text": "How automated is your outbound prospecting research?", "max_score": 5 },
+        { "id": "sales-2", "text": "How consistently are proposals generated from intake / discovery data?", "max_score": 5 },
+        { "id": "sales-3", "text": "How systematically does your team follow up on stalled opportunities?", "max_score": 5 }
+      ],
+      "recommendations": {
+        "low": { "headline": "Pipeline ops is pure friction", "text": "Most owner-led firms leak 30-40% of potential revenue to stalled follow-ups and slow proposals.", "steps": ["Add a Claude-powered prospect research workflow that enriches LinkedIn profiles", "Auto-draft proposals from discovery-call transcripts (Fathom + Claude)", "Build a 45-day stalled-deal re-engagement cadence in your CRM"] },
+        "mid": { "headline": "Sales ops half-built", "text": "You probably have one of (research / proposals / follow-up) automated. The other two compound the pipeline leak.", "steps": ["Close the weakest sub-process first", "Instrument conversion-rate-by-stage in Supabase", "Add a Friday 'stalled deals' digest to your inbox"] },
+        "high": { "headline": "Sales ops is solid — focus on offer engineering", "text": "The automation layer is there. Next leverage: tune the offer, not the ops.", "steps": ["A/B test proposal framing on comparable prospects", "Track proposal-view telemetry (how long, what sections)", "Move to productized offers with fixed scope + price"] }
+      }
+    },
+    {
+      "id": "finance",
+      "name": "Finance & Admin",
+      "questions": [
+        { "id": "fin-1", "text": "How automated is invoice generation from completed milestones?", "max_score": 5 },
+        { "id": "fin-2", "text": "How consistently are collections (past-due follow-ups) automated?", "max_score": 5 },
+        { "id": "fin-3", "text": "How quickly does your leadership see monthly P&L after month-close?", "max_score": 5 }
+      ],
+      "recommendations": {
+        "low": { "headline": "Finance ops is eating owner hours", "text": "Monthly close, invoicing, and collections are the #1 time drain for service-firm owners.", "steps": ["Wire milestone-complete in PM tool → auto-invoice via QuickBooks / Xero API", "Set up a 7 / 14 / 30-day past-due reminder cadence", "Build a real-time P&L dashboard in Supabase"] },
+        "mid": { "headline": "Partial finance automation", "text": "Usually invoicing is automated but collections and close are manual. Collections is the biggest hidden drain.", "steps": ["Automate past-due reminders with escalation path", "Add a monthly-close checklist that the accountant runs in under 2 hours", "Publish the P&L dashboard to leadership"] },
+        "high": { "headline": "Finance is dialed — focus on forecasting", "text": "Automation is there. Next leverage: predictive cash-flow.", "steps": ["Build a 13-week rolling cash-flow forecast", "Tie pipeline data to revenue forecasts", "Add an anomaly-detection layer on monthly spend"] }
+      }
+    },
+    {
+      "id": "team",
+      "name": "Team & Knowledge",
+      "questions": [
+        { "id": "team-1", "text": "How systematically is team training material captured and maintained?", "max_score": 5 },
+        { "id": "team-2", "text": "How automated is new-hire onboarding?", "max_score": 5 },
+        { "id": "team-3", "text": "How consistently does team knowledge persist when someone leaves?", "max_score": 5 }
+      ],
+      "recommendations": {
+        "low": { "headline": "Knowledge is all in people's heads", "text": "When your best op leaves, 40% of what they knew leaves with them. Automation here is about institutional memory.", "steps": ["Record every client call (Fathom / Fireflies) and index transcripts in a searchable Supabase table", "Auto-generate SOPs from screen recordings using Claude", "Build a Slack Claude bot that answers team questions from the knowledge base"] },
+        "mid": { "headline": "Some knowledge systems, big gaps", "text": "You probably have SOPs in a wiki somewhere but they rot. The fix is continuous update, not one-time documentation.", "steps": ["Add a weekly 'SOP stale' check — flag docs unmodified >90 days", "Auto-draft SOP updates from call transcripts of the SOP topic", "Run a quarterly knowledge audit with the team"] },
+        "high": { "headline": "Knowledge ops is strong — level up hiring", "text": "You've solved knowledge capture. Next: make hiring itself automation-enhanced.", "steps": ["Build an AI-assisted screening pipeline for inbound applicants", "Auto-generate a 30-60-90 day plan per new hire from their role + your stack", "Track new-hire time-to-productivity as a KPI"] }
+      }
+    }
+  ],
+  "tier_thresholds": { "low": 40, "mid": 70 },
+  "cta": {
+    "headline": "Want help closing your weakest category?",
+    "description": "Book a 20-min working session. No pitch. You walk me through your top 3 bottlenecks and I'll tell you the one I'd attack first — free, based on your score.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
+}

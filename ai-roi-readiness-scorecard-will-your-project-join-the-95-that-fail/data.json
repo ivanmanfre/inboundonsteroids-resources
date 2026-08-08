@@ -1,0 +1,604 @@
+{
+  "slug": "ai-roi-readiness-scorecard-will-your-project-join-the-95-that-fail",
+  "title": "AI ROI Readiness Scorecard: Will Your Project Join the 95% That Fail?",
+  "subtitle": "18 questions across 5 dimensions. Find out if your next AI project lands in the 5% that hits ROI, or the 95% that becomes a pilot nobody uses.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 6,
+  "persona_selector": {
+    "id": "persona",
+    "text": "Which best describes your role in this AI initiative?",
+    "answers": [
+      {
+        "label": "Owner / Founder writing the check",
+        "tag": "owner"
+      },
+      {
+        "label": "Ops Lead who will run the system day-to-day",
+        "tag": "ops"
+      },
+      {
+        "label": "IC evaluating the build for leadership",
+        "tag": "ic"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "workflow_redesign",
+      "name": "Workflow Redesign Readiness",
+      "questions": [
+        {
+          "id": "wr_1",
+          "text": "Have you mapped the end-to-end workflow this AI will touch, including every handoff and exception?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No map exists",
+              "score": 0
+            },
+            {
+              "label": "High-level diagram only",
+              "score": 2
+            },
+            {
+              "label": "Mapped with named owners per step",
+              "score": 4
+            },
+            {
+              "label": "Mapped with exception rates quantified",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "wr_2",
+          "text": "Can you name the specific steps a human will stop doing once AI is deployed?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Unclear, we'll figure it out post-launch",
+              "score": 0
+            },
+            {
+              "label": "Some steps identified loosely",
+              "score": 3
+            },
+            {
+              "label": "Explicit list with hours-per-week attached to each",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "wr_3",
+          "text": "Have you identified which decisions stay human and which move to AI, with documented criteria?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No criteria defined",
+              "score": 0
+            },
+            {
+              "label": "Informal, lives in someone's head",
+              "score": 3
+            },
+            {
+              "label": "Written decision boundary with edge-case rules",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "wr_4",
+          "text": "Is the non-AI portion of the workflow simple enough that a new hire could run it in week one?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Pure tribal knowledge",
+              "score": 0
+            },
+            {
+              "label": "Partially documented",
+              "score": 3
+            },
+            {
+              "label": "Fully documented SOPs a new hire can follow",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Stop. You are not ready to buy software.",
+          "text": "You are about to bolt AI onto a process nobody has mapped. This is the single most common reason AI projects burn budget and produce nothing. The fix is not technical, it is operational, and it costs zero dollars to start.",
+          "steps": [
+            "Block 3 hours this week and whiteboard the workflow end-to-end, including every handoff, exception, and rework loop.",
+            "For each step, write down who owns it and how often it breaks. Quantify the exception rate before you automate anything.",
+            "Define in writing which decisions a human will keep and which AI will own. If you cannot write the rule, AI cannot follow it."
+          ]
+        },
+        "mid": {
+          "headline": "You have a map. You do not yet have a redesign.",
+          "text": "You understand the workflow, but you have not yet decided what changes when AI enters the picture. Skip this step and you will deploy a system that runs alongside the old process instead of replacing it.",
+          "steps": [
+            "List the specific human tasks that disappear post-deployment, with hours-per-week attached to each. This becomes your ROI baseline.",
+            "Pressure-test your decision boundary against the last 20 real cases. If the rules fail on more than 3, tighten them before building.",
+            "Pilot the redesigned workflow manually for 1 week before a single line of automation code gets written."
+          ]
+        },
+        "high": {
+          "headline": "Workflow-ready. Build with confidence.",
+          "text": "You have done the hardest part. Most teams who score here ship working systems inside 60 days because the operational thinking is already done.",
+          "steps": [
+            "Lock the workflow map and decision criteria in a one-page spec the build team can reference daily.",
+            "Set the 90-day measurement plan now: hours saved, error rate, cycle time. Define what success looks like before you start.",
+            "Identify the 2-3 edge cases most likely to break the system and design the human-in-the-loop escalation path upfront."
+          ]
+        }
+      }
+    },
+    {
+      "id": "data_quality",
+      "name": "Data and Input Quality",
+      "questions": [
+        {
+          "id": "dq_1",
+          "text": "Is the input data the AI will consume structured (forms, fields, APIs) versus free-text or attachments?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Mostly free-text, emails, PDFs",
+              "score": 0
+            },
+            {
+              "label": "Mixed structured and unstructured",
+              "score": 3
+            },
+            {
+              "label": "Fully structured at the source",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "dq_2",
+          "text": "Do you have at least 90 days of historical examples of this workflow running end-to-end?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No accessible history",
+              "score": 0
+            },
+            {
+              "label": "Partial history, scattered across tools",
+              "score": 3
+            },
+            {
+              "label": "Clean, accessible history of 90+ days",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "dq_3",
+          "text": "How many systems does the data live across, and are they connected?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "5+ disconnected systems",
+              "score": 0
+            },
+            {
+              "label": "2 to 4 partially connected",
+              "score": 3
+            },
+            {
+              "label": "1 to 2 systems, connected via API",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "dq_4",
+          "text": "Does the data get cleaned or normalized before it enters the workflow today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Never, garbage in by default",
+              "score": 0
+            },
+            {
+              "label": "Sometimes, manually, by whoever notices",
+              "score": 3
+            },
+            {
+              "label": "Automated normalization layer in place",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your data layer will sink the project.",
+          "text": "AI cannot reason over chaos. If your inputs are free-text emails, PDFs, and 5 disconnected tools, the model will hallucinate or stall, and you will blame the AI when the real problem is upstream.",
+          "steps": [
+            "Pick the single highest-volume input type (likely email or PDF) and add a structured intake form for it this month. Even a Tally or Typeform counts.",
+            "Pull the last 90 days of workflow runs into one place, even if it is a messy spreadsheet. You need the dataset before you need the model.",
+            "Reduce your tool count. Pick the system of record per data type and route everything else into it via Zapier or n8n."
+          ]
+        },
+        "mid": {
+          "headline": "Your data is workable, but it will slow you down.",
+          "text": "You can build, but expect 30-40% of your engineering time to be spent on data plumbing instead of AI logic. That is fine if you budget for it. It is fatal if you do not.",
+          "steps": [
+            "Map every system the workflow touches and document the API or export path for each. Anything without an API becomes a manual bottleneck.",
+            "Build an automated normalization layer (n8n, Zapier, or a Postgres staging table) before the AI step, not after.",
+            "Run a 2-week data audit: log every input the workflow receives and tag what percentage is clean enough for AI to act on without human review."
+          ]
+        },
+        "high": {
+          "headline": "Your data is ready. Move to build.",
+          "text": "Structured inputs, accessible history, connected systems. This is the configuration where AI projects actually ship on time.",
+          "steps": [
+            "Use your 90-day history to build a golden test set of 50-100 real cases the AI must handle correctly before launch.",
+            "Add input validation at the intake layer so bad data fails fast instead of silently corrupting outputs.",
+            "Set up logging on every AI decision from day one. You will need this for tuning, audits, and proving ROI."
+          ]
+        }
+      }
+    },
+    {
+      "id": "decision_scope",
+      "name": "Decision Logic and Scope",
+      "questions": [
+        {
+          "id": "ds_1",
+          "text": "Can your best operator explain how they make the key decision in this workflow in under 10 minutes?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "They say 'I just know'",
+              "score": 0
+            },
+            {
+              "label": "Partial rules, lots of exceptions",
+              "score": 3
+            },
+            {
+              "label": "Documented decision tree",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ds_2",
+          "text": "Is the initial scope of the AI's job narrow enough to ship in under 60 days?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We want it to handle the whole workflow on day one",
+              "score": 0
+            },
+            {
+              "label": "We have a phased plan but phase 1 is still broad",
+              "score": 3
+            },
+            {
+              "label": "Phase 1 owns one clear decision with measurable success",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ds_3",
+          "text": "Have you defined what the AI should NOT do, including escalation triggers?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we'll handle it as it comes up",
+              "score": 0
+            },
+            {
+              "label": "Some escalation rules informally",
+              "score": 3
+            },
+            {
+              "label": "Written escalation criteria with named owner per case",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ds_4",
+          "text": "How will you measure whether the AI's decisions are correct?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No measurement plan",
+              "score": 0
+            },
+            {
+              "label": "We'll spot-check occasionally",
+              "score": 3
+            },
+            {
+              "label": "Automated quality scoring with weekly review cadence",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your scope will kill the project in month two.",
+          "text": "Agents that try to handle every edge case on day one break on edge case #3. Without a documented decision tree and clear out-of-scope rules, the system will either over-reach and embarrass you, or stall and frustrate users.",
+          "steps": [
+            "Sit with your best operator for 2 hours and force them to write the decision tree on a whiteboard. If they cannot, AI cannot do it either.",
+            "Cut your initial scope by 60%. Pick the single highest-volume, lowest-risk decision and ship that first. Expand only after 30 days of clean data.",
+            "Write the escalation rules before you build. Every case that should NOT be auto-handled needs a named human owner."
+          ]
+        },
+        "mid": {
+          "headline": "Your scope is close. Tighten it before you build.",
+          "text": "You have a phased plan but phase 1 is probably 2x larger than it should be. Trim it now, ship faster, expand on real data.",
+          "steps": [
+            "Define phase 1 as a single decision with a single success metric. Everything else moves to phase 2.",
+            "Document the top 10 edge cases from your last 90 days. For each, decide: AI handles it, AI escalates it, or AI ignores it.",
+            "Set a 30-day checkpoint where you review every AI decision the system made and tune the rules based on actual behavior."
+          ]
+        },
+        "high": {
+          "headline": "Tight scope, clear decisions. This is the recipe.",
+          "text": "You are positioned to ship something small that actually works, then expand. This is exactly how the 5% of AI projects that hit ROI get built.",
+          "steps": [
+            "Build a 'confidence threshold' into the AI: high confidence acts autonomously, medium confidence flags for review, low confidence escalates. Tune the thresholds weekly.",
+            "Set up a weekly review cadence where you sample 20 AI decisions and grade them. Adjust the prompt or rules based on findings.",
+            "Once phase 1 has 30 days of clean performance data, plan phase 2 expansion based on what the data tells you, not what stakeholders ask for."
+          ]
+        }
+      }
+    },
+    {
+      "id": "team_adoption",
+      "name": "Team and Adoption Readiness",
+      "questions": [
+        {
+          "id": "ta_1",
+          "text": "Does the team that will use this AI know it is coming, and have they been involved in scoping?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, it will be a surprise",
+              "score": 0
+            },
+            {
+              "label": "They've been told, not consulted",
+              "score": 3
+            },
+            {
+              "label": "They co-designed the scope and decision rules",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ta_2",
+          "text": "Is there a named internal owner who will maintain prompts, rules, and data quality post-launch?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we assumed the vendor handles it",
+              "score": 0
+            },
+            {
+              "label": "Loosely assigned, no dedicated time",
+              "score": 3
+            },
+            {
+              "label": "Named owner with weekly time blocked",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ta_3",
+          "text": "What happens to the operator whose job AI partially replaces?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Unclear, we'll figure it out",
+              "score": 0
+            },
+            {
+              "label": "General plan to reassign",
+              "score": 3
+            },
+            {
+              "label": "Specific new responsibilities defined, communicated, and resourced",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ta_4",
+          "text": "Has leadership agreed on what 'success' looks like in writing, with a 90-day measurement plan?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No written definition",
+              "score": 0
+            },
+            {
+              "label": "Verbal alignment, no metrics",
+              "score": 3
+            },
+            {
+              "label": "Written success criteria with metrics and review dates",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The team will reject the system. Fix this first.",
+          "text": "The fastest way to kill an AI project is to drop it on a team that did not ask for it and does not own it. You can have perfect technology and zero adoption.",
+          "steps": [
+            "Run a 45-minute working session with the affected team this week. Show them the workflow map and ask what is wrong with it. Their answers become your scope.",
+            "Name an internal owner. This person needs 2-4 hours/week of protected time for prompt tuning, data review, and quality checks. If you cannot fund this, do not build.",
+            "Have the conversation about job impact directly and early. Vague reassurances destroy trust. Specific new responsibilities build it."
+          ]
+        },
+        "mid": {
+          "headline": "You have buy-in. You do not yet have ownership.",
+          "text": "The team knows it is coming, but nobody owns the system after launch. Without a named owner with real time, the prompts go stale, the data degrades, and the system quietly stops working within 6 months.",
+          "steps": [
+            "Name the internal owner this week and block 4 hours/week on their calendar for AI system maintenance. No exceptions.",
+            "Write the 90-day success criteria in one paragraph. Include the metric, the target, and who reports on it.",
+            "Schedule the post-launch review cadence now: weekly for month 1, biweekly for month 2, monthly thereafter."
+          ]
+        },
+        "high": {
+          "headline": "Team is bought in and resourced. Go.",
+          "text": "This is the rarest configuration in AI projects, and the single strongest predictor of success. You have the technology, the data, AND the people. Ship it.",
+          "steps": [
+            "Lock the 90-day success metrics in a one-page doc the whole team signs off on. This becomes the contract for what 'working' means.",
+            "Set up a Slack or Teams channel where the AI's edge cases get posted automatically. The internal owner reviews and tunes weekly.",
+            "Plan the celebration for the 90-day review. Teams that ship AI successfully need to feel the win, otherwise they don't push for phase 2."
+          ]
+        }
+      }
+    },
+    {
+      "id": "budget_governance",
+      "name": "Budget, Governance, and Risk",
+      "questions": [
+        {
+          "id": "bg_1",
+          "text": "Have you budgeted for the full first year including build, ongoing API costs, maintenance, and tuning?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Build cost only",
+              "score": 0
+            },
+            {
+              "label": "Build plus rough API estimate",
+              "score": 3
+            },
+            {
+              "label": "Build + API + maintenance hours + tuning budget",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "bg_2",
+          "text": "Is there a clear 'kill criteria' that says when you stop the project if it is not working?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we'll just keep iterating",
+              "score": 0
+            },
+            {
+              "label": "Informal sense of when to pull the plug",
+              "score": 3
+            },
+            {
+              "label": "Written criteria with date and metrics",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "bg_3",
+          "text": "Have you assessed compliance, data privacy, and audit requirements for the AI's outputs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Not yet considered",
+              "score": 0
+            },
+            {
+              "label": "Reviewed informally",
+              "score": 3
+            },
+            {
+              "label": "Formal review complete, controls documented",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "bg_4",
+          "text": "Do you have a rollback plan if the AI produces a bad decision at scale?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No plan",
+              "score": 0
+            },
+            {
+              "label": "We'd turn it off and fix it",
+              "score": 3
+            },
+            {
+              "label": "Documented rollback, audit log, and customer-comms plan",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are underwriting risk you have not measured.",
+          "text": "Build cost is 30-40% of the true first-year number. Without budget for ongoing tuning, kill criteria, and a rollback plan, one bad week can take the system down and leave you with no path forward.",
+          "steps": [
+            "Rebuild your budget with three line items: build (one-time), API/infra (monthly, estimate 12x), and internal maintenance (4-8 hours/week at fully-loaded cost).",
+            "Write your kill criteria in one sentence: 'If [metric] is not [target] by [date], we sunset the system.' Put a date on it.",
+            "Document the rollback plan: what gets turned off, who makes the call, how customers are communicated to, and what the manual fallback looks like."
+          ]
+        },
+        "mid": {
+          "headline": "Budget is close, governance is thin.",
+          "text": "You have thought about cost but not about what happens when something goes wrong. Most AI projects do not fail loudly, they fail quietly because nobody knows when to stop or how to recover.",
+          "steps": [
+            "Finalize the maintenance budget: who tunes prompts, who reviews edge cases, who owns data quality. Put hours and dollars on it.",
+            "Set written kill criteria with a specific date and metric threshold. Review it at every checkpoint.",
+            "Run the compliance and audit review now, before launch. Retrofit is 5x more expensive than designing it in."
+          ]
+        },
+        "high": {
+          "headline": "You are building like an adult. Most teams are not.",
+          "text": "Real budgets, written kill criteria, rollback plans, compliance reviewed. This is what separates serious operators from teams chasing AI hype. Build with confidence.",
+          "steps": [
+            "Publish the budget, success criteria, and kill criteria to the executive team in a one-page summary. Transparency now prevents finger-pointing later.",
+            "Run a tabletop exercise: simulate a bad AI decision and walk through detection, rollback, customer comms, and remediation. Find the gaps before they find you.",
+            "Quarterly, revisit governance: is the kill criteria still right, is the budget still accurate, are the compliance controls still tight? AI moves fast, governance has to keep up."
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Want a second pair of eyes on your score?",
+    "description": "Book a 30-minute call. I'll walk through your scorecard, pinpoint the 2-3 fixes that will move you up a tier the fastest, and tell you straight whether your project is worth building or worth killing. No pitch, no slides, just a working session.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

@@ -1,0 +1,274 @@
+{
+  "slug": "demo-assessment-v2",
+  "title": "The Property Management Ops Leak Audit",
+  "subtitle": "A 5-minute diagnostic for 50-1,000-door PM firms. Find where your team is actually losing hours \u2014 with real numbers, not Likert guesses.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment v2"
+  },
+  "estimated_minutes": 5,
+  "persona_selector": {
+    "id": "role",
+    "text": "Which best describes you?",
+    "answers": [
+      {
+        "label": "Owner / Principal",
+        "tag": "owner"
+      },
+      {
+        "label": "Operations Lead / COO",
+        "tag": "ops"
+      },
+      {
+        "label": "Property Manager (IC)",
+        "tag": "ic"
+      }
+    ]
+  },
+  "intro": {
+    "paragraph": "You just grabbed the PM Ops Leak Audit. 5 real questions \u2014 numbers, tools you actually use, a one-liner about your intake process \u2014 and you'll see your monthly leak in dollars, not a vibe score.",
+    "point_time": "5 minutes, 5 questions (no 25-question filler)",
+    "point_value": "Real inputs: door count, stack, intake narrative \u2014 your output is arithmetic on your answers",
+    "point_next": "Full result shown \u2014 score, $ leak, per-category breakdown, and the 3 fixes I'd prioritize"
+  },
+  "categories": [
+    {
+      "id": "scale",
+      "name": "Scale & Team",
+      "questions": [
+        {
+          "id": "door_count",
+          "type": "number",
+          "text": "How many doors does your team currently manage?",
+          "hint": "Total under management across all properties \u2014 single-family counts as 1.",
+          "suffix": "doors",
+          "min": 1,
+          "max": 10000,
+          "step": 1,
+          "default": 200,
+          "normalize_formula": "Math.min(100, Math.max(10, Math.log10(x+1) * 33))"
+        },
+        {
+          "id": "team_size",
+          "type": "number",
+          "text": "How many people on the operations side of your team?",
+          "hint": "PMs + leasing + maintenance coordinators + back office. Exclude vendors.",
+          "suffix": "people",
+          "min": 1,
+          "max": 200,
+          "default": 6,
+          "normalize_formula": "Math.min(100, x * 8)"
+        }
+      ],
+      "scoring_formula": "(door_count_score + team_size_score) / 2",
+      "recommendations": {
+        "low": {
+          "headline": "Scale is the issue \u2014 or lack of",
+          "text": "At under 100 doors with a small team, automation ROI is real but payback is longer. Focus on 2-3 high-leverage wins, not a full stack rebuild.",
+          "steps": [
+            "Pick ONE workflow (intake OR maintenance routing) and automate end-to-end",
+            "Skip the dashboard \u2014 spreadsheet reports are fine at this scale",
+            "Revisit when you cross 200 doors"
+          ]
+        },
+        "mid": {
+          "headline": "You're in the sweet spot for automation",
+          "text": "200-500 doors with 5-15 ops staff is where n8n pays back in under 90 days. Every process still being done by hand is a visible leak.",
+          "steps": [
+            "Map your top 3 time-eating workflows on paper",
+            "Automate the one with the most manual handoffs first",
+            "Ship it in 2 weeks, not 2 months"
+          ]
+        },
+        "high": {
+          "headline": "Enterprise-ish scale \u2014 automation is non-negotiable",
+          "text": "At 500+ doors, every process not automated is compounding cost. You probably already know the leaks; the question is sequencing.",
+          "steps": [
+            "Audit which workflows still have humans as the API between two systems",
+            "Prioritize by hours-per-week leaked, not ease",
+            "Budget 20% of ops team time for ongoing automation maintenance"
+          ]
+        }
+      }
+    },
+    {
+      "id": "intake",
+      "name": "Client + Maintenance Intake",
+      "questions": [
+        {
+          "id": "stack",
+          "type": "multi_select",
+          "text": "Which of these tools live in your maintenance intake stack today?",
+          "hint": "Check every one that's part of how a request gets from tenant to vendor.",
+          "answers": [
+            {
+              "label": "AppFolio",
+              "tag": "appfolio",
+              "score": 4
+            },
+            {
+              "label": "Buildium",
+              "tag": "buildium",
+              "score": 4
+            },
+            {
+              "label": "Propertyware",
+              "tag": "propertyware",
+              "score": 3
+            },
+            {
+              "label": "Yardi",
+              "tag": "yardi",
+              "score": 3
+            },
+            {
+              "label": "Google Sheets / Excel",
+              "tag": "sheets",
+              "score": -1
+            },
+            {
+              "label": "Gmail / Outlook threads",
+              "tag": "email",
+              "score": -2
+            },
+            {
+              "label": "WhatsApp / SMS",
+              "tag": "whatsapp",
+              "score": -2
+            },
+            {
+              "label": "Paper work orders",
+              "tag": "paper",
+              "score": -3
+            },
+            {
+              "label": "Airtable / custom DB",
+              "tag": "airtable",
+              "score": 2
+            }
+          ]
+        },
+        {
+          "id": "intake_desc",
+          "type": "short_text",
+          "text": "In one sentence, how does a new maintenance request reach the right vendor today?",
+          "hint": "Be honest. 'Tenant emails us, I forward it' is a valid answer.",
+          "placeholder": "e.g., Tenant emails the property, Maria forwards to the vendor...",
+          "score_keywords": {
+            "automated": [
+              "automated",
+              "portal submit",
+              "api",
+              "auto-route",
+              "n8n",
+              "zapier",
+              "workflow",
+              "dispatch"
+            ],
+            "semi": [
+              "forward",
+              "triage",
+              "assign",
+              "cc",
+              "manually assign"
+            ],
+            "manual": [
+              "email",
+              "call",
+              "text",
+              "manually",
+              "paper",
+              "print"
+            ]
+          }
+        }
+      ],
+      "scoring_formula": "(stack_score + intake_desc_score) / 2",
+      "recommendations": {
+        "low": {
+          "headline": "Intake is where your hours disappear",
+          "text": "Your tool stack + process description both point to manual routing. This is the #1 highest-ROI fix for PM firms under 500 doors \u2014 typical recovery is 6-15 hours/week.",
+          "steps": [
+            "Build a tenant intake form (Tally or native PM tool) that writes directly to AppFolio/Buildium",
+            "Route to vendor via SMS or Slack based on issue category \u2014 n8n does this in 8 nodes",
+            "Measure time-to-vendor before and after; target is <5 min"
+          ]
+        },
+        "mid": {
+          "headline": "Halfway to automated \u2014 finish it",
+          "text": "You've got the tools but not the pipes. The gap is usually the human-in-the-middle step between tenant message and vendor dispatch.",
+          "steps": [
+            "Identify the 1-2 manual steps remaining in intake",
+            "Automate each with n8n + your PM tool's API",
+            "Add SLA tracking so you see when routing takes longer than expected"
+          ]
+        },
+        "high": {
+          "headline": "Intake is dialed \u2014 look upstream",
+          "text": "If intake's automated, the leak has moved \u2014 usually to follow-up or vendor accountability. Worth auditing those next.",
+          "steps": [
+            "Measure average tenant-reported issue close time",
+            "Add automated vendor SLA reminders at 24 / 48 / 72 hrs",
+            "Feed status updates back to tenants without manual work"
+          ]
+        }
+      }
+    },
+    {
+      "id": "reporting",
+      "name": "Owner Reporting",
+      "questions": [
+        {
+          "id": "reporting_hours",
+          "type": "number",
+          "text": "How many hours per month does your team spend preparing owner reports?",
+          "hint": "Include data pulling, formatting, review, and sending.",
+          "suffix": "hrs/month",
+          "min": 0,
+          "max": 300,
+          "default": 30,
+          "invert": true,
+          "normalize_formula": "Math.max(0, 100 - (x * 1.5))"
+        }
+      ],
+      "scoring_formula": "reporting_hours_score"
+    }
+  ],
+  "computed_outputs": [
+    {
+      "id": "hours_lost_weekly",
+      "label": "Hours lost to manual ops per week",
+      "format": "hours",
+      "formula": "(team_size * 6 * (stack_score < 50 ? 1 : stack_score < 80 ? 0.5 : 0.25)) + (reporting_hours / 4.33)",
+      "show_in_result": true
+    },
+    {
+      "id": "monthly_leak",
+      "label": "Estimated monthly leak (at $65/hr loaded)",
+      "format": "currency",
+      "formula": "((team_size * 6 * (stack_score < 50 ? 1 : stack_score < 80 ? 0.5 : 0.25)) + (reporting_hours / 4.33)) * 65 * 4.33",
+      "show_in_result": true
+    },
+    {
+      "id": "annual_leak",
+      "label": "Annual leak",
+      "format": "currency",
+      "formula": "((team_size * 6 * (stack_score < 50 ? 1 : stack_score < 80 ? 0.5 : 0.25)) + (reporting_hours / 4.33)) * 65 * 52",
+      "show_in_result": true
+    }
+  ],
+  "headline_formula": "Managing <strong>{door_count}</strong> doors with <strong>{team_size}</strong> ops staff, you're leaking roughly <strong>{monthly_leak}</strong> per month to manual work \u2014 <strong>{annual_leak}</strong> annually. Weakest area: <strong>{weakest_category_name}</strong> at {weakest_category_score}/100.",
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70,
+    "low_label": "Leaking Hard",
+    "mid_label": "Growth Stage",
+    "high_label": "Dialed"
+  },
+  "cta": {
+    "headline": "Want me to validate your numbers live?",
+    "description": "20-min screen-share. I look at your actual PM tool + reporting flow, rerun this scoring with real data, and tell you which fix to attack first. Free, no pitch.",
+    "button": "Book a 20-min working session",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  }
+}

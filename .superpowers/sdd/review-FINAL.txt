@@ -1,0 +1,2134 @@
+=== BRANCH COMMITS (code) ===
+c4a65a2 chore(editor): regenerate minified bundles (drift prevention; prod loads non-min)
+ecbee2c feat(editor): optimistic save - drop post-save reload, add syncing indicator
+5708b4f feat(editor): AI rewrite proposal loop (Keep/Try again) with in-place apply
+fde4972 feat(editor): lm-copy-rewrite edge fn (voice from content_prompts, Railway proxy)
+7bbd13f feat(editor): editable footer + closing-cta from data (byte-identical fallback) + nav decision
+bd4fdd2 feat(editor): add field coverage from scratch for swipe+landing+template
+2992a14 feat(editor): stack-picker+guide field coverage
+1f16df9 feat(editor): architecture+ai-walkthrough+n8n-workflow field coverage (skip SVG text)
+aa77e31 feat(editor): assessment coverage audit + full assessment-v2 field coverage
+6f99066 feat(editor): complete checklist+calculator field coverage (impact locked)
+67d4810 feat(editor): makeField helper + rerender hook + per-engine rerender thunk
+
+=== STAT (excluding min + sdd) ===
+ _engine/ai-walkthrough.js                   |   2 +-
+ _engine/architecture.js                     |  16 +-
+ _engine/assessment-v2.js                    | 187 ++++++++++++++++----
+ _engine/assessment.js                       |  12 +-
+ _engine/calculator.js                       |  34 +++-
+ _engine/checklist.js                        |   6 +-
+ _engine/edit-mode.css                       | 183 ++++++++++++++++++++
+ _engine/edit-mode.js                        | 255 +++++++++++++++++++++++++++-
+ _engine/guide.js                            |  17 +-
+ _engine/landing.js                          |  40 ++++-
+ _engine/n8n-workflow.js                     |  30 +++-
+ _engine/shared.js                           |  59 ++++++-
+ _engine/stack-picker.js                     |  11 +-
+ _engine/swipe.js                            |  33 +++-
+ _engine/template.js                         |  64 ++++++-
+ supabase/functions/lm-copy-rewrite/index.ts | 169 ++++++++++++++++++
+ 16 files changed, 1051 insertions(+), 67 deletions(-)
+
+=== FULL DIFF (source only) ===
+diff --git a/_engine/ai-walkthrough.js b/_engine/ai-walkthrough.js
+index ace03e3..00ef9a1 100644
+--- a/_engine/ai-walkthrough.js
++++ b/_engine/ai-walkthrough.js
+@@ -454,13 +454,13 @@
+   function init() {
+     var root = document.getElementById("lmw-root") || document.querySelector("[data-lm-walkthrough-src]");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-walkthrough-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading walkthrough:</strong> ' + esc(e.message) + '</div>';
+       });
+   }
+ 
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+diff --git a/_engine/architecture.js b/_engine/architecture.js
+index cef4d30..7071e65 100644
+--- a/_engine/architecture.js
++++ b/_engine/architecture.js
+@@ -545,22 +545,34 @@
+ 
+   // ── Mobile node list ──────────────────────────────────────────────────
+   function renderMobileList(data) {
+     var nodes = (data.diagram && data.diagram.nodes) || [];
+     var wrap = make("section", { class: "lma-mobile-list", "aria-label": "Node list (mobile)" });
+     var ol = make("ol");
+-    nodes.forEach(function (n) {
++    nodes.forEach(function (n, nIdx) {
+       var card = make("button", {
+         class: "lma-mobile-card" + (state.viewedNodes[n.id] ? " is-visited" : ""),
+         type: "button",
+         "data-node-id": n.id
+       });
+       card.innerHTML =
+         '<span class="m-type">' + esc((n.type || "transform").toUpperCase()) + '</span>' +
+         '<span class="m-label">' + esc(n.label || n.id) + '</span>' +
+         (n.panel && n.panel.headline ? '<span class="m-hint">' + esc(n.panel.headline) + '</span>' : '');
++      // HTML twin of the SVG node label/headline (architecture.js:411/622) — the SVG
++      // versions can't host an inline-edit <input>, so register these instead.
++      if (window.LM && window.LM.editMode) {
++        if (n.label) {
++          window.LM.editMode.registerField(card.querySelector(".m-label"), "diagram.nodes[" + nIdx + "].label");
++        }
++        if (n.panel && n.panel.headline) {
++          // Same path as the drawer's headline field (openDrawerForNode) — intentional
++          // dual registration, two DOM twins of one field.
++          window.LM.editMode.registerField(card.querySelector(".m-hint"), "diagram.nodes[" + nIdx + "].panel.headline");
++        }
++      }
+       var li = make("li");
+       li.appendChild(card);
+       ol.appendChild(li);
+     });
+     wrap.appendChild(ol);
+     return wrap;
+@@ -859,13 +871,13 @@
+   function init() {
+     var root = document.getElementById("lma-root") || document.querySelector("[data-lm-architecture-src]");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-architecture-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading architecture:</strong> ' + esc(e.message) + '</div>';
+       });
+   }
+ 
+   if (document.readyState === "loading") {
+diff --git a/_engine/assessment-v2.js b/_engine/assessment-v2.js
+index f3be938..0639034 100644
+--- a/_engine/assessment-v2.js
++++ b/_engine/assessment-v2.js
+@@ -227,13 +227,13 @@
+     var weakest = sorted.length ? { id: sorted[0][0], name: sorted[0][1].name, score: sorted[0][1].score } : null;
+ 
+     // Computed outputs (the $ leak, hrs lost, etc)
+     var computed = {};
+     (data.computed_outputs || []).forEach(function (co) {
+       var v = safeEval(co.formula, Object.assign({}, ctx, { overall_score: overall, weakest_category: weakest && weakest.id }));
+-      computed[co.id] = { label: co.label, value: v, format: co.format, show: co.show_in_result !== false };
++      computed[co.id] = { id: co.id, label: co.label, value: v, format: co.format, show: co.show_in_result !== false };
+     });
+ 
+     return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: ctx.persona, ctx: ctx, computed: computed };
+   }
+ 
+   // --- Intro block (unchanged from v1) ---
+@@ -245,18 +245,27 @@
+     var sec = make("section", { class: "lmc-intro" });
+     var inner = make("div", { class: "lmc-intro-inner" });
+     inner.appendChild(make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" }));
+     var body = make("div", { class: "lmc-intro-body" });
+     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
+     body.appendChild(make("h2", { class: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
+-    body.appendChild(make("p", { class: "lmc-intro-p" }, esc(welcomeLine)));
++    var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
++    if (window.LM && window.LM.editMode) {
++      window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
++    }
++    body.appendChild(introPara);
+     var ul = make("ul", { class: "lmc-intro-points" });
+-    [["a", "⏱", pointA], ["b", "→", pointB], ["c", "✓", pointC]].forEach(function (p) {
++    var introPointPaths = ["intro.point_time", "intro.point_value", "intro.point_next"];
++    [["a", "⏱", pointA], ["b", "→", pointB], ["c", "✓", pointC]].forEach(function (p, ix) {
+       var li = make("li");
+       li.appendChild(make("span", { class: "lmc-intro-icon " + p[0] }, p[1]));
+-      li.appendChild(make("span", null, esc(p[2])));
++      var pointSpan = make("span", null, esc(p[2]));
++      if (window.LM && window.LM.editMode) {
++        window.LM.editMode.registerField(pointSpan, introPointPaths[ix], { multiline: true });
++      }
++      li.appendChild(pointSpan);
+       ul.appendChild(li);
+     });
+     body.appendChild(ul);
+     var startBtn = make("button", { class: "lmc-intro-start", type: "button" }, "Start the assessment <span>&darr;</span>");
+     startBtn.addEventListener("click", function () {
+       var t = document.querySelector(startTargetSelector);
+@@ -286,13 +295,15 @@
+     var captured = !!localStorage.getItem(key + ".email");
+     root.innerHTML = "";
+ 
+     // Hero
+     var hero = make("section", { class: "lmc-hero" });
+     var hi = make("div", { class: "lmc-container" });
+-    hi.appendChild(make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment")));
++    var heroBadgeEl = make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadgeEl, "brand.hero_badge");
++    hi.appendChild(heroBadgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     hi.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, esc(data.subtitle));
+@@ -316,36 +327,49 @@
+ 
+     function save() { try { localStorage.setItem(key + ".answers", JSON.stringify(answers)); } catch (_) {} }
+ 
+     function renderQuestion() {
+       card.innerHTML = "";
+       var q = questions[idx];
+-      if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
+-      var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
+-      var catIdx = -1, qIdx = -1;
+-      if (q.category_id && q.id) {
++      // Resolve the data.json path for this question so edit-mode hooks can be
++      // wired for its text/hint + type-specific renderer. Persona classifier
++      // lives at "persona_selector" (not inside categories[]).
++      var isPersona = !!q.__persona;
++      var catIdx = -1, qIdx = -1, basePath = null;
++      if (isPersona) {
++        basePath = "persona_selector";
++      } else if (q.category_id && q.id) {
+         catIdx = (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
+         qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
+-        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
+-          window.LM.editMode.registerField(qH, "categories[" + catIdx + "].questions[" + qIdx + "].text", { multiline: true });
++        if (catIdx >= 0 && qIdx >= 0) basePath = "categories[" + catIdx + "].questions[" + qIdx + "]";
++      }
++      if (q.category_name) {
++        var catEl = make("div", { class: "lmc-category" }, esc(q.category_name));
++        if (!isPersona && catIdx >= 0 && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(catEl, "categories[" + catIdx + "].name");
+         }
++        card.appendChild(catEl);
++      }
++      var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
++      if (basePath && window.LM && window.LM.editMode) {
++        window.LM.editMode.registerField(qH, basePath + ".text", { multiline: true });
+       }
+       card.appendChild(qH);
+       if (q.hint) {
+         var hintEl = make("p", { class: "lmc-hint" }, esc(q.hint));
+-        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
+-          window.LM.editMode.registerField(hintEl, "categories[" + catIdx + "].questions[" + qIdx + "].hint");
++        if (basePath && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(hintEl, basePath + ".hint");
+         }
+         card.appendChild(hintEl);
+       }
+ 
+       // Type-dispatched input
+-      if (q.type === "number") renderNumberInput(q);
+-      else if (q.type === "multi_select") renderMultiSelect(q);
++      if (q.type === "number") renderNumberInput(q, basePath);
++      else if (q.type === "multi_select") renderMultiSelect(q, basePath);
+       else if (q.type === "short_text") renderShortText(q);
+-      else renderLikert(q); // likert, likert_picker, or anything else defaults to radio list
++      else renderLikert(q, basePath); // likert, likert_picker, or anything else defaults to radio list
+ 
+       // Nav
+       var nav = make("div", { class: "lmc-nav" });
+       var back = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Back");
+       if (idx === 0) back.setAttribute("disabled", "disabled");
+       back.addEventListener("click", function () { if (idx > 0) { idx--; renderQuestion(); } });
+@@ -363,13 +387,13 @@
+       if (q.type === "number") return a != null && a !== "" && !isNaN(Number(a));
+       if (q.type === "multi_select") return Array.isArray(a) && a.length > 0;
+       if (q.type === "short_text") return typeof a === "string" && a.trim().length > 0;
+       return a != null;
+     }
+ 
+-    function renderLikert(q) {
++    function renderLikert(q, basePath) {
+       var options = q.answers || [
+         { label: "1 — Strongly disagree", score: 1 },
+         { label: "2 — Disagree", score: 2 },
+         { label: "3 — Neutral", score: 3 },
+         { label: "4 — Agree", score: 4 },
+         { label: "5 — Strongly agree", score: 5 }
+@@ -379,26 +403,42 @@
+         var li = make("li");
+         var checked = (answers[q.id || "__persona"] === ix);
+         var label = make("label", { class: "lmc-opt" + (checked ? " selected" : ""), for: "lmc-q" + idx + "-o" + ix });
+         var input = make("input", { type: "radio", name: "q" + idx, id: "lmc-q" + idx + "-o" + ix, value: String(ix) });
+         if (checked) input.setAttribute("checked", "checked");
+         label.appendChild(input);
+-        label.appendChild(make("span", null, esc(opt.label || opt.text || String(opt))));
++        var labelSpan = make("span", null, esc(opt.label || opt.text || String(opt)));
++        if (basePath && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(labelSpan, basePath + ".answers[" + ix + "].label", { multiline: true });
++        }
++        label.appendChild(labelSpan);
+         li.appendChild(label); ul.appendChild(li);
+-        label.addEventListener("click", function () {
++        label.addEventListener("click", function (e) {
++          // In edit mode, clicks on the option should go to the inline editor on
++          // the label span, not record an answer. The span's edit-mode handler
++          // stops propagation, so this only fires for clicks outside the text
++          // (e.g. the radio hit-area) — guard those too.
++          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
++            if (e) e.preventDefault();
++            return;
++          }
+           answers[q.id || "__persona"] = ix;
+           save();
+           setTimeout(function () { goNext(); }, 200);
+         });
+       });
+       card.appendChild(ul);
+     }
+ 
+-    function renderNumberInput(q) {
++    function renderNumberInput(q, basePath) {
+       var wrap = make("div", { class: "lmc-input-row" });
+-      if (q.prefix) wrap.appendChild(make("span", { class: "lmc-prefix" }, esc(q.prefix)));
++      if (q.prefix) {
++        var prefixEl = make("span", { class: "lmc-prefix" }, esc(q.prefix));
++        if (basePath && window.LM && window.LM.editMode) window.LM.editMode.registerField(prefixEl, basePath + ".prefix");
++        wrap.appendChild(prefixEl);
++      }
+       var input = make("input", { type: "number", class: "lmc-number", id: "lmc-q" + idx + "-n", inputmode: "decimal" });
+       if (q.min != null) input.setAttribute("min", q.min);
+       if (q.max != null) input.setAttribute("max", q.max);
+       if (q.step != null) input.setAttribute("step", q.step);
+       var current = answers[q.id];
+       if (current != null) input.value = current;
+@@ -406,45 +446,60 @@
+       input.addEventListener("input", function () {
+         answers[q.id] = input.value === "" ? null : Number(input.value);
+         save();
+         var nb = $("#lmc-next"); if (nb) { if (hasValidAnswer(q)) nb.removeAttribute("disabled"); else nb.setAttribute("disabled", "disabled"); }
+       });
+       wrap.appendChild(input);
+-      if (q.suffix) wrap.appendChild(make("span", { class: "lmc-suffix" }, esc(q.suffix)));
++      if (q.suffix) {
++        var suffixEl = make("span", { class: "lmc-suffix" }, esc(q.suffix));
++        if (basePath && window.LM && window.LM.editMode) window.LM.editMode.registerField(suffixEl, basePath + ".suffix");
++        wrap.appendChild(suffixEl);
++      }
+       card.appendChild(wrap);
+       setTimeout(function () { input.focus(); }, 50);
+     }
+ 
+-    function renderMultiSelect(q) {
++    function renderMultiSelect(q, basePath) {
+       var ul = make("ul", { class: "lmc-options lmc-multi" });
+       var current = Array.isArray(answers[q.id]) ? answers[q.id].slice() : [];
+       (q.answers || []).forEach(function (opt, ix) {
+         var li = make("li");
+         var selected = current.indexOf(opt.tag) !== -1;
+         var label = make("label", { class: "lmc-opt lmc-opt-check" + (selected ? " selected" : ""), for: "lmc-q" + idx + "-c" + ix });
+         var input = make("input", { type: "checkbox", id: "lmc-q" + idx + "-c" + ix, value: opt.tag });
+         if (selected) input.setAttribute("checked", "checked");
+         label.appendChild(input);
+         label.appendChild(make("span", { class: "lmc-check-box" }, "&#10003;"));
+-        label.appendChild(make("span", { class: "lmc-check-text" }, esc(opt.label || opt.text)));
++        var checkTextSpan = make("span", { class: "lmc-check-text" }, esc(opt.label || opt.text));
++        if (basePath && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(checkTextSpan, basePath + ".answers[" + ix + "].label", { multiline: true });
++        }
++        label.appendChild(checkTextSpan);
+         li.appendChild(label); ul.appendChild(li);
+         label.addEventListener("click", function (e) {
+           e.preventDefault();
++          // In edit mode, clicks go to the inline editor on the label span
++          // (which stops propagation); guard clicks elsewhere on the label
++          // (checkbox hit-area) so they don't toggle a selection while editing.
++          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) return;
+           var arr = Array.isArray(answers[q.id]) ? answers[q.id].slice() : [];
+           var pos = arr.indexOf(opt.tag);
+           if (pos === -1) arr.push(opt.tag); else arr.splice(pos, 1);
+           answers[q.id] = arr;
+           save();
+           label.classList.toggle("selected", arr.indexOf(opt.tag) !== -1);
+           input.checked = arr.indexOf(opt.tag) !== -1;
+           var nb = $("#lmc-next"); if (nb) { if (hasValidAnswer(q)) nb.removeAttribute("disabled"); else nb.setAttribute("disabled", "disabled"); }
+         });
+       });
+       card.appendChild(ul);
+-      if (q.multi_hint) card.appendChild(make("p", { class: "lmc-multi-hint" }, esc(q.multi_hint)));
+-      else card.appendChild(make("p", { class: "lmc-multi-hint" }, "Check all that apply."));
++      var multiHintEl = make("p", { class: "lmc-multi-hint" }, esc(q.multi_hint || "Check all that apply."));
++      if (basePath && window.LM && window.LM.editMode) {
++        window.LM.editMode.registerField(multiHintEl, basePath + ".multi_hint");
++      }
++      card.appendChild(multiHintEl);
+     }
+ 
+     function renderShortText(q) {
+       var ta = make("textarea", { class: "lmc-textarea", id: "lmc-q" + idx + "-t", rows: "3", placeholder: q.placeholder || "One sentence is fine." });
+       var current = answers[q.id];
+       if (typeof current === "string") ta.value = current;
+@@ -514,28 +569,47 @@
+       card.innerHTML = "";
+       var wrap = make("div", { class: "lmc-result" });
+       var circ = 2 * Math.PI * 70;
+       var finalOffset = circ - (res.overall / 100) * circ;
+       // D3.1: render arc fully empty initially, then transition to final offset for draw animation
+       wrap.innerHTML = '<div class="lmc-score-ring entering"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="track" cx="90" cy="90" r="70"/><circle class="arc" cx="90" cy="90" r="70" stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + circ.toFixed(2) + '" data-final-offset="' + finalOffset.toFixed(2) + '"/></svg><div class="score-num"><div class="num">0</div><div class="suffix">out of 100</div></div></div>';
+-      wrap.appendChild(make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name)));
++      var tierPillEl = make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name));
++      if (window.LM && window.LM.editMode) {
++        // The pill shows whichever tier_thresholds.*_label the score selected —
++        // a tier name chosen by score logic, not free text. Locked: edit via Raw JSON.
++        var tierLabelKey = res.tier.class === "low" ? "low_label" : (res.tier.class === "medium" ? "mid_label" : "high_label");
++        window.LM.editMode.registerField(tierPillEl, "tier_thresholds." + tierLabelKey, { locked: true });
++      }
++      wrap.appendChild(tierPillEl);
+ 
+       // Computed outputs rendered prominently (this is the $ leak / hrs lost).
+       // D3.4: currency_per_period + hours_per_period get replaced with leaky-bucket SVG
+       var visibleComputed = Object.values(res.computed).filter(function (co) { return co.show; });
+       if (visibleComputed.length > 0) {
+         var cb = make("div", { class: "lmc-computed-block" });
+         visibleComputed.forEach(function (co) {
++          // Labels are raw copy (data.computed_outputs[i].label); values are
++          // fully computed from a formula with no backing text path — never
++          // registered.
++          var coIdx = (data.computed_outputs || []).findIndex(function (o) { return o.id === co.id; });
+           if (co.format === "currency_per_period" || co.format === "hours_per_period") {
+             var lb = make("div", { class: "lmc-leaky-wrap", "data-computed-id": co.id });
+             lb.innerHTML = leakyBucketSvg(co);
+             cb.appendChild(lb);
++            if (coIdx >= 0 && window.LM && window.LM.editMode) {
++              var leakyLabelEl = lb.querySelector(".lmc-leaky-label");
++              if (leakyLabelEl) window.LM.editMode.registerField(leakyLabelEl, "computed_outputs[" + coIdx + "].label");
++            }
+           } else {
+             var row = make("div", { class: "lmc-computed-row" });
+             row.innerHTML = '<div class="lmc-computed-label">' + esc(co.label) + '</div><div class="lmc-computed-value">' + fmt(co.format, co.value) + '</div>';
+             cb.appendChild(row);
++            if (coIdx >= 0 && window.LM && window.LM.editMode) {
++              var computedLabelEl = row.querySelector(".lmc-computed-label");
++              if (computedLabelEl) window.LM.editMode.registerField(computedLabelEl, "computed_outputs[" + coIdx + "].label");
++            }
+           }
+         });
+         wrap.appendChild(cb);
+       }
+ 
+       // Weakest-category headline sentence (uses real user inputs)
+@@ -614,24 +688,57 @@
+     }
+ 
+     function renderUnlocked(res) {
+       var g = $("#lmc-capture"); if (g) g.parentNode.removeChild(g);
+       var unl = make("div", { class: "lmc-unlocked" });
+       unl.appendChild(make("h3", { style: "font-size:1.5rem;font-weight:900;text-transform:uppercase;margin:1.5rem 0 1rem;" }, "Your full report"));
+-      (data.categories || []).forEach(function (cat) {
++      (data.categories || []).forEach(function (cat, catIdx) {
+         var key2 = cat.id || cat.name;
+         var catRes = res.per_category[key2];
+         if (!catRes) return;
+         var block = make("div", { class: "lmc-category-block" });
+-        block.appendChild(make("h4", null, esc(cat.name || cat.id)));
++        var h4 = make("h4", null, esc(cat.name || cat.id));
++        if (window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(h4, "categories[" + catIdx + "].name");
++        }
++        block.appendChild(h4);
+         block.innerHTML += '<div class="lmc-cat-bar"><div class="lmc-cat-track"><div class="lmc-cat-fill" style="width:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '/100</span></div>';
+         var rec = pickRec(cat, catRes.score, res.ctx);
+         if (rec) {
+           var rc = make("div", { class: "lmc-rec" });
+           var tag = catRes.score <= 40 ? "Fix first" : catRes.score <= 70 ? "Next unlock" : "Keep sharpening";
+-          rc.innerHTML = '<strong>' + esc(tag) + '</strong>' + esc(rec.text || rec.headline || "") + (rec.steps ? '<ul>' + rec.steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul>' : "");
++          rc.appendChild(make("strong", null, esc(tag)));
++          var recTextSpan = make("span", { class: "lmc-rec-text" }, esc(rec.text || rec.headline || ""));
++          rc.appendChild(recTextSpan);
++          // Only the legacy {low,mid,high} recommendations object resolves to a
++          // stable path (the matched key). The newer `when`-expression array
++          // format doesn't expose which entry matched, so it's left unregistered
++          // rather than risk writing to the wrong index.
++          var recIsLegacy = !Array.isArray(cat.recommendations);
++          var recPath = null;
++          if (recIsLegacy) {
++            var recTierKey = catRes.score <= 40 ? "low" : (catRes.score <= 70 ? "mid" : "high");
++            var recAltKey = ({ low: "critical", mid: "growth", high: "optimized" })[recTierKey];
++            var recsObj = cat.recommendations || {};
++            var recBranchKey = recsObj[recTierKey] != null ? recTierKey : (recsObj[recAltKey] != null ? recAltKey : recTierKey);
++            recPath = "categories[" + catIdx + "].recommendations." + recBranchKey;
++            if (window.LM && window.LM.editMode) {
++              window.LM.editMode.registerField(recTextSpan, recPath + ".text", { multiline: true });
++            }
++          }
++          if (rec.steps) {
++            var ulSteps = make("ul");
++            rec.steps.forEach(function (s, si) {
++              var li = make("li", null, esc(s));
++              if (recIsLegacy && recPath && window.LM && window.LM.editMode) {
++                window.LM.editMode.registerField(li, recPath + ".steps[" + si + "]", { multiline: true });
++              }
++              ulSteps.appendChild(li);
++            });
++            rc.appendChild(ulSteps);
++          }
+           block.appendChild(rc);
+         }
+         unl.appendChild(block);
+       });
+       // Share + retake
+       var share = make("div", { class: "lmc-share" });
+@@ -684,15 +791,29 @@
+         });
+         optin.innerHTML = '<h4>Sent.</h4><p>Look for "your ' + esc(data.title || "report") + '" in your inbox. If it doesn\'t show in 2 min, check Promotions or Spam.</p>';
+       });
+ 
+       if (data.cta && data.cta.url) {
+         var cta = make("div", { class: "lmc-cta-box" });
+-        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
++        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener"><span class="lmc-cta-btn-text">' + esc(data.cta.button || "Book Strategy Call") + '</span></a>';
+         unl.appendChild(cta);
+-        cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
++        if (window.LM && window.LM.editMode) {
++          var ctaH3 = cta.querySelector("h3");
++          var ctaDescEl = cta.querySelector("p");
++          var ctaBtnTextEl = cta.querySelector(".lmc-cta-btn-text");
++          if (ctaH3) window.LM.editMode.registerField(ctaH3, "cta.headline", { multiline: true });
++          if (ctaDescEl) window.LM.editMode.registerField(ctaDescEl, "cta.description", { multiline: true });
++          if (ctaBtnTextEl) window.LM.editMode.registerField(ctaBtnTextEl, "cta.button");
++        }
++        cta.querySelector("a").addEventListener("click", function (e) {
++          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
++            e.preventDefault();
++            return;
++          }
++          beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } });
++        });
+       } else {
+         // No per-LM CTA configured — default fit-call CTA so every assessment
+         // ends with a clear next step (2026-06-09).
+         var fallbackCta = make("div", { class: "lmc-cta-box" });
+         var fallbackUrl = window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min";
+         fallbackCta.innerHTML = '<h3>Want help closing these gaps?</h3>' +
+@@ -791,12 +912,12 @@
+           if (!r2.ok) throw new Error("data.json " + r2.status);
+           return r2.json();
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+-    }).then(function (data) { render(data, root); }).catch(function (e) {
++    }).then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading assessment:</strong> ' + esc(e.message) + '</div>';
+     });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+diff --git a/_engine/assessment.js b/_engine/assessment.js
+index 7b42e54..4a3cb53 100644
+--- a/_engine/assessment.js
++++ b/_engine/assessment.js
+@@ -388,13 +388,15 @@
+     var hi = make("div", { class: "lmc-container" });
+     if (embedLogoUrl) {
+       var __logo = make("img", { class: "lmc-embed-logo", src: embedLogoUrl, alt: (data.brand && data.brand.wordmark) || "" });
+       __logo.addEventListener("error", function () { __logo.remove(); });
+       hi.appendChild(__logo);
+     }
+-    hi.appendChild(make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment")));
++    var heroBadgeEl = make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadgeEl, "brand.hero_badge");
++    hi.appendChild(heroBadgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     hi.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, esc(data.subtitle));
+@@ -803,12 +805,18 @@
+               '<div class="lmc-gap-head"><span class="lmc-gap-text">' + esc(g.question) + '</span></div>' +
+               (g.fix ? '<div class="lmc-gap-fix"><span class="lmc-gap-fix-label">' + esc(gapFixLabel) + '</span>' + esc(g.fix) + '</div>' : '') +
+             '</div>' +
+           '</li>';
+         }).join("");
+         gapsSec.appendChild(list);
++        if (window.LM && window.LM.editMode) {
++          var fixLabelEls = list.querySelectorAll(".lmc-gap-fix-label");
++          for (var __fli = 0; __fli < fixLabelEls.length; __fli++) {
++            window.LM.editMode.registerField(fixLabelEls[__fli], "results_copy.gap_fix_label");
++          }
++        }
+ 
+         var mondayTxt = (topGaps[0] && topGaps[0].fix) || (res.weakest ? "Start with your weakest category: " + res.weakest.name + "." : "Pick the gap that hurts most this week and ship one fix.");
+         var nm = make("p", { class: "lmc-next-move" });
+         var mondayLabelEl = make("span", { class: "lmc-next-label" }, esc(mondayLabel));
+         var mondayBodyEl = document.createElement("span");
+         mondayBodyEl.className = "lmc-next-body";
+@@ -1112,13 +1120,13 @@
+           if (!r2.ok) throw new Error("data.json " + r2.status);
+           return r2.json();
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+-    }).then(function (data) { render(data, root); }).catch(function (e) {
++    }).then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading assessment:</strong> ' + esc(e.message) + '</div>';
+     });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+ 
+diff --git a/_engine/calculator.js b/_engine/calculator.js
+index 81e6800..bd4e4b7 100644
+--- a/_engine/calculator.js
++++ b/_engine/calculator.js
+@@ -172,13 +172,15 @@
+     if (window.LM && window.LM.tracker) window.LM.tracker.touch(data);
+     root.innerHTML = "";
+ 
+     // Hero
+     var hero = make("section", { class: "lmc-hero" });
+     var inner = make("div", { class: "lmc-container" });
+-    inner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Interactive Calculator")));
++    var badgeEl = make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Interactive Calculator"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
++    inner.appendChild(badgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Calculator") : escapeHtml(data.title || "Calculator");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     inner.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, escapeHtml(data.subtitle));
+@@ -220,31 +222,40 @@
+       if (inp.hint) {
+         hintBtn = make("button", { type: "button", class: "lmc-hint-btn", "aria-label": "Show hint", "aria-expanded": "false" }, "?");
+         labelRow.appendChild(hintBtn);
+       }
+       field.appendChild(labelRow);
+       var wrap = make("div", { class: "lmc-input-wrap" });
+-      if (inp.prefix) wrap.appendChild(make("span", { class: "lmc-prefix" }, escapeHtml(inp.prefix)));
++      if (inp.prefix) {
++        var prefixEl = make("span", { class: "lmc-prefix" }, escapeHtml(inp.prefix));
++        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(prefixEl, "inputs[" + idx + "].prefix");
++        wrap.appendChild(prefixEl);
++      }
+       var attrs = { id: labelId, class: "lmc-input", name: inp.id, type: inp.type === "range" ? "number" : (inp.type || "number"), inputmode: inp.type === "text" ? "text" : "decimal" };
+       if (inp.min != null) attrs.min = inp.min;
+       if (inp.max != null) attrs.max = inp.max;
+       if (inp.step != null) attrs.step = inp.step;
+       if (inp.placeholder) attrs.placeholder = inp.placeholder;
+       var el = make("input", attrs);
+       el.value = inp.default != null ? inp.default : "";
+       wrap.appendChild(el);
+-      if (inp.suffix) wrap.appendChild(make("span", { class: "lmc-suffix" }, escapeHtml(inp.suffix)));
++      if (inp.suffix) {
++        var suffixEl = make("span", { class: "lmc-suffix" }, escapeHtml(inp.suffix));
++        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(suffixEl, "inputs[" + idx + "].suffix");
++        wrap.appendChild(suffixEl);
++      }
+       field.appendChild(wrap);
+       if (inp.type === "range" || inp.slider) {
+         var r = make("input", { type: "range", class: "lmc-range", min: inp.min != null ? inp.min : 0, max: inp.max != null ? inp.max : 100, step: inp.step != null ? inp.step : 1, value: inp.default != null ? inp.default : 0 });
+         r.addEventListener("input", function () { el.value = r.value; el.dispatchEvent(new Event("input", { bubbles: true })); });
+         el.addEventListener("input", function () { if (!isNaN(Number(el.value))) r.value = el.value; });
+         field.appendChild(r);
+       }
+       if (inp.hint) {
+         var hintEl = make("span", { class: "hint" }, escapeHtml(inp.hint));
++        if (window.LM && window.LM.editMode) window.LM.editMode.registerField(hintEl, "inputs[" + idx + "].hint");
+         field.appendChild(hintEl);
+         if (hintBtn) {
+           hintBtn.addEventListener("click", function () {
+             var open = field.classList.toggle("hint-open");
+             hintBtn.setAttribute("aria-expanded", open ? "true" : "false");
+           });
+@@ -256,16 +267,19 @@
+     grid.appendChild(inputsCard);
+ 
+     // RIGHT: outputs
+     var outputsCard = make("div", { class: "lmc-card", id: "lmc-outputs" });
+     outputsCard.appendChild(make("h2", null, "Your result"));
+     var primary = (data.outputs || []).find(function (o) { return o.primary; }) || (data.outputs || [])[0];
++    var primaryIdx = (data.outputs || []).indexOf(primary);
+     if (primary) {
+       var ring = make("div", { class: "lmc-output-ring" });
+       ring.appendChild(make("div", { class: "lmc-big-num", id: "lmc-big-num" }, "—"));
+-      ring.appendChild(make("div", { class: "lmc-big-unit" }, escapeHtml(primary.label || "")));
++      var bigUnitEl = make("div", { class: "lmc-big-unit" }, escapeHtml(primary.label || ""));
++      if (window.LM && window.LM.editMode && primaryIdx >= 0) window.LM.editMode.registerField(bigUnitEl, "outputs[" + primaryIdx + "].label");
++      ring.appendChild(bigUnitEl);
+       ring.appendChild(make("span", { class: "lmc-tier-pill", id: "lmc-tier" }, "Fill in the numbers"));
+       outputsCard.appendChild(ring);
+     }
+     var secondaryWrap = make("div", { id: "lmc-secondary-outputs" });
+     var heroSeen = false;
+     (data.outputs || []).forEach(function (out, idx) {
+@@ -290,12 +304,14 @@
+     outputsCard.appendChild(benchSlot);
+     // D2.4: Top-3-fixes toggle — opt-in via data.fixes_scenario block
+     if (data.fixes_scenario && Array.isArray(data.fixes_scenario.input_overrides) && data.fixes_scenario.input_overrides.length) {
+       var fixToggle = make("label", { class: "lmc-fix-toggle", for: "lmc-fix-on" });
+       var fixLabel = (data.fixes_scenario.label || "See what happens with the top 3 fixes");
+       fixToggle.innerHTML = '<input type="checkbox" id="lmc-fix-on" /> <span>' + escapeHtml(fixLabel) + '</span>';
++      var fixLabelEl = fixToggle.querySelector("span");
++      if (window.LM && window.LM.editMode && fixLabelEl) window.LM.editMode.registerField(fixLabelEl, "fixes_scenario.label");
+       outputsCard.appendChild(fixToggle);
+     }
+     // Recommendations
+     var recsWrap = make("div", { class: "lmc-recs", id: "lmc-recs" });
+     outputsCard.appendChild(recsWrap);
+     grid.appendChild(outputsCard);
+@@ -391,16 +407,20 @@
+       if (rcEl) {
+         rcEl.innerHTML = "";
+         if (matched.length > 0) {
+           rcEl.appendChild(make("h3", null, "What to do next"));
+           matched.forEach(function (m) {
+             var recDiv = make("div", { class: "lmc-rec" });
+-            recDiv.appendChild(make("strong", null, escapeHtml(m.tag || "Recommended")));
++            var origIdx = recs.indexOf(m);
++            var tagEl = make("strong", null, escapeHtml(m.tag || "Recommended"));
++            if (window.LM && window.LM.editMode && origIdx >= 0) {
++              window.LM.editMode.registerField(tagEl, "recommendations[" + origIdx + "].tag");
++            }
++            recDiv.appendChild(tagEl);
+             var textNode = document.createTextNode(m.text || "");
+             recDiv.appendChild(textNode);
+-            var origIdx = recs.indexOf(m);
+             if (window.LM && window.LM.editMode && origIdx >= 0) {
+               window.LM.editMode.registerField(recDiv, "recommendations[" + origIdx + "].text");
+             }
+             rcEl.appendChild(recDiv);
+           });
+         }
+@@ -527,12 +547,12 @@
+           if (!r2.ok) throw new Error("data.json " + r2.status);
+           return r2.json();
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+-    }).then(function (data) { render(data, root); }).catch(function (e) {
++    }).then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading calculator:</strong> ' + escapeHtml(e.message) + '</div>';
+     });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+diff --git a/_engine/checklist.js b/_engine/checklist.js
+index f61fb26..21ce6d8 100644
+--- a/_engine/checklist.js
++++ b/_engine/checklist.js
+@@ -164,13 +164,15 @@
+     var state = readState(data.slug);
+     root.innerHTML = "";
+ 
+     // Hero
+     var hero = make("section", { class: "lmc-hero" });
+     var heroInner = make("div", { class: "lmc-container" });
+-    heroInner.appendChild(make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist")));
++    var badgeEl = make("div", { class: "lmc-badge" }, escapeHtml(data.brand && data.brand.hero_badge || "Action Checklist"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
++    heroInner.appendChild(badgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = buildItalicizedTitle(data.title || "Checklist");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     heroInner.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, escapeHtml(data.subtitle));
+@@ -237,12 +239,13 @@
+           var tipSpan = make("span", { class: "lmc-tip" }, escapeHtml(it.tip));
+           if (window.LM && window.LM.editMode) window.LM.editMode.registerField(tipSpan, "sections[" + sIdx + "].items[" + iIdx + "].tip");
+           txt.appendChild(tipSpan);
+         }
+         if (it.impact) {
+           var imp = make("span", { class: "lmc-impact lmc-impact-" + it.impact }, (it.impact || "").toUpperCase() + " IMPACT");
++          if (window.LM && window.LM.editMode) window.LM.editMode.registerField(imp, "sections[" + sIdx + "].items[" + iIdx + "].impact", { locked: true });
+           txt.appendChild(imp);
+         }
+         row.appendChild(box); row.appendChild(txt);
+         itemsContainer.appendChild(row);
+       });
+       if (window.LM && window.LM.editMode) window.LM.editMode.registerArray(itemsContainer, "sections[" + sIdx + "].items", {
+@@ -469,12 +472,13 @@
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+     }).then(function (data) {
+       render(data, root);
++      window.__lm_rerender = function(){ render(window.__lm_data, root); };
+     }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading checklist:</strong> ' + escapeHtml(e.message) + '</div>';
+     });
+   }
+ 
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+diff --git a/_engine/edit-mode.css b/_engine/edit-mode.css
+index 80cc24b..fe1f3e6 100644
+--- a/_engine/edit-mode.css
++++ b/_engine/edit-mode.css
+@@ -288,6 +288,189 @@
+   font-size: 11px;
+   padding: 4px 12px;
+   opacity: 0.55;
+   transition: opacity .15s ease, transform .15s ease;
+ }
+ .lme-add-between:hover { opacity: 1; transform: scale(1.05); }
++
++/* ── AI rewrite (✨) ──────────────────────────────────────────────────── */
++
++/* Single floating chip, repositioned to whichever field is hovered/focused.
++   Never a child of the field element — must not pollute its textContent
++   or innerHTML, which are read back into state.data on commit. */
++.lme-ai-chip {
++  position: fixed;
++  z-index: 99997;
++  width: 22px;
++  height: 22px;
++  border-radius: 4px;
++  border: 1px solid rgba(76, 110, 61, 0.35);
++  background: rgba(247, 244, 239, 0.95);
++  color: #4C6E3D;
++  font-size: 12px;
++  line-height: 1;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  cursor: pointer;
++  opacity: 0;
++  pointer-events: none;
++  transform: translateY(-2px);
++  transition: opacity 120ms ease, transform 120ms ease, background 120ms ease;
++}
++.lme-ai-chip-visible {
++  opacity: 0.85;
++  pointer-events: auto;
++  transform: translateY(0);
++}
++.lme-ai-chip:hover {
++  opacity: 1;
++  background: rgba(76, 110, 61, 0.12);
++}
++
++/* Prompt / loading / proposal panel */
++.lme-ai-backdrop {
++  position: fixed;
++  inset: 0;
++  background: rgba(38, 30, 20, 0.35);
++  z-index: 99999;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++}
++.lme-ai-panel {
++  background: #FBF8F2;
++  border: 1px solid rgba(76, 110, 61, 0.25);
++  border-radius: 8px;
++  width: min(480px, 92vw);
++  max-height: 82vh;
++  display: flex;
++  flex-direction: column;
++  overflow: hidden;
++  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
++  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
++}
++.lme-ai-panel-header {
++  padding: 12px 16px;
++  border-bottom: 1px solid rgba(76, 110, 61, 0.15);
++  display: flex;
++  align-items: center;
++  justify-content: space-between;
++}
++.lme-ai-panel-title { font-weight: 700; font-size: 13px; color: #33402A; }
++.lme-ai-panel-close {
++  background: none;
++  border: none;
++  font-size: 18px;
++  line-height: 1;
++  cursor: pointer;
++  color: #888;
++}
++.lme-ai-panel-close:hover { color: #4C6E3D; }
++.lme-ai-panel-body { padding: 16px; overflow: auto; }
++
++.lme-ai-input {
++  display: block;
++  width: 100%;
++  font: inherit;
++  font-size: 13px;
++  padding: 8px 10px;
++  border: 1px solid rgba(76, 110, 61, 0.35);
++  border-radius: 4px;
++  background: #fff;
++  box-sizing: border-box;
++  outline: none;
++}
++.lme-ai-input:focus { border-color: #4C6E3D; }
++.lme-ai-chips {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 6px;
++  margin-top: 10px;
++}
++.lme-ai-preset {
++  border: 1px solid rgba(76, 110, 61, 0.35);
++  background: rgba(76, 110, 61, 0.06);
++  color: #4C6E3D;
++  border-radius: 4px;
++  padding: 4px 10px;
++  font-size: 12px;
++  font-weight: 600;
++  cursor: pointer;
++  transition: background 80ms;
++}
++.lme-ai-preset:hover { background: rgba(76, 110, 61, 0.14); }
++
++.lme-ai-actions {
++  display: flex;
++  justify-content: flex-end;
++  gap: 8px;
++  margin-top: 16px;
++}
++.lme-ai-btn {
++  background: transparent;
++  border: 1px solid rgba(0, 0, 0, 0.15);
++  color: #33402A;
++  border-radius: 4px;
++  padding: 6px 12px;
++  font-size: 12px;
++  font-weight: 600;
++  cursor: pointer;
++}
++.lme-ai-btn:hover { background: rgba(0, 0, 0, 0.04); }
++.lme-ai-btn-primary { background: #4C6E3D; border-color: #4C6E3D; color: #fff; }
++.lme-ai-btn-primary:hover { background: #3d5931; }
++
++.lme-ai-loading {
++  display: flex;
++  align-items: center;
++  gap: 10px;
++  padding: 12px 0;
++  font-size: 13px;
++  color: #33402A;
++}
++.lme-ai-spinner {
++  width: 16px;
++  height: 16px;
++  border: 2px solid rgba(76, 110, 61, 0.25);
++  border-top-color: #4C6E3D;
++  border-radius: 50%;
++  animation: lme-ai-spin 700ms linear infinite;
++}
++@media (prefers-reduced-motion: reduce) {
++  .lme-ai-spinner { animation: none; }
++}
++@keyframes lme-ai-spin {
++  to { transform: rotate(360deg); }
++}
++
++.lme-ai-block { margin-bottom: 14px; }
++.lme-ai-block-label {
++  font-size: 11px;
++  font-weight: 700;
++  text-transform: uppercase;
++  letter-spacing: 0.4px;
++  color: #888;
++  margin-bottom: 4px;
++}
++.lme-ai-block-content {
++  font-size: 13px;
++  line-height: 1.5;
++  color: #222;
++  padding: 8px 10px;
++  border-radius: 4px;
++  background: rgba(0, 0, 0, 0.03);
++  border: 1px solid rgba(0, 0, 0, 0.06);
++  max-height: 180px;
++  overflow: auto;
++}
++.lme-ai-block-proposed .lme-ai-block-content {
++  background: rgba(76, 110, 61, 0.06);
++  border-color: rgba(76, 110, 61, 0.25);
++}
++.lme-ai-block-proposed .lme-ai-block-label { color: #4C6E3D; }
++
++/* Optimistic-save syncing indicator (D1) */
++.lme-toolbar-dirty.lme-syncing {
++  color: #C77D3A;
++  opacity: 0.9;
++}
+diff --git a/_engine/edit-mode.js b/_engine/edit-mode.js
+index fde8d69..c0dd633 100644
+--- a/_engine/edit-mode.js
++++ b/_engine/edit-mode.js
+@@ -9,12 +9,13 @@
+   "use strict";
+ 
+   // ── Configuration ─────────────────────────────────────────────────────
+   var EDIT_WEBHOOK = "https://n8n.ivanmanfredi.com/webhook/edit-lm";
+   var GITHUB_REPO = "ivanmanfredi/resources";
+   var GITHUB_API = "https://api.github.com";
++  var REWRITE_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-copy-rewrite";
+ 
+   // ── State ─────────────────────────────────────────────────────────────
+   var state = {
+     token: null,
+     slug: null,
+     format: null,
+@@ -171,12 +172,231 @@
+     return String(html || "")
+       .replace(/<\/?script[^>]*>/gi, "")
+       .replace(/<\/?style[^>]*>/gi, "")
+       .replace(/\son\w+=("[^"]*"|'[^']*')/gi, "");
+   }
+ 
++  // ── AI rewrite (✨) ───────────────────────────────────────────────────
++  // Client-facing proposal loop: hover any unlocked field, click ✨, type or
++  // pick an instruction, get a Now/Proposed panel. Nothing touches el or
++  // state.data until the user clicks Keep. A single floating chip is reused
++  // across all fields (cheaper than wrapping every field's DOM, and safe —
++  // it never becomes a child of el, so it can't pollute el.textContent /
++  // el.innerHTML, which are the values read back into state.data on commit).
++  var AI_PRESETS = ["Punchier", "Shorter", "More specific", "In my voice"];
++  var aiChip = null;
++  var aiChipTarget = null;
++  var aiChipHideTimer = null;
++
++  function ensureAiChip() {
++    if (aiChip) return aiChip;
++    aiChip = make("button", {
++      class: "lme-ai-chip",
++      type: "button",
++      title: "Rewrite with AI",
++      "aria-label": "Rewrite with AI",
++    }, "✨");
++    document.body.appendChild(aiChip);
++    aiChip.addEventListener("mouseenter", function () {
++      if (aiChipHideTimer) { clearTimeout(aiChipHideTimer); aiChipHideTimer = null; }
++    });
++    aiChip.addEventListener("mouseleave", scheduleHideAiChip);
++    aiChip.addEventListener("click", function (e) {
++      e.preventDefault();
++      e.stopPropagation();
++      if (!aiChipTarget) return;
++      var t = aiChipTarget;
++      hideAiChipNow();
++      openAiPanel(t.el, t.path, t.opts);
++    });
++    window.addEventListener("scroll", function () {
++      if (aiChipTarget && aiChip.classList.contains("lme-ai-chip-visible")) positionAiChip(aiChipTarget.el);
++    }, true);
++    return aiChip;
++  }
++  function positionAiChip(el) {
++    var chip = ensureAiChip();
++    var r = el.getBoundingClientRect();
++    chip.style.top = Math.max(4, r.top + 4) + "px";
++    chip.style.left = Math.max(4, r.right - chip.offsetWidth - 4) + "px";
++  }
++  function showAiChip(el, path, opts) {
++    var chip = ensureAiChip();
++    aiChipTarget = { el: el, path: path, opts: opts || {} };
++    positionAiChip(el);
++    chip.classList.add("lme-ai-chip-visible");
++    if (aiChipHideTimer) { clearTimeout(aiChipHideTimer); aiChipHideTimer = null; }
++  }
++  function scheduleHideAiChip() {
++    if (aiChipHideTimer) clearTimeout(aiChipHideTimer);
++    aiChipHideTimer = setTimeout(hideAiChipNow, 180);
++  }
++  function hideAiChipNow() {
++    if (aiChip) aiChip.classList.remove("lme-ai-chip-visible");
++    aiChipTarget = null;
++  }
++  // Wires hover/focus listeners that surface the shared ✨ chip for one field.
++  // Guarded by data-lme-ai so re-running attachField for the same DOM node
++  // (engines re-attach across partial re-renders) never double-wires it.
++  function wireAiAffordance(el, path, opts) {
++    if (!el || (opts && opts.locked)) return;
++    if (el.getAttribute("data-lme-ai") === "1") return;
++    el.setAttribute("data-lme-ai", "1");
++    function maybeShow() {
++      if (el.hasAttribute("data-lme-field-editing")) return;
++      showAiChip(el, path, opts);
++    }
++    el.addEventListener("mouseenter", maybeShow);
++    el.addEventListener("mouseleave", scheduleHideAiChip);
++    el.addEventListener("focus", maybeShow);
++    el.addEventListener("blur", scheduleHideAiChip);
++  }
++  // Opens the prompt → loading → proposal panel for one field. `original` is
++  // captured once here and never reassigned, so Try again / Cancel can never
++  // drift from the true pre-rewrite value. state.data / el are only ever
++  // written inside the Keep handler.
++  function openAiPanel(el, path, opts) {
++    var isHtml = !!(opts && opts.contenteditable);
++    var original = isHtml ? el.innerHTML : el.textContent;
++    var lastInstruction = "";
++    var closed = false;
++
++    var backdrop = make("div", { class: "lme-ai-backdrop" });
++    var panel = make("div", { class: "lme-ai-panel" });
++    var header = make("div", { class: "lme-ai-panel-header" });
++    header.appendChild(make("span", { class: "lme-ai-panel-title" }, "✨ Rewrite"));
++    var closeBtn = make("button", { class: "lme-ai-panel-close", type: "button", "aria-label": "Close" }, "×");
++    header.appendChild(closeBtn);
++    var body = make("div", { class: "lme-ai-panel-body" });
++    panel.appendChild(header);
++    panel.appendChild(body);
++    backdrop.appendChild(panel);
++
++    function close() {
++      if (closed) return;
++      closed = true;
++      document.removeEventListener("keydown", onKeydown);
++      if (backdrop.parentNode) backdrop.parentNode.removeChild(backdrop);
++    }
++    function onKeydown(e) {
++      if (e.key === "Escape") close();
++    }
++    closeBtn.addEventListener("click", close);
++    backdrop.addEventListener("click", function (e) { if (e.target === backdrop) close(); });
++    document.addEventListener("keydown", onKeydown);
++
++    function showPrompt() {
++      body.innerHTML = "";
++      var input = make("input", { type: "text", class: "lme-ai-input", placeholder: "e.g. punchier, shorter, more specific, in my voice" });
++      input.value = lastInstruction;
++      var chips = make("div", { class: "lme-ai-chips" });
++      AI_PRESETS.forEach(function (label) {
++        var chip = make("button", { class: "lme-ai-preset", type: "button" }, label);
++        chip.addEventListener("click", function () { submit(label.toLowerCase()); });
++        chips.appendChild(chip);
++      });
++      var actions = make("div", { class: "lme-ai-actions" });
++      var cancelBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Cancel");
++      var submitBtn = make("button", { class: "lme-ai-btn lme-ai-btn-primary", type: "button" }, "Rewrite");
++      cancelBtn.addEventListener("click", close);
++      submitBtn.addEventListener("click", function () { submit(input.value.trim()); });
++      input.addEventListener("keydown", function (e) {
++        if (e.key === "Enter") { e.preventDefault(); submit(input.value.trim()); }
++      });
++      actions.appendChild(cancelBtn);
++      actions.appendChild(submitBtn);
++      body.appendChild(input);
++      body.appendChild(chips);
++      body.appendChild(actions);
++      input.focus();
++    }
++
++    function showLoading() {
++      body.innerHTML = "";
++      var loading = make("div", { class: "lme-ai-loading" });
++      loading.appendChild(make("span", { class: "lme-ai-spinner" }));
++      loading.appendChild(make("span", {}, "Rewriting…"));
++      body.appendChild(loading);
++    }
++
++    function showProposal(rewritten) {
++      body.innerHTML = "";
++      var nowBlock = make("div", { class: "lme-ai-block" });
++      nowBlock.appendChild(make("div", { class: "lme-ai-block-label" }, "Now"));
++      var nowPreview = make("div", { class: "lme-ai-block-content" });
++      if (isHtml) nowPreview.innerHTML = sanitizeHtml(original); else nowPreview.textContent = original;
++      nowBlock.appendChild(nowPreview);
++
++      var proposedBlock = make("div", { class: "lme-ai-block lme-ai-block-proposed" });
++      proposedBlock.appendChild(make("div", { class: "lme-ai-block-label" }, "Proposed"));
++      var proposedPreview = make("div", { class: "lme-ai-block-content" });
++      if (isHtml) proposedPreview.innerHTML = sanitizeHtml(rewritten); else proposedPreview.textContent = rewritten;
++      proposedBlock.appendChild(proposedPreview);
++
++      var actions = make("div", { class: "lme-ai-actions" });
++      var cancelBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Cancel");
++      var retryBtn = make("button", { class: "lme-ai-btn", type: "button" }, "Try again");
++      var keepBtn = make("button", { class: "lme-ai-btn lme-ai-btn-primary", type: "button" }, "Keep");
++      cancelBtn.addEventListener("click", close);
++      retryBtn.addEventListener("click", showPrompt);
++      keepBtn.addEventListener("click", function () {
++        // The ONLY place this panel writes to el / state.data.
++        if (isHtml) {
++          var clean = sanitizeHtml(rewritten);
++          el.innerHTML = clean;
++          setByPath(state.data, path, clean);
++        } else {
++          el.textContent = rewritten;
++          setByPath(state.data, path, rewritten);
++        }
++        markDirty();
++        close();
++        showToast("Rewrite applied · Publish to go live");
++      });
++      actions.appendChild(cancelBtn);
++      actions.appendChild(retryBtn);
++      actions.appendChild(keepBtn);
++
++      body.appendChild(nowBlock);
++      body.appendChild(proposedBlock);
++      body.appendChild(actions);
++    }
++
++    function submit(instruction) {
++      if (!instruction) return;
++      lastInstruction = instruction;
++      showLoading();
++      var context = (state.data && state.data.title) || "";
++      fetch(REWRITE_URL, {
++        method: "POST",
++        headers: { "Content-Type": "application/json" },
++        body: JSON.stringify({ text: original, instruction: instruction, context: context }),
++      })
++        .then(function (r) {
++          return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, body: j }; });
++        })
++        .then(function (res) {
++          if (closed) return;
++          if (res.status !== 200 || !res.body || !res.body.rewritten) {
++            showToast("Rewrite failed. Original kept.", true);
++            showPrompt();
++            return;
++          }
++          showProposal(res.body.rewritten);
++        })
++        .catch(function () {
++          if (closed) return;
++          showToast("Rewrite failed. Original kept.", true);
++          showPrompt();
++        });
++    }
++
++    document.body.appendChild(backdrop);
++    showPrompt();
++  }
++
+   // ── Field attach ──────────────────────────────────────────────────────
+   function attachField(el, path, opts) {
+     if (!el) return;
+     state.fieldEls.push({ el: el, path: path });
+     el.setAttribute("data-lme-field", path);
+     if (opts && opts.locked) el.classList.add("lme-field-locked");
+@@ -184,13 +404,13 @@
+     // contenteditable path — for rich HTML editing (guide section bodies).
+     // Direct contentEditable on the element, sanitize on blur.
+     if (opts && opts.contenteditable) {
+       el.contentEditable = "true";
+       el.spellcheck = true;
+       el.classList.add("lme-field-contenteditable");
+-      el.addEventListener("focus", function () { el.setAttribute("data-lme-field-editing", "true"); });
++      el.addEventListener("focus", function () { el.setAttribute("data-lme-field-editing", "true"); hideAiChipNow(); });
+       el.addEventListener("blur", function () {
+         el.removeAttribute("data-lme-field-editing");
+         var raw = el.innerHTML;
+         var clean = sanitizeHtml(raw);
+         if (clean !== raw) el.innerHTML = clean;
+         setByPath(state.data, path, clean);
+@@ -199,33 +419,36 @@
+       // Plain-text paste so users don't drop styled HTML from Word/Notion.
+       el.addEventListener("paste", function (e) {
+         e.preventDefault();
+         var text = (e.clipboardData || window.clipboardData).getData("text/plain");
+         document.execCommand("insertText", false, text);
+       });
++      wireAiAffordance(el, path, opts);
+       return;
+     }
+ 
+     el.addEventListener("click", function (e) {
+       // Don't trigger on nested links/buttons
+       if (e.target !== el && (e.target.closest("a") || e.target.closest("button"))) return;
+       if (el.hasAttribute("data-lme-field-editing")) return;
+       if (opts && opts.locked) { showToast("This field is locked (stable ID)", true); return; }
+       e.preventDefault(); e.stopPropagation();
+       enterEditField(el, path, opts || {});
+     });
++    wireAiAffordance(el, path, opts);
+   }
+   function enterEditField(el, path, opts) {
+     var original = el.textContent;
+     var useTextarea = opts.multiline || original.length > 80;
+     var input = make(useTextarea ? "textarea" : "input", {
+       class: useTextarea ? "lme-inline-textarea" : "lme-inline-input",
+       type: useTextarea ? undefined : "text",
+     });
+     input.value = original;
+     el.setAttribute("data-lme-field-editing", "true");
++    hideAiChipNow();
+     el.innerHTML = "";
+     el.appendChild(input);
+     input.focus();
+     if (!useTextarea) input.select();
+     function commit() {
+       var newVal = input.value;
+@@ -369,13 +592,27 @@
+         state.dirty = false;
+         updateToolbarLabel();
+         var msg = mode === "publish"
+           ? "✓ Published · commit " + (res.body.sha || "").slice(0, 7) + " · live in ~30s"
+           : "✓ Draft saved · commit " + (res.body.sha || "").slice(0, 7);
+         showToast(msg);
+-        setTimeout(function () { location.reload(); }, 3000);
++        // Optimistic save: the edits are already applied in the DOM, so we do
++        // NOT reload. A reload here would re-fetch the pre-commit data.json
++        // (GitHub Pages takes ~30s to redeploy) and briefly revert the visible
++        // edits. Instead show a transient "syncing" note that clears itself.
++        if (mode === "publish") {
++          var di = $("#lme-dirty-indicator");
++          if (di) {
++            var syncMsg = "● syncing · live in ~30s";
++            di.textContent = syncMsg;
++            di.classList.add("lme-syncing");
++            setTimeout(function () {
++              if (di.textContent === syncMsg) { di.textContent = ""; di.classList.remove("lme-syncing"); }
++            }, 30000);
++          }
++        }
+       })
+       .catch(function (err) { showToast("Save error: " + err.message, true); });
+   }
+ 
+   // ── Raw JSON modal (mitigation #7) ────────────────────────────────────
+   function openRawJsonModal() {
+@@ -536,14 +773,28 @@
+     } catch (_) {}
+     // Guides use contenteditable section bodies — warm DOMPurify so the first
+     // blur doesn't drop through the unsafe fallback path.
+     if (state.format === "guide") loadPurify();
+   }
+ 
++  // ── Re-render (Task A1) ─────────────────────────────────────────────
++  // Re-runs the active engine's render() without a full page reload after a
++  // structural edit (array add/remove, AI rewrite). Must clear the field/array
++  // buffers first, or re-running render() re-pushes onto them and stale
++  // entries (pointing at removed DOM nodes) accumulate. Because edit mode is
++  // enabled during a live session, each re-pushed registerField/registerArray
++  // auto-attaches on push, so no separate flush pass is needed here.
++  function rerender() {
++    if (window.LM && window.LM.editMode && window.LM.editMode.resetBuffers)
++      window.LM.editMode.resetBuffers();
++    if (typeof window.__lm_rerender === "function") window.__lm_rerender();
++  }
++
+   // ── Expose API ────────────────────────────────────────────────────────
+   window.__LM_EDIT_MODE_LOADED = true;
+   window.__LM_EDIT_MODE_API = {
+     attachField: attachField,
+     attachArray: attachArray,
+     mount: mount,
++    rerender: rerender,
+   };
+ })();
+diff --git a/_engine/guide.js b/_engine/guide.js
+index afbd3ab..786c7d5 100644
+--- a/_engine/guide.js
++++ b/_engine/guide.js
+@@ -169,14 +169,16 @@
+       metaChips: chips,
+     }));
+ 
+     // Editor hooks: wrap hero title + subtitle for inline edit
+     var heroH1 = root.querySelector(".lmc-h1");
+     var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
+     if (heroH1 && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroH1, "title");
+     if (heroSub && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroSub, "subtitle");
++    if (heroBadge && window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadge, "brand.hero_badge");
+     // Intro bullets also adapt to feature state
+     var introBullets = data.enable_self_placement === true
+       ? {
+           defaultValueBullet: "Rate your team's current practice at the bottom of each section",
+           defaultNextBullet: "End-of-guide summary shows which chapters to revisit. Emailed if you want",
+           defaultNote: "",
+@@ -317,12 +319,25 @@
+               '<span class="lmg-toc-text">' + L.esc(s.title || ("Section " + (i + 1))) + '</span>' +
+             '</a></li>';
+           }).join('') +
+           '</ol>' +
+         '</div>';
+       root.appendChild(toc);
++      // TOC entry text is a second view of sections[i].title (same field as
++      // the section h2) — only register when data-derived (s.title truthy),
++      // guarding against the "Section N" fallback literal. Precedent: dual
++      // registration of one field across two DOM surfaces (architecture.js
++      // mobile-list twin, task A4).
++      if (window.LM && window.LM.editMode) {
++        var tocTextEls = toc.querySelectorAll(".lmg-toc-text");
++        (data.sections || []).forEach(function (s, i) {
++          if (s.title && tocTextEls[i]) {
++            window.LM.editMode.registerField(tocTextEls[i], "sections[" + i + "].title");
++          }
++        });
++      }
+       var tocToggle = toc.querySelector(".lmg-toc-toggle");
+       var tocIcon = toc.querySelector(".lmg-toc-toggle-icon");
+       tocToggle.addEventListener("click", function () {
+         var nowCollapsed = !toc.classList.contains("collapsed");
+         toc.classList.toggle("collapsed", nowCollapsed);
+         tocToggle.setAttribute("aria-expanded", nowCollapsed ? "false" : "true");
+@@ -521,12 +536,12 @@
+             return r2.json();
+           });
+         }
+         if (!r.ok) throw new Error("data.json " + r.status);
+         return r.json();
+       })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading guide:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   });
+ })();
+diff --git a/_engine/landing.js b/_engine/landing.js
+index 3da2338..8d8c223 100644
+--- a/_engine/landing.js
++++ b/_engine/landing.js
+@@ -30,13 +30,13 @@
+     }
+     return esc(h);
+   }
+ 
+   fetch(src, { cache: "no-cache" })
+     .then(function (r) { if (!r.ok) throw new Error("load"); return r.json(); })
+-    .then(render)
++    .then(function (d) { render(d); window.__lm_rerender = function(){ render(window.__lm_data); }; })
+     .catch(function () {
+       root.innerHTML = '<div class="lp" style="padding:4rem 0;text-align:center"><p>This page didn\'t load. <a href="https://ivanmanfredi.com" style="color:#4C6E3D">ivanmanfredi.com</a></p></div>';
+     });
+ 
+   function render(d) {
+     window.__lm_data = d;
+@@ -54,12 +54,21 @@
+       ? '<img class="lp-ava" src="' + esc(d.proof_avatar) + '" alt="Ivan Manfredi">'
+       : '<span class="lp-ava"></span>';
+ 
+     var ctaLabel = esc(d.cta_label || ("Email me the " + (d.format_label ? d.format_label.toLowerCase() : "resource")));
+     var eyebrow = [d.format_label, d.category].filter(Boolean).map(esc).join(" · ");
+ 
++    // NOTE on registration exclusions (see report for full detail):
++    // - eyebrow is a computed join of format_label + category, no single path
++    // - the CTA button text below has a literal " →" arrow appended in the
++    //   same text node as the label, so its textContent never equals the raw
++    //   cta_label value — registering it would let an edit-mode save clobber
++    //   the arrow into stored copy. Skipped.
++    // - the cover fallback div text is an OR-chain (headline||category||literal),
++    //   ambiguous single path. Skipped.
++
+     root.innerHTML =
+       '<div class="lp">' +
+         '<section class="lp-hero">' +
+           "<div>" +
+             (eyebrow ? '<p class="lp-eyebrow">' + eyebrow + "</p>" : "") +
+             '<h1 class="lp-h1">' + headlineHTML(d) + "</h1>" +
+@@ -80,12 +89,41 @@
+           "</div>" +
+         "</section>" +
+         (inside ? '<section class="lp-inside"><h2>What\'s inside</h2><ul class="lp-bullets">' + inside + "</ul></section>" : "") +
+         (d.proof ? '<section class="lp-proof">' + avatar + "<p>" + d.proof + "</p></section>" : "") +
+       "</div>";
+ 
++    // Registration — capture nodes AFTER the innerHTML build above, don't
++    // rewrite the render.
++    if (L.editMode) {
++      var h1El = root.querySelector(".lp-h1");
++      if (h1El) L.editMode.registerField(h1El, "headline", { multiline: true });
++      var subEl = root.querySelector(".lp-sub");
++      if (subEl && d.subhead) L.editMode.registerField(subEl, "subhead", { multiline: true });
++      var sub2El = root.querySelector(".lp-sub-2");
++      if (sub2El && d.subhead_secondary) L.editMode.registerField(sub2El, "subhead_secondary", { multiline: true });
++
++      // "inside" bullets — each <li> holds a computed index <span class="n">
++      // (locked/skipped, not stored) plus a second <span> with the stored
++      // bullet text.
++      var bulletsList = root.querySelector(".lp-bullets");
++      if (bulletsList) {
++        Array.prototype.forEach.call(bulletsList.querySelectorAll("li.lp-b"), function (li, i) {
++          var spans = li.querySelectorAll("span");
++          var textEl = spans[1];
++          if (textEl) L.editMode.registerField(textEl, "inside[" + i + "]");
++        });
++        L.editMode.registerArray(bulletsList, "inside", { itemLabel: "bullet", template: "New bullet" });
++      }
++
++      // Proof/testimonial — inserted as RAW (unescaped) HTML in the render
++      // above, so treat it as rich text like other *_html fields.
++      var proofEl = root.querySelector(".lp-proof p");
++      if (proofEl && d.proof) L.editMode.registerField(proofEl, "proof", { contenteditable: true });
++    }
++
+     try { if (L.beacon) L.beacon("landing", "view"); } catch (_) {}
+     wireForm(d);
+   }
+ 
+   function wireForm(d) {
+     var form = document.getElementById("lp-form");
+diff --git a/_engine/n8n-workflow.js b/_engine/n8n-workflow.js
+index 1f4471b..dc82e8e 100644
+--- a/_engine/n8n-workflow.js
++++ b/_engine/n8n-workflow.js
+@@ -26,14 +26,16 @@
+       badge: (data.brand && data.brand.hero_badge) || "n8n Workflow",
+       metaChips: chips,
+     }));
+ 
+     var heroH1 = root.querySelector(".lmc-h1");
+     var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
+     if (heroH1 && L.editMode) L.editMode.registerField(heroH1, "title");
+     if (heroSub && L.editMode) L.editMode.registerField(heroSub, "subtitle");
++    if (heroBadge && L.editMode) L.editMode.registerField(heroBadge, "brand.hero_badge");
+ 
+     root.appendChild(L.buildIntro(data, ".lmw-download", {
+       tool_type: "n8n-workflow",
+       defaultValueBullet: "Drop the JSON into your n8n, plug in creds, run",
+       defaultNextBullet: "Use the walkthrough below to understand each stage before customizing",
+       startLabel: "Get the workflow",
+@@ -80,12 +82,31 @@
+       var setup = L.make("section", { class: "lmw-setup" });
+       var credsList = creds.map(function (c) { return '<li>' + L.esc(c) + '</li>'; }).join('');
+       var envsList = envs.map(function (e) { return '<li><code>' + L.esc(e) + '</code></li>'; }).join('');
+       setup.innerHTML = '<h2>Before you import</h2>' +
+         (creds.length ? '<h3>Credentials</h3><ul>' + credsList + '</ul>' : '') +
+         (envs.length ? '<h3>Env vars</h3><ul>' + envsList + '</ul>' : '');
++      // Register each requirement li against its array index — position-based
++      // lookup (h3 textContent -> next sibling ul) so no attrs/classes are added
++      // to keep rendered DOM byte-identical outside edit mode.
++      if (L.editMode) {
++        Array.prototype.forEach.call(setup.querySelectorAll("h3"), function (h3) {
++          var ul = h3.nextElementSibling;
++          if (!ul || ul.tagName !== "UL") return;
++          if (h3.textContent === "Credentials") {
++            Array.prototype.forEach.call(ul.querySelectorAll("li"), function (li, i) {
++              L.editMode.registerField(li, "credentials_required[" + i + "]");
++            });
++          } else if (h3.textContent === "Env vars") {
++            Array.prototype.forEach.call(ul.querySelectorAll("li"), function (li, i) {
++              var code = li.querySelector("code") || li;
++              L.editMode.registerField(code, "env_vars[" + i + "]");
++            });
++          }
++        });
++      }
+       main.appendChild(setup);
+     }
+ 
+     // Per-stage walkthrough sections
+     var sectionsContainer = L.make("div", { class: "lmw-sections-container" });
+     (data.sections || []).forEach(function (s, sIdx) {
+@@ -118,12 +139,19 @@
+       var cta = data.ctas[0];
+       var ctaSec = L.make("section", { class: "lmw-cta" });
+       ctaSec.innerHTML = '<h2>' + L.esc(cta.headline || "Want this customized?") + '</h2>' +
+         '<a class="lmc-btn" href="' + L.esc(cta.url) + '" target="_blank" rel="noopener">' +
+           L.esc(cta.button || "Talk to me") +
+         '</a>';
++      // Only register when the fallback literal wasn't used — textContent must
++      // equal the raw stored value (ctas[0].url is a fixed, non-dynamic pick,
++      // unlike architecture/ai-walkthrough's runtime pickCta selection).
++      if (L.editMode) {
++        if (cta.headline) L.editMode.registerField(ctaSec.querySelector("h2"), "ctas[0].headline");
++        if (cta.button) L.editMode.registerField(ctaSec.querySelector("a"), "ctas[0].button");
++      }
+       main.appendChild(ctaSec);
+     } else {
+       main.appendChild(L.buildClosingCta("n8n_workflow", data, { toolType: "n8n-workflow" }));
+     }
+ 
+     // Share row
+@@ -230,13 +258,13 @@
+   function init() {
+     var root = document.getElementById("lmc-root") || document.querySelector("[data-lm-n8n-src]");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-n8n-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading workflow:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+   else init();
+diff --git a/_engine/shared.js b/_engine/shared.js
+index 7416367..a06140b 100644
+--- a/_engine/shared.js
++++ b/_engine/shared.js
+@@ -365,12 +365,24 @@
+       '<p class="lmc-closing-sign">Either way, the full system is on this page. <em>Go build it.</em></p>' +
+       '<div class="lmc-closing-byline">' +
+         '<img src="https://ivanmanfredi.com/ivan-portrait.jpg" alt="" loading="lazy" />' +
+         '<span><strong>Ivan Manfredi</strong>AI systems for service businesses</span>' +
+       '</div>';
+ 
++    editModeRegisterField(sec.querySelector(".lmc-closing-h"), "closing_cta.headline_html", { contenteditable: true });
++    editModeRegisterField(sec.querySelector(".lmc-closing-p"), "closing_cta.body", { multiline: true });
++    var closingList = sec.querySelector(".lmc-closing-points");
++    if (closingList) {
++      editModeRegisterArray(closingList, "closing_cta.bullets", { itemLabel: "point" });
++      var closingItems = closingList.querySelectorAll("li");
++      for (var ci = 0; ci < closingItems.length; ci++) {
++        editModeRegisterField(closingItems[ci], "closing_cta.bullets[" + ci + "]");
++      }
++    }
++    editModeRegisterField(sec.querySelector(".lmc-closing-email-p"), "closing_cta.email_lead", { multiline: true });
++
+     var callBtn = sec.querySelector(".lmc-closing-call");
+     callBtn.addEventListener("click", function () {
+       beacon(toolType, "cta_click", { answers: { target: "closing_cta_call", format: format } });
+     });
+ 
+     var form = sec.querySelector(".lmc-closing-form");
+@@ -714,27 +726,43 @@
+         '<div class="im-footer-inner">' +
+           '<div class="im-footer-cta"></div>' +
+           '<div class="im-footer-meta"></div>' +
+         '</div>';
+       document.body.appendChild(footer);
+     }
++    // Per-LM override: window.__lm_data.footer. Each field falls back to the
++    // exact literal below when absent, so the assembled innerHTML is
++    // byte-identical to the pre-refactor markup for a no-override page.
++    var f = (window.__lm_data && window.__lm_data.footer) || {};
++    var fLabel   = f.label        || "Work with me";
++    var fHeading = f.heading_html || 'Ready to scale without <em>scaling payroll</em>?';
++    var fBody    = f.body         || 'See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free fit call.';
++    var fBtn     = f.cta_label    || 'Book the free fit call';
++
+     var cta = footer.querySelector(".im-footer-cta");
+     if (cta) {
+       // Footer pattern lifted from Lemonade-style demand-gen agency CTAs:
+       // mono label / outcome question h2 / receipts + invitation body / button.
+       // Voice anchors: "scale without scaling payroll" + "Agent-Ready Ops"
+       // are Ivan's signature pivots per Voice §0. Italicize "scaling payroll".
+       cta.innerHTML =
+-        '<span class="im-footer-label">Work with me</span>' +
+-        '<h2 class="im-footer-h">Ready to scale without <em>scaling payroll</em>?</h2>' +
+-        '<p class="im-footer-p">See how I build Agent-Ready Ops systems that survive past pilot. 40+ live across eight industries. Book a free fit call.</p>' +
+-        '<a class="im-footer-btn" href="' + callUrl("footer") + '" target="_blank" rel="noopener" data-footer-cta>Book the free fit call</a>';
++        '<span class="im-footer-label">' + esc(fLabel) + '</span>' +
++        '<h2 class="im-footer-h">' + fHeading + '</h2>' +
++        '<p class="im-footer-p">' + esc(fBody) + '</p>' +
++        '<a class="im-footer-btn" href="' + callUrl("footer") + '" target="_blank" rel="noopener" data-footer-cta>' + esc(fBtn) + '</a>';
+       var btn = cta.querySelector("[data-footer-cta]");
+       if (btn) btn.addEventListener("click", function () { beacon("footer", "cta_click", { answers: { target: "footer_calendly" } }); });
++      editModeRegisterField(cta.querySelector(".im-footer-label"), "footer.label");
++      editModeRegisterField(cta.querySelector(".im-footer-h"), "footer.heading_html", { contenteditable: true });
++      editModeRegisterField(cta.querySelector(".im-footer-p"), "footer.body", { multiline: true });
++      editModeRegisterField(cta.querySelector(".im-footer-btn"), "footer.cta_label");
+     }
+-    // Replace footer meta line with cleaner brand-correct version
++    // Replace footer meta line with cleaner brand-correct version. Left as
++    // hardcoded literals (not sourced from data.footer) — the year is always
++    // computed live and the ivanmanfredi.com link is a fixed brand fact, so
++    // there's no per-LM customization value here. Not registered.
+     var meta = footer.querySelector(".im-footer-meta");
+     if (meta) {
+       var year = new Date().getFullYear();
+       meta.innerHTML =
+         '<span>© ' + year + ' Iván Manfredi</span>' +
+         '<span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>';
+@@ -743,29 +771,50 @@
+ 
+   // ── Resource tracker removed — was a "could be cool" Netflix-style widget,
+   // but Ivan's audience arrives via DM/comment-gate for ONE specific LM, not browsing.
+   // Kept as no-op so existing engine calls to LM.tracker.touch() don't throw.
+   function trackerTouch() {}
+ 
++  // ── Click-to-edit field/array helpers (Task A1) ───────────────────────
++  // Thin wrappers around make() + editModeRegisterField/Array so engines can
++  // build an editable element in one call instead of make() + registerField().
++  function makeField(tag, attrs, text, path, opts) {
++    var e = make(tag, attrs, (opts && opts.html) ? text : undefined);
++    if (!(opts && opts.html) && text !== undefined) e.textContent = text;
++    editModeRegisterField(e, path, opts || {});
++    return e;
++  }
++  function makeFieldArray(containerEl, arrayPath, opts) {
++    editModeRegisterArray(containerEl, arrayPath, opts || {});
++    return containerEl;
++  }
++  function editModeResetBuffers() {
++    editModeState.fields.length = 0;
++    editModeState.arrays.length = 0;
++  }
++
+   window.LM = {
+     make: make, esc: esc, toast: toast, emailIsValid: emailIsValid,
+     beacon: beacon, canonicalBeaconEvent: canonicalBeaconEvent,
+     readerIdentity: readerIdentity, updateReader: updateReader,
+     readKV: readKV, writeKV: writeKV, removeKV: removeKV,
+     observeReveal: observeReveal,
+     buildHero: buildHero, buildIntro: buildIntro,
+     buildClosingCta: buildClosingCta, callUrl: callUrl,
+     tierFor: tierFor,
++    makeField: makeField, makeFieldArray: makeFieldArray,
+     editMode: {
+       enabled: function () { return editModeState.enabled; },
+       registerField: editModeRegisterField,
+       registerArray: editModeRegisterArray,
+       maybeEnable: editModeMaybeEnable,
+       activateFromCache: activateEditModeFromCache,
+       showTokenModal: showEditTokenModal,
+       clearCache: clearCachedEditToken,
++      makeField: makeField, makeFieldArray: makeFieldArray,
++      resetBuffers: editModeResetBuffers,
+     },
+     tracker: { touch: trackerTouch },  // no-op stub, see comment above
+     progress: {
+       mount: progressMount,
+       update: progressUpdate,
+     },
+diff --git a/_engine/stack-picker.js b/_engine/stack-picker.js
+index 77d3970..d54fca2 100644
+--- a/_engine/stack-picker.js
++++ b/_engine/stack-picker.js
+@@ -198,12 +198,14 @@
+       // Register hero edit fields
+       if (window.LM && window.LM.editMode) {
+         var h1El = hero.querySelector(".lmc-h1");
+         if (h1El) window.LM.editMode.registerField(h1El, "title");
+         var subEl = hero.querySelector(".lmc-sub");
+         if (subEl) window.LM.editMode.registerField(subEl, "subtitle");
++        var badgeEl = hero.querySelector(".lmc-badge");
++        if (badgeEl) window.LM.editMode.registerField(badgeEl, "brand.hero_badge");
+       }
+       root.appendChild(hero);
+ 
+       var intro = window.LM && window.LM.buildIntro
+         ? window.LM.buildIntro(data, ".lmc-sp-stage", {
+             tool_type: TOOL,
+@@ -327,14 +329,18 @@
+     }
+     card.appendChild(h);
+ 
+     // Stack chips
+     if (node.stack && node.stack.length) {
+       var chipWrap = make("div", { class: "lmc-sp-stack" });
+-      node.stack.forEach(function (s) {
+-        chipWrap.appendChild(make("span", { class: "lmc-sp-chip" }, esc(s)));
++      node.stack.forEach(function (s, i) {
++        var chipEl = make("span", { class: "lmc-sp-chip" }, esc(s));
++        if (window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(chipEl, "tree.nodes." + nodeId + ".stack[" + i + "]");
++        }
++        chipWrap.appendChild(chipEl);
+       });
+       if (window.LM && window.LM.editMode) {
+         window.LM.editMode.registerArray(chipWrap, "tree.nodes." + nodeId + ".stack", {
+           itemLabel: "tool",
+           template: "New tool"
+         });
+@@ -484,12 +490,13 @@
+ 
+     fetch(src, { credentials: "same-origin" }).then(function (r) {
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+     }).then(function (data) {
+       render(data, root);
++      window.__lm_rerender = function(){ render(window.__lm_data, root); };
+       // Listen for hash changes (back/forward button)
+       window.addEventListener("hashchange", function () { render(data, root); });
+     }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading stack picker:</strong> ' + esc(e.message) + '</div>';
+     });
+   }
+diff --git a/_engine/swipe.js b/_engine/swipe.js
+index f535978..dd19c67 100644
+--- a/_engine/swipe.js
++++ b/_engine/swipe.js
+@@ -25,12 +25,23 @@
+       metaChips: [
+         (data.examples || []).length + " examples",
+         "Filterable",
+         "Take what you need"
+       ]
+     }));
++    var heroH1 = root.querySelector(".lmc-h1");
++    var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
++    if (L.editMode) {
++      if (heroH1) L.editMode.registerField(heroH1, "title");
++      if (heroSub) L.editMode.registerField(heroSub, "subtitle");
++      // Badge only registers when data actually supplied it — otherwise the
++      // rendered text is the literal fallback "Swipe File", which has no
++      // corresponding json path to write back to.
++      if (heroBadge && data.brand && data.brand.hero_badge) L.editMode.registerField(heroBadge, "brand.hero_badge");
++    }
+     root.appendChild(L.buildIntro(data, ".lms-filters", {
+       tool_type: "swipe",
+       defaultValueBullet: "Filter by use case, take only the examples that fit you",
+       defaultNextBullet: "Export your selected subset as markdown. Your URL stays in the file",
+       startLabel: "Browse examples",
+       defaultNote: "No signup to browse. Take 3 or more examples to unlock a markdown export."
+@@ -61,13 +72,13 @@
+     filters.appendChild(inner);
+     root.appendChild(filters);
+ 
+     // Example list
+     var main = L.make("main", { class: "lmc-container" });
+     var list = L.make("div", { class: "lms-list" });
+-    (data.examples || []).forEach(function (ex) {
++    (data.examples || []).forEach(function (ex, exIdx) {
+       var art = L.make("article", {
+         class: "lms-example" + (takenSet.has(ex.id) ? " taken" : ""),
+         "data-ex-id": ex.id,
+         "data-tags": (ex.tags || []).map(function (t) { return t.toLowerCase(); }).join("|")
+       });
+       var tagsHtml = (ex.tags || []).map(function (t) { return '<span class="lms-ex-tag">' + L.esc(t) + '</span>'; }).join("");
+@@ -78,14 +89,32 @@
+         '</div>' +
+         '<pre class="lms-ex-body">' + L.esc(ex.body || "") + '</pre>' +
+         (ex.why ? '<p class="lms-ex-why">' + L.esc(ex.why) + '</p>' : '') +
+         '<div class="lms-ex-actions">' +
+           '<button type="button" class="lms-take-btn">' + (takenSet.has(ex.id) ? "Taken" : "Take this example") + '</button>' +
+         '</div>';
++      // Registration — capture nodes AFTER the innerHTML build above, don't
++      // rewrite the render. "Take this example"/"Taken" button text and the
++      // "taken" class are runtime UI state, not stored copy — not registered.
++      if (L.editMode) {
++        var exTitleEl = art.querySelector(".lms-ex-title");
++        if (exTitleEl) L.editMode.registerField(exTitleEl, "examples[" + exIdx + "].title");
++        var exBodyEl = art.querySelector(".lms-ex-body");
++        if (exBodyEl) L.editMode.registerField(exBodyEl, "examples[" + exIdx + "].body", { multiline: true });
++        var exWhyEl = art.querySelector(".lms-ex-why");
++        if (exWhyEl) L.editMode.registerField(exWhyEl, "examples[" + exIdx + "].why", { multiline: true });
++        Array.prototype.forEach.call(art.querySelectorAll(".lms-ex-tag"), function (tagEl, tIdx) {
++          L.editMode.registerField(tagEl, "examples[" + exIdx + "].tags[" + tIdx + "]");
++        });
++      }
+       list.appendChild(art);
+     });
++    if (L.editMode) L.editMode.registerArray(list, "examples", {
++      itemLabel: "example",
++      template: { id: "example-" + Date.now(), title: "New example", body: "", why: "", tags: [] }
++    });
+     main.appendChild(list);
+ 
+     // Email gate (shown after 3+ takes)
+     var gate = L.make("section", { class: "lmc-capture", id: "lms-capture", style: "display: none;" });
+     gate.innerHTML = '<h2>Want <em>10 more</em> like the ones you picked?</h2>' +
+       '<p>One email per month, all examples tuned to the tags you gravitated toward. Unsubscribe anytime.</p>' +
+@@ -215,12 +244,12 @@
+   document.addEventListener("DOMContentLoaded", function () {
+     var root = document.querySelector("[data-lm-swipe-src]") || document.querySelector("#lmc-root");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-swipe-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading swipe file:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   });
+ })();
+diff --git a/_engine/template.js b/_engine/template.js
+index 1e361be..119bf10 100644
+--- a/_engine/template.js
++++ b/_engine/template.js
+@@ -22,12 +22,22 @@
+       metaChips: [
+         (data.stack_questions || []).length + " stack inputs",
+         (data.estimated_minutes || 5) + " min",
+         "Personalized export"
+       ]
+     }));
++    var heroH1 = root.querySelector(".lmc-h1");
++    var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
++    if (L.editMode) {
++      if (heroH1) L.editMode.registerField(heroH1, "title");
++      if (heroSub) L.editMode.registerField(heroSub, "subtitle");
++      // Badge only registers when data actually supplied it — otherwise the
++      // rendered text is the literal fallback "Template", no matching path.
++      if (heroBadge && data.brand && data.brand.hero_badge) L.editMode.registerField(heroBadge, "brand.hero_badge");
++    }
+     root.appendChild(L.buildIntro(data, ".lmt-stack", {
+       tool_type: "template",
+       defaultValueBullet: "Walk through 4 stack questions → get a personalized artifact export",
+       defaultNextBullet: "Download gated by email; artifact generated client-side from your answers",
+       startLabel: "Start the fit check",
+       defaultNote: "Your answers auto-save in this browser."
+@@ -37,29 +47,57 @@
+ 
+     // Stack-fit questions
+     var stackSection = L.make("section", { class: "lmt-stack", id: "lmt-stack" });
+     var stackHeadline = data.stack_headline || "Match the template to your stack";
+     stackSection.innerHTML = '<h2>' + L.esc(stackHeadline) + '</h2>' +
+       '<p>' + L.esc(data.stack_subtitle || "Answer these so we tailor the downloadable artifact to your tools.") + '</p>';
+-    (data.stack_questions || []).forEach(function (q) {
++    if (L.editMode) {
++      // Both fall back to a literal default when absent from data — only
++      // register when the data field actually drove the visible text.
++      if (data.stack_headline) L.editMode.registerField(stackSection.querySelector("h2"), "stack_headline");
++      if (data.stack_subtitle) L.editMode.registerField(stackSection.querySelector("p"), "stack_subtitle", { multiline: true });
++    }
++    (data.stack_questions || []).forEach(function (q, qIdx) {
+       var block = L.make("div", { class: "lmt-question", "data-qid": q.id });
+-      block.appendChild(L.make("span", { class: "lmt-q-label" }, L.esc(q.label || q.text || q.id)));
++      var labelEl = L.make("span", { class: "lmt-q-label" }, L.esc(q.label || q.text || q.id));
++      block.appendChild(labelEl);
++      if (L.editMode) {
++        // Register against whichever field actually supplied the visible
++        // text. When it fell all the way back to q.id, skip — id is a
++        // discriminator, not display copy.
++        if (q.label) L.editMode.registerField(labelEl, "stack_questions[" + qIdx + "].label");
++        else if (q.text) L.editMode.registerField(labelEl, "stack_questions[" + qIdx + "].text");
++      }
+       var opts = L.make("div", { class: "lmt-q-options", role: "radiogroup", "aria-label": q.label || q.id });
+-      (q.options || []).forEach(function (opt) {
++      (q.options || []).forEach(function (opt, oIdx) {
+         var btn = L.make("button", {
+           type: "button",
+           class: "lmt-q-opt" + (selected[q.id] === opt.value ? " selected" : ""),
+           role: "radio",
+           "aria-checked": selected[q.id] === opt.value ? "true" : "false",
+           "data-value": opt.value
+         }, L.esc(opt.label || opt.value));
++        // Only register when opt.label actually drove the text — when it
++        // fell back to opt.value, that's the answer-discriminator, not copy.
++        if (L.editMode && opt.label) L.editMode.registerField(btn, "stack_questions[" + qIdx + "].options[" + oIdx + "].label");
+         opts.appendChild(btn);
+       });
++      if (L.editMode) L.editMode.registerArray(opts, "stack_questions[" + qIdx + "].options", {
++        itemLabel: "option",
++        template: { value: "new-option", label: "New option" }
++      });
+       block.appendChild(opts);
+       stackSection.appendChild(block);
+     });
++    // NOTE: no registerArray for stack_questions itself — the question <div>s
++    // are appended as siblings of the <h2>/<p> already inside stackSection
++    // (no dedicated wrapper). Wrapping them would add a new container element
++    // to every render (not gated by edit mode), which breaks the "rendered
++    // DOM stays byte-identical outside edit mode" rule. Per-item fields above
++    // still give full text coverage; only add/remove/reorder is unavailable
++    // for this array without a markup change (flagged in the report).
+     main.appendChild(stackSection);
+ 
+     // Result (download) panel
+     var result = L.make("section", { class: "lmt-result", id: "lmt-result", "aria-live": "polite" });
+     result.innerHTML = '<h3>Your personalized template is <em>ready</em></h3>' +
+       '<p id="lmt-result-note">Click to download. We\'ll swap the nodes/types to match your stack.</p>' +
+@@ -81,22 +119,34 @@
+       '<p class="lmc-note">One email. Unsubscribe any time.</p>';
+     main.appendChild(gate);
+ 
+     // Static content (sections)
+     if ((data.sections || []).length) {
+       var body = L.make("section", { class: "lmt-content" });
+-      (data.sections || []).forEach(function (s) {
+-        if (s.title) body.appendChild(L.make("h2", null, L.esc(s.title)));
++      (data.sections || []).forEach(function (s, sIdx) {
++        if (s.title) {
++          var sh2 = L.make("h2", null, L.esc(s.title));
++          body.appendChild(sh2);
++          if (L.editMode) L.editMode.registerField(sh2, "sections[" + sIdx + "].title");
++        }
+         if (s.html) {
+           var h = L.make("div");
+           h.innerHTML = s.html;
+           body.appendChild(h);
++          if (L.editMode) L.editMode.registerField(h, "sections[" + sIdx + "].html", { contenteditable: true });
+         } else if (s.text) {
+-          body.appendChild(L.make("p", null, L.esc(s.text)));
++          var sp = L.make("p", null, L.esc(s.text));
++          body.appendChild(sp);
++          if (L.editMode) L.editMode.registerField(sp, "sections[" + sIdx + "].text", { multiline: true });
+         }
+       });
++      // NOTE: no registerArray for sections — a single item can emit up to
++      // two sibling nodes (h2 + div/p) with no shared per-item wrapper, so
++      // there's no 1:1 element-to-array-item mapping to hang add/remove/
++      // reorder off without introducing new wrapper markup (see stack_questions
++      // note above for why that's out of scope here).
+       main.appendChild(body);
+     }
+ 
+     // Closing CTA — call-first finale (2026-06-09). The artifact email gate
+     // above stays (it delivers a real attachment); this is the funnel exit.
+     main.appendChild(L.buildClosingCta("template", data, { toolType: "template" }));
+@@ -196,12 +246,12 @@
+   document.addEventListener("DOMContentLoaded", function () {
+     var root = document.querySelector("[data-lm-template-src]") || document.querySelector("#lmc-root");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-template-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading template:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   });
+ })();
+diff --git a/supabase/functions/lm-copy-rewrite/index.ts b/supabase/functions/lm-copy-rewrite/index.ts
+new file mode 100644
+index 0000000..846bb85
+--- /dev/null
++++ b/supabase/functions/lm-copy-rewrite/index.ts
+@@ -0,0 +1,169 @@
++// DEPLOY WITH: supabase functions deploy lm-copy-rewrite --no-verify-jwt --project-ref bjbvqvzbzczjbatgmccb
++// --no-verify-jwt is required: this fn is called directly from the browser edit-mode UI with no
++// Supabase auth session. Without the flag, the platform's JWT gate 401s the request BEFORE it
++// reaches this code and the browser sees a bare "Failed to send a request" with no CORS headers.
++
++import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
++
++const RAILWAY_PROXY_URL = Deno.env.get("RAILWAY_PROXY_URL") || "";
++const RAILWAY_PROXY_API_KEY = Deno.env.get("RAILWAY_PROXY_API_KEY") || "";
++const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
++const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
++
++const MODEL = "claude-sonnet-5";
++const MAX_TOKENS = 1500;
++const TEXT_CAP = 4000;
++const INSTRUCTION_CAP = 500;
++const CONTEXT_CAP = 2000;
++const IP_HOURLY_LIMIT = 40;
++
++function cors(): HeadersInit {
++  return {
++    "Access-Control-Allow-Origin": "*",
++    "Access-Control-Allow-Methods": "POST, OPTIONS",
++    "Access-Control-Allow-Headers": "Content-Type, Authorization, apikey",
++  };
++}
++
++function jsonResponse(body: unknown, status: number): Response {
++  return new Response(JSON.stringify(body), {
++    status,
++    headers: { ...cors(), "Content-Type": "application/json" },
++  });
++}
++
++// deno-lint-ignore no-explicit-any
++type SB = any;
++
++// content_prompts rows may store their text under different column names
++// depending on when they were authored (`content`, `body`, or `prompt`).
++// Inspect the row shape rather than hardcoding one.
++function extractPromptText(row: Record<string, unknown> | null | undefined): string {
++  if (!row) return "";
++  const val = row.content ?? row.body ?? row.prompt ?? "";
++  return typeof val === "string" ? val : "";
++}
++
++async function loadVoiceSystemPrompt(sb: SB): Promise<{ system: string; missing: string[] }> {
++  const taskInstruction =
++    "You rewrite one piece of copy for a lead-magnet web page. Rewrite the USER's `text` according to " +
++    "their `instruction`, staying strictly in the voice and forbidden-language rules above. Preserve " +
++    "meaning and any factual specifics. Return ONLY the rewritten copy as plain text — no preamble, no " +
++    "quotes, no markdown, no explanation. If the text contains inline HTML tags (e.g. <em>), preserve them.";
++
++  const missing: string[] = [];
++  let voiceText = "";
++  let forbiddenText = "";
++
++  try {
++    const { data, error } = await sb
++      .from("content_prompts")
++      .select("*")
++      .in("slug", ["forbidden-language", "author-voice"]);
++    if (error) throw error;
++    const rows: Record<string, unknown>[] = Array.isArray(data) ? data : [];
++    const voiceRow = rows.find((r) => r.slug === "author-voice");
++    const forbiddenRow = rows.find((r) => r.slug === "forbidden-language");
++    voiceText = extractPromptText(voiceRow);
++    forbiddenText = extractPromptText(forbiddenRow);
++    if (!voiceText) missing.push("author-voice");
++    if (!forbiddenText) missing.push("forbidden-language");
++  } catch (_e) {
++    missing.push("author-voice", "forbidden-language");
++  }
++
++  const parts = [voiceText, forbiddenText, taskInstruction].filter((p) => p && p.trim().length > 0);
++  return { system: parts.join("\n\n"), missing };
++}
++
++async function ipRateLimitOk(sb: SB, ip: string): Promise<boolean> {
++  try {
++    const { data, error } = await sb.rpc("bump_edge_rate", {
++      p_bucket: "hour",
++      p_ip: ip,
++      p_fn: "lm-copy-rewrite",
++      p_limit: IP_HOURLY_LIMIT,
++    });
++    if (error) return true; // RPC missing/erroring — don't block on it
++    return data !== false;
++  } catch (_e) {
++    return true;
++  }
++}
++
++export default async function handler(req: Request): Promise<Response> {
++  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors() });
++  if (req.method !== "POST") return jsonResponse({ error: "method_not_allowed" }, 405);
++
++  let body: { text?: string; instruction?: string; context?: string } = {};
++  try {
++    body = await req.json();
++  } catch (_e) {
++    return jsonResponse({ error: "bad_json" }, 400);
++  }
++
++  const text = typeof body.text === "string" ? body.text : "";
++  const instruction = typeof body.instruction === "string" ? body.instruction : "";
++  const context = typeof body.context === "string" ? body.context : "";
++
++  if (!text.trim() || !instruction.trim()) {
++    return jsonResponse({ error: "text and instruction are required" }, 400);
++  }
++  if (text.length > TEXT_CAP) {
++    return jsonResponse({ error: `text exceeds ${TEXT_CAP} char limit` }, 400);
++  }
++  if (instruction.length > INSTRUCTION_CAP) {
++    return jsonResponse({ error: `instruction exceeds ${INSTRUCTION_CAP} char limit` }, 400);
++  }
++  if (context.length > CONTEXT_CAP) {
++    return jsonResponse({ error: `context exceeds ${CONTEXT_CAP} char limit` }, 400);
++  }
++
++  const sb = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
++
++  const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "0.0.0.0";
++  if (!(await ipRateLimitOk(sb, ip))) {
++    return jsonResponse({ error: "rate_limited" }, 429);
++  }
++
++  const { system } = await loadVoiceSystemPrompt(sb);
++
++  let userContent = "INSTRUCTION: " + instruction + "\n\nTEXT:\n" + text;
++  if (context.trim()) {
++    userContent += "\n\nPAGE CONTEXT (for tone only, do not include): " + context;
++  }
++
++  try {
++    const upstream = await fetch(RAILWAY_PROXY_URL, {
++      method: "POST",
++      headers: {
++        "Content-Type": "application/json",
++        "x-api-key": RAILWAY_PROXY_API_KEY,
++        "anthropic-version": "2023-06-01",
++      },
++      body: JSON.stringify({
++        model: MODEL,
++        max_tokens: MAX_TOKENS,
++        system,
++        messages: [{ role: "user", content: userContent }],
++      }),
++    });
++
++    if (!upstream.ok) {
++      return jsonResponse({ error: "rewrite_failed" }, 502);
++    }
++
++    const j = await upstream.json();
++    const rewritten = (j?.content?.[0]?.text as string | undefined)?.trim() || "";
++    if (!rewritten) {
++      return jsonResponse({ error: "rewrite_failed" }, 502);
++    }
++
++    return jsonResponse({ rewritten }, 200);
++  } catch (_e) {
++    return jsonResponse({ error: "rewrite_failed" }, 502);
++  }
++}
++
++// Always serve when running under Supabase Edge runtime.
++Deno.serve(handler);

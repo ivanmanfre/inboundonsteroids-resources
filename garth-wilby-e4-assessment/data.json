@@ -1,0 +1,559 @@
+{
+ "slug": "garth-wilby-e4-assessment",
+ "title": "Lead Generation System Readiness Score",
+ "subtitle": "Measures how close your business is to running a consistent, system-driven lead generation engine that brings in named leads without you chasing every one.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "your_lead_generation_fou",
+   "name": "Your Lead Generation Foundation",
+   "questions": [
+    {
+     "id": "ideal_lead_clarity",
+     "text": "How clearly can you describe the exact type of lead your business needs right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have a vague sense of who I want — nothing written down",
+       "score": 1
+      },
+      {
+       "label": "I know the industry but not the specific person or the pain point I solve for them",
+       "score": 2
+      },
+      {
+       "label": "I have a written profile but rarely reference it when creating content or outreach",
+       "score": 3
+      },
+      {
+       "label": "I have a clear, tested lead profile that actively shapes my marketing decisions",
+       "score": 4
+      },
+      {
+       "label": "My entire system — content, ads, capture — is built around a precise, validated lead profile",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer_clarity",
+     "text": "When a cold prospect lands on your website or finds your profile, how clearly does your offer speak to their specific problem?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "My page is generic — it could belong to any business in my space",
+       "score": 1
+      },
+      {
+       "label": "It describes what I do but not why a lead should choose me",
+       "score": 2
+      },
+      {
+       "label": "It covers the benefits but stops short of naming a specific, measurable outcome",
+       "score": 3
+      },
+      {
+       "label": "It speaks to real pain points and includes social proof from actual clients",
+       "score": 4
+      },
+      {
+       "label": "It is engineered to convert — every word built around what my ideal lead actually says and searches for",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "lead_gen_documented",
+     "text": "Is your lead generation approach documented as a repeatable system anyone on your team could follow?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It lives in my head — I wing it week to week based on what feels right",
+       "score": 1
+      },
+      {
+       "label": "I have rough notes but nothing structured enough to hand off",
+       "score": 2
+      },
+      {
+       "label": "I have a process but it falls apart the moment I step away from it",
+       "score": 3
+      },
+      {
+       "label": "I have a documented system with clear steps that could run without me for a week",
+       "score": 4
+      },
+      {
+       "label": "My lead gen is a documented, repeatable system that runs largely without my daily involvement",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your foundation is leaking leads before they even enter the system.",
+     "text": "Without a clear target profile and a documented process, every rand you spend on marketing is working at half power. The leads that do come in are random, not reliable. Fix this first — everything else depends on it.",
+     "steps": [
+      "Write a one-page ideal lead profile this week: industry, role, company size, and the one problem they are actively trying to solve right now",
+      "Rewrite your homepage headline around the specific outcome you deliver, not just what you do",
+      "Document the three steps a lead takes from first contact to signed contract — even roughly, even on one page"
+     ]
+    },
+    "mid": {
+     "headline": "You have the pieces. Now you need the system to connect them.",
+     "text": "You know who you want and roughly how to reach them, but without a fully documented system your results stay inconsistent — good months and bad months with no clear reason why. Strategy without infrastructure produces unpredictable output.",
+     "steps": [
+      "Map your current lead flow and find the one step where the most leads drop off — fix that point before anything else",
+      "Tighten your offer copy around a specific, measurable outcome and put a real number on the result you deliver",
+      "Build a simple one-page SOP so your lead gen process runs even on your worst, most distracted week"
+     ]
+    },
+    "high": {
+     "headline": "Strong foundation. Now optimise and scale.",
+     "text": "You have the strategic clarity that most businesses never build. The next move is layering AI-assisted workflows on top of what is already working — to multiply output without multiplying your hours.",
+     "steps": [
+      "Identify one manual step in your lead gen that could be automated this month and build the workflow to remove it",
+      "Test a new lead profile segment with a dedicated landing page to see if an adjacent market converts",
+      "Pull your lead data from the last 90 days, find the channel producing your best clients, and double your investment there"
+     ]
+    }
+   }
+  },
+  {
+   "id": "your_content_operating_s",
+   "name": "Your Content Operating System",
+   "questions": [
+    {
+     "id": "content_consistency",
+     "text": "How consistent is your content output on the platforms where your ideal leads spend time?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I post when I remember — no schedule, no system behind it",
+       "score": 1
+      },
+      {
+       "label": "I try to post regularly but it falls away the moment work gets busy",
+       "score": 2
+      },
+      {
+       "label": "I have a rough content plan but execution is still manual, slow, and inconsistent",
+       "score": 3
+      },
+      {
+       "label": "I post on a consistent schedule with a clear plan guiding what I publish",
+       "score": 4
+      },
+      {
+       "label": "My content runs on a system — batched in advance, scheduled, and pulling in inbound leads",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_production_speed",
+     "text": "How long does it typically take you to produce one quality piece of content — a post, article, or video script?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Several hours — it drains me and I put it off as long as possible",
+       "score": 1
+      },
+      {
+       "label": "An hour or two, but I am never fully satisfied with what comes out",
+       "score": 2
+      },
+      {
+       "label": "About an hour using AI, but it still needs heavy editing before it sounds like me",
+       "score": 3
+      },
+      {
+       "label": "30 to 45 minutes — AI does the heavy lifting and I add the insight and final voice",
+       "score": 4
+      },
+      {
+       "label": "Under 30 minutes — I have a content operating system that batches and formats at speed",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_search_readiness",
+     "text": "How well is your content positioned to appear in AI Search results — ChatGPT, Perplexity, Google AI Overviews — where buyers now research before they click anything?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have never thought about AI Search — I still think in terms of Google rankings only",
+       "score": 1
+      },
+      {
+       "label": "I know the shift is happening but have not changed how I create content yet",
+       "score": 2
+      },
+      {
+       "label": "I am starting to adapt my content but have no structured approach to AI Search yet",
+       "score": 3
+      },
+      {
+       "label": "I am actively creating substantive, researched content designed to rank in AI Search",
+       "score": 4
+      },
+      {
+       "label": "My content strategy is built around feeding AI Search the depth and structure it needs to surface my business",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "content_inbound",
+     "text": "How often does your content generate inbound inquiries from people you have never spoken to before?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost never — posting feels like shouting into a void",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, but I cannot predict or replicate what worked",
+       "score": 2
+      },
+      {
+       "label": "Once or twice a month when a post happens to land well",
+       "score": 3
+      },
+      {
+       "label": "Weekly — specific posts reliably pull in leads from new people",
+       "score": 4
+      },
+      {
+       "label": "My content is a consistent lead channel — posts I wrote months ago still bring people in",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are producing content, not a content system — and that gap is costing you leads every week.",
+     "text": "Random posting produces random results. Without a content operating system, your effort is high and your output is low. This is fixable fast, but not without the right workflow behind it.",
+     "steps": [
+      "Block one session this week to batch-create three posts in one sitting — production in batches beats production under daily pressure every time",
+      "Use AI as the builder and yourself as the architect: give it your raw ideas and voice, shape the output, never start from a blank page",
+      "Build one lead magnet tied to your strongest content theme — something that turns a reader into a named lead you can follow up with"
+     ]
+    },
+    "mid": {
+     "headline": "You are producing content but it is not yet pulling leads on autopilot.",
+     "text": "You are showing up, which puts you ahead of most. What is missing is the system that turns your content into a consistent inbound channel — so a post you write today is still generating inquiries six months from now.",
+     "steps": [
+      "Find your two or three best-performing posts and reverse-engineer what made them work — hook, topic, format, or structure",
+      "Adapt your content strategy for AI Search: stop publishing prompted articles with no depth and start creating substantive answers to the real questions your leads are asking AI tools",
+      "Set a four-week content calendar and batch-produce everything in one session rather than one post at a time"
+     ]
+    },
+    "high": {
+     "headline": "Your content is working. Now scale the engine.",
+     "text": "You have a content system producing inbound leads. The next level is AI-assisted workflows that multiply your output without multiplying your time — what took a full day can take 30 minutes with the right stack in place.",
+     "steps": [
+      "Document your content process so it can be templated and partially automated for new campaigns without rebuilding from scratch",
+      "Test AI video and avatar tools to repurpose your written content into short-form video and expand your reach without extra production time",
+      "Audit your content for AI Search — run your top service queries through ChatGPT and Perplexity and see if your business actually appears"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_and_workflow_integrat",
+   "name": "AI and Workflow Integration",
+   "questions": [
+    {
+     "id": "ai_role_clarity",
+     "text": "When you use AI in your marketing, which best describes how it actually works in practice?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I do not use AI tools in my business yet",
+       "score": 1
+      },
+      {
+       "label": "I use ChatGPT occasionally for quick text tasks — nothing structured or repeatable",
+       "score": 2
+      },
+      {
+       "label": "I use AI regularly but prompt randomly and get unpredictable results",
+       "score": 3
+      },
+      {
+       "label": "I treat AI as the builder — I bring the strategy and expertise, it does the heavy lifting",
+       "score": 4
+      },
+      {
+       "label": "I run AI-assisted workflows across multiple parts of my marketing that consistently produce quality output",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "build_speed",
+     "text": "How quickly could you build and launch a new digital asset — a landing page, quiz, lead magnet, or full campaign — right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Weeks — I would need to brief a developer or design agency and wait",
+       "score": 1
+      },
+      {
+       "label": "A few days if I pushed hard and kept the brief very simple",
+       "score": 2
+      },
+      {
+       "label": "A day or two using templates and tools I already have",
+       "score": 3
+      },
+      {
+       "label": "A few hours with AI-assisted tools and a clear brief",
+       "score": 4
+      },
+      {
+       "label": "Under a day — I have a workflow to build, design, and deploy fast from nothing",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "manual_hours_weekly",
+     "type": "number",
+     "text": "How many hours per week do you spend on manual lead generation tasks — writing content from scratch, manually following up, building lists by hand, or sending outreach one by one?",
+     "hint": "Count every hour on tasks that could theoretically be automated or run through a workflow. Your highest-effort weeks count.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 60,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "x == 0 ? 100 : x <= 5 ? 80 : x <= 10 ? 60 : x <= 20 ? 35 : 10"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are doing manually what a workflow could handle in a fraction of the time.",
+     "text": "Every hour you spend on tasks a well-built AI workflow could run is an hour not spent on the work only you can do. What used to take months can now be built in a weekend — but only in skilled hands that know how to build it.",
+     "steps": [
+      "Pick one task you repeat every week and brief AI to produce the first draft — you do the final pass only, not the whole thing",
+      "See a real AI-assisted workflow build in action — not a polished demo, an actual project — to understand what is possible in a single working day",
+      "Book a session to map which parts of your current lead gen can be automated right now using tools you already have access to"
+     ]
+    },
+    "mid": {
+     "headline": "You are using AI, but you are not getting the full multiplier yet.",
+     "text": "You have tools in play but they are not connected into a system. The real time saving comes when AI handles the repeatable work across the full lead gen flow — not just one isolated task at a time.",
+     "steps": [
+      "Map your lead gen workflow end to end and mark every step that is manual and repeatable — that is your automation backlog",
+      "Connect your content output to your capture mechanism so a post that pulls a lead automatically drops them into a follow-up sequence",
+      "Build one AI workflow for a task you do manually every week and track the time saving over 30 days — the number will change how you think about this"
+     ]
+    },
+    "high": {
+     "headline": "Your AI stack is working. Now build for scale.",
+     "text": "You are operating the way most businesses will be forced to operate in two to three years. The edge now is speed: shipping campaigns, lead assets, and landing pages faster than your competitors can even brief an agency.",
+     "steps": [
+      "Document your best-performing workflows so they can be replicated across new campaigns without rebuilding from scratch each time",
+      "Explore multi-agent setups for research, content creation, and outreach running in parallel to collapse your production timelines further",
+      "Test AI video workflows to convert your written content into short-form and long-form video without adding production overhead"
+     ]
+    }
+   }
+  },
+  {
+   "id": "lead_capture_and_follow_",
+   "name": "Lead Capture and Follow-Up",
+   "questions": [
+    {
+     "id": "capture_mechanism",
+     "text": "What does your lead capture system look like right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "People contact me when they are ready — I have no proactive capture system in place",
+       "score": 1
+      },
+      {
+       "label": "I have a contact form but nothing that captures leads before they are ready to buy",
+       "score": 2
+      },
+      {
+       "label": "I have one lead magnet or opt-in offer but it drives inconsistent results",
+       "score": 3
+      },
+      {
+       "label": "I have lead magnets and capture forms working across my content and paid channels",
+       "score": 4
+      },
+      {
+       "label": "My capture system is multi-channel — social, search, and referral all feed one central pipeline I can see",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "nurture_system",
+     "text": "What happens to a lead who opts in or contacts you but does not buy straight away?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing structured — if they do not buy now, I move on and hope they come back eventually",
+       "score": 1
+      },
+      {
+       "label": "I might follow up manually once or twice if I remember to",
+       "score": 2
+      },
+      {
+       "label": "I have a basic email sequence but it is generic and rarely converts anyone who was not already close to buying",
+       "score": 3
+      },
+      {
+       "label": "I have a nurture sequence that delivers real value and gradually warms leads toward the conversation",
+       "score": 4
+      },
+      {
+       "label": "I have a full nurture system — email, content retargeting, and timed check-ins that consistently convert later-stage leads",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "digital_presence_conversion",
+     "text": "When someone finds you through search, social, or a referral, how well does your digital presence convert that interest into an actual inquiry?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "My digital presence is thin — there is not much there for a curious stranger to find or act on",
+       "score": 1
+      },
+      {
+       "label": "There is content but no clear path from interest to becoming a lead",
+       "score": 2
+      },
+      {
+       "label": "There is a contact page but no structured reason for them to give me their details before they are ready",
+       "score": 3
+      },
+      {
+       "label": "I have lead capture in place and it converts, though I know it could be sharper",
+       "score": 4
+      },
+      {
+       "label": "My digital presence is engineered — visitors follow a clear path from first impression to inquiry or opt-in",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "response_lag_hours",
+     "type": "number",
+     "text": "On average, how many hours does it take you to follow up with a new lead after they make contact or opt in?",
+     "hint": "Be realistic — include weekends and the times you miss a notification. Your honest average is more useful here than your best day.",
+     "suffix": "hours",
+     "min": 0,
+     "max": 168,
+     "step": 1,
+     "default": 24,
+     "normalize_formula": "x <= 1 ? 100 : x <= 4 ? 75 : x <= 24 ? 40 : x <= 72 ? 20 : 5"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are generating interest but losing leads before they can convert.",
+     "text": "The gap between a lead showing interest and them booking a call is where most businesses bleed revenue they have already paid to attract. Without a capture and follow-up system, you are betting everything on perfect timing — and perfect timing is rare.",
+     "steps": [
+      "Build one lead magnet this week — a checklist, short guide, or quiz — and add a capture form to your highest-traffic page",
+      "Set up a three-email welcome sequence that fires automatically the moment someone opts in: welcome, value, call to action",
+      "Track where your last five clients came from and make sure that source has a formal capture mechanism on it right now"
+     ]
+    },
+    "mid": {
+     "headline": "You are capturing some leads but the system still has gaps.",
+     "text": "You have pieces in place but the flow is not consistent. Leads are dropping out between interest and conversion — and that is pipeline you have already paid to generate going to waste.",
+     "steps": [
+      "Audit every capture form you have — are they on every relevant page and working properly on mobile?",
+      "Review your follow-up sequence and ask whether each email delivers standalone value or only pushes for a call",
+      "Add a re-engagement email to your sequence for leads who go quiet after three to four weeks with no response"
+     ]
+    },
+    "high": {
+     "headline": "Your capture and follow-up are running. Now add scale and speed.",
+     "text": "You have a functioning lead pipeline. The next layer is multi-channel capture feeding one central view, and AI-assisted follow-up that responds in minutes regardless of when the lead comes in.",
+     "steps": [
+      "Connect every lead source to a single CRM or pipeline view so nothing slips through the cracks between platforms",
+      "Test an AI-assisted first response to cut your follow-up time to under two minutes — leads contacted within five minutes convert at a significantly higher rate",
+      "Build a segmented nurture path — leads from social, search, and referral have different contexts and need different value journeys to convert"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_hours_lost",
+   "label": "Hours lost to manual lead gen per year",
+   "format": "hours_per_period",
+   "formula": "manual_hours_weekly * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you sit in your business right now?",
+  "answers": [
+   {
+    "label": "Business owner running my own lead generation",
+    "tag": "founder-diy"
+   },
+   {
+    "label": "Marketing manager responsible for leads across a business",
+    "tag": "marketing-manager"
+   },
+   {
+    "label": "Agency owner delivering lead gen for clients",
+    "tag": "agency-owner"
+   },
+   {
+    "label": "Solopreneur or consultant building my own pipeline",
+    "tag": "solopreneur"
+   }
+  ]
+ }
+}

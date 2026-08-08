@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The LinkedIn Inbound Team · 30 Claude agents</title>
+<meta name="description" content="Thirty small Claude agents for LinkedIn inbound, six each across profile, content, engagement, capture, and replies. One instruction file per agent, practice input included, free to download.">
+<link rel="canonical" href="https://resources.inboundonsteroids.com/the-linkedin-inbound-team/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://resources.inboundonsteroids.com/the-linkedin-inbound-team/">
+<meta property="og:title" content="The LinkedIn Inbound Team · 30 Claude agents">
+<meta property="og:description" content="Thirty small Claude agents for LinkedIn inbound, six each across profile, content, engagement, capture, and replies. One instruction file per agent, practice input included.">
+<meta property="og:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-linkedin-inbound-team-grid-v2-2026-08-07.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The LinkedIn Inbound Team · 30 Claude agents">
+<meta name="twitter:description" content="Thirty small Claude agents for LinkedIn inbound, six each across profile, content, engagement, capture, and replies.">
+<meta name="twitter:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-linkedin-inbound-team-grid-v2-2026-08-07.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF7F4;
+    --card:#FFFFFF;
+    --ink:#17171A;
+    --ink-2:#4A4640;
+    --muted:#6E6862;
+    --line:#E9E2DB;
+    --line-2:#EFE9E3;
+    --accent:#D64425;
+    --accent-soft:#FBE7E1;
+    --sans:"Archivo","Manrope","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:17px;
+    line-height:1.55;
+    overflow-x:hidden;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+  p{overflow-wrap:anywhere}
+
+  /* ---------- masthead ---------- */
+  .mast{display:flex;align-items:center;gap:10px;padding:26px 0 0}
+  .mast svg{width:20px;height:20px;flex:none}
+  .mast .wm{font-weight:900;font-size:15px;letter-spacing:.09em;color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:34px 0 42px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  h1{
+    font-weight:900;
+    font-size:clamp(38px,8.6vw,84px);
+    line-height:.98;
+    letter-spacing:-.018em;
+    margin:14px 0 0;
+  }
+  .swipe{position:relative;display:inline-block;white-space:nowrap}
+  .swipe > svg{position:absolute;left:-3%;top:6%;width:106%;height:84%;z-index:0}
+  .swipe > span{position:relative;z-index:1;color:var(--ink)}
+  .count{
+    margin-top:18px;font-family:var(--mono);font-size:clamp(12px,3.1vw,15px);
+    letter-spacing:.13em;font-weight:700;color:var(--accent);text-transform:uppercase;
+  }
+  .lede{margin-top:22px;max-width:64ch;font-size:clamp(16px,4.1vw,20px);color:var(--ink-2)}
+  .lede + .lede{margin-top:14px}
+  .facts{display:grid;grid-template-columns:1fr;gap:10px;margin-top:28px}
+  .fact{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
+  }
+  .fact svg{width:22px;height:22px;flex:none;margin-top:2px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .fact b{display:block;font-size:15px;font-weight:800}
+  .fact span{display:block;font-size:14px;color:var(--muted);line-height:1.4}
+
+  /* ---------- download pill ---------- */
+  .dlwrap{margin-top:26px}
+  .dl{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:800;font-size:clamp(15px,3.9vw,17px);letter-spacing:-.005em;
+    padding:15px 24px;border-radius:999px;border:1px solid var(--accent);
+    box-shadow:0 2px 12px rgba(214,68,37,.22);
+    max-width:100%;
+  }
+  .dl svg{width:19px;height:19px;flex:none;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .dl:hover{background:#B93818;border-color:#B93818}
+  .dlnote{margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+
+  /* ---------- cta band ---------- */
+  .cta{
+    background:var(--card);border:1px solid var(--line);border-radius:20px;
+    padding:22px 20px;margin-top:26px;display:grid;gap:18px;align-items:center;
+    box-shadow:0 1px 4px rgba(23,23,26,.04);
+  }
+  .cta img{width:92px;height:92px;border-radius:22px;object-fit:cover;display:block;border:1px solid var(--line)}
+  .cta p{font-size:16px;color:var(--ink-2);margin-top:10px;max-width:58ch}
+  .cta .who{font-weight:900;font-size:18px;color:var(--ink)}
+  .ctabtn{
+    display:inline-flex;align-items:center;gap:9px;margin-top:18px;
+    background:var(--accent);color:#fff;text-decoration:none;
+    font-weight:800;font-size:16px;padding:13px 22px;border-radius:999px;
+    border:1px solid var(--accent);box-shadow:0 2px 12px rgba(214,68,37,.22);
+  }
+  .ctabtn svg{width:17px;height:17px;flex:none;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .ctabtn:hover{background:#B93818;border-color:#B93818}
+
+  /* ---------- section furniture ---------- */
+  section{padding:46px 0;border-bottom:1px solid var(--line)}
+  .kicker{
+    font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--accent);font-weight:700;display:flex;align-items:center;gap:10px;
+  }
+  .kicker i{display:block;width:26px;height:2px;background:var(--accent);flex:none}
+  h2{font-weight:900;font-size:clamp(27px,6.2vw,42px);line-height:1.04;letter-spacing:-.015em;margin:12px 0 0}
+  h3{font-weight:900;font-size:clamp(19px,4.6vw,24px);line-height:1.2;margin:0 0 8px}
+  .sec-lede{margin-top:14px;max-width:62ch;color:var(--ink-2)}
+
+  /* ---------- stage panels ---------- */
+  .panels{margin-top:30px;display:grid;gap:16px}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 18px 8px;box-shadow:0 1px 4px rgba(23,23,26,.04)}
+  .phead{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line-2)}
+  .phead .pico{width:38px;height:38px;flex:none;border:1px solid var(--line);border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+  .phead .pico svg{width:21px;height:21px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .phead .pn{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
+  .phead .pt{font-weight:900;font-size:20px;letter-spacing:.01em}
+  .phead .ps{font-size:14px;color:var(--muted);line-height:1.35;margin-top:2px}
+  .rows{list-style:none}
+  .rows li{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--line-2)}
+  .rows li:last-child{border-bottom:0}
+  .rn{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);padding-top:2px}
+  .agent-name{display:block;font-weight:800;font-size:16px;letter-spacing:-.005em}
+  .slug{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:3px;overflow-wrap:anywhere}
+  .ret{display:block;font-size:15px;color:var(--ink-2);margin-top:6px;line-height:1.42}
+  .ret em{font-style:normal;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px}
+
+  /* ---------- guide ---------- */
+  .step{margin-top:32px}
+  .step-head{display:flex;align-items:baseline;gap:12px}
+  .step-num{font-family:var(--mono);font-weight:800;font-size:13px;color:#fff;background:var(--ink);padding:3px 8px;border-radius:4px;letter-spacing:.08em;flex:none}
+  .path{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:14px}
+  .path h4{font-size:16px;font-weight:900;margin-bottom:8px}
+  .path ol{margin:0 0 0 18px;font-size:15.5px;color:var(--ink-2)}
+  .path ol li{margin-bottom:7px}
+  .path .tag{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:6px}
+  .note{margin-top:14px;padding-left:14px;border-left:2px solid var(--accent);color:var(--ink-2);font-size:15.5px}
+
+  pre{
+    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    padding:15px 16px;margin-top:14px;
+    font-family:var(--mono);font-size:12.5px;line-height:1.62;color:var(--ink);
+    white-space:pre-wrap;overflow-wrap:anywhere;
+  }
+  pre.io{background:#FCFAF8}
+  pre b{color:var(--accent);font-weight:700}
+
+  .rail{margin-top:22px;width:100%;height:auto;display:block}
+
+  .ex{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:16px}
+  .ex .exhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+  .ex .stage-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;background:var(--accent);padding:2px 7px;border-radius:4px}
+  .ex .exname{font-weight:900;font-size:17px}
+  .ex .exslug{font-family:var(--mono);font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
+  .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:14px;display:block}
+  .after{margin-top:12px;font-size:15px;color:var(--muted)}
+
+  /* ---------- refusal ---------- */
+  .refusal-block{background:var(--accent-soft);border:1px solid #F2CFC4;border-radius:18px;padding:18px;margin-top:18px}
+  .refusal-block pre{background:#fff;border-color:#F2CFC4}
+  .refusal-block .src{font-family:var(--mono);font-size:11.5px;color:var(--accent);font-weight:700;letter-spacing:.06em;margin-top:10px;display:block;overflow-wrap:anywhere}
+
+  /* ---------- faq ---------- */
+  .faq{margin-top:26px;display:grid;gap:12px}
+  .qa{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
+  .qa b{display:block;font-size:16.5px;font-weight:900;margin-bottom:6px}
+  .qa p{font-size:15.5px;color:var(--ink-2)}
+
+  /* ---------- footer ---------- */
+  footer{padding:40px 0 54px}
+  .fmark{display:flex;align-items:center;gap:11px}
+  .fmark svg{width:24px;height:24px;flex:none}
+  .fmark .fw{font-weight:900;font-size:clamp(17px,4.4vw,22px);letter-spacing:.06em}
+  .fline{margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+
+  @media (min-width:700px){
+    .facts{grid-template-columns:repeat(3,1fr)}
+    .rows li{grid-template-columns:30px 1fr}
+    .cta{grid-template-columns:auto 1fr;gap:24px;padding:26px 26px}
+    .cta img{width:116px;height:116px}
+  }
+  @media (min-width:960px){
+    .panel{padding:24px 26px 12px}
+    .rows{display:grid;grid-template-columns:1fr 1fr;gap:0 34px}
+    .faq{grid-template-columns:1fr 1fr}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="mast">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" stroke="#D64425" stroke-width="2.1" stroke-linecap="round" fill="none"/></svg>
+    <div class="wm">INBOUNDONSTEROIDS</div>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <div class="hero">
+    <div class="eyebrow">Your pack is below</div>
+    <h1>The LinkedIn<br>
+      <span class="swipe">
+        <svg viewBox="0 0 420 100" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M5 90 C 80 82, 210 86, 300 84 C 358 83, 398 87, 415 79 L 413 13 C 332 6, 198 11, 108 14 C 58 16, 22 12, 7 21 Z" fill="#D64425" opacity=".26"/>
+          <path d="M7 88 C 90 80, 215 84, 305 82 C 360 81, 398 85, 414 77" fill="none" stroke="#D64425" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+        </svg>
+        <span>Inbound Team</span>
+      </span>
+    </h1>
+    <div class="count">30 agents · 5 stages · 6 agents per stage</div>
+
+    <p class="lede">Thirty small agents, each one a single instruction file you run inside Claude. You paste something you already have, a draft, a thread, a profile section, and the agent hands back one line no other agent in the pack hands back.</p>
+    <p class="lede">Nothing in here logs into your account, reads your inbox, or sends anything for you. You paste, it answers, you decide what goes out. Every folder is text you can open and read, and the count is checkable: count the directories.</p>
+
+    <div class="dlwrap">
+      <a class="dl" href="assets/the-linkedin-inbound-team.zip" download>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M4.5 19h15"/></svg>
+        Download the full pack
+      </a>
+      <div class="dlnote">Zip · 30 agent folders · 167 files</div>
+    </div>
+
+    <div class="facts">
+      <div class="fact">
+        <svg viewBox="0 0 24 24"><path d="M6 4h9l4 4v12H6zM14 4v5h5"/></svg>
+        <div><b>One file per agent</b><span>A single SKILL.md holding its input, its method, and what it refuses to do.</span></div>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 4zM8 9h8M8 12h5"/></svg>
+        <div><b>Runs in a chat</b><span>Claude reads the file, you paste your input under it, the answer comes back in the chat.</span></div>
+      </div>
+      <div class="fact">
+        <svg viewBox="0 0 24 24"><path d="M5 5h14v14H5zM5 9h14M9 5v4"/></svg>
+        <div><b>Practice input included</b><span>Every agent ships a fixtures folder so you can watch one run before you use your own material.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ WHAT YOU GET ============ -->
+  <section id="stages">
+    <div class="kicker"><i></i>What you get</div>
+    <h2>Five stages, six agents in each</h2>
+    <p class="sec-lede">The stages sit in the order a stranger meets you: they read your profile, they read a post, they say something under it, they ask for the thing you made, and then they write to you. Here is every agent and the one line it returns.</p>
+
+    <div class="panels">
+
+      <!-- PROFILE -->
+      <div class="panel">
+        <div class="phead">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M12 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7M5 20c0-3.6 3.1-5.5 7-5.5s7 1.9 7 5.5"/></svg></div>
+          <div>
+            <div class="pn">STAGE 1</div>
+            <div class="pt">PROFILE</div>
+            <div class="ps">What a buyer reads before deciding whether to read anything else you wrote.</div>
+          </div>
+        </div>
+        <ul class="rows">
+          <li><div class="rn">01</div><div>
+            <span class="agent-name">Headline Rewriter</span>
+            <span class="slug">profile-01-headline-rewriter</span>
+            <span class="ret"><em>Returns</em>three headline candidates with the character count printed against the 220 limit</span>
+          </div></li>
+          <li><div class="rn">02</div><div>
+            <span class="agent-name">About Opener Writer</span>
+            <span class="slug">profile-02-about-opener</span>
+            <span class="ret"><em>Returns</em>the two lines that sit above the fold, cut from sentences you already wrote</span>
+          </div></li>
+          <li><div class="rn">03</div><div>
+            <span class="agent-name">Experience Block Writer</span>
+            <span class="slug">profile-03-experience-rewriter</span>
+            <span class="ret"><em>Returns</em>the description block rewritten as what you do for a buyer, five lines at most</span>
+          </div></li>
+          <li><div class="rn">04</div><div>
+            <span class="agent-name">Featured Section Picker</span>
+            <span class="slug">profile-04-featured-picker</span>
+            <span class="ret"><em>Returns</em>which three go in Featured, in which order, with a caption line each</span>
+          </div></li>
+          <li><div class="rn">05</div><div>
+            <span class="agent-name">Search Term Picker</span>
+            <span class="slug">profile-05-search-term-picker</span>
+            <span class="ret"><em>Returns</em>ten search phrases a buyer types, each mapped to the profile field it has to appear in</span>
+          </div></li>
+          <li><div class="rn">06</div><div>
+            <span class="agent-name">Rival Claim Mapper</span>
+            <span class="slug">profile-06-rival-claim-mapper</span>
+            <span class="ret"><em>Returns</em>the two-column claim ledger, the claim only they make and the claim only you make</span>
+          </div></li>
+        </ul>
+      </div>
+
+      <!-- CONTENT -->
+      <div class="panel">
+        <div class="phead">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5zM8 8.5h8M8 12h8M8 15.5h5"/></svg></div>
+          <div>
+            <div class="pn">STAGE 2</div>
+            <div class="pt">CONTENT</div>
+            <div class="ps">The draft you already wrote, questioned, cut, and shaped for the feed.</div>
+          </div>
+        </div>
+        <ul class="rows">
+          <li><div class="rn">01</div><div>
+            <span class="agent-name">First Line Writer</span>
+            <span class="slug">content-01-first-line-writer</span>
+            <span class="ret"><em>Returns</em>five opening lines, each under twelve words and each traceable to a numbered sentence of your own draft</span>
+          </div></li>
+          <li><div class="rn">02</div><div>
+            <span class="agent-name">Specific Detail Finder</span>
+            <span class="slug">content-02-detail-finder</span>
+            <span class="ret"><em>Returns</em>one question per claim the draft never grounds, with the claim quoted verbatim above it</span>
+          </div></li>
+          <li><div class="rn">03</div><div>
+            <span class="agent-name">Post Structure Cutter</span>
+            <span class="slug">content-03-post-structure-cutter</span>
+            <span class="ret"><em>Returns</em>it reformatted, with the see-more fold marked at a printed character count and the line-break map printed beside it</span>
+          </div></li>
+          <li><div class="rn">04</div><div>
+            <span class="agent-name">Comment Question Miner</span>
+            <span class="slug">content-04-comment-question-miner</span>
+            <span class="ret"><em>Returns</em>the topics ranked by how many times the question appeared, with the commenters' words quoted</span>
+          </div></li>
+          <li><div class="rn">05</div><div>
+            <span class="agent-name">Offer Mention Placer</span>
+            <span class="slug">content-05-offer-mention-placer</span>
+            <span class="ret"><em>Returns</em>either one closing line with the line number it belongs after, or a printed decline saying the link is not there</span>
+          </div></li>
+          <li><div class="rn">06</div><div>
+            <span class="agent-name">Carousel Slide Cutter</span>
+            <span class="slug">content-06-carousel-slide-cutter</span>
+            <span class="ret"><em>Returns</em>slide-by-slide text with the hand-off sentence printed at every cut, plus the boundaries it rejected</span>
+          </div></li>
+        </ul>
+      </div>
+
+      <!-- ENGAGE -->
+      <div class="panel">
+        <div class="phead">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M4 5h13a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H9l-5 4V6a1 1 0 0 1 0-1zM20 9h.5a1 1 0 0 1 1 1v9l-3-3"/></svg></div>
+          <div>
+            <div class="pn">STAGE 3</div>
+            <div class="pt">ENGAGE</div>
+            <div class="ps">What you say under other people's posts, and what you say back under your own.</div>
+          </div>
+        </div>
+        <ul class="rows">
+          <li><div class="rn">01</div><div>
+            <span class="agent-name">Comment Angle Writer</span>
+            <span class="slug">engage-01-comment-angle-writer</span>
+            <span class="ret"><em>Returns</em>the comment text with the exact line of their post it answers</span>
+          </div></li>
+          <li><div class="rn">02</div><div>
+            <span class="agent-name">Own Post Reply Writer</span>
+            <span class="slug">engage-02-own-post-reply-writer</span>
+            <span class="ret"><em>Returns</em>one reply per commenter, each ending in a question only that commenter could answer</span>
+          </div></li>
+          <li><div class="rn">03</div><div>
+            <span class="agent-name">Audience Overlap Counter</span>
+            <span class="slug">engage-03-audience-overlap-counter</span>
+            <span class="ret"><em>Returns</em>the buyer share of the sampled commenters with the division printed</span>
+          </div></li>
+          <li><div class="rn">04</div><div>
+            <span class="agent-name">Repeat Engager Tracker</span>
+            <span class="slug">engage-04-repeat-engager-tracker</span>
+            <span class="ret"><em>Returns</em>the repeat-engager roster with each name's appearance count across the posts supplied</span>
+          </div></li>
+          <li><div class="rn">05</div><div>
+            <span class="agent-name">Connection List Ranker</span>
+            <span class="slug">engage-05-connection-list-ranker</span>
+            <span class="ret"><em>Returns</em>the speak-to order with the headline phrase that ranked each connection</span>
+          </div></li>
+          <li><div class="rn">06</div><div>
+            <span class="agent-name">Role Change Note Writer</span>
+            <span class="slug">engage-06-role-change-note-writer</span>
+            <span class="ret"><em>Returns</em>the two-line note tied to the specific change, naming the old seat and the new one</span>
+          </div></li>
+        </ul>
+      </div>
+
+      <!-- CAPTURE -->
+      <div class="panel">
+        <div class="phead">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z M9.2 12l2 2 3.6-4"/></svg></div>
+          <div>
+            <div class="pn">STAGE 4</div>
+            <div class="pt">CAPTURE</div>
+            <div class="ps">The thing people asked you for, the keyword that opens it, and the message that hands it over.</div>
+          </div>
+        </div>
+        <ul class="rows">
+          <li><div class="rn">01</div><div>
+            <span class="agent-name">Magnet Demand Counter</span>
+            <span class="slug">capture-01-magnet-demand-counter</span>
+            <span class="ret"><em>Returns</em>the magnet concept people asked for most, with every ask counted and quoted</span>
+          </div></li>
+          <li><div class="rn">02</div><div>
+            <span class="agent-name">Lead Magnet Namer</span>
+            <span class="slug">capture-02-magnet-namer</span>
+            <span class="ret"><em>Returns</em>five title candidates and one subtitle for the strongest of the five</span>
+          </div></li>
+          <li><div class="rn">03</div><div>
+            <span class="agent-name">Magnet Cover Writer</span>
+            <span class="slug">capture-03-magnet-cover-writer</span>
+            <span class="ret"><em>Returns</em>the cover lines with the true, backed count</span>
+          </div></li>
+          <li><div class="rn">04</div><div>
+            <span class="agent-name">Gate Keyword Picker</span>
+            <span class="slug">capture-04-gate-keyword-picker</span>
+            <span class="ret"><em>Returns</em>the new keyword and the arming sentence, placed in the draft</span>
+          </div></li>
+          <li><div class="rn">05</div><div>
+            <span class="agent-name">Gate Reply Writer</span>
+            <span class="slug">capture-05-gate-reply-writer</span>
+            <span class="ret"><em>Returns</em>the delivery message, nothing else attached</span>
+          </div></li>
+          <li><div class="rn">06</div><div>
+            <span class="agent-name">Lead List Builder</span>
+            <span class="slug">capture-06-lead-list-builder</span>
+            <span class="ret"><em>Returns</em>one row per captured name, unknown fields marked unknown</span>
+          </div></li>
+        </ul>
+      </div>
+
+      <!-- CONVERT -->
+      <div class="panel">
+        <div class="phead">
+          <div class="pico"><svg viewBox="0 0 24 24"><path d="M4 12h11M11.5 7.5 16 12l-4.5 4.5M17 4h3v16h-3"/></svg></div>
+          <div>
+            <div class="pn">STAGE 5</div>
+            <div class="pt">CONVERT</div>
+            <div class="ps">What you write after somebody raises a hand, from the first reply to the call ask.</div>
+          </div>
+        </div>
+        <ul class="rows">
+          <li><div class="rn">01</div><div>
+            <span class="agent-name">Hand-Raiser Sorter</span>
+            <span class="slug">convert-01-hand-raiser-sorter</span>
+            <span class="ret"><em>Returns</em>the two-bucket split of who gets a conversation and who gets the file and nothing else</span>
+          </div></li>
+          <li><div class="rn">02</div><div>
+            <span class="agent-name">DM Intent Reader</span>
+            <span class="slug">convert-02-dm-intent-reader</span>
+            <span class="ret"><em>Returns</em>the intent verdict for the thread: asking for the file, asking for help, or selling, with the line that decided it quoted</span>
+          </div></li>
+          <li><div class="rn">03</div><div>
+            <span class="agent-name">Inbound Reply Writer</span>
+            <span class="slug">convert-03-inbound-reply-writer</span>
+            <span class="ret"><em>Returns</em>the first reply to a warm inbound message: one question, and no pitch</span>
+          </div></li>
+          <li><div class="rn">04</div><div>
+            <span class="agent-name">Call Ask Writer</span>
+            <span class="slug">convert-04-call-ask-writer</span>
+            <span class="ret"><em>Returns</em>the call-ask sentence, attached to the sentence of theirs that earns it</span>
+          </div></li>
+          <li><div class="rn">05</div><div>
+            <span class="agent-name">Stalled Thread Reviver</span>
+            <span class="slug">convert-05-stalled-thread-reviver</span>
+            <span class="ret"><em>Returns</em>the single revival message, two sentences, quoting their last concrete detail</span>
+          </div></li>
+          <li><div class="rn">06</div><div>
+            <span class="agent-name">Pitch Filter</span>
+            <span class="slug">convert-06-pitch-filter</span>
+            <span class="ret"><em>Returns</em>the decline message for a thread that is selling to you, two lines</span>
+          </div></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ HOW TO USE ============ -->
+  <section id="guide">
+    <div class="kicker"><i></i>How to use it</div>
+    <h2>You need a Claude account and a place to keep the folder</h2>
+    <p class="sec-lede">There is no install, no key, no signup inside the pack. Download it, unzip it, then work down the steps below.</p>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">A</span><h3>Download the pack and unzip it</h3></div>
+      <p class="sec-lede">Start here. The zip carries all thirty agent folders, their fixtures, and the manifest. Unzip it wherever you keep documents, then follow the folder steps below.</p>
+      <div class="dlwrap">
+        <a class="dl" href="assets/the-linkedin-inbound-team.zip" download>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M4.5 19h15"/></svg>
+          Download the full pack
+        </a>
+        <div class="dlnote">Zip · 30 agent folders · 167 files</div>
+      </div>
+      <p class="note">Once it is unzipped you have everything. The rest of this page is about running one of the thirty, and nothing below needs another download.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">B</span><h3>Running an agent in claude.ai</h3></div>
+      <div class="path">
+        <span class="tag">The browser path</span>
+        <ol>
+          <li>Sign in at claude.ai.</li>
+          <li>Create a Project and give it the pack's name. In the project knowledge panel, upload the SKILL.md of the one agent you want to run.</li>
+          <li>If Projects are not available on your plan, skip step 2: open a new chat and paste the whole SKILL.md file into the message box instead.</li>
+          <li>Under it, paste your own input, the draft or the thread or the list, and send.</li>
+        </ol>
+      </div>
+      <div class="path">
+        <span class="tag">The Claude Code path</span>
+        <ol>
+          <li>Drop the pack folder inside the project folder you already work in.</li>
+          <li>Ask for the agent by name in the session: <span style="font-family:var(--mono);font-size:13.5px">run the gate reply writer on this</span>, then paste your input.</li>
+          <li>Claude Code opens the SKILL.md from disk itself, so nothing needs pasting twice.</li>
+        </ol>
+      </div>
+      <p class="note">One agent per conversation. Two SKILL.md files loaded at once and the second set of rules argues with the first, which shows up as an answer in neither format.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">C</span><h3>Where the folder goes, and how it is laid out</h3></div>
+      <p class="sec-lede">Nothing reads its own path, so Desktop, Documents, or a Drive folder all behave the same. Inside the unzipped folder, five stage folders, six agent folders in each, and one SKILL.md per agent next to its fixtures.</p>
+      <pre>the-linkedin-inbound-team/
+  MANIFEST.md
+  profile/
+    profile-01-headline-rewriter/
+      SKILL.md
+      fixtures/
+        headline-with-offer.md
+    profile-02-about-opener/
+    ...
+  content/
+  engage/
+  capture/
+  convert/</pre>
+      <p class="note">MANIFEST.md at the top lists all thirty with the line each one returns. It is the page you are reading now, in plain text, so you can search it without opening a browser.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">D</span><h3>One run from each stage</h3></div>
+      <p class="sec-lede">Five real shapes, one per stage, so you can see what goes in and what comes back before you spend anything of your own on it. Inputs below are made up.</p>
+
+      <svg class="rail" viewBox="0 0 640 62" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <rect x="4" y="16" width="150" height="32" rx="8" fill="none" stroke="#E9E2DB"/>
+        <text x="79" y="36" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="11.5" fill="#6E6862" letter-spacing="1.4">WHAT YOU PASTE</text>
+        <path d="M162 32h44" stroke="#D64425" stroke-width="1.6"/>
+        <path d="M200 27l6 5-6 5" fill="none" stroke="#D64425" stroke-width="1.6"/>
+        <rect x="214" y="14" width="196" height="36" rx="8" fill="#FBE7E1" stroke="#D64425"/>
+        <text x="312" y="37" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#D64425" letter-spacing="1.4">ONE SKILL.md</text>
+        <path d="M418 32h44" stroke="#D64425" stroke-width="1.6"/>
+        <path d="M456 27l6 5-6 5" fill="none" stroke="#D64425" stroke-width="1.6"/>
+        <rect x="470" y="16" width="166" height="32" rx="8" fill="none" stroke="#E9E2DB"/>
+        <text x="553" y="36" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="11.5" fill="#6E6862" letter-spacing="1.4">ONE LINE BACK</text>
+      </svg>
+
+      <!-- example 1 -->
+      <div class="ex">
+        <div class="exhead"><span class="stage-tag">PROFILE</span><span class="exname">Featured Section Picker</span><span class="exslug">profile-04-featured-picker</span></div>
+        <span class="lbl">What you paste</span>
+        <pre class="io">Offer sentence: I work with operations leads at regional freight firms to move dispatch off spreadsheets.
+1. "The shift handover checklist" | PDF | example.site/handover | a visitor gets the steps we run at shift change
+2. "Rebuilding a dispatch board, week by week" | post | example.site/rebuild | what the rebuild looked like week by week
+3. "Work with me" | page | example.site/start | what the engagement covers and how to begin one</pre>
+        <span class="lbl">What comes back</span>
+        <pre class="io"><b>## Tile 1</b>
+The shift handover checklist
+class: TEACH   (a visitor can use it on their own)
+caption: The steps we run at shift change, and who signs off each one.</pre>
+        <p class="after">Tiles 2 and 3 print the same way, PROOF then ASK, and a census at the bottom counts every asset you supplied against the three tiles.</p>
+      </div>
+
+      <!-- example 2 -->
+      <div class="ex">
+        <div class="exhead"><span class="stage-tag">CONTENT</span><span class="exname">Specific Detail Finder</span><span class="exslug">content-02-detail-finder</span></div>
+        <span class="lbl">What you paste</span>
+        <pre class="io">New hires stop asking questions after week two.
+In February I sat with a new dispatcher for three afternoons and she asked me nine things.
+By March she asked me nothing.</pre>
+        <span class="lbl">What comes back</span>
+        <pre class="io">S1  subject noun: hires   accounts naming it: none   verdict: <b>UNGROUNDED</b>
+&gt; "New hires stop asking questions after week two."   S1
+asks for: a named person or company
+Q: Which new hire had stopped asking you questions by week two?</pre>
+        <p class="after">The two sentences about the dispatcher never say "hires", so the claim above them stays ungrounded and the question asks you to name who you meant.</p>
+      </div>
+
+      <!-- example 3 -->
+      <div class="ex">
+        <div class="exhead"><span class="stage-tag">ENGAGE</span><span class="exname">Comment Angle Writer</span><span class="exslug">engage-01-comment-angle-writer</span></div>
+        <span class="lbl">What you paste</span>
+        <pre class="io">Their post: "We doubled the support team in one quarter and our first-response time got worse."
+My first-hand fact: we added two dispatchers in one month and handover went from 12 minutes to 20 for about three weeks.</pre>
+        <span class="lbl">What comes back</span>
+        <pre class="io">matched line: "We doubled the support team in one quarter and our first-response time got worse."
+comment: "Same shape at nine people. We added two dispatchers in one month and handover went from 12 minutes to 20, and it stayed there about three weeks before it came back."
+words: 31 / 40</pre>
+        <p class="after">The comment is a neutral draft holding your fact. Put it in your own words before you post it.</p>
+      </div>
+
+      <!-- example 4 -->
+      <div class="ex">
+        <div class="exhead"><span class="stage-tag">CAPTURE</span><span class="exname">Gate Reply Writer</span><span class="exslug">capture-05-gate-reply-writer</span></div>
+        <span class="lbl">What you paste</span>
+        <pre class="io">Magnet name: The Shift Handover Checklist
+Link: example.site/handover
+Commenter's first name: Dana</pre>
+        <span class="lbl">What comes back</span>
+        <pre class="io"><b># Delivery message</b>
+"Hey Dana, here's The Shift Handover Checklist: example.site/handover. That's everything, no follow-up needed from you."
+question marks in message: 0
+second ask present: no</pre>
+        <p class="after">The two check lines are the point of the agent. A question mark in a delivery message turns a handover into a second ask, so it counts them and prints the count.</p>
+      </div>
+
+      <!-- example 5 -->
+      <div class="ex">
+        <div class="exhead"><span class="stage-tag">CONVERT</span><span class="exname">Inbound Reply Writer</span><span class="exslug">convert-03-inbound-reply-writer</span></div>
+        <span class="lbl">What you paste</span>
+        <pre class="io">Me: "Hey Dana, here's The Shift Handover Checklist: example.site/handover."
+Dana: "Thanks. Ours lives in three notebooks and nobody agrees which one is current. Does a checklist fix that or do you need something behind it?"
+Her headline: Operations lead at a regional freight company</pre>
+        <span class="lbl">What comes back</span>
+        <pre class="io">situation stated: yes   "ours lives in three notebooks and nobody agrees which one is current"
+question to you: yes    "does a checklist fix that or do you need something behind it"
+the reply: "A checklist covers the steps at handover. The notebook question sits upstream of it. When two notebooks disagree today, who decides which one is current?"
+pitch check: clean</pre>
+        <p class="after">One question, no offer sentence anywhere in it. Asking for a call is a different agent, and it waits until there is a stated problem to ask a call about.</p>
+      </div>
+    </div>
+
+    <div class="step" id="refusals">
+      <div class="step-head"><span class="step-num">E</span><h3>When an agent refuses</h3></div>
+      <p class="sec-lede">Sooner or later one of these will decline to answer you. That is the pack working. Each agent is written to stop rather than invent the thing you did not give it, and to say which thing that was. A refusal is a short instruction, and the run it blocks is the one that would have put a made-up detail into your own words.</p>
+
+      <div class="refusal-block">
+        <pre>THE ANSWERS ARE NOT IN THE INPUT
+A detail supplied here would be one I made up, printed in your voice, in a post
+with your name on it. Answer the questions from memory and paste the draft again.</pre>
+        <span class="src">verbatim from content-02-detail-finder, Refusal 3</span>
+      </div>
+
+      <p class="sec-lede" style="margin-top:22px">The other shape is a bracket in the middle of an otherwise finished answer. The agent writes everything it can and marks the gap where a value should sit, with the value named:</p>
+      <pre>"Hey [NEEDS: the commenter's first name], here's the Shift Handover
+Checklist: example.site/handover. That's everything, no follow-up
+needed from you."</pre>
+      <p class="note">That is what capture-05-gate-reply-writer prints when the comment carries no first name. The message is still usable, and the one word it could not know is sitting in brackets waiting for you rather than filled with a guess.</p>
+    </div>
+
+    <div class="step">
+      <div class="step-head"><span class="step-num">F</span><h3>Start with the fixtures</h3></div>
+      <p class="sec-lede">Every agent folder carries a fixtures folder holding at least one practice input. Run an agent on its own fixture first: you get a full output on material you did not have to prepare, and you see the shape before your own draft is in the chat.</p>
+      <pre>content/content-02-detail-finder/fixtures/draft-mixed-claims.md    a draft with claims and accounts mixed
+capture/capture-05-gate-reply-writer/fixtures/no-link-yet.md      the input that fires the refusal
+convert/convert-03-inbound-reply-writer/fixtures/inbound-reply-thanks-only.md</pre>
+      <p class="note">Several fixtures exist to make an agent refuse. Those are worth running twice: once to read the refusal, once with the missing field added, so you know what each agent asks for before you need it.</p>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section id="faq">
+    <div class="kicker"><i></i>Questions</div>
+    <h2>Before you open the folder</h2>
+    <div class="faq">
+      <div class="qa">
+        <b>Is it really free?</b>
+        <p>Yes. Download it above and the folder is yours to keep. There is nothing to buy inside it and no account to make beyond the Claude account you run it in.</p>
+      </div>
+      <div class="qa">
+        <b>Do I need to know how to code?</b>
+        <p>No. Every agent is a text file of plain English: what to paste, what it does with it, what it will not do. You open a chat, paste, and read the answer.</p>
+      </div>
+      <div class="qa">
+        <b>What if an output looks wrong?</b>
+        <p>Run it again with more input. These agents read only what you paste into the chat, so a thin answer usually means a thin paste: the whole draft rather than the paragraph, both sides of the thread rather than the last message.</p>
+      </div>
+      <div class="qa">
+        <b>Can I change one?</b>
+        <p>Open its SKILL.md and edit it. Keep the refusal sections if you want the same behaviour, since those are the lines that stop an agent from filling a gap with something plausible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section id="cta">
+    <div class="kicker"><i></i>Who made this</div>
+    <div class="cta">
+      <img src="assets/ivan.jpg" alt="Ivan Manfredi" width="116" height="116" loading="lazy">
+      <div>
+        <div class="who">Ivan Manfredi</div>
+        <p>I build and run the LinkedIn inbound engine behind a founder's feed: what gets posted, where the comments land, how the asks get captured, and who gets written back to. The thirty agents in this pack are pieces of that work, cut small enough for one person to run in a chat.</p>
+        <p>If you would rather have it run as one operation, book a call and I will go through what your feed is doing now.</p>
+        <a class="ctabtn" href="https://calendly.com/im-ivanmanfredi/30min">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 6h14v14H5zM5 10h14M9 4v4M15 4v4"/></svg>
+          Book a call
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="fmark">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" stroke="#D64425" stroke-width="2.1" stroke-linecap="round" fill="none"/></svg>
+      <div class="fw">INBOUNDONSTEROIDS</div>
+    </div>
+    <div class="fline">The LinkedIn Inbound Team · 30 agents · 5 stages</div>
+  </footer>
+</div>
+
+</body>
+</html>

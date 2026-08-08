@@ -1,0 +1,16 @@
+{
+  "name": "lm-migration-scripts",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "migrate-guides": "node migrate-guides-to-engine.js",
+    "test": "node --test parser.test.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "pixelmatch": "^6.0.0",
+    "playwright": "^1.59.1",
+    "pngjs": "^7.0.0"
+  }
+}

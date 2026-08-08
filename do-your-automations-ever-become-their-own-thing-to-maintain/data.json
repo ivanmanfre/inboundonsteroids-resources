@@ -1,0 +1,747 @@
+{
+  "slug": "do-your-automations-ever-become-their-own-thing-to-maintain",
+  "title": "The Automation Rot Audit: Score How Many of Your Live Automations Have Quietly Become Maintenance Debt",
+  "subtitle": "A diagnostic for growing marketing and creative agencies running live automations they no longer fully see. Score where the rot is before a client finds it for you.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "marketing and creative agency",
+    "locations": "the US, UK, and Canada",
+    "count_band": "11-50"
+  },
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your data sources are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules a human follows can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep.",
+      "Human-in-the-loop by design. Every output touches a person before it ships externally."
+    ],
+    "intro": "This assessment scores against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready for AI to carry weight. Miss one and any AI build will leak, then rot."
+  },
+  "proof_card": {
+    "score_label": "Maintenance Health Score",
+    "sample_score": 52,
+    "sample_top_leak": "silent failures (a Monday 7am job that errors and tells nobody, ~5 hrs/week of babysitting)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your agency?",
+    "answers": [
+      {
+        "label": "Solo or 2-5 people, mostly me doing the work",
+        "tag": "solo"
+      },
+      {
+        "label": "Boutique, 6-15 people, a few automations live",
+        "tag": "boutique"
+      },
+      {
+        "label": "Growing, 16-40 people, automations across delivery and ops",
+        "tag": "growing"
+      },
+      {
+        "label": "Established, 41-100 people, automations clients depend on",
+        "tag": "established"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "inventory-visibility",
+      "name": "Map What You Already Run",
+      "questions": [
+        {
+          "id": "live-inventory",
+          "text": "How complete is your inventory of every automation currently live?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We have no list. Nobody could name them all.",
+              "score": 1
+            },
+            {
+              "label": "2. A rough idea in someone's head, never written down.",
+              "score": 2
+            },
+            {
+              "label": "3. A partial list that goes stale fast.",
+              "score": 3
+            },
+            {
+              "label": "4. A documented list with trigger and output for most.",
+              "score": 4
+            },
+            {
+              "label": "5. A living inventory, every automation, trigger, and output current.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "outcome-tagging",
+          "text": "How clearly is each automation tagged with the business outcome it delivers?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We don't track what any of them actually save.",
+              "score": 1
+            },
+            {
+              "label": "2. We could guess at a few, no numbers.",
+              "score": 2
+            },
+            {
+              "label": "3. A handful have a rough hours-saved estimate.",
+              "score": 3
+            },
+            {
+              "label": "4. Most are tagged with hours saved, errors caught, or money recovered.",
+              "score": 4
+            },
+            {
+              "label": "5. Every automation has a measured outcome we review.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "dependency-mapping",
+          "text": "How well can you trace which automations feed other automations?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No idea what depends on what.",
+              "score": 1
+            },
+            {
+              "label": "2. We find out only when a chain breaks.",
+              "score": 2
+            },
+            {
+              "label": "3. We know the big chains, not the small ones.",
+              "score": 3
+            },
+            {
+              "label": "4. Most chained flows are marked and traceable.",
+              "score": 4
+            },
+            {
+              "label": "5. Every chained dependency is mapped and reviewed.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're flying blind on what's running",
+          "text": "You can't maintain what you can't see, and right now there's no list. The first finding is the inventory itself: if it takes more than an hour to build, that gap is the problem. Start by writing down every live automation, its trigger, and what it produces.",
+          "steps": [
+            "List every automation currently live, with its trigger type (schedule, webhook, manual, another workflow) and what it produces.",
+            "Tag each one with the business outcome it delivers: hours saved, errors caught, or money recovered.",
+            "Flag any automation nobody can explain the purpose of anymore. Those are your first retirement candidates."
+          ]
+        },
+        "mid": {
+          "headline": "You have a list, but it goes stale",
+          "text": "A partial inventory is better than none, but a stale list lies to you. The gap is the half you can't see, usually the chained flows that fail loudest. Make the inventory living and mark every automation that feeds another.",
+          "steps": [
+            "Move the inventory somewhere shared and put a 30-minute monthly review on the calendar to keep it current.",
+            "Mark every automation that feeds another automation. Chained flows fail hardest to trace.",
+            "Add measured outcome numbers to the automations still tagged on a guess."
+          ]
+        },
+        "high": {
+          "headline": "Your map is current. Keep it that way",
+          "text": "You can see everything you run, which is rarer than it should be. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Auto-generate the inventory from your n8n instance so it never drifts from reality.",
+            "Track outcome-per-automation as a trend, not a one-time number, so decay shows up early.",
+            "Visualize dependency chains so a single broken upstream flow shows its blast radius instantly."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~3 forgotten automations still running (the typical first-pass finding)",
+        "lever": "My read: build the inventory first, before you touch a single workflow. Everything else in this audit depends on seeing what you run.",
+        "talking_points": [
+          "We can't say how much our live automations save or cost because we've never listed them.",
+          "Chained flows are our highest risk, and we currently have no map of which feeds which.",
+          "An afternoon spent inventorying will surface automations we forgot were even firing."
+        ],
+        "proof_of_concept": "Spend one hour listing every live automation with its trigger and output, then count how many nobody can explain. That count is your business case."
+      }
+    },
+    {
+      "id": "failure-detection",
+      "name": "Catch Failures Before Your Client Does",
+      "questions": [
+        {
+          "id": "failure-awareness",
+          "text": "How quickly do you find out when an automation run fails?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. A client tells us when their report doesn't arrive.",
+              "score": 1
+            },
+            {
+              "label": "2. We notice days later when something downstream is missing.",
+              "score": 2
+            },
+            {
+              "label": "3. Someone checks logs every few days and spots it.",
+              "score": 3
+            },
+            {
+              "label": "4. We get an alert the same day most of the time.",
+              "score": 4
+            },
+            {
+              "label": "5. We're pinged the moment any run fails.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "error-workflow",
+          "text": "How consistently does a failed run trigger an error notification?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Nothing pings us. Failures are silent.",
+              "score": 1
+            },
+            {
+              "label": "2. One or two critical flows have alerts, the rest don't.",
+              "score": 2
+            },
+            {
+              "label": "3. About half our automations notify on failure.",
+              "score": 3
+            },
+            {
+              "label": "4. Most automations route failures to an alert channel.",
+              "score": 4
+            },
+            {
+              "label": "5. Every automation has an error workflow that pings on failure.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "failure-patterns",
+          "text": "How well do you track failure patterns across runs over time?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We don't track failures at all.",
+              "score": 1
+            },
+            {
+              "label": "2. We see one-off errors but never the pattern.",
+              "score": 2
+            },
+            {
+              "label": "3. We notice when something fails repeatedly, eventually.",
+              "score": 3
+            },
+            {
+              "label": "4. We log failures and review the worst offenders.",
+              "score": 4
+            },
+            {
+              "label": "5. We track failure rates per automation and act on trends.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your failures are silent, and that's the expensive kind",
+          "text": "A job that errors at 7am Monday and tells nobody costs you the whole week, plus the client trust when they find it first. The gap is that nothing pings you. An error workflow is the single highest-impact fix in this whole audit.",
+          "steps": [
+            "Set up one error workflow that pings you the moment any run fails, then wire every automation to it.",
+            "Start with the client-facing automations: anything that produces a report or deliverable goes first.",
+            "Send alerts somewhere you actually watch, like a dedicated Slack channel, not a buried email inbox."
+          ]
+        },
+        "mid": {
+          "headline": "Some flows alert, the rest fail in the dark",
+          "text": "Partial coverage means your worst surprise is hiding in the half with no alerting. The gap is the untagged automations that fail quietly until a client notices. Close the coverage, then start watching patterns, not just one-off errors.",
+          "steps": [
+            "Route every remaining automation to the error workflow so coverage hits 100%.",
+            "Log each failure so you can see which automation fails most often, not just that something broke.",
+            "Set a threshold alert for repeated failures so a flaky flow escalates instead of getting ignored."
+          ]
+        },
+        "high": {
+          "headline": "Failures surface fast. Now get ahead of them",
+          "text": "You hear about failures before clients do, which is where most agencies never get. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Track failure rate per automation as a trend and treat a rising rate as a maintenance ticket.",
+            "Add health checks that verify the output is correct, not just that the run completed.",
+            "Build a weekly failure digest so slow-burning decay is visible before it becomes an outage."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~5 hrs/week lost when one silent failure runs unnoticed for a full week",
+        "lever": "What I'd do: ship a single error workflow this week and wire every live automation into it. It's the cheapest insurance you can buy.",
+        "talking_points": [
+          "Today a failed run tells nobody, so clients catch our breaks before we do.",
+          "One error workflow wired to every automation closes the silent-failure risk in days, not months.",
+          "Tracking failure rates per automation turns reactive firefighting into scheduled maintenance."
+        ],
+        "proof_of_concept": "Build one error-notification workflow, connect your three most client-facing automations to it, and let it run for a week to count how many failures you were previously missing."
+      }
+    },
+    {
+      "id": "ownership-accountability",
+      "name": "Name an Owner for Every Run",
+      "questions": [
+        {
+          "id": "named-owner",
+          "text": "How clearly is a named person responsible when each automation breaks?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No owners. When something breaks, it's nobody's job.",
+              "score": 1
+            },
+            {
+              "label": "2. Whoever built it, if they still work here.",
+              "score": 2
+            },
+            {
+              "label": "3. A rough sense of who owns what, undocumented.",
+              "score": 3
+            },
+            {
+              "label": "4. Most automations have a named owner written down.",
+              "score": 4
+            },
+            {
+              "label": "5. Every automation has a named owner who gets the call.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "time-to-fix",
+          "text": "How fast does a broken automation get picked up and fixed?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It sits broken until someone trips over it.",
+              "score": 1
+            },
+            {
+              "label": "2. Days, once the right person hears about it.",
+              "score": 2
+            },
+            {
+              "label": "3. Within a day or two for the important ones.",
+              "score": 3
+            },
+            {
+              "label": "4. Same day for anything client-facing.",
+              "score": 4
+            },
+            {
+              "label": "5. Within hours, the owner is alerted and acts.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "bus-factor",
+          "text": "When the person who built an automation leaves, how well does it survive?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It becomes a black box nobody can touch.",
+              "score": 1
+            },
+            {
+              "label": "2. We limp along until it breaks, then panic.",
+              "score": 2
+            },
+            {
+              "label": "3. Someone can usually figure it out under pressure.",
+              "score": 3
+            },
+            {
+              "label": "4. Handover notes exist for most automations.",
+              "score": 4
+            },
+            {
+              "label": "5. Ownership transfers cleanly with docs and a named successor.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "No name means no owner, which means silent failure",
+          "text": "When breaking is nobody's job, automations rot in the open. The gap is accountability: there's no one who gets the call. Assign a named owner to every live automation, starting with the ones clients touch.",
+          "steps": [
+            "Write down which person gets the call when each automation breaks. No name means no owner.",
+            "Make the owner the destination for that automation's failure alert.",
+            "For any black-box automation tied to a single person, schedule a handover before that person is the only one who understands it."
+          ]
+        },
+        "mid": {
+          "headline": "Ownership is informal, so it breaks under pressure",
+          "text": "A rough sense of who owns what works until that person is on vacation or gone. The gap is that ownership lives in memory, not on paper. Make it explicit and tie it to response time.",
+          "steps": [
+            "Document the named owner for every automation in your inventory, not just the critical ones.",
+            "Set a target response time for client-facing breaks and route alerts to hit it.",
+            "Write a one-page handover for any automation only one person understands."
+          ]
+        },
+        "high": {
+          "headline": "Clear owners, clean handovers. Hold the line",
+          "text": "Ownership is named and survives departures, which kills most silent failures. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Pair every owner with a named backup so no automation has a single point of failure.",
+            "Review ownership quarterly as people change roles, so the list never goes stale.",
+            "Track time-to-fix per owner so a slipping response time surfaces before a client complains."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "1 unowned automation is all it takes for a week-long silent failure",
+        "lever": "Honest take: assign a name to every automation before you build a single new one. Unowned automation is the definition of future maintenance debt.",
+        "talking_points": [
+          "We have automations clients depend on that nobody is explicitly responsible for.",
+          "If the builder leaves tomorrow, some of our flows become black boxes we can't safely touch.",
+          "Naming an owner per automation and routing alerts to them cuts time-to-fix to hours."
+        ],
+        "proof_of_concept": "Take your inventory, add an owner column, and route each automation's failure alert to that person. Anything you can't name an owner for is a retirement candidate."
+      }
+    },
+    {
+      "id": "documentation-logic",
+      "name": "Write Down How It Works",
+      "questions": [
+        {
+          "id": "what-and-why",
+          "text": "How well documented is what each automation does and why it exists?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Nothing is written. It lives in the builder's head.",
+              "score": 1
+            },
+            {
+              "label": "2. A node here and there has a comment.",
+              "score": 2
+            },
+            {
+              "label": "3. The big automations have a short description.",
+              "score": 3
+            },
+            {
+              "label": "4. Most have a clear purpose and overview written down.",
+              "score": 4
+            },
+            {
+              "label": "5. Every automation documents what it does, why, and its inputs.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "decision-logic",
+          "text": "How explicitly are the decision rules inside each automation written down?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. The logic is buried in the workflow, never explained.",
+              "score": 1
+            },
+            {
+              "label": "2. We'd have to reverse-engineer it from the nodes.",
+              "score": 2
+            },
+            {
+              "label": "3. The main branches are described, edge cases aren't.",
+              "score": 3
+            },
+            {
+              "label": "4. Most decision rules are documented explicitly.",
+              "score": 4
+            },
+            {
+              "label": "5. Every rule a human encoded is written in plain language.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "safe-to-modify",
+          "text": "How easily could someone other than the builder modify an automation safely?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Only the builder dares touch it.",
+              "score": 1
+            },
+            {
+              "label": "2. Anyone else changing it risks breaking it silently.",
+              "score": 2
+            },
+            {
+              "label": "3. A careful person could, with a lot of reading.",
+              "score": 3
+            },
+            {
+              "label": "4. Documentation makes most changes low-risk.",
+              "score": 4
+            },
+            {
+              "label": "5. A new hire could safely modify it from the docs alone.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "It all lives in one person's head",
+          "text": "Undocumented automation is a black box waiting to become a crisis. The gap is that the logic exists only in the builder's memory, so nobody else can fix or change it. Write down what each automation does and the rules it encodes, in plain language.",
+          "steps": [
+            "Write a one-paragraph purpose for each automation: what it does, why, and what it produces.",
+            "Document the decision logic in plain language. If your best person can't explain a rule, the automation can't be safely maintained.",
+            "Store the docs next to the inventory so they're found when something breaks."
+          ]
+        },
+        "mid": {
+          "headline": "Partial docs leave the edge cases exposed",
+          "text": "Describing the happy path is a start, but automations break on edge case number three, not the main branch. The gap is the undocumented logic. Get every decision rule onto paper so anyone can change the flow without guessing.",
+          "steps": [
+            "Document the edge cases and conditional branches, not just the main flow.",
+            "Add a change log to each automation so modifications are traceable.",
+            "Have someone other than the builder make a small change using only the docs, then fix whatever was unclear."
+          ]
+        },
+        "high": {
+          "headline": "Documented and safe to change. Push further",
+          "text": "Your automations are readable and a new person could maintain them, which is the bar most agencies never reach. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Keep docs versioned alongside the workflow so they never drift from what's actually running.",
+            "Capture the original decision data so you can tell whether a rule still reflects reality.",
+            "Run a quarterly read-through where someone unfamiliar with each flow confirms the docs still hold."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "100% of undocumented automations become black boxes the moment the builder leaves",
+        "lever": "My read: document the decision logic in plain language. If your best person can't explain how a rule decides, you can't maintain it and you definitely can't hand it to AI.",
+        "talking_points": [
+          "Several automations only the builder understands are a single resignation away from being unmaintainable.",
+          "Plain-language decision logic is what lets a second person fix a flow without breaking it.",
+          "Documentation is also the precondition for any future AI build on top of these workflows."
+        ],
+        "proof_of_concept": "Pick your most business-critical automation and write a one-page doc covering its purpose, inputs, and every decision rule. Have a teammate make one small change using only that doc."
+      }
+    },
+    {
+      "id": "maintenance-lifecycle",
+      "name": "Retire and Maintain on Purpose",
+      "questions": [
+        {
+          "id": "review-cadence",
+          "text": "How regularly do you review automations and retire dead ones?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Never. They run until they break or get noticed.",
+              "score": 1
+            },
+            {
+              "label": "2. Only when something forces us to look.",
+              "score": 2
+            },
+            {
+              "label": "3. Occasionally, with no fixed schedule.",
+              "score": 3
+            },
+            {
+              "label": "4. We review most automations a few times a year.",
+              "score": 4
+            },
+            {
+              "label": "5. A regular review where dead automations get retired.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "orphaned-purpose",
+          "text": "How well do you catch automations whose original purpose no longer exists?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They keep running long after the reason is gone.",
+              "score": 1
+            },
+            {
+              "label": "2. We find them by accident, usually when they break.",
+              "score": 2
+            },
+            {
+              "label": "3. We catch the obvious ones eventually.",
+              "score": 3
+            },
+            {
+              "label": "4. We flag most orphaned automations during reviews.",
+              "score": 4
+            },
+            {
+              "label": "5. Any automation with no current purpose gets flagged and retired.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "proactive-maintenance",
+          "text": "How proactively do you maintain automations before they break?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Pure firefighting. We fix only after a break.",
+              "score": 1
+            },
+            {
+              "label": "2. Mostly reactive, with the odd preventive fix.",
+              "score": 2
+            },
+            {
+              "label": "3. We patch known weak spots when we have time.",
+              "score": 3
+            },
+            {
+              "label": "4. We maintain the critical automations on a schedule.",
+              "score": 4
+            },
+            {
+              "label": "5. Proactive upkeep is planned, so breaks are rare.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "upkeep-vs-value",
+          "text": "How well do you track the upkeep cost against the value each automation delivers?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No idea what any automation costs us to keep alive.",
+              "score": 1
+            },
+            {
+              "label": "2. We feel the babysitting but never measure it.",
+              "score": 2
+            },
+            {
+              "label": "3. We have a rough sense for the worst offenders.",
+              "score": 3
+            },
+            {
+              "label": "4. We track upkeep vs value for the important automations.",
+              "score": 4
+            },
+            {
+              "label": "5. Every automation is scored on value minus upkeep, and we cut the losers.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Nothing gets retired, so the debt only grows",
+          "text": "Automations don't die, they rot, and an automation that saved you 5 hours a week can quietly become the thing you spend 5 hours a week babysitting. The gap is that you never review or retire. Put a recurring review on the calendar and kill the dead ones.",
+          "steps": [
+            "Schedule a recurring review of every live automation against your inventory.",
+            "Flag any automation nobody can explain the purpose of anymore and retire it.",
+            "For each survivor, note rough upkeep time so the babysitters become visible."
+          ]
+        },
+        "mid": {
+          "headline": "You react instead of maintaining on purpose",
+          "text": "Catching dead automations by accident means you find them at the worst time, usually when they break. The gap is the absence of a value-versus-upkeep call. Make maintenance proactive and start cutting the automations that cost more than they return.",
+          "steps": [
+            "Move the worst-offender fixes from reactive to a scheduled maintenance slot.",
+            "Score each automation on value delivered minus upkeep time, and retire anything underwater.",
+            "Tie the review to your inventory so retired automations actually get turned off, not just ignored."
+          ]
+        },
+        "high": {
+          "headline": "Deliberate lifecycle management. Compound it",
+          "text": "You retire dead weight and maintain on purpose, which is how automations keep returning their payback instead of eating it. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Apply the 90-Day Payback Rule to every automation: if upkeep outpaces hours saved, rebuild or retire it.",
+            "Track value-minus-upkeep as a portfolio so the whole automation estate stays net positive.",
+            "Before any new build, confirm it won't become another thing to babysit. Scope narrow on day one."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~5 hrs/week: how much a single rotting automation can cost you in babysitting",
+        "lever": "What I'd do: run every live automation through the 90-Day Payback Rule. If upkeep is outrunning the hours it saves, rebuild it or kill it.",
+        "talking_points": [
+          "We have automations still firing whose original reason no longer exists.",
+          "Some of our flows now cost more to babysit than they save, and we don't measure it.",
+          "A regular review plus a value-minus-upkeep score lets us retire the losers on purpose."
+        ],
+        "proof_of_concept": "Run the full audit against every live automation, score each on hours saved minus upkeep time, and retire the bottom three. Most teams find at least three they forgot were running."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'boutique' || persona === 'growing' || persona === 'established') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your automation estate?",
+      "description": "Drop your email + I'll review your exact answers, stack them against agencies your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'solo'",
+      "headline": "Solo or under 5? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer, and maintenance debt hasn't piled up yet. Follow me on LinkedIn. I post tactical agency automation breakdowns 3x/week. When you cross 6-10 people and a few automations go live, come back and retake; the result will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight. Here's what agencies your size miss next.",
+      "description": "At your score, the obvious rot is already caught. The next gains come from output validation (verifying a run was correct, not just that it completed), portfolio-level value-minus-upkeep scoring, and dependency blast-radius mapping for chained flows. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly agency ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market agencies run lean automations that don't rot. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ]
+}

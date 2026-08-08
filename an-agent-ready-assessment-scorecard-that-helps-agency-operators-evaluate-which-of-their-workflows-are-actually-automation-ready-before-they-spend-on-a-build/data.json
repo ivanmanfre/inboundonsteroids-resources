@@ -1,0 +1,652 @@
+{
+  "slug": "an-agent-ready-assessment-scorecard-that-helps-agency-operators-evaluate-which-of-their-workflows-are-actually-automation-ready-before-they-spend-on-a-build",
+  "title": "The Agent-Ready Score",
+  "subtitle": "A 16-question diagnostic for agency operators before they spend $10K on a build",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 7,
+  "persona_selector": {
+    "id": "persona",
+    "text": "Which best describes you?",
+    "answers": [
+      {
+        "label": "Owner / Founder ,  I sign the build invoice",
+        "tag": "owner"
+      },
+      {
+        "label": "Ops Lead / COO ,  I run the workflow today",
+        "tag": "ops"
+      },
+      {
+        "label": "Individual Contributor ,  I do the manual steps",
+        "tag": "ic"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "input_data",
+      "name": "Input Data Structure",
+      "questions": [
+        {
+          "id": "intake_format",
+          "text": "When work comes in, is the data captured in structured fields or as free text in email and Slack?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Free text in inboxes and chat, no template",
+              "score": 1
+            },
+            {
+              "label": "A template exists but most people skip it",
+              "score": 2
+            },
+            {
+              "label": "Form exists, optional fields, no validation",
+              "score": 3
+            },
+            {
+              "label": "Required fields, light validation, one channel",
+              "score": 4
+            },
+            {
+              "label": "Structured intake form, required fields, validated, single landing spot",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_completeness",
+          "text": "How often is critical data missing or wrong on intake, forcing someone to chase the client?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Almost every intake needs follow-up",
+              "score": 1
+            },
+            {
+              "label": "More than half need a follow-up",
+              "score": 2
+            },
+            {
+              "label": "About a third need clarification",
+              "score": 3
+            },
+            {
+              "label": "Roughly 1 in 5 needs follow-up",
+              "score": 4
+            },
+            {
+              "label": "Less than 1 in 10 needs any follow-up",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "source_of_truth",
+          "text": "Does the same piece of client data live in one place, or is it scattered across 3+ systems?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Same info lives in 4+ tools, drift is constant",
+              "score": 1
+            },
+            {
+              "label": "3 tools hold overlapping data, manual reconciliation",
+              "score": 2
+            },
+            {
+              "label": "2 tools, one is mostly authoritative",
+              "score": 3
+            },
+            {
+              "label": "One source of truth, occasional manual sync to a second",
+              "score": 4
+            },
+            {
+              "label": "One source of truth, other tools sync from it automatically",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your intake is too messy to automate",
+          "text": "Before any AI build, the front door has to be fixed. Free-text intakes and scattered data mean the agent will guess and the human will redo the work anyway. Spend the next 30 days here, not on an automation vendor.",
+          "steps": [
+            "Pick one channel (a form or a CRM record) as the only legal way work enters the workflow",
+            "Make 5 to 8 fields required with validation, and reject submissions that skip them",
+            "Delete or archive the duplicate spots where the same data lives today, leaving one source of truth"
+          ]
+        },
+        "mid": {
+          "headline": "Intake works but leaks at the edges",
+          "text": "You have structure, but the edges (optional fields, side-channel requests, duplicate records) are exactly where the agent will fail in production. Close the 2 to 3 obvious leaks before you build.",
+          "steps": [
+            "Audit the last 20 intakes and list every field that was missing or wrong, then make the top 3 required",
+            "Pick the one system that owns each client field, and turn the others into read-only views",
+            "Add a single rejection step that bounces incomplete intakes back to the sender automatically"
+          ]
+        },
+        "high": {
+          "headline": "Your intake is build-ready",
+          "text": "This is the part most agencies fail. You already have structured, single-source data flowing in, which means an agent can read it without a human translator in the middle. Move on to scoring the next category.",
+          "steps": [
+            "Document the intake schema (field names, types, required vs optional) in one page so a builder can ingest it",
+            "Add a lightweight monitor that flags intakes with empty required fields before they hit the workflow",
+            "Keep the intake form versioned, so you can roll back if a field change breaks downstream automation"
+          ]
+        }
+      }
+    },
+    {
+      "id": "decision_logic",
+      "name": "Decision Logic",
+      "questions": [
+        {
+          "id": "documentability",
+          "text": "If you asked your best person to write down exactly how they decide qualify, scope, or route, could they?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "I just know ,  pure tacit knowledge",
+              "score": 1
+            },
+            {
+              "label": "A few rules of thumb, mostly in their head",
+              "score": 2
+            },
+            {
+              "label": "Partially documented, missing edge cases",
+              "score": 3
+            },
+            {
+              "label": "Documented rules with named criteria",
+              "score": 4
+            },
+            {
+              "label": "Documented rules with named criteria and thresholds",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "consistency",
+          "text": "How often does the same input produce different outputs depending on who is handling it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Different person, different answer, every time",
+              "score": 1
+            },
+            {
+              "label": "Frequent disagreement on borderline cases",
+              "score": 2
+            },
+            {
+              "label": "Same answer about 70 percent of the time",
+              "score": 3
+            },
+            {
+              "label": "Mostly consistent, occasional drift on edge cases",
+              "score": 4
+            },
+            {
+              "label": "Same input produces the same output regardless of operator",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "edge_case_coverage",
+          "text": "What share of the decisions your team makes in this workflow can be expressed as if-then rules versus pure judgment?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Almost all judgment, very few rules",
+              "score": 1
+            },
+            {
+              "label": "Half rules, half judgment",
+              "score": 2
+            },
+            {
+              "label": "Most cases follow rules, judgment for the rest",
+              "score": 3
+            },
+            {
+              "label": "Rules cover 80 percent, judgment for clear exceptions",
+              "score": 4
+            },
+            {
+              "label": "Rules cover 95 percent, judgment only on rare escalations",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The logic only lives in someone's head",
+          "text": "You cannot automate a decision nobody has written down. Right now an agent would either invent rules or default to a single bland answer. The fix is documentation, not technology.",
+          "steps": [
+            "Shadow your best operator for 5 real cases and write down every decision they made, including the why",
+            "Group the decisions into 3 to 5 named criteria with explicit thresholds (not adjectives like big or risky)",
+            "Have a second person run the documented rules on 10 historical cases and see where they break"
+          ]
+        },
+        "mid": {
+          "headline": "Rules exist but edge cases will sink the build",
+          "text": "You have a workable rulebook, but the 20 percent of cases that need judgment are exactly the ones an agent will get wrong in front of a client. Tighten the rules or add a human checkpoint.",
+          "steps": [
+            "List the 5 most common exceptions from the last 90 days and decide for each: new rule, or escalate to human",
+            "Convert any adjective in your rules (big client, complex scope) into a number you can actually measure",
+            "Pick one operator to be the rule owner and give them authority to update the rulebook monthly"
+          ]
+        },
+        "high": {
+          "headline": "Your decisions are codifiable",
+          "text": "The rules are written, named, and consistent across operators. That means an agent can apply them with high fidelity and the rare edge case is a clean escalation, not a mystery.",
+          "steps": [
+            "Export the rulebook as structured logic (a decision table or YAML) that a developer can read directly",
+            "Define what an escalation looks like, including who it goes to and what data goes with it",
+            "Set a quarterly review of the rulebook against the last 100 decisions to catch drift early"
+          ]
+        }
+      }
+    },
+    {
+      "id": "scope",
+      "name": "Scope and Boundaries",
+      "questions": [
+        {
+          "id": "workflow_breadth",
+          "text": "How wide is the workflow you want to automate?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "End to end across 4+ departments and many tools",
+              "score": 1
+            },
+            {
+              "label": "Spans 3 departments with handoffs",
+              "score": 2
+            },
+            {
+              "label": "One department, several steps, multiple tools",
+              "score": 3
+            },
+            {
+              "label": "One team, one outcome, 2 to 3 tools",
+              "score": 4
+            },
+            {
+              "label": "One narrow task with a clearly defined start and finish",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "output_variability",
+          "text": "How varied are the outputs the workflow needs to produce?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Every output is bespoke, no two are alike",
+              "score": 1
+            },
+            {
+              "label": "High variation with some recurring patterns",
+              "score": 2
+            },
+            {
+              "label": "A handful of templates cover most cases",
+              "score": 3
+            },
+            {
+              "label": "3 to 5 standard output formats",
+              "score": 4
+            },
+            {
+              "label": "1 or 2 standard output formats with clear variants",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "frequency",
+          "text": "How often does this workflow actually run?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A few times a quarter",
+              "score": 1
+            },
+            {
+              "label": "A few times a month",
+              "score": 2
+            },
+            {
+              "label": "Weekly",
+              "score": 3
+            },
+            {
+              "label": "Multiple times per week",
+              "score": 4
+            },
+            {
+              "label": "Daily or many times per day",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The scope is too wide to build",
+          "text": "You are trying to automate a department, not a task. Every agent build that tries to swallow a whole workflow fails inside 90 days. Cut the scope before you spend a dollar.",
+          "steps": [
+            "Map the full workflow on one page and circle the single step that takes the most human time",
+            "Define a start trigger and a finish output for that one step, ignore everything around it",
+            "Re-run this scorecard on the narrow step alone and see if the score jumps"
+          ]
+        },
+        "mid": {
+          "headline": "Scope is close but needs trimming",
+          "text": "Your workflow is narrow enough to consider, but the output variation or the cross-team handoffs will add complexity that doubles the build cost. Trim before you build.",
+          "steps": [
+            "Cap the number of output formats the agent supports in v1, push exceptions to a human queue",
+            "Remove any step that requires another team to do something, or build that handoff as a separate workflow",
+            "Commit to a v1 that handles the 80 percent case and explicitly ignores the rest"
+          ]
+        },
+        "high": {
+          "headline": "The scope is tight enough to build",
+          "text": "Narrow task, predictable outputs, runs often enough to matter. This is the shape of a workflow that pays back the build inside 90 days.",
+          "steps": [
+            "Write a one-page spec: trigger, inputs, decision rules, outputs, escalation path",
+            "Lock the scope: anything new becomes a v2 ticket, not a v1 change",
+            "Estimate the manual hours per month this workflow burns today, that is your payback baseline"
+          ]
+        }
+      }
+    },
+    {
+      "id": "human_loop",
+      "name": "Human-in-the-Loop",
+      "questions": [
+        {
+          "id": "review_point",
+          "text": "Is there a clear point in the workflow where a human reviews or approves before something hits a client?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No review, work goes straight to the client today",
+              "score": 1
+            },
+            {
+              "label": "Review happens informally, often skipped under pressure",
+              "score": 2
+            },
+            {
+              "label": "Review exists but the criteria are vague",
+              "score": 3
+            },
+            {
+              "label": "Defined review step with a checklist",
+              "score": 4
+            },
+            {
+              "label": "Defined review step, named owner, clear approve or reject criteria",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "reversibility",
+          "text": "If the agent gets it wrong, how reversible is the mistake?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Mistake reaches the client immediately and is hard to undo",
+              "score": 1
+            },
+            {
+              "label": "Mistake is visible to the client but recoverable with apology",
+              "score": 2
+            },
+            {
+              "label": "Mistake is caught after the fact during weekly review",
+              "score": 3
+            },
+            {
+              "label": "Mistake is caught by a downstream check before the client sees it",
+              "score": 4
+            },
+            {
+              "label": "Mistake is caught at the review step, client never sees it",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "capacity_to_review",
+          "text": "Does the person who would review the agent's output actually have time to do it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, the reviewer is the bottleneck we are trying to remove",
+              "score": 1
+            },
+            {
+              "label": "Sometimes, but reviews get rushed or skipped",
+              "score": 2
+            },
+            {
+              "label": "Yes for low volume, no if we scale",
+              "score": 3
+            },
+            {
+              "label": "Yes, with the time freed up by the automation itself",
+              "score": 4
+            },
+            {
+              "label": "Yes, the reviewer has dedicated capacity for this",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "No safety net means no agent",
+          "text": "Without a real review point, an agent's first hallucination goes straight to a client. That is the kind of incident that ends an agent program in week 2. Build the human checkpoint before the build, not after.",
+          "steps": [
+            "Designate one person as the reviewer of record and give them the criteria to approve or reject",
+            "Add an explicit pause in the workflow where the agent's output waits for human sign-off",
+            "Define what gets escalated, to whom, and within what timeframe"
+          ]
+        },
+        "mid": {
+          "headline": "Review exists but is fragile",
+          "text": "You have a checkpoint, but it leaks under pressure or has vague criteria. Tighten it before adding an agent, otherwise the agent will amplify the leak.",
+          "steps": [
+            "Turn the review into a 5 to 7 item checklist the reviewer must sign off on, no shortcuts",
+            "Track review skip rate for 30 days and fix the root cause if it is above 10 percent",
+            "Give the reviewer authority to send work back to the agent with reasons, not just approve or reject"
+          ]
+        },
+        "high": {
+          "headline": "You have the safety net the build needs",
+          "text": "A named reviewer with capacity and clear criteria is the single best predictor that an agent build will survive past 90 days. This is the foundation most agencies skip.",
+          "steps": [
+            "Instrument the review step so you can measure approve, reject, and edit rates from day 1",
+            "Use the first 30 days of review data to tighten the agent's prompts and rules",
+            "Move toward sampling-based review once approve rate is consistently above 90 percent"
+          ]
+        }
+      }
+    },
+    {
+      "id": "ops_readiness",
+      "name": "Operational Readiness",
+      "questions": [
+        {
+          "id": "budget",
+          "text": "What budget have you set aside for this build (design, build, and 90 days of iteration)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Under $2K, hoping to glue it together with Zapier",
+              "score": 1
+            },
+            {
+              "label": "$2K to $5K, expecting a quick win",
+              "score": 2
+            },
+            {
+              "label": "$5K to $10K with some runway for fixes",
+              "score": 3
+            },
+            {
+              "label": "$10K to $25K with budget for iteration",
+              "score": 4
+            },
+            {
+              "label": "$25K+ with explicit budget for ongoing improvement",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "owner",
+          "text": "Who owns this automation after it ships?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Nobody decided yet",
+              "score": 1
+            },
+            {
+              "label": "The founder, on top of everything else",
+              "score": 2
+            },
+            {
+              "label": "Whoever raises their hand when it breaks",
+              "score": 3
+            },
+            {
+              "label": "Named owner with other priorities",
+              "score": 4
+            },
+            {
+              "label": "Named owner with dedicated time to maintain and improve it",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "success_metric",
+          "text": "How will you know in 90 days whether this build paid back?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We will just feel it",
+              "score": 1
+            },
+            {
+              "label": "Vague sense of hours saved",
+              "score": 2
+            },
+            {
+              "label": "A rough estimate of time freed up",
+              "score": 3
+            },
+            {
+              "label": "Specific hours per month with a baseline",
+              "score": 4
+            },
+            {
+              "label": "Hours saved, error rate, and revenue impact, with a baseline measured before the build",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "failure_tolerance",
+          "text": "What happens if the agent breaks for a day in week 3?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "The business stops, no manual fallback exists",
+              "score": 1
+            },
+            {
+              "label": "Major scramble, clients notice",
+              "score": 2
+            },
+            {
+              "label": "Manual fallback is painful but possible",
+              "score": 3
+            },
+            {
+              "label": "Manual fallback is documented and rehearsed",
+              "score": 4
+            },
+            {
+              "label": "Manual fallback is in place and the team has run it",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are not set up to own this build",
+          "text": "Even a perfect workflow fails without budget, an owner, and a way to measure success. Fix the operational side before you write the first prompt.",
+          "steps": [
+            "Set a realistic budget that includes 90 days of iteration after launch, not just the initial build",
+            "Name one person as the owner with explicit time allocated to maintain the agent",
+            "Write down the one or two numbers that will tell you in 90 days whether this paid back"
+          ]
+        },
+        "mid": {
+          "headline": "You have most of the operational pieces",
+          "text": "The build can succeed, but the gaps you have (budget, owner, or measurement) are the same ones that make agents quietly rot after launch. Close them before you build.",
+          "steps": [
+            "Lock the success metrics in writing and measure the baseline before any build starts",
+            "Give the named owner time on their calendar specifically for agent maintenance, not just on-call",
+            "Document the manual fallback and run it once as a fire drill before launch"
+          ]
+        },
+        "high": {
+          "headline": "You are ready to own this build",
+          "text": "Budget, owner, metrics, and a fallback. This is the operational profile of an agency that gets paid back inside 90 days and keeps the agent running for years.",
+          "steps": [
+            "Baseline the metric this week so you can prove the payback later, not argue about it",
+            "Set a 30, 60, 90 day check-in cadence with the owner before the build kicks off",
+            "Pick the single highest-scoring workflow from your assessment and start there, not the loudest one"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Want me to score this workflow with you?",
+    "description": "I run this assessment live with agency operators every week. Bring one workflow, leave with a build plan, a budget, and a payback estimate. No pitch, no slides.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

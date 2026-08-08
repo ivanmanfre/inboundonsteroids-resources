@@ -1,0 +1,66 @@
+{
+  "slug": "anti-ai-patterns-guide-the-tells-that-make-ai-written-content-obvious-and-how-to",
+  "title": "Anti-AI-patterns guide: the tells that make AI-written content obvious — and how to strip them",
+  "subtitle": "",
+  "estimated_minutes": 10,
+  "brand": {
+    "accent": "#4C6E3D",
+    "hero_badge": "Guide"
+  },
+  "sections": [
+    {
+      "id": "s_0_why-a-strip-list-beats-a-smarter-prompt",
+      "title": "Why a strip-list beats a smarter prompt",
+      "html": "<p>When you tell a model to \"sound less like AI,\" it doesn't know what you mean, so it keeps every tell and adds adjectives to compensate. You get a longer draft carrying the same signals.</p>\n<p>The fix is mechanical. A model is very good at find-and-replace against a named pattern. It is very bad at the vague vibe of \"be more human.\" Name the 14 patterns, give it the rewrite rule for each, and the quality jump shows up immediately.</p>\n<blockquote>The model never failed to write like you. Nobody handed it the list of tells to cut for this exact job. Once you do, the job becomes search-and-strip, which models do near-perfectly.</blockquote>\n<p>One client's posts were dying at zero reach because they read like a corporate newsletter. Same voice inputs, same model. We added the strip-list, the posts started passing as his own writing, and he now spends about 10 minutes a week approving them.</p>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_1_the-14-tells-and-the-exact-strip-for-eac",
+      "title": "The 14 tells (and the exact strip for each)",
+      "html": "<p>Each row: the pattern, how to catch it, and the before → after so you can watch the fix land.</p>\n<table><thead><tr><th>#</th><th>The tell</th><th>How to find it</th><th>Before → After</th></tr></thead><tbody><tr><td>1</td><td><strong>Corrective-contrast flip</strong></td><td>Regex: <code>(isn't</td><td>aren't</td><td>not just</td><td>not only).{0,20}(it'?s</td><td>they'?re)</code></td><td>Before: a clause that denies the plain reading, then swaps in a loftier one, welded into one breath. After: state the loftier claim once, then back it with a number. *(Shown as description on purpose: the literal pattern fails the very scan we are building.)*</td></tr><tr><td>2</td><td><strong>Era-setting opener</strong></td><td>Search drafts' first sentence for \"world / landscape / age / pace / evolving\"</td><td>\"As the business world keeps accelerating, companies must adapt.\" → \"Three of my clients lost a full day a week to manual reporting.\"</td></tr><tr><td>3</td><td><strong>Inflated value verbs</strong></td><td>Word list: utilize, facilitate, spearhead, harness, supercharge, streamline, optimize, empower</td><td>\"We utilize AI to facilitate growth.\" → \"We use AI to cut your reporting time.\"</td></tr><tr><td>4</td><td><strong>Rule-of-three triads</strong></td><td>Flag any \"X, Y, and Z\" list of abstract nouns</td><td>\"faster, smarter, and more efficient\" → \"you save 6 hours a week.\"</td></tr><tr><td>5</td><td><strong>Dramatic em-dash pause</strong></td><td>Count em-dashes; flag more than one per 300 words</td><td>\"The result, well, it changed everything.\" → \"The result changed how he books work.\"</td></tr><tr><td>6</td><td><strong>Adjective stacking</strong></td><td>Flag two+ adjectives before a noun</td><td>\"a powerful, intuitive, game-changing tool\" → \"a tool that drafts your posts.\"</td></tr><tr><td>7</td><td><strong>Hedge throat-clear</strong></td><td>String match: \"it's worth noting\", \"needless to say\", \"as we all know\"</td><td>\"It's worth noting that consistency matters.\" → \"Post 3 times a week or the algorithm forgets you.\"</td></tr><tr><td>8</td><td><strong>Latinate connectors</strong></td><td>Word list: additionally, consequently, thus, hence, therefore</td><td>\"Additionally, this drives results.\" → \"It booked him two calls last month.\"</td></tr><tr><td>9</td><td><strong>Hollow wrap-up opener</strong></td><td>Match: \"to wrap up\", \"when all is said and done\", \"at the end of the day\"</td><td>\"When all is said and done, AI is here to stay.\" → (delete the sentence; end on the last concrete point.)</td></tr><tr><td>10</td><td><strong>Fake-intimacy pivot</strong></td><td>Match: \"here's the thing\", \"but here's the kicker\", \"let that sink in\"</td><td>\"Here's the thing: most people get this wrong.\" → \"Most people skip the QA step. It costs them the reach.\"</td></tr><tr><td>11</td><td><strong>Audience catch-all</strong></td><td>Regex: <code>whether you'?re.{0,40}or</code></td><td>\"Whether you're a founder or a freelancer, this helps.\" → \"If you approve content for a client, this saves you the editing pass.\"</td></tr><tr><td>12</td><td><strong>Over-hedged claim</strong></td><td>Flag stacked qualifiers: can / may / might / often / generally</td><td>\"This can often potentially help improve results.\" → \"This cut his editing time to 10 minutes a week.\"</td></tr><tr><td>13</td><td><strong>Symmetrical rhythm</strong></td><td>Flag 3+ consecutive sentences of near-equal length</td><td>Three 14-word sentences in a row → break one to 4 words, run one long. Vary it like speech.</td></tr><tr><td>14</td><td><strong>Decorated bullets + overpromising headers</strong></td><td>Flag emoji bullets and Title-Case headers richer than their section</td><td>\"🚀 Game-Changing Strategies\" over two thin lines → plain header that states what the section actually gives.</td></tr></tbody></table>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_2_watch-three-fixes-land",
+      "title": "Watch three fixes land",
+      "html": "<p>Picking the three that show up in almost every first draft.</p>\n<ul><li><strong>Tell 3, inflated verbs:</strong> \"We empower teams to harness AI and supercharge output.\" → \"We set up the automations so your team stops copy-pasting between tools.\" The second one says what literally happens.</li><li><strong>Tell 1, corrective-contrast:</strong> the model loves bolting a denial onto a grand claim in one sentence. Strip the denial, keep the claim, add the proof. The rhythm stops sounding like a TED slide.</li><li><strong>Tell 5, em-dash pause:</strong> the model uses the dash as a drumroll. A human writing fast just starts a new sentence. Replace the dash with a period and you instantly read more like talking.</li></ul>\n<blockquote>If a sentence sounds like a SaaS landing page, it is a tell. Swap it for what literally happened, with a number attached, and it reads like a person who did the work.</blockquote>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_3_the-working-skill-paste-this-into-claude",
+      "title": "The working skill (paste this into Claude)",
+      "html": "<p>This is the actual skill running in my clients' systems. Load it, paste a draft after it, and it strips the 14 tells and returns the cleaned copy plus a short list of what it changed. No banned tokens appear in its own rules, because the QA scan it enforces would flag them.</p>\n<p>markdown\n# Skill: Strip AI Tells</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_4_role",
+      "title": "Role",
+      "html": "<p>You are a line editor. Your only job is to find and remove machine-written\ntells from a draft, then return the cleaned draft. Preserve the author's\nmeaning, claims, numbers, and structure. Change wording only where a tell\nfires. Do not add new ideas. Do not lengthen the draft.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_5_process",
+      "title": "Process",
+      "html": "<ol><li>Read the draft once.</li><li>Run every rule below in order.</li><li>Rewrite each flagged span using the rule's fix.</li><li>Return: (a) the cleaned draft, (b) a bullet list of what you changed,</li></ol>   one line per fix, format: \"Tell N: <old> -> <new>\".",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_6_the-14-rules",
+      "title": "The 14 rules",
+      "html": "<ol><li>CORRECTIVE-CONTRAST FLIP</li></ol>   Find: a sentence that negates a plain reading and pivots to a grander\n   claim in the same breath. Regex aid: (isn't|aren't|not just|not only)\n   within ~20 chars of (it's|they're).\n   Fix: delete the negation. State the grander claim once. Add a fact.\n<ol><li>ERA-SETTING OPENER</li></ol>   Find: an opening sentence about the times, the pace, the industry's\n   evolution, or the modern world.\n   Fix: replace with the sharpest concrete observation or number you have.\n<ol><li>INFLATED VALUE VERBS</li></ol>   Find: utilize, facilitate, spearhead, harness, supercharge, streamline,\n   optimize, empower, and any verb that sounds like a software pitch.\n   Fix: swap for the plain action verb (use, build, cut, fix, send, grow).\n<ol><li>RULE-OF-THREE TRIADS</li></ol>   Find: lists of three abstract adjectives or nouns (\"faster, smarter, X\").\n   Fix: keep one concrete item, or replace the triad with one result.\n<ol><li>DRAMATIC EM-DASH PAUSE</li></ol>   Find: more than one em-dash per ~300 words, or any em-dash used as a\n   suspense beat.\n   Fix: replace with a period and a new sentence.\n<ol><li>ADJECTIVE STACKING</li></ol>   Find: two or more adjectives stacked before a noun.\n   Fix: keep at most one, or drop all and let the noun stand.\n<ol><li>HEDGE THROAT-CLEAR</li></ol>   Find: \"it's worth noting\", \"needless to say\", \"as we all know\",\n   \"make no mistake\".\n   Fix: delete the phrase. Keep the point that followed it.\n<ol><li>LATINATE CONNECTORS</li></ol>   Find: additionally, consequently, thus, hence, therefore, as a glue word\n   at a sentence start.\n   Fix: delete it, or replace with how a person actually links ideas (and,\n   so, but), or start a fresh sentence.\n<ol><li>HOLLOW WRAP-UP OPENER</li></ol>   Find: \"to wrap up\", \"when all is said and done\", and similar closers.\n   Fix: delete the whole sentence. End on the last concrete point.\n<ol><li>FAKE-INTIMACY PIVOT</li></ol>    Find: \"here's the thing\", \"but here's the kicker\", \"let that sink in\".\n    Fix: delete the pivot. State the point directly.\n<ol><li>AUDIENCE CATCH-ALL</li></ol>    Find: \"whether you're a X or a Y\" framing.\n    Fix: name the one reader who actually benefits and what they get.\n<ol><li>OVER-HEDGED CLAIM</li></ol>    Find: stacked qualifiers (can, may, might, often, generally) that drain\n    the claim.\n    Fix: cut the hedges. Make one direct assertion backed by a number.\n<ol><li>SYMMETRICAL RHYTHM</li></ol>    Find: three or more sentences in a row of near-equal length.\n    Fix: break one to under 6 words. Let one run long. Vary it like speech.\n<ol><li>DECORATED BULLETS + OVERPROMISING HEADERS</li></ol>    Find: emoji bullets, and Title-Case headers richer than their section.\n    Fix: plain bullets. Rewrite the header to state what the section gives.",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_7_hard-rules",
+      "title": "Hard rules",
+      "html": "<ul><li>Never invent facts, numbers, or claims to replace a stripped phrase.</li></ul>  If a fix needs a fact you do not have, mark it [ADD A NUMBER HERE].\n<ul><li>Keep the author's voice and length. Strip, do not embellish.</li><li>Your own output must pass all 14 rules. Self-check before returning.</li></ul>\n<hr>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "s_8_how-to-run-it-on-every-draft",
+      "title": "How to run it on every draft",
+      "html": "<ul><li><strong>Load it once:</strong> drop the skill into Claude as a project skill or paste it above any draft you want cleaned.</li><li><strong>Run before any human reads:</strong> the strip pass is the first gate, so your editor only ever sees copy that has already lost its tells.</li><li><strong>Time cost:</strong> the manual version of this is roughly 20 to 30 minutes a post of hunting and rewriting. The skill does it in one pass, and you spend the saved time on the one or two judgment calls that actually need you.</li></ul>\nSend me one of your AI-written drafts and the strip-list output side by side, and I will tell you which two tells your voice still trips most often. <a href=\"https://ivanmanfredi.com/contact\" target=\"_blank\" rel=\"noopener noreferrer\">Get in Touch</a>.",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ]
+}

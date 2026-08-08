@@ -1,0 +1,22 @@
+{
+  "slug": "content-engine-starter-kit",
+  "format_label": "AI Kit",
+  "category": "LinkedIn content engine",
+  "headline": "The Engine Behind My LinkedIn",
+  "headline_emphasis": "Engine",
+  "subhead": "The actual prompts, scoring, and anti-slop checks that run my feed and still book sales calls on ten minutes a week.",
+  "subhead_secondary": "If you run an agency and you're the only one bringing in deals, this is the system you copy.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/post-stills/content-engine-intelligence-layer.png",
+  "inside": [
+    "The 6 pipeline prompts: context, format, hook, voice draft, 9-dimension QA, de-slop",
+    "My anti-slop checklist with the real regex that strips lines a model would write",
+    "The buyer-fit scoring rubric that archives 3 of every 4 ideas",
+    "The content pillars and the exact weights I run them at",
+    "An importable n8n starter workflow"
+  ],
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. This is the exact setup I run, not a theory deck.",
+  "resource_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-downloads/content-engine-starter-kit.zip",
+  "gate_keyword": "ENGINE",
+  "cta_label": "Email me the Starter Kit",
+  "proof_avatar_alt": "Ivan Manfredi"
+}

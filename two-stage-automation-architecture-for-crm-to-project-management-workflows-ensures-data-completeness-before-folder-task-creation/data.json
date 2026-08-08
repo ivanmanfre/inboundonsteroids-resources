@@ -1,0 +1,87 @@
+{
+  "slug": "two-stage-automation-architecture-for-crm-to-project-management-workflows-ensures-data-completeness-before-folder-task-creation",
+  "title": "Two-Stage Automation Architecture Guide",
+  "subtitle": "Architecture guide for CRM-to-project-management automations. Learn the two-stage validation approach that ensures data completeness before folder and task creation.",
+  "estimated_minutes": 10,
+  "brand": {
+    "hero_badge": "Guide"
+  },
+  "intro": {
+    "paragraph": "You made the right call grabbing this. Most CRM-to-project-management automations fail because they fire before the data is ready - then you're stuck fixing 47 half-built folders. This guide shows you how to build a validation layer that catches incomplete records before they spawn broken projects. Spend an hour or two mapping your current flow against this architecture before you build anything new."
+  },
+  "sections": [
+    {
+      "id": "what-to-do-with-this",
+      "title": "What To Do With This",
+      "html": "<p>Spend 1-2 hours mapping your current CRM-to-project-management flow against this architecture. If you already have automation in place, audit it against the two-stage model. If you're building from scratch, use this as your blueprint before you write a single trigger.</p>\n<p>The goal: make sure data is complete before folders and tasks get created. Because fixing a broken automation after it's already spawned 47 incomplete project folders is way harder than building it right the first time.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "why-this-matters",
+      "title": "Why This Matters",
+      "html": "<p>Here's what I see constantly: someone builds an automation that triggers when a deal hits \"closed won\" in HubSpot (or whatever CRM you're using). The automation fires, creates a client folder in ClickUp or Asana or Monday, maybe pulls in some templates, assigns some tasks. Looks great on paper.</p>\n<p>Then reality hits.</p>\n<p>The deal was marked closed won, but the account manager field was empty. The service line items weren't finalized. The primary company name had a typo. Now you've got a project folder that's missing critical context, wrong assignments, and templates that don't match what the client actually bought.</p>\n<p>The fix isn't to slow down your team or add more manual steps. The fix is to build your automation in two stages - where stage one creates a minimal record that humans can verify, and stage two only fires when that record is confirmed ready.</p>\n<p>This is what I call the two-stage rocket ship approach. Stage one gets you off the ground. Stage two gets you into orbit. You don't fire stage two until stage one is complete.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "the-two-stage-architecture",
+      "title": "The Two-Stage Architecture",
+      "html": "<h3>Stage 1: Create the Engagement Record</h3>\n<p><strong>Trigger:</strong> CRM deal reaches a specific status (like \"closed won payment received\")</p>\n<strong>What happens:</strong>\n<ul><li>Creates a minimal record in your project management system</li>\n<li>This is NOT the full project folder with all the templates</li>\n<li>This is a holding record - think of it as a staging area</li>\n</ul>\n<strong>What gets created:</strong>\n<ul><li>A single record in your client engagement dashboard (or equivalent)</li>\n<li>Basic deal info pulled from CRM: client name, deal value, service lines</li>\n<li>Status set to something like \"pending setup\" or \"awaiting verification\"</li>\n</ul>\n<strong>What does NOT happen yet:</strong>\n<ul><li>No project folders created</li>\n<li>No templates duplicated</li>\n<li>No task assignments</li>\n<li>No team notifications</li>\n</ul>\n<strong>Why this matters:</strong>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "real-example-hubspot-to-clickup",
+      "title": "Real Example: HubSpot to ClickUp",
+      "html": "<p>Here's how this works in practice with a HubSpot-to-ClickUp setup I built recently:</p>\n<p><strong>Stage 1 Trigger:</strong> Deal status changes to \"closed won payment received\" in HubSpot</p>\n<strong>Stage 1 Actions:</strong>\n<ul><li>Automation creates a new record in the Client Engagement Dashboard (a database in ClickUp)</li>\n<li>Pulls in: deal name, primary company, service line items, account manager</li>\n<li>Sets record status to \"active\" or \"pending\"</li>\n</ul>\n<strong>Stage 2 Trigger:</strong>\n<strong>Stage 2 Actions:</strong>\n<ul><li>Creates a new folder in the Delivery space with the client name</li>\n<li>Inside that folder: creates subfolders for project management, client onboarding, offboarding, and documents</li>\n<li>Pulls in templates based on what service lines were on the deal</li>\n<li>If the deal had \"HubSpot Implementation\" as a service line, it pulls the HubSpot Implementation checklist from the process library</li>\n<li>If the deal had \"Website Build,\" it pulls the website build templates</li>\n<li>Assigns the account strategist based on the HubSpot field</li>\n</ul>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "handling-existing-vs-new-clients",
+      "title": "Handling Existing vs. New Clients",
+      "html": "<p>One thing that breaks automations fast: creating duplicate folders for clients you already have.</p>\n<p><strong>The problem:</strong> Client \"UTK\" already has a folder. A new deal comes in for UTK. Your automation doesn't know the folder exists, so it creates a brand new one. Now you've got two UTK folders and everyone's confused.</p>\n<p><strong>The solution: fuzzy matching</strong></p>\n<p>Before creating a new folder, the automation should:<br>1. Pull a list of all existing client folders<br>2. Compare the incoming deal's primary company name against that list<br>3. If there's a 90%+ match, route to the existing folder<br>4. If no match, create a new folder</p>\n<p>This handles variations like \"UTK\" vs \"University of Tennessee\" vs \"UTK - Main Campus.\" The automation scores the similarity and makes a decision.</p>\n<p><strong>Pro tip:</strong> If your CRM has a \"deal type\" field with options like \"new business\" vs \"existing business,\" you can use that as an additional signal. Existing business deals should almost always route to an existing folder. New business deals might need a new folder created.</p>\n<p>But tbh, the fuzzy matching is more reliable than trusting your sales team to always pick the right deal type. Build the fallback.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "client-folder-organization-rules",
+      "title": "Client Folder Organization Rules",
+      "html": "<p>Here's where things get nuanced. Not every client needs the same folder structure.</p>\n<h3>Single-Folder Clients</h3>\n<p>Some clients have multiple engagements over time, but all their work should go into one folder.</p>\n<p><strong>Example:</strong> A university client where every project - website redesign, academic calendar, foundation work - all goes into the same UTK folder.</p>\n<strong>How to handle it:</strong>\n<ul><li>Build a rule that checks if the primary company or deal name contains certain keywords</li>\n<li>If deal name contains \"UTK\" OR primary company is \"universityofutk.edu,\" route to the existing UTK folder</li>\n<li>Don't create new subfolders for each engagement</li>\n</ul>\n<h3>White-Label / Parent-Child Clients</h3>\n<p>Some clients have sub-clients. Agency setups, white-label relationships, that kind of thing.</p>\n<p><strong>Example:</strong> An agency called Evenbound has some clients who pay the agency directly (white-label), and some who pay you directly but were referred by the agency.</p>\n<strong>How to handle it:</strong>\n<ul><li>White-label clients (where Evenbound is paying you) go into a root Evenbound folder</li>\n<li>Direct-pay clients (where the end client is paying you) get their own separate folders</li>\n<li>Trigger rule: if primary company = \"Evenbound\" OR deal name contains \"Evenbound,\" route to Evenbound root folder</li>\n<li>Otherwise, create a new client folder</li>\n</ul>\n<strong>The key:</strong>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "what-needs-to-be-in-the-crm-before-the-trigger",
+      "title": "What Needs to Be in the CRM BEFORE the Trigger",
+      "html": "<p>Your automation is only as good as your data. Here's what needs to be filled out in your CRM before that \"closed won\" status change:</p>\n<table><thead><tr><th>Field</th><th>Why It Matters</th></tr></thead><tbody><tr><td>Primary Company</td><td>Determines folder routing and fuzzy matching</td></tr><tr><td>Deal Name</td><td>Backup for matching, plus creates readable folder names</td></tr><tr><td>Service Line Items</td><td>Determines which templates get pulled</td></tr><tr><td>Account Manager / Strategist</td><td>Determines task assignments</td></tr><tr><td>Deal Type (new vs existing)</td><td>Additional routing logic</td></tr><tr><td>Deal Value</td><td>Useful for prioritization views</td></tr></tbody></table>\n<strong>Critical rule:</strong>\n<p>Train your team: fill the fields before changing the status. Or build validation rules in your CRM that prevent status changes when required fields are empty.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "when-things-go-wrong-and-how-to-fix-them",
+      "title": "When Things Go Wrong (and How to Fix Them)",
+      "html": "<p>Even with two-stage architecture, stuff breaks sometimes. Here's the reality:</p>\n<p><strong>Problem:</strong> Wrong folder created because of a typo in the company name<br><strong>Fix:</strong> It's not hard to relocate things in ClickUp. If a new folder was created with lists inside it, you just drag the lists into the correct folder. A few minutes of cleanup, not a disaster.</p>\n<p><strong>Problem:</strong> Template didn't pull because service line was missing<br><strong>Fix:</strong> Go back to your process library, find the template, duplicate it into the correct folder. Then figure out why the service line was missing and fix your CRM validation.</p>\n<p><strong>Problem:</strong> Account manager wasn't assigned<br><strong>Fix:</strong> The field in HubSpot was probably empty when the deal triggered. Manually update the assignment, then update the HubSpot record so it's right for future reference.</p>\n<p><strong>The point:</strong> Two-stage architecture reduces errors significantly, but it won't catch everything. Build your system to minimize errors, not to achieve perfection. Perfection doesn't exist, and chasing it will slow you down.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "moving-docs-and-views-to-folder-level",
+      "title": "Moving Docs and Views to Folder Level",
+      "html": "<p>Quick operational improvement that makes a big difference: put your notes and docs at the folder level, not buried inside lists.</p>\n<p>When you open a client folder, you want to see the key documents right there. Not three clicks deep inside a list inside a subfolder.</p>\n<strong>What this looks like:</strong>\n<ul><li>Client folder opens</li>\n<li>Notes and docs visible immediately in the folder view</li>\n<li>GPT context docs, onboarding checklists, SOPs all accessible without hunting</li>\n</ul>\n<strong>Limitation to know:</strong>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "putting-it-all-together",
+      "title": "Putting It All Together",
+      "html": "<p>The two-stage architecture solves three problems at once:</p>\n<p>1. <strong>Data completeness</strong> - Stage 2 only fires when a human confirms the record is ready<br>2. <strong>Folder routing</strong> - Fuzzy matching and field-based rules put projects in the right place<br>3. <strong>Template accuracy</strong> - Service line items determine exactly which templates get pulled</p>\n<p>It's not complicated, but it requires discipline. Your CRM data has to be clean. Your team has to know the system. And someone has to actually change that status to \"onboarding\" instead of assuming the automation handles everything.</p>\n<p>The automation handles the grunt work. Humans handle the judgment calls. That's the split.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "your-next-7-days",
+      "title": "Your Next 7 Days",
+      "html": "<p><strong>Day 1-2:</strong> Map your current CRM-to-project-management flow. Document every trigger, every action, every field that gets pulled. Identify where data completeness breaks down.</p>\n<p><strong>Day 3-4:</strong> Design your two-stage architecture. Define what Stage 1 creates (minimal engagement record) and what Stage 2 creates (full project infrastructure). Identify the human verification step between them.</p>\n<p><strong>Day 5:</strong> Build your fuzzy matching logic. Pull a list of existing client folders. Define your similarity threshold (90% is usually right). Test with variations of client names.</p>\n<p><strong>Day 6:</strong> Define your folder routing rules. Which clients get single folders? Which have parent-child relationships? Document the field-based and text-based triggers for each scenario.</p>\n<p><strong>Day 7:</strong> Train your team. Make sure everyone knows: fields get filled before status changes. The automation only works if the data is there first.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "ready-to-build-this",
+      "title": "Ready to Build This?",
+      "html": "<p>If you're looking at this and thinking \"yeah, I need help actually implementing this\" - that's what I do.</p>\n<p><a href=\"https://calendly.com/ivan-intelligents/30min\" target=\"_blank\" rel=\"noopener noreferrer\">Get in Touch</a></p>\n<p>We'll map your current setup, design the two-stage architecture, and build it so your team can actually use it. No half-built folders. No missing templates. Just clean automation that works.</p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ],
+  "data_version": 1
+}

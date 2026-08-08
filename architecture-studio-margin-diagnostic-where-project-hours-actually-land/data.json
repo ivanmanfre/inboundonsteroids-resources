@@ -1,0 +1,752 @@
+{
+  "slug": "architecture-studio-margin-diagnostic-where-project-hours-actually-land",
+  "title": "Architecture Studio Margin Diagnostic: Where Project Hours Actually Land",
+  "subtitle": "A 17-question diagnostic for boutique architecture and interior design studios at 8 to 50 staff. Find the largest margin leak between fee-stage hours and timesheet reality, and what to fix in the next 30 days.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "boutique architecture and interior design",
+    "locations": "the US, UK, Australia, and Canada",
+    "count_band": "8-50"
+  },
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your timesheets, fee-stage budgets, and project phases live in a system that can be queried, not buried in spreadsheets and PM memory.",
+      "Documentable decision logic. The rules a PM uses to flag a phase as off-budget can be written down in plain language.",
+      "Narrow initial scope. The first automation handles one decision in one workflow, like a weekly variance flag, not a full PM rebuild.",
+      "Human-in-the-loop by design. Every margin alert, scope change letter, or staffing call routes to a person before it goes external."
+    ],
+    "intro": "This assessment scores against the four preconditions for Agent-Ready Ops. Hit all four in a category and that workflow is ready for AI to carry weight. Miss one and any AI build on top will leak the same hours your timesheets are leaking now."
+  },
+  "proof_card": {
+    "score_label": "Margin Score",
+    "sample_score": 54,
+    "sample_top_leak": "fee-stage to actuals variance (~38 hrs/project unbilled on a typical SD-to-CD run)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your studio?",
+    "answers": [
+      {
+        "label": "Solo principal or 2 to 7 staff. Founder still on the drawing board most days.",
+        "tag": "micro_studio"
+      },
+      {
+        "label": "Boutique studio, 8 to 20 staff. One or two principals, project architects running jobs.",
+        "tag": "boutique_studio"
+      },
+      {
+        "label": "Established studio, 21 to 35 staff. Studio director or COO in place, multiple project teams.",
+        "tag": "established_studio"
+      },
+      {
+        "label": "Scaling studio, 36 to 50 staff. Department heads, dedicated ops, multiple sectors or offices.",
+        "tag": "scaling_studio"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "fee-stage-vs-actuals",
+      "name": "Fee-Stage vs. Actuals",
+      "questions": [
+        {
+          "id": "milestone-variance-tracking",
+          "text": "How rigorously do you compare logged hours against the fee-stage estimate at SD, DD, and CD milestones?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Never compared. We invoice on the schedule in the contract and move on.",
+              "score": 1
+            },
+            {
+              "label": "2. Eyeballed at the end of the project, sometimes, usually after a bad one.",
+              "score": 2
+            },
+            {
+              "label": "3. Reviewed at each milestone, but nothing triggers until we are 30 percent or more over.",
+              "score": 3
+            },
+            {
+              "label": "4. Tracked monthly per phase, with a soft threshold that prompts a PM conversation.",
+              "score": 4
+            },
+            {
+              "label": "5. Tracked weekly per phase, with a written threshold that triggers a scope or staffing call.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "phase-budget-by-role",
+          "text": "How precisely is each phase budgeted by role (principal, PA, designer, drafter) before kickoff?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We budget total fee. Role mix is whoever has time.",
+              "score": 1
+            },
+            {
+              "label": "2. We split principal vs. team hours. Below that, it is a guess.",
+              "score": 2
+            },
+            {
+              "label": "3. Each phase has a target hour count by role, set from the last similar project.",
+              "score": 3
+            },
+            {
+              "label": "4. Role-level budgets per phase, reviewed against actuals after each project.",
+              "score": 4
+            },
+            {
+              "label": "5. Role-level budgets per phase, calibrated from a rolling library of closed-project actuals.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "principal-time-allocation",
+          "text": "How accurately do you know what percentage of principal hours each project actually consumes?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Principals do not log time. We assume it averages out.",
+              "score": 1
+            },
+            {
+              "label": "2. Principals log a weekly bucket per project. Accuracy is loose.",
+              "score": 2
+            },
+            {
+              "label": "3. Principals log to project and phase. We review at quarter end.",
+              "score": 3
+            },
+            {
+              "label": "4. Principals log to phase, and we know per-project principal cost monthly.",
+              "score": 4
+            },
+            {
+              "label": "5. Principal hours are budgeted per phase, logged daily, and variance is reviewed monthly.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "post-project-debrief",
+          "text": "How consistently does a closed project trigger a written margin debrief that updates future fee templates?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Never. Once a project closes, we move to the next one.",
+              "score": 1
+            },
+            {
+              "label": "2. We talk about the bad ones in a meeting. Nothing is written down.",
+              "score": 2
+            },
+            {
+              "label": "3. PM writes notes. They live in the project folder and rarely get reread.",
+              "score": 3
+            },
+            {
+              "label": "4. Structured debrief per project. Findings are reviewed at quarterly ops meetings.",
+              "score": 4
+            },
+            {
+              "label": "5. Every closed project updates a shared fee template and role-mix benchmark, automatically.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are flying blind on phase-level economics.",
+          "text": "Without milestone variance tracking, the first signal that a project is underwater arrives at invoicing, when it is too late to renegotiate scope. The fix is not a new PM tool. It is one weekly habit: a 15-minute phase variance review for every active project, with a written threshold that forces a decision.",
+          "steps": [
+            "Pick one active project this week. Pull logged hours by phase and compare to the fee estimate.",
+            "Set a written variance threshold (10 percent recommended) that triggers either a scope letter or a staffing change.",
+            "Schedule a recurring 30-minute Friday review of variance across all active projects, owned by one person."
+          ]
+        },
+        "mid": {
+          "headline": "You see the variance but you act too late.",
+          "text": "Tracking at end of milestone is a lagging signal. By the time you catch a 30 percent overrun, the hours are already gone. Move the trigger earlier and add role-level budgets so you can see which seat is bleeding before the phase closes.",
+          "steps": [
+            "Tighten the variance threshold to 10 to 15 percent and review weekly, not at milestone close.",
+            "Add role-level hour budgets per phase using your last three closed projects as the calibration set.",
+            "Write a one-page scope-change letter template. Send it the moment the threshold trips."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Your variance discipline is solid. The next gain is closing the loop: every closed project should automatically update fee templates and role-mix benchmarks, so each new proposal is calibrated to actual delivery cost rather than the last principal's intuition.",
+          "steps": [
+            "Build a shared closed-project library with phase actuals by role, queryable when scoping new fees.",
+            "Auto-flag new proposals where the role mix deviates more than 15 percent from comparable closed projects.",
+            "Tie principal bonus or distributions to phase-margin variance, not just project-level profit."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~38 hrs/project of unbilled time recoverable on a typical SD-to-CD run when milestone variance is reviewed weekly instead of at close",
+        "lever": "Pull the variance review forward from milestone close to a weekly 15-minute phase check with a written threshold.",
+        "talking_points": [
+          "Show the last three closed projects with logged hours by phase against the fee estimate. Quantify the overage in dollars at blended rate.",
+          "Frame this as a margin protection move, not a tool purchase. The fix is a habit and a threshold, not new software.",
+          "Name the one person who will own the Friday review and the one threshold that will trigger a scope letter."
+        ],
+        "proof_of_concept": "For one week, pull phase variance on every active project on Friday morning, write a one-page scope letter for any project over 10 percent, and tally the hours protected by the following Friday."
+      }
+    },
+    {
+      "id": "scope-and-change-control",
+      "name": "Scope and Change Control",
+      "questions": [
+        {
+          "id": "change-order-discipline",
+          "text": "How consistently do client-driven scope changes become a written, signed change order before work begins?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We absorb most changes. A formal change order would feel adversarial.",
+              "score": 1
+            },
+            {
+              "label": "2. Big changes get a written note. Smaller asks get done as goodwill.",
+              "score": 2
+            },
+            {
+              "label": "3. Change orders happen, but usually after the work is partly done.",
+              "score": 3
+            },
+            {
+              "label": "4. PMs are trained to issue a change order before any out-of-scope hour is logged.",
+              "score": 4
+            },
+            {
+              "label": "5. Every out-of-scope ask triggers a signed change order, tracked in a CRM or PM tool, before work starts.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scope-creep-attribution",
+          "text": "How clearly can you trace which client, which phase, and which team member absorb the most uncompensated scope creep?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We have no visibility. Scope creep is a feeling, not a number.",
+              "score": 1
+            },
+            {
+              "label": "2. We know which clients are difficult, anecdotally.",
+              "score": 2
+            },
+            {
+              "label": "3. PMs flag scope creep in project notes. We review big offenders at year end.",
+              "score": 3
+            },
+            {
+              "label": "4. We tag uncompensated hours in the timesheet system and review per project.",
+              "score": 4
+            },
+            {
+              "label": "5. Uncompensated hours are tagged, attributed, and reported monthly by client, phase, and seat.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "revision-rounds-pricing",
+          "text": "How explicitly does your contract limit revision rounds at SD and DD with priced overages?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No revision limits. Clients revise until they are happy.",
+              "score": 1
+            },
+            {
+              "label": "2. We say 'reasonable revisions' in the contract. Never enforced.",
+              "score": 2
+            },
+            {
+              "label": "3. Revision rounds are limited in writing but rarely invoked.",
+              "score": 3
+            },
+            {
+              "label": "4. Rounds are limited and overage rates are stated. Enforced inconsistently.",
+              "score": 4
+            },
+            {
+              "label": "5. Revision rounds are limited, overages are priced, and the PM enforces it as standard practice.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Scope creep is a tax you are paying without seeing the bill.",
+          "text": "When changes get absorbed silently, the cost shows up later as missed margin and burned-out PAs. The fix is a friction point: a one-page change order template the PM can send in 90 seconds, and a rule that no out-of-scope hour gets logged without one.",
+          "steps": [
+            "Draft a one-page change order template with scope, hours, fee, and a signature line.",
+            "Add a rule to the project kickoff: out-of-scope work requires a signed change order before logging hours.",
+            "Pick one active project this week and apply the rule. Send a change order on the next ask."
+          ]
+        },
+        "mid": {
+          "headline": "You issue change orders but you do not measure the leak.",
+          "text": "Catching big changes is good. The gap is the steady drip of small asks that never become change orders and never show up in your reporting. Tag uncompensated hours so you can see which clients and phases are burning the most.",
+          "steps": [
+            "Add an 'uncompensated' tag in your timesheet system for every out-of-scope hour.",
+            "Run a monthly report by client and phase. Flag any client with more than 5 percent uncompensated time.",
+            "Use the report to renegotiate fees on repeat offenders or fire the worst-margin client this quarter."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "You have the change control discipline. The next gain is using your uncompensated-hour data to reprice your fee templates by client type, so the most demanding sectors carry a margin premium baked in from the proposal stage.",
+          "steps": [
+            "Cluster clients by uncompensated-hour rate (residential, hospitality, multifamily, etc.) and recompute true margin.",
+            "Bake a sector-specific complexity premium into next year's fee templates.",
+            "Track win rate by sector after the repricing. Drop the segments where margin and win rate both deteriorate."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~6 to 12 percent of project fee typically recovered when uncompensated hours are tagged and converted into change orders",
+        "lever": "Make 'no signed change order, no logged hour' a hard rule, then measure the uncompensated tag monthly to find the worst clients.",
+        "talking_points": [
+          "Frame this as protecting your team, not squeezing the client. Uncompensated hours land on PAs and designers as nights and weekends.",
+          "Show the uncompensated-hour report by client. Name the bottom three and propose either a fee renegotiation or a graceful exit.",
+          "Position the change order template as a 90-second tool, not a legal document, so PMs actually use it."
+        ],
+        "proof_of_concept": "For 30 days, require a signed change order on every out-of-scope ask across two active projects, tag uncompensated hours in timesheets, and report the dollar value recovered or quantified at the end of the month."
+      }
+    },
+    {
+      "id": "resourcing-and-utilization",
+      "name": "Resourcing and Utilization",
+      "questions": [
+        {
+          "id": "weekly-staffing-plan",
+          "text": "How current and accurate is your weekly staffing plan that maps people to project phases?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No formal plan. PMs grab whoever is free.",
+              "score": 1
+            },
+            {
+              "label": "2. Whiteboard or spreadsheet, updated occasionally.",
+              "score": 2
+            },
+            {
+              "label": "3. Updated weekly in a tool, but commonly out of date by Wednesday.",
+              "score": 3
+            },
+            {
+              "label": "4. Updated weekly with phase-level allocations. Reviewed at Monday standup.",
+              "score": 4
+            },
+            {
+              "label": "5. Live resourcing tool, phase-level, reviewed at Monday standup and rebalanced midweek.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "utilization-target-tracking",
+          "text": "How clearly does each role have a billable utilization target that is measured monthly?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No targets. We do not track utilization by role.",
+              "score": 1
+            },
+            {
+              "label": "2. We have a studio-wide target. Not broken down by seat.",
+              "score": 2
+            },
+            {
+              "label": "3. Targets exist by role but only reviewed at year end.",
+              "score": 3
+            },
+            {
+              "label": "4. Role-level targets, reviewed monthly with managers.",
+              "score": 4
+            },
+            {
+              "label": "5. Role-level targets, reviewed monthly, tied to capacity planning and hiring decisions.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "bench-and-pipeline-match",
+          "text": "How tightly do you match incoming pipeline against current bench capacity before signing a contract?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We sign first and figure out staffing later.",
+              "score": 1
+            },
+            {
+              "label": "2. Principal makes a gut call on whether we have room.",
+              "score": 2
+            },
+            {
+              "label": "3. PM checks the resourcing tool before quoting a start date.",
+              "score": 3
+            },
+            {
+              "label": "4. Bench capacity is reviewed weekly against pipeline. Start dates are pushed when needed.",
+              "score": 4
+            },
+            {
+              "label": "5. Signed projects only get a confirmed start date when the resourcing tool shows the seats free.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are staffing reactively and your senior people are absorbing the slack.",
+          "text": "Without a live staffing plan, the seats that overflow are the most expensive ones, principals and PAs. The first move is a single source of truth for who is on what phase this week, even if it is a spreadsheet, reviewed at Monday standup.",
+          "steps": [
+            "Build a one-page weekly resourcing sheet listing every project, phase, and assigned hours per person.",
+            "Run a 20-minute Monday standup to align the sheet with what is actually planned for the week.",
+            "Add a column for available bench hours. Use it to push or pull start dates on incoming work."
+          ]
+        },
+        "mid": {
+          "headline": "You have a plan but it goes stale midweek.",
+          "text": "A staffing plan that is wrong by Wednesday is functionally absent. Move from a static doc to a live tool with phase-level allocations, and tie utilization targets to monthly reviews so you catch underused seats before quarter end.",
+          "steps": [
+            "Move the staffing plan into a tool that supports phase-level allocations (Float, Resource Guru, or similar).",
+            "Set role-level monthly utilization targets and review them with each manager on the first of the month.",
+            "Make Wednesday midweek rebalancing a 15-minute standing meeting, owned by ops or a senior PM."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Your resourcing discipline is in the top decile. The next gain is forward-looking: tie your sales pipeline to capacity so you stop signing work the studio cannot deliver on the requested timeline, and use that capacity signal to drive hiring decisions before the bottleneck hits.",
+          "steps": [
+            "Connect pipeline probability to a 90-day capacity forecast and review it weekly with sales and ops.",
+            "Set a hiring trigger threshold (e.g., projected utilization above 90 percent for 8 consecutive weeks).",
+            "Quote start dates from the capacity model, not from client pressure. Push dates when the seats are not free."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "5 to 12 percent utilization gain typically available when resourcing moves from static spreadsheet to live phase-level tool with weekly rebalancing",
+        "lever": "Make the resourcing plan a living document with a Monday standup and a Wednesday rebalance, owned by one person.",
+        "talking_points": [
+          "Show the gap between assumed and actual utilization for the last quarter, by role. Quantify the cost of underused senior seats.",
+          "Frame the resourcing tool as the single source of truth that lets sales quote real start dates instead of optimistic ones.",
+          "Tie utilization targets to monthly reviews and to hiring triggers, so capacity drives hiring instead of crisis hiring."
+        ],
+        "proof_of_concept": "For 4 weeks, run a Monday phase-level staffing standup and a Wednesday rebalance, then compare logged utilization by role to the prior 4 weeks."
+      }
+    },
+    {
+      "id": "documentation-and-handoffs",
+      "name": "Documentation and Handoffs",
+      "questions": [
+        {
+          "id": "kickoff-documentation",
+          "text": "How standardized is the project kickoff package (scope, fee breakdown, role assignments, milestones, decision rights) handed to the PM?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. The principal verbally briefs the PM. Documentation comes later, if ever.",
+              "score": 1
+            },
+            {
+              "label": "2. The contract is the kickoff package. Everything else lives in email.",
+              "score": 2
+            },
+            {
+              "label": "3. PMs write a kickoff doc, but the format varies by PM.",
+              "score": 3
+            },
+            {
+              "label": "4. Standard kickoff template, completed for every project before work begins.",
+              "score": 4
+            },
+            {
+              "label": "5. Standard template, completed at kickoff, reviewed at SD and DD with the team.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "consultant-coordination",
+          "text": "How systematic is your tracking of consultant deliverables (structural, MEP, civil) against the project schedule?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. PMs chase consultants reactively when something is missing.",
+              "score": 1
+            },
+            {
+              "label": "2. Email reminders go out, but no central tracker.",
+              "score": 2
+            },
+            {
+              "label": "3. Spreadsheet of consultant deliverables, updated by the PM.",
+              "score": 3
+            },
+            {
+              "label": "4. Consultant deliverables tracked in the PM tool with due dates and owners.",
+              "score": 4
+            },
+            {
+              "label": "5. Tracked in the PM tool with automated reminders and weekly status reviewed at standup.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "phase-handoff-rigor",
+          "text": "How rigorously is each phase transition (SD to DD, DD to CD, CD to CA) handed off with a checklist of completed items?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No handoff checklist. We move when it feels done.",
+              "score": 1
+            },
+            {
+              "label": "2. PM judges readiness. Principal sometimes overrides.",
+              "score": 2
+            },
+            {
+              "label": "3. Informal checklist exists. Not consistently used.",
+              "score": 3
+            },
+            {
+              "label": "4. Written checklist per phase, completed before the next phase starts.",
+              "score": 4
+            },
+            {
+              "label": "5. Written checklist, signed off by PA and principal, with a phase-close review meeting.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Knowledge lives in heads and email threads, not in the system.",
+          "text": "When a key person is on holiday or leaves, projects stall and rework spikes. The first move is a single kickoff template that captures scope, fee breakdown, role assignments, and decision rights in one place, completed before any hour is logged.",
+          "steps": [
+            "Build a one-page kickoff template covering scope, fee by phase, roles, milestones, and decision rights.",
+            "Make it a hard requirement: no project starts without the kickoff doc completed and shared.",
+            "Backfill the template for the three highest-value active projects this week."
+          ]
+        },
+        "mid": {
+          "headline": "Documentation exists but inconsistency drains its value.",
+          "text": "Templates that vary by PM are not really templates. Standardize the kickoff doc, the consultant tracker, and the phase handoff checklist so any PM can pick up any project without translation cost. This also unlocks pattern matching across projects.",
+          "steps": [
+            "Lock a single standard for kickoff doc, consultant tracker, and phase handoff checklist across all PMs.",
+            "Audit the three most recent active projects against the standard. Backfill gaps.",
+            "Add the kickoff and phase-handoff docs to the monthly ops review as a compliance check."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Your documentation hygiene is rare in studios your size. The next gain is making that documentation queryable: a structured project record that lets you ask questions like 'show me every CD-phase variance over 15 percent in the last 12 months' without a PM having to dig through folders.",
+          "steps": [
+            "Move kickoff and phase-handoff docs into a structured database (Notion DB, Airtable, or PM tool with custom fields).",
+            "Build a quarterly project retrospective dashboard pulling from the structured record.",
+            "Use the dashboard to set the next year's fee templates and capacity assumptions."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~8 to 15 hours per project saved when kickoff, consultant coordination, and phase handoffs run from a single standardized template instead of PM-by-PM",
+        "lever": "Standardize three artifacts (kickoff doc, consultant tracker, phase handoff checklist) and make them mandatory.",
+        "talking_points": [
+          "Show the variance in how PMs run projects today. Quantify the rework cost when a PM hands off mid-project.",
+          "Frame standardization as freeing PMs to design and lead, not as bureaucracy.",
+          "Tie the documentation standard to the monthly ops review so it does not decay after the rollout."
+        ],
+        "proof_of_concept": "For one month, require the standard kickoff doc and phase handoff checklist on every new project and every active phase transition, then track time saved on PM onboarding and rework."
+      }
+    },
+    {
+      "id": "billing-and-cash-flow",
+      "name": "Billing and Cash Flow",
+      "questions": [
+        {
+          "id": "invoicing-cadence",
+          "text": "How predictably do you invoice on a fixed cadence tied to phase progress, not principal availability?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Invoicing happens when the principal gets to it. Often weeks late.",
+              "score": 1
+            },
+            {
+              "label": "2. Monthly invoicing, but cadence slips during busy stretches.",
+              "score": 2
+            },
+            {
+              "label": "3. Monthly invoicing, on time, tied to a calendar reminder.",
+              "score": 3
+            },
+            {
+              "label": "4. Bi-monthly or milestone-based, automated drafts reviewed by the PM.",
+              "score": 4
+            },
+            {
+              "label": "5. Phase-progress invoicing on a fixed cadence, drafts auto-generated and reviewed in under 30 minutes total.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ar-aging-discipline",
+          "text": "How actively do you manage AR aging, with a written rule for when collection escalates?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We chase clients only when cash is tight.",
+              "score": 1
+            },
+            {
+              "label": "2. Bookkeeper sends statements monthly. No escalation rule.",
+              "score": 2
+            },
+            {
+              "label": "3. We review AR aging quarterly and chase the worst offenders.",
+              "score": 3
+            },
+            {
+              "label": "4. AR aging is reviewed monthly with a written escalation path at 30, 60, and 90 days.",
+              "score": 4
+            },
+            {
+              "label": "5. AR aging reviewed weekly, automated reminders at 15 and 30 days, principal involvement at 60.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "wip-visibility",
+          "text": "How clearly do you see work-in-progress (logged but unbilled hours) at any moment, by project?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. WIP is invisible. We find out when we invoice.",
+              "score": 1
+            },
+            {
+              "label": "2. Bookkeeper produces a WIP report quarterly.",
+              "score": 2
+            },
+            {
+              "label": "3. Monthly WIP report. Reviewed by principal.",
+              "score": 3
+            },
+            {
+              "label": "4. Live WIP dashboard, reviewed by PM and principal weekly.",
+              "score": 4
+            },
+            {
+              "label": "5. Live WIP dashboard with phase-level detail, reviewed weekly with action triggers above thresholds.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your cash flow is hostage to whoever runs invoicing.",
+          "text": "When invoicing depends on principal availability, projects sit in WIP for weeks and cash arrives months after the work. The first move is a fixed monthly invoicing date, calendar-locked, with draft invoices prepared by an admin or PM and signed off in under an hour.",
+          "steps": [
+            "Lock a monthly invoicing date (e.g., the 5th) and put it in every relevant calendar as a recurring block.",
+            "Have an admin or PM prepare draft invoices the day before. Principal signs off in one batch.",
+            "Run a one-time backlog clean-up to invoice everything currently sitting in WIP older than 30 days."
+          ]
+        },
+        "mid": {
+          "headline": "You invoice on time but you do not see WIP or AR until it is a problem.",
+          "text": "Monthly cadence is the floor, not the ceiling. Move to phase-progress invoicing where you can, and add weekly WIP and AR reviews so you catch slow-paying clients and bloated WIP before they hurt cash.",
+          "steps": [
+            "Shift to phase-progress invoicing on the largest 3 projects this quarter.",
+            "Set up a weekly 15-minute WIP and AR review owned by the PM lead and the bookkeeper.",
+            "Write a 3-step AR escalation rule (15 days reminder, 30 days second notice, 60 days principal call)."
+          ]
+        },
+        "high": {
+          "headline": "Keep sharpening. Here is the frontier.",
+          "text": "Your billing discipline is strong. The next gain is forecasting cash from your WIP and pipeline data, so principal distributions and hiring decisions are made against a 90-day cash forecast rather than a current bank balance.",
+          "steps": [
+            "Build a 90-day cash forecast pulling from WIP, signed contract value, and AR aging.",
+            "Review the forecast monthly with the principals to time distributions and hiring against real cash, not gut feel.",
+            "Set a minimum cash reserve target (e.g., 90 days payroll) and treat anything above that as deployable capital."
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "20 to 45 days of average WIP-to-cash cycle compression typically available when invoicing moves to phase-progress cadence with weekly WIP and AR review",
+        "lever": "Lock a fixed invoicing cadence and add a weekly 15-minute WIP and AR review with a written escalation path.",
+        "talking_points": [
+          "Show current days-sales-outstanding and average WIP age. Translate it to a dollar cost of capital tied up in unbilled work.",
+          "Frame phase-progress invoicing as a client-trust move, not a pressure tactic. Invoicing aligned to delivered value reads as professional.",
+          "Make the bookkeeper or ops lead the owner of the weekly review, not the principal, so it actually happens."
+        ],
+        "proof_of_concept": "For 30 days, lock a monthly invoicing date, run a weekly WIP and AR review, and apply a 3-step escalation rule. Track days-sales-outstanding and unbilled WIP at start and end."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_call",
+      "when": "(persona === \"boutique_studio\" || persona === \"established_studio\" || persona === \"scaling_studio\") && overall_score < 70",
+      "headline": "Want a working call on your studio margin leaks?",
+      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against architecture and interior design studios your size, and pinpoint the ONE fix I'd prioritize first. No pitch ,  if we both see signal, we keep going.",
+      "button": "Book a 30-min working call",
+      "url": "https://ivanmanfredi.com/start"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === \"micro_studio\"",
+      "headline": "Solo or under 8 staff? You are early for a custom audit.",
+      "description": "Automation ROI at your scale is real, but payback is longer and the use points are different. Follow me on LinkedIn for tactical architecture and design studio ops breakdowns 3 times a week. When you cross 8 staff and start running multiple project teams, come back and retake. The recommendation will change.",
+      "button": "Follow on LinkedIn",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You are running tight. Here is what studios your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from sector-level fee repricing using your closed-project actuals, principal-time allocation as a leading hiring signal, and 90-day cash forecasting from WIP plus pipeline. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly architecture and design studio ops teardown",
+      "description": "One tactical case study and one n8n workflow breakdown per week. How mid-market boutique studios run lean. No fluff, no pitch.",
+      "button": "Follow on LinkedIn",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ],
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

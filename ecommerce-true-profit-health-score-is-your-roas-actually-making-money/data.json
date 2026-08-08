@@ -1,0 +1,783 @@
+{
+  "slug": "ecommerce-true-profit-health-score-is-your-roas-actually-making-money",
+  "title": "Find The <em>True Profit</em> Behind Your ROAS.",
+  "subtitle": "A 4x ROAS can still lose money once product, shipping and fees come out. 21 questions score your profit engine and give you the break-even ROAS you need before scaling pays. Takes 8 minutes.",
+  "brand": {
+    "accent": "#014D4E",
+    "hero_badge": "Free Ecommerce Assessment"
+  },
+  "estimated_minutes": 8,
+  "persona_selector": {
+    "id": "store_size",
+    "text": "What is your store doing in monthly revenue right now?",
+    "answers": [
+      {
+        "label": "Under $50k/mo, still dialing in the product",
+        "tag": "micro"
+      },
+      {
+        "label": "$50k to $150k/mo, pushing ad spend to grow",
+        "tag": "small"
+      },
+      {
+        "label": "$150k to $500k/mo, structured but margin is fuzzy",
+        "tag": "mid"
+      },
+      {
+        "label": "$500k+/mo, scaling hard on paid",
+        "tag": "large"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "margin_visibility",
+      "name": "Margin Visibility",
+      "questions": [
+        {
+          "id": "contribution_margin",
+          "text": "Do you know your true contribution margin on an average order, after product cost, shipping and payment fees?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No idea, we look at revenue and ROAS",
+              "score": 1
+            },
+            {
+              "label": "A rough gut number, never actually calculated",
+              "score": 2
+            },
+            {
+              "label": "We worked it out once, months ago",
+              "score": 3
+            },
+            {
+              "label": "We know it and update it a few times a year",
+              "score": 4
+            },
+            {
+              "label": "We know it per order and it updates automatically",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cost_completeness",
+          "text": "How complete are the costs loaded into the profit number you actually look at?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Just product cost, everything else is ignored",
+              "score": 1
+            },
+            {
+              "label": "Product plus shipping, roughly",
+              "score": 2
+            },
+            {
+              "label": "Product, shipping and fees, updated manually",
+              "score": 3
+            },
+            {
+              "label": "Most costs, including returns and some overhead",
+              "score": 4
+            },
+            {
+              "label": "Every cost, allocated per order automatically",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "margin_by_sku",
+          "text": "Can you see which products actually make money versus which ones quietly drain it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, the store is one blended number to us",
+              "score": 1
+            },
+            {
+              "label": "We have a hunch about our winners and losers",
+              "score": 2
+            },
+            {
+              "label": "We can work it out in a spreadsheet if we sit down",
+              "score": 3
+            },
+            {
+              "label": "We track margin by product line",
+              "score": 4
+            },
+            {
+              "label": "Live margin by SKU, sorted worst to best",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "returns_in_math",
+          "text": "Are refunds, returns and chargebacks in your margin math?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, a sale is a sale to us",
+              "score": 1
+            },
+            {
+              "label": "We know the rate but never deduct it",
+              "score": 2
+            },
+            {
+              "label": "We subtract a flat guess for returns",
+              "score": 3
+            },
+            {
+              "label": "We track real return cost by product",
+              "score": 4
+            },
+            {
+              "label": "Returns, restocking and chargebacks all flow into per-order margin",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are scaling on a number that hides your losses",
+          "text": "Revenue and ROAS both look fine while the order underneath them loses money. Until you know your real contribution margin after product, shipping and fees, every spend increase is a bet you cannot price. This is the first thing to fix because every other decision downstream inherits the blind spot.",
+          "steps": [
+            "Calculate contribution margin on your top 5 products this week: price minus landed cost, shipping, fees and a return allowance",
+            "Find the two products where a good ROAS still loses money and pause spend on them",
+            "Set one number, contribution margin per order, that every campaign decision has to clear"
+          ]
+        },
+        "mid": {
+          "headline": "You know your margin, but only when you sit down to find it",
+          "text": "You can produce a real margin number, but it lives in a spreadsheet you rebuild by hand, so it is always a week behind the decisions it should be driving. The move is making that number live and per order so it shows up before you scale, not after.",
+          "steps": [
+            "Pull margin by SKU into one view and sort it worst to best",
+            "Wire landed cost, shipping and fees into that view so it updates without a manual rebuild",
+            "Review your bottom five margin products monthly and decide keep, reprice or cut"
+          ]
+        },
+        "high": {
+          "headline": "Your margin is visible, now make it a weapon",
+          "text": "You see true margin per order and per product, which most brands your size never do. The next layer is using it to steer spend automatically toward the products and cohorts that actually compound profit.",
+          "steps": [
+            "Route ad budget by product-level contribution, not blended ROAS",
+            "Flag any SKU whose margin drops below target and pull it from active campaigns automatically",
+            "Feed margin by cohort into your retention and bundling decisions"
+          ]
+        }
+      }
+    },
+    {
+      "id": "roas_profit",
+      "name": "ROAS vs Profit Tracking",
+      "questions": [
+        {
+          "id": "profit_per_order",
+          "text": "When you judge a campaign, are you looking at profit per order or just ROAS?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Just ROAS, that is the number we optimize",
+              "score": 1
+            },
+            {
+              "label": "ROAS, with a vague sense of whether it is profitable",
+              "score": 2
+            },
+            {
+              "label": "We check profit occasionally, ROAS day to day",
+              "score": 3
+            },
+            {
+              "label": "We track both side by side",
+              "score": 4
+            },
+            {
+              "label": "Profit per order is primary, ROAS is secondary",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "breakeven_roas",
+          "text": "Do you know the exact break-even ROAS you need before a campaign makes money?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we aim for a round number like 3x or 4x",
+              "score": 1
+            },
+            {
+              "label": "A rough target somebody set a while ago",
+              "score": 2
+            },
+            {
+              "label": "We calculated it once for the store overall",
+              "score": 3
+            },
+            {
+              "label": "We know it and revisit it when costs change",
+              "score": 4
+            },
+            {
+              "label": "We know it per product and it updates with costs",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "blended_vs_channel",
+          "text": "How do you read performance across your channels?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "One blended ROAS number for everything",
+              "score": 1
+            },
+            {
+              "label": "Platform-reported ROAS, taken at face value",
+              "score": 2
+            },
+            {
+              "label": "Channel-level ROAS, pulled by hand",
+              "score": 3
+            },
+            {
+              "label": "Channel-level profit, reconciled weekly",
+              "score": 4
+            },
+            {
+              "label": "Channel and campaign profit, live and de-duplicated",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "attribution_trust",
+          "text": "How much do you trust the ROAS your ad platforms report?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Completely, that is the number we act on",
+              "score": 1
+            },
+            {
+              "label": "Mostly, though the totals never match the bank",
+              "score": 2
+            },
+            {
+              "label": "We know it overstates, so we mentally discount it",
+              "score": 3
+            },
+            {
+              "label": "We compare it against real orders regularly",
+              "score": 4
+            },
+            {
+              "label": "We track real contribution against blended spend, platform numbers are just a signal",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "A 4x ROAS can still be a loss, and right now you would not catch it",
+          "text": "Optimizing to ROAS alone means the platform decides what winning looks like, and the platform does not know your costs. On a $60 order with $50 of product, shipping and fees, a 4x ROAS loses money on every sale. Without a break-even ROAS tied to your real costs, you are scaling whatever Meta says is good.",
+          "steps": [
+            "Calculate your break-even ROAS from real costs: order value divided by contribution margin per order",
+            "Put that break-even line on the same screen as your campaign ROAS so the gap is obvious",
+            "Reconcile one week of platform-reported revenue against actual orders in the bank"
+          ]
+        },
+        "mid": {
+          "headline": "You watch profit sometimes, ROAS always",
+          "text": "You know ROAS can lie, and you glance at profit, but the day-to-day steering still runs on the platform number. Closing that gap means profit per order becomes the metric campaigns are judged on, checked as often as ROAS is.",
+          "steps": [
+            "Set a break-even ROAS per product and update it when costs move",
+            "Move to channel-level profit, reconciled weekly against the bank",
+            "Kill any campaign that sits below break-even for three days, regardless of reported ROAS"
+          ]
+        },
+        "high": {
+          "headline": "You steer on profit, now automate the guardrails",
+          "text": "Profit per order runs your decisions and you already discount platform numbers. The next step is turning your break-even discipline into automated rules so nothing scales past the point where it stops making money.",
+          "steps": [
+            "Trigger alerts the moment a campaign crosses below its product break-even ROAS",
+            "Blend true contribution across channels so overlapping attribution stops inflating winners",
+            "Tie budget shifts to marginal profit, not last-click ROAS"
+          ]
+        }
+      }
+    },
+    {
+      "id": "cost_accounting",
+      "name": "Cost Accounting Discipline",
+      "questions": [
+        {
+          "id": "cogs_freshness",
+          "text": "How current is your COGS data?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We are not sure what our landed cost is right now",
+              "score": 1
+            },
+            {
+              "label": "Set once, has not moved despite supplier changes",
+              "score": 2
+            },
+            {
+              "label": "Updated when we remember, maybe quarterly",
+              "score": 3
+            },
+            {
+              "label": "Updated whenever supplier prices change",
+              "score": 4
+            },
+            {
+              "label": "Landed cost tracked per batch, always current",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "shipping_true_cost",
+          "text": "Is your real per-order fulfillment and shipping cost tracked?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, shipping is just a line we lose money on",
+              "score": 1
+            },
+            {
+              "label": "We know the average, not per order",
+              "score": 2
+            },
+            {
+              "label": "We track it per order by hand",
+              "score": 3
+            },
+            {
+              "label": "It flows in from our 3PL or carrier",
+              "score": 4
+            },
+            {
+              "label": "Real fulfillment cost per order, pick-pack included, in every margin number",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "fee_tracking",
+          "text": "Are payment processing and platform fees in your per-order cost?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we forget those exist",
+              "score": 1
+            },
+            {
+              "label": "We know the percentage but never deduct it",
+              "score": 2
+            },
+            {
+              "label": "Deducted as a flat percentage",
+              "score": 3
+            },
+            {
+              "label": "Actual fees pulled per transaction",
+              "score": 4
+            },
+            {
+              "label": "Every processor and platform fee reconciled per order",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "overhead_allocation",
+          "text": "Are overhead costs like software, apps and team allocated to your profit number?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, profit means revenue minus product cost",
+              "score": 1
+            },
+            {
+              "label": "We look at them separately, once a month",
+              "score": 2
+            },
+            {
+              "label": "We subtract a rough monthly lump",
+              "score": 3
+            },
+            {
+              "label": "Allocated per order as a loaded rate",
+              "score": 4
+            },
+            {
+              "label": "Fully allocated and updated as the stack changes",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Half your costs are missing from the number you call profit",
+          "text": "When COGS is stale and shipping, fees and overhead are left out, the profit figure you trust is fiction. It is almost always more optimistic than reality, which is why brands feel busy and broke at the same time. Getting every real cost into one per-order figure is the foundation everything else sits on.",
+          "steps": [
+            "Rebuild landed cost for your top products including freight, duties and packaging",
+            "Pull last month's real shipping and processing fees and divide by orders to get a true per-order rate",
+            "Add a loaded overhead rate so software and team cost stop hiding"
+          ]
+        },
+        "mid": {
+          "headline": "Your costs are mostly there, but manual and lagging",
+          "text": "You capture most real costs, yet the pieces live in different places and get updated on memory. That lag is where margin quietly drifts. Automating the cost inputs keeps your profit number honest without a monthly reconstruction.",
+          "steps": [
+            "Connect COGS and 3PL costs so they update without a manual edit",
+            "Pull processor fees per transaction instead of a flat percentage",
+            "Set a monthly check to confirm allocated overhead still matches the real stack"
+          ]
+        },
+        "high": {
+          "headline": "Your cost accounting is tight, keep it self-correcting",
+          "text": "Real landed cost, fulfillment, fees and overhead all reach your per-order margin, which is rare. The job now is keeping it accurate automatically as suppliers, carriers and your tool stack change under you.",
+          "steps": [
+            "Alert on any landed-cost change that moves a product below its margin target",
+            "Reconcile fees and shipping against statements automatically each month",
+            "Re-allocate overhead on a schedule as headcount and software shift"
+          ]
+        }
+      }
+    },
+    {
+      "id": "scaling_discipline",
+      "name": "Break-Even & Scaling Discipline",
+      "questions": [
+        {
+          "id": "scale_basis",
+          "text": "What do you scale ad spend on?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Whatever ROAS looks good that week",
+              "score": 1
+            },
+            {
+              "label": "ROAS plus a gut feel for cash",
+              "score": 2
+            },
+            {
+              "label": "ROAS with a periodic profit sanity check",
+              "score": 3
+            },
+            {
+              "label": "Profit per order and contribution targets",
+              "score": 4
+            },
+            {
+              "label": "Live marginal profit at each spend level",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cut_losers",
+          "text": "How fast do you cut a campaign that is unprofitable after true costs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We usually find out weeks later",
+              "score": 1
+            },
+            {
+              "label": "Once account ROAS drops, days later",
+              "score": 2
+            },
+            {
+              "label": "Within a few days, on a manual review",
+              "score": 3
+            },
+            {
+              "label": "Within a day, we watch contribution",
+              "score": 4
+            },
+            {
+              "label": "Same day, alerts fire when margin goes negative",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "price_aov",
+          "text": "Do you test price and AOV levers to protect margin as you scale?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, price has been the same forever",
+              "score": 1
+            },
+            {
+              "label": "We raised price once and got nervous",
+              "score": 2
+            },
+            {
+              "label": "Occasional tests, no clear read on margin impact",
+              "score": 3
+            },
+            {
+              "label": "Regular price and bundle tests tied to margin",
+              "score": 4
+            },
+            {
+              "label": "Continuous AOV and margin testing on the calendar",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cash_visibility",
+          "text": "Do you know how much cash is tied up in inventory and ad float as you scale?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we scale until the bank balance gets scary",
+              "score": 1
+            },
+            {
+              "label": "A rough sense, we check the balance often",
+              "score": 2
+            },
+            {
+              "label": "We track inventory value monthly",
+              "score": 3
+            },
+            {
+              "label": "We model cash conversion before scaling spend",
+              "score": 4
+            },
+            {
+              "label": "Live cash conversion and inventory position guide every spend increase",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are scaling on the gas pedal and reading the mirror late",
+          "text": "When the decision to scale runs on weekly ROAS and losers get caught days after they start bleeding, growth costs you more than it returns. Scaling discipline means the signal to add or cut spend is profit, and it reaches you fast enough to act on the same day.",
+          "steps": [
+            "Define the contribution number a campaign must hold before it earns more budget",
+            "Set a same-day rule to pause anything that drops below break-even",
+            "Model the cash tied up before your next spend increase, not after"
+          ]
+        },
+        "mid": {
+          "headline": "You scale with some discipline, but the reaction time is slow",
+          "text": "You check profit and watch cash, yet cutting losers still takes a manual review that arrives a few days late. Tightening the loop so margin signals are automated turns scaling from a nervous bet into a controlled lever.",
+          "steps": [
+            "Watch contribution per campaign daily, not account-level ROAS",
+            "Automate a pause when a campaign holds below break-even for a set window",
+            "Run a margin-tied price or bundle test every month to protect AOV as spend grows"
+          ]
+        },
+        "high": {
+          "headline": "You scale on profit signals, now let the system hold the line",
+          "text": "You already steer spend on contribution and watch your cash position. The next move is making the guardrails automatic so growth never quietly outruns margin or cash.",
+          "steps": [
+            "Trigger budget changes off live marginal profit at each spend tier",
+            "Alert when cash conversion tightens past your comfort threshold",
+            "Keep a continuous AOV and margin test running so price never lags cost"
+          ]
+        }
+      }
+    },
+    {
+      "id": "reporting_speed",
+      "name": "Reporting & Decision Speed",
+      "questions": [
+        {
+          "id": "profit_dashboard",
+          "text": "Do you have a live view of profit, beyond revenue and ROAS?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, profit is a quarterly surprise",
+              "score": 1
+            },
+            {
+              "label": "We build it in a spreadsheet when we need it",
+              "score": 2
+            },
+            {
+              "label": "A dashboard someone updates weekly by hand",
+              "score": 3
+            },
+            {
+              "label": "A standing dashboard, mostly automated",
+              "score": 4
+            },
+            {
+              "label": "Live profit dashboard, updates on every order",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "answer_speed",
+          "text": "How fast can you answer, did we actually make money last week?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Days of pulling numbers, and we still argue about it",
+              "score": 1
+            },
+            {
+              "label": "A few hours in spreadsheets",
+              "score": 2
+            },
+            {
+              "label": "An hour once someone exports the data",
+              "score": 3
+            },
+            {
+              "label": "A few minutes in a dashboard",
+              "score": 4
+            },
+            {
+              "label": "Instantly, it is on a screen we already watch",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "data_source",
+          "text": "Where does your profit number actually live?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "In someone's head",
+              "score": 1
+            },
+            {
+              "label": "A spreadsheet one person owns",
+              "score": 2
+            },
+            {
+              "label": "A few disconnected reports we stitch together",
+              "score": 3
+            },
+            {
+              "label": "One tool that pulls most of it together",
+              "score": 4
+            },
+            {
+              "label": "One source of truth every decision runs off",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "profit_forecast",
+          "text": "Can you forecast profit at a given ad spend level before you commit it?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we spend and hope",
+              "score": 1
+            },
+            {
+              "label": "A rough guess based on last month",
+              "score": 2
+            },
+            {
+              "label": "A manual model we update sometimes",
+              "score": 3
+            },
+            {
+              "label": "A spend-to-profit model we trust",
+              "score": 4
+            },
+            {
+              "label": "Live marginal-profit forecasting at each spend tier",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "By the time you see profit, the month is already spent",
+          "text": "When the profit number lives in a spreadsheet or someone's head and takes days to produce, you are always deciding on last month's blur. Speed here is not a reporting nicety, it is how you stop repeating a loss you could not see in time to stop.",
+          "steps": [
+            "Put revenue, true costs and profit into one view instead of three exports",
+            "Get the answer to did we make money last week down to minutes",
+            "Name one source of truth for profit so nobody argues about whose number is right"
+          ]
+        },
+        "mid": {
+          "headline": "You can see profit, but not fast enough to steer on it",
+          "text": "You produce a real profit number, yet it arrives on a lag and takes hand-updating. Moving from pull reporting to a live dashboard means the number is in front of you before the next spend decision, not after it.",
+          "steps": [
+            "Automate the profit dashboard so nobody rebuilds it by hand",
+            "Add a simple spend-to-profit forecast you can trust before scaling",
+            "Set a weekly numbers review that runs off one source, not competing spreadsheets"
+          ]
+        },
+        "high": {
+          "headline": "Your reporting is fast, now make it predictive",
+          "text": "Profit is live, trusted and answers on demand. The next layer uses what you already track to forecast profit at each spend level, so scaling decisions are made before the money goes out.",
+          "steps": [
+            "Model marginal profit at each spend tier and put it next to your live actuals",
+            "Alert on the thresholds that matter instead of waiting for the weekly review",
+            "Feed the forecast back into budget pacing so spend follows predicted profit"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "tier_names": {
+    "low": "Critical",
+    "mid": "Growth Stage",
+    "high": "Optimized"
+  },
+  "cta": {
+    "headline": "Ready to see your real profit on every order?",
+    "description": "You just saw where the leak is. Now let's build the system that puts true profit per order in front of you automatically, so you scale on money made instead of ROAS reported. Book a 30-minute call and I'll show you exactly what to wire up first.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "intro": {
+    "paragraph": "Answer each question with how your store actually runs today. Your score shows where money leaks between the ROAS in your ad account and the profit in your bank account, and what to fix first.",
+    "point_time": "21 questions, done in about 8 minutes",
+    "point_value": "Grades the 5 systems that decide whether scaling makes you money",
+    "point_next": "Your score and tier show straight away. Email unlocks the full category breakdown with fixes.",
+    "note": "Free to take. Your progress saves in this browser."
+  },
+  "start_screen": {
+    "eyebrow": "Start Your Score",
+    "headline_html": "See how much of your ROAS is <em>real profit</em>.",
+    "description": "Pick the answer that matches how your store runs right now. In 8 minutes you get a score out of 100, your tier, and the exact places profit is leaking on the way from ad spend to bank account.",
+    "button": "Get My Score",
+    "chips": [
+      "21 questions",
+      "8 min",
+      "Instant score",
+      "Free"
+    ]
+  }
+}

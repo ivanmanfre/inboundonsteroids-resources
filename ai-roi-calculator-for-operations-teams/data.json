@@ -1,0 +1,208 @@
+{
+  "slug": "ai-roi-calculator-for-operations-teams",
+  "title": "AI ROI Calculator for Operations Teams",
+  "subtitle": "Stop guessing whether automation is worth it. Build a business case with real numbers.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 10,
+  "inputs": [
+    {
+      "id": "volume_per_month",
+      "label": "Volume per Month",
+      "type": "range",
+      "suffix": " units",
+      "min": 50,
+      "max": 20000,
+      "step": 50,
+      "default": 2400,
+      "slider": true,
+      "hint": "Orders, invoices, onboarding tasks, etc."
+    },
+    {
+      "id": "people_involved",
+      "label": "People Involved per Unit",
+      "type": "range",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3,
+      "slider": true,
+      "hint": "Count every handoff across the workflow"
+    },
+    {
+      "id": "time_per_unit",
+      "label": "Time per Unit",
+      "type": "range",
+      "suffix": " min",
+      "min": 1,
+      "max": 120,
+      "step": 1,
+      "default": 15,
+      "slider": true,
+      "hint": "Sum of all human touches, not one person's time"
+    },
+    {
+      "id": "hourly_cost",
+      "label": "Fully Loaded Hourly Cost",
+      "type": "number",
+      "prefix": "$",
+      "min": 15,
+      "max": 250,
+      "step": 1,
+      "default": 35,
+      "hint": "If unknown, use 1.3x base hourly rate"
+    },
+    {
+      "id": "error_rate",
+      "label": "Current Error Rate",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "default": 8,
+      "slider": true,
+      "hint": "Be honest, most teams undercount this"
+    },
+    {
+      "id": "cost_per_error",
+      "label": "Cost per Error",
+      "type": "number",
+      "prefix": "$",
+      "min": 0,
+      "max": 2000,
+      "step": 10,
+      "default": 50,
+      "hint": "Include rework time, customer impact, refunds"
+    },
+    {
+      "id": "build_cost",
+      "label": "Automation Build Cost",
+      "type": "number",
+      "prefix": "$",
+      "min": 500,
+      "max": 100000,
+      "step": 100,
+      "default": 3500,
+      "hint": "One-time vendor or internal build estimate"
+    },
+    {
+      "id": "monthly_maintenance",
+      "label": "Monthly Maintenance",
+      "type": "number",
+      "prefix": "$",
+      "min": 0,
+      "max": 5000,
+      "step": 25,
+      "default": 200,
+      "hint": "Support, hosting, model usage"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "annual_savings",
+      "label": "Annual Net Savings",
+      "format": "currency",
+      "primary": true,
+      "formula": "(((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 12 * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 12 * 0.80) - (monthly_maintenance * 12)",
+      "tier_thresholds": {
+        "low": 25000,
+        "medium": 100000,
+        "high": 250000
+      }
+    },
+    {
+      "id": "payback_months",
+      "label": "Payback Period",
+      "format": "decimal",
+      "formula": "build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))"
+    },
+    {
+      "id": "hours_reclaimed",
+      "label": "Hours Reclaimed Annually",
+      "format": "hours",
+      "formula": "((volume_per_month * time_per_unit * people_involved) / 60) * 12 * 0.75"
+    },
+    {
+      "id": "first_year_roi",
+      "label": "First Year ROI",
+      "format": "percent",
+      "formula": "((((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 12 * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 12 * 0.80) - (monthly_maintenance * 12)) - build_cost) / build_cost) * 100"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "green_light",
+      "when": "(build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) < 6",
+      "text": "Green light. Payback under 6 months means this workflow is a priority build. Lock in a vendor or your internal team this quarter before the opportunity cost compounds."
+    },
+    {
+      "tag": "yellow_light",
+      "when": "(build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) >= 6 && (build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) <= 18",
+      "text": "Worth building, but sharpen the numbers first. Validate your error rate and time per unit with a one-week audit so leadership cannot pick apart the business case."
+    },
+    {
+      "tag": "red_light",
+      "when": "(build_cost / Math.max(1, ((((volume_per_month * time_per_unit * people_involved) / 60) * hourly_cost * 0.75) + (volume_per_month * (error_rate / 100) * cost_per_error * 0.80) - monthly_maintenance))) > 18",
+      "text": "Shelf this one and pick a higher volume or higher error workflow. Payback over 18 months usually means the process is too small or the build scope is too large."
+    },
+    {
+      "tag": "high_error_process",
+      "when": "error_rate >= 10",
+      "text": "Your error rate is doing a lot of the lifting in this ROI. Automating this workflow is really a quality play, frame the business case around customer impact and compliance, not just labor savings."
+    },
+    {
+      "tag": "thin_volume",
+      "when": "volume_per_month < 500",
+      "text": "Volume is low for a custom build. Consider a lightweight no code approach with n8n or Zapier first to keep build cost under $1,500 and protect your payback window."
+    },
+    {
+      "tag": "heavy_handoffs",
+      "when": "people_involved >= 4",
+      "text": "Four plus handoffs per unit is a coordination tax, not a task problem. Map the workflow end to end before automating so you do not just speed up a broken process."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Want me to pressure test your numbers?",
+    "description": "Send me your calculator results and I will tell you which workflow to automate first, what it should cost to build, and where the ROI is hiding in your ops data. No pitch, just a straight read."
+  },
+  "ctas": [
+    {
+      "id": "high_savings_blueprint",
+      "when": "annual_savings > 50000",
+      "headline": "You're looking at a real leak. Want it mapped, not guessed?",
+      "description": "At this scale of recoverable savings, the 'which workflow first, who builds it, in what order' question is worth getting right the first time. The Agent-Ready Blueprint is a $2,500 fixed-fee engagement: I review your stack, your data flows, and your team's capacity, then hand you a sequenced 90-day deployment plan with build cost ranges, vendor shortlists, and risk gates. You walk away with a budget-defensible plan whether or not you build with me.",
+      "button": "See the Blueprint \u2192",
+      "url": "https://resources.inboundonsteroids.com/assessment",
+      "secondary": {
+        "button": "Or book a 30-min working call",
+        "url": "https://calendly.com/ivan-intelligents/30min"
+      }
+    },
+    {
+      "id": "mid_savings_lms",
+      "when": "annual_savings >= 10000 && annual_savings <= 50000",
+      "headline": "Your numbers say there's juice here. Tour how I'd build it.",
+      "description": "$10-50k/yr in recoverable savings is the sweet spot for the Lead Magnet System and Content System engagements: pre-built n8n + Claude pipelines that recover ops hours without a custom build. Tour the system to see how other operations teams in your range deployed it.",
+      "button": "Tour the Lead Magnet System \u2192",
+      "url": "https://ivanmanfredi.com/lead-magnet-system",
+      "secondary": {
+        "button": "Get the weekly ops teardown",
+        "url": "https://www.linkedin.com/in/ivanmanfredi/"
+      }
+    },
+    {
+      "id": "low_savings_newsletter",
+      "headline": "Numbers are thin for a custom build. Stay on the list \u2014 the math changes when volume does.",
+      "description": "Under $10k/yr in recoverable savings means a one-off build's payback is too long. Subscribe to the Agent-Ready Letter (one tactical n8n teardown + one ops case study per week). When your volume crosses the build threshold, you'll already know which workflow to automate first.",
+      "button": "Follow on LinkedIn \u2192",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/",
+      "secondary": {
+        "button": "Browse other resources",
+        "url": "https://resources.inboundonsteroids.com"
+      }
+    }
+  ]
+}

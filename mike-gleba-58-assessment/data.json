@@ -1,0 +1,656 @@
+{
+ "slug": "mike-gleba-58-assessment",
+ "title": "DTC Growth Readiness Score",
+ "subtitle": "Measures how well your attribution, lifecycle, paid media, and decision-making are set up to break through your next revenue plateau.",
+ "brand": {
+  "accent": "#ff9800",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "attribution_revenue_clar",
+   "name": "Attribution & Revenue Clarity",
+   "questions": [
+    {
+     "id": "attribution_revenue_clar_q1",
+     "text": "How much of your revenue can you confidently trace back to a specific channel right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Honestly, I'm mostly guessing",
+       "score": 1
+      },
+      {
+       "label": "I have a rough sense but the numbers don't always add up",
+       "score": 2
+      },
+      {
+       "label": "I trust my platform numbers but I know there are gaps",
+       "score": 3
+      },
+      {
+       "label": "I use blended attribution across channels and it's mostly dialed in",
+       "score": 4
+      },
+      {
+       "label": "I have a clean attribution model I reviewed and aligned on before launching anything new",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "attribution_revenue_clar_q2",
+     "text": "When you sit down to review performance, what does that actually look like?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I open the ad dashboard and look at whatever the platform shows me",
+       "score": 1
+      },
+      {
+       "label": "I check a few platforms but there's no consistent reporting structure",
+       "score": 2
+      },
+      {
+       "label": "I pull numbers weekly and flag anything that looks off",
+       "score": 3
+      },
+      {
+       "label": "I have a dashboard that consolidates key metrics across channels",
+       "score": 4
+      },
+      {
+       "label": "I review against set KPIs daily and have a clear path for escalation if something breaks",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "attribution_revenue_clar_q3",
+     "text": "The last time you added a new paid channel, how did you handle attribution first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I just launched and figured I'd sort attribution out later",
+       "score": 1
+      },
+      {
+       "label": "I used whatever the platform set up by default",
+       "score": 2
+      },
+      {
+       "label": "I spent some time on it but wasn't sure I got it fully right",
+       "score": 3
+      },
+      {
+       "label": "I audited attribution setup before we spent a dollar on the new channel",
+       "score": 4
+      },
+      {
+       "label": "The whole team aligned on attribution logic before anything went live",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're making every growth decision on a guess",
+     "text": "The brands I work with that are stuck at a plateau almost always have the same problem: they can't clearly see where revenue is coming from, so every budget decision is a shot in the dark. I met a brand doing $8M/year recently. Their Klaviyo attribution was under 10% and they had no idea. You can't fix what you can't measure. This is the first thing to get right before you spend another dollar on media.",
+     "steps": [
+      "Audit your current attribution setup across every active channel this week",
+      "Pick one source of truth for revenue reporting and get your whole team working from it",
+      "Don't add budget to any channel until you can explain clearly why the current spend is or isn't performing"
+     ]
+    },
+    "mid": {
+     "headline": "Solid foundation, but partial attribution is still a leak",
+     "text": "You're ahead of most brands at your stage. The issue is that if your paid and lifecycle numbers aren't telling the same story, some of your decisions are still based on incomplete data. That's a manageable gap, but it needs to close before you try to scale.",
+     "steps": [
+      "Map out exactly where attribution breaks down in your current setup",
+      "Add a blended efficiency metric (MER or similar) to your weekly review",
+      "Make sure lifecycle revenue is tracked separately from paid before you push more acquisition budget"
+     ]
+    },
+    "high": {
+     "headline": "Attribution is one of your real competitive edges",
+     "text": "This is genuinely uncommon. Most brands at any revenue level are still working off platform dashboards and calling it a day. Clean attribution is what lets you make confident scaling decisions instead of hopeful ones. Keep the model documented and revisit it any time you add a channel or change your media mix.",
+     "steps": [
+      "Document your attribution model so the full team operates off the same logic",
+      "Set a quarterly review to pressure-test your numbers against actual revenue",
+      "Use your clean data as the foundation for any scaling case you bring to leadership or investors"
+     ]
+    }
+   }
+  },
+  {
+   "id": "lifecycle_infrastructure",
+   "name": "Lifecycle Infrastructure",
+   "questions": [
+    {
+     "id": "lifecycle_infrastructure_q1",
+     "text": "What percentage of your total revenue comes from email and SMS right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Less than 10%, or I honestly don't know",
+       "score": 1
+      },
+      {
+       "label": "Somewhere between 10-20%",
+       "score": 2
+      },
+      {
+       "label": "Around 20-30%",
+       "score": 3
+      },
+      {
+       "label": "Between 30-40%",
+       "score": 4
+      },
+      {
+       "label": "40%+ and growing",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "lifecycle_infrastructure_q2",
+     "text": "What does your automated flow architecture look like right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have a welcome email. That's about it.",
+       "score": 1
+      },
+      {
+       "label": "A few basic flows, but they're short and I'm not sure they're performing",
+       "score": 2
+      },
+      {
+       "label": "Core flows are running but I know there are gaps in the architecture",
+       "score": 3
+      },
+      {
+       "label": "Most foundational flows are live and I review performance quarterly",
+       "score": 4
+      },
+      {
+       "label": "Full flow architecture, regularly optimized, with clean attribution on each one",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "lifecycle_infrastructure_q3",
+     "text": "What's your email list growth setup right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No pop-up, or one I haven't looked at in months",
+       "score": 1
+      },
+      {
+       "label": "Pop-up with no offer, converting under 1%",
+       "score": 2
+      },
+      {
+       "label": "Pop-up with a basic offer, converting between 1-3%",
+       "score": 3
+      },
+      {
+       "label": "Optimized pop-up with a clear incentive, converting 3-5%",
+       "score": 4
+      },
+      {
+       "label": "Multi-step capture sequence with a tested incentive, converting 5%+",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "lifecycle_infrastructure_q4",
+     "text": "How consistently are you sending campaigns to your list?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I haven't sent a campaign in months",
+       "score": 1
+      },
+      {
+       "label": "A few times a year when something big is happening",
+       "score": 2
+      },
+      {
+       "label": "Monthly, but there's no consistent schedule behind it",
+       "score": 3
+      },
+      {
+       "label": "Weekly with some segmentation",
+       "score": 4
+      },
+      {
+       "label": "Weekly or more, with a clear segmentation and deliverability strategy in place",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're sitting on owned revenue you haven't built yet",
+     "text": "One of the brands we work with came to us with a large email list that was doing almost nothing. Over 56% unengaged, minimal segmentation, flows that were underbuilt or misconfigured, and campaigns sent broadly with no strategy. We rebuilt the architecture and got to $2.47M in lifecycle revenue, which was 31% of total revenue. The list was there the whole time. It just wasn't working. That's where you are right now.",
+     "steps": [
+      "Add a real incentive to your pop-up this week and track conversion rate daily",
+      "Audit which foundational flows you're missing and build the highest-impact one first",
+      "Set a campaign calendar for the next 30 days, even if it's just two or three sends"
+     ]
+    },
+    "mid": {
+     "headline": "Lifecycle is working, but it's not pulling its full weight",
+     "text": "You've built the basics. The gap is probably 10-20 points of lifecycle revenue sitting in your flow architecture and campaign cadence that hasn't been fully captured yet. This doesn't need a full rebuild. It needs a focused audit and a consistent push for the next 60 days.",
+     "steps": [
+      "Pull your last 90 days of flow performance and find the one generating the least revenue",
+      "Add at least one foundational flow you know you're missing",
+      "Commit to a consistent weekly campaign cadence for 60 days and measure the lift against the prior period"
+     ]
+    },
+    "high": {
+     "headline": "Lifecycle is a real growth driver, and you own it",
+     "text": "Owned revenue at this level is a serious advantage. You're not at the mercy of any platform's algorithm or ad auction. Keep investing in segmentation and deliverability because the ceiling on lifecycle revenue is higher than most brands realize, especially as you scale acquisition.",
+     "steps": [
+      "Segment your sends and prune unengaged subscribers every quarter to protect deliverability",
+      "Test one new flow or flow branch in the next 30 days",
+      "Map out how lifecycle revenue should scale relative to your paid acquisition growth this year"
+     ]
+    }
+   }
+  },
+  {
+   "id": "paid_media_systems",
+   "name": "Paid Media Systems",
+   "questions": [
+    {
+     "id": "paid_media_systems_q1",
+     "text": "How would you describe the structure behind your current paid media?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We're spending but there's no real system behind it",
+       "score": 1
+      },
+      {
+       "label": "We have campaigns running but scaling has been unpredictable",
+       "score": 2
+      },
+      {
+       "label": "It works at current spend levels but I'm not confident it holds at 2x",
+       "score": 3
+      },
+      {
+       "label": "We have a repeatable structure we can scale with some confidence",
+       "score": 4
+      },
+      {
+       "label": "Clear channel strategy, tested creative system, and a defined scaling playbook",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "paid_media_systems_q2",
+     "text": "When a paid channel goes off KPI, what actually happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I usually notice eventually, when revenue drops",
+       "score": 1
+      },
+      {
+       "label": "I check in weekly but there's no formal response process",
+       "score": 2
+      },
+      {
+       "label": "I have alerts set up but the response is inconsistent",
+       "score": 3
+      },
+      {
+       "label": "I have a clear KPI threshold and I'm on it within 48 hours",
+       "score": 4
+      },
+      {
+       "label": "Clear thresholds, a defined escalation process, and someone accountable within 24 hours",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "paid_media_systems_q3",
+     "text": "How does your paid media work with your email and SMS?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They're completely separate, run by different people or in different tools",
+       "score": 1
+      },
+      {
+       "label": "We coordinate sometimes but there's no real system connecting them",
+       "score": 2
+      },
+      {
+       "label": "We align on big promotions but day-to-day they run independently",
+       "score": 3
+      },
+      {
+       "label": "Paid and lifecycle share audience data and we coordinate messaging",
+       "score": 4
+      },
+      {
+       "label": "Fully integrated: acquisition feeds lifecycle, lifecycle informs paid audiences and creative",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Spend without a system is not a growth strategy",
+     "text": "The brands that plateau at $3-5M almost always have the same issue on the paid side: they're running campaigns without a structure that can actually scale. More budget into a broken system just reveals the cracks faster. Before you push spend higher, get the architecture right.",
+     "steps": [
+      "Map out every active paid channel and define what job each one is supposed to do in the funnel",
+      "Set a KPI target for each channel and a hard threshold that triggers action within 24 hours",
+      "Don't add budget to a channel until you can clearly explain why the current spend is or isn't performing"
+     ]
+    },
+    "mid": {
+     "headline": "You can scale, but the gaps will show when you push harder",
+     "text": "The foundation is there. The question is whether it holds when you try to 2x spend. Most brands at this stage hit a wall because the creative system or the audience structure wasn't built for scale. Fix that before you find out the hard way.",
+     "steps": [
+      "Audit your creative pipeline: is it built to test, or just built to run what's already working?",
+      "Define what 2x spend looks like on your top channel before you try to get there",
+      "Connect paid audience data to your lifecycle platform if you haven't done that yet"
+     ]
+    },
+    "high": {
+     "headline": "Your paid system is built to scale",
+     "text": "An integrated paid and lifecycle system with clear KPI accountability is what separates brands that plateau from brands that compound. You're doing this right. Keep the creative pipeline full, protect the accountability structure, and don't let the integration between paid and lifecycle get lazy as the team grows.",
+     "steps": [
+      "Invest in creative volume: more tests per month means faster learning and faster scaling",
+      "Review your channel mix quarterly to make sure you're not over-indexed on a single platform",
+      "Use lifecycle audience data to inform paid targeting on a regular cadence, not just during big promotions"
+     ]
+    }
+   }
+  },
+  {
+   "id": "growth_mindset_decision_",
+   "name": "Growth Mindset & Decision-Making",
+   "questions": [
+    {
+     "id": "growth_mindset_decision__q1",
+     "text": "When an outside expert tells you something you're doing could be working harder, what's your typical reaction?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I usually think I can handle it myself and move on",
+       "score": 1
+      },
+      {
+       "label": "I listen but I rarely act on outside advice",
+       "score": 2
+      },
+      {
+       "label": "I take it seriously but I'm slow to make changes",
+       "score": 3
+      },
+      {
+       "label": "I look at the data and make a call, usually within a few weeks",
+       "score": 4
+      },
+      {
+       "label": "I treat outside perspective as an advantage and move fast on good input",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "growth_mindset_decision__q2",
+     "text": "How do you think about spending money on growth infrastructure: platforms, tools, outside expertise?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I cut costs wherever I can, including marketing tools and platforms",
+       "score": 1
+      },
+      {
+       "label": "I'm careful about it and often wait longer than I probably should",
+       "score": 2
+      },
+      {
+       "label": "I invest when I see a clear ROI case but I still hesitate",
+       "score": 3
+      },
+      {
+       "label": "I invest proactively in the right infrastructure and track the return",
+       "score": 4
+      },
+      {
+       "label": "Infrastructure investment is a core part of how I think about scaling",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "growth_mindset_decision__q3",
+     "text": "Who do you lean on when growth stalls and you're not sure what to do next?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Mostly myself. I work through it alone.",
+       "score": 1
+      },
+      {
+       "label": "My internal team, but we often go in circles",
+       "score": 2
+      },
+      {
+       "label": "I follow industry content and try to piece together a direction",
+       "score": 3
+      },
+      {
+       "label": "I have a few trusted people outside my company I can reach out to",
+       "score": 4
+      },
+      {
+       "label": "I have a real community and a set of advisors I can call on quickly when I need a second opinion",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You might be the ceiling on your own growth",
+     "text": "I met a brand this year doing $8M/year. Klaviyo attribution under 10%. No campaigns in the last year. No incentive on the pop-up. He passed on outside help because he figured he could just do it himself. Then he canceled Klaviyo to save $750/month. Canceling your email platform on an $8M store to save $9K a year is like selling your delivery van because you're tired of changing the oil. You have to wonder where he'd be if he just got out of his own way. I'm not saying that to be harsh. I'm saying it because I've seen this pattern at every revenue level.",
+     "steps": [
+      "Write down the last three times you chose to do something yourself instead of getting outside help",
+      "Find one community or trusted advisor outside your business you can have a real conversation with",
+      "Pick one growth decision you've been sitting on and move on it this week"
+     ]
+    },
+    "mid": {
+     "headline": "The instinct is right. The pace is the issue.",
+     "text": "You're open to outside input and you're willing to invest. The gap is speed. Brands that compound are usually faster at integrating outside perspective than brands that plateau. The good news is you already know what to do. You just need to tighten the loop between learning and acting.",
+     "steps": [
+      "Set a 48-hour rule for acting on good outside input, even if it's just a yes or no decision",
+      "Build a regular check-in with someone outside your business, at least once a month",
+      "Stop treating community as optional. The right room genuinely shortens every learning curve."
+     ]
+    },
+    "high": {
+     "headline": "This is the mindset that compounds",
+     "text": "Culture compounds. Results and revenue are byproducts of the environment you build. Get the culture right and the metrics tend to follow. Get it wrong and no amount of strategy fixes it. You've clearly got that part dialed in. Keep investing in the people and communities that push you forward.",
+     "steps": [
+      "Codify what's working in your culture before you scale the team further",
+      "Show up consistently to the communities that have served you, not just when you need something",
+      "Bring one more person from your team into the conversations that are shaping your growth decisions this quarter"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_readiness",
+   "name": "AI Readiness",
+   "questions": [
+    {
+     "id": "ai_readiness_q1",
+     "text": "How is your team actually using AI in your marketing and operations right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We're not really using it yet",
+       "score": 1
+      },
+      {
+       "label": "A few people use it on their own but it's not organized",
+       "score": 2
+      },
+      {
+       "label": "We use AI tools regularly but there's no real strategy behind it",
+       "score": 3
+      },
+      {
+       "label": "We have regular team discussions about AI and some defined use cases in place",
+       "score": 4
+      },
+      {
+       "label": "We have dedicated roles and a clear process for AI ideation and implementation",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "ai_readiness_q2",
+     "text": "How would you describe the strategy behind your current AI use?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't have one. We use tools as they come up.",
+       "score": 1
+      },
+      {
+       "label": "We're figuring it out as we go",
+       "score": 2
+      },
+      {
+       "label": "We've thought about it but haven't fully mapped it to our actual business model",
+       "score": 3
+      },
+      {
+       "label": "We've defined where AI fits in our process and where it doesn't",
+       "score": 4
+      },
+      {
+       "label": "AI accelerates a strategy we already know works. We don't ask it to fix broken things.",
+       "score": 5
+      }
+     ]
+    },
+    {
+     "id": "ai_readiness_q3",
+     "text": "How are you thinking about AI's impact on your business and team over the next two years?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I think it's mostly hype. I'm not particularly worried about it.",
+       "score": 1
+      },
+      {
+       "label": "I'm watching it but not really preparing yet",
+       "score": 2
+      },
+      {
+       "label": "I know it matters but I'm not sure how to act on it",
+       "score": 3
+      },
+      {
+       "label": "I'm investing in learning and I've made some structural changes to prepare",
+       "score": 4
+      },
+      {
+       "label": "I'm preparing as if the AI shift is real and accelerating. My team is doing the same.",
+       "score": 5
+      }
+     ]
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The future belongs to people who learn to play in this AI world",
+     "text": "I go back and forth between 'Oh wow' and 'Oh, that's terrifying' on AI pretty regularly. But I'm not sitting still. I have regular team calls dedicated to it, specific roles assigned for ideation and implementation, and we're building the muscle now before we need it. If Dario Amodei is even half right, the brands and operators who figure this out early are going to have a real structural edge. The ones who don't are going to be playing catch-up.",
+     "steps": [
+      "Pick one AI tool and use it for a real task this week, not just a demo",
+      "Schedule one team conversation about where AI could actually fit in your current workflow",
+      "Find one piece of content about AI in DTC or eCommerce specifically and read it this week"
+     ]
+    },
+    "mid": {
+     "headline": "Aware but not yet operational",
+     "text": "Awareness is not enough at this point. The brands getting ahead are running regular team calls on AI, assigning specific people to test and implement, and treating it as a real business priority. You're close. Get more structured and more intentional about it.",
+     "steps": [
+      "Put AI on the agenda of a standing team meeting this month",
+      "Assign one person to own AI exploration for the next 90 days",
+      "Define two or three specific places in your business where AI could cut manual work and start there"
+     ]
+    },
+    "high": {
+     "headline": "You're building the muscle now, before you need it",
+     "text": "AI won't fix a broken strategy. It'll just run it faster. But a strong strategy with real AI behind it? That's a serious edge, and it's going to be increasingly hard to close from a standing start. The fact that you've got dedicated roles, regular team discussions, and a defined process puts you ahead of most brands at your level. Keep the human voice front and center as you scale it.",
+     "steps": [
+      "Document what's working in your AI process so you can scale it as the team grows",
+      "Run a quarterly AI review to find new areas where the technology is mature enough to trust",
+      "Protect authentic communication in everything you put out publicly, AI-assisted or not. It's already a differentiator and it's only going to matter more."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes you?",
+  "answers": [
+   {
+    "label": "Brand Founder / Owner",
+    "tag": "founder"
+   },
+   {
+    "label": "In-House Marketing Lead",
+    "tag": "marketing_lead"
+   },
+   {
+    "label": "eCommerce Director / CMO",
+    "tag": "ecom_director"
+   },
+   {
+    "label": "Agency Owner or Freelancer",
+    "tag": "agency"
+   }
+  ]
+ }
+}

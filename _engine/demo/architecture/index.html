@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Content Engine Architecture — Demo | Ivan Manfredi</title>
+<meta name="description" content="Architecture engine demo preview.">
+<meta name="theme-color" content="#F7F4EF">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Source+Serif+4:opsz,wght@8..60,400..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/_engine/shared.css">
+<link rel="stylesheet" href="/_engine/architecture.css">
+<style>
+body { margin: 0; font-family: 'Source Serif 4', Georgia, serif; background: #F7F4EF; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.im-nav { position: sticky; top: 0; z-index: 50; background: #F7F4EF; border-bottom: 1px solid rgba(26,26,26,0.12); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+.im-nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: inherit; }
+.im-nav-logo img { width: 36px; height: 36px; border-radius: 50%; object-fit: cover; }
+.im-nav-name { font-family: 'Source Serif 4', Georgia, serif; font-size: .85rem; font-weight: 600; letter-spacing: .04em; color: #1A1A1A; }
+.im-nav-cta { display: inline-block; padding: .55rem 1.1rem; background: #1A1A1A; color: #F7F4EF; font-family: 'Source Serif 4', Georgia, serif; font-weight: 600; border: none; text-decoration: none; font-size: .85rem; }
+.im-nav-cta:hover { background: #000; }
+.demo-banner { background: #1A1A1A; color: #F7F4EF; padding: .5rem 1rem; text-align: center; font-size: .8rem; font-weight: 600; letter-spacing: .04em; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+</head>
+<body>
+<div class="demo-banner">DEMO — architecture engine preview using sample data.json</div>
+<nav class="im-nav" aria-label="Site">
+  <a class="im-nav-logo" href="https://inboundonsteroids.com">
+    <img src="https://ivanmanfredi.com/ivan-portrait.jpg" alt="Ivan Manfredi">
+    <span class="im-nav-name">Ivan Manfredi</span>
+  </a>
+  <a class="im-nav-cta" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener">Let's Talk</a>
+</nav>
+<main id="lma-root" class="lma-root" data-lm-architecture-src="./data.json"></main>
+<script>window.__lm_slug="content-engine-architecture";window.__lm_format="architecture";window.__lm_beacon_url="https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";</script>
+<script src="/_engine/shared.js" defer></script>
+<script src="/_engine/architecture.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "slug": "the-linkedin-inbound-team",
+  "format_label": "Claude Pack",
+  "category": "LinkedIn inbound",
+  "headline": "30 Claude Agents for the Whole LinkedIn Inbound Team",
+  "headline_emphasis": "Whole LinkedIn Inbound Team",
+  "subhead": "Thirty agents, one job each: rewrite your profile, sharpen a draft, answer a comment, name your lead magnet, and reply to the DM when someone finally raises a hand.",
+  "subhead_secondary": "Each one is a single instruction file you paste into a Claude chat, with a practice draft included so you can watch it run before you use your own.",
+  "cover_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-linkedin-inbound-team-grid-v2-2026-08-07.png",
+  "inside": [
+    "Profile headline, About opener, and Featured section picks",
+    "Post hooks, structure cuts, and detail checks",
+    "Comment angles and reply threads under your posts",
+    "Lead magnet naming, cover lines, and gate keywords",
+    "Inbound DM replies and the call ask"
+  ],
+  "proof": "<b>I run this exact engine on my own feed.</b> The profile rewrites, comment angles, and DM replies in this pack are pieces of it, cut small enough for one person to run in a chat.",
+  "proof_avatar": "https://resources.inboundonsteroids.com/assets/ivan.jpg",
+  "cta_label": "Email me the 30 agents",
+  "proof_avatar_alt": "Ivan Manfredi"
+}

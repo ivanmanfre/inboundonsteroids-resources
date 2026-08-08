@@ -1,0 +1,523 @@
+=== COMMITS ===
+67d4810 feat(editor): makeField helper + rerender hook + per-engine rerender thunk
+
+=== STAT ===
+ .superpowers/sdd/progress.md      |  7 +++
+ .superpowers/sdd/task-A1-brief.md | 94 +++++++++++++++++++++++++++++++++++++++
+ _engine/ai-walkthrough.js         |  2 +-
+ _engine/architecture.js           |  2 +-
+ _engine/assessment-v2.js          |  2 +-
+ _engine/assessment.js             |  2 +-
+ _engine/calculator.js             |  2 +-
+ _engine/checklist.js              |  1 +
+ _engine/edit-mode.js              | 14 ++++++
+ _engine/guide.js                  |  2 +-
+ _engine/landing.js                |  2 +-
+ _engine/n8n-workflow.js           |  2 +-
+ _engine/shared.js                 | 21 +++++++++
+ _engine/stack-picker.js           |  1 +
+ _engine/swipe.js                  |  2 +-
+ _engine/template.js               |  2 +-
+ 16 files changed, 148 insertions(+), 10 deletions(-)
+
+=== DIFF ===
+diff --git a/.superpowers/sdd/progress.md b/.superpowers/sdd/progress.md
+new file mode 100644
+index 0000000..d3fb7bb
+--- /dev/null
++++ b/.superpowers/sdd/progress.md
+@@ -0,0 +1,7 @@
++# LM page-editor — progress ledger
++BASE (plan committed): d6e3625243506896df4775504c40f98315cdeced
++Started: 2026-07-05
++
++## Task status
++- A1 makeField+rerender: in-progress
++
+diff --git a/.superpowers/sdd/task-A1-brief.md b/.superpowers/sdd/task-A1-brief.md
+new file mode 100644
+index 0000000..fadeb3c
+--- /dev/null
++++ b/.superpowers/sdd/task-A1-brief.md
+@@ -0,0 +1,94 @@
++# Task A1 — `makeField()` helper + re-render hook
++
++You are implementing ONE task in the LM resource-page editor. Work in `~/Desktop/resources-page-editor-wt` (branch `feat/page-editor`). This is the resources engine: vanilla JS IIFEs, no framework, no bundler, GitHub Pages.
++
++## What exists today (verified — trust this over guessing)
++
++- `_engine/shared.js` renders each page and exposes `window.LM` (defined at `shared.js:749`). It has a **local** `make(tag, attrs, html)` at line 10.
++- Edit registration is buffered:
++  ```js
++  // shared.js:409-433
++  editModeState = { enabled: <bool>, fields: [], arrays: [] };
++  function editModeRegisterField(el, path, opts) {
++    if (!el) return el;
++    editModeState.fields.push({ el, path, opts: opts||{} });
++    if (editModeState.enabled && editModeIsLoaded() && window.__LM_EDIT_MODE_API)
++      window.__LM_EDIT_MODE_API.attachField(el, path, opts||{});
++    return el;
++  }
++  // editModeRegisterArray is symmetric, pushes to editModeState.arrays
++  ```
++  So when edit mode is ENABLED, any `registerField`/`registerArray` call **auto-attaches immediately** (it becomes click-editable at once). When not enabled, it just buffers and is flushed on mount.
++- `window.LM.editMode` sub-object (shared.js:749+) already exposes `registerField: editModeRegisterField, registerArray: editModeRegisterArray`.
++- `_engine/edit-mode.js` exposes `window.__LM_EDIT_MODE_API = { attachField, attachArray, mount }` at line 544. `window.__LM_EDIT_MODE_LOADED = true` at 543.
++- Engines (checklist.js etc.) have an `init()` that calls `render(data, root)`. `window.__lm_data` holds the current data object (referenced in shared.js).
++
++## Deliverable
++
++### Part 1 — `makeField` / `makeFieldArray` on `window.LM` (shared.js)
++
++Add these two functions inside the shared.js IIFE, near the other exported helpers (before the `window.LM = {...}` literal at 749):
++
++```js
++function makeField(tag, attrs, text, path, opts) {
++  var e = make(tag, attrs, (opts && opts.html) ? text : undefined);
++  if (!(opts && opts.html) && text !== undefined) e.textContent = text;
++  editModeRegisterField(e, path, opts || {});
++  return e;
++}
++function makeFieldArray(containerEl, arrayPath, opts) {
++  editModeRegisterArray(containerEl, arrayPath, opts || {});
++  return containerEl;
++}
++```
++
++Expose them on BOTH `window.LM.editMode` (the sub-object) AND top-level `window.LM` — so engines can call either `LM.makeField(...)` or `LM.editMode.makeField(...)`. Add `makeField: makeField, makeFieldArray: makeFieldArray,` in both places.
++
++### Part 2 — `rerender()` (edit-mode.js) + buffer-clear (shared.js)
++
++Goal: after an edit that changes structure (array add/remove, or an AI rewrite), re-run the active engine's `render()` so the new content shows WITHOUT a full page reload, and re-wire all editable fields.
++
++Mechanics (important — this is why a naive re-render double-buffers):
++- Re-running `render()` re-calls every `registerField`/`registerArray`, which **pushes again** onto `editModeState.fields/.arrays`. You MUST clear those buffers first, or they accumulate stale entries pointing at removed DOM nodes.
++- Because edit mode is `enabled` during a live session, each re-pushed `registerField` **auto-attaches** on push (see the auto-attach branch above). So after clearing + re-rendering, fields are re-wired automatically. No separate flush pass is needed as long as `editModeState.enabled` is true at re-render time.
++
++Implement:
++
++1. In **shared.js**, add and export a helper on `window.LM.editMode`:
++   ```js
++   function editModeResetBuffers() {
++     editModeState.fields.length = 0;
++     editModeState.arrays.length = 0;
++   }
++   ```
++   Expose as `resetBuffers: editModeResetBuffers` on `window.LM.editMode`. Also, in each engine's `init()` right after a successful `render(data, root)`, set a re-render thunk:
++   `window.__lm_rerender = function(){ render(window.__lm_data, root); };`
++   (Add this line to EVERY engine init that calls render: checklist, calculator, assessment, assessment-v2, architecture, ai-walkthrough, n8n-workflow, stack-picker, guide, swipe, landing, template. Grep for the `render(` call site in each engine's init and append the thunk assignment. If an engine's variable names differ, adapt — the thunk must call that engine's render with its current data + root.)
++
++2. In **edit-mode.js**, add:
++   ```js
++   function rerender() {
++     if (window.LM && window.LM.editMode && window.LM.editMode.resetBuffers)
++       window.LM.editMode.resetBuffers();
++     if (typeof window.__lm_rerender === "function") window.__lm_rerender();
++   }
++   ```
++   Add `rerender: rerender` to the `window.__LM_EDIT_MODE_API` object literal at line 544.
++
++## Constraints
++- Zero behavior change when NOT in edit mode. `makeField`/`makeFieldArray` are purely additive; `rerender` is only called by later tasks.
++- Do NOT hand-edit any `.min.js`. (Minify runs later in Phase E.)
++- Match the existing code style (var, IIFE, function declarations, no arrow-fn in the shared/edit-mode files if they don't already use them — they use `function`).
++
++## Verify
++- `node -e "require('...')"` won't work (browser IIFE). Instead:
++  1. `node --check _engine/shared.js && node --check _engine/edit-mode.js` — must pass (syntax).
++  2. `node --check` each engine you touched.
++  3. Grep-confirm: `grep -n "makeField" _engine/shared.js` shows the two fns + both exports; `grep -n "rerender" _engine/edit-mode.js` shows the fn + the API export; `grep -c "__lm_rerender" _engine/*.js` shows the thunk added to every engine init (~12) + the call in edit-mode.js.
++- Report the exact grep counts in your report.
++
++## Commit
++`git add -A && git commit -m "feat(editor): makeField helper + rerender hook + per-engine rerender thunk"`
++
++## Report
++Write your full report to `.superpowers/sdd/task-A1-report.md` (status, files changed, the grep-count evidence, the commit hash, any concerns). Return only: status (DONE / DONE_WITH_CONCERNS / BLOCKED / NEEDS_CONTEXT), the commit hash, a one-line verify summary, and concerns.
+diff --git a/_engine/ai-walkthrough.js b/_engine/ai-walkthrough.js
+index ace03e3..00ef9a1 100644
+--- a/_engine/ai-walkthrough.js
++++ b/_engine/ai-walkthrough.js
+@@ -450,21 +450,21 @@
+     if (label) label.textContent = "Analyzing step " + Math.min(parsed.steps.length + 1, userSteps.length) + " of " + userSteps.length + "…";
+   }
+ 
+   // ── Bootstrap ────────────────────────────────────────────────────────────
+   function init() {
+     var root = document.getElementById("lmw-root") || document.querySelector("[data-lm-walkthrough-src]");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-walkthrough-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading walkthrough:</strong> ' + esc(e.message) + '</div>';
+       });
+   }
+ 
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+   else init();
+ 
+   // For tests / introspection.
+   window.__lmw_render = render;
+diff --git a/_engine/architecture.js b/_engine/architecture.js
+index cef4d30..b75c9e1 100644
+--- a/_engine/architecture.js
++++ b/_engine/architecture.js
+@@ -855,21 +855,21 @@
+       answers: { node_count: (data.diagram && data.diagram.nodes || []).length }
+     });
+   }
+ 
+   function init() {
+     var root = document.getElementById("lma-root") || document.querySelector("[data-lm-architecture-src]");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-architecture-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading architecture:</strong> ' + esc(e.message) + '</div>';
+       });
+   }
+ 
+   if (document.readyState === "loading") {
+     document.addEventListener("DOMContentLoaded", init);
+   } else {
+     init();
+   }
+diff --git a/_engine/assessment-v2.js b/_engine/assessment-v2.js
+index f3be938..daaa3a9 100644
+--- a/_engine/assessment-v2.js
++++ b/_engine/assessment-v2.js
+@@ -787,16 +787,16 @@
+     var src = params.get("preview") === "draft" ? "./data.draft.json" : defaultSrc;
+     fetch(src, { credentials: "same-origin" }).then(function (r) {
+       if (params.get("preview") === "draft" && !r.ok) {
+         return fetch(defaultSrc, { credentials: "same-origin" }).then(function (r2) {
+           if (!r2.ok) throw new Error("data.json " + r2.status);
+           return r2.json();
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+-    }).then(function (data) { render(data, root); }).catch(function (e) {
++    }).then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading assessment:</strong> ' + esc(e.message) + '</div>';
+     });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+diff --git a/_engine/assessment.js b/_engine/assessment.js
+index 7b42e54..f00de1e 100644
+--- a/_engine/assessment.js
++++ b/_engine/assessment.js
+@@ -1108,18 +1108,18 @@
+     var src = params.get("preview") === "draft" ? "./data.draft.json" : defaultSrc;
+     fetch(src, { credentials: "same-origin" }).then(function (r) {
+       if (params.get("preview") === "draft" && !r.ok) {
+         return fetch(defaultSrc, { credentials: "same-origin" }).then(function (r2) {
+           if (!r2.ok) throw new Error("data.json " + r2.status);
+           return r2.json();
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+-    }).then(function (data) { render(data, root); }).catch(function (e) {
++    }).then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading assessment:</strong> ' + esc(e.message) + '</div>';
+     });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+ 
+ // deploy nudge 2026-05-26T11:59:49Z
+diff --git a/_engine/calculator.js b/_engine/calculator.js
+index 81e6800..cfe9c8c 100644
+--- a/_engine/calculator.js
++++ b/_engine/calculator.js
+@@ -523,16 +523,16 @@
+     var src = params.get("preview") === "draft" ? "./data.draft.json" : defaultSrc;
+     fetch(src, { credentials: "same-origin" }).then(function (r) {
+       if (params.get("preview") === "draft" && !r.ok) {
+         return fetch(defaultSrc, { credentials: "same-origin" }).then(function (r2) {
+           if (!r2.ok) throw new Error("data.json " + r2.status);
+           return r2.json();
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+-    }).then(function (data) { render(data, root); }).catch(function (e) {
++    }).then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading calculator:</strong> ' + escapeHtml(e.message) + '</div>';
+     });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+diff --git a/_engine/checklist.js b/_engine/checklist.js
+index f61fb26..a64e6f4 100644
+--- a/_engine/checklist.js
++++ b/_engine/checklist.js
+@@ -465,17 +465,18 @@
+       if (params.get("preview") === "draft" && !r.ok) {
+         return fetch(defaultSrc, { credentials: "same-origin" }).then(function (r2) {
+           if (!r2.ok) throw new Error("data.json " + r2.status);
+           return r2.json();
+         });
+       }
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+     }).then(function (data) {
+       render(data, root);
++      window.__lm_rerender = function(){ render(window.__lm_data, root); };
+     }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading checklist:</strong> ' + escapeHtml(e.message) + '</div>';
+     });
+   }
+ 
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+diff --git a/_engine/edit-mode.js b/_engine/edit-mode.js
+index fde8d69..d509893 100644
+--- a/_engine/edit-mode.js
++++ b/_engine/edit-mode.js
+@@ -532,18 +532,32 @@
+     renderToolbar();
+     // Pre-edit snapshot for "restore from session" (mitigation #4 part 2)
+     try {
+       sessionStorage.setItem("ivan.lm.pre_edit." + state.slug, JSON.stringify(state.originalData));
+     } catch (_) {}
+     // Guides use contenteditable section bodies — warm DOMPurify so the first
+     // blur doesn't drop through the unsafe fallback path.
+     if (state.format === "guide") loadPurify();
+   }
+ 
++  // ── Re-render (Task A1) ─────────────────────────────────────────────
++  // Re-runs the active engine's render() without a full page reload after a
++  // structural edit (array add/remove, AI rewrite). Must clear the field/array
++  // buffers first, or re-running render() re-pushes onto them and stale
++  // entries (pointing at removed DOM nodes) accumulate. Because edit mode is
++  // enabled during a live session, each re-pushed registerField/registerArray
++  // auto-attaches on push, so no separate flush pass is needed here.
++  function rerender() {
++    if (window.LM && window.LM.editMode && window.LM.editMode.resetBuffers)
++      window.LM.editMode.resetBuffers();
++    if (typeof window.__lm_rerender === "function") window.__lm_rerender();
++  }
++
+   // ── Expose API ────────────────────────────────────────────────────────
+   window.__LM_EDIT_MODE_LOADED = true;
+   window.__LM_EDIT_MODE_API = {
+     attachField: attachField,
+     attachArray: attachArray,
+     mount: mount,
++    rerender: rerender,
+   };
+ })();
+diff --git a/_engine/guide.js b/_engine/guide.js
+index afbd3ab..baefdc7 100644
+--- a/_engine/guide.js
++++ b/_engine/guide.js
+@@ -517,16 +517,16 @@
+       .then(function (r) {
+         if (params.get("preview") === "draft" && !r.ok) {
+           return fetch(defaultSrc, { credentials: "same-origin" }).then(function (r2) {
+             if (!r2.ok) throw new Error("data.json " + r2.status);
+             return r2.json();
+           });
+         }
+         if (!r.ok) throw new Error("data.json " + r.status);
+         return r.json();
+       })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading guide:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   });
+ })();
+diff --git a/_engine/landing.js b/_engine/landing.js
+index 3da2338..58f3d81 100644
+--- a/_engine/landing.js
++++ b/_engine/landing.js
+@@ -26,21 +26,21 @@
+     if (/<em\b|<i\b/i.test(h)) return h; // pre-marked
+     var emph = d.headline_emphasis;
+     if (emph && h.indexOf(emph) !== -1) {
+       return esc(h.slice(0, h.indexOf(emph))) + "<em>" + esc(emph) + "</em>" + esc(h.slice(h.indexOf(emph) + emph.length));
+     }
+     return esc(h);
+   }
+ 
+   fetch(src, { cache: "no-cache" })
+     .then(function (r) { if (!r.ok) throw new Error("load"); return r.json(); })
+-    .then(render)
++    .then(function (d) { render(d); window.__lm_rerender = function(){ render(window.__lm_data); }; })
+     .catch(function () {
+       root.innerHTML = '<div class="lp" style="padding:4rem 0;text-align:center"><p>This page didn\'t load. <a href="https://ivanmanfredi.com" style="color:#4C6E3D">ivanmanfredi.com</a></p></div>';
+     });
+ 
+   function render(d) {
+     window.__lm_data = d;
+     if (d.slug) window.__lm_slug = d.slug;
+ 
+     var inside = (d.inside || []).map(function (b, i) {
+       return '<li class="lp-b"><span class="n">' + (i + 1) + '</span><span>' + esc(b) + "</span></li>";
+diff --git a/_engine/n8n-workflow.js b/_engine/n8n-workflow.js
+index 1f4471b..d42e0ad 100644
+--- a/_engine/n8n-workflow.js
++++ b/_engine/n8n-workflow.js
+@@ -226,18 +226,18 @@
+     });
+     return lines.join("\n");
+   }
+ 
+   function init() {
+     var root = document.getElementById("lmc-root") || document.querySelector("[data-lm-n8n-src]");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-n8n-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading workflow:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   }
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+   else init();
+ })();
+diff --git a/_engine/shared.js b/_engine/shared.js
+index 7416367..a54bea8 100644
+--- a/_engine/shared.js
++++ b/_engine/shared.js
+@@ -739,37 +739,58 @@
+         '<span>© ' + year + ' Iván Manfredi</span>' +
+         '<span><a href="https://ivanmanfredi.com">ivanmanfredi.com</a></span>';
+     }
+   }
+ 
+   // ── Resource tracker removed — was a "could be cool" Netflix-style widget,
+   // but Ivan's audience arrives via DM/comment-gate for ONE specific LM, not browsing.
+   // Kept as no-op so existing engine calls to LM.tracker.touch() don't throw.
+   function trackerTouch() {}
+ 
++  // ── Click-to-edit field/array helpers (Task A1) ───────────────────────
++  // Thin wrappers around make() + editModeRegisterField/Array so engines can
++  // build an editable element in one call instead of make() + registerField().
++  function makeField(tag, attrs, text, path, opts) {
++    var e = make(tag, attrs, (opts && opts.html) ? text : undefined);
++    if (!(opts && opts.html) && text !== undefined) e.textContent = text;
++    editModeRegisterField(e, path, opts || {});
++    return e;
++  }
++  function makeFieldArray(containerEl, arrayPath, opts) {
++    editModeRegisterArray(containerEl, arrayPath, opts || {});
++    return containerEl;
++  }
++  function editModeResetBuffers() {
++    editModeState.fields.length = 0;
++    editModeState.arrays.length = 0;
++  }
++
+   window.LM = {
+     make: make, esc: esc, toast: toast, emailIsValid: emailIsValid,
+     beacon: beacon, canonicalBeaconEvent: canonicalBeaconEvent,
+     readerIdentity: readerIdentity, updateReader: updateReader,
+     readKV: readKV, writeKV: writeKV, removeKV: removeKV,
+     observeReveal: observeReveal,
+     buildHero: buildHero, buildIntro: buildIntro,
+     buildClosingCta: buildClosingCta, callUrl: callUrl,
+     tierFor: tierFor,
++    makeField: makeField, makeFieldArray: makeFieldArray,
+     editMode: {
+       enabled: function () { return editModeState.enabled; },
+       registerField: editModeRegisterField,
+       registerArray: editModeRegisterArray,
+       maybeEnable: editModeMaybeEnable,
+       activateFromCache: activateEditModeFromCache,
+       showTokenModal: showEditTokenModal,
+       clearCache: clearCachedEditToken,
++      makeField: makeField, makeFieldArray: makeFieldArray,
++      resetBuffers: editModeResetBuffers,
+     },
+     tracker: { touch: trackerTouch },  // no-op stub, see comment above
+     progress: {
+       mount: progressMount,
+       update: progressUpdate,
+     },
+     share: {
+       linkedIn: shareLinkedIn,
+       whatsapp: shareWhatsApp,
+       copy: shareCopy,
+diff --git a/_engine/stack-picker.js b/_engine/stack-picker.js
+index 77d3970..3176eb0 100644
+--- a/_engine/stack-picker.js
++++ b/_engine/stack-picker.js
+@@ -480,19 +480,20 @@
+     if (!root) return;
+     var src = root.getAttribute("data-lm-stack-picker-src") || "./data.json";
+     var params = new URLSearchParams(location.search);
+     if (params.get("preview") === "draft") src = "./data.draft.json";
+ 
+     fetch(src, { credentials: "same-origin" }).then(function (r) {
+       if (!r.ok) throw new Error("data.json " + r.status);
+       return r.json();
+     }).then(function (data) {
+       render(data, root);
++      window.__lm_rerender = function(){ render(window.__lm_data, root); };
+       // Listen for hash changes (back/forward button)
+       window.addEventListener("hashchange", function () { render(data, root); });
+     }).catch(function (e) {
+       root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading stack picker:</strong> ' + esc(e.message) + '</div>';
+     });
+   }
+ 
+   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
+ })();
+diff --git a/_engine/swipe.js b/_engine/swipe.js
+index f535978..a5a7282 100644
+--- a/_engine/swipe.js
++++ b/_engine/swipe.js
+@@ -211,16 +211,16 @@
+ 
+     L.beacon("swipe", "view");
+   }
+ 
+   document.addEventListener("DOMContentLoaded", function () {
+     var root = document.querySelector("[data-lm-swipe-src]") || document.querySelector("#lmc-root");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-swipe-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading swipe file:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   });
+ })();
+diff --git a/_engine/template.js b/_engine/template.js
+index 1e361be..c3c0680 100644
+--- a/_engine/template.js
++++ b/_engine/template.js
+@@ -192,16 +192,16 @@
+ 
+     L.beacon("template", "view");
+   }
+ 
+   document.addEventListener("DOMContentLoaded", function () {
+     var root = document.querySelector("[data-lm-template-src]") || document.querySelector("#lmc-root");
+     if (!root) return;
+     var src = root.getAttribute("data-lm-template-src") || "./data.json";
+     fetch(src, { credentials: "same-origin" })
+       .then(function (r) { if (!r.ok) throw new Error("data.json " + r.status); return r.json(); })
+-      .then(function (data) { render(data, root); })
++      .then(function (data) { render(data, root); window.__lm_rerender = function(){ render(window.__lm_data, root); }; })
+       .catch(function (e) {
+         root.innerHTML = '<div style="padding:2rem;color:#a00"><strong>Error loading template:</strong> ' + L.esc(e.message) + '</div>';
+       });
+   });
+ })();

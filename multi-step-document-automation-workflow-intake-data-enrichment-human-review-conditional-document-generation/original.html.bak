@@ -1,0 +1,505 @@
+<!DOCTYPE html><html lang="en" class="scroll-smooth"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><title>Multi-Step Document Automation Workflow: Intake → Data Enrichment → Human Review → Conditional Document Generation | Ivan Manfredi</title><meta name="description" content="N8N workflow template for multi-step document automation - intake, data enrichment, human review, and conditional generation. Built for teams who need it to actually work." /><meta property="og:title" content="Multi-Step Document Automation Workflow: Intake → Data Enrichment → Human Review → Conditional Document Generation | Ivan Manfredi" /><meta property="og:description" content="N8N workflow template for multi-step document automation - intake, data enrichment, human review, and conditional generation. Built for teams who need it to actually work." /><meta property="og:type" content="article" /><meta name="twitter:card" content="summary_large_image" /><script src="https://cdn.tailwindcss.com"></script><script>tailwind.config={theme:{extend:{fontFamily:{sans:['Space Grotesk','sans-serif'],mono:['JetBrains Mono','monospace']},colors:{primary:'#000000',paper:'#ffffff',accent:'#2A8F65',cyan:'#2979FF'},boxShadow:{'comic':'4px 4px 0px 0px rgba(0,0,0,1)','comic-hover':'6px 6px 0px 0px rgba(0,0,0,1)','comic-active':'2px 2px 0px 0px rgba(0,0,0,1)'}}}}</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"><style>body{background-color:#fff;color:#000;overflow-x:hidden}.bg-grid-pattern{background-size:40px 40px;background-image:linear-gradient(to right,#f0f0f0 1px,transparent 1px),linear-gradient(to bottom,#f0f0f0 1px,transparent 1px)}.resource-content h2{font-size:1.5rem;font-weight:700;text-transform:uppercase;margin:2rem 0 1rem}.resource-content p{margin:.75rem 0;line-height:1.7}.resource-content ul{list-style:disc;padding-left:1.5rem;margin:.75rem 0}.resource-content li{margin:.4rem 0;line-height:1.6}.json-viewer{font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.6;background:#1a1a1a;color:#2A8F65;padding:2rem;border:3px solid black;overflow-x:auto;max-height:600px;overflow-y:auto;white-space:pre}.json-viewer::-webkit-scrollbar{width:10px;height:10px}.json-viewer::-webkit-scrollbar-track{background:#0a0a0a}.json-viewer::-webkit-scrollbar-thumb{background:#2A8F65;border:2px solid #1a1a1a}.copy-notif{position:fixed;top:100px;right:20px;background:#2A8F65;color:black;padding:1rem 2rem;border:2px solid black;box-shadow:4px 4px 0 0 rgba(0,0,0,1);font-weight:bold;text-transform:uppercase;z-index:1000;animation:slideIn .3s ease-out}@keyframes slideIn{from{transform:translateX(400px);opacity:0}to{transform:translateX(0);opacity:1}}.fade-out{animation:fadeOut .3s ease-out forwards}@keyframes fadeOut{to{opacity:0;transform:translateY(-20px)}}</style><link rel="stylesheet" href="https://resources.ivanmanfredi.com/assets/styles.css"></head><body class="font-sans selection:bg-accent selection:text-black"><nav class="sticky top-0 z-50 bg-white border-b-4 border-black py-4"><div class="container mx-auto px-6 flex justify-between items-center"><a href="https://ivanmanfredi.com" class="flex items-center gap-3 group"><div class="relative w-10 h-10 bg-black border-2 border-black shadow-comic group-hover:shadow-comic-active transition-all flex items-center justify-center"><span class="relative text-white font-black text-lg">IM</span></div><span class="text-sm font-medium tracking-widest uppercase text-gray-700">Ivan Manfredi</span></a><div class="flex items-center gap-4"><a href="https://ivanmanfredi.com" class="text-sm font-bold uppercase hover:underline decoration-2 decoration-accent">Back to Site</a><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="hidden md:inline-block px-6 py-2 bg-accent border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Let's Talk</a></div></div></nav><section class="bg-grid-pattern py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-4xl mx-auto"><div class="inline-block px-4 py-1 bg-black text-white text-sm font-bold uppercase tracking-wider mb-6">N8N Workflow</div><h1 class="hero-title text-4xl md:text-6xl font-black uppercase leading-[0.95] mb-6">Multi-Step Document Automation Workflow: Intake → Data Enrichment → Human Review → Conditional Document Generation</h1><p class="hero-intro text-xl font-medium max-w-2xl leading-relaxed mb-8"><p style="margin-bottom: 16px; line-height: 1.7;">You made the right call grabbing this. Most document automation fails because people try to build one massive workflow instead of four connected stages with clear handoffs. This n8n blueprint walks you through every node and decision point - spend 2-3 hours setting it up and you'll have a system that actually works when something breaks. Start with the intake stage first, get that solid, then build forward.</p></p></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-3xl mx-auto resource-content text-base font-medium leading-relaxed"><div class="bg-gray-50 border-2 border-black p-6 mb-6"><p class="text-lg font-bold mb-4">This workflow contains 15 nodes.</p><h3 class="font-bold text-base mb-3 uppercase">Node Types Used</h3><div class="flex flex-wrap gap-2"><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">webhook</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">stickyNote</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">code</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">if</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">httpRequest</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">merge</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">emailSend</span><span class="inline-block bg-white px-3 py-1 border-2 border-black text-sm font-mono font-medium">respondToWebhook</span></div></div><p style="margin-bottom: 16px; line-height: 1.7;">Hey, this is Ivan, and I'm about to give you the N8N Workflow Blueprint for building a multi-step document automation system that handles intake, enrichment, human review, and conditional document generation - without the chaos of manual handoffs.</p>
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Who Am I?</h2>
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">AI automation consultant</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Built AI-powered automation systems for 50+ businesses</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Designed workflows that save teams 20+ hours per week</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Created document automation pipelines handling everything from construction SWPPs to marketing lead magnets</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">The guy who's debugged more broken PDF workflows than I care to admit</li>
+</ul>
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">What To Do With This</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Spend 2-3 hours setting up each stage of this workflow. You can build it all in one sitting or spread it across a few days. The blueprint walks you through every node, every connection, and every decision point.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The goal: take a document request from intake to finished output with minimal manual touching. Human review stays in the loop where it matters - you're not removing people, you're removing the tedious parts.</p>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">Why This Workflow Matters</h2>
+<p style="margin-bottom: 16px; line-height: 1.7;">Most document automation fails because people try to automate the whole thing end-to-end on day one. They build a massive workflow, it breaks somewhere in the middle, and nobody can figure out where.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The reality I see with clients: document generation isn't one problem. It's four problems stitched together:</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">1. Getting the right inputs in a consistent format<br>2. Enriching those inputs with data from other sources<br>3. Making sure a human can catch errors before they compound<br>4. Generating the right document based on what the data tells you</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">Each stage has different failure modes. Each stage needs different error handling. When you build them as separate chunks that talk to each other, you can actually debug the thing.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;">This workflow handles all four stages with clear handoffs between them. When something breaks - and something always breaks - you'll know exactly where to look.</p>
+<hr style="border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 32px 0;">
+<h2 style="font-size: 24px; font-weight: 700; margin-top: 40px; margin-bottom: 16px; line-height: 1.3;">The Complete Workflow Architecture</h2>
+<h3 style="font-size: 20px; font-weight: 700; margin-top: 32px; margin-bottom: 12px; line-height: 1.3;">Stage 1: Intake System</h3>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Purpose:</strong> Capture document requests in a structured format that downstream processes can actually use.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Trigger Node: Webhook or Form Submission</strong></p>
+``<code>
+Node Type: Webhook (or n8n Form Trigger)
+Configuration:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">HTTP Method: POST</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Path: /document-intake</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Response Mode: Last Node</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">Authentication: Header Auth (recommended)</li>
+</ul></code>`<code>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>What you're capturing at intake:</strong></p>
+<ul><ul style="padding-left: 24px; margin: 16px 0;"><li><strong>Field: </strong>request_id<strong> | Type: </strong>Auto-generated<strong> | Required: </strong>Yes<strong> | Notes: </strong>UUID for tracking</li><li><strong>Field: </strong>client_name<strong> | Type: </strong>Text<strong> | Required: </strong>Yes<strong> | Notes: </strong>Company or individual</li><li><strong>Field: </strong>client_email<strong> | Type: </strong>Email<strong> | Required: </strong>Yes<strong> | Notes: </strong>For notifications</li><li><strong>Field: </strong>document_type<strong> | Type: </strong>Dropdown<strong> | Required: </strong>Yes<strong> | Notes: </strong>Determines which template fires</li><li><strong>Field: </strong>project_name<strong> | Type: </strong>Text<strong> | Required: </strong>Yes<strong> | Notes: </strong>Reference identifier</li><li><strong>Field: </strong>deadline<strong> | Type: </strong>Date<strong> | Required: </strong>No<strong> | Notes: </strong>Triggers priority routing</li><li><strong>Field: </strong>source_files<strong> | Type: </strong>File Upload<strong> | Required: </strong>Conditional<strong> | Notes: </strong>PDFs, spreadsheets, etc.</li><li><strong>Field: </strong>special_instructions<strong> | Type: </strong>Long Text<strong> | Required: </strong>No<strong> | Notes: </strong>Catches edge cases</li></ul></ul><strong>Validation Node: Check Required Fields</strong>
+</code>`<code>
+Node Type: IF
+Conditions:
+<ul style="padding-left: 24px; margin: 16px 0;"><li style="margin-bottom: 8px; line-height: 1.6;">client_name is not empty</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">client_email contains @</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">document_type is not empty</li>
+<li style="margin-bottom: 8px; line-height: 1.6;">project_name is not empty</li>
+</ul>
+True Branch: Continue to enrichment
+False Branch: Send error response + notify requester
+</code>`<code>
+<blockquote style="border-left: 3px solid rgba(255,255,255,0.3); padding-left: 16px; margin: 16px 0; font-style: italic; opacity: 0.9;">Tip: The most common intake failure I see is letting people submit incomplete requests. Validate upfront or you'll spend more time chasing missing info than you save with automation.</blockquote>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>File Handling Node: Process Uploads</strong></p>
+<p style="margin-bottom: 16px; line-height: 1.7;"></code>`<code><br>Node Type: IF (check if files exist)<br>True Branch: <br>  - Move to Google Drive/S3 folder<br>  - Extract file metadata<br>  - Store file URLs for later reference<br>False Branch: Continue without files<br></code>`<code></p>
+<p style="margin-bottom: 16px; line-height: 1.7;">For large PDFs - and I've seen clients upload 300-page construction drawings - you need to think about this differently. Create an automated folder structure:</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"></code>`<code><br>/Projects/<br>  /[Project_Name]/<br>    /Source_Files/<br>    /Generated_Documents/<br>    /Review_Notes/<br></code>`<code></p>
+<p style="margin-bottom: 16px; line-height: 1.7;">The AI can reference the folder path instead of processing massive files inline. This is especially important if you're using Gemini or Claude to read documents - they handle file references better than trying to process 100MB PDFs directly.</p>
+<p style="margin-bottom: 16px; line-height: 1.7;"><strong>Output of Stage 1:</strong></p>
+<p style="margin-bottom: 16px; line-height: 1.7;"></code>``json<br>{<br>  "request_id": "uuid-here",<br>  "client_name": "Acme Corp",<br>  "client_email": "contact@acme.com",</p></div></div></section><section class="py-12 md:py-16 border-b-4 border-black"><div class="container mx-auto px-6"><div class="max-w-5xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-8">Workflow JSON</h2><div class="flex flex-wrap gap-4 mb-6"><button onclick="copyJSON()" class="px-6 py-3 bg-accent text-black border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Copy JSON</button><button onclick="downloadJSON()" class="px-6 py-3 bg-cyan text-white border-2 border-black shadow-comic font-bold uppercase hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Download .json</button></div><div class="json-viewer" id="wfJSON">{
+  "name": "N8N Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "lead-capture",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+      "name": "Webhook Trigger - New Lead",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        250,
+        300
+      ],
+      "webhookId": "lead-capture-webhook"
+    },
+    {
+      "parameters": {
+        "content": "## Lead Capture and CRM Sync Workflow\n\nThis automation workflow:\n1. Receives lead data via webhook\n2. Validates required fields (email, name, company)\n3. Enriches data with timestamps and lead scoring\n4. Syncs to CRM API with retry logic\n5. Sends confirmation email to lead\n6. Returns appropriate success/error responses\n\n**To use:** Add your SMTP and HTTP Auth credentials, then activate the workflow.",
+        "height": 280,
+        "width": 350
+      },
+      "id": "b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e",
+      "name": "Workflow Documentation",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        250,
+        520
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Validate incoming lead data\nconst requiredFields = ['email', 'name', 'company'];\nconst leadData = $input.first().json;\n\n// Check if all required fields are present\nconst missingFields = requiredFields.filter(field =&gt; !leadData[field] || leadData[field].trim() === '');\n\nif (missingFields.length &gt; 0) {\n  return {\n    valid: false,\n    error: `Missing required fields: ${missingFields.join(', ')}`,\n    data: leadData\n  };\n}\n\n// Validate email format\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nif (!emailRegex.test(leadData.email)) {\n  return {\n    valid: false,\n    error: 'Invalid email format',\n    data: leadData\n  };\n}\n\nreturn {\n  valid: true,\n  data: leadData\n};"
+      },
+      "id": "c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f",
+      "name": "Validate Lead Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        650,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "validation-condition",
+              "leftValue": "={{ $json.valid }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a",
+      "name": "Check Validation Result",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1050,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Enrich lead data with additional fields\nconst leadData = $input.first().json.data;\nconst now = new Date();\n\nreturn {\n  ...leadData,\n  lead_id: `LEAD-${now.getTime()}`,\n  created_at: now.toISOString(),\n  source: 'website',\n  status: 'new',\n  lead_score: 50,\n  country: leadData.country || 'Unknown',\n  phone: leadData.phone || 'Not provided'\n};"
+      },
+      "id": "e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b",
+      "name": "Enrich Lead Data with Metadata",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1450,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.example-crm.com/v1/leads",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "httpHeaderAuth",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "={{ $json.email }}"
+            },
+            {
+              "name": "name",
+              "value": "={{ $json.name }}"
+            },
+            {
+              "name": "company",
+              "value": "={{ $json.company }}"
+            },
+            {
+              "name": "lead_id",
+              "value": "={{ $json.lead_id }}"
+            },
+            {
+              "name": "source",
+              "value": "={{ $json.source }}"
+            },
+            {
+              "name": "status",
+              "value": "={{ $json.status }}"
+            },
+            {
+              "name": "lead_score",
+              "value": "={{ $json.lead_score }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 10000
+        }
+      },
+      "id": "f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c",
+      "name": "Sync Lead to CRM API",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1850,
+        200
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "crm-success-condition",
+              "leftValue": "={{ $json.statusCode }}",
+              "rightValue": 201,
+              "operator": {
+                "type": "number",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "id": "a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d",
+      "name": "Check CRM Sync Success",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2250,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e",
+      "name": "Merge Lead and CRM Response",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [
+        2650,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "fromEmail": "noreply@yourcompany.com",
+        "toEmail": "={{ $json.email }}",
+        "subject": "Welcome! Your Inquiry Has Been Received",
+        "emailType": "html",
+        "message": "&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n&lt;head&gt;\n  &lt;style&gt;\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }\n    .container { max-width: 600px; margin: 0 auto; padding: 20px; }\n    .header { background-color: #4A90E2; color: white; padding: 20px; text-align: center; }\n    .content { padding: 20px; background-color: #f9f9f9; }\n    .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }\n  &lt;/style&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &lt;div class=\"container\"&gt;\n    &lt;div class=\"header\"&gt;\n      &lt;h1&gt;Thank You for Your Interest!&lt;/h1&gt;\n    &lt;/div&gt;\n    &lt;div class=\"content\"&gt;\n      &lt;p&gt;Hi {{ $json.name.split(' ')[0] }},&lt;/p&gt;\n      &lt;p&gt;We've received your inquiry and our team will review it shortly. Here's what happens next:&lt;/p&gt;\n      &lt;ul&gt;\n        &lt;li&gt;Our sales team will review your information&lt;/li&gt;\n        &lt;li&gt;You'll hear from us within 24 hours&lt;/li&gt;\n        &lt;li&gt;We'll schedule a personalized demo if needed&lt;/li&gt;\n      &lt;/ul&gt;\n      &lt;p&gt;&lt;strong&gt;Your Reference ID:&lt;/strong&gt; {{ $json.lead_id }}&lt;/p&gt;\n      &lt;p&gt;If you have any immediate questions, feel free to reply to this email.&lt;/p&gt;\n      &lt;p&gt;Best regards,&lt;br&gt;The Sales Team&lt;/p&gt;\n    &lt;/div&gt;\n    &lt;div class=\"footer\"&gt;\n      &lt;p&gt;&amp;copy; 2026 Your Company. All rights reserved.&lt;/p&gt;\n    &lt;/div&gt;\n  &lt;/div&gt;\n&lt;/body&gt;\n&lt;/html&gt;",
+        "options": {}
+      },
+      "id": "c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f",
+      "name": "Send Confirmation Email to Lead",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        3050,
+        100
+      ],
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"success\": true, \"message\": \"Lead captured successfully\", \"lead_id\": $json.lead_id } }}",
+        "options": {
+          "responseCode": 200
+        }
+      },
+      "id": "d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a",
+      "name": "Return Success Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3450,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log validation error details\nconst errorData = $input.first().json;\n\nreturn {\n  timestamp: new Date().toISOString(),\n  error_type: 'validation_error',\n  error_message: errorData.error,\n  received_data: errorData.data,\n  status: 'failed'\n};"
+      },
+      "id": "e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b",
+      "name": "Log Validation Error Details",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1450,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"success\": false, \"error\": $json.error_message, \"message\": \"Please check your input and try again\" } }}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c",
+      "name": "Return Validation Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        1850,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Log CRM sync error\nconst responseData = $input.first().json;\n\nreturn {\n  timestamp: new Date().toISOString(),\n  error_type: 'crm_sync_error',\n  status_code: responseData.statusCode || 'unknown',\n  error_message: responseData.error || 'Failed to sync with CRM',\n  lead_data: $('Enrich Lead Data with Metadata').first().json,\n  status: 'failed'\n};"
+      },
+      "id": "a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d",
+      "name": "Log CRM Sync Error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2650,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { \"success\": false, \"error\": \"CRM sync failed\", \"message\": \"We received your information but encountered a technical issue. Our team will contact you shortly.\" } }}",
+        "options": {
+          "responseCode": 500
+        }
+      },
+      "id": "b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e",
+      "name": "Return CRM Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.1,
+      "position": [
+        3050,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "content": "## Error Handling Paths\n\n**Validation Errors (400):**\n- Missing required fields\n- Invalid email format\n- Returns clear error message to user\n\n**CRM Sync Errors (500):**\n- API timeout or failure\n- Logs error for troubleshooting\n- Reassures user their data was received",
+        "height": 260,
+        "width": 320
+      },
+      "id": "c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f",
+      "name": "Error Handling Notes",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [
+        1450,
+        520
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook Trigger - New Lead": {
+      "main": [
+        [
+          {
+            "node": "Validate Lead Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Lead Data": {
+      "main": [
+        [
+          {
+            "node": "Check Validation Result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Validation Result": {
+      "main": [
+        [
+          {
+            "node": "Enrich Lead Data with Metadata",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Log Validation Error Details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Enrich Lead Data with Metadata": {
+      "main": [
+        [
+          {
+            "node": "Sync Lead to CRM API",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge Lead and CRM Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Sync Lead to CRM API": {
+      "main": [
+        [
+          {
+            "node": "Check CRM Sync Success",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check CRM Sync Success": {
+      "main": [
+        [
+          {
+            "node": "Merge Lead and CRM Response",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Log CRM Sync Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge Lead and CRM Response": {
+      "main": [
+        [
+          {
+            "node": "Send Confirmation Email to Lead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Confirmation Email to Lead": {
+      "main": [
+        [
+          {
+            "node": "Return Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log Validation Error Details": {
+      "main": [
+        [
+          {
+            "node": "Return Validation Error Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Log CRM Sync Error": {
+      "main": [
+        [
+          {
+            "node": "Return CRM Error Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}</div><div class="mt-12 bg-white border-4 border-black p-8 shadow-comic"><h3 class="text-2xl font-black uppercase mb-4">How to Import This Workflow</h3><ol class="list-decimal list-inside space-y-3 text-base font-medium"><li>Copy the JSON above or download the .json file</li><li>Open your n8n instance</li><li>Click the + button then "Import from File" or "Import from URL"</li><li>Paste the JSON or upload the downloaded file</li><li>Configure any required credentials (API keys, OAuth connections)</li><li>Activate the workflow and test it</li></ol><div class="mt-6 p-4 bg-gray-50 border-2 border-black"><p class="font-bold mb-2">Note:</p><p class="text-sm">This workflow requires credentials that you will need to configure in your n8n instance. Credentials are not included for security reasons.</p></div></div></div></div></section><section class="py-16 md:py-24 border-b-4 border-black"><div class="container mx-auto px-6 text-center"><div class="bg-white border-4 border-black p-8 md:p-12 shadow-comic max-w-3xl mx-auto"><h2 class="text-3xl md:text-4xl font-black uppercase mb-4">Need Help Implementing This Workflow?</h2><p class="text-lg font-medium mb-8 max-w-lg mx-auto">I help business owners build custom n8n workflows and automation systems that save thousands of hours per year.</p><a href="https://calendly.com/ivan-intelligents/30min" target="_blank" class="inline-block px-10 py-4 bg-accent text-black text-lg font-black uppercase border-2 border-black shadow-comic hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-comic-active transition-all">Book Strategy Call</a></div></div></section><footer class="bg-black text-white border-t-4 border-black pt-16 pb-8"><div class="container mx-auto px-6"><div class="flex flex-col md:flex-row justify-between items-center mb-12 gap-8"><div class="text-center md:text-left"><h2 class="text-3xl font-black uppercase mb-2">Ivan Manfredi</h2><p class="font-medium text-gray-400">AI & Automation Architect</p></div><div class="flex gap-4"><a href="https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/" target="_blank" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a><a href="mailto:ivan@intelligents.agency" class="w-12 h-12 border-2 border-white flex items-center justify-center hover:bg-white hover:text-black transition-colors"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></a></div></div><div class="border-t border-gray-800 pt-8 text-sm text-gray-500 font-medium uppercase tracking-wide text-center"><p>&copy; 2026 All Rights Reserved.</p></div></div></footer><script>const wfData="{\n  \"name\": \"N8N Workflow\",\n  \"nodes\": [\n    {\n      \"parameters\": {\n        \"httpMethod\": \"POST\",\n        \"path\": \"lead-capture\",\n        \"responseMode\": \"responseNode\",\n        \"options\": {}\n      },\n      \"id\": \"a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d\",\n      \"name\": \"Webhook Trigger - New Lead\",\n      \"type\": \"n8n-nodes-base.webhook\",\n      \"typeVersion\": 2,\n      \"position\": [\n        250,\n        300\n      ],\n      \"webhookId\": \"lead-capture-webhook\"\n    },\n    {\n      \"parameters\": {\n        \"content\": \"## Lead Capture and CRM Sync Workflow\\n\\nThis automation workflow:\\n1. Receives lead data via webhook\\n2. Validates required fields (email, name, company)\\n3. Enriches data with timestamps and lead scoring\\n4. Syncs to CRM API with retry logic\\n5. Sends confirmation email to lead\\n6. Returns appropriate success/error responses\\n\\n**To use:** Add your SMTP and HTTP Auth credentials, then activate the workflow.\",\n        \"height\": 280,\n        \"width\": 350\n      },\n      \"id\": \"b2c3d4e5-f6a7-4b8c-9d0e-1f2a3b4c5d6e\",\n      \"name\": \"Workflow Documentation\",\n      \"type\": \"n8n-nodes-base.stickyNote\",\n      \"typeVersion\": 1,\n      \"position\": [\n        250,\n        520\n      ]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Validate incoming lead data\\nconst requiredFields = ['email', 'name', 'company'];\\nconst leadData = $input.first().json;\\n\\n// Check if all required fields are present\\nconst missingFields = requiredFields.filter(field => !leadData[field] || leadData[field].trim() === '');\\n\\nif (missingFields.length > 0) {\\n  return {\\n    valid: false,\\n    error: `Missing required fields: ${missingFields.join(', ')}`,\\n    data: leadData\\n  };\\n}\\n\\n// Validate email format\\nconst emailRegex = /^[^\\\\s@]+@[^\\\\s@]+\\\\.[^\\\\s@]+$/;\\nif (!emailRegex.test(leadData.email)) {\\n  return {\\n    valid: false,\\n    error: 'Invalid email format',\\n    data: leadData\\n  };\\n}\\n\\nreturn {\\n  valid: true,\\n  data: leadData\\n};\"\n      },\n      \"id\": \"c3d4e5f6-a7b8-4c9d-0e1f-2a3b4c5d6e7f\",\n      \"name\": \"Validate Lead Data\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        650,\n        300\n      ]\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": true,\n            \"leftValue\": \"\",\n            \"typeValidation\": \"strict\"\n          },\n          \"conditions\": [\n            {\n              \"id\": \"validation-condition\",\n              \"leftValue\": \"={{ $json.valid }}\",\n              \"rightValue\": true,\n              \"operator\": {\n                \"type\": \"boolean\",\n                \"operation\": \"equals\"\n              }\n            }\n          ],\n          \"combinator\": \"and\"\n        },\n        \"options\": {}\n      },\n      \"id\": \"d4e5f6a7-b8c9-4d0e-1f2a-3b4c5d6e7f8a\",\n      \"name\": \"Check Validation Result\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.2,\n      \"position\": [\n        1050,\n        300\n      ]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Enrich lead data with additional fields\\nconst leadData = $input.first().json.data;\\nconst now = new Date();\\n\\nreturn {\\n  ...leadData,\\n  lead_id: `LEAD-${now.getTime()}`,\\n  created_at: now.toISOString(),\\n  source: 'website',\\n  status: 'new',\\n  lead_score: 50,\\n  country: leadData.country || 'Unknown',\\n  phone: leadData.phone || 'Not provided'\\n};\"\n      },\n      \"id\": \"e5f6a7b8-c9d0-4e1f-2a3b-4c5d6e7f8a9b\",\n      \"name\": \"Enrich Lead Data with Metadata\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        1450,\n        200\n      ]\n    },\n    {\n      \"parameters\": {\n        \"method\": \"POST\",\n        \"url\": \"https://api.example-crm.com/v1/leads\",\n        \"authentication\": \"predefinedCredentialType\",\n        \"nodeCredentialType\": \"httpHeaderAuth\",\n        \"sendHeaders\": true,\n        \"headerParameters\": {\n          \"parameters\": [\n            {\n              \"name\": \"Content-Type\",\n              \"value\": \"application/json\"\n            }\n          ]\n        },\n        \"sendBody\": true,\n        \"bodyParameters\": {\n          \"parameters\": [\n            {\n              \"name\": \"email\",\n              \"value\": \"={{ $json.email }}\"\n            },\n            {\n              \"name\": \"name\",\n              \"value\": \"={{ $json.name }}\"\n            },\n            {\n              \"name\": \"company\",\n              \"value\": \"={{ $json.company }}\"\n            },\n            {\n              \"name\": \"lead_id\",\n              \"value\": \"={{ $json.lead_id }}\"\n            },\n            {\n              \"name\": \"source\",\n              \"value\": \"={{ $json.source }}\"\n            },\n            {\n              \"name\": \"status\",\n              \"value\": \"={{ $json.status }}\"\n            },\n            {\n              \"name\": \"lead_score\",\n              \"value\": \"={{ $json.lead_score }}\"\n            }\n          ]\n        },\n        \"options\": {\n          \"response\": {\n            \"response\": {\n              \"responseFormat\": \"json\"\n            }\n          },\n          \"timeout\": 10000\n        }\n      },\n      \"id\": \"f6a7b8c9-d0e1-4f2a-3b4c-5d6e7f8a9b0c\",\n      \"name\": \"Sync Lead to CRM API\",\n      \"type\": \"n8n-nodes-base.httpRequest\",\n      \"typeVersion\": 4.2,\n      \"position\": [\n        1850,\n        200\n      ],\n      \"onError\": \"continueRegularOutput\"\n    },\n    {\n      \"parameters\": {\n        \"conditions\": {\n          \"options\": {\n            \"caseSensitive\": true,\n            \"leftValue\": \"\",\n            \"typeValidation\": \"strict\"\n          },\n          \"conditions\": [\n            {\n              \"id\": \"crm-success-condition\",\n              \"leftValue\": \"={{ $json.statusCode }}\",\n              \"rightValue\": 201,\n              \"operator\": {\n                \"type\": \"number\",\n                \"operation\": \"equals\"\n              }\n            }\n          ],\n          \"combinator\": \"or\"\n        },\n        \"options\": {}\n      },\n      \"id\": \"a7b8c9d0-e1f2-4a3b-4c5d-6e7f8a9b0c1d\",\n      \"name\": \"Check CRM Sync Success\",\n      \"type\": \"n8n-nodes-base.if\",\n      \"typeVersion\": 2.2,\n      \"position\": [\n        2250,\n        200\n      ]\n    },\n    {\n      \"parameters\": {\n        \"mode\": \"combine\",\n        \"combinationMode\": \"mergeByPosition\",\n        \"options\": {}\n      },\n      \"id\": \"b8c9d0e1-f2a3-4b4c-5d6e-7f8a9b0c1d2e\",\n      \"name\": \"Merge Lead and CRM Response\",\n      \"type\": \"n8n-nodes-base.merge\",\n      \"typeVersion\": 3,\n      \"position\": [\n        2650,\n        100\n      ]\n    },\n    {\n      \"parameters\": {\n        \"fromEmail\": \"noreply@yourcompany.com\",\n        \"toEmail\": \"={{ $json.email }}\",\n        \"subject\": \"Welcome! Your Inquiry Has Been Received\",\n        \"emailType\": \"html\",\n        \"message\": \"<!DOCTYPE html>\\n<html>\\n<head>\\n  <style>\\n    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }\\n    .container { max-width: 600px; margin: 0 auto; padding: 20px; }\\n    .header { background-color: #4A90E2; color: white; padding: 20px; text-align: center; }\\n    .content { padding: 20px; background-color: #f9f9f9; }\\n    .footer { padding: 20px; text-align: center; font-size: 12px; color: #666; }\\n  </style>\\n</head>\\n<body>\\n  <div class=\\\"container\\\">\\n    <div class=\\\"header\\\">\\n      <h1>Thank You for Your Interest!</h1>\\n    </div>\\n    <div class=\\\"content\\\">\\n      <p>Hi {{ $json.name.split(' ')[0] }},</p>\\n      <p>We've received your inquiry and our team will review it shortly. Here's what happens next:</p>\\n      <ul>\\n        <li>Our sales team will review your information</li>\\n        <li>You'll hear from us within 24 hours</li>\\n        <li>We'll schedule a personalized demo if needed</li>\\n      </ul>\\n      <p><strong>Your Reference ID:</strong> {{ $json.lead_id }}</p>\\n      <p>If you have any immediate questions, feel free to reply to this email.</p>\\n      <p>Best regards,<br>The Sales Team</p>\\n    </div>\\n    <div class=\\\"footer\\\">\\n      <p>&copy; 2026 Your Company. All rights reserved.</p>\\n    </div>\\n  </div>\\n</body>\\n</html>\",\n        \"options\": {}\n      },\n      \"id\": \"c9d0e1f2-a3b4-4c5d-6e7f-8a9b0c1d2e3f\",\n      \"name\": \"Send Confirmation Email to Lead\",\n      \"type\": \"n8n-nodes-base.emailSend\",\n      \"typeVersion\": 2.1,\n      \"position\": [\n        3050,\n        100\n      ],\n      \"onError\": \"continueRegularOutput\"\n    },\n    {\n      \"parameters\": {\n        \"respondWith\": \"json\",\n        \"responseBody\": \"={{ { \\\"success\\\": true, \\\"message\\\": \\\"Lead captured successfully\\\", \\\"lead_id\\\": $json.lead_id } }}\",\n        \"options\": {\n          \"responseCode\": 200\n        }\n      },\n      \"id\": \"d0e1f2a3-b4c5-4d6e-7f8a-9b0c1d2e3f4a\",\n      \"name\": \"Return Success Response\",\n      \"type\": \"n8n-nodes-base.respondToWebhook\",\n      \"typeVersion\": 1.1,\n      \"position\": [\n        3450,\n        100\n      ]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Log validation error details\\nconst errorData = $input.first().json;\\n\\nreturn {\\n  timestamp: new Date().toISOString(),\\n  error_type: 'validation_error',\\n  error_message: errorData.error,\\n  received_data: errorData.data,\\n  status: 'failed'\\n};\"\n      },\n      \"id\": \"e1f2a3b4-c5d6-4e7f-8a9b-0c1d2e3f4a5b\",\n      \"name\": \"Log Validation Error Details\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        1450,\n        400\n      ]\n    },\n    {\n      \"parameters\": {\n        \"respondWith\": \"json\",\n        \"responseBody\": \"={{ { \\\"success\\\": false, \\\"error\\\": $json.error_message, \\\"message\\\": \\\"Please check your input and try again\\\" } }}\",\n        \"options\": {\n          \"responseCode\": 400\n        }\n      },\n      \"id\": \"f2a3b4c5-d6e7-4f8a-9b0c-1d2e3f4a5b6c\",\n      \"name\": \"Return Validation Error Response\",\n      \"type\": \"n8n-nodes-base.respondToWebhook\",\n      \"typeVersion\": 1.1,\n      \"position\": [\n        1850,\n        400\n      ]\n    },\n    {\n      \"parameters\": {\n        \"jsCode\": \"// Log CRM sync error\\nconst responseData = $input.first().json;\\n\\nreturn {\\n  timestamp: new Date().toISOString(),\\n  error_type: 'crm_sync_error',\\n  status_code: responseData.statusCode || 'unknown',\\n  error_message: responseData.error || 'Failed to sync with CRM',\\n  lead_data: $('Enrich Lead Data with Metadata').first().json,\\n  status: 'failed'\\n};\"\n      },\n      \"id\": \"a3b4c5d6-e7f8-4a9b-0c1d-2e3f4a5b6c7d\",\n      \"name\": \"Log CRM Sync Error\",\n      \"type\": \"n8n-nodes-base.code\",\n      \"typeVersion\": 2,\n      \"position\": [\n        2650,\n        400\n      ]\n    },\n    {\n      \"parameters\": {\n        \"respondWith\": \"json\",\n        \"responseBody\": \"={{ { \\\"success\\\": false, \\\"error\\\": \\\"CRM sync failed\\\", \\\"message\\\": \\\"We received your information but encountered a technical issue. Our team will contact you shortly.\\\" } }}\",\n        \"options\": {\n          \"responseCode\": 500\n        }\n      },\n      \"id\": \"b4c5d6e7-f8a9-4b0c-1d2e-3f4a5b6c7d8e\",\n      \"name\": \"Return CRM Error Response\",\n      \"type\": \"n8n-nodes-base.respondToWebhook\",\n      \"typeVersion\": 1.1,\n      \"position\": [\n        3050,\n        400\n      ]\n    },\n    {\n      \"parameters\": {\n        \"content\": \"## Error Handling Paths\\n\\n**Validation Errors (400):**\\n- Missing required fields\\n- Invalid email format\\n- Returns clear error message to user\\n\\n**CRM Sync Errors (500):**\\n- API timeout or failure\\n- Logs error for troubleshooting\\n- Reassures user their data was received\",\n        \"height\": 260,\n        \"width\": 320\n      },\n      \"id\": \"c5d6e7f8-a9b0-4c1d-2e3f-4a5b6c7d8e9f\",\n      \"name\": \"Error Handling Notes\",\n      \"type\": \"n8n-nodes-base.stickyNote\",\n      \"typeVersion\": 1,\n      \"position\": [\n        1450,\n        520\n      ]\n    }\n  ],\n  \"connections\": {\n    \"Webhook Trigger - New Lead\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Validate Lead Data\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Validate Lead Data\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Check Validation Result\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Check Validation Result\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Enrich Lead Data with Metadata\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ],\n        [\n          {\n            \"node\": \"Log Validation Error Details\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Enrich Lead Data with Metadata\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Sync Lead to CRM API\",\n            \"type\": \"main\",\n            \"index\": 0\n          },\n          {\n            \"node\": \"Merge Lead and CRM Response\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Sync Lead to CRM API\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Check CRM Sync Success\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Check CRM Sync Success\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Merge Lead and CRM Response\",\n            \"type\": \"main\",\n            \"index\": 1\n          }\n        ],\n        [\n          {\n            \"node\": \"Log CRM Sync Error\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Merge Lead and CRM Response\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Send Confirmation Email to Lead\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Send Confirmation Email to Lead\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Return Success Response\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Log Validation Error Details\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Return Validation Error Response\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    },\n    \"Log CRM Sync Error\": {\n      \"main\": [\n        [\n          {\n            \"node\": \"Return CRM Error Response\",\n            \"type\": \"main\",\n            \"index\": 0\n          }\n        ]\n      ]\n    }\n  },\n  \"settings\": {\n    \"executionOrder\": \"v1\"\n  }\n}";function copyJSON(){navigator.clipboard.writeText(wfData).then(()=>notify('Copied to clipboard')).catch(()=>notify('Copy failed'))}function downloadJSON(){const b=new Blob([wfData],{type:'application/json'});const u=URL.createObjectURL(b);const a=document.createElement('a');a.href=u;a.download='n8n-workflow.json';document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);notify('Downloaded')}function notify(m){const d=document.createElement('div');d.className='copy-notif';d.textContent=m;document.body.appendChild(d);setTimeout(()=>{d.classList.add('fade-out');setTimeout(()=>document.body.removeChild(d),300)},2000)}</script><script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script><script>mermaid.initialize({startOnLoad:true,theme:"neutral",themeVariables:{primaryColor:"#2A8F65",primaryTextColor:"#000",primaryBorderColor:"#000",lineColor:"#000",secondaryColor:"#f0f0f0",tertiaryColor:"#fff"}});</script></body></html>

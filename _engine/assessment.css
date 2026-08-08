@@ -1,0 +1,600 @@
+.lmc-root{--paper:#FFFFFF;--paper-sunk:#F4F2EC;--paper-raise:#fff;--ink:#131210;--ink-soft:#6B675E;--ink-mute:#6B675E;--hairline:#13121026;--hairline-bold:#13121040;--accent:#131210;--accent-light:#131210;--accent-ink:#131210;--accent-soft:#13121014;--accent-glow:rgba(19, 18, 16,.18);--shadow-subtle:0 1px 3px #1312100f,0 1px 2px #1312100a;--shadow-lift:0 8px 24px #1312101a,0 2px 6px #1312100d;--afe-sans:'Schibsted Grotesk',Georgia,serif;--afe-drama:"Schibsted Grotesk",Georgia,serif;--afe-mono:'Courier Prime',Georgia,serif;--font-serif:'Source Serif 4',Georgia,serif;font-family:var(--afe-sans);color:var(--ink);background:0 0}.lmc-root *{box-sizing:border-box}.lmc-container{max-width:880px;margin:0 auto;padding:1.5rem}.lmc-hero{border-bottom:1px solid var(--hairline);background:var(--paper);padding:6rem 1.5rem 5rem}.lmc-badge{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1.5rem;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex}.lmc-badge:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-h1{font-family:var(--afe-drama);letter-spacing:-.01em;max-width:38rem;color:var(--ink);text-transform:none;margin:0 0 1.25rem;font-size:clamp(2.25rem,6vw,3.5rem);font-weight:400;line-height:1.05}.lmc-h1 em,.lmc-h1 i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-sub{max-width:42rem;color:var(--ink-soft);margin:0 0 2rem;font-size:clamp(1.05rem,2vw,1.25rem);font-weight:400;line-height:1.55}.lmc-meta-chip{text-transform:uppercase;letter-spacing:.08em;color:var(--ink);background:0 0;border:none;border-radius:0;align-items:center;gap:6px;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex}.lmc-meta-chip:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-meta{flex-wrap:wrap;gap:1.5rem;display:flex}.lmc-widget{max-width:880px;margin:5rem auto;padding:0 1.5rem}.lmc-card{background:var(--paper);border:1px solid var(--hairline);box-shadow:none;border-left:4px solid var(--accent);border-radius:0;padding:2.5rem 2rem}.lmc-progress-row{text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft);justify-content:space-between;align-items:center;gap:1rem;margin-bottom:2rem;font-family:var(--font-serif);font-size:13px;font-weight:600;display:flex}.lmc-progress-bar{background:var(--paper-sunk);border:1px solid var(--hairline);border-radius:4px;flex:auto;height:.4rem;position:relative;overflow:hidden}.lmc-progress-fill{background:var(--accent);width:0%;height:100%;transition:width .25s}.lmc-category{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;text-overflow:ellipsis;white-space:nowrap;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;max-width:100%;margin-bottom:1.25rem;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex;overflow:hidden}.lmc-category:before{content:"";background:var(--accent);flex-shrink:0;width:6px;height:6px;display:inline-block}.lmc-question{font-family:var(--afe-drama);letter-spacing:-.01em;color:var(--ink);text-transform:none;margin:0 0 1.75rem;font-size:clamp(1.45rem,3vw,2rem);font-weight:400;line-height:1.2}.lmc-question em,.lmc-question i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-options{flex-direction:column;gap:.5rem;margin:0 0 1.75rem;padding:0;list-style:none;display:flex}.lmc-opt{cursor:pointer;background:var(--paper-raise);border:1px solid var(--hairline);color:var(--ink);border-radius:0;padding:1rem 1.15rem;font-size:1rem;font-weight:500;line-height:1.45;transition:background .15s,border-color .15s;display:block;position:relative}.lmc-opt:hover{border-color:var(--hairline-bold);background:#1312100a}.lmc-opt.selected{border-color:var(--hairline);color:var(--ink);background:0 0;border-left:4px solid var(--accent);padding-left:calc(1.15rem - 3px);font-weight:600}.lmc-opt input[type=radio]{clip:rect(0,0,0,0);white-space:nowrap;border:0;width:1px;height:1px;margin:-1px;padding:0;position:absolute;overflow:hidden}.lmc-opt input[type=radio]:focus+span{outline-offset:4px;border-radius:0;outline:2px solid var(--accent)}.lmc-nav{border-top:1px solid var(--hairline);justify-content:space-between;gap:.75rem;padding-top:1.5rem;display:flex}.lmc-btn{color:var(--paper);letter-spacing:0;cursor:pointer;box-shadow:none;text-transform:none;background:var(--ink);border:none;border-radius:0;justify-content:center;align-items:center;gap:.5rem;padding:14px 28px;font-family:var(--font-serif);font-size:17px;font-weight:600;text-decoration:none;transition:background 80ms;display:inline-flex}.lmc-btn:hover:not([disabled]){color:var(--paper);background:#000}.lmc-btn:focus-visible{outline-offset:2px;outline:2px solid var(--accent)}.lmc-btn[disabled]{background:var(--paper-sunk);color:var(--ink-mute);border:1px solid var(--hairline);cursor:not-allowed}.lmc-btn-secondary{color:var(--ink-soft);border:1px solid var(--hairline-bold);background:0 0;padding:12px 22px;font-family:var(--font-serif);font-size:15px;font-weight:600}.lmc-btn-secondary:hover:not([disabled]){background:var(--paper-sunk);color:var(--ink)}.lmc-result{text-align:left;padding:1rem 0}.lmc-score-ring{width:200px;height:200px;margin:0 0 1.5rem;position:relative}.lmc-score-ring svg{transform:rotate(-90deg)}.lmc-score-ring circle{fill:none;stroke-width:8px}.lmc-score-ring .track{stroke:var(--paper-sunk)}.lmc-score-ring .arc{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .6s}.lmc-score-ring .score-num{flex-direction:column;justify-content:center;align-items:center;display:flex;position:absolute;inset:0}.lmc-score-ring .score-num .num{font-family:var(--afe-drama);letter-spacing:-.01em;color:var(--ink);font-feature-settings:"tnum" 1,"lnum" 1;font-variant-numeric:tabular-nums lining-nums;font-size:3.75rem;font-weight:400;line-height:1}.lmc-score-ring .score-num .suffix{color:var(--ink-mute);letter-spacing:.08em;text-transform:uppercase;margin-top:.5rem;font-family:var(--font-serif);font-size:13px;font-weight:600}.lmc-tier-pill{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1.25rem;padding:0;font-family:var(--font-serif);font-size:14px;font-weight:600;display:inline-flex}.lmc-tier-pill:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-tier-pill.medium{background:var(--paper-sunk);color:var(--ink-soft);border-color:var(--hairline-bold)}.lmc-tier-pill.low{background:var(--paper-sunk);color:var(--ink-mute);border-color:var(--hairline-bold)}.lmc-result-lead{color:var(--ink-soft);max-width:42rem;margin:0 0 1.75rem;font-family:var(--font-serif);font-size:1.125rem;font-weight:400;line-height:1.55}.lmc-capture{background:var(--ink);color:var(--paper);text-align:left;box-shadow:none;border-radius:0;margin:2.5rem 0;padding:4rem 2rem}.lmc-capture h3{font-family:var(--afe-drama);letter-spacing:0;color:var(--paper);text-transform:none;margin:0 0 .6rem;font-size:1.5rem;font-weight:400;line-height:1.2}.lmc-capture h3 em,.lmc-capture h3 i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-capture p{color:#ffffffc7;margin:0 0 1.5rem;font-size:.95rem;line-height:1.55}.lmc-form{flex-wrap:wrap;gap:.5rem;display:flex}.lmc-form-input{min-width:0;color:var(--paper);font-size:1rem;font-family:var(--afe-sans);background:#ffffff0f;border:1px solid #ffffff38;border-radius:4px;flex:240px;padding:.85rem 1rem}.lmc-form-input::placeholder{color:#ffffff73}.lmc-form-input:focus{border-color:var(--accent-light);background:#ffffff1a;outline:none;box-shadow:0 0 0 3px var(--accent-glow)}.lmc-note{color:var(--ink-mute);margin-top:.85rem;font-size:.82rem;line-height:1.5}.lmc-unlocked{margin-top:2rem}.lmc-category-block{border:1px solid var(--hairline);background:var(--paper-sunk);border-radius:4px;margin:1rem 0;padding:1.25rem 1.5rem}.lmc-category-block h4{letter-spacing:0;color:var(--ink);text-transform:none;margin:0 0 .5rem;font-family:var(--font-serif);font-size:1.1rem;font-weight:600}.lmc-cat-bar{align-items:center;gap:1rem;margin-bottom:.85rem;display:flex}.lmc-cat-track{background:var(--paper-raise);border:1px solid var(--hairline);border-radius:4px;flex:auto;height:.4rem;overflow:hidden}.lmc-cat-fill{background:var(--accent);height:100%;transition:width .4s}.lmc-cat-pct{font-variant-numeric:tabular-nums;text-align:right;min-width:3rem;color:var(--ink);font-family:var(--font-serif);font-size:.95rem;font-weight:600}.lmc-share{border-top:1px solid var(--hairline);flex-wrap:wrap;gap:.5rem;margin-top:2rem;padding-top:1.5rem;display:flex}.lmc-rec{background:var(--paper-sunk);color:var(--ink);border-left:2px solid var(--accent);border-radius:0 4px 4px 0;margin:.75rem 0;padding:1rem 1.15rem;font-family:var(--font-serif);font-size:1rem;line-height:1.55}.lmc-rec strong{text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:.4rem;font-family:var(--font-serif);font-size:12px;font-weight:600;display:block}.lmc-toast{background:var(--ink);color:var(--paper);letter-spacing:0;border:1px solid var(--ink);box-shadow:var(--shadow-lift);z-index:100;opacity:0;pointer-events:none;border-radius:4px;padding:.85rem 1.25rem;font-family:var(--font-serif);font-size:.95rem;font-weight:600;transition:opacity .25s,transform .25s;position:fixed;bottom:1.5rem;right:1.5rem;transform:translateY(10px)}.lmc-toast.show{opacity:1;pointer-events:auto;transform:translateY(0)}.lmc-intro{background:var(--paper);color:var(--ink);border-bottom:1px solid var(--hairline);padding:5rem 1.5rem;position:relative;overflow:hidden}.lmc-intro-inner{flex-wrap:wrap;align-items:flex-start;gap:2.5rem;max-width:880px;margin:0 auto;display:flex;position:relative}.lmc-intro-avatar{border:1px solid var(--hairline);object-fit:cover;width:128px;height:128px;box-shadow:none;filter:saturate(.45)sepia(.18)contrast(1.1)brightness(.95);border-radius:4px;flex-shrink:0}.lmc-intro-body{flex:320px;min-width:0}.lmc-intro-badge{color:var(--ink);text-transform:uppercase;letter-spacing:.08em;background:0 0;border:none;border-radius:0;align-items:center;gap:6px;margin-bottom:1rem;padding:0;font-family:var(--font-serif);font-size:13px;font-weight:600;display:inline-flex}.lmc-intro-badge:before{content:"";background:var(--accent);width:6px;height:6px;display:inline-block}.lmc-intro-h{font-family:var(--afe-drama);letter-spacing:-.01em;color:var(--ink);text-transform:none;margin:0 0 .75rem;font-size:clamp(1.65rem,3.5vw,2.5rem);font-weight:400;line-height:1.1}.lmc-intro-h em,.lmc-intro-h i{font-family:var(--afe-drama);color:var(--accent);font-style:italic;font-weight:400}.lmc-intro-p{max-width:38rem;color:var(--ink-soft);margin:0 0 1.5rem;font-size:1.05rem;font-weight:400;line-height:1.55}.lmc-intro-points{color:var(--ink);flex-direction:column;gap:.65rem;margin:0 0 1.75rem;padding:0;font-size:.95rem;list-style:none;display:flex}.lmc-intro-points li{align-items:flex-start;gap:.85rem;line-height:1.5;display:flex}.lmc-intro-icon{background:var(--accent);color:#fff;border-radius:4px;flex-shrink:0;justify-content:center;align-items:center;width:22px;height:22px;margin-top:2px;font-family:var(--font-serif);font-size:.78rem;font-weight:600;display:flex}.lmc-intro-icon.a,.lmc-intro-icon.b,.lmc-intro-icon.c{background:var(--accent);color:var(--paper)}.lmc-intro-start{color:var(--paper);box-shadow:none;cursor:pointer;background:var(--ink);border:none;border-radius:0;align-items:center;gap:.5rem;padding:14px 28px;font-family:var(--font-serif);font-size:17px;font-weight:600;text-decoration:none;transition:background 80ms;display:inline-flex}.lmc-intro-start:hover{color:var(--paper);background:#000}.lmc-intro-note{color:var(--ink-mute);max-width:32rem;margin-top:1rem;font-size:.82rem;line-height:1.5}@media (prefers-reduced-motion:reduce){.lmc-progress-fill,.lmc-opt,.lmc-btn,.lmc-cat-fill,.lmc-score-ring .arc,.lmc-toast{transition:none!important}}@media (width<=640px){.lmc-hero{padding:2.5rem 1.25rem 2rem}.lmc-card{padding:1.75rem 1.25rem}.lmc-nav{flex-direction:column-reverse}.lmc-btn{width:100%}.lmc-intro{padding:2.5rem 1.25rem}.lmc-intro-avatar{width:96px;height:96px}.lmc-score-ring{width:160px;height:160px}.lmc-score-ring .score-num .num{font-size:2.5rem}}
+
+/* ─── 2026-05-25 — Start gate + slide transitions + result reveal ─────── */
+
+/* Start gate: widget hidden until intro "Start" is clicked. Fades + lifts
+   into view. Reserves vertical space so the page doesn't jump on reveal. */
+.lmc-widget {
+  transition: opacity 360ms cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.lmc-widget-gated { opacity: 0; transform: translateY(28px); pointer-events: none; min-height: 360px; }
+.lmc-widget-gated > * { visibility: hidden; }
+.lmc-widget-revealed { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+/* Slide transitions: each question is wrapped in .lmc-slide. The card
+   becomes the stage. Outgoing slide drifts off in its travel direction
+   (forward = exit left, back = exit right); incoming slides in from the
+   opposite side, ~260ms. */
+.lmc-card { position: relative; overflow: hidden; }
+.lmc-slide {
+  opacity: 1;
+  transform: none;
+  transition: opacity 260ms cubic-bezier(0.22, 0.61, 0.36, 1),
+              transform 260ms cubic-bezier(0.22, 0.61, 0.36, 1);
+  will-change: opacity, transform;
+}
+.lmc-slide.lmc-in-fwd  { opacity: 0; transform: translateX(32px); }
+.lmc-slide.lmc-in-back { opacity: 0; transform: translateX(-32px); }
+.lmc-slide.lmc-out-fwd { opacity: 0; transform: translateX(-32px); pointer-events: none; }
+.lmc-slide.lmc-out-back{ opacity: 0; transform: translateX(32px);  pointer-events: none; }
+
+/* Result reveal — replaces the legacy left-bar tier card with a paper-clean
+   editorial hero: sage progress ring + huge italic score + tier headline. */
+.lmc-result { padding: 0.5rem 0 0; }
+.lmc-result-card { background: transparent !important; border: none !important; border-left: none !important; padding: 0 !important; overflow: visible !important; }
+
+.lmc-score-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 3rem;
+  align-items: center;
+  padding: 3.25rem 0 3.5rem;
+  border-top: 1px solid rgba(19, 18, 16, 0.08);
+  border-bottom: 1px solid rgba(19, 18, 16, 0.08);
+  background: none;
+  opacity: 0;
+  transform: translateY(24px);
+  animation: lmc-rise 620ms cubic-bezier(0.22, 0.61, 0.36, 1) 60ms forwards;
+}
+@media (max-width: 640px) {
+  .lmc-score-hero {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+    padding: 2.25rem 0 2.5rem;
+    text-align: center;
+    justify-items: center;
+    background: none;
+  }
+}
+.lmc-score-hero .lmc-score-ring {
+  width: 260px; height: 260px; margin: 0; position: relative; flex-shrink: 0;
+}
+@media (max-width: 980px) { .lmc-score-hero .lmc-score-ring { width: 220px; height: 220px; } }
+@media (max-width: 640px) { .lmc-score-hero .lmc-score-ring { width: 200px; height: 200px; } }
+.lmc-score-hero .lmc-score-ring svg { width: 100%; height: 100%; display: block; transform: rotate(-90deg); }
+.lmc-score-hero .ring-track { fill: none; stroke: rgba(19, 18, 16, 0.08); stroke-width: 10; }
+.lmc-score-hero .ring-fill {
+  fill: none; stroke: var(--accent); stroke-width: 10; stroke-linecap: round;
+  transition: stroke-dashoffset 1400ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.lmc-score-hero .lmc-score-ring-center {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+}
+.lmc-score-hero .lmc-score-number {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-style: italic; font-weight: 400;
+  font-size: 5.75rem; line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 980px) { .lmc-score-hero .lmc-score-number { font-size: 4.75rem; } }
+@media (max-width: 640px) { .lmc-score-hero .lmc-score-number { font-size: 4.25rem; } }
+.lmc-score-hero .lmc-score-denom {
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: rgba(19, 18, 16, 0.5);
+  margin-top: 0.5rem;
+}
+
+.lmc-score-body { display: flex; flex-direction: column; gap: 0.85rem; min-width: 0; }
+.lmc-score-eyebrow {
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink, #131210);
+  display: inline-flex; align-items: center; gap: 10px;
+}
+.lmc-score-eyebrow::before { content: ""; display: inline-block; width: 28px; height: 1px; background: var(--accent); }
+.lmc-score-headline {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-size: clamp(1.85rem, 3.6vw, 2.6rem);
+  font-weight: 400; line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink, #131210);
+  margin: 0;
+}
+.lmc-score-headline em {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-style: italic; font-weight: 400;
+  color: var(--accent);
+}
+.lmc-score-note {
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 1.05rem; line-height: 1.6;
+  color: #4A463E; /* NOT var(--ink-soft) — assessment.css's own .lmc-root locally redefines --ink-soft to #6B675E for its minified-block rules; using the shared token here would silently recolor this text. Literal kept for exact parity. */
+  margin: 0; max-width: 34rem;
+}
+.lmc-score-note strong { color: var(--ink, #131210); font-weight: 600; }
+
+/* Critical tier: swap sage for ink so the visual weight matches the message. */
+.lmc-score-hero[data-tier="critical"] .ring-fill { stroke: var(--ink, #131210); }
+.lmc-score-hero[data-tier="critical"] .lmc-score-number { color: var(--ink, #131210); }
+.lmc-score-hero[data-tier="critical"] .lmc-score-eyebrow::before { background: var(--ink, #131210); }
+.lmc-score-hero[data-tier="critical"] .lmc-score-headline em { color: var(--ink, #131210); }
+
+/* Staggered fade-in for downstream result sections. Set --lmc-delay inline. */
+.lmc-result-section {
+  opacity: 0;
+  transform: translateY(16px);
+  animation: lmc-rise 540ms cubic-bezier(0.22, 0.61, 0.36, 1) var(--lmc-delay, 240ms) forwards;
+}
+@keyframes lmc-rise { to { opacity: 1; transform: translateY(0); } }
+
+/* Per-category bars: animate from 0 to score% when armed. */
+.lmc-cat-fill { width: 0 !important; transition: width 900ms cubic-bezier(0.22, 0.61, 0.36, 1); }
+.lmc-cat-fill.lmc-cat-fill-armed { width: var(--lmc-cat-target, 0%) !important; }
+
+/* The unlocked per-category section uses the staggered-rise pattern. */
+.lmc-result .lmc-category-block {
+  background: transparent;
+  border: none;
+  border-top: 1px solid rgba(19, 18, 16, 0.08);
+  border-radius: 0;
+  padding: 1.5rem 0;
+  margin: 0;
+  opacity: 0;
+  transform: translateY(12px);
+  animation: lmc-rise 520ms cubic-bezier(0.22, 0.61, 0.36, 1) var(--lmc-delay, 0ms) forwards;
+}
+.lmc-result .lmc-category-block:first-of-type { border-top: none; }
+.lmc-result .lmc-category-block h4 {
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 13px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin: 0 0 0.75rem;
+  color: var(--ink, #131210);
+}
+.lmc-result .lmc-cat-bar { gap: 1.5rem; align-items: center; }
+.lmc-result .lmc-cat-track {
+  background: rgba(19, 18, 16, 0.07);
+  border: none;
+  border-radius: 999px;
+  height: 6px;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.lmc-result .lmc-cat-fill { background: var(--accent); border-radius: 999px; }
+.lmc-result .lmc-cat-pct {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-style: italic; font-weight: 400;
+  font-size: 1.5rem; color: var(--accent);
+  min-width: 4ch; text-align: right;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.lmc-result .lmc-rec {
+  background: transparent;
+  border-left: 2px solid rgba(19, 18, 16, 0.35);
+  border-radius: 0;
+  padding: 0.65rem 0 0.3rem 1rem;
+  margin: 1rem 0 0;
+  font-size: 0.96rem;
+  line-height: 1.55;
+  color: #4A463E; /* NOT var(--ink-soft) — assessment.css's own .lmc-root locally redefines --ink-soft to #6B675E for its minified-block rules; using the shared token here would silently recolor this text. Literal kept for exact parity. */
+}
+.lmc-result .lmc-rec strong {
+  display: block;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 12px; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.4rem;
+}
+.lmc-result .lmc-rec ul { margin: 0.5rem 0 0; padding-left: 1.1rem; }
+.lmc-result .lmc-rec li { margin-bottom: 0.3rem; }
+.lmc-result .lmc-rec li::marker { color: var(--accent); }
+
+/* Per-category section header */
+.lmc-result-unlock-h {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-size: clamp(1.5rem, 2.8vw, 1.85rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem;
+  color: var(--ink, #131210);
+}
+.lmc-result-unlock-h em {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-style: italic; font-weight: 400;
+  color: var(--accent);
+}
+
+/* Retake — de-emphasised text link, not a hard button */
+.lmc-result .lmc-retake-wrap { margin-top: 2.5rem; }
+.lmc-result .lmc-retake {
+  background: transparent; border: none; padding: 0;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 0.9rem; color: var(--ink-mute, #6B675E);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(19, 18, 16, 0.2);
+  padding-bottom: 2px;
+  transition: color 120ms, border-color 120ms;
+}
+.lmc-result .lmc-retake:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ─── 2026-05-26 — Start screen, progress bar, tap-highlight fix ──────── */
+
+/* Disable the iOS/Android green tap-flash on options. The selected state
+   already gives a clear sage-bar indicator. */
+.lmc-opt, .lmc-btn, .lmc-intro-start, .lmc-start-btn, .lmc-intro-reset-btn,
+.lmc-retake, .lmc-opt input, .lmc-opt span {
+  -webkit-tap-highlight-color: transparent;
+}
+.lmc-opt:focus { outline: none; }
+
+/* Start screen — visible by default before the first question. Same card
+   chrome as a question but with editorial weight and a single CTA. */
+.lmc-start-slide { padding: 0.25rem 0; }
+.lmc-start-eyebrow { margin-bottom: 1.5rem !important; }
+.lmc-start-h {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 1rem;
+  color: var(--ink, #131210);
+  max-width: 30rem;
+}
+.lmc-start-h em {
+  font-family: var(--font-drama, 'Schibsted Grotesk', Georgia, serif);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--accent);
+}
+.lmc-start-p {
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: #4A463E; /* NOT var(--ink-soft) — assessment.css's own .lmc-root locally redefines --ink-soft to #6B675E for its minified-block rules; using the shared token here would silently recolor this text. Literal kept for exact parity. */
+  margin: 0 0 1.75rem;
+  max-width: 36rem;
+}
+.lmc-start-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 1.75rem;
+  margin: 0 0 2rem;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink, #131210);
+}
+.lmc-start-meta-item { display: inline-flex; align-items: center; gap: 8px; }
+.lmc-start-meta-dot { display: inline-block; width: 6px; height: 6px; background: var(--accent); }
+.lmc-start-nav {
+  border-top: 1px solid rgba(19, 18, 16, 0.08);
+  padding-top: 1.5rem;
+  justify-content: flex-start !important;
+}
+.lmc-start-btn {
+  padding: 16px 32px !important;
+  font-size: 18px !important;
+}
+
+/* Progress bar — sits at the top of every question slide. */
+.lmc-progress { margin: 0 0 1.5rem; }
+.lmc-progress-row {
+  display: flex; align-items: baseline; justify-content: space-between;
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(19, 18, 16, 0.55);
+  margin: 0 0 0.5rem;
+  background: transparent;
+  padding: 0;
+  border: none;
+}
+.lmc-progress-label { color: rgba(19, 18, 16, 0.75); }
+.lmc-progress-pct { color: var(--accent); font-variant-numeric: tabular-nums; }
+.lmc-progress-track {
+  height: 3px;
+  background: rgba(19, 18, 16, 0.07);
+  border-radius: 999px;
+  overflow: hidden;
+  border: none;
+  flex: none;
+}
+.lmc-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 999px;
+  transition: width 360ms cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+/* Sr-only utility (some HTML wrappers don't ship this) */
+.sr-only {
+  position: absolute !important; width: 1px !important; height: 1px !important;
+  padding: 0 !important; margin: -1px !important; overflow: hidden !important;
+  clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important;
+}
+
+/* Reset progress link — surfaces in the intro only when localStorage has
+   saved answers. Quiet by default; sage on hover. */
+.lmc-intro-reset {
+  font-family: var(--font-serif, 'Source Serif 4', Georgia, serif);
+  font-size: 0.88rem;
+  color: var(--ink-mute, #6B675E);
+  margin: 1rem 0 0;
+  line-height: 1.5;
+}
+.lmc-intro-reset-prefix { color: rgba(19, 18, 16, 0.5); margin-right: 0.35rem; }
+.lmc-intro-reset-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--ink-mute, #6B675E);
+  cursor: pointer;
+  border-bottom: 1px solid rgba(19, 18, 16, 0.22);
+  padding-bottom: 1px;
+  transition: color 120ms, border-color 120ms;
+}
+.lmc-intro-reset-btn:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.lmc-intro-reset-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* Reduced-motion respect */
+@media (prefers-reduced-motion: reduce) {
+  .lmc-widget, .lmc-slide, .lmc-score-hero, .lmc-result-section,
+  .lmc-cat-fill, .lmc-category-block, .ring-fill {
+    transition: none !important; animation: none !important;
+    opacity: 1 !important; transform: none !important;
+  }
+  .lmc-widget-gated { opacity: 1; transform: none; pointer-events: auto; min-height: 0; }
+  .lmc-widget-gated > * { visibility: visible; }
+  .lmc-cat-fill { width: var(--lmc-cat-target, 0%) !important; }
+}/* 2026-05-27 — Brand alignment with ivanmanfredi.com hero
+   - Sage highlight sweep behind italic pivot in start headline + intro headline
+   - More editorial portrait treatment
+   - Sage eyebrow color (matching hero) */
+
+/* Highlight sweep — encodes the same wavy SVG path used on ivanmanfredi.com hero italic.
+   Applied to em/i inside the start headline and intro headline. */
+.lmc-start-h em,
+.lmc-start-h i,
+.lmc-intro-h em,
+.lmc-intro-h i {
+  position: relative;
+  font-style: italic;
+  color: var(--ink, #131210) !important; /* override the green em color — sage lives in the sweep, not the text */
+  display: inline-block;
+  isolation: isolate;
+  padding: 0 0.04em;
+}
+.lmc-start-h em::after,
+.lmc-start-h i::after,
+.lmc-intro-h em::after,
+.lmc-intro-h i::after {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  top: 0.18em;
+  width: 110%;
+  height: 0.78em;
+  z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%232A8F65' opacity='0.78'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+
+/* Sage eyebrow — match the small uppercase tag pattern on ivanmanfredi.com */
+.lmc-start-eyebrow {
+  color: var(--accent) !important;
+  font-weight: 700;
+}
+
+/* Portrait — bigger + editorial magazine treatment. */
+.lmc-intro-avatar {
+  width: 168px !important;
+  height: 212px !important; /* ~3:4 portrait aspect like ivanmanfredi.com */
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 12px !important;
+  border: 1px solid rgba(19, 18, 16, 0.12) !important;
+  box-shadow: 0 16px 40px rgba(19, 18, 16, 0.12), 0 4px 12px rgba(19, 18, 16, 0.08) !important;
+  filter: saturate(0.85) contrast(1.05) !important; /* keep human warmth, less heavy duotone */
+}
+@media (max-width: 640px) {
+  .lmc-intro-avatar {
+    width: 128px !important;
+    height: 160px !important;
+  }
+}
+
+/* Tight editorial headline metrics. The card has a generic `.lmc-card h2` rule
+   with `!important` for tag-style uppercase labels (0.08em letter-spacing). That
+   selector has specificity 0,2,1 — to beat it on the start headline (which IS
+   an h2 inside .lmc-card) we match the same specificity with `.lmc-card h2.lmc-start-h`
+   and use !important + later cascade order. */
+.lmc-card h2.lmc-start-h,
+.lmc-card h2.lmc-intro-h,
+.lmc-intro h2.lmc-intro-h,
+.lmc-root h2.lmc-start-h,
+.lmc-root h2.lmc-intro-h {
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  line-height: 1.0 !important;
+  text-transform: none !important;
+}
+/* Page-title H1 inside the resource page (above the engine widget) gets the same
+   tight metrics + the italic-pivot sage sweep so we can add a highlight from the
+   data.json title without re-deploying the engine. */
+.lmc-h1 {
+  letter-spacing: -0.02em !important;
+  line-height: 0.98 !important;
+}
+.lmc-h1 em,
+.lmc-h1 i {
+  position: relative;
+  font-style: italic;
+  color: var(--ink, #131210) !important;
+  display: inline-block;
+  isolation: isolate;
+  padding: 0 0.04em;
+}
+.lmc-h1 em::after,
+.lmc-h1 i::after {
+  content: "";
+  position: absolute;
+  left: -5%;
+  right: -5%;
+  top: 0.18em;
+  width: 110%;
+  height: 0.78em;
+  z-index: -1;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'><path d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%232A8F65' opacity='0.78'/></svg>");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  pointer-events: none;
+}
+/* Same for the in-quiz question headline (it's also h2 inside .lmc-card) */
+.lmc-question {
+  font-family: var(--font-sans, 'Schibsted Grotesk', Georgia, serif) !important;
+  font-weight: 400 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+}
+
+/* Results-forward: adjust-answers affordance */
+.lmc-adjust { text-align: center; }
+.lmc-adjust-note { font-size: 14px; color: rgba(19, 18, 16,.6); margin: 0 0 .75rem; }
+.lmc-adjust-btn { display: inline-flex; }
+
+/* ─── 2026-07-05 — Dark-embed question + results flow ───────────────────────
+   The intro/hero dark theme (?hero=dark) was extended to the full questionnaire
+   and results screen. Before this, question cards, option buttons, the
+   category/progress labels and the "what to do Monday" panel used the light
+   engine tokens (--paper-raise #fff, hardcoded #131210 / rgba(19, 18, 16,…)) that
+   the embed var-overrides never reach — so on a dark navy embed the options were
+   white-on-white and the "Question N of M" number was near-black on navy.
+
+   Gated on html.lmc-embed-dark, a class set ONLY when ?src=scan_embed AND
+   ?hero=dark (see assessment.js). Light standalone assessments (step-digital,
+   any non-dark embed) never get this class, so they are untouched. Colors read
+   the embed-injected vars (--paper / --ink / --accent), so each prospect's brand
+   still drives them; the white overlays are neutral lifts on any dark surface. */
+html.lmc-embed-dark .lmc-root { --panel: rgba(255,255,255,0.05); --panel-line: rgba(255,255,255,0.14); }
+
+/* Question card shell */
+html.lmc-embed-dark .lmc-card { background: var(--paper); border-color: var(--panel-line); }
+
+/* Category eyebrow + question headline */
+html.lmc-embed-dark .lmc-category { color: rgba(255,255,255,0.62); }
+html.lmc-embed-dark .lmc-question { color: #fff; }
+html.lmc-embed-dark .lmc-question em,
+html.lmc-embed-dark .lmc-question i { color: var(--accent) !important; }
+html.lmc-embed-dark .lmc-question em::after,
+html.lmc-embed-dark .lmc-question i::after { content: none !important; background-image: none !important; }
+
+/* Progress row — the "Question N of M" number was near-black on navy */
+html.lmc-embed-dark .lmc-progress-row { color: rgba(255,255,255,0.55); }
+html.lmc-embed-dark .lmc-progress-label { color: rgba(255,255,255,0.82); }
+html.lmc-embed-dark .lmc-progress-track { background: rgba(255,255,255,0.12); }
+
+/* Option buttons — dark panel, white text, indigo selected state */
+html.lmc-embed-dark .lmc-opt {
+  background: var(--panel);
+  border-color: var(--panel-line);
+  color: #fff;
+}
+html.lmc-embed-dark .lmc-opt:hover {
+  background: rgba(255,255,255,0.09);
+  border-color: rgba(255,255,255,0.28);
+}
+html.lmc-embed-dark .lmc-opt.selected {
+  background: color-mix(in srgb, var(--accent) 22%, transparent);
+  border-color: var(--accent);
+  border-left-color: var(--accent);
+  color: #fff;
+}
+
+/* Nav divider + Back / disabled Next */
+html.lmc-embed-dark .lmc-nav,
+html.lmc-embed-dark .lmc-start-nav { border-top-color: rgba(255,255,255,0.12); }
+html.lmc-embed-dark .lmc-btn-secondary {
+  background: transparent;
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.30);
+}
+html.lmc-embed-dark .lmc-btn-secondary:hover:not([disabled]) {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+}
+html.lmc-embed-dark .lmc-btn[disabled] {
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+/* ── Results screen ── */
+html.lmc-embed-dark .lmc-score-hero {
+  border-top-color: rgba(255,255,255,0.10);
+  border-bottom-color: rgba(255,255,255,0.10);
+}
+html.lmc-embed-dark .lmc-score-hero .ring-track { stroke: rgba(255,255,255,0.12); }
+html.lmc-embed-dark .lmc-score-eyebrow,
+html.lmc-embed-dark .lmc-score-headline { color: #fff; }
+html.lmc-embed-dark .lmc-score-eyebrow::before { background: var(--accent); }
+html.lmc-embed-dark .lmc-score-note { color: rgba(255,255,255,0.75); }
+html.lmc-embed-dark .lmc-score-note strong { color: #fff; }
+html.lmc-embed-dark .lmc-score-denom { color: rgba(255,255,255,0.5); }
+
+/* Gap list */
+html.lmc-embed-dark .lmc-results-h { color: #fff; }
+html.lmc-embed-dark .lmc-gap { border-top-color: rgba(255,255,255,0.10); }
+html.lmc-embed-dark .lmc-gap:hover { background: rgba(255,255,255,0.04); }
+html.lmc-embed-dark .lmc-gap-text { color: #fff; }
+html.lmc-embed-dark .lmc-gap-fix { color: rgba(255,255,255,0.72); }
+
+/* "What to do Monday" — base uses background:var(--ink) which becomes #fff in a
+   dark embed → a white box. Flip to a lifted dark panel. */
+html.lmc-embed-dark .lmc-next-move {
+  background: var(--panel);
+  color: rgba(255,255,255,0.85);
+  border: 1px solid var(--panel-line);
+}
+
+/* Unlocked per-category blocks + capture input */
+html.lmc-embed-dark .lmc-result .lmc-category-block { border-top-color: rgba(255,255,255,0.10); }
+html.lmc-embed-dark .lmc-result .lmc-category-block h4 { color: #fff; }
+html.lmc-embed-dark .lmc-result .lmc-cat-track { background: rgba(255,255,255,0.10); }
+html.lmc-embed-dark .lmc-result-unlock-h { color: #fff; }
+html.lmc-embed-dark .lmc-result .lmc-rec { color: rgba(255,255,255,0.75); }
+html.lmc-embed-dark .lmc-form-input {
+  background: rgba(255,255,255,0.06) !important;
+  border-color: rgba(255,255,255,0.22) !important;
+  color: #fff !important;
+}
+html.lmc-embed-dark .lmc-form-input::placeholder { color: rgba(255,255,255,0.45) !important; }
+
+/* Persona-branched closing (persona_copy, 2026-07-10) */
+.lmc-persona-close{margin:2rem 0 0;padding:1.5rem 1.75rem;background:var(--paper-sunk,#FFFFFF);border:1px solid var(--hairline,rgba(19, 18, 16,.12));border-left:3px solid #131210;border-radius:4px;}
+.lmc-persona-close-p{font-size:1.02rem;line-height:1.65;color:var(--ink,#131210);margin:0 0 .85rem;}
+.lmc-persona-proof{font-family:var(--font-serif);font-size:.95rem;line-height:1.6;color:var(--ink-soft,rgba(19, 18, 16,.72));font-style:italic;margin:0;}
+
+/* scan embeds: the page reads as the PROSPECT'S asset; Ivan's nav + work-with-me footer never render inside the frame (JS-rendered after the embed cleanup pass, so CSS is the order-proof gate). */
+.lmc-embed .im-footer,.lmc-embed .im-nav{display:none!important}

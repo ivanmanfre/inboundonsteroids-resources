@@ -1,0 +1,134 @@
+{
+  "slug": "workflow-audit-checklist-for-service-businesses",
+  "title": "The 15-Point Workflow Audit Checklist for Service Businesses",
+  "subtitle": "Find the broken processes bleeding time and money from your $1M-$20M service business in 90 minutes",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 75,
+  "sections": [
+    {
+      "id": "intake-onboarding",
+      "title": "Client Intake & Onboarding",
+      "description": "This is where most service businesses start losing time before they even deliver anything. Every manual step here multiplies across every new client.",
+      "items": [
+        {
+          "id": "intake-1",
+          "text": "Centralize new client information capture in one system of record",
+          "tip": "Audit every place client data lives today (email, forms, Slack, spreadsheets) and pick one as the source of truth before automating anything",
+          "impact": "high"
+        },
+        {
+          "id": "intake-2",
+          "text": "Template and auto-assign all client onboarding tasks",
+          "tip": "Map your last 5 client onboardings and look for the 80% of tasks that repeat every single time",
+          "impact": "high"
+        },
+        {
+          "id": "intake-3",
+          "text": "Automate welcome emails and kickoff materials based on workflow triggers",
+          "tip": "Tie sends to CRM stage changes, not calendar reminders or manual buttons",
+          "impact": "medium"
+        },
+        {
+          "id": "intake-4",
+          "text": "Provision client access to portals, folders, and tools without IT tickets",
+          "tip": "Use role-based access templates so new clients get the right permissions in under 5 minutes",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "project-management",
+      "title": "Project & Job Management",
+      "description": "If your team is copy-pasting job details between systems or chasing status updates, you're paying for coordination instead of execution.",
+      "items": [
+        {
+          "id": "project-1",
+          "text": "Trigger tasks across all relevant systems when a new job is created",
+          "tip": "One job creation event should fan out to project management, billing, and team calendars simultaneously",
+          "impact": "high"
+        },
+        {
+          "id": "project-2",
+          "text": "Consolidate status updates into one visible dashboard",
+          "tip": "If anyone has to ask 'where are we on this?', your system has failed",
+          "impact": "high"
+        },
+        {
+          "id": "project-3",
+          "text": "Log and surface every team handoff in writing",
+          "tip": "Verbal handoffs are invisible work; add a required handoff comment or status change to make them traceable",
+          "impact": "medium"
+        },
+        {
+          "id": "project-4",
+          "text": "Build reusable project templates for every repeatable service",
+          "tip": "If you deliver the same engagement type more than 3 times a year, it deserves a template",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "communication",
+      "title": "Communication & Notifications",
+      "description": "Most communication problems are actually workflow problems. If people need to ask for updates, the system isn't doing its job.",
+      "items": [
+        {
+          "id": "comm-1",
+          "text": "Send automated client updates at every key project milestone",
+          "tip": "Define 4-6 milestone triggers per service line and wire them to a templated message",
+          "impact": "high"
+        },
+        {
+          "id": "comm-2",
+          "text": "Trigger internal team notifications from workflow events, not manual pings",
+          "tip": "Replace Slack DMs with event-based alerts tied to status changes and SLA breaches",
+          "impact": "medium"
+        },
+        {
+          "id": "comm-3",
+          "text": "Maintain a single source of truth for all client communication history",
+          "tip": "Pipe email, chat, and call notes into your CRM so anyone on the team has full context in 30 seconds",
+          "impact": "medium"
+        },
+        {
+          "id": "comm-4",
+          "text": "Auto-route escalations when deadlines slip or tasks stall",
+          "tip": "Set SLA timers on every critical task and define escalation paths before you need them",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "billing",
+      "title": "Billing & Invoicing",
+      "description": "I've seen companies leave 10-15% of revenue on the table because invoicing is manual and inconsistent. This section finds that leak.",
+      "items": [
+        {
+          "id": "billing-1",
+          "text": "Generate invoices automatically from completed project milestones",
+          "tip": "Tie invoice triggers to deliverable acceptance, not a monthly manual review",
+          "impact": "high"
+        },
+        {
+          "id": "billing-2",
+          "text": "Reconcile payments and flag overdue invoices without spreadsheets",
+          "tip": "Connect your payment processor to your accounting system so collections work itself",
+          "impact": "high"
+        },
+        {
+          "id": "billing-3",
+          "text": "Track time and expenses at the point of work, not end of week",
+          "tip": "Real-time capture recovers 8-12% of billable hours that get forgotten by Friday",
+          "impact": "medium"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "You've Found the Leaks. Now Plug Them.",
+    "description": "If you flagged 5+ items as broken, you're likely losing 20+ hours per week and 10-15% of revenue to manual workflows. Book a free 30-minute audit call and I'll show you exactly which 2-3 workflows to automate first for the biggest ROI."
+  }
+}

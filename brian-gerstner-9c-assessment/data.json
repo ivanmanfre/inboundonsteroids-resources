@@ -1,0 +1,582 @@
+{
+ "slug": "brian-gerstner-9c-assessment",
+ "title": "The Agency Life Score",
+ "subtitle": "Measures whether your agency has the margin, relationships, and internal honesty to be easier and more profitable to run.",
+ "brand": {
+  "accent": "#f37022",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "your_margin",
+   "name": "Your Margin",
+   "questions": [
+    {
+     "id": "small-things",
+     "text": "When something small goes sideways — a meeting shifted, a quick client email that lands at the wrong moment — how do you usually react?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I absorb it without much thought and move on",
+       "score": 5
+      },
+      {
+       "label": "I handle it fine but feel a little friction",
+       "score": 4
+      },
+      {
+       "label": "I notice I'm more irritated than the situation actually calls for",
+       "score": 3
+      },
+      {
+       "label": "Small things are starting to feel bigger than they should",
+       "score": 2
+      },
+      {
+       "label": "I'm running on empty — small things derail the whole day",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "key-person-out",
+     "text": "If a key person called in sick tomorrow on a deadline day, what actually happens?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We have coverage and a clear process — it gets handled",
+       "score": 5
+      },
+      {
+       "label": "We manage, but I'd have to step in more than I'd like",
+       "score": 4
+      },
+      {
+       "label": "It would cause real stress and I'd personally have to fix things",
+       "score": 3
+      },
+      {
+       "label": "We'd scramble and probably miss something",
+       "score": 2
+      },
+      {
+       "label": "It would be a genuine crisis",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "owner_hours_per_week",
+     "type": "number",
+     "text": "How many hours per week do you personally spend on work your team could own?",
+     "hint": "Think: project status updates, client communication you end up handling, approvals that don't require you, admin that follows you home. Be honest. This is used to estimate annual opportunity cost over 50 working weeks.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 50,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "x <= 2 ? 100 : x >= 30 ? 0 : Math.round((30 - x) / 28 * 100)"
+    },
+    {
+     "id": "hourly_rate",
+     "type": "number",
+     "text": "What is your effective hourly rate — or your average monthly retainer divided by 160 hours?",
+     "hint": "Example: if your average retainer is $8,000/month, enter 50. (160 hours = one full-time month.) This is used alongside your answer above to calculate the annual cost of owner hours spent on team-ownable work, assuming 50 working weeks per year.",
+     "suffix": "$/hour",
+     "min": 25,
+     "max": 500,
+     "step": 5,
+     "default": 100,
+     "normalize_formula": "100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The buffer is close to gone.",
+     "text": "The work is still getting done. The clients are probably fine. From the outside it looks like a well-run shop. That's how the trap works. You can run at full capacity for a long time before the reserve you keep for being a steady leader drains to nothing. Small things don't stay small when there's nothing left to absorb them.",
+     "steps": [
+      "Name two or three recurring tasks you're still carrying that belong to someone on your team. Hand one off this week — not when the time is right, now.",
+      "Block one afternoon in the next two weeks with nothing on the calendar. Not a vacation day. Just room.",
+      "Ask your team directly: what do you wait on me for that you shouldn't have to?"
+     ]
+    },
+    "mid": {
+     "headline": "You have margin, but it's thinner than it looks.",
+     "text": "You can handle the normal curve-balls. The bigger ones cost you more than they should. That gap usually isn't one big thing. It's a dozen smaller things that never got handed off, and they've accumulated until the buffer is mostly spent before the week gets hard.",
+     "steps": [
+      "Do a one-week audit: track every task you touched and ask whether it genuinely needed you.",
+      "Find the thing you keep saying you'll delegate when the time is right. It probably doesn't need a better time. It needs a decision.",
+      "Check whether the hours you're still carrying are structural (the role actually requires it) or habitual (you're just used to doing it)."
+     ]
+    },
+    "high": {
+     "headline": "You've built real slack into how you run.",
+     "text": "That buffer shows in how your team operates and how your clients experience you. Most owners don't notice what they're spending until it's already gone. The pressure to fill the margin back up is always there.",
+     "steps": [
+      "Document what you've put in place to protect your margin — systems, delegation, meeting rhythms. Make sure it lives somewhere beyond your own head.",
+      "Check in with your team on whether they feel the same slack, or whether the pressure has just moved one level down."
+     ]
+    }
+   }
+  },
+  {
+   "id": "your_relationships",
+   "name": "Your Relationships",
+   "questions": [
+    {
+     "id": "final-stretch",
+     "text": "When a client relationship is ending and renewal is off the table, how do you handle the final stretch?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Same standard we'd hold if there were five more years of business",
+       "score": 5
+      },
+      {
+       "label": "Solid — though the energy in the team drops a bit toward the end",
+       "score": 4
+      },
+      {
+       "label": "We do what the contract requires but not much more",
+       "score": 3
+      },
+      {
+       "label": "It's hard to stay motivated when the money is already gone",
+       "score": 2
+      },
+      {
+       "label": "We wrap it up fast and move attention to accounts that are actually paying",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offboarding-detail",
+     "text": "What do you document for a client who's leaving — whether they're moving in-house, getting acquired, or just going a different direction?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We document beyond what they asked for — things their team will need that they haven't thought to ask for yet",
+       "score": 5
+      },
+      {
+       "label": "We give them a clean, complete handoff of everything they asked for",
+       "score": 4
+      },
+      {
+       "label": "We transfer the files and answer their questions as they come in",
+       "score": 3
+      },
+      {
+       "label": "We hand over the basics and move on",
+       "score": 2
+      },
+      {
+       "label": "We don't have a consistent offboarding process",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "former-client-return",
+     "text": "How often do former clients come back to work with you again, or send someone your way?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Regularly — former clients are a real, trackable source of new business",
+       "score": 5
+      },
+      {
+       "label": "Occasionally — maybe once or twice a year",
+       "score": 4
+      },
+      {
+       "label": "Rarely, and I'm not entirely sure why",
+       "score": 3
+      },
+      {
+       "label": "Almost never",
+       "score": 2
+      },
+      {
+       "label": "I haven't tracked it and genuinely don't know",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The contract is doing most of the work in your relationships right now.",
+     "text": "You're getting what the contract requires. Clients who feel that difference don't call four years later with a new role and a new budget. The contract always has an end date. The relationship doesn't have to.",
+     "steps": [
+      "Look at your next client offboarding. Do one thing nobody asked for — document something their team will need before they know to ask.",
+      "Build a short list of former clients who left for reasons outside your control. Reach out to two of them. No agenda, just check in.",
+      "Ask yourself honestly: do we treat departing clients the same way we treat clients who are up for renewal?"
+     ]
+    },
+    "mid": {
+     "headline": "You're doing the work on relationships, but the exit is the real test.",
+     "text": "The last month of a client relationship — when there's no renewal to protect and no business reason to go the extra mile — is the one they remember. Most agencies coast through that stretch. That's exactly why it sticks when someone doesn't.",
+     "steps": [
+      "Build a short offboarding checklist that applies regardless of why the client is leaving. The standard should be the same whether they're your best account or your most difficult one.",
+      "Track where your new business actually comes from. You may find former clients and their referrals are doing more work than you've given them credit for."
+     ]
+    },
+    "high": {
+     "headline": "The relationship outlasts the contract, and your clients know it.",
+     "text": "That's a repeated decision to hold the same standard when there's no financial reason to. Former clients who come back do so because they remember how it felt to work with you, not just what you delivered.",
+     "steps": [
+      "Make sure your team holds this standard too — it shouldn't only show up when you're personally involved in the exit.",
+      "Consider whether you're tracking referrals and returns well enough to actually see the compounding effect of how you handle departures."
+     ]
+    }
+   }
+  },
+  {
+   "id": "your_room",
+   "name": "Your Room",
+   "questions": [
+    {
+     "id": "last-meeting-pushback",
+     "text": "In your last team meeting where you put an idea on the table, what actually happened?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Real pushback happened in the room — someone made me think harder",
+       "score": 5
+      },
+      {
+       "label": "Someone raised a concern, though gently",
+       "score": 4
+      },
+      {
+       "label": "Heads nodded and we moved on fairly quickly",
+       "score": 3
+      },
+      {
+       "label": "People generally wait to hear what I think before forming their own opinions",
+       "score": 2
+      },
+      {
+       "label": "The real conversation happens in the parking lot after, not in the meeting",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "how-problems-surface",
+     "text": "How do you usually find out when something is going wrong on a project?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Team members flag it early, before it becomes a real problem",
+       "score": 5
+      },
+      {
+       "label": "I usually hear about it while there's still time to fix it",
+       "score": 4
+      },
+      {
+       "label": "I often find out at roughly the same time the client does",
+       "score": 3
+      },
+      {
+       "label": "I find out when it's already a problem",
+       "score": 2
+      },
+      {
+       "label": "I usually find out when it's too late to do much about it",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "honest-feedback-confidence",
+     "text": "When you put an idea on the table, how confident are you that you're getting honest feedback — and not just a nod from people who sign nothing but know who does?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Very confident — I've built for this deliberately and it shows",
+       "score": 5
+      },
+      {
+       "label": "Pretty confident — the people around me are direct with me",
+       "score": 4
+      },
+      {
+       "label": "Somewhat — I get the sense people soften things",
+       "score": 3
+      },
+      {
+       "label": "Not very — I know the room tilts toward me",
+       "score": 2
+      },
+      {
+       "label": "Not at all — I can't tell honest agreement from polite deference",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "safe-to-disagree",
+     "text": "How safe does your senior team feel saying 'I think this is wrong' to someone who outranks them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It happens regularly and it happens in the meeting, not after",
+       "score": 5
+      },
+      {
+       "label": "It happens when they feel strongly enough to push through the friction",
+       "score": 4
+      },
+      {
+       "label": "It happens, but rarely — most concerns don't make it to the surface",
+       "score": 3
+      },
+      {
+       "label": "People are more likely to stay quiet than to say something",
+       "score": 2
+      },
+      {
+       "label": "I honestly don't think they'd feel safe doing that",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're probably getting more agreement than information.",
+     "text": "The room tilts toward whoever signs the checks — slowly, a little more every year — until you can't tell whether people agree with you or just defer to you. Your worst idea gets the same warm nod as your best one. The person willing to say 'wait, no' is the most valuable person in the building. Go find them on purpose.",
+     "steps": [
+      "Find the one person on your team or in your circle who will tell you when something doesn't hold up. Make it easy for them to do it in the room, not after the meeting.",
+      "In your next team discussion, after you put an idea on the table, say: 'What am I missing here?' Then wait. Actually wait.",
+      "Ask someone you trust outside the agency to push on the last big decision you made. Tell them you want the holes, not the validation."
+     ]
+    },
+    "mid": {
+     "headline": "You have honest conversation in the room, but it's not consistent.",
+     "text": "Disagreement shows up when people feel strongly enough to push through the friction. A lot of concerns — the lower-stakes ones especially — never make it to the surface. The goal is to make 'I think this is wrong' feel easier to say than staying quiet.",
+     "steps": [
+      "Think about the last three times you found out about a problem late. At what point did someone know before they told you? Ask.",
+      "Reward the person who flags an issue early — publicly, specifically. It teaches everyone else that the early flag is the right move.",
+      "Build a standing check-in where the only agenda item is: what's going sideways that nobody's said out loud yet?"
+     ]
+    },
+    "high": {
+     "headline": "You've built the room where answers actually show up.",
+     "text": "That doesn't happen by accident, especially for owners. The pull toward agreement is always there. Real disagreement in the room means you've created the conditions for it. That's what keeps the work sharp and the team invested.",
+     "steps": [
+      "Check whether this holds on your hardest topics — the ones where you really want to be right. That's the actual test.",
+      "Make sure the next generation of leaders in your agency is learning to build the same kind of room, not just executing in yours."
+     ]
+    }
+   }
+  },
+  {
+   "id": "your_blind_spots",
+   "name": "Your Blind Spots",
+   "questions": [
+    {
+     "id": "outside-perspective",
+     "text": "How do you currently get perspective on how your agency actually looks from the outside?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I'm in rooms with other agency owners regularly — I've built this in deliberately",
+       "score": 5
+      },
+      {
+       "label": "I have a few peers I check in with a couple of times a year",
+       "score": 4
+      },
+      {
+       "label": "I mostly rely on client feedback and my own read of the numbers",
+       "score": 3
+      },
+      {
+       "label": "I follow people in the space but don't have much direct conversation",
+       "score": 2
+      },
+      {
+       "label": "I rely mainly on my own view — I know my agency well",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "last-surprising-feedback",
+     "text": "When did you last get feedback that genuinely surprised you — something about your agency you couldn't have seen from the inside?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "In the last few months",
+       "score": 5
+      },
+      {
+       "label": "In the last year or so",
+       "score": 4
+      },
+      {
+       "label": "A few years back",
+       "score": 3
+      },
+      {
+       "label": "It's been a while — I'm not sure",
+       "score": 2
+      },
+      {
+       "label": "I can't recall that happening",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "client-worries",
+     "text": "How often do you ask your clients what actually worries them — not about your work, but about their business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Regularly — I know what keeps my key clients up at night",
+       "score": 5
+      },
+      {
+       "label": "Occasionally, when it comes up naturally in conversation",
+       "score": 4
+      },
+      {
+       "label": "Rarely — our conversations tend to stay project-focused",
+       "score": 3
+      },
+      {
+       "label": "Almost never",
+       "score": 2
+      },
+      {
+       "label": "I'm not sure my clients would expect that from our relationship",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "fresh-question",
+     "text": "Think about the last client brief or project kickoff you sat in on. Did you ask a question nobody else in the room had asked?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Yes — I make a point of it and it often changes the direction of the conversation",
+       "score": 5
+      },
+      {
+       "label": "I asked a few things that felt obvious to me but nobody else had raised",
+       "score": 4
+      },
+      {
+       "label": "I mostly worked from the setup as given",
+       "score": 3
+      },
+      {
+       "label": "I focused on what we needed to execute — the bigger picture wasn't my job in that meeting",
+       "score": 2
+      },
+      {
+       "label": "I can't recall asking anything that surprised the room",
+       "score": 1
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're working mostly from the inside, and your view has a real edge.",
+     "text": "You know your agency. Being sharp about your own business doesn't remove the blind spot though — if anything, it makes the spot easier to miss because your view feels complete. You can't stand outside your own agency to judge it. The angle that's missing only comes from outside-in, and only if you build it deliberately.",
+     "steps": [
+      "Find one room with other agency owners — a peer group, a conference, a community — and show up. Not to network. To listen to how other people are solving the same problems.",
+      "In your next client meeting, sit on the obvious question for thirty seconds before you move on. Then ask it. See what comes back.",
+      "Ask two of your current clients: 'What are you most worried about in your business right now — stuff that has nothing to do with us?' Then listen."
+     ]
+    },
+    "mid": {
+     "headline": "You have some outside input, but it may not be structured enough to catch what you can't see.",
+     "text": "Occasional peer conversations help. A room full of people who'll tell you what's working — even with competitors standing right there — is something different. The self-awareness that actually compounds comes from building the right mirrors on purpose, not from looking harder from the same seat.",
+     "steps": [
+      "Take inventory of the outside input you actually have versus the outside input you mean to get. There's probably a gap between those two lists.",
+      "Find at least one person who knows your agency well enough to tell you something uncomfortable about it. Schedule that conversation.",
+      "In client conversations, track how often you're asking about their business versus talking about yours. The ratio tells you something."
+     ]
+    },
+    "high": {
+     "headline": "You've built the outside-in habit, and it shows.",
+     "text": "You know you can't see your own face, so you've built mirrors. Most agency owners run sharp, well-informed, and still miss the angle that only comes from a different seat. The ones who stay in this industry and keep getting better are almost always the ones who stayed genuinely curious.",
+     "steps": [
+      "Check whether the feedback you're getting is still surprising you. If it stopped being surprising, the mirror may need adjusting.",
+      "Share what you've learned with someone earlier in the game. Teaching tends to surface what you've stopped questioning."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "owner_hours_annual_cost",
+   "label": "Annual cost of owner hours on team-ownable work",
+   "format": "currency",
+   "formula": "owner_hours_per_week * hourly_rate * 50",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you sit in the agency right now?",
+  "answers": [
+   {
+    "label": "Owner or Principal running the whole thing",
+    "tag": "owner"
+   },
+   {
+    "label": "Partner or Senior Leader with a stake in how it runs",
+    "tag": "partner"
+   },
+   {
+    "label": "Department Head or Director responsible for a team",
+    "tag": "director"
+   },
+   {
+    "label": "Account or Project Manager in the day-to-day",
+    "tag": "manager"
+   }
+  ]
+ }
+}

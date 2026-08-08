@@ -1,0 +1,574 @@
+{
+ "slug": "hayden-bingham-e0-assessment",
+ "title": "The Law Firm Digital Growth Score",
+ "subtitle": "Find out where your firm ranks in digital marketing maturity and what it would take to double your new case volume.",
+ "brand": {
+  "accent": "#0074db",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "search_visibility",
+   "name": "Search Visibility",
+   "questions": [
+    {
+     "id": "search_visibility_q1",
+     "text": "When someone in your city searches your main practice area on Google, where does your firm show up?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not sure — I have not checked recently",
+       "score": 1
+      },
+      {
+       "label": "Somewhere on page 2 or further back",
+       "score": 2
+      },
+      {
+       "label": "Page 1 organic, but not in the Maps pack",
+       "score": 3
+      },
+      {
+       "label": "In the Maps pack for our main practice area",
+       "score": 4
+      },
+      {
+       "label": "We dominate Maps and organic for multiple practice areas",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "search_visibility_q2",
+     "text": "How many cities or practice areas does your firm currently rank for in Google Maps?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None that I know of",
+       "score": 1
+      },
+      {
+       "label": "One city and one practice area",
+       "score": 2
+      },
+      {
+       "label": "Two or three practice areas across one or two cities",
+       "score": 3
+      },
+      {
+       "label": "Three to five cities or practice areas",
+       "score": 4
+      },
+      {
+       "label": "Six or more cities and practice areas",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "search_visibility_q3",
+     "text": "How recently did you review your Google Business Profile for accuracy, photos, responses, and reviews?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never, or I am not sure we have one",
+       "score": 1
+      },
+      {
+       "label": "Over a year ago",
+       "score": 2
+      },
+      {
+       "label": "Six to twelve months ago",
+       "score": 3
+      },
+      {
+       "label": "Within the last three months",
+       "score": 4
+      },
+      {
+       "label": "We update and actively manage it every month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "search_visibility_q4",
+     "text": "How does your law firm website compare to the top-ranking competitors in your market?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Ours is outdated and we know it needs a full rebuild",
+       "score": 1
+      },
+      {
+       "label": "It looks decent but does not rank and rarely generates calls",
+       "score": 2
+      },
+      {
+       "label": "Professional enough, and it ranks for a few terms",
+       "score": 3
+      },
+      {
+       "label": "Strong design, ranks well, and converts visitors to calls",
+       "score": 4
+      },
+      {
+       "label": "Our site outranks every competitor and is our top case source",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are invisible where clients are searching.",
+     "text": "If your firm is not ranking in Maps and organic for your main practice area, cases are going to competitors every day. The Google rat race is real but it is winnable with the right foundation and the right team behind it.",
+     "steps": [
+      "Claim and fully complete your Google Business Profile this week if you have not already.",
+      "Search your main practice area plus city right now and write down exactly where you show up. That number is your starting point.",
+      "Get an audit from a legal SEO specialist, not a generalist agency, who can show you where the ranking gaps are and what it takes to close them."
+     ]
+    },
+    "mid": {
+     "headline": "You are on the map. Now expand before someone else locks those positions.",
+     "text": "You have a foothold in local search, which puts you ahead of most firms. The next step is expanding to more practice areas and cities before a competitor claims those spots first.",
+     "steps": [
+      "Identify the two or three practice area and city combinations with the highest case value for your firm and focus ranking efforts there first.",
+      "Check that your Google Business Profile is fully built out: categories, service areas, photos, and regular posts all move the needle.",
+      "Set a monthly calendar reminder to review rankings and calls from Google so you catch any drops before they build."
+     ]
+    },
+    "high": {
+     "headline": "You are playing to win. Keep expanding the territory.",
+     "text": "Multi-area Maps dominance is rare and it is where real call volume lives. The firms we take to record-breaking months are the ones who build this visibility and then protect it aggressively.",
+     "steps": [
+      "Document which practice areas and cities are driving the highest-value calls so you can put more resources there.",
+      "Identify your next two or three target markets and start building those rankings now. First-mover advantage is real in local search.",
+      "Make sure your reporting shows not just rankings but the calls and cases those rankings produce. Rankings are the input. Cases are the output."
+     ]
+    }
+   }
+  },
+  {
+   "id": "lead_capture_and_call_vo",
+   "name": "Lead Capture and Call Volume",
+   "questions": [
+    {
+     "id": "lead_capture_and_call_vo_q1",
+     "text": "How would you describe the number of new calls your firm receives from Google each month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Fewer than five — almost nothing coming in",
+       "score": 1
+      },
+      {
+       "label": "Five to fifteen calls, and it is inconsistent",
+       "score": 2
+      },
+      {
+       "label": "Fifteen to thirty calls — decent but we want more",
+       "score": 3
+      },
+      {
+       "label": "Thirty to sixty calls, fairly consistent",
+       "score": 4
+      },
+      {
+       "label": "Sixty or more calls — Google is our top lead source",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_google_calls",
+     "type": "number",
+     "text": "How many calls or leads did your firm receive from Google in the last 30 days?",
+     "hint": "Check your Google Business Profile insights or call tracking dashboard. Enter 0 if you do not track this yet.",
+     "suffix": "calls",
+     "min": 0,
+     "max": 500,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "Math.min(100, x * 1.35)"
+    },
+    {
+     "id": "monthly_clients_signed",
+     "type": "number",
+     "text": "How many new clients did your firm sign last month?",
+     "hint": "New retainers or cases opened in the last 30 days. Enter your best estimate if you do not have an exact number.",
+     "suffix": "clients",
+     "min": 0,
+     "max": 100,
+     "step": 1,
+     "default": 0,
+     "normalize_formula": "Math.min(100, x * 12.5)"
+    },
+    {
+     "id": "avg_case_value",
+     "type": "number",
+     "text": "What is your average case value or retainer size?",
+     "hint": "The average fee or expected case value across the clients you typically sign. Enter in dollars.",
+     "suffix": "dollars",
+     "min": 500,
+     "max": 500000,
+     "step": 500,
+     "default": 5000,
+     "normalize_formula": "Math.min(100, x / 200)"
+    },
+    {
+     "id": "lead_capture_and_call_vo_q5",
+     "text": "Do you know which source drove the most new calls to your firm last month?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No — we do not track where calls come from",
+       "score": 1
+      },
+      {
+       "label": "We have a rough idea but no actual data behind it",
+       "score": 2
+      },
+      {
+       "label": "We track it loosely in a spreadsheet",
+       "score": 3
+      },
+      {
+       "label": "We track source attribution and review it every month",
+       "score": 4
+      },
+      {
+       "label": "Clean reporting on every lead source with conversion rates",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your pipeline has a leak and you may not know where.",
+     "text": "Low call volume from Google usually means one of two things: you are not ranking where clients are searching, or your profile and site are not converting the traffic you do get. Either way, cases are leaving.",
+     "steps": [
+      "Start tracking every inbound call by source this week. A simple spreadsheet beats nothing.",
+      "Check your Google Business Profile to confirm the phone number, hours, and service categories are accurate.",
+      "Request a full web audit to find where traffic is dropping off before it becomes a call."
+     ]
+    },
+    "mid": {
+     "headline": "Calls are coming in. Now build the system around them.",
+     "text": "You are generating real lead volume from Google, which puts you ahead of most firms. The gap between here and a record month is usually tracking and conversion: knowing which calls become cases and why.",
+     "steps": [
+      "Set up call tracking so you know which keywords and pages are driving calls, not just that calls are happening.",
+      "Calculate your conversion rate from calls to signed clients. Below 20 percent, look at intake before spending more on marketing.",
+      "Review your Google listing weekly for new reviews and respond to every one, positive and negative."
+     ]
+    },
+    "high": {
+     "headline": "Strong call volume. Protect it and scale it.",
+     "text": "Sixty-plus calls a month from Google is what we see from firms that have done the hard SEO work. The ones who turn that into a record month also know exactly what those calls are producing.",
+     "steps": [
+      "Connect your call data to your case management system so you can see revenue per lead source, not just call counts.",
+      "Identify your three highest-converting practice areas and put more weight there in your content and Google profile.",
+      "Document your intake script. Small improvements to how your team handles the first call have an outsized impact at high call volume."
+     ]
+    }
+   }
+  },
+  {
+   "id": "marketing_accountability",
+   "name": "Marketing Accountability",
+   "questions": [
+    {
+     "id": "marketing_accountability_q1",
+     "text": "How transparent is your current marketing partner about what they are doing and why results are or are not coming in?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They send a monthly report I cannot really interpret",
+       "score": 1
+      },
+      {
+       "label": "They update me when I ask, but I am not always in the loop",
+       "score": 2
+      },
+      {
+       "label": "I get monthly reporting and can see keyword movement",
+       "score": 3
+      },
+      {
+       "label": "Clear visibility into rankings, traffic, and call volume every month",
+       "score": 4
+      },
+      {
+       "label": "Full transparency — any question I ask gets a straight, honest answer",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "marketing_accountability_q2",
+     "text": "When your marketing results start slipping, how quickly do you catch it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We usually find out when calls have already dried up",
+       "score": 1
+      },
+      {
+       "label": "We notice after a few months of declining results",
+       "score": 2
+      },
+      {
+       "label": "We catch it within four to six weeks",
+       "score": 3
+      },
+      {
+       "label": "We review monthly and course-correct quickly",
+       "score": 4
+      },
+      {
+       "label": "We check weekly and adjust before problems build",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "marketing_accountability_q3",
+     "text": "How clearly can you tie your marketing spend to actual cases signed and revenue generated?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We pay a retainer and hope it is working",
+       "score": 1
+      },
+      {
+       "label": "We track rankings but do not connect them to actual cases",
+       "score": 2
+      },
+      {
+       "label": "We measure traffic and calls but have not tied them to revenue",
+       "score": 3
+      },
+      {
+       "label": "We know roughly what we are paying per new case",
+       "score": 4
+      },
+      {
+       "label": "Every marketing dollar is tracked against signed clients and case revenue",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are flying blind and it is costing you cases.",
+     "text": "When you cannot see what your marketing is actually producing, you cannot fix it. The firms that plateau on results almost always share the same problem: no real accountability between marketing spend and signed cases.",
+     "steps": [
+      "Ask your current agency: how many calls did we generate from Google last month? If they cannot answer in 60 seconds, that is your answer.",
+      "Request a reporting dashboard that shows rankings, traffic, calls, and conversion in one place rather than a PDF you will not read.",
+      "Set a standing monthly 30-minute review with one question on the agenda: how many cases did marketing produce this month?"
+     ]
+    },
+    "mid": {
+     "headline": "You are tracking results. Now close the loop to revenue.",
+     "text": "You have built the habit of reviewing performance, which most firms never do. The next step is connecting your marketing metrics all the way to signed cases and fees so you know your actual return.",
+     "steps": [
+      "Build a simple monthly scorecard: calls generated, consultations booked, clients signed, average case value. Review it every month without exception.",
+      "If your agency cannot tell you cost per signed client, push them on it. That is the number that matters.",
+      "Track which practice areas produce the highest-value cases from Google so you can shift investment toward them."
+     ]
+    },
+    "high": {
+     "headline": "Obsessed with outcomes. That is the way it should be.",
+     "text": "You are measuring marketing against what it is supposed to produce: results. That is how record months happen, and it is rare.",
+     "steps": [
+      "Build a rolling 12-month revenue attribution view so you can see which campaigns and practice areas drove the most case revenue over the year.",
+      "Use your performance data to decide where to put the next marketing dollar. The numbers should make that decision clear.",
+      "Share the scorecard with your full team quarterly so everyone understands what winning looks like for the firm."
+     ]
+    }
+   }
+  },
+  {
+   "id": "team_and_growth_standard",
+   "name": "Team and Growth Standard",
+   "questions": [
+    {
+     "id": "team_and_growth_standard_q1",
+     "text": "When your marketing is underperforming, how honest is your agency or team about it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They rarely bring it up — they just keep billing",
+       "score": 1
+      },
+      {
+       "label": "They share good news but downplay problems",
+       "score": 2
+      },
+      {
+       "label": "They will flag an issue, but usually only after some time passes",
+       "score": 3
+      },
+      {
+       "label": "They come to us proactively with problems and bring solutions",
+       "score": 4
+      },
+      {
+       "label": "Bad news comes first, with a fix already attached",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "team_and_growth_standard_q2",
+     "text": "How would you describe the growth targets your firm is working toward this year?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do not have clear targets set",
+       "score": 1
+      },
+      {
+       "label": "We have vague goals but no plan behind them",
+       "score": 2
+      },
+      {
+       "label": "We have a target and a general plan, but limited accountability",
+       "score": 3
+      },
+      {
+       "label": "Specific targets, reviewed monthly against actual progress",
+       "score": 4
+      },
+      {
+       "label": "A clear mission, measurable targets, and the right people executing against them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "team_and_growth_standard_q3",
+     "text": "How would you describe your current marketing partner or in-house team?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We handle marketing ourselves with no dedicated support",
+       "score": 1
+      },
+      {
+       "label": "We use a generalist agency that handles some digital marketing",
+       "score": 2
+      },
+      {
+       "label": "We have a marketing agency, but they do not specialize in law firms",
+       "score": 3
+      },
+      {
+       "label": "We work with a legal-focused team that understands our practice areas",
+       "score": 4
+      },
+      {
+       "label": "A-players who are obsessed with our outcomes, full stop",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Growth stalls when the wrong people are in the wrong seats.",
+     "text": "A generalist agency that promises the world without legal-specific results is a liability. The right marketing team knows law firm economics, understands your practice areas, and treats your outcomes as their own.",
+     "steps": [
+      "Ask your current agency how many law firms they actively manage and what results those firms are seeing. Named results, not general claims.",
+      "Get honest with yourself: is your current marketing partner obsessed with your outcomes, or comfortable with the retainer?",
+      "Before switching, define what winning looks like for your firm: specific call targets, case volume, practice area growth. Hold anyone you hire to those numbers."
+     ]
+    },
+    "mid": {
+     "headline": "You have support. Now raise the standard.",
+     "text": "You are working with a marketing partner, which is more than most firms at your stage. The question is whether the people around you are pushing toward your goals or just maintaining the status quo. Never Settle applies to your marketing team too.",
+     "steps": [
+      "Have an honest conversation with your current agency about your actual growth targets: not rankings, but cases and revenue.",
+      "Set a 90-day performance checkpoint. If they cannot show measurable progress against your targets, re-evaluate.",
+      "Define your firm mission clearly enough that your marketing partner can repeat it back to you. If they cannot, they are not pointed at the same goal."
+     ]
+    },
+    "high": {
+     "headline": "You have the right people. Keep pushing.",
+     "text": "A-players who are obsessed with your outcomes are rare and hard to replace. The firms that hit record months are the ones where the marketing team's definition of winning matches the attorney's. Protect that and keep raising the bar.",
+     "steps": [
+      "Document what is working so you can replicate it as the firm scales to new markets or practice areas.",
+      "Keep the communication courageous: surface problems early, even when results are strong, so nothing builds without you knowing.",
+      "Set your next goal at the edge of what feels possible. That is where the best partnerships do their best work."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "lead_conversion_rate",
+   "label": "Your Google lead-to-client conversion rate",
+   "format": "percent",
+   "formula": "monthly_google_calls === 0 ? 0 : (monthly_clients_signed / monthly_google_calls) * 100",
+   "show_in_result": true
+  },
+  {
+   "id": "monthly_case_revenue",
+   "label": "Estimated monthly revenue from new cases",
+   "format": "currency_per_period",
+   "formula": "monthly_clients_signed * avg_case_value",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role at the firm?",
+  "answers": [
+   {
+    "label": "Attorney / Managing Partner",
+    "tag": "attorney"
+   },
+   {
+    "label": "Marketing Director / Operations Manager",
+    "tag": "marketing-director"
+   },
+   {
+    "label": "Practice Administrator",
+    "tag": "practice-admin"
+   }
+  ]
+ }
+}

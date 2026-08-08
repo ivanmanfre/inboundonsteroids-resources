@@ -1,0 +1,786 @@
+{
+  "slug": "is-it-really-possible-to-create-an-agency-that-can-run-without-you",
+  "title": "The Founder-Dependency Test: How Much of Your $1-10M Agency Still Runs Through You",
+  "subtitle": "A 17-question diagnostic for $1-10M marketing and creative agency owners. Find the five places the work still depends on you, and the first one to build out of.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "marketing and creative agency",
+    "locations": "the US, UK, and Canada",
+    "count_band": "11-100"
+  },
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your data sources are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules a human follows can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep.",
+      "Human-in-the-loop by design. Every output touches a person before it ships externally."
+    ],
+    "intro": "This assessment scores against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready for AI to carry weight. Miss one and any AI build will leak."
+  },
+  "proof_card": {
+    "score_label": "Run-Without-You Score",
+    "sample_score": 58,
+    "sample_top_leak": "client approvals (every deliverable still routes through the founder)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your agency?",
+    "answers": [
+      {
+        "label": "Under $1M revenue or fewer than 10 people",
+        "tag": "solo_tier"
+      },
+      {
+        "label": "$1-3M revenue, 11-25 people",
+        "tag": "growing_tier"
+      },
+      {
+        "label": "$3-6M revenue, 26-50 people",
+        "tag": "established_tier"
+      },
+      {
+        "label": "$6-10M+ revenue, 51-100 people",
+        "tag": "scaling_tier"
+      }
+    ]
+  },
+  "start_screen": {
+    "eyebrow": "Founder-dependency score",
+    "headline_html": "See how much of your agency still <em>runs through you</em>.",
+    "description": "For $1-10M agency owners. Seventeen questions across five areas, then a 0-100 Run-Without-You Score and the first thing to build so the work stops backing up when you step away.",
+    "button": "Score my agency",
+    "chips": [
+      "No signup to score",
+      "17 questions, scored live",
+      "Anonymous + auto-saved",
+      "Email only for the Loom"
+    ]
+  },
+  "categories": [
+    {
+      "id": "intake-onboarding",
+      "name": "Structured Intake",
+      "questions": [
+        {
+          "id": "intake-central-record",
+          "text": "How consistently does new client information land in one structured system the whole team can read without asking you?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Never. It lives in my inbox and my head.",
+              "score": 1
+            },
+            {
+              "label": "2. Rarely. Scattered across email, Slack, and a few docs.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes. A shared folder exists but fields go missing.",
+              "score": 3
+            },
+            {
+              "label": "4. Usually. A structured intake form feeds a central record.",
+              "score": 4
+            },
+            {
+              "label": "5. Always. Structured intake auto-populates the delivery space.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake-kickoff-handoff",
+          "text": "How automated is the handoff from signed contract to delivery kickoff?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Fully manual. I personally brief the team every time.",
+              "score": 1
+            },
+            {
+              "label": "2. Mostly manual. A checklist exists but I run it.",
+              "score": 2
+            },
+            {
+              "label": "3. Half automated. Some records get created on their own.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly automated. Kickoff triggers with light review.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully automated. Close-won fires the whole kickoff.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake-brief-gaps",
+          "text": "How often do you personally have to fill gaps in a brief before the team can start?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Every time. Nothing starts without me.",
+              "score": 1
+            },
+            {
+              "label": "2. Most projects need my input to be workable.",
+              "score": 2
+            },
+            {
+              "label": "3. About half need a fix from me.",
+              "score": 3
+            },
+            {
+              "label": "4. Occasionally, on the odd edge case.",
+              "score": 4
+            },
+            {
+              "label": "5. Almost never. The intake captures what the team needs.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Intake runs through your inbox",
+          "text": "Right now new client info lands in your head and your email, so nothing starts until you brief the team. That's the first place the agency stalls when you step away. Build a structured intake form that captures what delivery actually needs, then feed it into one shared record.",
+          "steps": [
+            "Map the 8-10 fields a project genuinely needs to start",
+            "Build one intake form every new client fills before kickoff",
+            "Route the answers into a single shared project record"
+          ]
+        },
+        "mid": {
+          "headline": "Intake exists but you still patch it",
+          "text": "You have a form and a folder, but half the briefs still need a fix from you before work starts. The gap is field quality, not the form itself. Tighten the required fields and automate the kickoff so you stop being the manual relay.",
+          "steps": [
+            "Make the gap-causing fields required, not optional",
+            "Trigger the kickoff automatically once intake is complete",
+            "Add a 5-minute review step instead of a full rebrief"
+          ]
+        },
+        "high": {
+          "headline": "Intake is close to hands-off",
+          "text": "Structured intake feeds your delivery space and the team starts without you. Keep sharpening. Here is the frontier. Push toward intake that flags its own gaps before a human ever looks.",
+          "steps": [
+            "Add validation that rejects incomplete intake automatically",
+            "Pre-fill records from your CRM on close-won",
+            "Track which intake fields still cause downstream rework"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~6 hrs/week recoverable on manual briefing",
+        "lever": "Make the intake form the single source of truth so kickoff stops waiting on you.",
+        "talking_points": [
+          "Every project that waits on my brief is delivery time we bill late.",
+          "One structured intake record kills the repeat questions across the team.",
+          "Close-won should start the project, not land in my inbox."
+        ],
+        "proof_of_concept": "Build one intake form for the next new client and route it to a shared doc, then time how long kickoff takes versus the last one."
+      }
+    },
+    {
+      "id": "decision-logic",
+      "name": "Documented Decision Logic",
+      "questions": [
+        {
+          "id": "logic-scope-price-written",
+          "text": "How consistently are the rules your team uses to scope and price work written down?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Not at all. Pricing lives in my gut.",
+              "score": 1
+            },
+            {
+              "label": "2. Loosely. A rough rate sheet, lots of exceptions.",
+              "score": 2
+            },
+            {
+              "label": "3. Partly. Standard work is documented, custom isn't.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly. Clear rules with a few judgment calls left.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully. Anyone can scope and price without me.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "logic-pricing-waits-on-you",
+          "text": "How often does a scoping or pricing decision wait on you specifically?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Always. I sign off on every number.",
+              "score": 1
+            },
+            {
+              "label": "2. Usually. The team won't commit without me.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes. Bigger deals route to me.",
+              "score": 3
+            },
+            {
+              "label": "4. Rarely. Only unusual deals reach me.",
+              "score": 4
+            },
+            {
+              "label": "5. Almost never. The team decides inside clear guardrails.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "logic-out-of-scope",
+          "text": "How documented is the logic for handling an out-of-scope client request?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Undocumented. I decide each one live.",
+              "score": 1
+            },
+            {
+              "label": "2. Mostly in my head. The team guesses or asks.",
+              "score": 2
+            },
+            {
+              "label": "3. Some patterns written, plenty of gaps.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly documented with a clear escalation path.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully. The team handles it the way I would.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "logic-new-hire-learnable",
+          "text": "How clearly could a new hire learn how your agency makes its core delivery decisions?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They couldn't. It's all tacit.",
+              "score": 1
+            },
+            {
+              "label": "2. Only by shadowing me for months.",
+              "score": 2
+            },
+            {
+              "label": "3. Partly, from scattered docs plus a lot of asking.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly, from a documented playbook.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully, from a current written decision playbook.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Pricing and scope live in your gut",
+          "text": "The rules for scoping and pricing aren't written down, so every number waits on you. That single dependency caps how fast the agency can quote and commit. Write the decision logic your best estimator already follows, then hand the team guardrails.",
+          "steps": [
+            "Document your pricing logic for your 3 most common project types",
+            "Define the dollar threshold below which the team decides alone",
+            "Write the rule for handling one common out-of-scope request"
+          ]
+        },
+        "mid": {
+          "headline": "Standard work is documented, custom isn't",
+          "text": "Your team can price routine work, but anything unusual still routes to you. That's fine as a backstop and a problem as a daily habit. Widen the documented guardrails so fewer decisions need you in the room.",
+          "steps": [
+            "Turn your last 10 custom quotes into named pricing patterns",
+            "Set a clear escalation line for genuinely new situations",
+            "Have the team draft the number first, then you approve or correct"
+          ]
+        },
+        "high": {
+          "headline": "The team decides like you would",
+          "text": "Scoping and pricing run on documented logic and only edge cases reach you. Keep sharpening. Here is the frontier. Encode the judgment calls you still make so the playbook stays current.",
+          "steps": [
+            "Log every decision you still personally make for one month",
+            "Convert the repeat ones into written rules",
+            "Review the playbook quarterly so it doesn't drift"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "Quotes that wait on you add days to every sales cycle",
+        "lever": "Write the pricing and scope rules your best person already uses so the team can commit without you.",
+        "talking_points": [
+          "Deals stall in the gap between the client asking and me answering.",
+          "Documentable decision logic is the precondition for ever automating quoting.",
+          "If only I can price it, the agency can't grow past my calendar."
+        ],
+        "proof_of_concept": "Document the pricing logic for your top 3 project types this week and let the team quote the next two without you."
+      }
+    },
+    {
+      "id": "delivery-quality",
+      "name": "Delivery and Quality Control",
+      "questions": [
+        {
+          "id": "delivery-ships-without-review",
+          "text": "How often does a deliverable ship to a client without your personal final review?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Never. I check everything before it leaves.",
+              "score": 1
+            },
+            {
+              "label": "2. Rarely. I review almost all of it.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes. Routine work ships, big work waits for me.",
+              "score": 3
+            },
+            {
+              "label": "4. Usually. Most work ships on the team's QA.",
+              "score": 4
+            },
+            {
+              "label": "5. Always. A defined QA gate replaces my eyes.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "delivery-quality-without-you",
+          "text": "How consistent is quality when you're not involved in a project?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It drops noticeably. Clients notice.",
+              "score": 1
+            },
+            {
+              "label": "2. It slips on the details.",
+              "score": 2
+            },
+            {
+              "label": "3. It holds for routine work, wobbles on complex work.",
+              "score": 3
+            },
+            {
+              "label": "4. It mostly holds across the board.",
+              "score": 4
+            },
+            {
+              "label": "5. It's indistinguishable from when I'm involved.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "delivery-done-standard",
+          "text": "How defined is your standard for what 'done and good' looks like on a deliverable?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It's in my head. I know it when I see it.",
+              "score": 1
+            },
+            {
+              "label": "2. Loosely shared, mostly by feel.",
+              "score": 2
+            },
+            {
+              "label": "3. Some checklists exist, applied unevenly.",
+              "score": 3
+            },
+            {
+              "label": "4. Clear standards the team applies consistently.",
+              "score": 4
+            },
+            {
+              "label": "5. A written QA rubric anyone can run against.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Nothing ships without your eyes",
+          "text": "Every deliverable waits on your final review, so you're the throughput limit on the whole agency. The team isn't the issue, the missing standard is. Write down what 'done and good' means so QA can happen without you.",
+          "steps": [
+            "Write a one-page QA rubric for your main deliverable type",
+            "Have the team self-check against it before it reaches you",
+            "Track what you actually catch so you can encode it"
+          ]
+        },
+        "mid": {
+          "headline": "Routine work ships, big work waits",
+          "text": "The team handles standard delivery but complex work still routes to you for the final call. That's the right instinct applied too widely. Define the few high-stakes cases that truly need you and let the rest run on the rubric.",
+          "steps": [
+            "Name the 2-3 project types that genuinely need your review",
+            "Move everything else to a team-owned QA gate",
+            "Spot-check shipped work weekly instead of reviewing all of it"
+          ]
+        },
+        "high": {
+          "headline": "Quality holds without you in the room",
+          "text": "A defined QA gate ships work at your standard whether you're involved or not. Keep sharpening. Here is the frontier. Make the rubric self-improving as new failure modes show up.",
+          "steps": [
+            "Log every quality miss and fold it into the rubric",
+            "Rotate who runs final QA so it isn't one person",
+            "Sample client feedback to confirm the standard is holding"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "Founder QA is a hard ceiling on billable throughput",
+        "lever": "Replace your final review with a written QA rubric the team runs.",
+        "talking_points": [
+          "Every deliverable that waits for me is revenue that ships slower.",
+          "A written 'done and good' standard is what lets QA happen without me.",
+          "Quality should come from the system, not from me being in the room."
+        ],
+        "proof_of_concept": "Write a one-page QA rubric and let the team ship the next five routine deliverables against it without your sign-off."
+      }
+    },
+    {
+      "id": "client-relationships",
+      "name": "Client Relationships",
+      "questions": [
+        {
+          "id": "client-ask-for-you",
+          "text": "How often do clients ask for you specifically instead of their account lead?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Always. I'm the relationship.",
+              "score": 1
+            },
+            {
+              "label": "2. Usually. They trust me, not the team.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes, on anything that matters.",
+              "score": 3
+            },
+            {
+              "label": "4. Rarely. The account lead owns it.",
+              "score": 4
+            },
+            {
+              "label": "5. Almost never. Clients trust the system and the team.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "client-comms-route-through-you",
+          "text": "How consistently does client communication happen without routing through you?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It doesn't. I'm in every thread.",
+              "score": 1
+            },
+            {
+              "label": "2. Rarely. I'm cc'd or pulled in constantly.",
+              "score": 2
+            },
+            {
+              "label": "3. Half the time I'm still the hub.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly. The team owns day-to-day comms.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully. I only show up by design, not necessity.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "client-updates-automated",
+          "text": "How automated are routine client updates like status, reporting, and check-ins?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Fully manual, and usually me.",
+              "score": 1
+            },
+            {
+              "label": "2. Manual, handled by the team.",
+              "score": 2
+            },
+            {
+              "label": "3. Templated but sent by hand.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly automated with a human review.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully automated status and reporting.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "client-exposure-two-weeks",
+          "text": "How exposed would a key client relationship be if you went dark for two weeks?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It would crack. I am the account.",
+              "score": 1
+            },
+            {
+              "label": "2. It would wobble badly.",
+              "score": 2
+            },
+            {
+              "label": "3. It would hold short-term, strain after that.",
+              "score": 3
+            },
+            {
+              "label": "4. It would mostly hold.",
+              "score": 4
+            },
+            {
+              "label": "5. It wouldn't notice. The team and system carry it.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are the client relationship",
+          "text": "Clients ask for you, not their account lead, and every thread routes through you. If you go dark, the relationships crack. Start moving day-to-day comms to the team and let clients build trust with the system around them.",
+          "steps": [
+            "Introduce a named account lead as the primary contact on every account",
+            "Move status updates and reporting off your plate first",
+            "Set the expectation that the team owns day-to-day, you own strategy"
+          ]
+        },
+        "mid": {
+          "headline": "Clients trust the team, until it matters",
+          "text": "The account lead owns the routine, but anything important still pulls clients back to you. That's a trust gap in the team's authority, not a comms problem. Hand the team real decision room on accounts so clients stop reaching past them.",
+          "steps": [
+            "Give account leads clear authority on common client asks",
+            "Automate the routine updates so the team looks proactive",
+            "Stay out of threads you don't strictly need to be in"
+          ]
+        },
+        "high": {
+          "headline": "Clients trust the system, not just you",
+          "text": "Day-to-day runs through the team and accounts hold when you step back. Keep sharpening. Here is the frontier. Build reporting that makes clients feel seen without a human assembling it.",
+          "steps": [
+            "Automate status and performance reporting end to end",
+            "Track which accounts still ask for you and why",
+            "Design your client touchpoints as choice, not necessity"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "Founder-owned accounts are your single biggest churn risk",
+        "lever": "Move day-to-day client comms and reporting to the team and to automation.",
+        "talking_points": [
+          "If a key client only trusts me, every account is one bad week from churn.",
+          "Automated reporting makes the team look proactive without my time.",
+          "I should appear on accounts by design, not because the work needs me."
+        ],
+        "proof_of_concept": "Pick one account, hand full day-to-day comms to the account lead for two weeks, and watch what actually escalates to you."
+      }
+    },
+    {
+      "id": "knowledge-voice",
+      "name": "Knowledge and Voice",
+      "questions": [
+        {
+          "id": "knowledge-documented",
+          "text": "How much of your agency's 'how we do it' is written down versus living in your head?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Almost all in my head.",
+              "score": 1
+            },
+            {
+              "label": "2. A little written, most tacit.",
+              "score": 2
+            },
+            {
+              "label": "3. Half and half.",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly documented, some gaps.",
+              "score": 4
+            },
+            {
+              "label": "5. Fully documented and kept current.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "knowledge-voice-repeatable",
+          "text": "How consistently can the team produce work in your voice and standard without you?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Not at all. It only sounds right when I do it.",
+              "score": 1
+            },
+            {
+              "label": "2. Rarely. It needs heavy rework from me.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes, with my edits.",
+              "score": 3
+            },
+            {
+              "label": "4. Usually, with light review.",
+              "score": 4
+            },
+            {
+              "label": "5. Reliably. The voice is captured and repeatable.",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "knowledge-single-point-failure",
+          "text": "How often does work stall because the one person who knows something is unavailable?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Constantly, and that person is often me.",
+              "score": 1
+            },
+            {
+              "label": "2. Often. Key knowledge is siloed.",
+              "score": 2
+            },
+            {
+              "label": "3. Sometimes, on specific tasks.",
+              "score": 3
+            },
+            {
+              "label": "4. Rarely. Most knowledge is shared.",
+              "score": 4
+            },
+            {
+              "label": "5. Almost never. Knowledge isn't trapped in one person.",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The agency lives in your head",
+          "text": "Most of how the work gets done is tacit, and the team can't reliably produce in your voice without you. That makes you the bottleneck on every nonstandard task. Start capturing the 'how we do it' that only exists in your head today.",
+          "steps": [
+            "Record yourself walking through your 3 most repeated decisions",
+            "Turn the recordings into written SOPs the team can follow",
+            "Capture voice and style examples so output sounds like you"
+          ]
+        },
+        "mid": {
+          "headline": "Half documented, half in your head",
+          "text": "Some of the playbook is written and some still depends on you being available. The siloed half is where work stalls when someone's out. Close the gaps on the knowledge that only one person holds.",
+          "steps": [
+            "List the tasks that stall when one specific person is away",
+            "Document the top three of those first",
+            "Build voice examples so the team's output needs lighter edits"
+          ]
+        },
+        "high": {
+          "headline": "Knowledge isn't trapped in one person",
+          "text": "The playbook is documented, current, and the team produces in your voice with light review. Keep sharpening. Here is the frontier. Make the voice repeatable enough to assist with AI safely.",
+          "steps": [
+            "Keep SOPs current with a quarterly review owner",
+            "Build a voice reference the whole team writes against",
+            "Test where AI could draft against your documented voice and rules"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "Knowledge siloed in your head blocks every other fix",
+        "lever": "Capture the decisions and voice that only live in your head into a current playbook.",
+        "talking_points": [
+          "Documentable decision logic is the precondition for the team or AI to ever carry it.",
+          "Every task that stalls when one person is out is a hidden single point of failure.",
+          "If only I sound like us, the agency can't scale its output past me."
+        ],
+        "proof_of_concept": "Record yourself making your three most repeated calls this week and turn them into one SOP the team tests next week."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'growing_tier' || persona === 'established_tier' || persona === 'scaling_tier') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of where your agency runs through you?",
+      "description": "Drop your email + I review your answers, stack them against agencies your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize. Async, no scheduling, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'solo_tier'",
+      "headline": "Under $1M? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback runs longer. Follow me on LinkedIn. I post tactical agency ops breakdowns 3x a week. When you cross $1M and start adding team, come back and retake. The recommendation will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight. Here's what agencies your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from founder-proofing your highest-value accounts, encoding the judgment calls you still make, and building voice capture clean enough to assist with AI. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly agency ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market agencies run without the founder in every thread. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ]
+}

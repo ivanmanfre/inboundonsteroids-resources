@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LM Intelligence | Ivan Manfredi</title>
+<meta name="description" content="Live metrics for Ivan Manfredi's lead magnet library.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#00E676">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body { margin: 0; background: #fff; color: #000; font-family: 'Space Grotesk', sans-serif; min-height: 100vh; }
+.wrap { max-width: 1280px; margin: 0 auto; padding: 2rem 1.5rem; }
+.hero { border-bottom: 4px solid #000; padding: 2rem 1.5rem; background: #fff; background-size: 40px 40px; background-image: linear-gradient(to right, #f0f0f0 1px, transparent 1px), linear-gradient(to bottom, #f0f0f0 1px, transparent 1px); }
+.hero-inner { max-width: 1280px; margin: 0 auto; }
+.badge { display: inline-block; padding: .25rem 1rem; background: #000; color: #fff; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 1rem; }
+h1 { font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 900; text-transform: uppercase; line-height: 1.05; margin: 0 0 .5rem; }
+.sub { font-size: 1rem; color: #444; margin: 0 0 .5rem; max-width: 42rem; }
+.updated { font-size: .78rem; color: #777; text-transform: uppercase; letter-spacing: .08em; font-weight: 700; }
+.totals { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin: 2rem 0; }
+.stat { background: #fff; border: 4px solid #000; box-shadow: 6px 6px 0 #000; padding: 1.25rem; }
+.stat .num { font-size: 2.5rem; font-weight: 900; line-height: 1; color: #00E676; font-variant-numeric: tabular-nums; }
+.stat .lbl { font-size: .72rem; color: #444; text-transform: uppercase; letter-spacing: .1em; font-weight: 800; margin-top: .5rem; }
+.stat.alt .num { color: #000; }
+.grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+@media (min-width: 860px) { .grid { grid-template-columns: 2fr 1fr; } }
+.card { background: #fff; border: 4px solid #000; box-shadow: 6px 6px 0 #000; padding: 1.5rem; }
+.card h2 { font-size: 1.1rem; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; margin: 0 0 1rem; padding-bottom: .75rem; border-bottom: 2px solid #000; }
+.table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+.table th { text-align: left; padding: .5rem .25rem; font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; color: #444; border-bottom: 2px solid #000; }
+.table td { padding: .55rem .25rem; border-bottom: 1px solid #eee; vertical-align: top; }
+.table tr:hover td { background: #fafafa; }
+.table .slug { font-weight: 700; max-width: 340px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.table .slug a { color: #000; text-decoration: none; }
+.table .slug a:hover { text-decoration: underline; text-decoration-color: #00E676; }
+.chip { display: inline-block; padding: .1rem .4rem; background: #f4f4f4; border: 1px solid #000; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.chip.high { background: #00E676; }
+.chip.mid { background: #FFD93D; }
+.chip.low { background: #FF4081; color: #fff; }
+.chip.sent { background: #00E676; }
+.chip.failed { background: #FF4081; color: #fff; }
+.chip.pending { background: #FFD93D; }
+.num-cell { text-align: right; font-variant-numeric: tabular-nums; font-weight: 700; }
+.feed { max-height: 420px; overflow-y: auto; }
+.feed-item { padding: .5rem 0; border-bottom: 1px dashed #ddd; font-size: .85rem; }
+.feed-item:last-child { border: 0; }
+.feed-evt { display: inline-block; padding: 0 .4rem; background: #f4f4f4; border: 1px solid #000; font-size: .68rem; font-weight: 800; text-transform: uppercase; margin-right: .5rem; }
+.feed-evt.view { background: #e0f2ff; }
+.feed-evt.capture { background: #00E676; }
+.feed-evt.complete { background: #2979FF; color: #fff; }
+.feed-evt.share { background: #FF4081; color: #fff; }
+.feed-evt.cta_click { background: #FFD93D; }
+.feed-time { color: #888; font-size: .72rem; }
+.empty { padding: 2rem 0; text-align: center; color: #888; font-style: italic; }
+.refresh { padding: .5rem 1rem; background: #00E676; color: #000; border: 2px solid #000; box-shadow: 3px 3px 0 #000; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; cursor: pointer; font-family: inherit; font-size: .8rem; }
+.refresh:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #000; }
+.auto-note { font-size: .72rem; color: #888; margin-left: .75rem; }
+.loading { color: #888; font-style: italic; }
+.weekly-digest { background: #000; color: #fff; border: 4px solid #000; box-shadow: 6px 6px 0 #00E676; padding: 1.5rem; margin: 2rem 0; white-space: pre-wrap; font-family: 'Space Grotesk', monospace; font-size: .9rem; line-height: 1.5; }
+.weekly-digest strong { color: #00E676; font-weight: 900; text-transform: uppercase; letter-spacing: .05em; font-size: 1rem; display: block; margin-top: .5rem; }
+.tabs { display: flex; gap: .25rem; margin-bottom: 1rem; border-bottom: 4px solid #000; flex-wrap: wrap; }
+.tab { padding: .6rem 1.25rem; background: #fff; border: 2px solid #000; border-bottom: none; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; font-size: .8rem; cursor: pointer; font-family: inherit; }
+.tab.active { background: #00E676; }
+.tab-body { display: none; }
+.tab-body.active { display: block; }
+.seq-card { background: #fff; border: 4px solid #000; padding: 1.25rem; box-shadow: 4px 4px 0 #000; }
+.seq-card h3 { font-size: .95rem; font-weight: 900; text-transform: uppercase; margin: 0 0 .75rem; color: #000; }
+.seq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .5rem; font-size: .85rem; }
+.seq-metric { display: flex; flex-direction: column; }
+.seq-metric .v { font-size: 1.4rem; font-weight: 900; color: #00E676; }
+.seq-metric .l { font-size: .7rem; text-transform: uppercase; letter-spacing: .05em; color: #444; font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .refresh { transition: none !important; } }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="badge">LM Intelligence</div>
+    <h1>Lead Magnet Intelligence</h1>
+    <p class="sub">Live metrics across every lead magnet, weekly digest, and nurture funnel visibility. Auto-refreshes every 60 seconds.</p>
+    <div style="margin-top:1rem"><button class="refresh" id="refresh">Refresh now</button><span class="auto-note" id="updated">loading…</span></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="tabs">
+    <button class="tab active" data-tab="live">Live (30-day)</button>
+    <button class="tab" data-tab="weekly">Weekly digest</button>
+    <button class="tab" data-tab="nurture">Nurture</button>
+  </div>
+
+  <section class="tab-body active" id="tab-live">
+    <section class="totals" id="totals">
+      <div class="stat"><div class="num" id="t-views">—</div><div class="lbl">Views · 30 days</div></div>
+      <div class="stat"><div class="num" id="t-captures">—</div><div class="lbl">Email captures · 30 days</div></div>
+      <div class="stat"><div class="num" id="t-completions">—</div><div class="lbl">Assessment completions · all time</div></div>
+      <div class="stat alt"><div class="num" id="t-rate">—</div><div class="lbl">Avg capture rate</div></div>
+      <div class="stat alt"><div class="num" id="t-lm">—</div><div class="lbl">Live lead magnets</div></div>
+    </section>
+    <section class="grid">
+      <div class="card">
+        <h2>Per-LM performance (30-day)</h2>
+        <table class="table" id="per-lm-table">
+          <thead><tr><th>Lead magnet</th><th>Format</th><th>Quality</th><th class="num-cell">Views</th><th class="num-cell">Captures</th><th class="num-cell">Rate</th></tr></thead>
+          <tbody><tr><td colspan="6" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Today's activity</h2>
+        <div class="feed" id="feed"><div class="empty loading">Loading…</div></div>
+      </div>
+    </section>
+    <section class="grid" style="margin-top:2rem">
+      <div class="card">
+        <h2>Assessment weakest-category rollup</h2>
+        <table class="table" id="weakest-table">
+          <thead><tr><th>Assessment</th><th>Weakest category</th><th class="num-cell">Completions</th><th class="num-cell">Avg score</th></tr></thead>
+          <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Comment-gate ROI</h2>
+        <table class="table" id="gate-table">
+          <thead><tr><th>Keyword</th><th>LM</th><th class="num-cell">Matched</th><th class="num-cell">DM'd</th></tr></thead>
+          <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+
+  <section class="tab-body" id="tab-weekly">
+    <div class="card">
+      <h2>This week vs last week</h2>
+      <div id="weekly-totals" class="loading">Loading…</div>
+    </div>
+    <div class="weekly-digest" id="weekly-md">Loading weekly digest…</div>
+  </section>
+
+  <section class="tab-body" id="tab-nurture">
+    <section class="totals" id="nurture-totals">
+      <div class="stat"><div class="num" id="n-delivered">—</div><div class="lbl">Delivered · 7 days</div></div>
+      <div class="stat"><div class="num" id="n-opened">—</div><div class="lbl">Opened</div></div>
+      <div class="stat"><div class="num" id="n-clicked">—</div><div class="lbl">Clicked</div></div>
+      <div class="stat alt"><div class="num" id="n-open-rate">—</div><div class="lbl">Open rate</div></div>
+      <div class="stat alt"><div class="num" id="n-click-rate">—</div><div class="lbl">Click rate</div></div>
+      <div class="stat alt"><div class="num" id="n-bounces">—</div><div class="lbl">Bounces</div></div>
+    </section>
+
+    <section style="margin:2rem 0">
+      <div class="card" style="margin-bottom:1rem"><h2>Sequence performance (all-time)</h2>
+        <div id="seq-list" class="loading">Loading…</div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Upcoming sends</h2>
+        <table class="table" id="upcoming-table">
+          <thead><tr><th>When</th><th>Recipient</th><th>Step</th><th>Subject</th></tr></thead>
+          <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+      <div class="card">
+        <h2>Recent sends (7d)</h2>
+        <table class="table" id="recent-table">
+          <thead><tr><th>Sent</th><th>Recipient</th><th>Step</th><th>Status</th></tr></thead>
+          <tbody><tr><td colspan="4" class="empty loading">Loading…</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </section>
+</main>
+
+<script>
+const METRICS_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-metrics";
+const WEEKLY_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-weekly";
+const NURTURE_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-nurture-stats";
+
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>\"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function fmt(n) { return (n == null || isNaN(n)) ? "—" : Number(n).toLocaleString(); }
+function qualityChip(s) {
+  if (s == null) return '<span class="chip">—</span>';
+  if (s >= 7) return `<span class="chip high">${s}</span>`;
+  if (s >= 5) return `<span class="chip mid">${s}</span>`;
+  return `<span class="chip low">${s}</span>`;
+}
+function timeAgo(iso) {
+  if (!iso) return "—";
+  const d = new Date(iso); const diff = (Date.now() - d.getTime()) / 1000;
+  if (diff < 0) {
+    const f = -diff;
+    if (f < 60) return "in " + Math.floor(f) + "s";
+    if (f < 3600) return "in " + Math.floor(f / 60) + "m";
+    if (f < 86400) return "in " + Math.floor(f / 3600) + "h";
+    return "in " + Math.floor(f / 86400) + "d";
+  }
+  if (diff < 60) return Math.floor(diff) + "s ago";
+  if (diff < 3600) return Math.floor(diff / 60) + "m ago";
+  if (diff < 86400) return Math.floor(diff / 3600) + "h ago";
+  return d.toLocaleDateString();
+}
+
+async function loadLive() {
+  try {
+    const r = await fetch(METRICS_URL);
+    if (!r.ok) throw new Error("status " + r.status);
+    const d = await r.json();
+    renderLive(d);
+    document.getElementById("updated").textContent = "updated " + new Date().toLocaleTimeString();
+  } catch (e) { document.getElementById("updated").textContent = "error: " + e.message; }
+}
+
+async function loadWeekly() {
+  try {
+    const r = await fetch(WEEKLY_URL);
+    if (!r.ok) throw new Error("status " + r.status);
+    const d = await r.json();
+    renderWeekly(d);
+  } catch (e) { document.getElementById("weekly-md").textContent = "error: " + e.message; }
+}
+
+async function loadNurture() {
+  try {
+    const r = await fetch(NURTURE_URL);
+    if (!r.ok) throw new Error("status " + r.status);
+    const d = await r.json();
+    renderNurture(d);
+  } catch (e) { document.getElementById("seq-list").innerHTML = '<div class="empty">error: ' + esc(e.message) + '</div>'; }
+}
+
+function renderLive(d) {
+  const t = d.totals || {};
+  document.getElementById("t-views").textContent = fmt(t.views_30d);
+  document.getElementById("t-captures").textContent = fmt(t.captures_30d);
+  document.getElementById("t-completions").textContent = fmt(t.completions_all);
+  document.getElementById("t-rate").textContent = (t.avg_capture_rate_pct != null ? t.avg_capture_rate_pct + "%" : "—");
+  document.getElementById("t-lm").textContent = fmt(t.lm_count);
+
+  const pl = document.querySelector("#per-lm-table tbody");
+  const rows = d.per_lm || [];
+  pl.innerHTML = rows.length === 0 ? '<tr><td colspan="6" class="empty">No LMs yet</td></tr>' : rows.map(r => `
+    <tr>
+      <td class="slug"><a href="${esc(r.resource_page_url || '#')}" target="_blank" rel="noopener">${esc((r.title || r.slug || '').slice(0, 70))}</a></td>
+      <td>${esc(r.format || '')}</td>
+      <td>${qualityChip(r.content_quality_score)}</td>
+      <td class="num-cell">${fmt(r.views_30d)}</td>
+      <td class="num-cell">${fmt(r.captures_30d)}</td>
+      <td class="num-cell">${r.capture_rate_pct != null ? r.capture_rate_pct + "%" : "—"}</td>
+    </tr>`).join("");
+
+  const feed = document.getElementById("feed");
+  const activity = d.recent_activity || [];
+  feed.innerHTML = activity.length === 0 ? '<div class="empty">No events yet. Fire a page view to see activity stream.</div>' : activity.slice(0, 60).map(a => `
+    <div class="feed-item">
+      <span class="feed-evt ${esc(a.event_type || '')}">${esc(a.event_type || 'event')}</span>
+      ${esc((a.title || a.lm_slug || '').slice(0, 55))}
+      ${a.email ? `<div style="color:#00863D;font-size:.78rem;font-weight:700">→ ${esc(a.email)}</div>` : ''}
+      <div class="feed-time">${esc(timeAgo(a.created_at))} · ${esc(a.src || 'direct')}</div>
+    </div>`).join("");
+
+  const weak = d.assessment_weakest_rollup || [];
+  document.querySelector("#weakest-table tbody").innerHTML = weak.length === 0 ? '<tr><td colspan="4" class="empty">No assessment completions yet</td></tr>' : weak.map(w => `
+    <tr>
+      <td class="slug">${esc((w.assessment_slug || '').slice(0, 50))}</td>
+      <td><span class="chip">${esc(w.weakest_category || '—')}</span></td>
+      <td class="num-cell">${fmt(w.n)}</td>
+      <td class="num-cell">${fmt(w.avg_score)}</td>
+    </tr>`).join("");
+
+  const gate = d.gate_keyword_performance || [];
+  document.querySelector("#gate-table tbody").innerHTML = gate.length === 0 ? '<tr><td colspan="4" class="empty">No comment-gate activity yet</td></tr>' : gate.map(g => `
+    <tr>
+      <td><strong>${esc(g.gate_keyword || '—')}</strong></td>
+      <td class="slug">${esc((g.slug || '').slice(0, 50))}</td>
+      <td class="num-cell">${fmt(g.comments_matched)}</td>
+      <td class="num-cell">${fmt(g.dms_sent)}</td>
+    </tr>`).join("");
+}
+
+function renderWeekly(d) {
+  const t = d.totals || {};
+  document.getElementById("weekly-totals").innerHTML = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:.5rem">
+      <div><div class="num" style="font-size:1.8rem;font-weight:900;color:#00E676">${fmt(t.views)}</div><div class="lbl" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#444">Views (${t.view_delta >= 0 ? '+' : ''}${t.view_delta})</div></div>
+      <div><div class="num" style="font-size:1.8rem;font-weight:900;color:#00E676">${fmt(t.captures)}</div><div class="lbl" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#444">Captures (${t.capture_delta >= 0 ? '+' : ''}${t.capture_delta})</div></div>
+      <div><div class="num" style="font-size:1.8rem;font-weight:900;color:#000">${fmt(t.completions)}</div><div class="lbl" style="font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;font-weight:800;color:#444">Completions</div></div>
+    </div>`;
+  const md = (d.markdown_digest || "").replace(/\*([^*]+)\*/g, '<strong>$1</strong>');
+  document.getElementById("weekly-md").innerHTML = md;
+}
+
+function renderNurture(d) {
+  const t = d.totals_7d || {};
+  document.getElementById("n-delivered").textContent = fmt(t.delivered);
+  document.getElementById("n-opened").textContent = fmt(t.opened);
+  document.getElementById("n-clicked").textContent = fmt(t.clicked);
+  document.getElementById("n-open-rate").textContent = (t.open_rate_pct != null ? t.open_rate_pct + "%" : "—");
+  document.getElementById("n-click-rate").textContent = (t.click_rate_pct != null ? t.click_rate_pct + "%" : "—");
+  document.getElementById("n-bounces").textContent = fmt(t.bounced);
+
+  const seqList = document.getElementById("seq-list");
+  const seqs = d.per_sequence || [];
+  seqList.innerHTML = seqs.length === 0 ? '<div class="empty">No sequences</div>' : seqs.map(s => `
+    <div class="seq-card" style="margin-bottom:1rem">
+      <h3>${esc(s.name || s.slug)} — <span style="color:#888;font-weight:500;letter-spacing:0">${esc(s.slug)}</span></h3>
+      <div class="seq-grid">
+        <div class="seq-metric"><span class="v">${fmt(s.subscribers_total)}</span><span class="l">Subscribers</span></div>
+        <div class="seq-metric"><span class="v">${fmt(s.emails_sent)}</span><span class="l">Sent</span></div>
+        <div class="seq-metric"><span class="v">${fmt(s.opens)}</span><span class="l">Opens</span></div>
+        <div class="seq-metric"><span class="v">${fmt(s.clicks)}</span><span class="l">Clicks</span></div>
+        <div class="seq-metric"><span class="v" style="color:#FF4081">${fmt(s.bounces)}</span><span class="l">Bounces</span></div>
+        <div class="seq-metric"><span class="v" style="color:#FF4081">${fmt(s.unsubscribed)}</span><span class="l">Unsubscribed</span></div>
+      </div>
+    </div>`).join("");
+
+  const upcoming = d.upcoming || [];
+  document.querySelector("#upcoming-table tbody").innerHTML = upcoming.length === 0 ? '<tr><td colspan="4" class="empty">No pending sends</td></tr>' : upcoming.slice(0, 20).map(u => `
+    <tr>
+      <td>${esc(timeAgo(u.scheduled_for))}</td>
+      <td class="slug">${esc((u.subscriber?.email || '—').slice(0, 32))}</td>
+      <td>${fmt(u.email?.step)}</td>
+      <td class="slug">${esc((u.email?.subject || '').slice(0, 50))}</td>
+    </tr>`).join("");
+
+  const recent = d.recent || [];
+  document.querySelector("#recent-table tbody").innerHTML = recent.length === 0 ? '<tr><td colspan="4" class="empty">No recent sends</td></tr>' : recent.slice(0, 20).map(r => `
+    <tr>
+      <td>${esc(timeAgo(r.sent_at))}</td>
+      <td class="slug">${esc((r.subscriber?.email || '—').slice(0, 32))}</td>
+      <td>${fmt(r.email?.step)}</td>
+      <td><span class="chip ${esc(r.status)}">${esc(r.status)}</span></td>
+    </tr>`).join("");
+}
+
+document.querySelectorAll(".tab").forEach(t => {
+  t.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach(x => x.classList.remove("active"));
+    t.classList.add("active");
+    document.querySelectorAll(".tab-body").forEach(x => x.classList.remove("active"));
+    document.getElementById("tab-" + t.dataset.tab).classList.add("active");
+    if (t.dataset.tab === "weekly") loadWeekly();
+    if (t.dataset.tab === "nurture") loadNurture();
+  });
+});
+
+document.getElementById("refresh").addEventListener("click", () => { loadLive(); loadWeekly(); loadNurture(); });
+loadLive();
+setInterval(loadLive, 60000);
+</script>
+</body>
+</html>

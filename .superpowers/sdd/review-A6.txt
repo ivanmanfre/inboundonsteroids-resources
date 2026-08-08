@@ -1,0 +1,334 @@
+=== COMMITS ===
+bd4fdd2 feat(editor): add field coverage from scratch for swipe+landing+template
+
+=== STAT ===
+ .superpowers/sdd/task-A6-report.md | 87 ++++++++++++++++++++++++++++++++++++++
+ _engine/landing.js                 | 38 +++++++++++++++++
+ _engine/swipe.js                   | 31 +++++++++++++-
+ _engine/template.js                | 62 ++++++++++++++++++++++++---
+ 4 files changed, 211 insertions(+), 7 deletions(-)
+
+=== DIFF ===
+diff --git a/_engine/landing.js b/_engine/landing.js
+index 58f3d81..8d8c223 100644
+--- a/_engine/landing.js
++++ b/_engine/landing.js
+@@ -50,20 +50,29 @@
+       ? '<img class="lp-cover" src="' + esc(d.cover_url) + '" alt="' + esc(d.headline || "") + '" loading="lazy">'
+       : '<div class="lp-cover-fallback">' + esc(d.headline || d.category || "Free resource") + "</div>";
+ 
+     var avatar = d.proof_avatar
+       ? '<img class="lp-ava" src="' + esc(d.proof_avatar) + '" alt="Ivan Manfredi">'
+       : '<span class="lp-ava"></span>';
+ 
+     var ctaLabel = esc(d.cta_label || ("Email me the " + (d.format_label ? d.format_label.toLowerCase() : "resource")));
+     var eyebrow = [d.format_label, d.category].filter(Boolean).map(esc).join(" · ");
+ 
++    // NOTE on registration exclusions (see report for full detail):
++    // - eyebrow is a computed join of format_label + category, no single path
++    // - the CTA button text below has a literal " →" arrow appended in the
++    //   same text node as the label, so its textContent never equals the raw
++    //   cta_label value — registering it would let an edit-mode save clobber
++    //   the arrow into stored copy. Skipped.
++    // - the cover fallback div text is an OR-chain (headline||category||literal),
++    //   ambiguous single path. Skipped.
++
+     root.innerHTML =
+       '<div class="lp">' +
+         '<section class="lp-hero">' +
+           "<div>" +
+             (eyebrow ? '<p class="lp-eyebrow">' + eyebrow + "</p>" : "") +
+             '<h1 class="lp-h1">' + headlineHTML(d) + "</h1>" +
+             (d.subhead ? '<p class="lp-sub">' + esc(d.subhead) + "</p>" : "") +
+             (d.subhead_secondary ? '<p class="lp-sub-2">' + esc(d.subhead_secondary) + "</p>" : "") +
+           "</div>" +
+           '<div class="lp-form-card">' +
+@@ -76,20 +85,49 @@
+               '<button class="lp-cta" id="lp-submit" type="submit">' + ctaLabel + " &rarr;</button>" +
+               '<p class="lp-err" id="lp-err"></p>' +
+               '<p class="lp-micro">One email. The link lands in your inbox in under a minute.</p>' +
+             "</form>" +
+           "</div>" +
+         "</section>" +
+         (inside ? '<section class="lp-inside"><h2>What\'s inside</h2><ul class="lp-bullets">' + inside + "</ul></section>" : "") +
+         (d.proof ? '<section class="lp-proof">' + avatar + "<p>" + d.proof + "</p></section>" : "") +
+       "</div>";
+ 
++    // Registration — capture nodes AFTER the innerHTML build above, don't
++    // rewrite the render.
++    if (L.editMode) {
++      var h1El = root.querySelector(".lp-h1");
++      if (h1El) L.editMode.registerField(h1El, "headline", { multiline: true });
++      var subEl = root.querySelector(".lp-sub");
++      if (subEl && d.subhead) L.editMode.registerField(subEl, "subhead", { multiline: true });
++      var sub2El = root.querySelector(".lp-sub-2");
++      if (sub2El && d.subhead_secondary) L.editMode.registerField(sub2El, "subhead_secondary", { multiline: true });
++
++      // "inside" bullets — each <li> holds a computed index <span class="n">
++      // (locked/skipped, not stored) plus a second <span> with the stored
++      // bullet text.
++      var bulletsList = root.querySelector(".lp-bullets");
++      if (bulletsList) {
++        Array.prototype.forEach.call(bulletsList.querySelectorAll("li.lp-b"), function (li, i) {
++          var spans = li.querySelectorAll("span");
++          var textEl = spans[1];
++          if (textEl) L.editMode.registerField(textEl, "inside[" + i + "]");
++        });
++        L.editMode.registerArray(bulletsList, "inside", { itemLabel: "bullet", template: "New bullet" });
++      }
++
++      // Proof/testimonial — inserted as RAW (unescaped) HTML in the render
++      // above, so treat it as rich text like other *_html fields.
++      var proofEl = root.querySelector(".lp-proof p");
++      if (proofEl && d.proof) L.editMode.registerField(proofEl, "proof", { contenteditable: true });
++    }
++
+     try { if (L.beacon) L.beacon("landing", "view"); } catch (_) {}
+     wireForm(d);
+   }
+ 
+   function wireForm(d) {
+     var form = document.getElementById("lp-form");
+     var errEl = document.getElementById("lp-err");
+     var btn = document.getElementById("lp-submit");
+     if (!form) return;
+ 
+diff --git a/_engine/swipe.js b/_engine/swipe.js
+index a5a7282..dd19c67 100644
+--- a/_engine/swipe.js
++++ b/_engine/swipe.js
+@@ -21,20 +21,31 @@
+     root.className = "lmc-root lms-root";
+     root.innerHTML = "";
+     root.appendChild(L.buildHero(data, {
+       badge: (data.brand && data.brand.hero_badge) || "Swipe File",
+       metaChips: [
+         (data.examples || []).length + " examples",
+         "Filterable",
+         "Take what you need"
+       ]
+     }));
++    var heroH1 = root.querySelector(".lmc-h1");
++    var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
++    if (L.editMode) {
++      if (heroH1) L.editMode.registerField(heroH1, "title");
++      if (heroSub) L.editMode.registerField(heroSub, "subtitle");
++      // Badge only registers when data actually supplied it — otherwise the
++      // rendered text is the literal fallback "Swipe File", which has no
++      // corresponding json path to write back to.
++      if (heroBadge && data.brand && data.brand.hero_badge) L.editMode.registerField(heroBadge, "brand.hero_badge");
++    }
+     root.appendChild(L.buildIntro(data, ".lms-filters", {
+       tool_type: "swipe",
+       defaultValueBullet: "Filter by use case, take only the examples that fit you",
+       defaultNextBullet: "Export your selected subset as markdown. Your URL stays in the file",
+       startLabel: "Browse examples",
+       defaultNote: "No signup to browse. Take 3 or more examples to unlock a markdown export."
+     }));
+ 
+     // Tag filter bar
+     var tags = Array.from(new Set(
+@@ -57,39 +68,57 @@
+     });
+     var takenCount = L.make("span", { class: "lms-taken-count", id: "lms-taken-count" });
+     takenCount.innerHTML = '<strong>' + taken.length + '</strong> / ' + (data.examples || []).length + ' taken';
+     inner.appendChild(takenCount);
+     filters.appendChild(inner);
+     root.appendChild(filters);
+ 
+     // Example list
+     var main = L.make("main", { class: "lmc-container" });
+     var list = L.make("div", { class: "lms-list" });
+-    (data.examples || []).forEach(function (ex) {
++    (data.examples || []).forEach(function (ex, exIdx) {
+       var art = L.make("article", {
+         class: "lms-example" + (takenSet.has(ex.id) ? " taken" : ""),
+         "data-ex-id": ex.id,
+         "data-tags": (ex.tags || []).map(function (t) { return t.toLowerCase(); }).join("|")
+       });
+       var tagsHtml = (ex.tags || []).map(function (t) { return '<span class="lms-ex-tag">' + L.esc(t) + '</span>'; }).join("");
+       art.innerHTML =
+         '<div class="lms-ex-head">' +
+           '<h3 class="lms-ex-title">' + L.esc(ex.title || "") + '</h3>' +
+           (tagsHtml ? '<div class="lms-ex-tags">' + tagsHtml + '</div>' : '') +
+         '</div>' +
+         '<pre class="lms-ex-body">' + L.esc(ex.body || "") + '</pre>' +
+         (ex.why ? '<p class="lms-ex-why">' + L.esc(ex.why) + '</p>' : '') +
+         '<div class="lms-ex-actions">' +
+           '<button type="button" class="lms-take-btn">' + (takenSet.has(ex.id) ? "Taken" : "Take this example") + '</button>' +
+         '</div>';
++      // Registration — capture nodes AFTER the innerHTML build above, don't
++      // rewrite the render. "Take this example"/"Taken" button text and the
++      // "taken" class are runtime UI state, not stored copy — not registered.
++      if (L.editMode) {
++        var exTitleEl = art.querySelector(".lms-ex-title");
++        if (exTitleEl) L.editMode.registerField(exTitleEl, "examples[" + exIdx + "].title");
++        var exBodyEl = art.querySelector(".lms-ex-body");
++        if (exBodyEl) L.editMode.registerField(exBodyEl, "examples[" + exIdx + "].body", { multiline: true });
++        var exWhyEl = art.querySelector(".lms-ex-why");
++        if (exWhyEl) L.editMode.registerField(exWhyEl, "examples[" + exIdx + "].why", { multiline: true });
++        Array.prototype.forEach.call(art.querySelectorAll(".lms-ex-tag"), function (tagEl, tIdx) {
++          L.editMode.registerField(tagEl, "examples[" + exIdx + "].tags[" + tIdx + "]");
++        });
++      }
+       list.appendChild(art);
+     });
++    if (L.editMode) L.editMode.registerArray(list, "examples", {
++      itemLabel: "example",
++      template: { id: "example-" + Date.now(), title: "New example", body: "", why: "", tags: [] }
++    });
+     main.appendChild(list);
+ 
+     // Email gate (shown after 3+ takes)
+     var gate = L.make("section", { class: "lmc-capture", id: "lms-capture", style: "display: none;" });
+     gate.innerHTML = '<h2>Want <em>10 more</em> like the ones you picked?</h2>' +
+       '<p>One email per month, all examples tuned to the tags you gravitated toward. Unsubscribe anytime.</p>' +
+       '<form class="lmc-form" id="lms-form">' +
+         '<label class="sr-only" for="lms-email">Email</label>' +
+         '<input class="lmc-input" type="email" id="lms-email" autocomplete="email" required placeholder="you@company.com" />' +
+         '<button class="lmc-btn" type="submit">Send me 10 more</button>' +
+diff --git a/_engine/template.js b/_engine/template.js
+index c3c0680..119bf10 100644
+--- a/_engine/template.js
++++ b/_engine/template.js
+@@ -18,52 +18,90 @@
+     root.className = "lmc-root lmt-root";
+     root.innerHTML = "";
+     root.appendChild(L.buildHero(data, {
+       badge: (data.brand && data.brand.hero_badge) || "Template",
+       metaChips: [
+         (data.stack_questions || []).length + " stack inputs",
+         (data.estimated_minutes || 5) + " min",
+         "Personalized export"
+       ]
+     }));
++    var heroH1 = root.querySelector(".lmc-h1");
++    var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
++    if (L.editMode) {
++      if (heroH1) L.editMode.registerField(heroH1, "title");
++      if (heroSub) L.editMode.registerField(heroSub, "subtitle");
++      // Badge only registers when data actually supplied it — otherwise the
++      // rendered text is the literal fallback "Template", no matching path.
++      if (heroBadge && data.brand && data.brand.hero_badge) L.editMode.registerField(heroBadge, "brand.hero_badge");
++    }
+     root.appendChild(L.buildIntro(data, ".lmt-stack", {
+       tool_type: "template",
+       defaultValueBullet: "Walk through 4 stack questions → get a personalized artifact export",
+       defaultNextBullet: "Download gated by email; artifact generated client-side from your answers",
+       startLabel: "Start the fit check",
+       defaultNote: "Your answers auto-save in this browser."
+     }));
+ 
+     var main = L.make("main", { class: "lmc-container" });
+ 
+     // Stack-fit questions
+     var stackSection = L.make("section", { class: "lmt-stack", id: "lmt-stack" });
+     var stackHeadline = data.stack_headline || "Match the template to your stack";
+     stackSection.innerHTML = '<h2>' + L.esc(stackHeadline) + '</h2>' +
+       '<p>' + L.esc(data.stack_subtitle || "Answer these so we tailor the downloadable artifact to your tools.") + '</p>';
+-    (data.stack_questions || []).forEach(function (q) {
++    if (L.editMode) {
++      // Both fall back to a literal default when absent from data — only
++      // register when the data field actually drove the visible text.
++      if (data.stack_headline) L.editMode.registerField(stackSection.querySelector("h2"), "stack_headline");
++      if (data.stack_subtitle) L.editMode.registerField(stackSection.querySelector("p"), "stack_subtitle", { multiline: true });
++    }
++    (data.stack_questions || []).forEach(function (q, qIdx) {
+       var block = L.make("div", { class: "lmt-question", "data-qid": q.id });
+-      block.appendChild(L.make("span", { class: "lmt-q-label" }, L.esc(q.label || q.text || q.id)));
++      var labelEl = L.make("span", { class: "lmt-q-label" }, L.esc(q.label || q.text || q.id));
++      block.appendChild(labelEl);
++      if (L.editMode) {
++        // Register against whichever field actually supplied the visible
++        // text. When it fell all the way back to q.id, skip — id is a
++        // discriminator, not display copy.
++        if (q.label) L.editMode.registerField(labelEl, "stack_questions[" + qIdx + "].label");
++        else if (q.text) L.editMode.registerField(labelEl, "stack_questions[" + qIdx + "].text");
++      }
+       var opts = L.make("div", { class: "lmt-q-options", role: "radiogroup", "aria-label": q.label || q.id });
+-      (q.options || []).forEach(function (opt) {
++      (q.options || []).forEach(function (opt, oIdx) {
+         var btn = L.make("button", {
+           type: "button",
+           class: "lmt-q-opt" + (selected[q.id] === opt.value ? " selected" : ""),
+           role: "radio",
+           "aria-checked": selected[q.id] === opt.value ? "true" : "false",
+           "data-value": opt.value
+         }, L.esc(opt.label || opt.value));
++        // Only register when opt.label actually drove the text — when it
++        // fell back to opt.value, that's the answer-discriminator, not copy.
++        if (L.editMode && opt.label) L.editMode.registerField(btn, "stack_questions[" + qIdx + "].options[" + oIdx + "].label");
+         opts.appendChild(btn);
+       });
++      if (L.editMode) L.editMode.registerArray(opts, "stack_questions[" + qIdx + "].options", {
++        itemLabel: "option",
++        template: { value: "new-option", label: "New option" }
++      });
+       block.appendChild(opts);
+       stackSection.appendChild(block);
+     });
++    // NOTE: no registerArray for stack_questions itself — the question <div>s
++    // are appended as siblings of the <h2>/<p> already inside stackSection
++    // (no dedicated wrapper). Wrapping them would add a new container element
++    // to every render (not gated by edit mode), which breaks the "rendered
++    // DOM stays byte-identical outside edit mode" rule. Per-item fields above
++    // still give full text coverage; only add/remove/reorder is unavailable
++    // for this array without a markup change (flagged in the report).
+     main.appendChild(stackSection);
+ 
+     // Result (download) panel
+     var result = L.make("section", { class: "lmt-result", id: "lmt-result", "aria-live": "polite" });
+     result.innerHTML = '<h3>Your personalized template is <em>ready</em></h3>' +
+       '<p id="lmt-result-note">Click to download. We\'ll swap the nodes/types to match your stack.</p>' +
+       '<div class="lmt-download-wrap">' +
+         '<button type="button" class="lmt-download" id="lmt-download">Download personalized artifact</button>' +
+         '<span class="lmt-download-meta" id="lmt-download-meta"></span>' +
+       '</div>';
+@@ -77,30 +115,42 @@
+         '<label class="sr-only" for="lmt-email">Email</label>' +
+         '<input class="lmc-input" type="email" id="lmt-email" autocomplete="email" required placeholder="you@company.com" />' +
+         '<button class="lmc-btn" type="submit">Email me the artifact</button>' +
+       '</form>' +
+       '<p class="lmc-note">One email. Unsubscribe any time.</p>';
+     main.appendChild(gate);
+ 
+     // Static content (sections)
+     if ((data.sections || []).length) {
+       var body = L.make("section", { class: "lmt-content" });
+-      (data.sections || []).forEach(function (s) {
+-        if (s.title) body.appendChild(L.make("h2", null, L.esc(s.title)));
++      (data.sections || []).forEach(function (s, sIdx) {
++        if (s.title) {
++          var sh2 = L.make("h2", null, L.esc(s.title));
++          body.appendChild(sh2);
++          if (L.editMode) L.editMode.registerField(sh2, "sections[" + sIdx + "].title");
++        }
+         if (s.html) {
+           var h = L.make("div");
+           h.innerHTML = s.html;
+           body.appendChild(h);
++          if (L.editMode) L.editMode.registerField(h, "sections[" + sIdx + "].html", { contenteditable: true });
+         } else if (s.text) {
+-          body.appendChild(L.make("p", null, L.esc(s.text)));
++          var sp = L.make("p", null, L.esc(s.text));
++          body.appendChild(sp);
++          if (L.editMode) L.editMode.registerField(sp, "sections[" + sIdx + "].text", { multiline: true });
+         }
+       });
++      // NOTE: no registerArray for sections — a single item can emit up to
++      // two sibling nodes (h2 + div/p) with no shared per-item wrapper, so
++      // there's no 1:1 element-to-array-item mapping to hang add/remove/
++      // reorder off without introducing new wrapper markup (see stack_questions
++      // note above for why that's out of scope here).
+       main.appendChild(body);
+     }
+ 
+     // Closing CTA — call-first finale (2026-06-09). The artifact email gate
+     // above stays (it delivers a real attachment); this is the funnel exit.
+     main.appendChild(L.buildClosingCta("template", data, { toolType: "template" }));
+ 
+     root.appendChild(main);
+ 
+     // State + wiring

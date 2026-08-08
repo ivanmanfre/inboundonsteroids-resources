@@ -1,0 +1,773 @@
+{
+  "slug": "a-pre-flight-checklist-for-deciding-when-a-crm-workflow-is-ready-for-full-automation-versus-when-it-still-needs-a-human-approval-gate",
+  "title": "The Wrong-Person Test: 17 Checks Before Your CRM Workflow Runs Without You",
+  "subtitle": "A pre-flight diagnostic for $1M-$20M marketing and creative agencies deciding which CRM workflows are safe to run fully hands-off and which still need a human approval gate.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "marketing and creative agency",
+    "locations": "the US, UK, and Canada",
+    "count_band": "11-50"
+  },
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your CRM fields are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The routing rules a human follows can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not a sweep.",
+      "Human-in-the-loop by design. Every output that touches a client passes a person before it sends."
+    ],
+    "intro": "This assessment scores your CRM workflows against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready to run without you. Miss one and the automation will leak, usually as one email to the wrong contact."
+  },
+  "proof_card": {
+    "score_label": "Automation Readiness Score",
+    "sample_top_leak": "client-facing onboarding emails firing to the wrong contact (~6 hrs/week of cleanup plus the trust hit)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your agency?",
+    "answers": [
+      {
+        "label": "Solo or under $1M revenue (1-9 people)",
+        "tag": "solo"
+      },
+      {
+        "label": "Boutique, $1M-$3M revenue (10-25 people)",
+        "tag": "boutique"
+      },
+      {
+        "label": "Growing, $3M-$8M revenue (25-50 people)",
+        "tag": "growing"
+      },
+      {
+        "label": "Established, $8M-$20M revenue (50+ people)",
+        "tag": "established"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "input-data-readiness",
+      "name": "Input Data Readiness",
+      "questions": [
+        {
+          "id": "structured-fields",
+          "text": "How consistently does your CRM workflow read structured fields instead of free-text notes?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It pulls key values out of free-text notes",
+              "score": 1
+            },
+            {
+              "label": "2. Mostly notes, a few structured fields",
+              "score": 2
+            },
+            {
+              "label": "3. Split between structured fields and notes",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly structured, one or two note-based reads left",
+              "score": 4
+            },
+            {
+              "label": "5. Every field the workflow reads is structured",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "required-at-intake",
+          "text": "How often are the fields your automation depends on actually required at intake?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. All optional, they come back empty often",
+              "score": 1
+            },
+            {
+              "label": "2. A couple are required, the rest optional",
+              "score": 2
+            },
+            {
+              "label": "3. About half are required at intake",
+              "score": 3
+            },
+            {
+              "label": "4. Most critical fields are required",
+              "score": 4
+            },
+            {
+              "label": "5. Every field the workflow needs is required to submit",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "record-exists-check",
+          "text": "How reliably do you confirm a contact or company record exists before the workflow fires?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We assume it exists, no check",
+              "score": 1
+            },
+            {
+              "label": "2. We check sometimes, manually",
+              "score": 2
+            },
+            {
+              "label": "3. We check, but no plan for an empty result",
+              "score": 3
+            },
+            {
+              "label": "4. We check and have a fallback for misses",
+              "score": 4
+            },
+            {
+              "label": "5. We verify the record and route empties to a human",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "single-source-of-truth",
+          "text": "How clearly is each field mapped to a single source of truth across your tools?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Same value lives in 3+ tools, no winner",
+              "score": 1
+            },
+            {
+              "label": "2. We know there is overlap but never resolved it",
+              "score": 2
+            },
+            {
+              "label": "3. Some fields have a clear source, others do not",
+              "score": 3
+            },
+            {
+              "label": "4. Most fields have one tool that wins",
+              "score": 4
+            },
+            {
+              "label": "5. Every field maps to one source of truth",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your inputs aren't ready to be trusted yet",
+          "text": "The workflow is reading values it can't count on, which is how automations quietly grab the wrong field. Before any hands-off run, the data layer has to be the strong part of the build. Start by killing the free-text dependencies.",
+          "steps": [
+            "List every field the workflow reads and flag which ones come from free-text notes",
+            "Make the fields the automation depends on required at intake so they stop coming back empty",
+            "Add a step that confirms the contact or company record exists and routes empties to a person"
+          ]
+        },
+        "mid": {
+          "headline": "Inputs are half-trustworthy",
+          "text": "You have structure where it counts but a few soft spots will bite on edge cases. The gaps are usually optional fields you rely on and overlapping values across tools. Close those two and the input layer holds.",
+          "steps": [
+            "Convert the last note-based reads into structured fields",
+            "Pick the winning tool for any value that lives in two places and document it",
+            "Define what the workflow does when a required field still arrives empty"
+          ]
+        },
+        "high": {
+          "headline": "Input layer is solid",
+          "text": "Your fields are structured, required, and traced to one source. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Add validation that rejects malformed values before the workflow reads them",
+            "Monitor field-fill rates monthly so silent intake drift gets caught early",
+            "Document the data contract so a new hire can extend the workflow without breaking it"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~1 in 5 automated runs misfires when a relied-on field is optional",
+        "lever": "What I'd do: make every field the workflow depends on required at intake before touching the automation itself.",
+        "talking_points": [
+          "Free-text notes are where the workflow grabs the wrong value, and we can't see it happen until a client does.",
+          "Optional fields we rely on come back empty often enough to break trust in the system.",
+          "One source of truth per field removes the guesswork about which tool is right."
+        ],
+        "proof_of_concept": "Run the existing workflow in log-only mode for one week and count how many records had a missing or note-based field the automation needed."
+      }
+    },
+    {
+      "id": "decision-logic-documentation",
+      "name": "Decision Logic Documentation",
+      "questions": [
+        {
+          "id": "routing-rules-written",
+          "text": "How completely are your routing rules written down before the workflow runs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. They live in one person's head",
+              "score": 1
+            },
+            {
+              "label": "2. A rough idea exists, nothing written",
+              "score": 2
+            },
+            {
+              "label": "3. The main rules are documented, edge cases are not",
+              "score": 3
+            },
+            {
+              "label": "4. Most rules are written with examples",
+              "score": 4
+            },
+            {
+              "label": "5. Every routing rule is documented at field-and-value level",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "explainable-by-others",
+          "text": "How well could someone other than you explain why a record gets routed the way it does?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Nobody else could explain it",
+              "score": 1
+            },
+            {
+              "label": "2. One other person, vaguely",
+              "score": 2
+            },
+            {
+              "label": "3. The team gets the gist, not the specifics",
+              "score": 3
+            },
+            {
+              "label": "4. Most of the team can explain the common paths",
+              "score": 4
+            },
+            {
+              "label": "5. Anyone on the team can trace any routing decision",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "skip-rules-defined",
+          "text": "How precisely have you defined which deal or record types the workflow should skip entirely?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No skip rules, it processes everything",
+              "score": 1
+            },
+            {
+              "label": "2. We have a vague sense of exceptions",
+              "score": 2
+            },
+            {
+              "label": "3. A few skip cases are written down",
+              "score": 3
+            },
+            {
+              "label": "4. Most exceptions are defined, new business handled separately",
+              "score": 4
+            },
+            {
+              "label": "5. Every skip and exception case is documented and tested",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "The logic isn't out of your head yet",
+          "text": "If your best person can't explain how a record gets routed, the workflow can't encode it safely. Tacit rules have to become explicit before automation. Write the rules at the level of a real example, like the company name and the folder it should land in.",
+          "steps": [
+            "Write each routing rule with a concrete example, field name and value included",
+            "Have a second person read the rules and try to predict where five real records go",
+            "List the deal and record types the workflow should skip entirely"
+          ]
+        },
+        "mid": {
+          "headline": "Main paths are clear, edges are fuzzy",
+          "text": "Your common routing is documented well enough to run. The risk sits in the exceptions and the new-business versus existing-business split. Get those on paper and the logic is ready to hand to a system.",
+          "steps": [
+            "Document the edge cases your team handles by instinct today",
+            "Separate new-business routing from existing-business routing explicitly",
+            "Test the documented rules against a month of real records before going live"
+          ]
+        },
+        "high": {
+          "headline": "Decision logic is encodable",
+          "text": "Your rules are written, explainable, and exception-aware. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Version your rule doc so logic changes are tracked over time",
+            "Add a quarterly review where the team confirms the rules still match reality",
+            "Capture new edge cases as they appear instead of patching the workflow silently"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "100% of agent builds stall when routing logic lives only in one head",
+        "lever": "What I'd do: write every routing rule at field-and-value level and have a second person predict outcomes before automating.",
+        "talking_points": [
+          "If only one person can explain the routing, the workflow is a single point of failure.",
+          "New business and existing business usually need different logic, and skipping that split causes misroutes.",
+          "Documented skip rules stop the automation from touching records it was never meant to handle."
+        ],
+        "proof_of_concept": "Take 10 recent records, write down where each should route by the rules on paper, then check whether your current workflow agrees."
+      }
+    },
+    {
+      "id": "scope-and-matching",
+      "name": "Scope and Matching Accuracy",
+      "questions": [
+        {
+          "id": "narrow-scope",
+          "text": "How narrow is the initial scope of what this workflow handles?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It tries to handle every case on day one",
+              "score": 1
+            },
+            {
+              "label": "2. Broad scope with a few carve-outs",
+              "score": 2
+            },
+            {
+              "label": "3. Focused on one process but many variants",
+              "score": 3
+            },
+            {
+              "label": "4. One process, the common cases only",
+              "score": 4
+            },
+            {
+              "label": "5. One decision in one workflow, rest routed out",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "fuzzy-matching-tested",
+          "text": "How well-tested is your fuzzy matching against real client-name variations?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No matching logic, exact only or none",
+              "score": 1
+            },
+            {
+              "label": "2. Matching exists, never tested on real names",
+              "score": 2
+            },
+            {
+              "label": "3. Tested on a handful of names",
+              "score": 3
+            },
+            {
+              "label": "4. Tested broadly, similarity threshold set",
+              "score": 4
+            },
+            {
+              "label": "5. Validated at 90%+ similarity against real variations",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "new-vs-existing-split",
+          "text": "How clearly have you separated new-business logic from existing-business logic?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Same path for both, no distinction",
+              "score": 1
+            },
+            {
+              "label": "2. We know they differ but handle it manually",
+              "score": 2
+            },
+            {
+              "label": "3. Partly split, some overlap remains",
+              "score": 3
+            },
+            {
+              "label": "4. Mostly separate paths with clear triggers",
+              "score": 4
+            },
+            {
+              "label": "5. Fully separate logic for new vs existing",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Too much scope, too little matching trust",
+          "text": "Automations that try to handle every case break on case number three. A narrow first cut and tested matching are what make a hands-off run survivable. Pick one decision, get it right, then expand.",
+          "steps": [
+            "Cut the workflow down to the single most common path and route everything else to a person",
+            "Build fuzzy matching and test it against real client-name variations from your CRM",
+            "Split new-business and existing-business records onto separate paths"
+          ]
+        },
+        "mid": {
+          "headline": "Scope is reasonable, matching needs proof",
+          "text": "You have focused the workflow and started splitting record types. The open risk is matching accuracy on messy real-world names. Set a similarity threshold and prove it before trusting auto-matches.",
+          "steps": [
+            "Test fuzzy matching against your real client list and aim for 90%+ similarity",
+            "Route any match below the threshold to human review",
+            "Tighten the new versus existing triggers so nothing falls between them"
+          ]
+        },
+        "high": {
+          "headline": "Scope and matching are dialed",
+          "text": "Narrow scope, tested matching, clean record-type split. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Expand scope one case at a time, measuring error rate after each addition",
+            "Log low-confidence matches so you can tune the threshold with real data",
+            "Re-test matching whenever you onboard a batch of new clients"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "auto-matching below a 90% similarity score is where wrong-record misfires start",
+        "lever": "What I'd do: set a similarity threshold, route anything below it to a human, and keep the first scope to one decision.",
+        "talking_points": [
+          "A workflow that handles every edge case on day one breaks fast and erodes trust in the whole build.",
+          "Fuzzy matching that hasn't been tested on real client-name variations will pair records incorrectly.",
+          "New and existing business need different handling, and one shared path is a misroute waiting to happen."
+        ],
+        "proof_of_concept": "Run your matching logic against the full client list in test mode and review every match that scored under 90%."
+      }
+    },
+    {
+      "id": "human-approval-gates",
+      "name": "Human Approval Gates",
+      "questions": [
+        {
+          "id": "client-facing-review",
+          "text": "How consistently does a person review any output that reaches a client before it sends?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Client-facing sends fire fully automatically",
+              "score": 1
+            },
+            {
+              "label": "2. Review happens only when someone remembers",
+              "score": 2
+            },
+            {
+              "label": "3. Some client outputs are reviewed, others are not",
+              "score": 3
+            },
+            {
+              "label": "4. Most client-facing sends pass a person first",
+              "score": 4
+            },
+            {
+              "label": "5. Every client-facing output passes a person before it sends",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "client-vs-internal-mapped",
+          "text": "How clearly have you identified which steps touch a client directly versus internal-only steps?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. We have never mapped this",
+              "score": 1
+            },
+            {
+              "label": "2. We have a rough sense, nothing written",
+              "score": 2
+            },
+            {
+              "label": "3. Documented for the main flow only",
+              "score": 3
+            },
+            {
+              "label": "4. Most steps are tagged client-facing or internal",
+              "score": 4
+            },
+            {
+              "label": "5. Every step is tagged and gated accordingly",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "approval-gate-defined",
+          "text": "How well-defined is the approval gate for client-facing sends?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No gate exists",
+              "score": 1
+            },
+            {
+              "label": "2. A vague who-checks-what with no owner",
+              "score": 2
+            },
+            {
+              "label": "3. A gate exists but the trigger is unclear",
+              "score": 3
+            },
+            {
+              "label": "4. Clear gate with a named owner for most cases",
+              "score": 4
+            },
+            {
+              "label": "5. Defined gate, named owner, clear pass and reject paths",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "misfire-confidence",
+          "text": "How confident are you that a misfire cannot email the wrong contact?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. It has already happened or easily could",
+              "score": 1
+            },
+            {
+              "label": "2. Not confident, no safeguard in place",
+              "score": 2
+            },
+            {
+              "label": "3. Somewhat, but no hard stop",
+              "score": 3
+            },
+            {
+              "label": "4. Confident, a review catches most cases",
+              "score": 4
+            },
+            {
+              "label": "5. A hard gate makes a wrong-contact send impossible",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Nothing stands between the system and a wrong send",
+          "text": "This is the category that loses clients. The fastest way to lose one to automation is a single email firing to the wrong person. Until client-facing steps are gated, keep the approval on. Map what touches a client first.",
+          "steps": [
+            "Tag every workflow step as client-facing or internal-only",
+            "Put a human approval gate on every client-facing send with a named owner",
+            "Add a hard stop that blocks the send if the contact match is below threshold"
+          ]
+        },
+        "mid": {
+          "headline": "Gates exist but they leak",
+          "text": "You review some client outputs and have started mapping the flow. The gap is consistency and ownership. A gate that fires only when someone remembers is the same as no gate on a busy week. Name an owner and make the gate mandatory.",
+          "steps": [
+            "Make the approval gate mandatory for every client-facing send, not optional",
+            "Assign a named owner so review never falls through on a busy week",
+            "Define the reject path so a flagged send has somewhere to go"
+          ]
+        },
+        "high": {
+          "headline": "The wrong-person risk is contained",
+          "text": "Client-facing steps are mapped, gated, and owned. The 15-20% routed to review is the design working, not a failure. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Track approval-gate volume so you can spot when more cases become safe to auto-clear",
+            "Add confidence scoring so high-certainty sends clear faster and low-certainty ones escalate",
+            "Review rejected sends monthly to find logic gaps worth fixing upstream"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "one wrong-contact email can cost a $10k+/mo retainer",
+        "lever": "What I'd do: gate every client-facing send behind a named human owner before anything runs hands-off.",
+        "talking_points": [
+          "Most CRM workflows are safe to run hands-off. The handful that touch a client directly are the ones that need a person in the loop.",
+          "A review that happens only when someone remembers fails on exactly the weeks we are busiest.",
+          "A hard stop on low-confidence contact matches makes the worst-case send impossible, not just unlikely."
+        ],
+        "proof_of_concept": "Add a one-step approval queue for client-facing sends for two weeks and count how many you would have caught before they went out."
+      }
+    },
+    {
+      "id": "failure-handling-monitoring",
+      "name": "Failure Handling and Monitoring",
+      "questions": [
+        {
+          "id": "empty-result-handling",
+          "text": "How clearly have you defined what happens when enrichment or matching comes back empty?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Undefined, the workflow guesses or breaks",
+              "score": 1
+            },
+            {
+              "label": "2. We deal with it after it breaks",
+              "score": 2
+            },
+            {
+              "label": "3. Handled for the obvious cases only",
+              "score": 3
+            },
+            {
+              "label": "4. Most empty results route somewhere safe",
+              "score": 4
+            },
+            {
+              "label": "5. Every empty result has a defined fallback",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "misfire-detection-speed",
+          "text": "How quickly would you know if the workflow fired incorrectly?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Only when a client complains",
+              "score": 1
+            },
+            {
+              "label": "2. Eventually, if someone notices",
+              "score": 2
+            },
+            {
+              "label": "3. Within a few days on review",
+              "score": 3
+            },
+            {
+              "label": "4. Same day via a check or alert",
+              "score": 4
+            },
+            {
+              "label": "5. Immediately, an alert fires on failure",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "logging-and-review",
+          "text": "How well do you log and review what the automation did on each run?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No logging, the run is a black box",
+              "score": 1
+            },
+            {
+              "label": "2. Some logs exist, nobody reads them",
+              "score": 2
+            },
+            {
+              "label": "3. Logged, reviewed only when something breaks",
+              "score": 3
+            },
+            {
+              "label": "4. Logged and reviewed periodically",
+              "score": 4
+            },
+            {
+              "label": "5. Every run is logged and reviewed on a set cadence",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're flying blind on failure",
+          "text": "A workflow you can't see is a workflow you can't trust to run alone. If you only learn about a misfire when a client complains, the damage is already done. Decide what happens on an empty result, then add visibility.",
+          "steps": [
+            "Define a fallback for every empty enrichment or matching result",
+            "Add an alert that fires the moment the workflow fails or skips a step",
+            "Turn on run logging so every action the automation takes is recorded"
+          ]
+        },
+        "mid": {
+          "headline": "You'd catch failures, just not fast",
+          "text": "You have logging and some handling, but the feedback loop is slow. The goal is to know within the same day, not the same week. Tighten alerting and set a review cadence so problems surface before a client does.",
+          "steps": [
+            "Add same-day alerting on failed or skipped runs",
+            "Set a fixed cadence to review logs instead of only checking when something breaks",
+            "Confirm every empty-result path routes to a person rather than guessing"
+          ]
+        },
+        "high": {
+          "headline": "The workflow is observable",
+          "text": "Empty results are handled, failures alert fast, and runs get reviewed on a cadence. This is what hands-off-ready looks like. Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Add a weekly summary of what the automation did and what it routed out",
+            "Track misfire rate over time so you can prove the workflow is getting safer",
+            "Build a one-click rollback for the rare run that goes sideways"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "knowing within the same day vs the same week is the difference between a fix and a lost client",
+        "lever": "What I'd do: alert on failure in real time and give every empty result a defined fallback before going hands-off.",
+        "talking_points": [
+          "If we only hear about a misfire when a client complains, the trust damage is already done.",
+          "An empty enrichment or match result needs a defined path, otherwise the workflow guesses and guesses wrong.",
+          "Logging every run is what lets us prove the automation is safe instead of hoping it is."
+        ],
+        "proof_of_concept": "Wire a failure alert to Slack or email for one week and confirm you get notified before anyone downstream notices a problem."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'boutique' || persona === 'growing' || persona === 'established') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your CRM workflow gates?",
+      "description": "Drop your email and I'll review your exact answers, stack them against marketing and creative agencies your size, and send a 5-minute Loom within 48h with the ONE gate I'd close first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'solo'",
+      "headline": "Solo or under $1M? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but the payback window is longer. Follow me on LinkedIn. I post tactical agency automation breakdowns 3x/week. When you cross $1M and start hiring around the CRM, come back and retake. The recommendation will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight. Here's what agencies your size miss next.",
+      "description": "At your score, the obvious leaks are closed and your client-facing gates hold. The next gains come from confidence-scored auto-clearing of low-risk sends, cross-tool field contracts that survive a new hire, and rollback design for the rare run that goes sideways. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly agency ops teardown",
+      "description": "One tactical case study plus one n8n workflow breakdown per week. How mid-market marketing and creative agencies run lean and scale without scaling payroll. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ]
+}

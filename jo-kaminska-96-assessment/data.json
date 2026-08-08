@@ -1,0 +1,634 @@
+{
+ "slug": "jo-kaminska-96-assessment",
+ "title": "AI Search Pipeline Readiness Score",
+ "subtitle": "Measures whether your SEO/AEO program is built to generate pipeline — or just traffic.",
+ "brand": {
+  "accent": "#3fcff2",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "pipeline_orientation",
+   "name": "Pipeline Orientation",
+   "questions": [
+    {
+     "id": "po-q1",
+     "text": "When you report on your SEO/AEO program internally, what are the primary metrics in the dashboard?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Organic traffic and keyword rankings",
+       "score": 1
+      },
+      {
+       "label": "Traffic trends and estimated share of voice in search",
+       "score": 2
+      },
+      {
+       "label": "Traffic plus top-of-funnel leads or MQLs",
+       "score": 3
+      },
+      {
+       "label": "SQLs and demos attributed to organic",
+       "score": 4
+      },
+      {
+       "label": "Closed-won pipeline and revenue tied directly to organic",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "po-q2",
+     "text": "Before launching a new SEO/AEO initiative, how do you size the opportunity?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We go by gut feel or general industry benchmarks",
+       "score": 1
+      },
+      {
+       "label": "We look at competitor traffic and keyword volume estimates",
+       "score": 2
+      },
+      {
+       "label": "We model traffic potential using search volume data",
+       "score": 3
+      },
+      {
+       "label": "We model from traffic down to MQLs using our historical conversion rates",
+       "score": 4
+      },
+      {
+       "label": "We estimate revenue opportunity from our serviceable addressable market through the full funnel: visitors → MQL → SQL → closed-won",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "monthly_organic_visitors",
+     "type": "number",
+     "text": "How many unique visitors per month does your site receive from organic search right now?",
+     "hint": "Find this in Google Search Console or your analytics tool — use your most recent full month.",
+     "suffix": "visitors/month",
+     "min": 0,
+     "max": 500000,
+     "step": 100,
+     "default": 2000,
+     "normalize_formula": "x >= 10000 ? 100 : Math.round((x / 10000) * 100)"
+    },
+    {
+     "id": "avg_deal_value",
+     "type": "number",
+     "text": "What is your average annual contract value (ACV) per customer?",
+     "hint": "If you sell monthly retainers, multiply by 12. This is used to estimate the revenue your organic program could be driving.",
+     "suffix": "USD/year",
+     "min": 1000,
+     "max": 500000,
+     "step": 1000,
+     "default": 24000,
+     "normalize_formula": "x >= 50000 ? 100 : Math.round((x / 50000) * 100)"
+    },
+    {
+     "id": "funnel_close_rate",
+     "type": "number",
+     "text": "Of every 1,000 organic visitors to your site, roughly how many become paying customers? Enter as a percentage.",
+     "hint": "Example: if 1 in 200 organic visitors converts to a customer, enter 0.5. If you don't track this exactly, enter your best estimate — even a rough figure is useful.",
+     "suffix": "%",
+     "min": 0,
+     "max": 10,
+     "step": 0.1,
+     "default": 0.5,
+     "normalize_formula": "Math.min(100, Math.round(x * 20))"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're optimizing for the wrong number",
+     "text": "If your SEO/AEO program reports on traffic and rankings, it's doing work — but none of that work is connected to the thing that matters. Pipeline is the point. Traffic is the lever. The number you report is the number you optimize for.",
+     "steps": [
+      "Audit what your current reporting tracks — if closed pipeline isn't in the dashboard, add it before the next review",
+      "Run the basic funnel model: monthly organic visitors × your MQL rate × your SQL rate × average deal value. That number is the conversation to have with any agency before they touch a single keyword",
+      "When someone pitches a tactic, ask one question: what are the numbers behind this? If they don't share, pipeline was never in the equation"
+     ]
+    },
+    "mid": {
+     "headline": "You're tracking leads — now close the loop to revenue",
+     "text": "Connecting SEO to MQLs puts you ahead of most. The gap is usually the last mile: attributing closed-won pipeline to organic and sizing new programs from the addressable market down — not from keyword volume up.",
+     "steps": [
+      "Start attributing closed-won deals to first organic touchpoint — even rough attribution beats none, and it changes the budget conversation",
+      "Add SQL and closed-won numbers to the organic reporting dashboard — MQLs that don't close are interesting, but dollars are the point",
+      "Ask your team: if organic traffic doubled tomorrow, what would that mean in dollars? If nobody can answer in 30 seconds, the pipeline connection isn't real yet"
+     ]
+    },
+    "high": {
+     "headline": "You're running organic as a pipeline engine",
+     "text": "You're sizing from the market down, tracking the metrics that matter, and holding the program accountable to revenue. That's the right foundation for any SEO/AEO investment to compound on.",
+     "steps": [
+      "Make sure your reporting separates ICP traffic from total traffic — volume without ICP fit doesn't convert, and blended numbers hide the real story",
+      "Recalibrate your funnel model against actuals every quarter — conversion rate assumptions drift, and a stale model gives you false confidence",
+      "Wire organic attribution into your CRM so closed-won pipeline traces back to its organic source — that's the data that justifies the next investment"
+     ]
+    }
+   }
+  },
+  {
+   "id": "gtm_foundation",
+   "name": "GTM Foundation",
+   "questions": [
+    {
+     "id": "gtm-q1",
+     "text": "How documented and current is your company's product positioning and ICP definition right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It lives in people's heads and shifts depending on who you ask",
+       "score": 1
+      },
+      {
+       "label": "There's a document but it hasn't been updated in over a year",
+       "score": 2
+      },
+      {
+       "label": "It's documented and most of the marketing team works from it",
+       "score": 3
+      },
+      {
+       "label": "It's documented, current, and consistent across marketing, sales, and product",
+       "score": 4
+      },
+      {
+       "label": "It's documented, validated with real buyer data, and updated every time product or GTM motion changes",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "gtm-q2",
+     "text": "When was your organic program (SEO/AEO) brought into your GTM planning?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It hasn't been — organic runs separately from GTM planning",
+       "score": 1
+      },
+      {
+       "label": "After positioning, campaigns, and paid strategy were already set",
+       "score": 2
+      },
+      {
+       "label": "At the same time as demand gen and paid, but not before",
+       "score": 3
+      },
+      {
+       "label": "Early in planning so organic topics align with the categories we're competing in",
+       "score": 4
+      },
+      {
+       "label": "From the start — our organic program informs which categories and terms we can credibly compete in, upstream of any content planning",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "gtm-q3",
+     "text": "When product, positioning, or target segment changes, how quickly does your organic content strategy update?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It usually doesn't — organic runs on its own cadence regardless",
+       "score": 1
+      },
+      {
+       "label": "It takes several months for the change to reach organic content",
+       "score": 2
+      },
+      {
+       "label": "We update it in the next content planning cycle",
+       "score": 3
+      },
+      {
+       "label": "We flag organic updates as part of the GTM change process",
+       "score": 4
+      },
+      {
+       "label": "Organic strategy updates as part of any product or positioning change — not as a follow-on task",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your organic program is building on an unstable base",
+     "text": "Every organic outcome — keyword rankings, LLM citations, pipeline — sits downstream of positioning, messaging, and the categories you can credibly claim. If those aren't clear and current, the chain snaps before it reaches your prospect. Getting retrieved in an LLM is an outcome of a business strategy decision that already happened.",
+     "steps": [
+      "Get your positioning document current before investing more in content — the categories you can compete in for LLM retrieval come directly from the claims you can credibly make",
+      "Bring SEO/AEO into your next GTM planning session, not as an execution task but as a strategic input: which categories does this positioning let us own?",
+      "Map the full chain: product strategy → positioning → categories and terms → LLM retrieval → brand mention → pipeline. Find where yours breaks and fix it there first"
+     ]
+    },
+    "mid": {
+     "headline": "Your GTM foundation is there — organic just isn't wired to it",
+     "text": "You have the positioning work done. The gap is sequencing: organic is picking up the strategy downstream instead of informing it upstream. That's a process problem, not a quality problem — and it's fixable without rebuilding anything.",
+     "steps": [
+      "At your next positioning review, add one explicit step: which search and LLM categories does this positioning let us compete in?",
+      "When GTM motion changes — new vertical, new integration, repositioning — treat the organic update as part of the launch, not an afterthought",
+      "Audit your current content: does it reflect your current positioning and category terms, or is it running on the narrative from 18 months ago?"
+     ]
+    },
+    "high": {
+     "headline": "Your organic program is wired to your GTM chain",
+     "text": "You're starting from market position, not keyword volume, and you update organic when GTM decisions shift. That's the setup that lets AEO compound — because every new positioning move generates new retrieval opportunities.",
+     "steps": [
+      "Make sure your website taxonomy reflects current positioning — if the site structure predates your last repositioning, it's working against LLM retrieval",
+      "Document the category terms you've decided to compete in and check that content, backlink targets, and your LLM prompt tracking set all map to the same list",
+      "As you add integrations or expand into new segments, model the new SAM slice before building content for it — not after"
+     ]
+    }
+   }
+  },
+  {
+   "id": "llm_visibility_measureme",
+   "name": "LLM Visibility Measurement",
+   "questions": [
+    {
+     "id": "llm-q1",
+     "text": "How do you currently track your brand's presence in LLM answers (ChatGPT, Claude, Gemini, Perplexity)?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't track it yet",
+       "score": 1
+      },
+      {
+       "label": "We ask LLMs manually and screenshot results when we think of it",
+       "score": 2
+      },
+      {
+       "label": "We have a set of prompts we check regularly, but the process isn't systematic",
+       "score": 3
+      },
+      {
+       "label": "We track a defined prompt set across models on a recurring schedule",
+       "score": 4
+      },
+      {
+       "label": "We track a split prompt set — test and control groups — with aggregate data over time across multiple models",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "llm-q2",
+     "text": "When you see your brand appear in an LLM answer, how do you interpret it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A mention means the model knows us — we take it as a clear positive signal",
+       "score": 1
+      },
+      {
+       "label": "We check a few more times to see if it holds",
+       "score": 2
+      },
+      {
+       "label": "We track it over time but don't separate retrieval, citation, and mention",
+       "score": 3
+      },
+      {
+       "label": "We read it as one data point and look for patterns across multiple prompts and models",
+       "score": 4
+      },
+      {
+       "label": "We track the full ladder — retrieved, cited, mentioned — and understand that a mention without retrieval data doesn't tell us why the number moved",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "llm-q3",
+     "text": "When you run an AEO tactic or content experiment, how do you determine whether it caused a lift in LLM visibility?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We check whether the brand appears more often in answers after the change",
+       "score": 1
+      },
+      {
+       "label": "We compare a before-and-after snapshot across a few prompts",
+       "score": 2
+      },
+      {
+       "label": "We track changes across our full prompt set over a defined time window",
+       "score": 3
+      },
+      {
+       "label": "We use a split prompt set — touched vs. untouched — to isolate the effect of the tactic",
+       "score": 4
+      },
+      {
+       "label": "We run controlled experiments: split prompt sets, time windows long enough for noise to cancel, and we read all three metrics in order — retrieved, then cited, then mentioned",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're flying blind on LLM visibility",
+     "text": "Screenshots from one day, one prompt, one model prove nothing. LLMs are probabilistic — ask the same question twice and you get different brands in the answer. One day shows nothing. Neither does one prompt, or one model. Any 'result' built from a single screenshot is not a result.",
+     "steps": [
+      "Start with a defined prompt set of 20–40 prompts that map to your buyer's real questions — split into solution-aware and decision-aware buckets",
+      "Run the same set across at least two models on a weekly cadence — one snapshot is noise, a trend is signal",
+      "Split the prompt set before you run any tactic: one group you touch, one you leave alone. That's what proves your work caused the movement — not just that the model updated on its own"
+     ]
+    },
+    "mid": {
+     "headline": "You're tracking — now make the data prove causation",
+     "text": "Consistent tracking puts you ahead of most. The next step is being able to answer: did our tactic cause that lift, or did the model just update? Without a split prompt set and the full retrieved-cited-mentioned ladder, you cannot answer that question.",
+     "steps": [
+      "Separate your prompt set into test and control groups before running any tactic — otherwise you're reading correlation, not causation",
+      "Add retrieval and citation tracking alongside your mention data — a mention without citation data means you can't diagnose why it moved or what to do next",
+      "Define your measurement window before the experiment starts — long enough for noise to cancel out, short enough to be actionable"
+     ]
+    },
+    "high": {
+     "headline": "You're running LLM visibility as a real experiment",
+     "text": "Split prompts, aggregate data over time, the full retrieved-cited-mentioned ladder — that's the methodology that separates AEO work that compounds from AEO work that just produces better screenshots.",
+     "steps": [
+      "Document your experiment methodology so it doesn't live in one person's head — tribal knowledge here is a business risk",
+      "Watch retrieval first — if retrieval isn't moving, citation and mention won't follow, and you're working on the wrong layer",
+      "Build a dashboard that shows movement over time, not point-in-time snapshots — the trend is the answer, a single data point is just a screenshot"
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_infrastructure",
+   "name": "Content Infrastructure",
+   "questions": [
+    {
+     "id": "ci-q1",
+     "text": "When your team creates a new piece of content, what comes first in the process?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A writer or AI tool drafts something and we refine from there",
+       "score": 1
+      },
+      {
+       "label": "We identify a keyword or topic, then write or prompt the content directly",
+       "score": 2
+      },
+      {
+       "label": "We create an outline based on SEO research before writing or prompting",
+       "score": 3
+      },
+      {
+       "label": "We write a brief with thesis, persona, and angle before any outline or draft",
+       "score": 4
+      },
+      {
+       "label": "We write a full brief (thesis, persona, angle, SEO requirements), then a detailed outline — AI executes from the outline, humans own the brief and narrative direction",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ci-q2",
+     "text": "When you read a typical published piece from your team, how would you describe its central argument?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It covers the topic well but there's no single thesis holding it together",
+       "score": 1
+      },
+      {
+       "label": "The point is implied but not always clear to a new reader",
+       "score": 2
+      },
+      {
+       "label": "Most pieces have a clear point, but depth and coherence vary",
+       "score": 3
+      },
+      {
+       "label": "Every piece has a defined thesis that shapes the structure start to finish",
+       "score": 4
+      },
+      {
+       "label": "Every piece has a thesis, a clear narrative arc, and the heading structure exists to support the argument — not just to chase rankable subtopics",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ci-q3",
+     "text": "How does AI fit into your content creation process today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "AI generates the draft and we edit it down",
+       "score": 1
+      },
+      {
+       "label": "AI drafts, we refine, and we build the brief backward from what it produced",
+       "score": 2
+      },
+      {
+       "label": "AI handles research and fills sections; humans write the main narrative",
+       "score": 3
+      },
+      {
+       "label": "Humans write the brief and outline; AI executes sections with structured inputs",
+       "score": 4
+      },
+      {
+       "label": "AI executes within a tight brief and outline — humans own the thesis, angle, and narrative structure; AI executes on what we give it, not on what it decides to say",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your content has headings without a point",
+     "text": "When AI drafts first, you get H2s and H3s that might rank but won't hold a reader — and won't get cited by a model looking for a clear, citable claim. Without a central thesis, the piece covers a topic but doesn't make an argument. AI can execute mess, but it will just produce more mess.",
+     "steps": [
+      "Before any outline or prompt, write one sentence: what is the single claim this piece makes? If you can't write it in one sentence, the piece isn't ready to be written",
+      "Build the brief before you touch AI — thesis, persona, angle, SEO requirements. AI should execute from the brief, not replace the brief",
+      "Audit your last five published pieces: does each one have a thesis that holds it together from opening to close? That's the content debt to work through"
+     ]
+    },
+    "mid": {
+     "headline": "Your process is close — the brief is the missing step",
+     "text": "You're using AI as an execution tool, which is right. The gap is usually upstream: the brief isn't tight enough, so AI has room to drift from the argument. A solid brief — thesis, persona, angle — is what keeps the output on track end to end.",
+     "steps": [
+      "Template your brief format and make it non-optional: thesis, ICP persona, angle, SEO requirements, one sentence on what the reader should believe after finishing",
+      "Give AI a detailed outline derived from the brief, not just the brief itself — the outline is where you control narrative structure before any execution happens",
+      "After every publish, check: did the final piece deliver on the thesis in the brief? If not, either the brief or the review step needs tightening"
+     ]
+    },
+    "high": {
+     "headline": "Your content infrastructure is built to scale without drifting",
+     "text": "Brief-first, outline-first, AI-executes-last — that's the right sequence. You're keeping judgment with the humans and letting AI do what it's actually good at: executing a structured task with the right context.",
+     "steps": [
+      "As content volume scales, protect brief quality — it's the first thing to get shortcut under time pressure, and the consequences show up 6 weeks later in content that drifts",
+      "Check that briefs are updated when positioning changes — stale personas or angles in the brief template drift the content without anyone noticing",
+      "Run a quarterly audit: are the pieces that got rushed briefs underperforming on retrieval and citation? That's your data for defending the process"
+     ]
+    }
+   }
+  },
+  {
+   "id": "strategic_partnership_re",
+   "name": "Strategic Partnership Readiness",
+   "questions": [
+    {
+     "id": "sp-q1",
+     "text": "When working with an SEO/AEO agency, how do you define their role?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We tell them what we need and they produce it",
+       "score": 1
+      },
+      {
+       "label": "We share goals and review recommendations before approving each one",
+       "score": 2
+      },
+      {
+       "label": "We give context and let them advise on tactics, but we own the strategic direction",
+       "score": 3
+      },
+      {
+       "label": "We give full context and trust them to drive tactic and strategy recommendations",
+       "score": 4
+      },
+      {
+       "label": "We bring them into GTM decisions, share full business context, and let them lead the organic strategy — we course-correct when they're missing context, not when we want a different answer",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sp-q2",
+     "text": "When an agency or advisor makes a recommendation you weren't expecting, what's your default response?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We explain what we think would work better and redirect them",
+       "score": 1
+      },
+      {
+       "label": "We ask them to justify it before moving forward",
+       "score": 2
+      },
+      {
+       "label": "We ask clarifying questions to understand the logic behind it",
+       "score": 3
+      },
+      {
+       "label": "We assume they have a reason, ask what context we can add, and move forward",
+       "score": 4
+      },
+      {
+       "label": "We give them trust credit, share any missing context we have, and run the experiment — we recalibrate based on results, not prediction",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're buying execution, not expertise",
+     "text": "An agency you treat as an order taker produces order-taker work. The clients who get the fastest results from a strategic agency are the ones who gave trust credit from day one — not because they were passive, but because they shared context, asked questions where it mattered, and let the experts drive the strategy.",
+     "steps": [
+      "Before your next agency engagement, define what strategic lead means: who owns recommendations, who course-corrects and on what basis, what defines success",
+      "If you find yourself rejecting recommendations because they're not what you expected, ask whether you're rejecting based on evidence or based on expectation — those are different problems with different solutions",
+      "Run one initiative fully in the agency's direction without adjustment and measure it. If you've never let them drive, you don't know what they're capable of"
+     ]
+    },
+    "mid": {
+     "headline": "You're a collaborative client — now give more room to drive",
+     "text": "You're asking the right questions and sharing context. The next level is trusting the answer you get back. Asking for justification on a recommendation is reasonable — changing direction after you receive it is a different thing.",
+     "steps": [
+      "Separate 'I need to understand this' from 'I want a different answer' — only the first one should generate a follow-up request",
+      "Build a shared scorecard before work starts: agreed metrics, agreed time windows, agreed definitions of what good looks like. That's what lets you evaluate results instead of debating recommendations",
+      "Share context proactively — product updates, positioning shifts, GTM changes. Agency strategy always lags internal decisions when they only hear about changes after the fact"
+     ]
+    },
+    "high": {
+     "headline": "You're set up to get the most from a strategic agency",
+     "text": "You give full context, you let experts lead, and you course-correct on substance — not preference. That's the client profile that generates the fastest, sharpest results. The best agencies do their best work when they're trusted to drive, and that trust compounds months into the collaboration.",
+     "steps": [
+      "Keep that trust credit flowing — agencies invest more in clients who invest in the relationship, and the most valuable work usually happens 3–6 months in",
+      "Use your existing access and trust to push for more: deeper GTM alignment, cross-functional work with your brand or paid teams, a full website taxonomy review tied to current positioning",
+      "Document what's working so it survives team changes — high-trust client relationships are fragile when the key contacts rotate"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_pipeline_opportunity",
+   "label": "Estimated annual pipeline opportunity from organic",
+   "format": "currency_per_period",
+   "formula": "monthly_organic_visitors * (funnel_close_rate / 100) * avg_deal_value * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role?",
+  "answers": [
+   {
+    "label": "Founder or CEO",
+    "tag": "founder"
+   },
+   {
+    "label": "VP of Marketing or CMO",
+    "tag": "vp-marketing"
+   },
+   {
+    "label": "SEO or Content Manager",
+    "tag": "seo-manager"
+   },
+   {
+    "label": "Demand Gen or Growth Lead",
+    "tag": "demand-gen"
+   }
+  ]
+ }
+}

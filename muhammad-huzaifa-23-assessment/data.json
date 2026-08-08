@@ -1,0 +1,559 @@
+{
+ "slug": "muhammad-huzaifa-23-assessment",
+ "title": "Omni-Channel Growth Readiness Score",
+ "subtitle": "Measures how ready your brand or agency is to scale marketing ROI 3X to 5X, across creative strategy, channel execution, data tracking, and team operations.",
+ "brand": {
+  "accent": "#ffa200",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "creative_strategy",
+   "name": "Creative Strategy",
+   "questions": [
+    {
+     "id": "creative-dev-process",
+     "text": "How do you develop ad creatives for your campaigns?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Based on what looks good or feels right to me",
+       "score": 1
+      },
+      {
+       "label": "I loosely copy what successful competitors are running",
+       "score": 2
+      },
+      {
+       "label": "I reference proven ad formats and use saved templates",
+       "score": 3
+      },
+      {
+       "label": "I follow a structured creative brief: hook, benefit, offer, and target angle defined before production starts",
+       "score": 4
+      },
+      {
+       "label": "I run a systematic testing framework — every element tested, winners scaled fast, losers killed within days",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "video-production-consistency",
+     "text": "How consistently do you produce video ad content for your brand or clients?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Rarely — video production feels too costly or complicated to do regularly",
+       "score": 1
+      },
+      {
+       "label": "Occasionally, when a specific campaign calls for it",
+       "score": 2
+      },
+      {
+       "label": "Regularly but without a planned schedule or production system behind it",
+       "score": 3
+      },
+      {
+       "label": "On a planned schedule with a reliable production process and defined output targets",
+       "score": 4
+      },
+      {
+       "label": "Video is a core pillar — I test multiple variants, have a reliable production partner, and treat it as a repeatable system",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "cpp-response",
+     "text": "When your cost per purchase starts rising, what do you do first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Pause the campaign and wait to see if it corrects itself",
+       "score": 1
+      },
+      {
+       "label": "Adjust the audience targeting or cut the budget",
+       "score": 2
+      },
+      {
+       "label": "Swap out the creative with something new and hope it works",
+       "score": 3
+      },
+      {
+       "label": "Diagnose the funnel — CPM, CTR, CVR — to find exactly where performance broke before changing anything",
+       "score": 4
+      },
+      {
+       "label": "Run a full creative audit against my framework and launch new test variants within 48 hours",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your creatives are costing you more than your ad spend.",
+     "text": "Most rising CPPs are a creative problem, not a targeting problem and not a budget problem. If you're making ad decisions on gut feel, you're guessing at scale. Every D2C brand I work with that's stuck on rising costs has one thing in common: no creative system. The fix isn't more creatives. It's a smarter process for making them.",
+     "steps": [
+      "Study 10 top-performing ads in your niche and write down exactly what hooks, formats, and offers they use — this becomes your reference library",
+      "Build one creative brief template: hook, core benefit, offer, CTA — fill it before you produce anything, without exception",
+      "Set a specific CPP ceiling for each campaign — when it crosses that number, the creative gets reviewed the same day, not the same week"
+     ]
+    },
+    "mid": {
+     "headline": "You have creative instincts. Build the system around them.",
+     "text": "You know what good creative looks like and you're producing it. The gap is turning that instinct into a framework your team can run without you in every brief. That's what moves you from 10 creatives tested per month to 50, without you becoming the bottleneck on every decision.",
+     "steps": [
+      "Write your creative process as a brief template your team can execute independently, without your input on every brief",
+      "Add a structured testing layer — isolate one variable per test (hook vs. hook, offer vs. offer) so you know what actually moved the needle",
+      "Build a swipe file of your winners and review it before every new campaign brief, not after"
+     ]
+    },
+    "high": {
+     "headline": "Creative-first is how you scale. You already know this.",
+     "text": "You're running a creative-led operation. The next move is speed — producing and testing more variants faster without quality dropping. That's where a reliable production partner and a tighter brief-to-launch cycle become the real growth lever, not more budget.",
+     "steps": [
+      "Build a long-term production partner relationship so logistics don't bottleneck your testing speed",
+      "Tighten your review cycle — winning creatives should be scaling within 48 hours of reaching statistical confidence",
+      "Invest in creative diversity: different formats, hooks, and on-screen talent to stay ahead of audience fatigue before it hits your numbers"
+     ]
+    }
+   }
+  },
+  {
+   "id": "omni_channel_execution",
+   "name": "Omni-Channel Execution",
+   "questions": [
+    {
+     "id": "active-channels",
+     "text": "How many marketing channels do you actively run with consistent messaging right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "One — I'm focused entirely on a single platform",
+       "score": 1
+      },
+      {
+       "label": "Two — usually paid ads plus one organic or retention channel",
+       "score": 2
+      },
+      {
+       "label": "Three — paid, email or WhatsApp, and one social platform",
+       "score": 3
+      },
+      {
+       "label": "Four or more channels, with some coordination between them",
+       "score": 4
+      },
+      {
+       "label": "Five or more, with a unified strategy and consistent messaging across all of them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "channel-coordination",
+     "text": "How do you coordinate messaging across your different marketing channels?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I post separately on each platform with no connecting plan between them",
+       "score": 1
+      },
+      {
+       "label": "I repurpose content across channels but there's no real system for it",
+       "score": 2
+      },
+      {
+       "label": "I use a content calendar but each channel is managed somewhat independently",
+       "score": 3
+      },
+      {
+       "label": "A unified content strategy with platform-specific adaptations planned in advance",
+       "score": 4
+      },
+      {
+       "label": "Full omni-channel integration — campaign themes, offers, and timing sync across all channels with a clear role defined for each",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "channel-roi-attribution",
+     "text": "How do you know which marketing channel is actually driving your ROI?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't — I genuinely can't tell which channel is working",
+       "score": 1
+      },
+      {
+       "label": "A general sense based on where most leads or sales seem to come from",
+       "score": 2
+      },
+      {
+       "label": "I track basic metrics per channel but don't have a full attribution picture",
+       "score": 3
+      },
+      {
+       "label": "UTM parameters and platform data let me compare channel-level performance with confidence",
+       "score": 4
+      },
+      {
+       "label": "A clear attribution model with regular channel ROI reviews — budget allocation follows the real numbers, not assumptions",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Single-channel marketing is a single point of failure.",
+     "text": "Brands that scale 3X to 5X aren't louder on one channel. They're present where their customer is at every stage of the journey. If one platform raises its CPMs or changes its algorithm, you have nothing to fall back on. The goal of omni-channel isn't to be everywhere. It's to close the gaps in your customer's buying process.",
+     "steps": [
+      "Map your customer's path: where do they discover you, where do they consider, where do they convert, where do they come back?",
+      "Add one channel that fills the most obvious gap — usually email or WhatsApp for retention after paid drives the initial awareness",
+      "Define what success looks like on the new channel before you launch — don't start without a metric to measure against"
+     ]
+    },
+    "mid": {
+     "headline": "You're on multiple channels. Now make them work together.",
+     "text": "Running channels separately is effort without compounding. The difference between multi-channel and omni-channel is coordination — the same message, adapted for each platform, landing at the right moment in the buyer's process. That coordination is where the ROI multiplier actually comes from.",
+     "steps": [
+      "Build a unified campaign calendar — every campaign gets a defined role for each channel before it launches, not during",
+      "Set UTM parameters on every link across every channel so you can trace what actually drove the conversion, not what the platform claims",
+      "Take your highest-performing channel and build a retargeting layer on top of it using a second channel to close the loop"
+     ]
+    },
+    "high": {
+     "headline": "You're running an integrated machine. Keep the data honest.",
+     "text": "You've built the coordination most brands never achieve. The risk at this stage is that vanity metrics on some channels inflate your overall ROI picture. Stay strict on attribution and cut channels that don't contribute to the funnel — even if they feel like they're working.",
+     "steps": [
+      "Audit your attribution model every quarter — platforms consistently over-report their own contribution to conversions",
+      "Test removing underperforming channels temporarily to see if overall results actually drop — sometimes one channel cannibalizes another",
+      "Look for gaps in the retention phase of your funnel — most brands over-invest in acquisition and under-invest in keeping the buyers they already paid for"
+     ]
+    }
+   }
+  },
+  {
+   "id": "data_performance_trackin",
+   "name": "Data & Performance Tracking",
+   "questions": [
+    {
+     "id": "kpi-monitoring",
+     "text": "How consistently do you track your core marketing KPIs — CPP, ROAS, and CAC?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't track these consistently — I check the numbers when something feels off",
+       "score": 1
+      },
+      {
+       "label": "I check platform dashboards occasionally but have no structured review habit",
+       "score": 2
+      },
+      {
+       "label": "I review metrics weekly and catch obvious problems when they appear",
+       "score": 3
+      },
+      {
+       "label": "Weekly KPI review with a central dashboard and clear targets for each metric",
+       "score": 4
+      },
+      {
+       "label": "Daily monitoring with defined thresholds — specific numbers trigger specific actions, not gut calls",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "optimization-speed",
+     "text": "When a campaign underperforms, how quickly do you diagnose the problem and act on it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "It can take weeks before I even realize something is wrong",
+       "score": 1
+      },
+      {
+       "label": "I notice within a week and make changes, but it's more reactive than structured",
+       "score": 2
+      },
+      {
+       "label": "I catch it within a few days and adjust based on what I think is wrong",
+       "score": 3
+      },
+      {
+       "label": "Within 48 hours — I diagnose the specific metric that broke and act on that data point directly",
+       "score": 4
+      },
+      {
+       "label": "Alert thresholds fire when CPP or ROAS crosses a defined line — diagnosis and action happen within 24 hours",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "blended-roi-clarity",
+     "text": "How clearly can you state your current blended marketing ROI right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I have no clear idea what our total marketing ROI actually is",
+       "score": 1
+      },
+      {
+       "label": "A rough sense — more in than out — but no specific number I could defend",
+       "score": 2
+      },
+      {
+       "label": "I know ROAS on paid ads but haven't calculated full blended ROI across all spend and all channels",
+       "score": 3
+      },
+      {
+       "label": "I can state our blended ROI and know which campaigns or channels are driving it",
+       "score": 4
+      },
+      {
+       "label": "Full blended ROI tracked monthly with a documented baseline — I can show the growth curve over time",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_reporting_hours",
+     "type": "number",
+     "text": "How many hours per week does your team spend on manual reporting, client status updates, and admin tasks?",
+     "hint": "Include time on spreadsheets, WhatsApp status updates, client decks, and manually pulling data from platforms",
+     "suffix": "hrs/week",
+     "min": 0,
+     "max": 60,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "x <= 2 ? 100 : x <= 5 ? 85 : x <= 10 ? 65 : x <= 20 ? 35 : x <= 35 ? 15 : 5"
+    },
+    {
+     "id": "team_hourly_value",
+     "type": "number",
+     "text": "What is the effective hourly rate you charge clients, or the hourly value you assign to your team's time?",
+     "hint": "If you charge monthly retainers, divide the monthly fee by the hours your team actually works on that client. Enter your best estimate in USD.",
+     "suffix": "USD/hr",
+     "min": 1,
+     "max": 500,
+     "step": 1,
+     "default": 25,
+     "normalize_formula": "x <= 10 ? 30 : x <= 25 ? 55 : x <= 50 ? 75 : x <= 100 ? 90 : 100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're running blind. The numbers will tell you everything if you let them.",
+     "text": "Every week without tracking CPP and ROAS is a week you might be scaling a losing campaign and starving a winning one. You don't need a complex dashboard to fix this. You need a weekly habit of looking at three numbers: cost per purchase, return on ad spend, and which creative is driving both. Start there.",
+     "steps": [
+      "Set up a 30-minute weekly KPI review every Monday morning: CPP, ROAS, and top creative by spend — nothing else at first",
+      "Define a CPP ceiling for each active campaign — if it crosses that number, the campaign gets reviewed the same day it happens",
+      "Calculate your blended ROI once this week: total revenue you can attribute to marketing, divided by total marketing spend"
+     ]
+    },
+    "mid": {
+     "headline": "You're watching the numbers. Now let them drive the decisions.",
+     "text": "The difference between tracking and optimizing is speed. If you're reviewing weekly but acting monthly, you're leaving real money on the table. The brands I see scale fastest treat data like a daily conversation, not a monthly report. The system is already there. The cadence needs tightening.",
+     "steps": [
+      "Add 10-minute daily spot-checks on your top-spend campaigns — catching problems early stops them from compounding across the week",
+      "Build a decision framework: when X metric crosses Y threshold, the action is Z — remove the guesswork from every optimization call",
+      "Expand from paid ROAS to blended ROI — include every channel and every cost to get an honest picture of what's actually working"
+     ]
+    },
+    "high": {
+     "headline": "Data is your edge. Protect the discipline.",
+     "text": "You're operating with data hygiene most agencies and brand teams claim to have but don't. The real risk at this stage is reporting fatigue — teams start managing the metrics they're measured on rather than the outcomes those metrics are supposed to track. Keep the KPIs honest and review what they measure, not just the numbers themselves.",
+     "steps": [
+      "Audit your attribution setup every quarter — platforms consistently over-attribute conversions to themselves",
+      "Add a full CAC metric that includes your team's time cost, not just media spend — manual hours are a real cost of every acquisition",
+      "Document your optimization playbook so your team can run the diagnostic process without you in every decision"
+     ]
+    }
+   }
+  },
+  {
+   "id": "team_agency_operations",
+   "name": "Team & Agency Operations",
+   "questions": [
+    {
+     "id": "process-documentation",
+     "text": "How well-documented are your agency's core delivery processes and workflows?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost nothing is written down — it all lives in my head",
+       "score": 1
+      },
+      {
+       "label": "A few notes or checklists, but nothing my team could fully follow on their own",
+       "score": 2
+      },
+      {
+       "label": "Key processes are documented but not consistently followed or kept current",
+       "score": 3
+      },
+      {
+       "label": "Core SOPs exist and my team follows them — new members can onboard without me walking through everything",
+       "score": 4
+      },
+      {
+       "label": "Full documented playbook — every service has a clear process, my team runs it, and I review quality, not tasks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "client-onboarding",
+     "text": "How structured is your client onboarding process?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Every client onboarding is different — I figure it out as I go",
+       "score": 1
+      },
+      {
+       "label": "I follow a rough sequence but it varies significantly by client",
+       "score": 2
+      },
+      {
+       "label": "I have an onboarding checklist but execution is inconsistent",
+       "score": 3
+      },
+      {
+       "label": "A clear onboarding process with defined steps, timelines, and a structured handover to my team",
+       "score": 4
+      },
+      {
+       "label": "A proven onboarding system with checkpoints, client education on how to work with us, and clear expectations set from day one",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "client-retention",
+     "text": "How do you proactively manage client relationships and prevent churn?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I respond when clients reach out — it's mostly reactive",
+       "score": 1
+      },
+      {
+       "label": "I send updates when there's something notable to report",
+       "score": 2
+      },
+      {
+       "label": "I have a reporting cadence but it's not always consistent or structured",
+       "score": 3
+      },
+      {
+       "label": "Structured monthly reports plus proactive check-ins — clients know what to expect and when",
+       "score": 4
+      },
+      {
+       "label": "A full retention system: regular reports, defined escalation paths, client education on what metrics mean, and proactive strategy reviews built into the calendar",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are the bottleneck. That won't change until the system changes.",
+     "text": "Running an agency is a completely different skill from doing the work. You've mastered your craft. But your team can't be expected to perform at the same level without a system to work from. If everything lives in your head and every client decision runs through you, you don't have a scalable agency. You have a job that employs other people. The first move isn't hiring more people. It's documenting what you already know.",
+     "steps": [
+      "Pick your single most repeated delivery task this week and write down every step — that becomes your first SOP, and it takes less than an hour",
+      "Build one client onboarding checklist your team can run without you — even a 10-step doc changes the client experience from the first week",
+      "Set a fixed weekly reporting cadence for your top three clients — consistent communication prevents most churn before it ever starts"
+     ]
+    },
+    "mid": {
+     "headline": "You've started building. Now make the systems run without you.",
+     "text": "You have the foundation but you're still too involved in execution. The goal isn't to remove yourself from the business. It's to move up a level. Your job is reviewing quality and setting direction, not running every process. That shift only happens when the documentation is tight enough that your team genuinely doesn't need to ask you for answers they could find in an SOP.",
+     "steps": [
+      "Audit your week: every time you personally answer a process question a team member should already know, add it to the relevant SOP immediately — that's your gap list",
+      "Test your onboarding checklist by having a team member run it on the next new client without your involvement — the gaps become obvious fast",
+      "Build a monthly reporting template your team fills in and sends — you review before it goes out, you don't build it from scratch each time"
+     ]
+    },
+    "high": {
+     "headline": "Your agency can run. Now build it past your current ceiling.",
+     "text": "You've solved the operational problem most agency founders never crack. The next constraint is almost always pipeline — the agency is ready to handle more clients, but acquisition isn't consistent enough to fill it. That's a marketing and positioning problem. It's also the best problem to have at this stage.",
+     "steps": [
+      "Map your current client acquisition sources — if more than 60% is referrals, that's a ceiling, not a strategy",
+      "Document two or three case studies with real numbers and build a lead magnet that demonstrates your methodology directly",
+      "Review team capacity against your current client load — if utilization is above 80%, hire before you sell more or quality will slip"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_ops_cost",
+   "label": "Annual cost of manual operations and reporting",
+   "format": "currency",
+   "formula": "weekly_reporting_hours * team_hourly_value * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where you are right now?",
+  "answers": [
+   {
+    "label": "D2C Brand Owner — scaling my own brand's marketing",
+    "tag": "d2c-brand"
+   },
+   {
+    "label": "Agency Founder — building and scaling a client services business",
+    "tag": "agency-founder"
+   },
+   {
+    "label": "Marketing Manager — running marketing for a brand or company",
+    "tag": "marketing-manager"
+   },
+   {
+    "label": "Freelancer or Specialist — offering digital marketing services to clients",
+    "tag": "freelancer"
+   }
+  ]
+ }
+}

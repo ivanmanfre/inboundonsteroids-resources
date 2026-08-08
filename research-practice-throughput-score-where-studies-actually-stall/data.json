@@ -1,0 +1,679 @@
+{
+  "slug": "research-practice-throughput-score-where-studies-actually-stall",
+  "title": "Research Practice Throughput Score",
+  "subtitle": "A 17-question diagnostic for founders, research directors, and COOs running boutique qual/quant practices (10-40 staff). Find which of six handoffs is silently eating 12+ hours per study.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 8,
+  "persona_selector": {
+    "id": "role",
+    "text": "Which best describes your role on studies?",
+    "answers": [
+      {
+        "label": "Owner / Founder / Managing Partner",
+        "tag": "owner"
+      },
+      {
+        "label": "Research Director / Ops Lead / Project Director",
+        "tag": "ops"
+      },
+      {
+        "label": "Senior Researcher / Analyst / IC",
+        "tag": "ic"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "brief_intake",
+      "name": "Brief & Scope Intake",
+      "questions": [
+        {
+          "id": "brief_location",
+          "text": "When a new study lands, where does the brief live?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Verbal call notes only or scattered email threads",
+              "score": 1
+            },
+            {
+              "label": "One Google Doc per study, free-form",
+              "score": 2
+            },
+            {
+              "label": "A standard intake template, mostly filled",
+              "score": 3
+            },
+            {
+              "label": "A structured intake form (Typeform, Fillout, or equivalent) feeding a project record",
+              "score": 4
+            },
+            {
+              "label": "Structured intake auto-creates the project space, folders, and kickoff doc",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scope_change",
+          "text": "How often does a study scope change after kickoff because of an ambiguous brief?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Almost every study",
+              "score": 1
+            },
+            {
+              "label": "Most studies",
+              "score": 2
+            },
+            {
+              "label": "Roughly half",
+              "score": 3
+            },
+            {
+              "label": "Occasionally",
+              "score": 4
+            },
+            {
+              "label": "Rare, under 10% of studies",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "guide_time",
+          "text": "How long does it take you to write a discussion guide or screener from a fresh brief?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "6+ hours",
+              "score": 1
+            },
+            {
+              "label": "3 to 6 hours",
+              "score": 2
+            },
+            {
+              "label": "2 to 3 hours",
+              "score": 3
+            },
+            {
+              "label": "60 to 90 minutes",
+              "score": 4
+            },
+            {
+              "label": "Under 60 minutes, mostly assembled from prior assets",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your studies start in the dark",
+          "text": "You are absorbing brief ambiguity as researcher hours later in the study. Every hour saved here compounds because a clean brief prevents fielding rework, transcript confusion, and synthesis dead ends.",
+          "steps": [
+            "Build one structured intake form (Typeform or Fillout) with 12 to 15 required fields covering objectives, audience, deliverable format, and decision the client will make with the findings",
+            "Refuse to start any study without the intake completed and signed off, even for repeat clients",
+            "Create a template library of 5 to 8 reusable discussion guide and screener modules tagged by study type so the next guide is assembly, not authorship"
+          ]
+        },
+        "mid": {
+          "headline": "Intake works, but assembly is still manual",
+          "text": "Your briefs are usable but the path from brief to discussion guide is still mostly hand-authored. That is where 3 to 6 hours per study quietly disappears.",
+          "steps": [
+            "Connect your intake form to an automation that pre-populates a project doc and a starter discussion guide using prior study assets",
+            "Add a 30-minute scope confirmation call with the client between intake and kickoff to catch the 20% of briefs that look clean but are not",
+            "Tag every past discussion guide by methodology and audience so a junior researcher can pull a 70% draft in under 20 minutes"
+          ]
+        },
+        "high": {
+          "headline": "Intake is a real asset, now protect it",
+          "text": "You have a structured front door. The risk now is drift as the team grows or as one-off client requests bend the template. Treat intake as a product you maintain.",
+          "steps": [
+            "Review your intake form every quarter and prune fields that nobody uses or that produce noisy answers",
+            "Add a brief quality score (1 to 5) applied by the PM at kickoff so you can correlate brief quality with downstream rework hours",
+            "Pilot AI-assisted guide generation that drafts the discussion guide directly from the intake record, with the researcher editing rather than authoring"
+          ]
+        }
+      }
+    },
+    {
+      "id": "fielding_ops",
+      "name": "Fielding & Recruitment Operations",
+      "questions": [
+        {
+          "id": "screener_review",
+          "text": "How are screener results reviewed and approved?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Manual eyeball-check on a spreadsheet",
+              "score": 1
+            },
+            {
+              "label": "Spreadsheet with conditional formatting or filters",
+              "score": 2
+            },
+            {
+              "label": "Recruiter pre-screens, PM approves manually",
+              "score": 3
+            },
+            {
+              "label": "Auto-flagging on red flags, human review on the rest",
+              "score": 4
+            },
+            {
+              "label": "Auto-approval with audit trail, human review only on edge cases",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scheduling",
+          "text": "How are respondent interviews scheduled and confirmed?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Email back-and-forth, manually tracked",
+              "score": 1
+            },
+            {
+              "label": "Calendly or similar, but reminders are manual",
+              "score": 2
+            },
+            {
+              "label": "Scheduling tool with automated confirmation emails",
+              "score": 3
+            },
+            {
+              "label": "Scheduling tool plus automated reminder sequence and reschedule flow",
+              "score": 4
+            },
+            {
+              "label": "Fully automated invite, reminder, incentive, and no-show recovery pipeline",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "midfield_visibility",
+          "text": "Mid-study, how quickly can you see fielding status (completes, drop-offs, demographic gaps)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Ask the recruiter, wait for a manual update",
+              "score": 1
+            },
+            {
+              "label": "Recruiter sends a daily email summary",
+              "score": 2
+            },
+            {
+              "label": "Shared spreadsheet updated once or twice a day",
+              "score": 3
+            },
+            {
+              "label": "Live dashboard, refreshed but checked manually",
+              "score": 4
+            },
+            {
+              "label": "Live dashboard with auto-alerts when a quota or pace target slips",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "noshow_rate",
+          "text": "What is your current no-show or reschedule rate on scheduled interviews?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Above 25%",
+              "score": 1
+            },
+            {
+              "label": "15 to 25%",
+              "score": 2
+            },
+            {
+              "label": "10 to 15%",
+              "score": 3
+            },
+            {
+              "label": "5 to 10%",
+              "score": 4
+            },
+            {
+              "label": "Under 5%",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Fielding is consuming your senior hours",
+          "text": "Manual screener review and email-based scheduling are a tax paid in PM and director time. This is the single fastest category to fix because the tooling is mature and cheap.",
+          "steps": [
+            "Move screener intake to a tool that supports conditional logic and auto-flagging (Sago, Respondent, or even Typeform with logic) so red flags surface before a human looks",
+            "Standardize a 3-touch reminder sequence (24h, 2h, 15min) on every scheduled interview to cut no-show rates in half within one study cycle",
+            "Set a daily 5-minute fielding standup with a single shared dashboard view, not a meeting plus a spreadsheet plus a Slack thread"
+          ]
+        },
+        "mid": {
+          "headline": "Fielding works, but visibility lags reality",
+          "text": "Your scheduling and screening are functional. The leak now is that decisions about pace, quotas, and recruiter pressure are made on stale data instead of live signal.",
+          "steps": [
+            "Build a single fielding dashboard (Looker Studio, Metabase, or even a polished Sheet) that updates at least hourly and is the only source of truth",
+            "Add automated quota and pace alerts that ping the PM in Slack when a demographic cell falls behind by more than 20%",
+            "Run a no-show audit on your last 10 studies to find the 1 or 2 segments driving most of your reschedule load, then add an extra incentive or earlier confirmation for just those segments"
+          ]
+        },
+        "high": {
+          "headline": "Fielding is a competitive advantage, now monetize it",
+          "text": "You have the rare combination of automated screening, fast visibility, and low no-show rates. The opportunity is to turn that operational lead into pricing power or faster turnaround as a sold deliverable.",
+          "steps": [
+            "Package a 'fielding in 5 business days' SLA into your proposals and price it as a premium tier",
+            "Document your fielding playbook so a new project director can run it without you in the loop, freeing your senior time for synthesis and client work",
+            "Measure recruiter-by-recruiter performance on completion rate and time-to-first-complete and consolidate spend on the top 2 or 3"
+          ]
+        }
+      }
+    },
+    {
+      "id": "transcript_prep",
+      "name": "Transcript Prep & Data Hygiene",
+      "questions": [
+        {
+          "id": "transcription",
+          "text": "How are interview recordings transcribed?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Manual transcription by a staff member or vendor, multi-day turnaround",
+              "score": 1
+            },
+            {
+              "label": "Generic transcription service, edited by hand",
+              "score": 2
+            },
+            {
+              "label": "AI transcription (Otter, Descript, or similar), reviewed manually",
+              "score": 3
+            },
+            {
+              "label": "AI transcription with automated speaker labels and timestamps, light review",
+              "score": 4
+            },
+            {
+              "label": "AI transcription plus automated cleanup, redaction, and PII handling, minimal review",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "file_naming",
+          "text": "How are interview files, transcripts, and notes named and organized?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Whatever the researcher chose, scattered across drives",
+              "score": 1
+            },
+            {
+              "label": "Per-study folder, inconsistent file names",
+              "score": 2
+            },
+            {
+              "label": "Per-study folder with a documented naming convention, mostly followed",
+              "score": 3
+            },
+            {
+              "label": "Per-study folder with enforced naming and an index file",
+              "score": 4
+            },
+            {
+              "label": "Automated naming and folder creation from the intake record, no manual filing",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "transcript_turnaround",
+          "text": "How long after an interview is the transcript ready for the analyst to work with?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "3+ days",
+              "score": 1
+            },
+            {
+              "label": "1 to 2 days",
+              "score": 2
+            },
+            {
+              "label": "Same day, late",
+              "score": 3
+            },
+            {
+              "label": "Within 2 to 4 hours",
+              "score": 4
+            },
+            {
+              "label": "Within 30 minutes, automated",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Transcripts are a hidden bottleneck",
+          "text": "Slow or messy transcripts push synthesis into a panic at the end of the study and force analysts to work from memory instead of evidence. This is cheap to fix and has an immediate compounding effect on report quality.",
+          "steps": [
+            "Adopt one AI transcription tool (Otter, Descript, or Fireflies) across the whole practice this month, no per-project exceptions",
+            "Write a one-page file naming and folder convention and enforce it with a checklist at the end of every fielding day",
+            "Move transcript generation to within 4 hours of the interview so the analyst can start coding while context is fresh"
+          ]
+        },
+        "mid": {
+          "headline": "Transcripts are usable, prep is still slow",
+          "text": "You have decent tooling but the path from raw recording to analyst-ready transcript still has manual steps. Those steps are where junior time leaks.",
+          "steps": [
+            "Automate the post-transcription cleanup (speaker labels, filler word removal, PII redaction) with a script or an n8n flow rather than manual editing",
+            "Index every transcript with consistent metadata (study ID, respondent segment, date) so cross-study lookups become possible later",
+            "Audit your last 5 studies for how many hours went into file management versus actual analysis, the gap is your fix target"
+          ]
+        },
+        "high": {
+          "headline": "Your data is analysis-ready by default",
+          "text": "You have one of the rare practices where transcripts are not the bottleneck. The next move is to turn that clean data into a long-term asset.",
+          "steps": [
+            "Start tagging transcripts with structured metadata so you can pull cross-study insights for thought leadership or repeat-client trend reports",
+            "Pilot a private RAG setup over your transcript library so analysts can query past studies in seconds instead of digging",
+            "Sell historical pattern reports to repeat clients as a paid add-on, your clean data makes it possible where competitors cannot"
+          ]
+        }
+      }
+    },
+    {
+      "id": "coding_synthesis",
+      "name": "Coding & Synthesis",
+      "questions": [
+        {
+          "id": "coding_method",
+          "text": "How is qualitative coding done?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Highlighter and memory, no codebook",
+              "score": 1
+            },
+            {
+              "label": "Codebook in a doc, manual tagging in transcripts",
+              "score": 2
+            },
+            {
+              "label": "Dedicated tool (Dovetail, Reduct, NVivo) used inconsistently",
+              "score": 3
+            },
+            {
+              "label": "Dedicated tool used on every study with a maintained codebook",
+              "score": 4
+            },
+            {
+              "label": "AI-assisted coding with human review and a versioned shared codebook",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "theme_synthesis",
+          "text": "How do themes get from coded data to a defensible finding?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Lead researcher writes it from memory",
+              "score": 1
+            },
+            {
+              "label": "Affinity mapping in a workshop, output captured in slides",
+              "score": 2
+            },
+            {
+              "label": "Affinity mapping plus quote pulls, manually compiled",
+              "score": 3
+            },
+            {
+              "label": "Structured synthesis template populated from the coding tool",
+              "score": 4
+            },
+            {
+              "label": "Synthesis template auto-populated with quotes and counts, researcher curates and interprets",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "quote_retrieval",
+          "text": "How fast can a researcher find every quote on a specific theme across a study?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Hours of re-reading",
+              "score": 1
+            },
+            {
+              "label": "30 to 60 minutes with Ctrl+F across transcripts",
+              "score": 2
+            },
+            {
+              "label": "15 to 30 minutes using a coding tool",
+              "score": 3
+            },
+            {
+              "label": "Under 10 minutes via tag search",
+              "score": 4
+            },
+            {
+              "label": "Seconds via search across a tagged library",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "synthesis_consistency",
+          "text": "If two researchers coded the same 5 transcripts, how similar would their themes be?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Very different, no shared frame",
+              "score": 1
+            },
+            {
+              "label": "Same broad themes, different labels",
+              "score": 2
+            },
+            {
+              "label": "Mostly aligned with a shared codebook",
+              "score": 3
+            },
+            {
+              "label": "Strongly aligned, minor variance",
+              "score": 4
+            },
+            {
+              "label": "Near identical, codebook governance is mature",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Synthesis depends on one person remembering",
+          "text": "This is the highest-risk category because it concentrates knowledge in individuals and makes findings hard to defend to a skeptical client. It also caps how many studies your senior people can ship per quarter.",
+          "steps": [
+            "Build a single codebook this quarter, even a rough one, and require every study to apply it before any synthesis work begins",
+            "Pick one coding tool (Dovetail or Reduct are the easiest entry points) and standardize on it for every study within 60 days",
+            "Run a 2-researcher calibration exercise on the next study where both code the same 3 transcripts and reconcile differences, this is the fastest way to lift consistency"
+          ]
+        },
+        "mid": {
+          "headline": "Coding is consistent, synthesis is still slow",
+          "text": "You have a codebook and a tool but the leap from coded data to a written finding still takes a senior person too long. AI assistance is finally good enough to compress this.",
+          "steps": [
+            "Adopt a structured synthesis template that the coding tool can populate (theme, supporting quote count, contradicting evidence, recommended client action)",
+            "Pilot AI-assisted theme summarization on one study, with the senior researcher curating and rewriting rather than authoring from scratch",
+            "Maintain a versioned codebook with quarterly reviews so it does not silently rot as study types evolve"
+          ]
+        },
+        "high": {
+          "headline": "Synthesis is a defensible practice asset",
+          "text": "You have the systems most boutiques never get to. The use now is reducing senior hours per study without reducing rigor.",
+          "steps": [
+            "Build a cross-study insights layer that surfaces patterns across past projects for repeat clients, this is a billable deliverable competitors cannot match",
+            "Train a junior researcher to run end-to-end synthesis using your codebook and templates, your senior time should be on interpretation and client narrative",
+            "Measure synthesis hours per study and target a 30% reduction over two quarters by tightening template usage and AI assistance"
+          ]
+        }
+      }
+    },
+    {
+      "id": "report_assembly",
+      "name": "Report Assembly & Delivery",
+      "questions": [
+        {
+          "id": "report_format",
+          "text": "How is the final report assembled?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Built from scratch in slides every time",
+              "score": 1
+            },
+            {
+              "label": "Template deck, heavily edited",
+              "score": 2
+            },
+            {
+              "label": "Template deck with reusable section blocks",
+              "score": 3
+            },
+            {
+              "label": "Modular template plus a content library of past slides and visuals",
+              "score": 4
+            },
+            {
+              "label": "Structured report assembled from synthesis output with automated chart and quote insertion",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "review_cycles",
+          "text": "How many internal review rounds does a typical report go through before client delivery?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "4+ rounds, scope often expands",
+              "score": 1
+            },
+            {
+              "label": "3 rounds, frequent rework",
+              "score": 2
+            },
+            {
+              "label": "2 rounds, mostly polish",
+              "score": 3
+            },
+            {
+              "label": "1 review plus a final read",
+              "score": 4
+            },
+            {
+              "label": "1 structured review with a clear sign-off checklist",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "delivery_time",
+          "text": "From last interview to client-ready report, how many calendar days?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "15+ days",
+              "score": 1
+            },
+            {
+              "label": "10 to 14 days",
+              "score": 2
+            },
+            {
+              "label": "7 to 10 days",
+              "score": 3
+            },
+            {
+              "label": "4 to 6 days",
+              "score": 4
+            },
+            {
+              "label": "3 days or fewer",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Reports are eating your margin",
+          "text": "Building reports from scratch every time is the single most visible source of margin compression in a boutique practice. Clients are paying you to think, not to format slides.",
+          "steps": [
+            "Build a master report template with locked structure (objectives, method, key findings, theme detail, recommendations, appendix) and use it on every study",
+            "Create a slide library of your best visualizations, frameworks, and quote layouts tagged by study type so juniors can assemble 60% of a report in a day",
+            "Cap internal review at 2 structured rounds with a sign-off checklist, scope expansion in review is a leadership problem not a researcher problem"
+          ]
+        },
+        "mid": {
+          "headline": "Reports are templated, assembly is still manual",
+          "text": "You have a template but the path from synthesis to a polished deck still consumes a senior person for days. This is where modular assembly and AI drafting pay off fastest.",
+          "steps": [
+            "Move report assembly to a modular system where synthesis findings auto-populate a starter deck with placeholder charts and quote slots",
+            "Pilot AI-drafted executive summary and key findings narrative, with the senior researcher editing rather than authoring",
+            "Track report assembly hours per study and target a 40% reduction within one quarter, the room is there"
+          ]
+        },
+        "high": {
+          "headline": "Delivery is fast, now compete on it",
+          "text": "You can ship in under a week. Most of your competitors cannot. That speed is a sellable position, not just an operational nicety.",
+          "steps": [
+            "Lead with delivery speed in your proposals and case studies, price a rapid-turnaround tier explicitly",
+            "Offer mid-study readouts as a paid deliverable, your assembly system makes the marginal cost low",
+            "Reinvest the saved senior hours into business development and thought leadership rather than absorbing them as more studies"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Want the role-specific fix plan for your lowest category?",
+    "description": "Book a 30-minute strategy call. I'll walk you through your category scores, identify the single highest-impact fix for your role, and sketch what a 90-day implementation looks like for a practice your size. No pitch, no slides. If it is not a fit you leave with the plan anyway.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

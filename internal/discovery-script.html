@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Discovery Script v4 · Live Call View</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#F7F4EF;
+  --paper-sunk:#EFEBE3;
+  --paper-raise:#FFFFFF;
+  --ink:#1A1A1A;
+  --ink-soft:#4A4A48;
+  --ink-mute:#5A5752;
+  --hairline:rgba(26,26,26,.15);
+  --hairline-bold:rgba(26,26,26,.3);
+  --accent:#4C6E3D;
+  --accent-ink:#344B29;
+  --accent-soft:rgba(76,110,61,.12);
+  --warm:#B85C38;
+  --warm-soft:rgba(184,92,56,.12);
+  --hot:#C9442E;
+  --hot-soft:rgba(201,68,46,.1);
+  --cold:#3B82A0;
+  --cold-soft:rgba(59,130,160,.12);
+  --lukewarm:#7B7345;
+  --lukewarm-soft:rgba(123,115,69,.12);
+}
+html,body{height:100%}
+body{
+  font-family:'Source Serif 4',Georgia,serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+  font-size:17px;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+/* TOP BAR */
+.topbar{
+  background:var(--ink);
+  color:var(--paper);
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  z-index:100;
+  position:sticky;
+  top:0;
+}
+.brand{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.brand .ver{
+  background:var(--accent);
+  padding:3px 8px;
+  border-radius:2px;
+  font-size:10px;
+}
+.topbar-controls{
+  display:flex;
+  align-items:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.temp-selector{
+  display:flex;
+  gap:4px;
+  background:rgba(255,255,255,.08);
+  padding:4px;
+  border-radius:6px;
+}
+.temp-btn{
+  background:transparent;
+  border:none;
+  color:rgba(255,255,255,.6);
+  padding:6px 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:3px;
+  transition:all .15s;
+}
+.temp-btn:hover{color:white;background:rgba(255,255,255,.1)}
+.temp-btn.active.cold{background:var(--cold);color:white}
+.temp-btn.active.lukewarm{background:var(--lukewarm);color:white}
+.temp-btn.active.warm{background:var(--warm);color:white}
+.temp-btn.active.hot{background:var(--hot);color:white}
+.show-all-toggle{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.7);
+  padding:7px 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:4px;
+}
+.show-all-toggle.active{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:white;
+}
+
+/* STEPPER */
+.stepper{
+  background:var(--paper-sunk);
+  border-bottom:1px solid var(--hairline);
+  padding:10px 20px;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  overflow-x:auto;
+  position:sticky;
+  top:48px;
+  z-index:99;
+  scrollbar-width:thin;
+}
+.stepper::-webkit-scrollbar{height:4px}
+.stepper::-webkit-scrollbar-thumb{background:var(--hairline-bold);border-radius:2px}
+.step{
+  flex-shrink:0;
+  background:transparent;
+  border:1.5px solid var(--hairline-bold);
+  color:var(--ink-mute);
+  padding:6px 10px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.08em;
+  cursor:pointer;
+  border-radius:4px;
+  transition:all .15s;
+  white-space:nowrap;
+}
+.step:hover{border-color:var(--ink);color:var(--ink)}
+.step.active{
+  background:var(--ink);
+  border-color:var(--ink);
+  color:var(--paper);
+}
+.step.branch-a{border-color:var(--accent);color:var(--accent-ink)}
+.step.branch-a.active{background:var(--accent);border-color:var(--accent);color:white}
+.step.branch-b{border-color:var(--warm);color:var(--warm)}
+.step.branch-b.active{background:var(--warm);border-color:var(--warm);color:white}
+.step.hidden{display:none}
+.step.danger{border-color:var(--hot);color:var(--hot)}
+.step.danger.active{background:var(--hot);border-color:var(--hot);color:white}
+
+/* PHASE CARD */
+.phase-area{
+  flex:1;
+  padding:30px 24px 100px;
+  max-width:900px;
+  margin:0 auto;
+  width:100%;
+  display:flex;
+  flex-direction:column;
+}
+.phase-card{
+  background:var(--paper-raise);
+  border-radius:6px;
+  padding:32px 36px;
+  box-shadow:0 1px 0 rgba(0,0,0,.04), 0 4px 24px rgba(0,0,0,.04);
+  border:1px solid var(--hairline);
+  display:none;
+  animation:fadeIn .15s ease-out;
+}
+.phase-card.visible{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+
+.phase-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--ink);
+  color:var(--paper);
+  padding:5px 12px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:14px;
+  border-radius:3px;
+}
+.phase-tag.branch-a{background:var(--accent)}
+.phase-tag.branch-b{background:var(--warm)}
+.phase-tag.danger{background:var(--hot)}
+.phase-tag .duration{
+  background:rgba(255,255,255,.18);
+  padding:2px 6px;
+  border-radius:2px;
+  font-size:9px;
+}
+.phase-title{
+  font-family:'DM Serif Display',serif;
+  font-size:36px;
+  font-weight:400;
+  line-height:1.08;
+  letter-spacing:-.015em;
+  margin-bottom:8px;
+  color:var(--ink);
+}
+.phase-title em{color:var(--accent);font-style:italic}
+.phase-meta{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:20px;
+}
+.phase-meta.critical{color:var(--hot)}
+
+.phase-body p{
+  margin:12px 0;
+  color:var(--ink-soft);
+  font-size:16px;
+  line-height:1.6;
+}
+.phase-body p strong{color:var(--ink);font-weight:600}
+.phase-body p em{color:var(--ink-mute);font-style:italic}
+
+.phase-body h3{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--ink);
+  margin:24px 0 10px;
+  padding-left:10px;
+  border-left:2px solid var(--accent);
+}
+.phase-body h4{
+  font-family:'DM Serif Display',serif;
+  font-style:italic;
+  font-size:22px;
+  font-weight:400;
+  margin:20px 0 10px;
+  color:var(--ink);
+}
+
+.phase-body ul,.phase-body ol{
+  margin:10px 0 14px 22px;
+  color:var(--ink-soft);
+}
+.phase-body li{margin:6px 0;line-height:1.5}
+.phase-body li strong{color:var(--ink);font-weight:600}
+.phase-body li em{color:var(--ink-mute);font-style:italic}
+
+.phase-body blockquote{
+  margin:14px 0;
+  padding:16px 22px;
+  background:var(--accent-soft);
+  border-left:3px solid var(--accent);
+  font-size:17px;
+  line-height:1.55;
+  color:var(--ink);
+  border-radius:2px;
+}
+.phase-body blockquote p{margin:6px 0;color:var(--ink);font-size:17px}
+.phase-body blockquote strong{color:var(--ink);font-weight:700}
+
+.callout{
+  margin:18px 0;
+  padding:14px 18px;
+  background:var(--paper-sunk);
+  border-left:3px solid var(--ink-mute);
+  font-size:14.5px;
+  line-height:1.5;
+  border-radius:0 3px 3px 0;
+  color:var(--ink-soft);
+}
+.callout-label{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9.5px;
+  font-weight:700;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-bottom:4px;
+}
+.callout strong{color:var(--ink);font-weight:600}
+
+/* TEMP SELECTION PROMPT (Phase 0) */
+.temp-prompt{
+  margin:16px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.temp-card{
+  padding:14px 16px;
+  border:1.5px solid var(--hairline);
+  background:var(--paper);
+  border-radius:5px;
+  cursor:pointer;
+  transition:all .15s;
+}
+.temp-card:hover{border-color:var(--ink);transform:translateY(-1px)}
+.temp-card.cold{border-left:4px solid var(--cold)}
+.temp-card.lukewarm{border-left:4px solid var(--lukewarm)}
+.temp-card.warm{border-left:4px solid var(--warm)}
+.temp-card.hot{border-left:4px solid var(--hot)}
+.temp-card.selected{background:var(--accent-soft);border-color:var(--accent)}
+.temp-card-tag{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;
+  font-weight:700;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:6px;
+}
+.temp-card.cold .temp-card-tag{color:var(--cold)}
+.temp-card.lukewarm .temp-card-tag{color:var(--lukewarm)}
+.temp-card.warm .temp-card-tag{color:var(--warm)}
+.temp-card.hot .temp-card-tag{color:var(--hot)}
+.temp-card-route{font-size:14px;color:var(--ink-soft);line-height:1.4}
+.temp-card-route strong{color:var(--ink)}
+
+.watch-list{
+  margin:14px 0;
+  list-style:none;
+  padding:0;
+  counter-reset:watch;
+}
+.watch-list li{
+  padding:12px 16px 12px 44px;
+  margin:8px 0;
+  background:var(--paper);
+  border-left:3px solid var(--hairline-bold);
+  border-radius:0 4px 4px 0;
+  position:relative;
+  font-size:15px;
+  line-height:1.5;
+  color:var(--ink-soft);
+}
+.watch-list li::before{
+  content:counter(watch);
+  counter-increment:watch;
+  position:absolute;
+  left:12px;
+  top:12px;
+  width:24px;
+  height:24px;
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+}
+.watch-list li.new{border-left-color:var(--accent);background:var(--accent-soft)}
+.watch-list li.new::before{background:var(--accent)}
+.watch-list li strong{color:var(--ink);font-weight:600}
+
+/* NAV FOOTER */
+.nav-footer{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:var(--paper-raise);
+  border-top:1px solid var(--hairline);
+  padding:14px 20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  z-index:100;
+  box-shadow:0 -2px 12px rgba(0,0,0,.04);
+}
+.nav-btn{
+  background:var(--ink);
+  color:var(--paper);
+  border:none;
+  padding:12px 22px;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  cursor:pointer;
+  border-radius:4px;
+  transition:all .15s;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.nav-btn:hover{background:var(--accent)}
+.nav-btn:disabled{opacity:.3;cursor:not-allowed;background:var(--ink)}
+.nav-btn.secondary{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.nav-btn.secondary:hover{background:var(--ink);color:var(--paper)}
+.nav-position{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+}
+.nav-position .current{color:var(--ink)}
+
+.keyboard-hint{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:9px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+  margin-left:8px;
+}
+kbd{
+  font-family:'IBM Plex Mono',monospace;
+  background:var(--ink);
+  color:var(--paper);
+  padding:1px 5px;
+  border-radius:2px;
+  font-size:10px;
+  font-weight:700;
+}
+
+/* SHOW-ALL MODE */
+body.show-all .phase-card{display:block;margin-bottom:24px}
+body.show-all .nav-footer{display:none}
+body.show-all .phase-area{padding-bottom:60px}
+body.show-all .stepper{position:static}
+
+/* MOBILE */
+@media (max-width:700px){
+  .topbar{padding:8px 12px}
+  .brand .ver{display:none}
+  .stepper{padding:8px 12px;top:42px}
+  .step{font-size:10px;padding:5px 8px}
+  .phase-area{padding:20px 12px 100px}
+  .phase-card{padding:22px 18px}
+  .phase-title{font-size:26px}
+  .temp-prompt{grid-template-columns:1fr}
+  .nav-footer{padding:10px 12px}
+  .nav-btn{padding:10px 14px;font-size:11px}
+  .keyboard-hint{display:none}
+}
+
+/* PRINT */
+@media print{
+  .topbar,.stepper,.nav-footer{display:none}
+  body{background:white;font-size:11pt}
+  .phase-card{display:block!important;page-break-inside:avoid;margin:20px 0;box-shadow:none;border:1px solid #ddd}
+  .phase-area{padding:0;max-width:none}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand">
+    Discovery Call
+    <span class="ver">v4</span>
+  </div>
+  <div class="topbar-controls">
+    <div class="temp-selector" id="topbar-temp">
+      <button class="temp-btn cold" data-temp="cold">Cold</button>
+      <button class="temp-btn lukewarm" data-temp="lukewarm">Lukewarm</button>
+      <button class="temp-btn warm" data-temp="warm">Warm</button>
+      <button class="temp-btn hot" data-temp="hot">Hot</button>
+    </div>
+    <a href="/internal/discovery-warm.html" class="show-all-toggle" style="background:rgba(184,92,56,.25);border-color:rgba(184,92,56,.45);text-decoration:none">Warm view →</a>
+    <button class="show-all-toggle" id="show-all-btn">Show all <span class="keyboard-hint" style="margin-left:4px"><kbd>A</kbd></span></button>
+  </div>
+</div>
+
+<div class="stepper" id="stepper"></div>
+
+<div class="phase-area" id="phase-area">
+
+<!-- PHASE 0 -->
+<article class="phase-card" data-id="phase-0" data-step-label="0 · Temp">
+  <div class="phase-tag">Phase 0 · Pre-call <span class="duration">1 min</span></div>
+  <h1 class="phase-title">Lead temperature <em>routes the call</em></h1>
+  <div class="phase-meta">Tag the lead BEFORE dialing · determines Phase 11 branch</div>
+  <div class="phase-body">
+    <p>Click to set lead temperature (also via topbar). Phase 11 auto-shows only the relevant branch.</p>
+    <div class="temp-prompt" id="phase-temp-prompt">
+      <div class="temp-card cold" data-temp="cold">
+        <div class="temp-card-tag">Cold</div>
+        <div class="temp-card-route">Upwork / cold outbound / no prior content exposure.<br><strong>→ Phase 11a (Blueprint $2,500)</strong></div>
+      </div>
+      <div class="temp-card lukewarm" data-temp="lukewarm">
+        <div class="temp-card-tag">Lukewarm</div>
+        <div class="temp-card-route">Content inbound, read/watched your stuff, no human referral.<br><strong>→ Phase 11a (Blueprint $2,500)</strong></div>
+      </div>
+      <div class="temp-card warm" data-temp="warm">
+        <div class="temp-card-tag">Warm</div>
+        <div class="temp-card-route">Human referral (Kyle Hunt → Henner/Interlude, client → friend).<br><strong>→ Phase 11b (Fractional $10k+)</strong></div>
+      </div>
+      <div class="temp-card hot" data-temp="hot">
+        <div class="temp-card-tag">Hot</div>
+        <div class="temp-card-route">Referred by recently-closed happy client with strong endorsement.<br><strong>→ Phase 11b (Fractional $10k+)</strong></div>
+      </div>
+    </div>
+  </div>
+</article>
+
+<!-- PHASE 1 -->
+<article class="phase-card" data-id="phase-1" data-step-label="1 · Open">
+  <div class="phase-tag">Phase 1 · Opening <span class="duration">60 sec</span></div>
+  <h1 class="phase-title">Opening</h1>
+  <div class="phase-body">
+    <blockquote>
+      <p>"Hey, thanks for hopping on. I'm Ivan, founder of Ivan System. On this call I'm going to ask you a bunch of questions about how your business actually runs and where AI could move the needle for you specifically — then I'll walk you through how we work together. Sound good?"</p>
+    </blockquote>
+    <p>Then ask, in order:</p>
+    <ul>
+      <li><strong>What made you book this call?</strong></li>
+      <li><strong>What did you watch / read of mine before booking? What part hit?</strong></li>
+      <li><strong>Is this something you've been thinking about for a while, or is it new this month?</strong></li>
+      <li><strong>Soft DM check:</strong> "Quick framing — is this a decision you'd make solo or with a partner / co-founder?" <em>(Just gather info. Don't try to lock a second call yet — that comes later.)</em></li>
+    </ul>
+    <p><em>Don't skip these. They're your motivation, anchor, urgency reads, and committee map.</em></p>
+  </div>
+</article>
+
+<!-- PHASE 2 -->
+<article class="phase-card" data-id="phase-2" data-step-label="2 · Axis">
+  <div class="phase-tag danger">Phase 2 · Critical — routes the call</div>
+  <h1 class="phase-title">Axis Bifurcation</h1>
+  <div class="phase-meta critical">Save vs Gain — everything downstream depends on this</div>
+  <div class="phase-body">
+    <blockquote>
+      <p>"Quick framing question — when you think about why you're looking at AI right now, is it more about <strong>buying back time and cost</strong> in the business, or more about <strong>getting more output / growing without hiring proportionally</strong>? Or honestly, both?"</p>
+    </blockquote>
+    <p>Route based on answer:</p>
+    <ul>
+      <li><strong>Save</strong> → run hours × $/hr cost-of-inaction math</li>
+      <li><strong>Gain</strong> → run ceiling × time math</li>
+      <li><strong>Both</strong> → lead with bigger fire, address other in recap</li>
+    </ul>
+  </div>
+</article>
+
+<!-- PHASE 3 -->
+<article class="phase-card" data-id="phase-3" data-step-label="3 · State">
+  <div class="phase-tag">Phase 3</div>
+  <h1 class="phase-title">Current AI / Automation State</h1>
+  <div class="phase-body">
+    <blockquote>
+      <p>"Where are you currently with AI and automation — nowhere, duct-taped some things, or real systems running?"</p>
+    </blockquote>
+    <ul>
+      <li><strong>Nothing</strong>: "What's been the blocker — time, knowing where to start, trust?"</li>
+      <li><strong>Tried, didn't stick</strong>: "What did you try? Where did it break? How much went into it?"</li>
+      <li><strong>Real systems</strong>: "If they're working, what made you book?" <em>(forces gap or self-DQ)</em></li>
+    </ul>
+  </div>
+</article>
+
+<!-- PHASE 4 -->
+<article class="phase-card" data-id="phase-4" data-step-label="4 · Pain">
+  <div class="phase-tag">Phase 4 · Two-track</div>
+  <h1 class="phase-title">Pain Excavation</h1>
+  <div class="phase-body">
+    <h3>Track A — Save (time/cost buyer)</h3>
+    <ul>
+      <li>"How involved are you in day-to-day ops?"</li>
+      <li>"What % of your week goes to work an AI agent or system could handle?"</li>
+      <li>"How's that showing up outside work — evenings, weekends, headspace?"</li>
+    </ul>
+    <p><strong>Math out loud:</strong></p>
+    <blockquote>
+      <p>"[X hours] × [$Y founder rate] × 4 weeks = $[Z]/month. Over 12 months: $[annual]. Sound right?"</p>
+      <p>"What happens if nothing changes in 12 months?"</p>
+    </blockquote>
+
+    <h3>Track B — Gain (growth/output buyer)</h3>
+    <ul>
+      <li>"Where's the ceiling? When you push more output, what breaks first — people, process, systems?"</li>
+      <li>"If you doubled output tomorrow, what would have to be true?"</li>
+      <li>"Last time you turned down work or delayed a launch because of capacity — what did that cost?"</li>
+    </ul>
+    <p><strong>Math out loud:</strong></p>
+    <blockquote>
+      <p>"You're at [current output]. If the ceiling moved to [target], that's [delta] in additional revenue/leverage per month. Over 12 months: [$ or units]. The longer the ceiling stays, your competitors compound past you."</p>
+      <p>"What happens if the ceiling stays where it is for 12 months?"</p>
+    </blockquote>
+  </div>
+</article>
+
+<!-- PHASE 5 -->
+<article class="phase-card" data-id="phase-5" data-step-label="5 · Team">
+  <div class="phase-tag">Phase 5</div>
+  <h1 class="phase-title">Team Structure & Agent-Readiness</h1>
+  <div class="phase-body">
+    <ul>
+      <li>"How's the team structured? Who reports to who?"</li>
+      <li><strong>Agent-readiness:</strong> "If I dropped an AI agent into your business tomorrow, where would it have clean data and process to act on — and where would it hit a wall?"</li>
+      <li><strong>Capacity test:</strong> "If I sent you 5 perfect-fit clients tomorrow, could you take them on, or would it break the team?"</li>
+    </ul>
+  </div>
+</article>
+
+<!-- PHASE 6 -->
+<article class="phase-card" data-id="phase-6" data-step-label="6 · Past">
+  <div class="phase-tag">Phase 6</div>
+  <h1 class="phase-title">Past Attempts</h1>
+  <div class="phase-body">
+    <ul>
+      <li>"What have you tried before — tools, hires, courses, agencies?"</li>
+      <li>For each: <strong>"Why didn't it stick?"</strong></li>
+      <li>"Roughly how much have you spent — money, hours, headspace?"</li>
+      <li><strong>"Why do you think working with me would be different?"</strong> <em>(prospect-sells-themselves)</em></li>
+    </ul>
+  </div>
+</article>
+
+<!-- PHASE 7 -->
+<article class="phase-card" data-id="phase-7" data-step-label="7 · Outcome">
+  <div class="phase-tag">Phase 7</div>
+  <h1 class="phase-title">Desired Outcome</h1>
+  <div class="phase-body">
+    <h3>Track A</h3>
+    <ul>
+      <li>"If we got this right, what would you have <em>back</em>? Hours? Headspace?"</li>
+      <li>"What would you do with [X hours] back?"</li>
+    </ul>
+    <h3>Track B</h3>
+    <ul>
+      <li>"If we got this right, what would you be <em>doing more of</em>?"</li>
+      <li>"From [current] to what specifically?"</li>
+    </ul>
+    <p><strong>Both tracks:</strong> "What do you NOT want anymore?"</p>
+  </div>
+</article>
+
+<!-- PHASE 8 -->
+<article class="phase-card" data-id="phase-8" data-step-label="8 · DM">
+  <div class="phase-tag">Phase 8</div>
+  <h1 class="phase-title">Decision-Maker Lock-In</h1>
+  <div class="phase-body">
+    <p><em>They've named pain, outcome, number. Now partner alignment feels collaborative — not gating.</em></p>
+    <p>If they have a partner / co-founder / ops lead and that person isn't on:</p>
+    <blockquote>
+      <p>"Earlier you mentioned [name] is part of decisions on this. Based on everything we just talked about, what I'd suggest — let's get [name] on a 20-min call so I can walk them through what we discussed and answer their questions. Would that be a problem?"</p>
+    </blockquote>
+    <p>If solo: confirm and continue.</p>
+  </div>
+</article>
+
+<!-- PHASE 9 -->
+<article class="phase-card" data-id="phase-9" data-step-label="9 · Why now">
+  <div class="phase-tag danger">Phase 9 · Do not skip</div>
+  <h1 class="phase-title">Timeline & Trigger Event</h1>
+  <div class="phase-body">
+    <ul>
+      <li>"What timeline are you thinking?"</li>
+      <li><strong>"Why now? Why this month versus six months ago?"</strong></li>
+    </ul>
+    <h3>Probe by axis</h3>
+    <ul>
+      <li><strong>Save triggers:</strong> burnout, lost key person, hire too expensive, vacation impossible</li>
+      <li><strong>Gain triggers:</strong> turned down contract, competitor shipped AI, plateaued revenue, hired without output gain, peer doing 10x</li>
+      <li><strong>AI-curious:</strong> board pressure, FOMO, hit ChatGPT wall</li>
+    </ul>
+    <p>If "later":</p>
+    <blockquote>
+      <p>"When's the last time things calmed down for more than a week?"</p>
+      <p>"The thing you're waiting to finish — what is it? After that, what's next?"</p>
+      <p>"Founders who wait for the right time are still waiting two years later. The work happens <em>while</em> it's busy."</p>
+    </blockquote>
+  </div>
+</article>
+
+<!-- PHASE 10 -->
+<article class="phase-card" data-id="phase-10" data-step-label="10 · Recap">
+  <div class="phase-tag">Phase 10</div>
+  <h1 class="phase-title">Quantified Transition</h1>
+  <div class="phase-body">
+    <h3>Track A</h3>
+    <blockquote>
+      <p>"So you're spending [X hrs/week] on work that shouldn't be on your plate — about $[Z]/month, $[annual]/year. Team can't scale past current load. You want [hours back / outcome]. Trigger is [trigger]. <strong>What did I miss?</strong>"</p>
+    </blockquote>
+    <h3>Track B</h3>
+    <blockquote>
+      <p>"So you're capped at [current output], turning down or delaying [examples], ceiling costing [delta]/month. You want to be at [target] in 12 months. Trigger is [trigger]. <strong>What did I miss?</strong>"</p>
+    </blockquote>
+    <blockquote>
+      <p>"Cool. Would it be a problem if I share my screen?"</p>
+    </blockquote>
+  </div>
+</article>
+
+<!-- PHASE 11a -->
+<article class="phase-card phase-11a branch-a-card" data-id="phase-11a" data-step-label="11a · Blueprint" data-branch="a">
+  <div class="phase-tag branch-a">Phase 11a · Cold/Lukewarm path</div>
+  <h1 class="phase-title">Pitch — <em>Agent-Ready Blueprint ($2,500)</em></h1>
+  <div class="phase-body">
+    <h4>Variant A — SAVE axis (drowning, time/cost)</h4>
+    <blockquote>
+      <p>"Here's what I recommend. You've named [X hrs/week] going to work that shouldn't be on your plate — that's $[Z]/month leaking. The Agent-Ready Blueprint is a 1-week diagnostic that gives you:</p>
+      <p>1. The 60/25/15 map — what an agent runs, what's augmented, what stays human<br>
+         2. Prioritized 90-day roadmap ordered by <strong>HOURS RECLAIMED</strong><br>
+         3. 3–5 quick wins — the highest-leverage hours back, first<br>
+         4. Clear answer on engagement fit</p>
+      <p>Investment is <strong>$2,500</strong>, <strong>100% credited toward any engagement</strong>. <strong>Money-back guarantee</strong> if you don't think it was worth it."</p>
+    </blockquote>
+
+    <h4>Variant B — GAIN axis (ceiling-hitter, growth/output)</h4>
+    <blockquote>
+      <p>"Here's what I recommend. You're capped at [current output], turning down [examples] — that ceiling is costing $[delta]/month in forfeited compounding. The Agent-Ready Blueprint is a 1-week diagnostic that gives you:</p>
+      <p>1. The 60/25/15 map — what an agent runs to break the ceiling, what augments human capacity, what stays human<br>
+         2. Prioritized 90-day roadmap ordered by <strong>OUTPUT UNLOCKED</strong><br>
+         3. 3–5 quick wins — the fastest path to higher throughput, first<br>
+         4. Clear answer on which engagement removes the constraint</p>
+      <p>Investment is <strong>$2,500</strong>, <strong>100% credited toward any engagement</strong>. <strong>Money-back guarantee</strong> if you don't think it was worth it."</p>
+    </blockquote>
+
+    <p><em>Pick the variant matching the axis from Phase 2. If "both", lead with bigger fire, reference other in recap.</em></p>
+
+    <div class="callout">
+      <div class="callout-label">Honest-funnel disarm (Blueprint pitch only)</div>
+      "And I'll be straight — my evil plan is you'll see the roadmap, realize it's a lot of work, and want me to help you do it. That's how this works. But you're under zero obligation, and a chunk of people take the roadmap and run it themselves."
+    </div>
+  </div>
+</article>
+
+<!-- PHASE 11b -->
+<article class="phase-card phase-11b branch-b-card" data-id="phase-11b" data-step-label="11b · Fractional" data-branch="b">
+  <div class="phase-tag branch-b">Phase 11b · Warm/Hot path</div>
+  <h1 class="phase-title">Pitch — <em>Fractional m1 ($10k+)</em></h1>
+  <div class="phase-meta">Skip Blueprint as standalone · audit included as m1 deliverable</div>
+  <div class="phase-body">
+    <blockquote>
+      <p>"Here's what I recommend. Based on what you've shared, going straight into a Fractional engagement makes more sense than starting with a standalone diagnostic. The audit becomes one of the deliverables, not a separate purchase.</p>
+      <p><strong>Month 1 Fractional — $10,000.</strong> I build out your priority systems (LM engine, post engine, newsletter, custom extras — whatever surfaces as P0 from our intake) AND deliver a full <strong>90-Day Blueprint audit</strong> that's <strong>yours regardless of whether you continue past month 1</strong>.</p>
+      <p>The audit surfaces 5-7 priority builds across content, outbound, production, and partnerships — it's your roadmap, owned by you. We walk through it together in a kickoff + audit call within the first week, then build sprints for 2-3 weeks.</p>
+      <p><strong>Continuation is opt-in.</strong> Most clients continue with an <strong>M2+3 Bundle ($12k, ~8% off)</strong> to execute the audit's priorities. <strong>But if we don't find enough to justify continuation, I'll tell you straight — you graduate to a Care Plan at $1k/mo or just walk. I'd rather lose a month of revenue than ship a padded roadmap.</strong></p>
+      <p>Four total tiers across the engagement lifecycle:</p>
+      <p>• <strong>M1 Build: $10k</strong> (heavy month, audit + core systems)<br>
+         • <strong>M2-3 Active: $6.5k/mo</strong> (or $12k bundle for both — recommended)<br>
+         • <strong>M4+ Slow Lane: $3.5k/mo</strong> (lighter cadence)<br>
+         • <strong>Care Plan: $1k/mo</strong> (maintenance, no new builds)</p>
+      <p>Each tier is a mode shift, not a discount."</p>
+    </blockquote>
+
+    <div class="callout">
+      <div class="callout-label">Single-project downsell (if buyer pushes back on Fractional)</div>
+      "If you just want one thing built — say the lead magnet system — that's available as a Single Project at $7.5k, no engagement. But you lose the audit, the strategic component, and the ongoing tuning. Most warm referrals find that's a worse deal for the money."
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Pace-to-absorption (both pitches)</div>
+      "One thing I want to flag now: if we end up working together past m1, I pace to your team's absorption — not my delivery speed. The bottleneck on AI in service businesses isn't the build, it's whether your team has the headspace to integrate it. Each month we ship only what you can actually absorb."
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Soft scarcity (both)</div>
+      "I onboard a limited number of engagements each quarter. If you want Q3 impact, you'd want to start in the next 2–3 weeks."
+    </div>
+  </div>
+</article>
+
+<!-- PHASE 12 -->
+<article class="phase-card" data-id="phase-12" data-step-label="12 · Close">
+  <div class="phase-tag">Phase 12</div>
+  <h1 class="phase-title">Close</h1>
+  <div class="phase-body">
+    <div class="branch-a-only">
+    <h3>For Phase 11a (Blueprint pitch)</h3>
+    <blockquote>
+      <p>"Does this feel like the right next step, or do you need to bring [partner] in first?"</p>
+    </blockquote>
+    <p>If "let me think":</p>
+    <blockquote>
+      <p>"Totally fair. What specifically? Sometimes I can answer it right now."</p>
+    </blockquote>
+    <p>If partner alignment:</p>
+    <blockquote>
+      <p>"Cool. What's your decision process from here? When and what would they need to hear?"</p>
+      <p>"Let's lock the follow-up call now — what's [day] look like?"</p>
+    </blockquote>
+    </div>
+
+    <div class="branch-b-only">
+    <h3>For Phase 11b (Fractional pitch)</h3>
+    <blockquote>
+      <p>"Want to start with M1? Standard onboarding sequence:</p>
+      <p>• Discovery done today (we're here now)<br>
+         • You get the intake link in the next 24 hours — 15-25 min conversation (voice or text, your call)<br>
+         • Kickoff + audit walkthrough call within the first week<br>
+         • Builds start shipping in days<br>
+         • <strong>90-Day Plan Review call at week 3-4</strong> — that's when we look at the audit findings together and decide on the M2+3 Bundle. No surprises, it's already on the calendar from day one.</p>
+      <p>Want me to send the engagement letter + payment link?"</p>
+    </blockquote>
+    <p>If "let me think":</p>
+    <blockquote>
+      <p>"Totally fair. What specifically? Sometimes I can answer it right now. The audit is yours regardless, so the only commitment is the m1 build — which I refund if I don't deliver."</p>
+    </blockquote>
+    </div>
+  </div>
+</article>
+
+<!-- WATCH FOR -->
+<article class="phase-card" data-id="watch-for" data-step-label="⚠ Watch">
+  <div class="phase-tag danger">Watch For</div>
+  <h1 class="phase-title">Failure modes</h1>
+  <div class="phase-meta critical">Kyle-on-Dutka + v4 additions (8-12 in green)</div>
+  <div class="phase-body">
+    <ol class="watch-list">
+      <li>Don't skip "why now" → deal drifts to "let me think about it"</li>
+      <li>Always run cost/ceiling math out loud → numbers in their words = visceral</li>
+      <li>Ask personal-life or competitor-pressure question → keeps it from staying intellectual</li>
+      <li>Get them to answer "why would this work with me?" → sells themselves</li>
+      <li>Quantify the summary → generic recap = soft close</li>
+      <li>Lock follow-up on the call → never end with "I'll email you to schedule"</li>
+      <li>Match pitch variant to axis → don't pitch hours back to a ceiling-hitter</li>
+      <li class="new"><strong>Match pitch path to lead temperature</strong> → don't pitch $2,500 Blueprint to a warm referral; don't pitch $10k Fractional to a cold Upwork lead</li>
+      <li class="new"><strong>Audit-as-deliverable framing matters</strong> → DON'T promise the audit will surface m2-3 work. Promise it will be honest. The "I'd rather lose a month than ship a padded roadmap" line IS the brand differentiator.</li>
+      <li class="new"><strong>Don't auto-discount on Fractional pricing pushback</strong> → Single Project ($7.5k) is the downsell for buyers who genuinely want one thing. Don't drop the $10k m1 rate. Holding the anchor protects future deals.</li>
+      <li class="new"><strong>4-tier ladder visibility builds trust</strong> → show all four tiers explicitly during Fractional pitch. Signals "this is a real engagement structure, not a contract you're trapped in."</li>
+      <li class="new"><strong>Voice vs text intake choice</strong> → buyer picks at intake start. Don't pre-decide for them. (Voice intake mode rolls out via Sub-Project A — until then, text-only.)</li>
+    </ol>
+  </div>
+</article>
+
+</div>
+
+<div class="nav-footer">
+  <button class="nav-btn secondary" id="prev-btn">← Prev <span class="keyboard-hint" style="margin-left:4px"><kbd>←</kbd></span></button>
+  <div class="nav-position">
+    Phase <span class="current" id="current-num">0</span> / <span id="total-num">14</span>
+  </div>
+  <button class="nav-btn" id="next-btn">Next <span class="keyboard-hint" style="margin-left:4px"><kbd>→</kbd></span> →</button>
+</div>
+
+<script>
+(function() {
+  const cards = Array.from(document.querySelectorAll('.phase-card'));
+  const stepper = document.getElementById('stepper');
+  const prevBtn = document.getElementById('prev-btn');
+  const nextBtn = document.getElementById('next-btn');
+  const currentNum = document.getElementById('current-num');
+  const totalNum = document.getElementById('total-num');
+  const tempBtns = document.querySelectorAll('#topbar-temp .temp-btn');
+  const tempCards = document.querySelectorAll('#phase-temp-prompt .temp-card');
+  const showAllBtn = document.getElementById('show-all-btn');
+
+  let currentIndex = 0;
+  let leadTemp = localStorage.getItem('disc_temp') || null;
+  let showAll = false;
+
+  // Build stepper
+  function buildStepper() {
+    stepper.innerHTML = '';
+    cards.forEach((card, i) => {
+      const branch = card.dataset.branch;
+      const id = card.dataset.id;
+      const isDanger = card.querySelector('.phase-tag.danger') !== null;
+
+      // Hide irrelevant branch in stepper
+      if (branch === 'a' && (leadTemp === 'warm' || leadTemp === 'hot')) return;
+      if (branch === 'b' && (leadTemp === 'cold' || leadTemp === 'lukewarm')) return;
+
+      const btn = document.createElement('button');
+      btn.className = 'step' + (branch ? ' branch-' + branch : '') + (isDanger && !branch ? ' danger' : '');
+      btn.textContent = card.dataset.stepLabel || ('P' + i);
+      btn.dataset.cardIndex = i;
+      btn.addEventListener('click', () => goTo(i));
+      stepper.appendChild(btn);
+    });
+    updateNav();
+  }
+
+  function updateNav() {
+    cards.forEach((card, i) => card.classList.toggle('visible', !showAll && i === currentIndex || showAll));
+    document.querySelectorAll('.step').forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.cardIndex) === currentIndex);
+    });
+    currentNum.textContent = currentIndex + 1;
+    totalNum.textContent = cards.length;
+    prevBtn.disabled = currentIndex === 0;
+    nextBtn.disabled = currentIndex === cards.length - 1;
+
+    // Scroll active stepper button into view
+    const activeStep = document.querySelector('.step.active');
+    if (activeStep) activeStep.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    // Scroll to top of phase area
+    if (!showAll) window.scrollTo({ top: 0, behavior: 'instant' });
+  }
+
+  function goTo(index) {
+    if (showAll) return;
+    // Skip irrelevant branch
+    while (index < cards.length && index >= 0) {
+      const branch = cards[index].dataset.branch;
+      if (branch === 'a' && (leadTemp === 'warm' || leadTemp === 'hot')) {
+        index = currentIndex < index ? index + 1 : index - 1;
+        continue;
+      }
+      if (branch === 'b' && (leadTemp === 'cold' || leadTemp === 'lukewarm')) {
+        index = currentIndex < index ? index + 1 : index - 1;
+        continue;
+      }
+      break;
+    }
+    currentIndex = Math.max(0, Math.min(cards.length - 1, index));
+    updateNav();
+  }
+
+  function setTemp(temp) {
+    leadTemp = temp;
+    localStorage.setItem('disc_temp', temp);
+    tempBtns.forEach(b => b.classList.toggle('active', b.dataset.temp === temp));
+    tempCards.forEach(c => c.classList.toggle('selected', c.dataset.temp === temp));
+
+    // Show/hide Phase 11a/b branches
+    document.querySelectorAll('.branch-a-card, .branch-a-only').forEach(el => {
+      el.style.display = (temp === 'warm' || temp === 'hot') ? 'none' : '';
+    });
+    document.querySelectorAll('.branch-b-card, .branch-b-only').forEach(el => {
+      el.style.display = (temp === 'cold' || temp === 'lukewarm') ? 'none' : '';
+    });
+    buildStepper();
+  }
+
+  function toggleShowAll() {
+    showAll = !showAll;
+    document.body.classList.toggle('show-all', showAll);
+    showAllBtn.classList.toggle('active', showAll);
+    if (!showAll) updateNav();
+  }
+
+  // Wire up controls
+  tempBtns.forEach(b => b.addEventListener('click', () => setTemp(b.dataset.temp)));
+  tempCards.forEach(c => c.addEventListener('click', () => setTemp(c.dataset.temp)));
+  prevBtn.addEventListener('click', () => goTo(currentIndex - 1));
+  nextBtn.addEventListener('click', () => goTo(currentIndex + 1));
+  showAllBtn.addEventListener('click', toggleShowAll);
+
+  // Keyboard
+  document.addEventListener('keydown', e => {
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'ArrowRight' || e.key === 'j' || e.key === 'J') { e.preventDefault(); goTo(currentIndex + 1); }
+    if (e.key === 'ArrowLeft' || e.key === 'k' || e.key === 'K') { e.preventDefault(); goTo(currentIndex - 1); }
+    if (e.key === 'a' || e.key === 'A') { e.preventDefault(); toggleShowAll(); }
+    if (e.key >= '1' && e.key <= '9') {
+      e.preventDefault();
+      const idx = parseInt(e.key) - 1;
+      if (cards[idx]) goTo(idx);
+    }
+  });
+
+  // Init
+  if (leadTemp) setTemp(leadTemp);
+  buildStepper();
+  updateNav();
+})();
+</script>
+
+</body>
+</html>

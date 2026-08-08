@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>RISE DTC x InboundOnSteroids · Onboarding</title>
+<script>
+(function(){
+  if (location.search.indexOf('k=rdtc-2026-onb') === -1) {
+    document.addEventListener('DOMContentLoaded', function(){
+      document.body.innerHTML =
+        '<div style="max-width:520px;margin:16vh auto;padding:0 28px;'
+        + 'font-family:Arial,sans-serif;color:#131210;line-height:1.5">'
+        + '<p style="font-weight:700;text-transform:uppercase;letter-spacing:.05em;'
+        + 'font-size:13px">This page is private.</p>'
+        + '<p style="color:#6B675E;font-size:15px">If you reached this by mistake, '
+        + 'no problem. If you were sent here, use the full link you were given.</p>'
+        + '</div>';
+    });
+  }
+})();
+</script>
+<style>
+  :root{
+    --paper:#FFFFFF; --ink:#131210; --red:#C8361B; --muted:#6B675E; --gold:#ffc71d;
+    --hair:#C9C2B2; --band:#F6F4EF;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--paper);color:var(--ink)}
+  body{
+    font-family:"Schibsted Grotesk",Arial,"Helvetica Neue",sans-serif;
+    font-weight:400; line-height:1.55; font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:768px;margin:0 auto;padding:0 28px 96px}
+  .disp{font-weight:800;letter-spacing:-0.02em;line-height:1.04}
+  .label{
+    font-weight:700;text-transform:uppercase;letter-spacing:.05em;
+    font-size:12px;color:var(--muted);
+  }
+  .serif{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;font-style:italic}
+  .aside{font-family:"Source Serif 4",Georgia,serif;font-style:italic;color:var(--muted);font-size:15px}
+  .hot{color:var(--red);font-weight:700}
+  a{color:var(--ink)}
+  .mono{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;background:var(--band);padding:2px 6px;word-break:break-all}
+
+  /* Masthead */
+  header.mh{padding:56px 0 8px;border-bottom:1px solid var(--ink)}
+  .brandline{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+  .brandline .rule{height:6px;flex:1;background:var(--gold)}
+  .wordmark{font-weight:800;letter-spacing:.02em;font-size:13px;text-transform:uppercase}
+  .wordmark .on{color:var(--red);font-weight:800}
+  .kick{font-weight:700;text-transform:uppercase;letter-spacing:.05em;font-size:13px;color:var(--muted)}
+  h1.title{font-size:clamp(34px,7vw,52px);margin:8px 0 10px}
+  .subline{font-size:16px;color:var(--muted);max-width:44em}
+
+  /* Sections */
+  section{padding:44px 0;border-bottom:1px solid var(--hair)}
+  .snum{display:inline-block;font-weight:800;font-size:12px;letter-spacing:.06em;
+        color:var(--ink);background:var(--gold);padding:3px 8px;text-transform:uppercase}
+  h2.sh{font-size:clamp(24px,4.4vw,34px);font-weight:800;letter-spacing:-0.02em;margin:14px 0 6px;line-height:1.08}
+  h3{font-size:17px;font-weight:800;letter-spacing:-0.01em;margin:26px 0 6px}
+  p{margin:12px 0}
+  .lede{font-size:18px}
+
+  /* THE BOX */
+  .box{border:4px solid var(--ink);outline:1px solid var(--ink);outline-offset:3px;
+       padding:22px 24px;margin:30px 0;background:var(--paper)}
+  .box.tilt{transform:rotate(-0.6deg)}
+  .box .bh{display:flex;align-items:center;gap:11px;margin:0 0 12px;
+           font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  .box .sq{width:13px;height:13px;background:var(--ink);flex:none}
+  .box p:first-of-type{margin-top:0}
+  .box p:last-child{margin-bottom:0}
+
+  /* Tables */
+  table{width:100%;border-collapse:collapse;font-size:15px;margin:18px 0}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--ink);vertical-align:top}
+  th{font-weight:700;text-transform:uppercase;font-size:11px;letter-spacing:.04em;color:var(--muted)}
+  td.d{font-weight:800;white-space:nowrap}
+  .ramp td.n{font-weight:800}
+
+  /* Ask cards */
+  .ask{border-top:2px solid var(--ink);padding:20px 0 4px;margin-top:8px}
+  .ask .tag{display:flex;gap:12px;align-items:baseline}
+  .ask .tag .n{font-weight:800;font-size:22px;letter-spacing:-0.02em;flex:none;width:1.4em}
+  .ask .tag .t{font-weight:800;font-size:18px;letter-spacing:-0.01em}
+  .ask .meta{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-left:calc(1.4em + 12px)}
+  .ask .body{margin-left:calc(1.4em + 12px)}
+
+  ul.tight{margin:12px 0;padding-left:20px}
+  ul.tight li{margin:7px 0}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:0 26px}
+  @media (max-width:620px){.two{grid-template-columns:1fr}}
+
+  .sig{display:flex;gap:40px;flex-wrap:wrap;margin-top:28px}
+  .sig div{flex:1;min-width:220px}
+  .sig .line{border-bottom:1px solid var(--ink);height:34px;margin-bottom:6px}
+  .sig .who{font-size:13px;color:var(--muted)}
+
+  .signoff{margin-top:34px}
+  .signoff .name{font-weight:800;font-size:18px;letter-spacing:-0.01em}
+  .signoff .role{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
+
+  footer{padding:40px 0 0;color:var(--muted);font-size:13px}
+  @media print{
+    section{page-break-inside:avoid}
+    .box{outline-color:#000}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="mh">
+    <div class="brandline">
+      <span class="wordmark">RISE DTC</span>
+      <span class="rule"></span>
+      <span class="wordmark">RUN BY INBOUND<span class="on">ON</span>STEROIDS</span>
+    </div>
+    <div class="kick">Onboarding / Private</div>
+    <h1 class="title disp">Welcome to the engine, Mattan.</h1>
+    <p class="subline serif">Your full inbound and outbound engine, built on your audience and your seat, run end to end so calls land on your calendar. Here is exactly how it works and what happens Monday.</p>
+  </header>
+
+  <!-- 1. WELCOME LETTER -->
+  <section>
+    <span class="snum">01 / The letter</span>
+    <h2 class="sh">What you actually bought</h2>
+    <p class="lede">Mattan, in one paragraph: you bought a complete inbound and outbound engine that runs on your own audience and your own Sales Navigator seat. We write and publish content in your voice, build interactive lead magnets your buyers want, work the founders who engage with your posts toward a booked call, and run careful cold outreach on your seat to DTC founders who fit your ICP. Every one of those threads points at the same finish line: <span class="hot">real calls, booked on your calendar</span>. It is fully managed. There is nothing for you to run, host, or maintain.</p>
+    <p>The parts that matter to you long term, your audience, your email list, and every named lead we capture, are yours. They are your assets, and they export with you. We run the delivery layer. You take the calls.</p>
+    <p>Monday we get on for thirty minutes and set the whole thing live. You connect your LinkedIn in about two minutes on a secure page, we lock your ICP together, I walk you through your True Profit X-Ray on a real number, and I hand you the four small setup items. That is the entire lift on your side, and most of it we do together on the call.</p>
+    <div class="box tilt">
+      <div class="bh"><span class="sq"></span>The one promise on the clock</div>
+      <p>Your first content and your first outreach go live within two days of Monday's call. Everything else, the lead magnets on your domain and the newsletter, follows in week two once your DNS lands.</p>
+    </div>
+  </section>
+
+  <!-- 2. 30/60/90 -->
+  <section>
+    <span class="snum">02 / The ramp</span>
+    <h2 class="sh">Your first 30, 60, and 90 days</h2>
+    <p class="lede">Here is the honest math, not a sales number. Two lanes feed you calls: inbound, which compounds slowly as your content builds an audience of the right people, and cold, which produces calls from month one and holds steady.</p>
+
+    <table class="ramp">
+      <tr><th>Window</th><th>What is happening</th><th>Booked-call pace</th></tr>
+      <tr>
+        <td class="d">Month 1</td>
+        <td>Build and voice dial-in. We tune your voice on the first drafts together, warm up your seat slowly, and start publishing. Cold runs at warm-up volume.</td>
+        <td class="n">~5 to 10 building</td>
+      </tr>
+      <tr>
+        <td class="d">Month 2</td>
+        <td>Content is landing, the list is growing, cold is at conservative full volume. Inbound starts to show.</td>
+        <td class="n">climbing</td>
+      </tr>
+      <tr>
+        <td class="d">Month 3</td>
+        <td>Inbound compounding (~4 to 8/mo) on top of cold (~4 to 8/mo from month one).</td>
+        <td class="n">~8 to 16/mo</td>
+      </tr>
+    </table>
+
+    <h3>Where calls become deals</h3>
+    <p>Let me be plain about the split, because it protects both of us. The engine's half is conversations and booked calls. Closing is your half, at your own close rate, which you put at about <span class="hot">25%</span>. I will never quote you a number of closed deals, because that number is yours to earn on the call, not mine to promise.</p>
+
+    <h3>How this adds up to your own goal</h3>
+    <p>Your target is 20 to 25 new accounts this year, and by your own math that takes roughly 80 to 100 real conversations to get there. That is exactly the job of these two lanes: build a steady flow of qualified conversations, tagged by where each one came from, until the pace covers your year. At a month-three pace of roughly 8 to 16 calls a month, the conversation math starts working in your favor.</p>
+
+    <div class="two">
+      <div>
+        <h3>What compounds (yours)</h3>
+        <p class="aside">Your audience, your email list, and every named lead we capture. These grow month over month and belong to you. They export.</p>
+      </div>
+      <div>
+        <h3>What is capacity (the ceiling)</h3>
+        <p class="aside">Cold volume is capped by what LinkedIn safely allows on one seat. It gives you steady reach from month one while the audience side compounds. We keep it comfortably under that ceiling, on purpose.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. FOUR ASKS -->
+  <section>
+    <span class="snum">03 / Your part</span>
+    <h2 class="sh">Four setup items, about one hour</h2>
+    <p class="lede">This is the whole ask. You never hand me a single password. Most of the first item happens live on Monday's call.</p>
+
+    <div class="ask">
+      <div class="tag"><span class="n">1</span><span class="t">Connect LinkedIn</span></div>
+      <div class="meta">~2 min · on the call · zero passwords</div>
+      <div class="body">
+        <p>You log into LinkedIn on a secure hosted page. It handles two-factor for you, and I never see your credentials. We watch the account connect together on the call. One thing to have ready on your side: <span class="hot">Sales Navigator Core active on your seat</span>, since your cold lane runs on it.</p>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="tag"><span class="n">2</span><span class="t">DNS, one copy-paste block</span></div>
+      <div class="meta">~5 min · async · goes to whoever runs your DNS</div>
+      <div class="body">
+        <p>You get a single block of four records to add once, at risedtc.com. It covers two things in one visit: your lead-magnet subdomain (a CNAME on <span class="mono">resources.risedtc.com</span>) and your newsletter sending domain (three records so your newsletter sends as <span class="mono">mattanupdates@risedtc.com</span>). All four are ready now and listed in full on your <a href="steps/">steps page</a>. Just add them and leave your existing email and website records untouched. Happy to hop on a five-minute screenshare and do it with whoever manages the panel.</p>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="tag"><span class="n">3</span><span class="t">20 to 30 real photos</span></div>
+      <div class="meta">~10 min · by the next day</div>
+      <div class="body">
+        <p>Candid shots of you doing real things, plus a few founder, family, and friends photos. Here is the plain reason: posts with your real face tend to outperform stock by a wide margin, and these feed the images on your posts. Upload them straight on your board, in the <a href="https://ivanmanfredi.com/client/risedtc-com?k=de8228a883649fb54304a323">Photos tab</a>.</p>
+      </div>
+    </div>
+
+    <div class="ask">
+      <div class="tag"><span class="n">4</span><span class="t">Lock your ICP, and your Fathom API key</span></div>
+      <div class="meta">~10 min · on the call</div>
+      <div class="body">
+        <p>We pick your one primary bucket together on the call: which slice of DTC and Shopify brands you want first, with your apparel preference noted. Bring 5 to 10 named dream accounts too. And grab your Fathom API key (Settings, then API access, copy the key). Fathom is your call recorder: the key lets the engine read your sales calls, so your written voice comes off how you actually talk with founders. An API key is never a password.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. WHAT RUNS EVERY WEEK -->
+  <section>
+    <span class="snum">04 / The delivery</span>
+    <h2 class="sh">What runs every week</h2>
+    <p class="lede">All of it managed, nothing for you to operate. Every lane is tagged so you can see which one produced each booked call.</p>
+
+    <table>
+      <tr><th>Lane</th><th>What happens</th></tr>
+      <tr>
+        <td class="d">Content</td>
+        <td>
+          <ul class="tight">
+            <li>5 posts a week, one each working day, plus lead magnets on top.</li>
+            <li>The angles that repeat: Profit Gap teardowns where revenue climbs but profit stays flat, the performance-model story, and founder and proof stories.</li>
+            <li>We write for DTC founders spending five figures a month on ads. That is who turns into a booked call.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="d">Visual</td>
+        <td>
+          <ul class="tight">
+            <li>Roughly 6 in 10 posts ship as written takes. The rest become a branded quote or stat card, a receipt, a founder photo, or a carousel, picked by what the post is doing.</li>
+            <li>Every rendered image uses your accent, logo and fonts, never generic AI stock.</li>
+            <li>Your uploaded photos feed the founder-photo posts once we wire them in.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="d">Lead magnets</td>
+        <td>
+          <p>PDFs went flat. Interactive Claude tools tuned to your buyers are what convert now.</p>
+          <p>Your <span class="hot">True Profit X-Ray</span> is already live: <a href="https://resources.inboundonsteroids.com/rise-dtc-true-profit-x-ray/">resources.inboundonsteroids.com/rise-dtc-true-profit-x-ray/</a></p>
+          <p><span class="hot">The RISE DTC AI Kit</span>: a pack of Claude tools your founders install and run themselves. Return-rate rescue, PDP doctor, review-angle miner, win-back flows, and a weekly triage. <a href="https://resources.inboundonsteroids.com/rise-dtc-ai-kit/">resources.inboundonsteroids.com/rise-dtc-ai-kit/</a></p>
+          <p class="aside">New lead magnets each month on your domain. We set the exact number on our call. Live now: the True Profit X-Ray. Next: the AI Kit. Then a fresh magnet tuned to your ICP.</p>
+        </td>
+      </tr>
+      <tr>
+        <td class="d">Warm DMs</td>
+        <td>
+          <ul class="tight">
+            <li>Warm, your engagers: people who like or comment on your posts. Worked toward a booked call, about 15 a week, so it always reads like a person, never a blast.</li>
+            <li>Warm, your network: the 46 DTC founders and decision-makers already in your connections. You approve every name before the first message.</li>
+            <li>As your clients post, their founder networks feed your pipeline too. You approve which clients we reference.</li>
+            <li>Every warm touch opens with a real observation, never a pitch. If they reply, they get your True Profit X-Ray as a gift, then an optional link to book time.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="d">Cold outreach</td>
+        <td>
+          <ul class="tight">
+            <li>Cold outreach runs on your LinkedIn seat only: connection requests with a DM sequence, plus InMails, the same way Ivan runs his own. No cold email.</li>
+            <li>You sign off on the sequence copy once. Then it goes out under your name.</li>
+            <li>You see the prospect list first, with real sample rows, before a single message goes out.</li>
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td class="d">Growth Scan</td>
+        <td>
+          <p>A per-prospect <span class="hot">Growth Scan</span> we build off a DTC brand's <em>public</em> store data: catalog, pricing, discount depth, tech stack and reviews. It becomes a one-page teardown in your brand, at the prospect's own link, and it only speaks to your levers: paid media, performance creative, and the Profit Gap. Never retention or SEO.</p>
+          <p>It cannot invent a number. Every figure on the page traces to something we actually read off their store, and anything we could not read shows as "not readable", never a fake zero.</p>
+          <p>When a qualified prospect replies, we auto-build theirs and draft the delivery DM for your approval. The page is the sample, the call is the pitch.</p>
+          <p>Live sample: <a href="https://ivanmanfredi.com/scan/the-rodial-group-aa">ivanmanfredi.com/scan/the-rodial-group-aa</a></p>
+        </td>
+      </tr>
+      <tr>
+        <td class="d">Newsletter</td>
+        <td>Nurture email to the leads your content captures. Starts week two to three, once your DNS lands.</td>
+      </tr>
+    </table>
+
+    <div class="box">
+      <div class="bh"><span class="sq"></span>How your voice gets dialed in</div>
+      <p>Through month one we dial your voice in together. You see the drafts, tell me what sounds like you and what does not, and that feedback is the tuning. After the first month it runs on its own in your voice, with a light touch from you only when you want one. The only thing you have to do is take the calls.</p>
+    </div>
+  </section>
+
+  <!-- 5. YOUR BOARD -->
+  <section>
+    <span class="snum">05 / The board</span>
+    <h2 class="sh">Your board</h2>
+    <p class="lede">One private page shows you the whole engine at a glance. Data starts on day one. No vanity metrics.</p>
+    <p><span class="label">Your link</span><br>
+      <a class="mono" href="https://ivanmanfredi.com/client/risedtc-com?k=de8228a883649fb54304a323">ivanmanfredi.com/client/risedtc-com?k=de8228a883649fb54304a323</a></p>
+    <table>
+      <tr><th>Section</th><th>What it shows</th></tr>
+      <tr><td class="d">Content queue</td><td>Posts drafted and scheduled in your voice.</td></tr>
+      <tr><td class="d">Leads captured</td><td>Named leads from your content and lead magnets, yours.</td></tr>
+      <tr><td class="d">Calls booked</td><td>Every booked call, tagged by lane: inbound, warm, or cold.</td></tr>
+      <tr><td class="d">List growth</td><td>Your email list building over time.</td></tr>
+    </table>
+    <p class="aside">We report the things that become revenue: named leads, booked calls, list growth. Likes never make it onto this page.</p>
+  </section>
+
+  <!-- 6. SEAT RISK -->
+  <section>
+    <span class="snum">06 / Straight talk</span>
+    <h2 class="sh">The seat risk, stated plainly</h2>
+    <p class="lede">Here is the honest version of how the cold outreach part works, so there are no surprises. If you are good with it, sign at the bottom.</p>
+
+    <h3>Where cold outreach runs</h3>
+    <p>Your cold outreach runs on your own LinkedIn and Sales Navigator seat, through a secure connection. It goes out under your name, because that is what makes it land with founders. We operate it for you day to day.</p>
+
+    <h3>The real risk, stated plainly</h3>
+    <p>LinkedIn limits and sometimes restricts accounts based on outreach volume. This is true for every account that does outreach, no matter who runs it or how careful they are. It is a platform rule, not a reflection of quality. So there is always <span class="hot">some risk</span> when an account sends connection requests and messages at any real volume.</p>
+
+    <h3>How we keep that risk low</h3>
+    <p>We warm your seat up slowly over the first two weeks at low volume before reaching a steady pace. We hold that steady pace well under LinkedIn's limits on purpose, rather than pushing for maximum volume. We watch the account closely, and if LinkedIn shows any warning at all, we pause outreach on your seat immediately.</p>
+
+    <h3>What happens if your account does get restricted</h3>
+    <p>We stop all outreach on your seat right away. We wait out the restriction, let the account rest, then resume at a lower, slower volume to rebuild trust. Your content, your captured leads, and your inbound engine keep running the whole time, because they do not depend on the outreach seat.</p>
+
+    <h3>How to think about cold</h3>
+    <p>Cold outreach is additional upside on top of your inbound content base. It is not a guaranteed number of calls or deals. It is a channel we run carefully to create more conversations over time, alongside the content that compounds on its own.</p>
+
+    <div class="box">
+      <div class="bh"><span class="sq"></span>Acknowledgment</div>
+      <p>By signing, you acknowledge that outreach runs on your LinkedIn and Sales Navigator seat, that LinkedIn restrictions are a real platform risk that no operator can fully remove, and that you accept that risk in exchange for the added reach it creates.</p>
+      <div class="sig">
+        <div><div class="line"></div><div class="who">Mattan Danino, RISE DTC · Date</div></div>
+        <div><div class="line"></div><div class="who">Ivan Manfredi, InboundOnSteroids · Date</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. COMMS -->
+  <section>
+    <span class="snum">07 / How we work</span>
+    <h2 class="sh">How we stay in touch</h2>
+    <p class="lede">Async by default, so neither of us lives in meetings.</p>
+    <ul class="tight">
+      <li>A shared channel for anything day to day.</li>
+      <li>A weekly digest of what shipped and what got booked.</li>
+      <li>One 30-minute review a month.</li>
+      <li>Month one is front-loaded: we add a quick check in week two while your voice dials in.</li>
+    </ul>
+  </section>
+
+  <!-- 8. TIMELINE -->
+  <section style="border-bottom:none">
+    <span class="snum">08 / The timeline</span>
+    <h2 class="sh">What happens, and when</h2>
+    <table>
+      <tr><th>When</th><th>What lands</th></tr>
+      <tr><td class="d">Day 0 · Mon</td><td>Onboarding call. LinkedIn connects, ICP locks, X-Ray walkthrough, the four items handed over.</td></tr>
+      <tr><td class="d">Within 2 days</td><td><span class="hot">First content live on your feed, and first outreach live on your seat.</span></td></tr>
+      <tr><td class="d">Week 2</td><td>Lead magnets on your own domain and newsletter setup, once your DNS lands.</td></tr>
+      <tr><td class="d">Weeks 3 to 4</td><td>Cold at conservative volume, after the two-week seat warm-up.</td></tr>
+    </table>
+
+    <div class="signoff">
+      <p class="serif" style="font-size:18px;color:var(--ink)">Glad to have you on, Mattan. Let's build you a pipeline that runs while you deliver.</p>
+      <p class="name">Ivan Manfredi</p>
+      <p class="role">Operator · InboundOnSteroids</p>
+    </div>
+
+    <footer>
+      <div class="brandline" style="margin-bottom:0">
+        <span class="wordmark">RUN BY INBOUND<span class="on">ON</span>STEROIDS</span>
+        <span class="rule" style="height:2px;background:var(--hair)"></span>
+      </div>
+      <p style="margin-top:14px">Step-by-step checklist for the whole onboarding: <a href="https://resources.inboundonsteroids.com/rise-dtc-onboarding/steps/?k=rdtc-2026-onb">the steps page</a>.</p>
+      <p style="margin-top:8px">Private onboarding document for RISE DTC. Please do not share this link.</p>
+    </footer>
+  </section>
+
+</div>
+</body>
+</html>

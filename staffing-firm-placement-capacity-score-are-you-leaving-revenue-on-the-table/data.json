@@ -1,0 +1,764 @@
+{
+  "slug": "staffing-firm-placement-capacity-score-are-you-leaving-revenue-on-the-table",
+  "title": "Staffing Firm Placement Capacity Score",
+  "subtitle": "Find the bottleneck between your team size and your placement volume",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 18,
+  "persona_selector": {
+    "id": "firm_size",
+    "text": "What size is your staffing firm right now?",
+    "answers": [
+      {
+        "label": "Solo or 2-9 employees, scrappy mode",
+        "tag": "micro"
+      },
+      {
+        "label": "10-25 employees, growing fast",
+        "tag": "small"
+      },
+      {
+        "label": "26-50 employees, structured but stretched",
+        "tag": "mid"
+      },
+      {
+        "label": "51-75 employees, scaling and feeling the drag",
+        "tag": "large"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "lead_client_intake",
+      "name": "Lead & Client Intake",
+      "questions": [
+        {
+          "id": "intake_speed",
+          "text": "When a new job order comes in from a client, how long before a recruiter has it in hand and ready to work?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 24 hours, sometimes days",
+              "score": 1
+            },
+            {
+              "label": "Within 12-24 hours, depends on who is around",
+              "score": 2
+            },
+            {
+              "label": "Within 4-12 hours during business days",
+              "score": 3
+            },
+            {
+              "label": "Within 1-4 hours consistently",
+              "score": 4
+            },
+            {
+              "label": "Under 1 hour, automated routing in place",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_data_capture",
+          "text": "How is job order information captured from the client today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Email threads and phone notes, nothing structured",
+              "score": 1
+            },
+            {
+              "label": "A shared doc or spreadsheet someone updates",
+              "score": 2
+            },
+            {
+              "label": "Intake form, but data still gets re-typed into the ATS",
+              "score": 3
+            },
+            {
+              "label": "Intake form that pushes directly into our ATS",
+              "score": 4
+            },
+            {
+              "label": "Automated intake with validation, enrichment, and instant ATS sync",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_qualification",
+          "text": "How do you qualify a new client or job order before committing recruiter time?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We take everything and figure it out later",
+              "score": 1
+            },
+            {
+              "label": "Gut check from the owner or senior recruiter",
+              "score": 2
+            },
+            {
+              "label": "Loose checklist, applied inconsistently",
+              "score": 3
+            },
+            {
+              "label": "Standard scorecard run by one person",
+              "score": 4
+            },
+            {
+              "label": "Automated scoring with clear go or no-go criteria",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_handoff",
+          "text": "When a job order is assigned to a recruiter, what does the handoff look like?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A Slack message or a yell across the office",
+              "score": 1
+            },
+            {
+              "label": "Email with attachments, recruiter rebuilds context",
+              "score": 2
+            },
+            {
+              "label": "Ticket in a tool, but missing half the details",
+              "score": 3
+            },
+            {
+              "label": "Structured assignment in the ATS with full client context",
+              "score": 4
+            },
+            {
+              "label": "Automated assignment with brief, history, and starter shortlist attached",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your intake is the leak, and it is a big one",
+          "text": "Job orders are entering your firm through informal channels and losing hours or days before a recruiter touches them. Every hour of delay here compounds downstream because candidates get poached, clients lose patience, and your team starts every search behind the clock.",
+          "steps": [
+            "Build one standard intake form that every client and rep funnels into, no exceptions",
+            "Pipe that form directly into your ATS so nothing gets re-typed",
+            "Set a hard service level of 2 hours from intake to recruiter assignment, and track it weekly"
+          ]
+        },
+        "mid": {
+          "headline": "Intake works, but it is held together by people not systems",
+          "text": "You have process, but it depends on specific humans being available and paying attention. That works until volume spikes or someone takes a vacation, and then everything backs up. The fix is removing the human dependency from the routing and capture layer.",
+          "steps": [
+            "Audit every job order from the last 30 days and map where time was lost between client contact and recruiter assignment",
+            "Add automated routing rules so assignments happen the moment intake is complete",
+            "Build a daily intake dashboard so bottlenecks are visible before they cost you a placement"
+          ]
+        },
+        "high": {
+          "headline": "Intake is a real competitive advantage for you",
+          "text": "You are fast, structured, and your recruiters get high-context handoffs. Now the use is in pushing intake from reactive to proactive, using client signals to anticipate orders before they land.",
+          "steps": [
+            "Use client hiring patterns and historical data to forecast incoming orders weekly",
+            "Pre-build candidate shortlists for recurring client needs before the order lands",
+            "Layer in client-facing portals so clients self-serve order submission and status updates"
+          ]
+        }
+      }
+    },
+    {
+      "id": "candidate_sourcing",
+      "name": "Candidate Sourcing & Pipeline Health",
+      "questions": [
+        {
+          "id": "pipeline_readiness",
+          "text": "When a new job order comes in, what does your candidate pipeline look like for that role?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We start sourcing from zero every time",
+              "score": 1
+            },
+            {
+              "label": "We search the ATS, but most records are stale",
+              "score": 2
+            },
+            {
+              "label": "We have a rough talent pool, but it is not tagged well",
+              "score": 3
+            },
+            {
+              "label": "We have a tagged pool we can filter quickly",
+              "score": 4
+            },
+            {
+              "label": "We have warm, recently-contacted candidates ready for most common roles",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "sourcing_channels",
+          "text": "How many distinct sourcing channels are actively contributing candidates each month?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "One, basically just LinkedIn or one job board",
+              "score": 1
+            },
+            {
+              "label": "Two channels, but one does most of the work",
+              "score": 2
+            },
+            {
+              "label": "Three to four channels, manually managed",
+              "score": 3
+            },
+            {
+              "label": "Four to five channels with some automation",
+              "score": 4
+            },
+            {
+              "label": "Five or more channels, fully automated and measured",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "reengagement",
+          "text": "How do you re-engage candidates you have placed or interviewed before?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We do not, they go cold",
+              "score": 1
+            },
+            {
+              "label": "Occasional outreach when we remember",
+              "score": 2
+            },
+            {
+              "label": "Monthly newsletter or check-in",
+              "score": 3
+            },
+            {
+              "label": "Scheduled nurture sequences by skill or vertical",
+              "score": 4
+            },
+            {
+              "label": "Automated re-engagement triggered by role openings",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "data_hygiene",
+          "text": "How clean and current is the candidate data in your ATS?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Honestly, it is a graveyard",
+              "score": 1
+            },
+            {
+              "label": "Most records are outdated, we work around it",
+              "score": 2
+            },
+            {
+              "label": "Recent placements are clean, the rest is mixed",
+              "score": 3
+            },
+            {
+              "label": "We run quarterly cleanups and tagging",
+              "score": 4
+            },
+            {
+              "label": "Automated enrichment and refresh keeps records current",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are sourcing from scratch every single time",
+          "text": "Your team is paying the full sourcing cost on every order, which means recruiters are spending more time hunting than placing. The fastest revenue surface here is turning your ATS from a graveyard into an active pipeline.",
+          "steps": [
+            "Run a one-time ATS cleanup focused on your top 3 most common role types",
+            "Set up automated outreach sequences to re-engage past candidates monthly",
+            "Add at least one new sourcing channel and instrument it so you know what it produces"
+          ]
+        },
+        "mid": {
+          "headline": "You have a pipeline, but it is not doing enough work for you",
+          "text": "You have a pool of candidates, but it is not actively warm and it is not consistently tagged. That means every order still requires a sourcing sprint instead of a quick filter and outreach. Tighten the tagging and nurture and you will cut your time-to-shortlist in half.",
+          "steps": [
+            "Standardize your tagging taxonomy across skills, locations, and availability windows",
+            "Build automated nurture sequences segmented by skill vertical",
+            "Track candidate response rates by channel and double down on the top two performers"
+          ]
+        },
+        "high": {
+          "headline": "Your pipeline is a real asset, now monetize it",
+          "text": "You have warm, tagged, and active candidates. The next move is using that asset to win business, not just fill orders. Firms with a pipeline like yours can sell speed as a service.",
+          "steps": [
+            "Pitch clients on guaranteed shortlist times backed by your pipeline depth",
+            "Build a private talent showcase you can share with key accounts",
+            "Add predictive sourcing that fills pipeline gaps before the order arrives"
+          ]
+        }
+      }
+    },
+    {
+      "id": "matching_qualification",
+      "name": "Matching & Qualification Speed",
+      "questions": [
+        {
+          "id": "shortlist_time",
+          "text": "From job order to first qualified shortlist of candidates sent to the client, how long does it typically take?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 5 business days",
+              "score": 1
+            },
+            {
+              "label": "3 to 5 business days",
+              "score": 2
+            },
+            {
+              "label": "2 to 3 business days",
+              "score": 3
+            },
+            {
+              "label": "24 to 48 hours",
+              "score": 4
+            },
+            {
+              "label": "Under 24 hours consistently",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "qualification_process",
+          "text": "How is candidate qualification handled before they hit a client interview?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Whatever the recruiter feels like asking that day",
+              "score": 1
+            },
+            {
+              "label": "A loose script, applied inconsistently",
+              "score": 2
+            },
+            {
+              "label": "Standard screening questions, manually run",
+              "score": 3
+            },
+            {
+              "label": "Structured screening with scoring rubric",
+              "score": 4
+            },
+            {
+              "label": "Automated screening that pre-qualifies before recruiter time",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "matching_method",
+          "text": "How do you match candidates to job orders today?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Recruiter memory and gut feel",
+              "score": 1
+            },
+            {
+              "label": "Keyword search in the ATS",
+              "score": 2
+            },
+            {
+              "label": "Tag and filter combinations",
+              "score": 3
+            },
+            {
+              "label": "Scored matching across multiple criteria",
+              "score": 4
+            },
+            {
+              "label": "AI-assisted matching with explainable rankings",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "client_submission",
+          "text": "How are candidate submissions to clients formatted and delivered?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Raw resume attached to an email",
+              "score": 1
+            },
+            {
+              "label": "Resume plus a few notes in the email body",
+              "score": 2
+            },
+            {
+              "label": "Branded summary, manually built each time",
+              "score": 3
+            },
+            {
+              "label": "Templated submission pack auto-generated from ATS",
+              "score": 4
+            },
+            {
+              "label": "Client portal with structured profiles and live status",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your matching speed is costing you placements",
+          "text": "If shortlists take more than 3 business days, you are losing candidates to faster competitors and watching clients go cold. The qualification step is almost certainly the biggest time sink, and it is the easiest one to systematize.",
+          "steps": [
+            "Document your top 10 screening questions and build them into a standard scorecard",
+            "Pre-screen candidates with an automated intake before recruiter calls",
+            "Set a 48-hour shortlist target and measure every order against it"
+          ]
+        },
+        "mid": {
+          "headline": "You match well, but you match slowly",
+          "text": "Your team produces quality shortlists, but the speed is not where it needs to be to win competitive searches. The lever here is removing manual steps from qualification and submission so recruiter time goes into relationship work, not formatting.",
+          "steps": [
+            "Automate the candidate submission pack generation from your ATS",
+            "Add scored matching so recruiters spend less time deciding who to call first",
+            "Track time-to-shortlist weekly and treat anything over 48 hours as a process bug"
+          ]
+        },
+        "high": {
+          "headline": "Speed is your edge, now scale it",
+          "text": "You are fast, accurate, and your submissions look professional. The next layer is using that speed to take on more orders per recruiter without dropping quality.",
+          "steps": [
+            "Add AI-assisted matching to handle the first pass on every order",
+            "Open a client-facing portal so clients can review and move candidates without back-and-forth",
+            "Benchmark your speed publicly and use it in your sales pitch"
+          ]
+        }
+      }
+    },
+    {
+      "id": "recruiter_productivity",
+      "name": "Recruiter Productivity & Workload",
+      "questions": [
+        {
+          "id": "admin_time",
+          "text": "How much of an average recruiter's day is spent on administrative work versus actual recruiting?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than half the day is admin",
+              "score": 1
+            },
+            {
+              "label": "About 40 to 50 percent is admin",
+              "score": 2
+            },
+            {
+              "label": "Around 30 percent is admin",
+              "score": 3
+            },
+            {
+              "label": "Around 20 percent is admin",
+              "score": 4
+            },
+            {
+              "label": "Under 15 percent, recruiters mostly recruit",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "role_clarity",
+          "text": "How clearly are roles split between recruiting, sales, admin, and operations?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Everyone does everything, no clear lanes",
+              "score": 1
+            },
+            {
+              "label": "Loose split, recruiters still do admin and sales",
+              "score": 2
+            },
+            {
+              "label": "Defined roles, but lots of overlap",
+              "score": 3
+            },
+            {
+              "label": "Clear lanes with occasional crossover",
+              "score": 4
+            },
+            {
+              "label": "Sharp role separation with dedicated ops support",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "tooling",
+          "text": "How well do your tools talk to each other?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "They do not, we copy and paste between systems",
+              "score": 1
+            },
+            {
+              "label": "One or two integrations, the rest is manual",
+              "score": 2
+            },
+            {
+              "label": "Most core tools are connected, with some gaps",
+              "score": 3
+            },
+            {
+              "label": "Solid integrations across ATS, CRM, email, and calendar",
+              "score": 4
+            },
+            {
+              "label": "Fully integrated stack with automated workflows tying it all together",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "recruiter_capacity",
+          "text": "On average, how many active job orders can one recruiter handle effectively?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 to 3, and they are still overwhelmed",
+              "score": 1
+            },
+            {
+              "label": "4 to 6",
+              "score": 2
+            },
+            {
+              "label": "7 to 10",
+              "score": 3
+            },
+            {
+              "label": "11 to 15",
+              "score": 4
+            },
+            {
+              "label": "More than 15 with quality maintained",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your recruiters are buried in work that should not be theirs",
+          "text": "If recruiters are spending half their day on admin, you are paying recruiter salaries for assistant work. Every hour you free up here goes directly into more conversations, more submissions, and more placements.",
+          "steps": [
+            "Track recruiter time for one week and identify the top 3 admin tasks eating their day",
+            "Move at least one of those tasks to an ops person or automation this month",
+            "Establish a minimum daily call and submission target so the time you free up actually converts"
+          ]
+        },
+        "mid": {
+          "headline": "Your team is productive, but capped by tooling",
+          "text": "Your recruiters are doing real recruiting work, but they are losing time at the seams between tools. Closing those seams is where the next 20 percent of capacity lives.",
+          "steps": [
+            "Map your tool stack and identify every manual handoff between systems",
+            "Automate the top 3 handoffs using a workflow tool like n8n",
+            "Rebalance recruiter loads so the highest performers get the most active orders"
+          ]
+        },
+        "high": {
+          "headline": "Your team is humming, now expand the ceiling",
+          "text": "You have clean role lanes, integrated tools, and recruiters who actually recruit. The next move is raising the ceiling on what one recruiter can handle by giving them AI-assisted support.",
+          "steps": [
+            "Deploy AI assistants for first-touch outreach, screening, and scheduling",
+            "Add real-time dashboards so recruiters self-manage workload",
+            "Pilot a model where one senior recruiter runs 20 plus orders with junior or AI support"
+          ]
+        }
+      }
+    },
+    {
+      "id": "data_visibility",
+      "name": "Data, Reporting & Decision Speed",
+      "questions": [
+        {
+          "id": "kpi_tracking",
+          "text": "How do you track core KPIs like submissions, interviews, and placements?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We do not track them consistently",
+              "score": 1
+            },
+            {
+              "label": "Manual spreadsheets updated weekly",
+              "score": 2
+            },
+            {
+              "label": "Reports pulled from the ATS on request",
+              "score": 3
+            },
+            {
+              "label": "Standing weekly dashboard reviewed by the team",
+              "score": 4
+            },
+            {
+              "label": "Live dashboards with alerts on key thresholds",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "data_trust",
+          "text": "How much do you trust the numbers coming out of your systems?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Not at all, the data is a mess",
+              "score": 1
+            },
+            {
+              "label": "A little, we always double check",
+              "score": 2
+            },
+            {
+              "label": "Mostly, with known exceptions",
+              "score": 3
+            },
+            {
+              "label": "Strongly, the data is clean",
+              "score": 4
+            },
+            {
+              "label": "Completely, audited and reconciled regularly",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "decision_speed",
+          "text": "How fast can you answer a question like which client is most profitable this quarter?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Days of digging",
+              "score": 1
+            },
+            {
+              "label": "A few hours of pulling reports",
+              "score": 2
+            },
+            {
+              "label": "An hour or so in the ATS",
+              "score": 3
+            },
+            {
+              "label": "A few minutes in a dashboard",
+              "score": 4
+            },
+            {
+              "label": "Instant, the dashboard answers it on demand",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "forecasting",
+          "text": "How well can you forecast next quarter's revenue from current pipeline?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We guess based on gut feel",
+              "score": 1
+            },
+            {
+              "label": "Rough estimate from open orders",
+              "score": 2
+            },
+            {
+              "label": "Manual forecast updated monthly",
+              "score": 3
+            },
+            {
+              "label": "Pipeline-weighted forecast updated weekly",
+              "score": 4
+            },
+            {
+              "label": "Live forecast with confidence intervals tied to historical conversion rates",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You are running the firm on instinct, and it is expensive",
+          "text": "Without trustworthy data, every decision takes longer and costs more. You cannot fix bottlenecks you cannot see, and you cannot bet on what is working if you do not know what is working. Reporting is not a nice-to-have, it is how you stop guessing.",
+          "steps": [
+            "Pick 5 core KPIs and commit to tracking them weekly, even manually at first",
+            "Audit your ATS data and clean up the fields that feed those 5 KPIs",
+            "Build one simple dashboard, even a spreadsheet, that you review every Monday"
+          ]
+        },
+        "mid": {
+          "headline": "You have data, but it is not driving decisions fast enough",
+          "text": "You can pull numbers when you need them, but the lag between question and answer is too long. By the time you spot a problem, it has been costing you for a week or more. The fix is moving from pull reporting to push dashboards.",
+          "steps": [
+            "Build live dashboards that surface your top KPIs without anyone having to pull a report",
+            "Add alerts on key thresholds so problems surface before the weekly review",
+            "Standardize a weekly numbers meeting that is data-first and gut-feel-second"
+          ]
+        },
+        "high": {
+          "headline": "Your data is sharp, now use it to compound",
+          "text": "You trust your numbers, you can answer questions fast, and your forecasts hold up. The next layer is predictive, using the data you have to drive the decisions you have not made yet.",
+          "steps": [
+            "Build predictive models for placement likelihood by client and role type",
+            "Use historical data to optimize recruiter assignment automatically",
+            "Productize your reporting and offer client-facing analytics as a premium service"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Ready to turn your score into more placements?",
+    "description": "You know where the bottleneck is. Now let's build the system that fixes it. Book a 30-minute strategy call and I'll walk you through exactly what to automate first, what to leave alone, and what one change will surface the most placement capacity for your firm.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

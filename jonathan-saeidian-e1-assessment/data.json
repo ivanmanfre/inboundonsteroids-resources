@@ -1,0 +1,579 @@
+{
+ "slug": "jonathan-saeidian-e1-assessment",
+ "title": "Agency Growth Readiness Score",
+ "subtitle": "Measures how well your fundamentals, AI operations, hiring culture, and growth stack are aligned to scale without shortcuts.",
+ "brand": {
+  "accent": "#5B6470",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "fundamentals_positioning",
+   "name": "Fundamentals & Positioning",
+   "questions": [
+    {
+     "id": "fundamentals_positioning_q1",
+     "text": "How clearly defined is your unique positioning in your market?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We offer essentially the same services as other agencies in our space",
+       "score": 1
+      },
+      {
+       "label": "We have some differentiation but it is not sharp or ownable",
+       "score": 2
+      },
+      {
+       "label": "We have a clear niche but have not built real moats around it",
+       "score": 3
+      },
+      {
+       "label": "We have strong positioning backed by specific case study results",
+       "score": 4
+      },
+      {
+       "label": "We have a defensible position that competitors copy but cannot replicate",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "fundamentals_positioning_q2",
+     "text": "How much of your new business comes from relationships and referrals versus cold outbound or paid acquisition?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost all new business comes from cold outbound or paid channels",
+       "score": 1
+      },
+      {
+       "label": "Occasional referrals, but we depend on paid or outbound to fill the pipeline",
+       "score": 2
+      },
+      {
+       "label": "Roughly half comes from relationships, half from cold channels",
+       "score": 3
+      },
+      {
+       "label": "Relationships are our primary pipeline source with cold channels as backup",
+       "score": 4
+      },
+      {
+       "label": "Relationships and reputation fill our pipeline without paid or cold outbound",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "fundamentals_positioning_q3",
+     "text": "When results dip or growth stalls, what is your first move?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We add a new channel or test a trending tactic",
+       "score": 1
+      },
+      {
+       "label": "We change the creative or adjust the offer quickly",
+       "score": 2
+      },
+      {
+       "label": "We review the data and tweak current tactics",
+       "score": 3
+      },
+      {
+       "label": "We audit the fundamentals — offer, messaging, audience — before touching any tactic",
+       "score": 4
+      },
+      {
+       "label": "We always run a full diagnostic on fundamentals first, with data, before any channel change",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your fundamentals need a real audit before anything else.",
+     "text": "You're trying to scale on a shaky foundation. The two moats that actually matter are relationships and unique positioning. If competitors can screenshot your work and copy it pixel for pixel, you have not built either. Start there before adding any new channels or tools.",
+     "steps": [
+      "Write one sharp sentence describing who you serve, what you do, and why you're different — then test it against your three best clients and see if they'd agree",
+      "Track your last 10 new clients and find how each one came in. If less than 30% came from a relationship or referral, you do not have a relationship moat yet",
+      "This quarter: every time results dip, make yourself audit the offer and messaging before touching any channel"
+     ]
+    },
+    "mid": {
+     "headline": "You have a foundation — now make it defensible.",
+     "text": "You know what you stand for, but your positioning is not moated yet. Most agencies at this stage have a niche on paper but have not built the case study proof or relationship depth to own it. Fix that before you scale spend.",
+     "steps": [
+      "Take your best 3 case studies and rewrite each as a specific outcome story: before and after numbers with a time window attached",
+      "Run a relationship audit — reach out to every past client and warm prospect this month and track who responds. That is your relationship capital",
+      "Pick one positioning claim you want to own and run all content and outreach around it for 90 days without shifting it"
+     ]
+    },
+    "high": {
+     "headline": "Solid. Now protect what competitors cannot screenshot.",
+     "text": "You've got positioning and relationships working. The risk at this stage is complacency — letting shortcuts creep into your creative or operations because things are going well. That is when the cracks show up.",
+     "steps": [
+      "Document what makes your client relationships sticky and build a system to replicate that experience for every new client",
+      "Review your positioning quarterly against what competitors are copying — if they're lifting your branding, update your creative before they close the gap",
+      "Make the fundamentals audit part of your quarterly leadership review, not just a tool you reach for when things dip"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ai_automation_maturity",
+   "name": "AI & Automation Maturity",
+   "questions": [
+    {
+     "id": "ai_automation_maturity_q1",
+     "text": "How systematically does your team use AI and automation for internal operations?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A few people use AI tools individually with no shared system or process",
+       "score": 1
+      },
+      {
+       "label": "We have some AI tools set up but no shared process or team training",
+       "score": 2
+      },
+      {
+       "label": "We have automated a few tasks but it is ad hoc and undocumented",
+       "score": 3
+      },
+      {
+       "label": "We have identified key workflows and automated them with training and documentation",
+       "score": 4
+      },
+      {
+       "label": "We run a self-hosted automation stack with documented, trained, and maintained workflows",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_automation_maturity_q2",
+     "text": "When evaluating AI tools or agents for your business, how do you make the call?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We adopt what is popular or what our peers are already using",
+       "score": 1
+      },
+      {
+       "label": "We try one tool and stick with it unless it clearly fails",
+       "score": 2
+      },
+      {
+       "label": "We test two or three tools side by side occasionally",
+       "score": 3
+      },
+      {
+       "label": "We run structured tests with defined success metrics before committing",
+       "score": 4
+      },
+      {
+       "label": "We run ongoing, unbiased benchmarks across tools and switch when the data supports it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ai_automation_maturity_q3",
+     "text": "How do you use AI in your creative and content production?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "AI generates most of our ads, scripts, and content with minimal human edits",
+       "score": 1
+      },
+      {
+       "label": "We rely heavily on AI UGC and generated creative for speed and cost savings",
+       "score": 2
+      },
+      {
+       "label": "AI generates drafts; a human reviews and approves before anything goes out",
+       "score": 3
+      },
+      {
+       "label": "AI speeds up ideation and variation; humans make all final creative decisions",
+       "score": 4
+      },
+      {
+       "label": "AI is one part of our creative variation — it accelerates testing but never replaces quality",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hours_per_person",
+     "type": "number",
+     "text": "On average, how many hours per week does each team member spend on tasks that could realistically be automated?",
+     "hint": "Think recurring reporting, data entry, client follow-ups, and manual admin. Most teams underestimate this — be honest.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 30,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x === 0 ? 100 : Math.max(0, 100 - (x / 30) * 100)"
+    },
+    {
+     "id": "team_members_manual",
+     "type": "number",
+     "text": "How many team members regularly perform these manual tasks?",
+     "hint": "Count everyone who spends meaningful time each week on work that should be automated.",
+     "suffix": "people",
+     "min": 1,
+     "max": 200,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "50"
+    },
+    {
+     "id": "hourly_cost",
+     "type": "number",
+     "text": "What is the average fully-loaded hourly cost for these team members?",
+     "hint": "Fully-loaded means salary + benefits + overhead. Quick estimate: divide annual fully-loaded comp by 2,000 working hours.",
+     "suffix": "$/hour",
+     "min": 10,
+     "max": 500,
+     "step": 5,
+     "default": 50,
+     "normalize_formula": "50"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "AI is costing you money right now — just not in the way you think.",
+     "text": "You're either not using AI, or you're using it in ways that create real risk. AI-generated creative with no human review and no disclosure is a liability, not an advantage. The real opportunity is internal: find the 3 most time-consuming tasks your team does every week and automate those first.",
+     "steps": [
+      "List 3 tasks your team repeats every week that follow a predictable pattern — those are your first automation targets",
+      "Set up your own n8n instance and have a dev or devops build the first automation, then train the team on it before building the next one",
+      "Stop using AI UGC or generated testimonials without disclosure — as regulations expand past New York, the legal exposure outweighs any CPL savings",
+      "Test at least two AI tools for any given workflow before committing — stay unbiased and let the data decide, not what is trending"
+     ]
+    },
+    "mid": {
+     "headline": "You're using AI, but you're not building infrastructure.",
+     "text": "Ad hoc automation is better than nothing, but it breaks under scale and creates knowledge silos. The agencies doubling this year have a documented, trained automation stack — not a collection of one-off shortcuts held together by whoever built them.",
+     "steps": [
+      "Document every automation you have built: what goes in, what comes out, who owns it, and what to do when it breaks",
+      "Run a real benchmark between your current AI tools and at least one alternative — do not assume your current setup is optimal",
+      "Find the one automation saving the most hours and make it bulletproof before building new ones on top of it"
+     ]
+    },
+    "high": {
+     "headline": "You're using AI the right way. Now track what it's actually worth.",
+     "text": "You're treating AI as a force multiplier, not a shortcut. That is the right frame. At this stage the job is to quantify what your stack is saving and use that data to make better investment decisions — not just assume it is working because you built it.",
+     "steps": [
+      "Track time saved per automation quarterly and report it to leadership — this data shapes where you build next",
+      "Stay unbiased on tooling. What performs best today may fall behind in 3 months — keep running benchmarks",
+      "Audit your AI creative use annually for compliance risk as disclosure laws expand beyond New York"
+     ]
+    }
+   }
+  },
+  {
+   "id": "talent_culture",
+   "name": "Talent & Culture",
+   "questions": [
+    {
+     "id": "talent_culture_q1",
+     "text": "When a team member hits a difficult problem or makes a mistake, what is your typical response as a leader?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I step in, fix it myself, and explain what went wrong",
+       "score": 1
+      },
+      {
+       "label": "I tell them exactly what to do next time",
+       "score": 2
+      },
+      {
+       "label": "I explain the right approach and have them execute it",
+       "score": 3
+      },
+      {
+       "label": "I ask questions to guide them toward the answer",
+       "score": 4
+      },
+      {
+       "label": "I consistently ask 'What would you do?' and let them own the solution",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "talent_culture_q2",
+     "text": "What is your primary filter when making a new hire?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Credentials and technical skills are the main filter",
+       "score": 1
+      },
+      {
+       "label": "Portfolio quality and past results drive most decisions",
+       "score": 2
+      },
+      {
+       "label": "A mix of technical skills and rough culture fit",
+       "score": 3
+      },
+      {
+       "label": "We weight attitude and care for clients as heavily as technical ability",
+       "score": 4
+      },
+      {
+       "label": "We hire on gut and heart — whether this person truly cares about the work and the clients",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "talent_culture_q3",
+     "text": "How involved are your executives or founders in day-to-day client relationships?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Executives are the main client contact on most accounts",
+       "score": 1
+      },
+      {
+       "label": "Senior staff lead but executives join most client calls",
+       "score": 2
+      },
+      {
+       "label": "Account managers handle day-to-day; executives join monthly or for escalations",
+       "score": 3
+      },
+      {
+       "label": "The team owns client relationships and escalates to execs when genuinely needed",
+       "score": 4
+      },
+      {
+       "label": "The team leads everything; executives are backstops, not front-line contacts",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your leadership model is slowing the team down.",
+     "text": "If you're the smartest person in every room, you've built a ceiling. The smartest-person-in-the-room hire is not the one who stays — the one who cares about the client and the work is. And if executives are on every client call, the team never develops the confidence to run without you.",
+     "steps": [
+      "This week: every time a team member asks you a question, respond with 'What do you think?' before giving your own answer. Do it for 30 days straight",
+      "Audit your last 3 hires — what actually predicted performance? Credentials or attitude? Use that to rewrite your next job description",
+      "Pick one account where an executive is the main contact and transition full ownership to a team member within 60 days"
+     ]
+    },
+    "mid": {
+     "headline": "Your team is developing — but execs are still in the way more than they need to be.",
+     "text": "You're hiring for attitude and giving the team room to grow, but the instinct to step in is still strong. That instinct costs the team more than it saves you. The goal is a team that runs client relationships so well you're proud to be out of them.",
+     "steps": [
+      "Remove yourself from at least two recurring client calls this quarter — hand them fully to a team member with no safety net attached",
+      "Create a simple internal escalation rule: what does a team member have to try before they bring a problem to leadership?",
+      "Review the hire from the past year who surprised you most positively — what stood out at the interview? Build that into your next candidate scoring"
+     ]
+    },
+    "high": {
+     "headline": "Strong culture. Protect it as you scale.",
+     "text": "You've figured out that caring beats credentials and that the team runs best when execs get out of the way. The risk now is that hiring speed at scale erodes what you have built. Keep gut and heart as your primary screen — not just a tiebreaker when the scores are close.",
+     "steps": [
+      "Document your hiring philosophy so it survives beyond you — write down what 'caring about clients' actually looks like in a first interview",
+      "As the team grows, build a way for senior team members to develop others on client relationships, not just technical skills",
+      "Revisit your escalation process every 6 months as team size changes — what worked at 10 people tends to break at 30"
+     ]
+    }
+   }
+  },
+  {
+   "id": "growth_stack_integration",
+   "name": "Growth Stack Integration",
+   "questions": [
+    {
+     "id": "growth_stack_integration_q1",
+     "text": "How coordinated are your paid media, SEO, creative, and retention efforts in terms of shared strategy and data?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Each channel runs independently with its own goals and reporting",
+       "score": 1
+      },
+      {
+       "label": "Channels share some data but strategy decisions happen in silos",
+       "score": 2
+      },
+      {
+       "label": "We have shared dashboards but each channel still runs its own strategy",
+       "score": 3
+      },
+      {
+       "label": "Channels are aligned on shared KPIs and a common performance roadmap",
+       "score": 4
+      },
+      {
+       "label": "Acquisition, retention, creative, and measurement run as one integrated growth system",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "growth_stack_integration_q2",
+     "text": "When evaluating a new ad platform or channel, how do you make the investment decision?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We follow what is trending or what competitors appear to be testing",
+       "score": 1
+      },
+      {
+       "label": "We test based on vendor pitches or peer recommendations",
+       "score": 2
+      },
+      {
+       "label": "We run small tests but decisions are mostly intuition-based",
+       "score": 3
+      },
+      {
+       "label": "We test with clear hypotheses and defined pass/fail metrics before committing budget",
+       "score": 4
+      },
+      {
+       "label": "We test rigorously, compare intent quality vs. CPL, and make fully data-led platform decisions",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "growth_stack_integration_q3",
+     "text": "How quickly does your team act on campaign performance insights?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Insights sit in reports that rarely drive actual changes",
+       "score": 1
+      },
+      {
+       "label": "We review monthly and adjust quarterly",
+       "score": 2
+      },
+      {
+       "label": "We review weekly but changes take 1-2 weeks to get into market",
+       "score": 3
+      },
+      {
+       "label": "We review weekly and can act within a few days",
+       "score": 4
+      },
+      {
+       "label": "We have systems that surface insights and allow same-week iteration on creative or targeting",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're running channels, not a growth system.",
+     "text": "Siloed channels mean siloed data, which means slow decisions and CPLs that are higher than they need to be. I have seen brands cut media spend by 30% just by aligning paid and retention data into one view. That is not a technology problem — it is a coordination problem.",
+     "steps": [
+      "Get all channel owners together this week and map every metric each tracks. Find the 3 that all channels share and start reporting those together",
+      "Before your next channel test, write down what success looks like before you spend a dollar",
+      "Set a 7-day review cadence for your top campaign and track how long it takes your team to actually act on what you find"
+     ]
+    },
+    "mid": {
+     "headline": "Shared dashboards are not the same as a shared strategy.",
+     "text": "You have data alignment but strategic alignment is still missing. A shared dashboard that each channel ignores in its own planning is well-organized overhead. The goal is one growth roadmap — not four channel plans that happen to live in the same doc.",
+     "steps": [
+      "Create a single performance roadmap with one owner, one set of priorities, reviewed weekly by all channel leads",
+      "Before your next channel test, write a one-paragraph hypothesis: what you are testing, why you expect it to work, and what the pass/fail threshold is",
+      "Find the insight from last quarter that took the longest to act on — trace why, and remove that blocker"
+     ]
+    },
+    "high": {
+     "headline": "You're running a real growth system. Now cut the time from insight to market.",
+     "text": "Integrated strategy and fast iteration are the right combination. At this stage, every day between an insight identified and a change live in market is a day of wasted spend. That gap is where the right automation layer earns its cost.",
+     "steps": [
+      "Map every step between an insight identified and a change live in market — find the single biggest time bottleneck and address it first",
+      "Review your channel mix quarterly against intent quality, not just volume — high-volume, low-intent traffic is a growth trap",
+      "Keep running unbiased channel tests even when the current stack is performing — what works at your current scale may not work at the next"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "weekly_wasted_spend",
+   "label": "Weekly cost of unautomated manual work",
+   "format": "currency_per_period",
+   "formula": "hours_per_person * team_members_manual * hourly_cost",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_wasted_spend",
+   "label": "Annual cost of unautomated manual work",
+   "format": "currency",
+   "formula": "hours_per_person * team_members_manual * hourly_cost * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your situation right now?",
+  "answers": [
+   {
+    "label": "Agency founder or CEO",
+    "tag": "agency-founder"
+   },
+   {
+    "label": "Brand-side CMO or VP Marketing",
+    "tag": "brand-leader"
+   },
+   {
+    "label": "Startup founder scaling growth",
+    "tag": "startup-founder"
+   },
+   {
+    "label": "In-house growth lead or media buyer",
+    "tag": "growth-lead"
+   }
+  ]
+ }
+}

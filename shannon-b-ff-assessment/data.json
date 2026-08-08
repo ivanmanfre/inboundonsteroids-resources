@@ -1,0 +1,609 @@
+{
+ "slug": "shannon-b-ff-assessment",
+ "title": "Pipeline Control Score",
+ "subtitle": "See how much of your growth depends on a system you own vs. who you happen to know.",
+ "brand": {
+  "accent": "#336b87",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "icp_message_clarity",
+   "name": "ICP & Message Clarity",
+   "questions": [
+    {
+     "id": "icp_definition",
+     "text": "How would you describe your ideal client profile right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We know it when we see it but haven't written it down",
+       "score": 1
+      },
+      {
+       "label": "We have a rough sketch by industry or company size",
+       "score": 2
+      },
+      {
+       "label": "We have a documented ICP with firmographics and pain points",
+       "score": 3
+      },
+      {
+       "label": "We have a detailed ICP including triggers, the language they use, and what they're losing sleep over",
+       "score": 4
+      },
+      {
+       "label": "We've validated our ICP through outreach data and buyer interviews, and it drives every campaign we run",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "message_frame",
+     "text": "When you write outreach copy or ad headlines, what do you typically lead with?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "What our service is or what we do",
+       "score": 1
+      },
+      {
+       "label": "A benefit we provide, in general terms",
+       "score": 2
+      },
+      {
+       "label": "The outcome the buyer gets",
+       "score": 3
+      },
+      {
+       "label": "The specific problem the buyer experiences, in their own words",
+       "score": 4
+      },
+      {
+       "label": "The exact scenario they're worried about before they've heard of us — pulled from real buyer conversations",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "message_resonance",
+     "text": "When you reach cold audiences, how does your message typically land?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Mostly silence — we rarely hear back",
+       "score": 1
+      },
+      {
+       "label": "Occasional interest, but we have to do a lot of explaining",
+       "score": 2
+      },
+      {
+       "label": "Warm leads respond; cold audiences rarely do",
+       "score": 3
+      },
+      {
+       "label": "Most of our ICP recognizes the problem we name right away",
+       "score": 4
+      },
+      {
+       "label": "Cold strangers say 'this is exactly what I've been dealing with' without us prompting them",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "targeting_precision",
+     "text": "How specific is your targeting when you run outbound campaigns or paid ads?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We target broadly and refine later based on what comes back",
+       "score": 1
+      },
+      {
+       "label": "We segment by industry or company size",
+       "score": 2
+      },
+      {
+       "label": "We segment by industry, role, and company size",
+       "score": 3
+      },
+      {
+       "label": "We target specific roles at companies showing known buying triggers",
+       "score": 4
+      },
+      {
+       "label": "We build lists from validated signals — intent data, job changes, tech stack, funding events",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your message is still speaking to you, not your buyer.",
+     "text": "The most expensive problem in outbound isn't bad deliverability or short sequences — it's writing to a category instead of a person. Cold email, ads, and SEO all assume you know exactly who you're talking to and what they're worried about when no one's watching. Nobody wakes up and thinks 'I need a lead generation system.' They think 'I don't know where the next client is coming from.'",
+     "steps": [
+      "Write down the last three deals you closed. What problem did each of them describe in their own words before they hired you?",
+      "Pull your last five outreach emails and highlight every sentence that describes what you do vs. what the buyer actually experiences.",
+      "Rewrite your core outreach message using the buyer's words instead of your category label and test it against your current version."
+     ]
+    },
+    "mid": {
+     "headline": "You've got the foundation. The gap is specificity.",
+     "text": "You're not leading with your service anymore — that's real progress. But 'the outcome the buyer gets' isn't enough when you're talking to cold strangers. The email that says 'I don't know where the next client is coming from' outperforms 'we generate more leads' every time. The reply lives in the detail.",
+     "steps": [
+      "Add a trigger row to your ICP: what happened in their business 60-90 days before they needed what you sell?",
+      "Pull one recent cold reply and map backwards — what specific language in your message made them respond?",
+      "Test one subject line or ad headline built entirely from buyer language against your current best performer."
+     ]
+    },
+    "high": {
+     "headline": "You're running on a message-market fit most businesses never reach.",
+     "text": "The specificity you're working from compounds. A focused campaign to 200 people who match your ICP exactly will get more meetings than 2,000 who roughly fit. Keep narrowing, not broadening.",
+     "steps": [
+      "Document your ICP in writing so the next person who touches your campaigns doesn't have to guess.",
+      "Track which segments convert at the highest rate and allocate more budget there first.",
+      "Build a voice library of exact phrases your buyers use — pull from call recordings, email replies, and intake forms."
+     ]
+    }
+   }
+  },
+  {
+   "id": "pipeline_independence",
+   "name": "Pipeline Independence",
+   "questions": [
+    {
+     "id": "pipeline_source",
+     "text": "When you look at where new clients came from last quarter, what's most true?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost all came from referrals or people who already knew me",
+       "score": 1
+      },
+      {
+       "label": "Mostly referrals with a few from online presence",
+       "score": 2
+      },
+      {
+       "label": "A mix of warm and cold, but warm still dominates",
+       "score": 3
+      },
+      {
+       "label": "Roughly split between my warm network and outbound or inbound channels",
+       "score": 4
+      },
+      {
+       "label": "More than half came from people who had no prior connection to me",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "referral_dependency",
+     "text": "If your top three referral sources went quiet for the next six months, what happens to your business?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We'd be in serious trouble — there's no backup",
+       "score": 1
+      },
+      {
+       "label": "We'd feel it badly and scramble to fill the gap",
+       "score": 2
+      },
+      {
+       "label": "It would hurt but we have some outbound activity running",
+       "score": 3
+      },
+      {
+       "label": "We'd see a dip but recover within a quarter",
+       "score": 4
+      },
+      {
+       "label": "Revenue would barely move — outbound and inbound cover the gap",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "revenue_predictability",
+     "text": "How predictable is next quarter's new revenue right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I genuinely don't know where the next client is coming from",
+       "score": 1
+      },
+      {
+       "label": "I have a few conversations happening but nothing certain",
+       "score": 2
+      },
+      {
+       "label": "I can see one or two deals likely to close",
+       "score": 3
+      },
+      {
+       "label": "I have a visible pipeline with enough to hit my targets",
+       "score": 4
+      },
+      {
+       "label": "I can forecast next quarter's new revenue within 20% based on what's already in the system",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "avg_monthly_retainer",
+     "type": "number",
+     "text": "What's the average monthly value of a new client contract or retainer?",
+     "hint": "If you work on project fees, use a monthly equivalent. This is used to show your pipeline in dollar terms.",
+     "suffix": "USD/month",
+     "min": 500,
+     "max": 50000,
+     "step": 500,
+     "default": 3000,
+     "normalize_formula": "x >= 10000 ? 100 : x >= 5000 ? 80 : x >= 2500 ? 60 : x >= 1000 ? 40 : 20"
+    },
+    {
+     "id": "deals_closed_monthly",
+     "type": "number",
+     "text": "How many new clients did you close in the last 30 days?",
+     "hint": "Signed agreements only, not demos or proposals sent. Combined with your retainer value above to show your current monthly pipeline rate.",
+     "suffix": "clients",
+     "min": 0,
+     "max": 30,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "x < 1 ? 0 : x < 2 ? 40 : x < 4 ? 70 : x < 6 ? 90 : 100"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your pipeline lives in a network that nobody outside it can find.",
+     "text": "Referrals feel like validation — and they are. But they're also invisible to everyone who didn't happen to meet you at the right event. When those relationships shift, and they will, there's no floor underneath the revenue. Cold email doesn't replace referrals. It makes sure you're not invisible to everyone who didn't already find you.",
+     "steps": [
+      "Count how many new clients last quarter had zero prior connection to you before your first conversation. Be honest about the number.",
+      "Pick one outbound channel — cold email or paid — and commit to testing it seriously for 90 days with a real list and a clear offer.",
+      "Set a specific target: what percentage of new revenue do you want coming from cold sources by the end of this year?"
+     ]
+    },
+    "mid": {
+     "headline": "You have outbound moving but your network is still carrying most of the weight.",
+     "text": "Having something in the outbound column is different from having it work consistently. The goal isn't to replace what's working — it's to build a second engine that doesn't depend on who you know.",
+     "steps": [
+      "Map your last 10 new clients by source: referral, inbound, or cold. Be honest about where each actually came from.",
+      "Find the one outbound channel producing the most traction and put more into it before adding new channels.",
+      "Build a 90-day pipeline target that includes a specific number of closes from cold sources."
+     ]
+    },
+    "high": {
+     "headline": "You've built a pipeline that doesn't stop when your phone stops ringing.",
+     "text": "Most businesses at your stage are still referral-dependent without knowing it. You're not. That's an asset that compounds — a cold pipeline builds its own referrals over time as the client base grows.",
+     "steps": [
+      "Document what's working in writing so it survives when team members change.",
+      "Test one new segment with your existing cold system before you add new channels.",
+      "Build a referral layer on top of your cold pipeline — that combination is where the ceiling disappears."
+     ]
+    }
+   }
+  },
+  {
+   "id": "outreach_system",
+   "name": "Outreach System",
+   "questions": [
+    {
+     "id": "list_quality",
+     "text": "How would you describe the quality of your current outreach list?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We buy lists or scrape broadly — they're not well targeted",
+       "score": 1
+      },
+      {
+       "label": "We have a rough list by industry, not deeply filtered",
+       "score": 2
+      },
+      {
+       "label": "Our list is filtered by industry, company size, and role",
+       "score": 3
+      },
+      {
+       "label": "Our list targets the right companies and contacts, built from clear ICP criteria",
+       "score": 4
+      },
+      {
+       "label": "Our list is built from validated buying signals and scrubbed for deliverability before we send",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "sequence_length",
+     "text": "When you run email outreach, how long are your sequences?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't run cold email outreach",
+       "score": 1
+      },
+      {
+       "label": "One or two emails — if there's no reply we move on",
+       "score": 2
+      },
+      {
+       "label": "Three to four email touches",
+       "score": 3
+      },
+      {
+       "label": "Five or more touches spread across two to three weeks",
+       "score": 4
+      },
+      {
+       "label": "Multi-step sequences over three to four weeks with value-add content between asks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "technical_setup",
+     "text": "How is your email infrastructure set up for deliverability?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not sure what that means or where we stand",
+       "score": 1
+      },
+      {
+       "label": "We send from our main domain without much technical configuration",
+       "score": 2
+      },
+      {
+       "label": "We have SPF and DKIM configured",
+       "score": 3
+      },
+      {
+       "label": "We have SPF, DKIM, and DMARC set up and send from warmed domains",
+       "score": 4
+      },
+      {
+       "label": "We run dedicated sending domains, monitor deliverability actively, and rotate infrastructure when needed",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "weekly_outreach_hours",
+     "type": "number",
+     "text": "How many hours per week does your team spend on manual prospecting, list building, and outreach?",
+     "hint": "Count all team members: research, writing, sending, and follow-up. Multiplied by 52 weeks to show your annual outreach time investment.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 60,
+     "step": 1,
+     "default": 5,
+     "normalize_formula": "x < 1 ? 50 : x <= 3 ? 90 : x <= 8 ? 70 : x <= 15 ? 50 : x <= 25 ? 30 : 10"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your outreach has the shape of a campaign but not the infrastructure.",
+     "text": "Cold email has four failure points: list, offer, sequence, and technical setup. If any one of them is broken, the whole thing breaks quietly. You usually don't find out until you've spent months on a domain that was never actually delivering.",
+     "steps": [
+      "Check your domain's SPF, DKIM, and DMARC records today. If you don't have all three, fix that before your next send.",
+      "Count the emails in your current sequence. If it's under four, that's where your replies are getting cut off — most replies come from email three, four, or five.",
+      "Rewrite your offer line to answer this: what does the person on the other end actually get, and why does it matter to them right now specifically?"
+     ]
+    },
+    "mid": {
+     "headline": "You're past the basics. The gains are in the details.",
+     "text": "Sequence length, domain health, and targeting are in decent shape. The next improvements are more specific: subject line testing, following up on people who opened but didn't reply, and keeping sending volume inside safe limits per domain.",
+     "steps": [
+      "Run an A/B test on your next campaign: same list, two subject lines, 100 contacts each. Let the data decide.",
+      "Build a follow-up step for contacts who clicked a link but didn't reply — that's a warm signal most campaigns ignore entirely.",
+      "Review your daily sending volume per domain and confirm you're not approaching thresholds that trigger spam filters."
+     ]
+    },
+    "high": {
+     "headline": "Your outreach engine is built to run without you watching it every day.",
+     "text": "You've got the infrastructure most cold email programs never reach. The room to grow is in targeting precision — the tighter the list criteria, the better every other variable performs.",
+     "steps": [
+      "Add one intent-based list source you're not using yet: job changes, funding rounds, or tech stack signals.",
+      "Review your domain portfolio and retire any sending domains more than 18 months old from active rotation.",
+      "Set a weekly review habit: reply rate, open rate, bounce rate, and domain health across all active campaigns."
+     ]
+    }
+   }
+  },
+  {
+   "id": "search_visibility_seo_ae",
+   "name": "Search Visibility (SEO, AEO, GEO)",
+   "questions": [
+    {
+     "id": "seo_investment",
+     "text": "How actively are you investing in SEO right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not at all — organic search isn't a current priority",
+       "score": 1
+      },
+      {
+       "label": "We publish content occasionally but without a real strategy",
+       "score": 2
+      },
+      {
+       "label": "We do regular content with keyword targeting",
+       "score": 3
+      },
+      {
+       "label": "We have an active SEO program: technical foundation, content strategy, and link building",
+       "score": 4
+      },
+      {
+       "label": "We track rankings monthly, update content systematically, and see measurable organic growth quarter over quarter",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "aeo_awareness",
+     "text": "Are you showing up when your buyers ask AI tools (ChatGPT, Perplexity, Google AI Mode) questions in your category?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Never checked — this isn't on my radar yet",
+       "score": 1
+      },
+      {
+       "label": "I've looked once or twice but have no idea if we're being cited",
+       "score": 2
+      },
+      {
+       "label": "We know we're not showing up and haven't addressed it",
+       "score": 3
+      },
+      {
+       "label": "We're building content for AI citation but haven't measured results yet",
+       "score": 4
+      },
+      {
+       "label": "We actively optimize for answer engines and track when we're cited",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "geo_structure",
+     "text": "How is your content structured to get pulled into AI-generated responses?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Our content isn't designed with AI in mind at all",
+       "score": 1
+      },
+      {
+       "label": "We're aware it matters but haven't changed how we write or structure content",
+       "score": 2
+      },
+      {
+       "label": "We've added some FAQs and structured sections but it's not systematic",
+       "score": 3
+      },
+      {
+       "label": "We consistently publish content in formats AI tools can cite and attribute",
+       "score": 4
+      },
+      {
+       "label": "We run an AEO and GEO strategy alongside traditional SEO — all three are in motion",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're invisible to every buyer who didn't already know to look for you.",
+     "text": "SEO still works. AEO and GEO are the layer being built on top of it right now. The businesses only thinking about Google are already behind — and the ones not thinking about search at all are further back than they realize. The results from SEO don't stop when you stop paying for them. That's the part most people ignore until a competitor shows up.",
+     "steps": [
+      "Start simple: publish one piece of content per week that directly answers a question your ideal client would type into Google.",
+      "Ask ChatGPT or Perplexity a question your buyers would ask in your category. Are you mentioned? Are your competitors?",
+      "Pick your three most important search terms and check your current rankings. That's your baseline — everything starts there."
+     ]
+    },
+    "mid": {
+     "headline": "You're investing in search but optimizing for a version that's changing fast.",
+     "text": "Traditional SEO still matters and you're right to be in it. But the shift happening right now — answer engines surfacing responses without clicks — means your content has to be structured to be cited, not just found. That's a different job than what SEO required in 2019.",
+     "steps": [
+      "Audit your top 10 pages: do they directly answer specific questions, or do they explain what you do?",
+      "Add an FAQ section to your five highest-traffic pages using the exact questions your buyers actually ask.",
+      "Check how your content appears when you ask an AI tool questions in your space. Take note of what competitors are doing that you aren't."
+     ]
+    },
+    "high": {
+     "headline": "You're ahead of most businesses in your category on visibility. The gap is staying ahead.",
+     "text": "Running SEO, AEO, and GEO together is still rare. Most competitors are doing at best two of the three. The window to build a durable citation presence before this gets crowded is now.",
+     "steps": [
+      "Publish one piece of content monthly designed specifically to be cited by AI tools — original data, a named framework, or a clear expert position.",
+      "Track your AI citation rate quarterly alongside traditional rankings so you can see both channels moving.",
+      "Build a systematic internal linking structure so that when one page gets cited, authority flows toward your core topics."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual_outreach_hours",
+   "label": "Hours Your Team Spends on Manual Outreach Per Year (weekly hours × 52 weeks)",
+   "format": "hours_per_period",
+   "formula": "weekly_outreach_hours * 52",
+   "show_in_result": true
+  },
+  {
+   "id": "monthly_pipeline_value",
+   "label": "Monthly Revenue from New Clients at Your Current Pace",
+   "format": "currency_per_period",
+   "formula": "deals_closed_monthly * avg_monthly_retainer",
+   "show_in_result": true
+  },
+  {
+   "id": "annual_pipeline_value",
+   "label": "Projected Annual New Client Revenue (monthly pace × 12 months)",
+   "format": "currency",
+   "formula": "deals_closed_monthly * avg_monthly_retainer * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes you right now?",
+  "answers": [
+   {
+    "label": "Founder or CEO handling our marketing strategy",
+    "tag": "founder"
+   },
+   {
+    "label": "Marketing lead at a growth-stage company",
+    "tag": "marketing_lead"
+   },
+   {
+    "label": "Agency owner or fractional executive",
+    "tag": "agency_owner"
+   }
+  ]
+ }
+}

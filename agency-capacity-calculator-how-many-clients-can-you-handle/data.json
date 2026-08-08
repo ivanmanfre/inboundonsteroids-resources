@@ -1,0 +1,160 @@
+{
+  "slug": "agency-capacity-calculator-how-many-clients-can-you-handle",
+  "title": "Agency Capacity Calculator: How Many Clients Can You Handle?",
+  "subtitle": "Run the capacity math on your real team before delivery breaks. See your true client ceiling, the cost of your manual gap, and how many slots automation unlocks without hiring.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 3,
+  "inputs": [
+    {
+      "id": "team_size",
+      "label": "Delivery team size",
+      "type": "number",
+      "suffix": "people",
+      "min": 1,
+      "max": 200,
+      "step": 1,
+      "default": 12,
+      "hint": "Full-time delivery only. Exclude owner, sales, and admin."
+    },
+    {
+      "id": "productive_hours_per_week",
+      "label": "Productive hours per person per week",
+      "type": "range",
+      "suffix": "hrs/week",
+      "min": 15,
+      "max": 40,
+      "step": 1,
+      "default": 28,
+      "slider": true,
+      "hint": "After meetings, breaks, and internal admin. Realistic range is 25 to 32."
+    },
+    {
+      "id": "delivery_hours_per_client",
+      "label": "Average delivery hours per client per month",
+      "type": "number",
+      "suffix": "hrs/client",
+      "min": 1,
+      "max": 200,
+      "step": 1,
+      "default": 12,
+      "hint": "Actual delivery work only. Exclude sales calls and QBRs."
+    },
+    {
+      "id": "handoff_overhead",
+      "label": "Manual handoff overhead per client per month",
+      "type": "number",
+      "suffix": "hrs/client",
+      "min": 0,
+      "max": 40,
+      "step": 0.5,
+      "default": 5,
+      "hint": "Time moving info between intake, scoping, delivery, reporting, and invoicing. If unmeasured, start at 4."
+    },
+    {
+      "id": "current_clients",
+      "label": "Current active client count",
+      "type": "number",
+      "suffix": "clients",
+      "min": 0,
+      "max": 500,
+      "step": 1,
+      "default": 80,
+      "hint": "Active retainers being delivered right now."
+    },
+    {
+      "id": "cost_per_hour",
+      "label": "Fully-loaded cost per delivery hour",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hour",
+      "min": 20,
+      "max": 300,
+      "step": 1,
+      "default": 85,
+      "hint": "Salary plus benefits plus overhead divided by billable hours. Typical range $65 to $120."
+    },
+    {
+      "id": "automation_coverage",
+      "label": "Automation coverage of handoff work",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 10,
+      "slider": true,
+      "hint": "Share of handoff work currently automated end to end. Most agencies sit between 5% and 20%."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "max_clients",
+      "label": "Maximum sustainable clients",
+      "format": "integer",
+      "primary": true,
+      "formula": "Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100))))",
+      "tier_thresholds": {
+        "low": 25,
+        "medium": 60,
+        "high": 100
+      }
+    },
+    {
+      "id": "capacity_headroom",
+      "label": "Capacity headroom vs current clients",
+      "format": "integer",
+      "formula": "Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100)))) - current_clients"
+    },
+    {
+      "id": "manual_gap_cost",
+      "label": "Monthly cost of the manual gap",
+      "format": "currency",
+      "formula": "current_clients * handoff_overhead * (1 - automation_coverage / 100) * cost_per_hour"
+    },
+    {
+      "id": "automation_upside",
+      "label": "Extra client slots if automation hits 80%",
+      "format": "integer",
+      "formula": "Math.max(0, Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * 0.20))) - Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100)))))"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "over_capacity",
+      "when": "current_clients > Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100))))",
+      "text": "You are already past your sustainable ceiling. The next 90 days will show up as missed deadlines, account manager burnout, or churn. Freeze new sales until you either automate handoffs or add delivery headcount."
+    },
+    {
+      "tag": "tight_headroom",
+      "when": "current_clients <= Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100)))) && (Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100)))) - current_clients) <= 5",
+      "text": "You have fewer than 5 client slots of headroom. One bad month of onboarding overhead pushes you into overtime territory. Tighten intake to scoping to delivery handoffs before signing the next retainer."
+    },
+    {
+      "tag": "high_manual_gap",
+      "when": "current_clients * handoff_overhead * (1 - automation_coverage / 100) * cost_per_hour >= 15000",
+      "text": "You are spending over $15,000 a month on humans moving information between systems. That is a full senior hire or a fully built intake to reporting automation pipeline, paid for by the savings."
+    },
+    {
+      "tag": "low_automation_high_overhead",
+      "when": "automation_coverage < 25 && handoff_overhead >= 4",
+      "text": "Handoff overhead is eating more than 4 hours per client per month and almost none of it is automated. This is the highest use fix in your business. Start with intake to scoping and reporting to invoicing, the two handoffs where data already lives in structured form."
+    },
+    {
+      "tag": "unrealistic_productive_hours",
+      "when": "productive_hours_per_week > 32",
+      "text": "You are modeling more than 32 productive hours per person per week. That is optimistic for a delivery team carrying meetings, QBRs, and internal admin. Re-run with 28 to see how the ceiling shifts."
+    },
+    {
+      "tag": "strong_position",
+      "when": "automation_coverage >= 50 && (Math.floor((team_size * productive_hours_per_week * 4.3) / (delivery_hours_per_client + (handoff_overhead * (1 - automation_coverage / 100)))) - current_clients) >= 10",
+      "text": "You have real headroom and your automation coverage is above 50%. You can push sales harder without breaking delivery. Use the next 2 quarters to lock in pricing power before adding headcount."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Want the system that takes handoff automation from 10% to 80%?",
+    "description": "I build the intake to scoping to delivery to reporting pipeline that creates those extra client slots without hiring. Send me your numbers and I will show you exactly which handoffs to automate first and what the build looks like."
+  }
+}

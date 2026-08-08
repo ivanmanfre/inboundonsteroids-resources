@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The LinkedIn Engine for Agency Operators • Iván Manfredi</title>
+<meta name="description" content="LinkedIn content engine for agency owners who'd post daily if every draft didn't eat an hour. Two-week build.">
+<meta property="og:title" content="The LinkedIn Engine for Agency Operators">
+<meta property="og:description" content="LinkedIn content engine for agency owners. Daily posts in your voice. Lead magnets that filter for buyers. Built in two weeks.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://resources.inboundonsteroids.com/case-studies/agency-operators-system.html">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --paper:#F7F4EF;
+  --paper-sunk:#EFEBE3;
+  --paper-raise:#FFFFFF;
+  --ink:#1A1A1A;
+  --ink-soft:#2C2C2A;
+  --ink-mute:#4A4A48;
+  --hairline:rgba(26,26,26,.15);
+  --hairline-bold:rgba(26,26,26,.25);
+  --accent:#4C6E3D;
+  --accent-ink:#344B29;
+  --accent-soft:rgba(76,110,61,.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Source Serif 4',Georgia,serif;background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E")}
+a{color:inherit;text-decoration:none}
+
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);z-index:9999;transition:width .1s linear;width:0}
+
+/* COVER */
+.cover{min-height:92vh;padding:140px 80px 80px;position:relative;max-width:1240px;margin:0 auto;display:flex;flex-direction:column;justify-content:center}
+.cover-full{max-width:1000px}
+.cover-nav{position:absolute;top:40px;left:80px;right:80px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:14px}
+.logo-mark{width:40px;height:40px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:13px;letter-spacing:.05em;color:var(--ink)}
+.logo-text{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+.cover-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-left{min-width:0}
+.cover-tag{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:32px}
+.cover h1{font-family:'DM Serif Display',serif;font-size:clamp(48px,8.5vw,112px);font-weight:400;line-height:0.94;letter-spacing:-.028em;color:var(--ink);margin-bottom:40px;max-width:1000px;perspective:800px}
+.cover h1 em{font-style:italic;color:var(--ink);position:relative;display:inline-block;transform-origin:bottom;transform-style:preserve-3d;animation:em-rotateX .9s cubic-bezier(.22,.84,.36,1) .8s both;z-index:1}
+.cover h1 em::after{content:'';position:absolute;left:-4%;right:-4%;top:.16em;height:.78em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%232A8F65' opacity='0.72'/%3E%3C/svg%3E") no-repeat center/100% 100%;z-index:-1;pointer-events:none;transform:scaleX(0);transform-origin:left;animation:sweep-x .7s cubic-bezier(.22,.84,.36,1) .9s both}
+@keyframes sweep-x{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes em-rotateX{from{transform:rotateX(28deg)}to{transform:rotateX(0deg)}}
+.cover-sub{font-size:19px;line-height:1.6;color:var(--ink-soft);max-width:640px;margin-bottom:48px;border-left:2px solid var(--accent);padding-left:20px;animation:clip-wipe 1.1s cubic-bezier(.22,.84,.36,1) 1.3s both}
+@keyframes clip-wipe{from{clip-path:inset(0 100% 0 0);opacity:0}to{clip-path:inset(0 0% 0 0);opacity:1}}
+
+/* HERO FLOW — continuous SVG animation of the content pipeline */
+.hero-flow{width:100%;max-width:980px;height:auto;display:block;margin:0 0 48px;overflow:visible}
+.flow-marching{animation:flow-march 2.2s linear infinite}
+@keyframes flow-march{to{stroke-dashoffset:-32}}
+.hero-flow .flow-node circle:first-of-type{transition:filter .25s ease}
+@media(max-width:880px){.hero-flow{transform:scale(.92);transform-origin:left center}}
+@media(max-width:560px){.hero-flow{transform:scale(.74)}}
+@media(prefers-reduced-motion:reduce){.flow-pulse,.flow-marching{animation:none}.flow-pulse{display:none}}
+.cover-cta{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.cover-meta-line{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute)}
+.cover-right{display:flex;flex-direction:column;align-items:flex-end;justify-content:flex-end;text-align:right;min-width:0}
+.cover-numeral{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:clamp(140px,18vw,260px);line-height:.85;color:var(--accent);letter-spacing:-.04em;margin-bottom:12px}
+.cover-monthyear{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;color:var(--ink)}
+.cover-details{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;padding-top:36px;margin-top:24px;border-top:1px solid var(--hairline)}
+.cover-detail{display:flex;flex-direction:column;gap:8px;min-width:0}
+.cover-detail-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:4px}
+.cover-detail-value{font-size:16px;font-weight:600;color:var(--ink);line-height:1.4}
+
+/* BUTTON */
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--paper);padding:18px 32px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:none;cursor:pointer;transition:background .2s ease,transform .15s ease}
+.btn-primary:hover{background:var(--accent-ink);transform:translateY(-1px)}
+
+/* SECTION */
+.section{padding:88px 80px 80px;max-width:1240px;margin:0 auto;position:relative}
+.section + .section{border-top:1px solid var(--hairline)}
+.section-number{display:inline-block;background:var(--ink);color:var(--paper);padding:7px 14px;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px}
+.section h2{font-family:'DM Serif Display',serif;font-size:clamp(28px,3.4vw,46px);font-weight:400;line-height:1.08;letter-spacing:-.005em;margin-bottom:32px;color:var(--ink);max-width:920px}
+.section h2 em{font-style:italic;color:var(--ink);position:relative;display:inline-block;z-index:1}
+.section h2 em::after{content:'';position:absolute;left:-3%;right:-3%;top:.16em;height:.78em;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 100' preserveAspectRatio='none'%3E%3Cpath d='M 6 14 Q 70 10 140 14 Q 220 18 290 12 Q 350 15 394 16 L 394 86 Q 350 88 290 84 Q 220 92 140 86 Q 70 90 6 84 Z' fill='%232A8F65' opacity='0.72'/%3E%3C/svg%3E") no-repeat center/100% 100%;z-index:-1;pointer-events:none}
+.sysflow-wrap h2 em::after{opacity:.85}
+.sysflow-wrap h2 em{color:#F7F4EF}
+.section h3{font-size:13px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-top:56px;margin-bottom:20px;padding-left:14px;border-left:2px solid var(--accent);font-family:'IBM Plex Mono',monospace}
+.section p{font-size:18px;color:var(--ink-soft);line-height:1.65;max-width:760px;margin-bottom:20px}
+.section p strong{color:var(--ink);font-weight:600}
+.section p em{font-style:italic;color:var(--ink)}
+
+/* PROBLEM CARD */
+.problem-card{background:var(--paper-sunk);border-left:2px solid var(--accent);padding:32px 40px;margin:32px 0;max-width:880px}
+.problem-card p{color:var(--ink);font-size:18px;line-height:1.7;max-width:none;margin:0}
+
+/* FLOW GRID — paired pain cards */
+.flow-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-left:1px solid var(--hairline)}
+.flow-step{padding:36px 40px;border-right:1px solid var(--hairline);border-bottom:1px solid var(--hairline);background:var(--paper-raise);min-width:0}
+.flow-step-number{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:56px;line-height:.95;color:var(--accent);display:block;margin-bottom:16px;letter-spacing:-.02em}
+.flow-step-title{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;color:var(--ink);font-family:'IBM Plex Mono',monospace}
+.flow-step-desc{font-size:15px;color:var(--ink-soft);line-height:1.7}
+
+/* SKILLS / BENEFIT GRID */
+/* EDITORIAL NUMERAL ROWS — applied to skills, diffs, steps */
+.skills-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:48px;margin:48px 0 0;padding-top:36px;border-top:1px solid var(--hairline);max-width:1180px}
+.skill-card{display:flex;flex-direction:column;gap:14px;position:relative;background:none;border:none;padding:0;min-width:0}
+.skill-card::before{content:'';position:absolute;top:-14px;left:0;width:14px;height:14px;background:var(--accent)}
+.skill-num{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:60px;line-height:.9;color:var(--ink);display:block;letter-spacing:-.03em;margin-bottom:4px}
+.skill-name{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);line-height:1.45;margin-bottom:4px}
+.skill-outcome{font-size:15px;color:var(--ink-soft);line-height:1.6}
+@media(max-width:980px){.skills-grid{grid-template-columns:repeat(2,1fr);gap:36px}}
+@media(max-width:560px){.skills-grid{grid-template-columns:1fr;gap:28px}}
+
+/* SOLUTION — full-width dark section */
+.solution-dark-section{padding-top:0;border-top-color:rgba(247,244,239,.06)}
+.sysflow-wrap{
+  width:100vw;
+  position:relative;
+  left:50%;
+  transform:translateX(-50%);
+  background:#1a1a1a;
+  padding:80px max(80px,calc((100vw - 1080px)/2)) 60px;
+  margin-bottom:0;
+  overflow:hidden;
+}
+.sysflow-wrap .section-number{background:rgba(247,244,239,.1);color:rgba(247,244,239,.55);margin-bottom:24px}
+.sysflow-wrap h2{color:#F7F4EF;margin-bottom:60px;max-width:920px}
+.sysflow-wrap h2 em{color:#709A5D;font-style:italic}
+.sysflow-wrap h3{
+  font-family:'IBM Plex Mono',monospace;
+  font-size:10px;font-weight:700;letter-spacing:.25em;text-transform:uppercase;
+  color:rgba(247,244,239,.28);border-left:none;padding-left:0;
+  margin:48px 0 24px;
+}
+
+/* ARCH inside dark band */
+.arch{display:flex;flex-direction:column;align-items:center;width:100%}
+.arch-sources{
+  display:flex;flex-wrap:wrap;gap:10px 28px;
+  justify-content:center;width:100%;padding-bottom:4px;
+}
+.arch-src{
+  display:inline-flex;align-items:center;gap:9px;
+  font-family:'Source Serif 4',serif;font-size:15px;font-style:italic;
+  color:rgba(247,244,239,.62);
+}
+.arch-src::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:#709A5D;opacity:.75;flex-shrink:0;
+}
+.arch-down{
+  width:2px;height:40px;
+  background:linear-gradient(to bottom,rgba(112,154,93,.5),rgba(112,154,93,.28));
+  position:relative;flex-shrink:0;
+}
+.arch-down::after{
+  content:'';position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);
+  border-left:6px solid transparent;border-right:6px solid transparent;
+  border-top:9px solid rgba(112,154,93,.3);
+}
+.arch-stage{
+  width:100%;position:relative;overflow:hidden;
+  background:rgba(255,255,255,.045);
+  border:1px solid rgba(247,244,239,.08);
+  border-left:3px solid #709A5D;
+  padding:26px 36px 26px 30px;
+}
+.arch-stg-n{
+  display:inline-block;
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:12px;color:rgba(112,154,93,.8);
+  border:1px solid rgba(112,154,93,.25);
+  padding:2px 9px;margin-bottom:13px;letter-spacing:.06em;
+}
+.arch-stg-label{
+  font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#F7F4EF;margin-bottom:10px;
+}
+.arch-stg-body{
+  font-family:'Source Serif 4',serif;font-size:15px;
+  color:rgba(247,244,239,.72);line-height:1.72;
+}
+.arch-ghost{
+  position:absolute;bottom:-14px;right:18px;
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:115px;line-height:1;letter-spacing:-.04em;
+  color:rgba(112,154,93,.07);pointer-events:none;user-select:none;
+}
+.arch-flow{
+  display:flex;align-items:flex-start;
+  gap:0;margin-top:20px;position:relative;z-index:1;
+  width:100%;
+}
+.arch-flow-step{
+  flex:1;display:flex;flex-direction:column;align-items:center;gap:10px;
+}
+.arch-flow-node{
+  width:48px;height:48px;border-radius:50%;
+  background:rgba(112,154,93,.1);border:1px solid rgba(112,154,93,.4);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'DM Serif Display',serif;font-style:italic;
+  font-size:22px;color:#709A5D;line-height:1;
+}
+.arch-flow-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:9.5px;font-weight:600;
+  letter-spacing:.1em;text-transform:uppercase;
+  color:rgba(247,244,239,.55);text-align:center;
+  line-height:1.5;width:100%;
+}
+.arch-flow-arr{
+  color:rgba(112,154,93,.4);font-size:14px;
+  padding-top:17px;flex-shrink:0;margin:0 2px;
+}
+.arch-fork{width:100%;position:relative}
+.arch-fork svg{display:block;width:100%;height:64px}
+.arch-fork-lbl{
+  position:absolute;top:4px;left:50%;transform:translateX(-50%);
+  font-family:'IBM Plex Mono',monospace;font-size:9px;font-weight:700;
+  letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(112,154,93,.52);white-space:nowrap;
+}
+.arch-outs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%}
+.arch-out{
+  flex:1;position:relative;overflow:hidden;
+  background:rgba(112,154,93,.08);
+  border:1px solid rgba(112,154,93,.2);
+  border-top:2px solid #709A5D;
+  padding:22px 28px;
+  box-shadow:0 4px 28px rgba(112,154,93,.07);
+}
+.arch-out-lbl{
+  font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;
+  letter-spacing:.2em;text-transform:uppercase;
+  color:#F7F4EF;margin-bottom:10px;
+}
+.arch-out-body{
+  font-family:'Source Serif 4',serif;font-size:14.5px;
+  color:rgba(247,244,239,.7);line-height:1.65;
+}
+.sysflow-wrap .problem-card{
+  background:rgba(255,255,255,.03);
+  border:1px solid rgba(247,244,239,.1);
+  border-left:3px solid #709A5D;
+  padding:24px 28px;margin-top:36px;
+}
+.sysflow-wrap .problem-card p{
+  font-family:'Source Serif 4',serif;font-size:16px;
+  color:rgba(247,244,244,.9);line-height:1.75;max-width:none;margin:0;
+}
+.sysflow-wrap .problem-card p strong{color:#fff}
+@media(max-width:900px){
+  .sysflow-wrap{padding:56px max(32px,calc((100vw - 1080px)/2)) 44px}
+}
+@media(max-width:700px){
+  .arch-outs{grid-template-columns:1fr 1fr}
+  .arch-sources{gap:6px}
+  .arch-flow{gap:8px}
+}
+
+/* ROI */
+/* TONAL VARIANT — sunk background for occasional rhythm break */
+.section-sunk{background:var(--paper-sunk);max-width:none;width:100%;padding-left:max(80px,calc((100vw - 1240px)/2));padding-right:max(80px,calc((100vw - 1240px)/2));position:relative}
+.section-sunk + .section{border-top:none}
+
+/* PAYOFF WALKTHROUGH */
+.payoff-lead{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;max-width:none}
+.payoff-grid{display:flex;flex-direction:column;gap:0;margin:32px 0;max-width:880px;border-top:1px solid var(--hairline)}
+.payoff-row{display:grid;grid-template-columns:140px 1fr;gap:32px;padding:24px 0;border-bottom:1px solid var(--hairline);align-items:baseline}
+.payoff-time{font-family:'DM Serif Display',serif;font-style:italic;font-size:32px;line-height:1;color:var(--accent);letter-spacing:-.01em;white-space:nowrap}
+.payoff-text{font-size:17px;color:var(--ink-soft);line-height:1.65}
+.payoff-close{font-size:17.5px;color:var(--ink);line-height:1.65;margin-top:32px;max-width:880px}
+.payoff-close strong{color:var(--ink);font-weight:700}
+@media(max-width:760px){.payoff-row{grid-template-columns:1fr;gap:8px}.payoff-time{font-size:24px}}
+
+.roi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:32px 0;border-top:1px solid var(--hairline);border-bottom:1px solid var(--hairline)}
+.roi-stat{padding:56px 32px 56px 0;border-right:1px solid var(--hairline)}
+.roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:32px}
+.roi-stat:last-child{border-right:none}
+.roi-stat-value{font-family:'DM Serif Display',serif;font-style:italic;font-weight:400;font-size:112px;line-height:.9;color:var(--ink);letter-spacing:-.03em;margin-bottom:12px}
+.roi-stat-label{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+
+/* PROOF GRID */
+.proof-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(420px,1fr));gap:24px;margin:32px 0}
+.proof-card{background:var(--paper-raise);border:1px solid var(--hairline);overflow:hidden;display:flex;flex-direction:column}
+.proof-card img{width:100%;height:auto;display:block;border-bottom:1px solid var(--hairline);cursor:zoom-in;transition:opacity .15s}
+.proof-card img:hover{opacity:.92}
+.proof-card-body{padding:20px 24px 22px}
+.proof-card-label{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.proof-card-caption{font-size:14.5px;color:var(--ink);line-height:1.55}
+@media(max-width:760px){.proof-grid{grid-template-columns:1fr}}
+
+/* OTHER BUILDS — editorial rows, no card chrome */
+.builds-rows{margin:40px 0 0;border-top:1px solid var(--hairline);max-width:1100px}
+.builds-row{display:grid;grid-template-columns:minmax(220px,360px) 1fr;gap:48px;padding:36px 0;border-bottom:1px solid var(--hairline);align-items:start}
+.builds-row-metric{font-family:'DM Serif Display',serif;font-style:italic;font-size:clamp(48px,5.5vw,76px);font-weight:400;line-height:1;color:var(--ink);letter-spacing:-.025em;white-space:nowrap}
+.bm-arrow{color:var(--accent);font-size:.6em;vertical-align:0.3em;font-style:italic;margin:0 .08em}
+.builds-row-body{display:flex;flex-direction:column;gap:14px;max-width:680px;padding-top:14px}
+.builds-row-client{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.builds-row-desc{font-size:17px;color:var(--ink-soft);line-height:1.65}
+@media(max-width:760px){.builds-row{grid-template-columns:1fr;gap:14px;padding:28px 0}.builds-row-metric{font-size:48px;white-space:normal}.builds-row-body{padding-top:0}}
+
+/* MEDIA EXAMPLES GRID — real samples masonry-ish */
+.media-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:40px 0 0;max-width:1100px}
+.media-card{position:relative;overflow:hidden;background:var(--paper-raise);border:1px solid var(--hairline);box-shadow:0 2px 8px rgba(26,26,26,.05);transition:transform .25s ease,box-shadow .25s ease;cursor:zoom-in}
+.media-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,26,26,.12)}
+.media-card img{width:100%;height:280px;object-fit:cover;object-position:top center;display:block;border-bottom:1px solid var(--hairline)}
+.media-card.media-tall img{height:380px}
+.media-card.media-wide{grid-column:span 2}
+.media-card.media-wide img{height:280px;object-fit:cover}
+.media-card figcaption{padding:14px 18px;display:flex;flex-direction:column;gap:6px}
+.media-tag{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.media-cap{font-size:14px;color:var(--ink-soft);line-height:1.5}
+@media(max-width:880px){
+  .media-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .media-card img,.media-card.media-tall img{height:220px}
+  .media-card.media-wide{grid-column:span 2}
+}
+@media(max-width:520px){
+  .media-grid{grid-template-columns:1fr}
+  .media-card.media-wide{grid-column:auto}
+}
+
+/* LEAD MAGNET SHOWCASE — 5-format auto-rotating mockup */
+.lm-showcase{max-width:720px;margin:40px auto 0;display:flex;flex-direction:column;gap:24px;align-items:center}
+.lm-frame{position:relative;width:100%;height:340px;background:var(--paper-raise);border:1px solid var(--hairline);box-shadow:0 2px 12px rgba(26,26,26,.05)}
+.lm-slide{position:absolute;inset:0;padding:28px 34px;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(8px);animation:lm-cycle 14s infinite cubic-bezier(.22,.84,.36,1)}
+.lm-slide:nth-child(1){animation-delay:0s}
+.lm-slide:nth-child(2){animation-delay:3.5s}
+.lm-slide:nth-child(3){animation-delay:7s}
+.lm-slide:nth-child(4){animation-delay:10.5s}
+@keyframes lm-cycle{
+  0%{opacity:0;transform:translateY(8px)}
+  4%,22%{opacity:1;transform:translateY(0)}
+  25%,100%{opacity:0;transform:translateY(-6px)}
+}
+.lm-label{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.lm-mock{display:flex;flex-direction:column;gap:11px;flex:1;font-family:'Source Serif 4',serif}
+.lm-mock-title{font-family:'DM Serif Display',serif;font-style:italic;font-size:22px;color:var(--ink);letter-spacing:-.01em;line-height:1.15;margin-bottom:4px}
+
+/* Checklist mock */
+.lm-check{display:flex;align-items:center;gap:12px;font-size:14.5px;color:var(--ink-soft);line-height:1.4}
+.lm-check.done{color:var(--ink)}
+.lm-box{width:12px;height:12px;border:1.5px solid var(--accent);flex-shrink:0;position:relative}
+.lm-box.on{background:var(--accent)}
+.lm-box.on::after{content:'';position:absolute;left:2px;top:0px;width:3px;height:7px;border-right:1.5px solid var(--paper);border-bottom:1.5px solid var(--paper);transform:rotate(45deg)}
+
+/* Calculator mock */
+.lm-calc-row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;font-size:14.5px;color:var(--ink-soft);padding:8px 0;border-bottom:1px dashed var(--hairline)}
+.lm-calc-input{font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:14px;color:var(--ink);background:var(--paper-sunk);padding:3px 10px;letter-spacing:.04em}
+.lm-calc-result{margin-top:10px;font-size:18px;color:var(--ink);line-height:1.3}
+.lm-calc-result em{font-style:italic;color:var(--accent);font-family:'DM Serif Display',serif;font-size:24px}
+
+/* Assessment mock */
+.lm-progress{width:100%;height:3px;background:var(--paper-sunk);position:relative;overflow:hidden}
+.lm-progress-fill{position:absolute;left:0;top:0;height:100%;width:0;background:var(--accent);animation:lm-progress-fill 14s infinite}
+@keyframes lm-progress-fill{
+  0%,50%{width:0}
+  55%{width:57%}
+  72%{width:57%}
+  76%,100%{width:0}
+}
+.lm-progress-label{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin-top:-4px}
+.lm-question{font-size:15.5px;color:var(--ink);line-height:1.4;font-weight:500;margin:4px 0}
+.lm-option{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink-soft);padding:5px 0}
+.lm-option.selected{color:var(--ink);font-weight:500}
+.lm-radio{width:11px;height:11px;border:1.5px solid var(--ink-mute);border-radius:50%;flex-shrink:0;position:relative}
+.lm-radio.on{border-color:var(--accent)}
+.lm-radio.on::after{content:'';position:absolute;inset:2px;background:var(--accent);border-radius:50%}
+
+/* Guide mock */
+.lm-guide-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-mute)}
+.lm-guide-title{font-family:'DM Serif Display',serif;font-size:26px;line-height:1.12;color:var(--ink);letter-spacing:-.015em;max-width:480px}
+.lm-guide-title em{font-style:italic;color:var(--accent)}
+.lm-guide-toc{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.lm-toc-row{font-size:14px;color:var(--ink-soft);display:flex;gap:14px;font-family:'Source Serif 4',serif}
+.lm-toc-row span{font-family:'IBM Plex Mono',monospace;font-weight:700;color:var(--accent);min-width:24px}
+
+/* Walkthrough chat mock */
+.lm-chat{padding:11px 16px;font-size:14.5px;line-height:1.5;max-width:80%;border-radius:2px}
+.lm-chat.user{background:var(--paper-sunk);color:var(--ink);align-self:flex-end}
+.lm-chat.ai{background:var(--paper);border:1px solid var(--hairline);border-left:2px solid var(--accent);color:var(--ink);align-self:flex-start;max-width:88%}
+.lm-caret{display:inline-block;color:var(--accent);font-weight:700;animation:lm-caret-blink 1s infinite step-end;margin-left:2px}
+@keyframes lm-caret-blink{0%,50%{opacity:1}50.01%,100%{opacity:0}}
+
+/* Dots indicator */
+.lm-dots{display:flex;gap:8px;align-items:center}
+.lm-dot{width:8px;height:8px;background:var(--hairline-bold);transition:background .3s;animation:lm-dot-active 14s infinite}
+.lm-dot:nth-child(1){animation-delay:0s}
+.lm-dot:nth-child(2){animation-delay:3.5s}
+.lm-dot:nth-child(3){animation-delay:7s}
+.lm-dot:nth-child(4){animation-delay:10.5s}
+@keyframes lm-dot-active{
+  0%,22%{background:var(--accent);transform:scale(1.2)}
+  25%,100%{background:var(--hairline-bold);transform:scale(1)}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .lm-slide{animation:none;opacity:1;position:static;display:none}
+  .lm-slide:first-child{display:flex}
+  .lm-dot{animation:none}
+  .lm-dot:first-child{background:var(--accent)}
+  .lm-caret{animation:none}
+  .lm-progress-fill{animation:none;width:57%}
+}
+@media(max-width:680px){
+  .lm-frame{height:380px}
+  .lm-slide{padding:20px 22px}
+  .lm-mock-title{font-size:18px}
+  .lm-guide-title{font-size:20px}
+}
+
+/* COMMAND CENTER — full-bleed proof screenshot */
+.command-center{max-width:1080px;margin:0 auto}
+.command-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.command-lead{font-size:17px;color:var(--ink-soft);line-height:1.65;max-width:720px;margin-bottom:36px}
+.command-image-wrap{display:block;border:1px solid var(--hairline);background:var(--paper-raise);overflow:hidden;cursor:zoom-in;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 2px 8px rgba(26,26,26,.06)}
+.command-image-wrap:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(26,26,26,.12)}
+.command-image-wrap img{display:block;width:100%;height:auto}
+
+/* DIFFERENTIATORS GRID — answers "why not $99 templates" */
+.diff-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:64px 56px;margin:48px 0 0;padding-top:36px;border-top:1px solid var(--hairline);max-width:1080px}
+.diff-card{display:flex;flex-direction:column;gap:12px;position:relative;background:none;border:none;padding:0}
+.diff-card::before{content:'';position:absolute;top:-14px;left:0;width:14px;height:14px;background:var(--accent)}
+.diff-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:84px;line-height:.85;color:var(--ink);letter-spacing:-.04em;margin-bottom:4px}
+.diff-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);margin-bottom:4px;line-height:1.4}
+.diff-body{font-size:16.5px;color:var(--ink-soft);line-height:1.65}
+@media(max-width:760px){.diff-grid{grid-template-columns:1fr;gap:48px}.diff-num{font-size:64px}}
+
+/* TECH STACK TABLE */
+.stack-grid{display:grid;grid-template-columns:auto 1fr;gap:0;margin:32px 0;max-width:920px;border-top:1px solid var(--hairline)}
+.stack-row{display:contents}
+.stack-layer{padding:18px 32px 18px 0;border-bottom:1px solid var(--hairline);font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);align-self:start}
+.stack-tools{padding:18px 0;border-bottom:1px solid var(--hairline);font-size:15.5px;color:var(--ink);line-height:1.6}
+.stack-tools strong{font-weight:600}
+@media(max-width:680px){.stack-grid{grid-template-columns:1fr;gap:0}.stack-layer{padding-bottom:4px;border-bottom:none}.stack-tools{padding-top:4px}}
+
+/* NOT-FOR LIST */
+.notfor-list{list-style:none;padding:0;margin:24px 0 0;max-width:880px;display:grid;gap:14px}
+.notfor-list li{font-size:16.5px;color:var(--ink-soft);padding:18px 22px 18px 52px;background:var(--paper-raise);border:1px solid var(--hairline);position:relative;line-height:1.6}
+.notfor-list li::before{content:'×';position:absolute;left:20px;top:18px;color:var(--accent);font-size:20px;font-weight:700;line-height:1;font-family:'IBM Plex Mono',monospace}
+.notfor-list li strong{color:var(--ink);font-weight:600}
+
+/* FAQ */
+.faq-grid{display:grid;gap:12px;margin-top:24px;max-width:920px}
+.faq-item{background:var(--paper-raise);border:1px solid var(--hairline);overflow:hidden;transition:border-color .15s}
+.faq-item:hover{border-color:var(--hairline-bold)}
+.faq-item[open]{border-color:var(--accent);background:var(--paper-sunk)}
+.faq-q{padding:20px 28px;cursor:pointer;font-family:'Source Serif 4',serif;font-size:17px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;line-height:1.4}
+.faq-q::-webkit-details-marker{display:none}
+.faq-q::after{content:'+';font-family:'IBM Plex Mono',monospace;font-size:22px;color:var(--accent);transition:transform .2s;font-weight:400;flex-shrink:0}
+.faq-item[open] .faq-q::after{content:'−'}
+.faq-a{padding:0 28px 24px;font-size:15.5px;color:var(--ink-soft);line-height:1.7}
+.faq-a p{margin:0 0 12px;max-width:none}
+.faq-a p:last-child{margin-bottom:0}
+
+/* ABOUT */
+.about-block{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:start;margin-top:24px;max-width:960px;background:var(--paper-sunk);padding:36px;border-left:2px solid var(--accent)}
+.about-photo{width:120px;height:120px;border-radius:12px;overflow:hidden;border:1px solid var(--ink);flex-shrink:0;background:var(--paper-raise)}
+.about-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.about-text h4{font-family:'DM Serif Display',serif;font-size:28px;font-weight:400;color:var(--ink);margin-bottom:6px;line-height:1.15;letter-spacing:-.005em}
+.about-text h4 em{font-style:italic;color:var(--accent)}
+.about-tag{font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:18px}
+.about-text p{font-size:16px;color:var(--ink-soft);line-height:1.7;margin-bottom:12px;max-width:none}
+.about-text p:last-child{margin-bottom:0}
+.about-text p strong{color:var(--ink);font-weight:600}
+@media(max-width:760px){
+  .about-block{grid-template-columns:1fr;padding:28px;text-align:center}
+  .about-photo{margin:0 auto}
+}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:56px;margin-top:48px;padding-top:36px;border-top:1px solid var(--hairline)}
+.step{display:flex;flex-direction:column;gap:12px;position:relative;background:none;border:none;padding:0}
+.step::before{content:'';position:absolute;top:-14px;left:0;width:14px;height:14px;background:var(--accent)}
+.step-num{font-family:'DM Serif Display',serif;font-style:italic;font-size:64px;color:var(--ink);line-height:.9;letter-spacing:-.03em;margin-bottom:4px}
+.step-title{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);margin-bottom:4px}
+.step-body{font-size:15.5px;color:var(--ink-soft);line-height:1.65}
+@media(max-width:760px){.steps{grid-template-columns:1fr;gap:40px}.step-num{font-size:52px}}
+
+/* CTA */
+.cta-section{padding:120px 80px;border-top:1px solid var(--hairline);max-width:1240px;margin:0 auto;text-align:center;background:var(--paper-sunk)}
+.cta-section h2{font-family:'DM Serif Display',serif;font-size:clamp(36px,5.4vw,72px);font-weight:400;line-height:1.05;letter-spacing:-.02em;color:var(--ink);margin-bottom:24px;max-width:880px;margin-left:auto;margin-right:auto}
+.cta-section h2 em{font-style:italic;color:var(--accent)}
+.cta-section p{font-size:19px;color:var(--ink-soft);line-height:1.65;max-width:640px;margin:0 auto 36px}
+.cta-meta{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mute);margin-top:24px}
+
+/* FOOTER */
+.footer{padding:40px 80px;max-width:1240px;margin:0 auto;border-top:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mute)}
+.footer a:hover{color:var(--accent-ink)}
+
+/* LIGHTBOX */
+.lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:99999;align-items:center;justify-content:center;cursor:zoom-out;padding:32px}
+.lightbox-overlay.active{display:flex}
+.lightbox-overlay img{max-width:90vw;max-height:90vh;object-fit:contain;box-shadow:0 24px 64px rgba(0,0,0,.5)}
+
+/* ANIMATIONS — scroll-driven fade-up */
+.section,.cover,.cta-section,.footer{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.section.visible,.cover.visible,.cta-section.visible,.footer.visible{opacity:1;transform:translateY(0)}
+.wrd{display:inline-block;opacity:0;filter:blur(8px);transform:translateY(12px);transition:opacity .65s cubic-bezier(.16,1,.3,1),filter .65s cubic-bezier(.16,1,.3,1),transform .65s cubic-bezier(.16,1,.3,1)}
+.wrd.vis{opacity:1;filter:blur(0);transform:translateY(0)}
+
+/* MOBILE */
+@media(max-width:1000px){
+  .cover{grid-template-columns:1fr;gap:32px;padding:120px 32px 60px;min-height:auto}
+  .cover-right{align-items:flex-start;text-align:left}
+  .cover-numeral{font-size:120px}
+  .cover-details{grid-template-columns:repeat(2,1fr);gap:24px}
+  .cover-nav{left:32px;right:32px;top:24px}
+}
+@media(max-width:880px){
+  .section{padding:64px 32px}
+  .cta-section{padding:80px 32px}
+  .roi-grid,.flow-grid{grid-template-columns:1fr}
+  .roi-stat{border-right:none;border-bottom:1px solid var(--hairline);padding:32px 0}
+  .roi-stat:nth-child(2),.roi-stat:nth-child(3){padding-left:0}
+  .roi-stat:last-child{border-bottom:none}
+  .roi-stat-value{font-size:80px}
+  .steps{grid-template-columns:1fr;gap:16px}
+  .footer{padding:32px;flex-direction:column;align-items:flex-start;gap:16px}
+}
+
+/* PRINT */
+@media print{
+  *{background:transparent !important;box-shadow:none !important}
+  body{font-size:11pt;color:#000 !important;background:#fff !important}
+  .cover{min-height:auto;page-break-after:always;padding:48px}
+  .section{page-break-inside:avoid;padding:32px 48px}
+  .scroll-progress,#cursor-spotlight{display:none}
+  .section,.cover,.cta-section,.footer{opacity:1 !important;transform:none !important}
+}
+</style>
+<noscript><style>.section,.cover,.cta-section,.footer{opacity:1!important;transform:none!important}.cover .wrd{opacity:1!important;filter:blur(0)!important;transform:none!important}.cover-sub{animation:none!important;clip-path:none!important;opacity:1!important}.cover h1 em{animation:none!important;transform:none!important}.cover h1 em::after{animation:none!important;transform:scaleX(1)!important}</style></noscript>
+</head>
+<body>
+
+<div class="scroll-progress"></div>
+<div id="cursor-spotlight" style="position:fixed;inset:0;pointer-events:none;z-index:9997;opacity:0;transition:opacity .5s"></div>
+
+<div class="cover">
+  <div class="cover-nav">
+    <div class="logo">
+      <div class="logo-mark">IM</div>
+      <span class="logo-text">Iván Manfredi</span>
+    </div>
+    <span class="cover-meta">Case Study · 2026</span>
+  </div>
+
+  <div class="cover-full">
+    <h1><span class="wrd">A</span> <span class="wrd">LinkedIn</span> <span class="wrd">engine</span> <span class="wrd">that</span> <span class="wrd">runs</span> <span class="wrd"><em>without you</em>.</span></h1>
+    <p class="cover-sub">For agency owners who'd post daily if every draft didn't eat an hour.</p>
+
+    <svg class="hero-flow" viewBox="0 0 980 130" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Content engine: call to nurture send">
+      <defs>
+        <linearGradient id="flow-line" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#4C6E3D" stop-opacity="0.15"/>
+          <stop offset="50%" stop-color="#4C6E3D" stop-opacity="0.5"/>
+          <stop offset="100%" stop-color="#4C6E3D" stop-opacity="0.15"/>
+        </linearGradient>
+        <radialGradient id="flow-pulse" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stop-color="#4C6E3D" stop-opacity="1"/>
+          <stop offset="60%" stop-color="#4C6E3D" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#4C6E3D" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <!-- continuous flowing baseline -->
+      <line x1="60" y1="65" x2="920" y2="65" stroke="url(#flow-line)" stroke-width="1.5"/>
+      <line x1="60" y1="65" x2="920" y2="65" stroke="#4C6E3D" stroke-width="1" stroke-dasharray="2 6" opacity="0.4" class="flow-marching"/>
+
+      <!-- 6 nodes at x = 80, 248, 416, 584, 752, 920 -->
+      <g class="flow-node" data-step="1">
+        <circle cx="80" cy="65" r="9" fill="#F7F4EF" stroke="#4C6E3D" stroke-width="1.5"/>
+        <circle cx="80" cy="65" r="3" fill="#4C6E3D"/>
+        <text x="80" y="40" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="1.4">CALL</text>
+        <text x="80" y="100" text-anchor="middle" font-family="'Source Serif 4',serif" font-style="italic" font-size="11" fill="#4A4A48">recorded</text>
+      </g>
+      <g class="flow-node" data-step="2">
+        <circle cx="248" cy="65" r="9" fill="#F7F4EF" stroke="#4C6E3D" stroke-width="1.5"/>
+        <circle cx="248" cy="65" r="3" fill="#4C6E3D"/>
+        <text x="248" y="40" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="1.4">DRAFT</text>
+        <text x="248" y="100" text-anchor="middle" font-family="'Source Serif 4',serif" font-style="italic" font-size="11" fill="#4A4A48">post + magnet</text>
+      </g>
+      <g class="flow-node" data-step="3">
+        <circle cx="416" cy="65" r="9" fill="#F7F4EF" stroke="#4C6E3D" stroke-width="1.5"/>
+        <circle cx="416" cy="65" r="3" fill="#4C6E3D"/>
+        <text x="416" y="40" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="1.4">APPROVE</text>
+        <text x="416" y="100" text-anchor="middle" font-family="'Source Serif 4',serif" font-style="italic" font-size="11" fill="#4A4A48">one tap</text>
+      </g>
+      <g class="flow-node" data-step="4">
+        <circle cx="584" cy="65" r="9" fill="#F7F4EF" stroke="#4C6E3D" stroke-width="1.5"/>
+        <circle cx="584" cy="65" r="3" fill="#4C6E3D"/>
+        <text x="584" y="40" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="1.4">PUBLISH</text>
+        <text x="584" y="100" text-anchor="middle" font-family="'Source Serif 4',serif" font-style="italic" font-size="11" fill="#4A4A48">post + landing page</text>
+      </g>
+      <g class="flow-node" data-step="5">
+        <circle cx="752" cy="65" r="9" fill="#F7F4EF" stroke="#4C6E3D" stroke-width="1.5"/>
+        <circle cx="752" cy="65" r="3" fill="#4C6E3D"/>
+        <text x="752" y="40" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="1.4">CAPTURE</text>
+        <text x="752" y="100" text-anchor="middle" font-family="'Source Serif 4',serif" font-style="italic" font-size="11" fill="#4A4A48">leads land in list</text>
+      </g>
+      <g class="flow-node" data-step="6">
+        <circle cx="920" cy="65" r="9" fill="#4C6E3D" stroke="#4C6E3D" stroke-width="1.5"/>
+        <circle cx="920" cy="65" r="3" fill="#F7F4EF"/>
+        <text x="920" y="40" text-anchor="middle" font-family="'IBM Plex Mono',monospace" font-size="10" font-weight="700" fill="#1A1A1A" letter-spacing="1.4">NURTURE</text>
+        <text x="920" y="100" text-anchor="middle" font-family="'Source Serif 4',serif" font-style="italic" font-size="11" fill="#4A4A48">weekly send</text>
+      </g>
+
+      <!-- continuous traveling pulses -->
+      <circle r="22" fill="url(#flow-pulse)" class="flow-pulse flow-pulse-a"><animate attributeName="cx" from="60" to="920" dur="6s" repeatCount="indefinite"/><animate attributeName="cy" from="65" to="65" dur="6s" repeatCount="indefinite"/></circle>
+      <circle r="22" fill="url(#flow-pulse)" class="flow-pulse flow-pulse-b" opacity="0.65"><animate attributeName="cx" from="60" to="920" dur="6s" begin="2s" repeatCount="indefinite"/><animate attributeName="cy" from="65" to="65" dur="6s" begin="2s" repeatCount="indefinite"/></circle>
+      <circle r="22" fill="url(#flow-pulse)" class="flow-pulse flow-pulse-c" opacity="0.45"><animate attributeName="cx" from="60" to="920" dur="6s" begin="4s" repeatCount="indefinite"/><animate attributeName="cy" from="65" to="65" dur="6s" begin="4s" repeatCount="indefinite"/></circle>
+    </svg>
+
+    <div class="cover-cta">
+      <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">See if it fits</a>
+      <span class="cover-meta-line">30-min call</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- 01 — The honest read -->
+<div class="section">
+  <h2>You'd post if the math worked. It doesn't, yet.</h2>
+  <div class="problem-card">
+    <p>You know LinkedIn would build the brand. You have the opinions. You just don't have ninety minutes a day to draft, edit, find the hook, schedule, and write the lead magnet that follows.</p>
+  </div>
+  <div class="flow-grid">
+    <div class="flow-step">
+      <span class="flow-step-number">1</span>
+      <div class="flow-step-title">Drafting is the bottleneck</div>
+      <div class="flow-step-desc">Each post takes 45–90 minutes. Five posts a week is a part-time job nobody on your team wants and you can't afford to hire for.</div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-number">2</span>
+      <div class="flow-step-title">Lead magnets die in week two</div>
+      <div class="flow-step-desc">Most never ship. By day four you remember you have an agency to run. The PDF sits 80% done in Notion forever.</div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-number">3</span>
+      <div class="flow-step-title">Your calls have the content</div>
+      <div class="flow-step-desc">Every discovery call surfaces three posts worth of insight. Nobody has time to listen back, transcribe, and turn them into drafts.</div>
+    </div>
+    <div class="flow-step">
+      <span class="flow-step-number">4</span>
+      <div class="flow-step-title">Templates aren't the fix</div>
+      <div class="flow-step-desc">Notion templates push the work back onto you. A calendar to fill out is the same problem with extra steps. The system has to draft in your voice.</div>
+    </div>
+  </div>
+</div>
+
+<!-- 02 — What we build -->
+<div class="section">
+  <h2>Four outputs running off one <em>content brain</em>.</h2>
+  <p>The engine reads your calls, your past posts, and your competitors' best work, then drafts in your voice and queues each piece for your one-tap approval.</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <span class="skill-num">1</span>
+      <div class="skill-name">You show up on LinkedIn every day, hands off</div>
+      <div class="skill-outcome">Posts ship in your voice, scheduled to your slot. The engine writes the draft, picks the hook from ten variants, and runs it through a nine-dimension QA pass before it queues for your one-tap approval.</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-num">2</span>
+      <div class="skill-name">Qualified leads land in your inbox while you sleep</div>
+      <div class="skill-outcome">Four lead-magnet formats off one engine: Checklist, Calculator, Assessment, Guide. Each prospect answers, gets a real result, lands in your nurture list with a follow-up sent within 24 hours.</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-num">3</span>
+      <div class="skill-name">Branded carousels that earn the save</div>
+      <div class="skill-outcome">Eight carousel styles off the same brain: Educational Breakdown, Step-by-Step, Framework, Data-Driven, Before-After, Myth-Busting, Case Study, Comic Explainer. Generated from approved post topics, 1080×1350 ready to post.</div>
+    </div>
+    <div class="skill-card">
+      <span class="skill-num">4</span>
+      <div class="skill-name">Your list stays warm without you remembering it exists</div>
+      <div class="skill-outcome">Every email captured by a magnet flows into your weekly nurture send, drafted by the same engine. The list compounds quietly between client work.</div>
+    </div>
+  </div>
+</div>
+
+<!-- Media examples — real samples from shipped work -->
+<div class="section">
+  <h2>What the system actually outputs.</h2>
+  <p>Real samples from live deployments. Carousels, lead magnets, landing pages, the queue board you'd review.</p>
+  <div class="media-grid">
+    <figure class="media-card media-tall">
+      <img src="images/carousel-cta.png" alt="LinkedIn carousel slide generated by the engine" loading="lazy">
+      <figcaption><span class="media-tag">Carousel · Step-by-Step</span><span class="media-cap">Eight slides generated from one approved post topic, branded and ready to upload.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/framework-image.jpeg" alt="Framework-style carousel slide" loading="lazy">
+      <figcaption><span class="media-tag">Carousel · Framework</span><span class="media-cap">Same engine, different visual language.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/cover-lead-magnet.jpeg" alt="Lead magnet cover" loading="lazy">
+      <figcaption><span class="media-tag">Lead magnet · Cover</span><span class="media-cap">Branded asset cover, generated end-to-end from the approved topic.</span></figcaption>
+    </figure>
+    <figure class="media-card media-wide">
+      <img src="images/landing-page.png" alt="Lead magnet landing page" loading="lazy">
+      <figcaption><span class="media-tag">Landing page</span><span class="media-cap">Auto-generated landing + email capture for each magnet.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/interactive-assessment.png" alt="Interactive assessment lead magnet" loading="lazy">
+      <figcaption><span class="media-tag">Lead magnet · Assessment</span><span class="media-cap">Question flow + scoring + results page, all live.</span></figcaption>
+    </figure>
+    <figure class="media-card">
+      <img src="images/guide.png" alt="Guide-style lead magnet" loading="lazy">
+      <figcaption><span class="media-tag">Lead magnet · Guide</span><span class="media-cap">Long-form PDF generated by the same brain.</span></figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- Lead Magnet showcase (animated 5-format rotator) -->
+<div class="section section-sunk">
+  <h2>Four magnet shapes. One engine.</h2>
+  <p>The same content brain generates every format. Each prospect gets the one matched to their stage and answer.</p>
+  <div class="lm-showcase" aria-label="Four lead magnet formats rotating">
+    <div class="lm-frame">
+      <div class="lm-slide" data-fmt="checklist">
+        <div class="lm-label">Format 01 · Checklist</div>
+        <div class="lm-mock lm-mock-checklist">
+          <div class="lm-mock-title">Pre-flight readiness</div>
+          <div class="lm-check done"><span class="lm-box on"></span>Map the current workflow end-to-end</div>
+          <div class="lm-check done"><span class="lm-box on"></span>Score each step against the 4 preconditions</div>
+          <div class="lm-check"><span class="lm-box"></span>Document the decision logic</div>
+          <div class="lm-check"><span class="lm-box"></span>Pick the first cycle to automate</div>
+        </div>
+      </div>
+      <div class="lm-slide" data-fmt="calculator">
+        <div class="lm-label">Format 02 · Calculator</div>
+        <div class="lm-mock lm-mock-calculator">
+          <div class="lm-mock-title">Workflow cost calculator</div>
+          <div class="lm-calc-row"><span>Manual hrs / week</span><span class="lm-calc-input">18</span></div>
+          <div class="lm-calc-row"><span>Loaded rate / hr</span><span class="lm-calc-input">$72</span></div>
+          <div class="lm-calc-row"><span>Annual headcount drag</span><span class="lm-calc-input">$67,392</span></div>
+          <div class="lm-calc-result">Recoverable in <em>92 days</em></div>
+        </div>
+      </div>
+      <div class="lm-slide" data-fmt="assessment">
+        <div class="lm-label">Format 03 · Assessment</div>
+        <div class="lm-mock lm-mock-assessment">
+          <div class="lm-mock-title">Agent-Ready Audit</div>
+          <div class="lm-progress"><span class="lm-progress-fill"></span></div>
+          <div class="lm-progress-label">Step 4 of 7</div>
+          <div class="lm-question">Where does your team's time actually leak?</div>
+          <div class="lm-option"><span class="lm-radio"></span>Manual reporting compile</div>
+          <div class="lm-option selected"><span class="lm-radio on"></span>Lead qualification + intake</div>
+          <div class="lm-option"><span class="lm-radio"></span>Client onboarding</div>
+        </div>
+      </div>
+      <div class="lm-slide" data-fmt="guide">
+        <div class="lm-label">Format 04 · Guide</div>
+        <div class="lm-mock lm-mock-guide">
+          <div class="lm-guide-eyebrow">The Agent-Ready Ops Field Guide</div>
+          <div class="lm-guide-title">Build the first cycle <em>before</em> the second.</div>
+          <div class="lm-guide-toc">
+            <div class="lm-toc-row"><span>01</span> Map the bleed</div>
+            <div class="lm-toc-row"><span>02</span> Score the workflow</div>
+            <div class="lm-toc-row"><span>03</span> Pick the narrow cut</div>
+            <div class="lm-toc-row"><span>04</span> Ship the first loop</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="lm-dots">
+      <span class="lm-dot"></span>
+      <span class="lm-dot"></span>
+      <span class="lm-dot"></span>
+      <span class="lm-dot"></span>
+    </div>
+  </div>
+</div>
+
+<!-- 03 — Command Center (real screenshot, closes "is this real" objection) -->
+<div class="section">
+  <div class="command-center">
+    <div class="command-eyebrow">Command Center · a live client · Live</div>
+    <h2>This is what it looks like, running.</h2>
+    <p class="command-lead">The board you'd be reviewing every morning. Drafts queue here, you tap approve, the system publishes.</p>
+    <a class="command-image-wrap" href="../proposals/assets/4creatives/kyle-content-system.png" target="_blank" rel="noopener">
+      <img src="../proposals/assets/4creatives/kyle-content-system.png" alt="Live ClickUp board of a live client's LinkedIn content system" loading="lazy">
+    </a>
+  </div>
+</div>
+
+<!-- 04 — Architecture (dark band) -->
+<div class="section solution-dark-section">
+  <div class="sysflow-wrap">
+    <h2>Four sources in. Three outputs out. <em>One brain</em> in between.</h2>
+
+    <div class="arch">
+      <div class="arch-sources">
+        <span class="arch-src">Call transcripts</span>
+        <span class="arch-src">Manual Ideas</span>
+        <span class="arch-src">Competitor posts</span>
+        <span class="arch-src">Viral Trends</span>
+      </div>
+      <div class="arch-down"></div>
+
+      <div class="arch-stage">
+        <span class="arch-stg-n">01</span>
+        <div class="arch-stg-label">Content Brain · RAG</div>
+        <div class="arch-stg-body">Supabase vector DB indexes your calls, shipped posts, and brand voice. Output quality compounds as the library grows. Week eight beats week one without changing a line of code.</div>
+        <span class="arch-ghost">01</span>
+      </div>
+      <div class="arch-down"></div>
+
+      <div class="arch-stage">
+        <span class="arch-stg-n">02</span>
+        <div class="arch-stg-label">5-Agent Pipeline</div>
+        <div class="arch-flow">
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">1</div>
+            <div class="arch-flow-lbl">Context<br>Retrieval</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">2</div>
+            <div class="arch-flow-lbl">Categorize</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">3</div>
+            <div class="arch-flow-lbl">10 Hook<br>Variants</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">4</div>
+            <div class="arch-flow-lbl">Voice<br>Writer</div>
+          </div>
+          <div class="arch-flow-arr">→</div>
+          <div class="arch-flow-step">
+            <div class="arch-flow-node">5</div>
+            <div class="arch-flow-lbl">QA Review<br>9-dim</div>
+          </div>
+        </div>
+        <span class="arch-ghost">02</span>
+      </div>
+      <div class="arch-down"></div>
+
+      <div class="arch-stage">
+        <span class="arch-stg-n">03</span>
+        <div class="arch-stg-label">Airtable Review Board</div>
+        <div class="arch-stg-body">Drafts queue automatically in your workspace. Read, edit, swap hooks, approve. Five minutes a day. Nothing goes live without your tap.</div>
+        <span class="arch-ghost">03</span>
+      </div>
+
+      <div class="arch-fork">
+        <div class="arch-fork-lbl">on approval</div>
+        <svg viewBox="0 0 100 64" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="50" y1="0" x2="50" y2="24" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <line x1="18" y1="24" x2="82" y2="24" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <line x1="18" y1="24" x2="18" y2="64" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <line x1="50" y1="24" x2="50" y2="64" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+          <line x1="82" y1="24" x2="82" y2="64" stroke="rgba(112,154,93,.4)" stroke-width="1" vector-effect="non-scaling-stroke"/>
+        </svg>
+      </div>
+
+      <div class="arch-outs">
+        <div class="arch-out">
+          <div class="arch-out-lbl">LinkedIn Post</div>
+          <div class="arch-out-body">Unipile schedules it for the time slot you picked. Scored, in your voice, ready.</div>
+        </div>
+        <div class="arch-out">
+          <div class="arch-out-lbl">Carousel</div>
+          <div class="arch-out-body">Eight styles off the same engine. 1080×1350 slides generated from the approved post topic, ready to upload.</div>
+        </div>
+        <div class="arch-out">
+          <div class="arch-out-lbl">Lead Magnet</div>
+          <div class="arch-out-body">Landing page, resource page, cover image, follow-up email. One approval, the asset goes live.</div>
+        </div>
+        <div class="arch-out">
+          <div class="arch-out-lbl">Newsletter</div>
+          <div class="arch-out-body">Weekly nurture send to the list your lead magnets built. Same voice, drafted from approved posts.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-card">
+      <p>Once it's running, your daily task is <strong>under ten minutes</strong>. Posts queue up in Airtable. Read the draft. Tap approve. LinkedIn schedules itself. Lead magnets branch from approved topics. No briefing, no writing, no calendar to fill out.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Tech stack — what's actually under the hood -->
+<div class="section">
+  <h2>What's actually under the hood.</h2>
+  <p>The system runs on your accounts, on your stack. You own the keys, you own the data, you can fire me on day 15 and the engine keeps running.</p>
+  <div class="stack-grid">
+    <div class="stack-row"><div class="stack-layer">Project Mgmt</div><div class="stack-tools"><strong>ClickUp</strong> · queue, prompt library, approval board</div></div>
+    <div class="stack-row"><div class="stack-layer">Workflow</div><div class="stack-tools"><strong>n8n</strong> (self-hosted) · 25+ workflows orchestrating the pipeline</div></div>
+    <div class="stack-row"><div class="stack-layer">AI Brain</div><div class="stack-tools"><strong>Claude</strong> · drafting, scoring, voice modeling</div></div>
+    <div class="stack-row"><div class="stack-layer">Vector DB</div><div class="stack-tools"><strong>Supabase</strong> (pgvector) · your call transcripts + shipped posts indexed for RAG</div></div>
+    <div class="stack-row"><div class="stack-layer">Landing Pages</div><div class="stack-tools"><strong>Webflow</strong> · branded lead-magnet pages auto-generated per asset</div></div>
+    <div class="stack-row"><div class="stack-layer">Distribution</div><div class="stack-tools"><strong>Unipile</strong> · scheduled LinkedIn publishing + DM follow-ups</div></div>
+    <div class="stack-row"><div class="stack-layer">Email Capture</div><div class="stack-tools"><strong>ConvertKit</strong> · lead-magnet email flow + weekly nurture send</div></div>
+  </div>
+</div>
+
+<!-- 04 — Your Monday after we build it (payoff walkthrough) -->
+<div class="section section-sunk">
+  <h2>Your Monday, day thirty.</h2>
+  <p class="payoff-lead">A walkthrough of what the week looks like after the engine is live.</p>
+  <div class="payoff-grid">
+    <div class="payoff-row">
+      <div class="payoff-time">8:42 AM</div>
+      <div class="payoff-text">Coffee. You open the queue. Today's draft is waiting, hook already picked, formatted for your slot. You read it. Edit one line. Tap approve.</div>
+    </div>
+    <div class="payoff-row">
+      <div class="payoff-time">8:46 AM</div>
+      <div class="payoff-text">You're done with content for the day. The post will ship at 9:15. Tomorrow's draft is already being written off yesterday's discovery call.</div>
+    </div>
+    <div class="payoff-row">
+      <div class="payoff-time">11:30 AM</div>
+      <div class="payoff-text">Three lead magnet downloads overnight. The 24-hour follow-up email already went out, written off the answers each prospect gave. You see who clicked, who replied, and decide which conversations to take live.</div>
+    </div>
+    <div class="payoff-row">
+      <div class="payoff-time">Friday</div>
+      <div class="payoff-text">Newsletter goes out to the list the magnets built. You spent zero minutes on it this week. The list is up by 47.</div>
+    </div>
+  </div>
+  <p class="payoff-close"><strong>Total time on content this week: under 30 minutes.</strong></p>
+</div>
+
+<!-- 05 — The math -->
+<div class="section">
+  <h2>What the system gives back.</h2>
+  <div class="roi-grid">
+    <div class="roi-stat">
+      <div class="roi-stat-value">20+</div>
+      <div class="roi-stat-label">Hours back / month</div>
+    </div>
+    <div class="roi-stat">
+      <div class="roi-stat-value">Daily</div>
+      <div class="roi-stat-label">Post cadence, hands-off</div>
+    </div>
+    <div class="roi-stat">
+      <div class="roi-stat-value">4</div>
+      <div class="roi-stat-label">Lead magnet formats</div>
+    </div>
+  </div>
+</div>
+
+<!-- 05 — Real proof -->
+<div class="section">
+  <h2>What it looks like <em>actually running</em>.</h2>
+  <p>Screenshots from live deployments. The first two are <strong>a live client's</strong> system, running daily through the same architecture. The last two are the lead magnet engine producing live interactive assessments.</p>
+  <div class="proof-grid">
+    <figure class="proof-card">
+      <img src="../proposals/assets/4creatives/kyle-content-system.png" alt="a live client's content system board" loading="lazy">
+      <figcaption class="proof-card-body">
+        <div class="proof-card-label">a live client · content system · live</div>
+        <div class="proof-card-caption">The live ClickUp board, running daily. Post queue, source attribution, format, and pipeline status. Every row is a draft built by the multi-agent pipeline.</div>
+      </figcaption>
+    </figure>
+    <figure class="proof-card">
+      <img src="../proposals/assets/4creatives/kyle-guides.png" alt="a live client's lead magnet guides library" loading="lazy">
+      <figcaption class="proof-card-body">
+        <div class="proof-card-label">a live client · guides library</div>
+        <div class="proof-card-caption">Lead magnet guides generated by the same engine and published to the client's audience. Same architecture, different positioning.</div>
+      </figcaption>
+    </figure>
+    <figure class="proof-card">
+      <img src="../proposals/assets/4creatives/ivan-assessment-scoring.png" alt="Interactive assessment scoring view" loading="lazy">
+      <figcaption class="proof-card-body">
+        <div class="proof-card-label">Live assessment lead magnet</div>
+        <div class="proof-card-caption">One of four lead magnet formats. Question-based, branded, scored, fully interactive. Generated end-to-end from one approved post topic.</div>
+      </figcaption>
+    </figure>
+    <figure class="proof-card">
+      <img src="../proposals/assets/4creatives/ivan-interactive-assessment.png" alt="Interactive assessment full flow" loading="lazy">
+      <figcaption class="proof-card-body">
+        <div class="proof-card-label">Assessment UX · full flow</div>
+        <div class="proof-card-caption">The full interactive flow. Question sequence, scoring logic, and results page. The lead magnet engine produces all of this branded for your audience.</div>
+      </figcaption>
+    </figure>
+  </div>
+</div>
+
+<!-- 06 — Other recent builds -->
+<div class="section">
+  <h2>What the engine has shipped for other agencies.</h2>
+  <p>Three live deployments of the same content + lead-gen system, running in production right now.</p>
+  <div class="builds-rows">
+    <div class="builds-row">
+      <div class="builds-row-metric">0 <span class="bm-arrow">→</span> daily</div>
+      <div class="builds-row-body">
+        <div class="builds-row-client">Boutique branding agency · 8 people</div>
+        <div class="builds-row-desc">Daily LinkedIn cadence shipped in week two. The founder went from one post a month to five a week without touching a draft. First lead magnet pushed live on day eleven.</div>
+      </div>
+    </div>
+    <div class="builds-row">
+      <div class="builds-row-metric">47 <span class="bm-arrow">/</span> mo</div>
+      <div class="builds-row-body">
+        <div class="builds-row-client">Fractional COO practice · solo founder</div>
+        <div class="builds-row-desc">Forty-seven qualified leads captured by the assessment magnet in the first month. Twelve booked discovery calls off the 24-hour follow-up. Newsletter list grew from zero to three hundred in six weeks.</div>
+      </div>
+    </div>
+    <div class="builds-row">
+      <div class="builds-row-metric">90 <span class="bm-arrow">→</span> 12 min</div>
+      <div class="builds-row-body">
+        <div class="builds-row-client">Growth marketing agency · 14 people</div>
+        <div class="builds-row-desc">Founder's daily content time fell from ninety minutes to twelve. Five posts a week, two lead magnets a month, weekly nurture send. Hands off after morning approval.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 07 — Not for everyone -->
+<div class="section">
+  <h2>What sets this apart from a $99 template.</h2>
+  <p>Why this isn't another Notion-template content kit or a Hypefury subscription.</p>
+  <div class="diff-grid">
+    <div class="diff-card">
+      <span class="diff-num">1</span>
+      <div class="diff-title">Brand depth, not templates</div>
+      <div class="diff-body">Seven strategic documents drive every draft: voice document, forbidden language, brand positioning, audience profile, offer ladder, format rubric, hook library. Templates are skin-deep. This engine is built on the way you actually think.</div>
+    </div>
+    <div class="diff-card">
+      <span class="diff-num">2</span>
+      <div class="diff-title">Five agents, not one prompt</div>
+      <div class="diff-body">Each post passes through context retrieval, format selection, hook generation, voice writing, and a nine-dimension QA pass. A single ChatGPT prompt can't catch its own mistakes. A pipeline of specialized agents can.</div>
+    </div>
+    <div class="diff-card">
+      <span class="diff-num">3</span>
+      <div class="diff-title">Your calls become content</div>
+      <div class="diff-body">Discovery calls and client work feed the brain through transcripts. The system gets sharper every week without you teaching it. Templates stay the same shape forever.</div>
+    </div>
+    <div class="diff-card">
+      <span class="diff-num">4</span>
+      <div class="diff-title">You own it on day fifteen</div>
+      <div class="diff-body">Everything runs on your accounts, your stack, your keys. No SaaS subscription, no vendor that disappears, no per-seat lock-in. The engine is yours the day you take handoff.</div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:80px">Skip the call if any of these are you.</h2>
+  <ul class="notfor-list">
+    <li><strong>Pre-revenue solo consultants.</strong> You don't have a content problem yet. You have a client problem. Book five discovery calls the hard way first, then come back.</li>
+    <li><strong>Agencies under $20k/month.</strong> The ROI doesn't land at this stage. Keep writing manually for another quarter. Put the build budget into the next hire.</li>
+    <li><strong>Notion-template shoppers.</strong> This is custom infrastructure, not a productized SaaS. If you want a $99 content calendar, save your money.</li>
+  </ul>
+</div>
+
+<!-- 08 — FAQ -->
+<div class="section">
+  <h2>Questions that come up most.</h2>
+  <div class="faq-grid">
+    <details class="faq-item">
+      <summary class="faq-q">Will it actually sound like me?</summary>
+      <div class="faq-a">
+        <p>Yes, once it has enough of your voice to learn from. The profile trains off your LinkedIn archive, your call transcripts, and a short brand interview in week one. After 10–15 approved posts the edit time drops to seconds per draft.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What do you need from me to build it?</summary>
+      <div class="faq-a">
+        <p>A 30-minute brand interview in week one. Access to your LinkedIn archive. Your call recordings if you have them (Fathom, Granola, whatever). Approval rights on the accounts where the system lives. That's the list.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Can I edit drafts before they ship?</summary>
+      <div class="faq-a">
+        <p>Every one. The queue shows the draft, the ten hook variations, the source material, and the QA score. Edit, reject, swap hooks, change publish time. Nothing goes live without your tap.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">Am I locked in after the build?</summary>
+      <div class="faq-a">
+        <p>No. The system runs in your accounts on your stack. Database, workspace, LinkedIn integration, landing pages, all in your name. Optional care plan if you want me to monitor and tune. Most clients keep me on it. A few run it themselves from day 15. Your call.</p>
+      </div>
+    </details>
+    <details class="faq-item">
+      <summary class="faq-q">What if the output isn't good enough?</summary>
+      <div class="faq-a">
+        <p>Weekly reviews during the build catch direction problems early. If at the end of the engagement the system isn't producing usable output, I refund the final invoice. Hasn't happened yet.</p>
+      </div>
+    </details>
+  </div>
+</div>
+
+<!-- 09 — About Iván -->
+<div class="section">
+  <h2>Who's building this.</h2>
+  <div class="about-block">
+    <div class="about-photo">
+      <img src="../assets/ivan.jpg" alt="Iván Manfredi">
+    </div>
+    <div class="about-text">
+      <h4>Iván <em>Manfredi</em></h4>
+      <div class="about-tag">AI &amp; Automation · Service-business specialist</div>
+      <p>I build AI and automation systems for agencies and service businesses. <strong>40+ production systems shipped</strong>: content engines, lead generation pipelines, internal operations automation. The LinkedIn engine on this page is the one I've stress-tested most, because most agency operators I work with ask for it first.</p>
+    </div>
+  </div>
+</div>
+
+<!-- 10 — How we work together -->
+<div class="section">
+  <h2>Three steps. Live in 1–2 weeks.</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Discovery · 30 min</div>
+      <div class="step-body">We talk about your offers, your audience, and what's actually getting in the way. Fit → scoped proposal in 48 hours. Not a fit → I tell you what to do instead.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Build · 1–2 weeks</div>
+      <div class="step-body">I build the system end-to-end. Post pipeline, first lead magnet, landing page, follow-up emails. Async Slack for context. Working sessions when you want them. You stay hands-off if you prefer.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Handover</div>
+      <div class="step-body">The system runs on your stack, in your accounts. Yours from day one. Optional care plan if you want me to monitor and tune it after launch.</div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h2>Want to see if this would <em>actually work</em> for your agency?</h2>
+  <p>30 minutes. I look at your offers, your content situation, your audience. You leave knowing whether to hire me, and what to do if not.</p>
+  <a href="https://calendly.com/im-ivanmanfredi/30min" class="btn-primary">Book a discovery call</a>
+  <div class="cta-meta">30 minutes · Calendly opens in new tab</div>
+</div>
+
+<div class="footer">
+  <div>Iván Manfredi · 2026</div>
+  <div>
+    <a href="https://inboundonsteroids.com">inboundonsteroids.com</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/ivanmanfredi">LinkedIn</a>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Scroll progress bar
+  const bar=document.querySelector('.scroll-progress');
+  if(bar){window.addEventListener('scroll',()=>{
+    const h=document.documentElement.scrollHeight-window.innerHeight;
+    bar.style.width=h>0?(window.scrollY/h*100)+'%':'0';
+  },{passive:true})}
+
+  // Fade-up sections
+  const obs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})
+  },{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.section,.cover,.cta-section,.footer').forEach(el=>obs.observe(el));
+
+  // ROI count-up
+  const numObs=new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target;
+      const text=el.textContent.trim();
+      const num=parseFloat(text.replace(/[^0-9.]/g,''));
+      if(isNaN(num)||num===0){numObs.unobserve(el);return}
+      const suffix=text.replace(/[0-9.,]/g,'');
+      const isInt=!text.includes('.');
+      let start=0;
+      const duration=600;
+      const startTime=performance.now();
+      function tick(now){
+        const p=Math.min((now-startTime)/duration,1);
+        const ease=1-Math.pow(1-p,3);
+        const val=start+(num-start)*ease;
+        el.textContent=(isInt?Math.round(val):val.toFixed(1))+suffix;
+        if(p<1)requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+      numObs.unobserve(el);
+    })
+  },{threshold:0.5});
+  document.querySelectorAll('.roi-stat-value').forEach(el=>numObs.observe(el));
+
+  // Cover word-stagger
+  const cover=document.querySelector('.cover');
+  if(cover){
+    setTimeout(()=>cover.classList.add('visible'),100);
+    document.querySelectorAll('.cover .wrd').forEach((w,i)=>{
+      setTimeout(()=>w.classList.add('vis'),240+i*140);
+    });
+  }
+})();
+
+// Cursor spotlight
+if(window.matchMedia('(hover:hover)').matches){
+  var sp=document.getElementById('cursor-spotlight');
+  document.addEventListener('mousemove',function(e){
+    var x=(e.clientX/window.innerWidth*100).toFixed(1);
+    var y=(e.clientY/window.innerHeight*100).toFixed(1);
+    sp.style.background='radial-gradient(600px circle at '+x+'% '+y+'%, rgba(76,110,61,0.10), transparent 70%)';
+    sp.style.opacity='1';
+  },{passive:true});
+}
+
+// Lightbox for proof images
+(function(){
+  var ov=document.createElement('div');ov.className='lightbox-overlay';
+  var li=document.createElement('img');ov.appendChild(li);document.body.appendChild(ov);
+  ov.addEventListener('click',function(){ov.classList.remove('active')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')ov.classList.remove('active')});
+  document.querySelectorAll('.proof-card img, .media-card img').forEach(function(img){
+    img.addEventListener('click',function(e){e.stopPropagation();li.src=img.src;ov.classList.add('active')});
+  });
+})();
+</script>
+
+</body>
+</html>

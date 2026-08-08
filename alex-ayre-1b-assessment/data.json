@@ -1,0 +1,638 @@
+{
+ "slug": "alex-ayre-1b-assessment",
+ "title": "The B2B Paid Media Maturity Score",
+ "subtitle": "Find out whether your measurement, bidding, and strategy are built to show pipeline — or just activity.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "lead_quality_pipeline_vi",
+   "name": "Lead Quality & Pipeline Visibility",
+   "questions": [
+    {
+     "id": "lead-definition",
+     "text": "How does your team currently define what counts as a qualified lead from paid campaigns?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Any form fill or contact request — if someone submits, they're a lead.",
+       "score": 1
+      },
+      {
+       "label": "We have an MQL definition but it hasn't been formally aligned with sales.",
+       "score": 2
+      },
+      {
+       "label": "Marketing and sales agree on MQL criteria, but we don't consistently track what happens to leads after that.",
+       "score": 3
+      },
+      {
+       "label": "We track MQL to SQL to opportunity, with campaign source attribution inside our CRM.",
+       "score": 4
+      },
+      {
+       "label": "Campaign performance is reported in pipeline and closed-won revenue terms, not lead counts.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "budget-signal",
+     "text": "When deciding whether to cut or scale a campaign, what is the primary signal your team uses?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Cost per lead — lower CPL campaigns stay, higher ones get paused.",
+       "score": 1
+      },
+      {
+       "label": "CPL plus some engagement metrics like CTR or on-page conversion rate.",
+       "score": 2
+      },
+      {
+       "label": "Cost per MQL, as reported by marketing.",
+       "score": 3
+      },
+      {
+       "label": "Cost per SQL or cost per opportunity, with sales involved in the read.",
+       "score": 4
+      },
+      {
+       "label": "Pipeline generated and cost per closed deal — we defend spend with downstream revenue data.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "crm-tagging",
+     "text": "How are paid leads tagged when they enter your CRM?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "They aren't — we can't tell paid from organic inside the CRM.",
+       "score": 1
+      },
+      {
+       "label": "We capture the channel (e.g., 'paid') but not which campaign or ad group drove it.",
+       "score": 2
+      },
+      {
+       "label": "We capture channel and campaign name, but UTM tagging is inconsistent.",
+       "score": 3
+      },
+      {
+       "label": "Every paid lead is tagged with source, campaign, and ad group consistently.",
+       "score": 4
+      },
+      {
+       "label": "Full UTM data flows into the CRM and feeds directly into pipeline and revenue reporting.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're measuring the wrong thing — and it's costing you real pipeline.",
+     "text": "Counting leads isn't the same as counting revenue. The campaigns your team is pausing right now might be your best ones. Without downstream visibility, you have no way to know — and neither does the algorithm.",
+     "steps": [
+      "Tag every paid lead with source, campaign, and ad group before anything else. This is the starting point.",
+      "Sit down with sales and agree on what a qualified lead actually looks like before anything flows back to the platforms. Get it in writing.",
+      "Pull the last 90 days of closed deals and trace them back to campaign source. The answer will probably surprise you."
+     ]
+    },
+    "mid": {
+     "headline": "You have the foundation. Now close the loop on pipeline.",
+     "text": "You're tracking further downstream than most teams. The gap is usually the last mile — connecting what marketing measures to what sales actually closes. That's where the real optimization happens.",
+     "steps": [
+      "If campaign source isn't flowing through to closed-won in your CRM, that's the next setup priority.",
+      "Build a simple reporting view that shows CPL and pipeline generated side by side for every campaign. Make it visible to both teams.",
+      "Use that data to defend one campaign you'd have cut on CPL alone. That conversation is worth having."
+     ]
+    },
+    "high": {
+     "headline": "You're running paid media the way it should work in B2B.",
+     "text": "Pipeline visibility is what separates paid media that looks bad from paid media that actually is bad. You've built that. Keep it current — especially as new campaigns launch or platforms change how they pass data.",
+     "steps": [
+      "Audit UTM tagging quarterly. New campaigns and landing pages can quietly break the tracking chain.",
+      "Keep the CPL vs. pipeline view in front of both marketing and sales. It's the one report that stops the wrong budget conversation before it starts.",
+      "Document one campaign decision you made on pipeline data rather than CPL. That story is worth sharing with leadership."
+     ]
+    }
+   }
+  },
+  {
+   "id": "measurement_architecture",
+   "name": "Measurement Architecture",
+   "questions": [
+    {
+     "id": "source-of-truth",
+     "text": "Where does your team go to verify what is actually happening in your paid campaigns?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "The ad platforms themselves — Google Ads, Meta Ads Manager, LinkedIn Campaign Manager.",
+       "score": 1
+      },
+      {
+       "label": "Platform dashboards plus Google Analytics as a sanity check.",
+       "score": 2
+      },
+      {
+       "label": "We have a third-party analytics tool or BI dashboard but don't always reconcile with it.",
+       "score": 3
+      },
+      {
+       "label": "Our CRM is the primary source of truth for leads and pipeline. Platform data is secondary.",
+       "score": 4
+      },
+      {
+       "label": "We reconcile platform data, analytics, and CRM before any budget decision gets made.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "conversion-setup",
+     "text": "How confident are you in your current conversion tracking setup?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not very — we're tracking what the platform suggested during setup and haven't revisited it.",
+       "score": 1
+      },
+      {
+       "label": "We have conversion tracking live, but I'm not fully clear on what each action represents.",
+       "score": 2
+      },
+      {
+       "label": "Conversions are mapped to real business actions, but we haven't audited the setup recently.",
+       "score": 3
+      },
+      {
+       "label": "Primary conversions represent real business outcomes. We audit conversion actions on a regular cadence.",
+       "score": 4
+      },
+      {
+       "label": "Conversions are audited, value-weighted, and we've set up offline imports so the algorithm sees actual buyer data from our CRM.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "manual_report_hours",
+     "type": "number",
+     "text": "How many hours per month does your team spend manually pulling, cleaning, and reconciling paid media data across platforms?",
+     "hint": "Include time building reports, exporting from each ad platform, and cross-referencing numbers. We use $75/hr as the estimated blended rate to calculate your annual reporting cost.",
+     "suffix": "hours/month",
+     "min": 0,
+     "max": 80,
+     "step": 1,
+     "default": 10,
+     "normalize_formula": "x <= 2 ? 100 : x >= 40 ? 0 : Math.round(100 - ((x - 2) / 38 * 100))"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your measurement setup is working against your campaigns.",
+     "text": "Ad platforms have a vested interest in claiming credit. When that's your primary source of truth, you're making budget decisions on data that's built to look good. Getting measurement architecture right before spending another dollar is the most valuable thing you can do.",
+     "steps": [
+      "Verify conversion tracking: hover every conversion action status and read the last recorded conversion date and the last event ping. Those two dates tell you whether you have a setup problem or just a slow week.",
+      "Audit what your primary conversion actions actually are. If site visits share equal weight with form submissions, that's your first fix.",
+      "Stand up a source of truth outside the platforms. Your CRM is the right answer for B2B. If attribution data isn't flowing into it yet, that's the first thing to fix."
+     ]
+    },
+    "mid": {
+     "headline": "Your measurement foundation is solid. The gap is usually in the details.",
+     "text": "You've got the right instincts — external source of truth, conversions tied to real outcomes. The piece most teams miss at this stage is offline conversion imports. Without them, the algorithm is optimizing toward form fills, not buyers.",
+     "steps": [
+      "If you haven't set up offline conversion imports from your CRM, that's the next move. It's the step that shifts algorithm optimization from 'who submits' to 'who actually buys'.",
+      "Run a conversion action audit. Pull the last 90 days and confirm that every primary conversion maps to something sales would recognize as a real buyer signal.",
+      "Set a quarterly reminder to check conversion action statuses. Google's interface now uses labels like 'misconfigured' for situations that might just be a slow conversion week. You want to know the difference before someone panics."
+     ]
+    },
+    "high": {
+     "headline": "Your measurement setup is built to show what's actually happening.",
+     "text": "A clean measurement architecture is what makes every other decision trustworthy. The ongoing work is keeping it accurate as platforms change labels, update interfaces, and introduce new conversion types.",
+     "steps": [
+      "Schedule a conversion tracking audit every quarter. Platform interfaces change, tags drift, and new campaign types can introduce conversion actions that haven't been properly categorized.",
+      "Keep your offline conversion import pipeline documented. When someone new touches the CRM or the ad accounts, they need to know what's connected.",
+      "Look at your manual reporting hours from this assessment. If that number is significant, the process is worth reviewing — time spent reconciling data manually is time not spent on strategy."
+     ]
+    }
+   }
+  },
+  {
+   "id": "algorithm_platform_fluen",
+   "name": "Algorithm & Platform Fluency",
+   "questions": [
+    {
+     "id": "diagnostic-process",
+     "text": "When a campaign is spending normally but results look off, what does your team check first?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at spend, impressions, and CPC to see if delivery seems normal.",
+       "score": 1
+      },
+      {
+       "label": "We check budget caps and bid settings to rule out a technical issue.",
+       "score": 2
+      },
+      {
+       "label": "We check which conversion actions the campaign is optimizing toward.",
+       "score": 3
+      },
+      {
+       "label": "We audit the conversion setup — tag firing dates, event pings, and what the algorithm is actually being told to find.",
+       "score": 4
+      },
+      {
+       "label": "We run a fixed diagnostic sequence: conversion health, signal hierarchy, bid strategy alignment, and a CRM pull — before adjusting a single setting.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "platform-recommendations",
+     "text": "When Google or Meta surfaces an automated recommendation, how does your team respond?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We usually apply them — the platform has more data on the account than we do.",
+       "score": 1
+      },
+      {
+       "label": "We apply them if they look reasonable at a surface level.",
+       "score": 2
+      },
+      {
+       "label": "We review them case by case and apply some, skip others.",
+       "score": 3
+      },
+      {
+       "label": "We evaluate every recommendation against our own strategy and data before acting.",
+       "score": 4
+      },
+      {
+       "label": "We evaluate, cross-check against our own data, and factor in the platform's incentives before deciding. Sometimes the right answer is to apply it. Sometimes it's wrong and we can show why.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "signal-hierarchy",
+     "text": "When a campaign has both soft engagement signals (site visits, video views) and hard conversion actions (form submissions, calls), how do you structure them?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Both are set as primary conversions — more signals to optimize toward seems better.",
+       "score": 1
+      },
+      {
+       "label": "We use both but haven't thought carefully about how the algorithm weighs one against the other.",
+       "score": 2
+      },
+      {
+       "label": "We use primary and secondary conversion actions, but haven't assigned explicit values to either.",
+       "score": 3
+      },
+      {
+       "label": "We assign different values to each action so the algorithm treats them as a hierarchy, not equal targets.",
+       "score": 4
+      },
+      {
+       "label": "We run value-based bidding with an explicit signal hierarchy and regularly confirm that spend is flowing toward hard conversions, not the path of least resistance.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The algorithm is spending your budget on whatever is easiest to find.",
+     "text": "Platform recommendations are designed to improve performance by the platform's definition of performance — which includes their revenue. Knowing when a confident recommendation is wrong is a separate skill from knowing what to do, and right now you probably need both.",
+     "steps": [
+      "Audit your conversion actions today. Ask: is each one something sales would call a real buyer signal? If site visits share equal weight with form submissions, that's your first fix.",
+      "Before applying any platform recommendation, ask what the platform's incentive is. Recommendations that increase spend volume deserve more scrutiny than ones that tighten targeting.",
+      "When something looks off in a campaign, check the conversion setup before adjusting bids or budget. Most unexplained performance drops have a measurement root cause."
+     ]
+    },
+    "mid": {
+     "headline": "You know enough to question the machine. Now build the process to do it consistently.",
+     "text": "You're not blindly following platform recommendations and you're thinking about signal quality. The gap is usually a documented diagnostic process — something that runs the same checks every time, not relying on whoever happens to be in the account that week.",
+     "steps": [
+      "Write a one-page diagnostic checklist for underperforming campaigns. Conversion health, signal hierarchy, bid strategy alignment. Having it written down is what makes it repeatable.",
+      "If you haven't tested value-based bidding for any lead gen campaigns, that's worth a structured experiment. Assign a high value to form submissions and a low value to engagement signals — then watch where the algorithm starts spending.",
+      "The next time you disagree with a platform recommendation, write down why. The reasoning behind the decision is what makes your judgment portable to your team."
+     ]
+    },
+    "high": {
+     "headline": "You're running the algorithm instead of being run by it.",
+     "text": "Understanding how these systems work — and more specifically, how they fail — is what separates campaigns that perform from campaigns that look like they perform. The platforms are moving toward more automation, not less. That makes human judgment more valuable, not less.",
+     "steps": [
+      "Document your diagnostic sequence and share it with your team. The goal is that any qualified person in the account can run the same checks, not just whoever built the campaigns.",
+      "Revisit signal hierarchy every time you add a new campaign type or conversion action. The values set six months ago may not reflect what the business cares about today.",
+      "Stay current on how platform algorithms are changing. The move toward lifecycle intent signals and journey-aware bidding changes what good signal architecture looks like. Worth revisiting regularly."
+     ]
+    }
+   }
+  },
+  {
+   "id": "full_funnel_strategy_cha",
+   "name": "Full-Funnel Strategy & Channel Roles",
+   "questions": [
+    {
+     "id": "channel-roles",
+     "text": "How clearly defined are the roles of each paid channel in your current strategy?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Every channel is expected to generate leads. That's the job.",
+       "score": 1
+      },
+      {
+       "label": "Some channels feel more like awareness and some like conversion, but it's informal.",
+       "score": 2
+      },
+      {
+       "label": "We have a rough channel map, but success metrics are the same across all of them.",
+       "score": 3
+      },
+      {
+       "label": "Each channel has a defined role and we measure success differently depending on where it sits — awareness, consideration, or conversion.",
+       "score": 4
+      },
+      {
+       "label": "Channel roles are documented, measurement criteria match the role, and we can show how upper-funnel activity connects to lower-funnel outcomes.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "upper-funnel-measurement",
+     "text": "When social campaigns aren't driving direct conversions, how does your team evaluate whether they're working?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We don't — if it doesn't convert directly, it's hard to justify the spend.",
+       "score": 1
+      },
+      {
+       "label": "We look at reach, engagement, and CPM but don't connect those signals to pipeline.",
+       "score": 2
+      },
+      {
+       "label": "We track view-through or assisted conversions as reported inside the ad platform.",
+       "score": 3
+      },
+      {
+       "label": "We've built a framework that ties upper-funnel paid exposure to branded search lift or downstream pipeline velocity.",
+       "score": 4
+      },
+      {
+       "label": "We measure branded search lift, pipeline velocity, and downstream close rates — and can defend upper-funnel spend with that data.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "intent-windows",
+     "text": "How does your paid strategy prepare for high-intent windows — seasonal spikes, industry events, or competitive moments?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We run standard campaigns and adjust budget if we see CPCs spike.",
+       "score": 1
+      },
+      {
+       "label": "We increase spend during peak periods but use the same creative and targeting.",
+       "score": 2
+      },
+      {
+       "label": "We prepare different creative for seasonal periods and adjust based on efficiency signals in real time.",
+       "score": 3
+      },
+      {
+       "label": "We have a proactive plan — offer, creative, landing page — and a clear threshold for holding spend even when CPCs rise.",
+       "score": 4
+      },
+      {
+       "label": "We model intent windows in advance, build dedicated campaigns, and have pre-agreed rules for staying visible even when efficiency dips.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're grading every channel on the same test — and the wrong channels are winning.",
+     "text": "Search can close the deal. Social can make search possible. If you measure both on direct conversions, you'll cut social every time budgets get tight, then wonder why search performance fell. Building the measurement framework that shows the whole picture is the work.",
+     "steps": [
+      "Start with channel role definitions. Before your next planning cycle, write down what each channel is supposed to do and how you'd know if it's doing it. Awareness, consideration, and conversion are different jobs.",
+      "Run a 90-day branded search volume analysis alongside your social campaign dates. If you're running social, look for lift in branded search during those windows. That's the data that shows what social is actually doing.",
+      "Pick one upcoming intent window and build a dedicated plan before it arrives. A real offer and ready creative is a different game than reacting in real time."
+     ]
+    },
+    "mid": {
+     "headline": "You understand the funnel. The gap is usually the measurement that connects the stages.",
+     "text": "Knowing that upper-funnel matters and being able to show it are different things. Leadership will always pressure the channels that look efficient on last-click. The only way to defend the channels that make the whole thing work is with data that doesn't come from inside the platform.",
+     "steps": [
+      "If you're using view-through or assisted conversions from inside the platform, add an external layer. Branded search lift and pipeline velocity are signals without a platform bias.",
+      "Build a one-page channel role document before the next budget conversation. What does each channel do, how do you measure it, and what would losing it cost? Having this ready changes the conversation.",
+      "The next time a high-intent window is approaching, write a brief in advance — offer, creative hypothesis, landing page, and your threshold for staying visible when costs rise."
+     ]
+    },
+    "high": {
+     "headline": "You're running a real media mix — not a collection of independent campaigns.",
+     "text": "Understanding how channels work together and being able to show it is what good paid media strategy actually looks like. The technical side of media buying keeps automating. The strategy and measurement architecture behind it matter more now, not less.",
+     "steps": [
+      "Keep your channel role documentation current as platforms evolve. The move toward lifecycle intent signals and journey-aware bidding changes what upper-funnel looks like. Your measurement framework should evolve with it.",
+      "If you don't already have a documented intent window playbook, build one. Offer, creative, targeting parameters, and spend thresholds. Make it reusable across future high-intent moments.",
+      "When you can show that a low-efficiency channel was carrying the funnel, document it. That case is worth more than any framework when the next budget conversation comes around."
+     ]
+    }
+   }
+  },
+  {
+   "id": "judgment_strategic_decis",
+   "name": "Judgment & Strategic Decision-Making",
+   "questions": [
+    {
+     "id": "conflicting-data",
+     "text": "When your team gets conflicting reads from different data sources — platform, analytics, CRM — how do you resolve it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We go with whatever the platform dashboard shows — it's the most real-time data we have.",
+       "score": 1
+      },
+      {
+       "label": "We debate it internally, but there's no structured way to resolve the disagreement.",
+       "score": 2
+      },
+      {
+       "label": "We have a primary source of truth in mind but haven't formally agreed on how to handle conflicts.",
+       "score": 3
+      },
+      {
+       "label": "We follow a pre-agreed hierarchy: CRM first, then analytics, then platform data.",
+       "score": 4
+      },
+      {
+       "label": "We have a documented decision framework that includes how to account for platform data that has an incentive to claim credit.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "reporting-to-leadership",
+     "text": "How does your team frame paid media results when reporting to leadership or clients?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We pull platform metrics and share them. That's the report.",
+       "score": 1
+      },
+      {
+       "label": "We add trend lines and context, but lead volume and CPL carry the conversation.",
+       "score": 2
+      },
+      {
+       "label": "We frame results in MQLs and pipeline when the data is available.",
+       "score": 3
+      },
+      {
+       "label": "We lead with business outcomes — pipeline generated, closed-won, and what each campaign contributed.",
+       "score": 4
+      },
+      {
+       "label": "We lead with outcomes, use platform metrics as supporting data, and anchor everything to documented baselines so the conversation is about direction, not just numbers.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "defend-pipeline-campaign",
+     "text": "If a campaign generates fewer leads at a higher CPL but shows strong pipeline downstream, can you defend it when budget pressure hits?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No — without clear efficiency, it's hard to justify keeping it.",
+       "score": 1
+      },
+      {
+       "label": "We'd flag it for review but would struggle to build the case fast enough.",
+       "score": 2
+      },
+      {
+       "label": "We could make the case, but it usually takes time to pull the data together after someone is already asking questions.",
+       "score": 3
+      },
+      {
+       "label": "We have the downstream data ready and can show the pipeline value of that campaign before the conversation gets difficult.",
+       "score": 4
+      },
+      {
+       "label": "This scenario is already built into our reporting. Pipeline quality — not CPL — is the primary budget signal we present to leadership.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're making budget decisions on information that's built to look good.",
+     "text": "Ad platforms have a vested interest in claiming credit and showing efficiency. When that's the primary source for reporting and decision-making, you end up defending the wrong campaigns and cutting the right ones. The fix starts with a source of truth outside the platforms.",
+     "steps": [
+      "Pick a primary source of truth for performance data and commit to it. Your CRM is the right answer for B2B. If attribution data isn't flowing in yet, that's the first thing to fix.",
+      "Before your next leadership or client report, ask: could someone with no marketing background tell from this report whether things are working? If not, rebuild it around outcomes, not metrics.",
+      "Find one campaign in the last 90 days that looked inefficient on CPL but had strong pipeline. Build the case on paper — even if you can't present it now, the exercise shows you what the report needs to say."
+     ]
+    },
+    "mid": {
+     "headline": "You're reporting on the right things. The gap is usually speed and readiness.",
+     "text": "You understand that pipeline is the metric that matters. The piece most teams miss is having that data ready before someone asks for it — not after the budget conversation has already started.",
+     "steps": [
+      "Build a standing report that shows CPL and pipeline side by side for every active campaign. Something you can pull up in any conversation, not something you build when someone asks.",
+      "Document your source hierarchy — CRM first, then analytics, then platform data. When data conflicts, having the hierarchy written down stops the debate before it starts.",
+      "The next time a platform recommendation conflicts with your read, write down why you disagreed and what data you used. That reasoning is what makes your judgment credible — and portable to your team."
+     ]
+    },
+    "high": {
+     "headline": "You're making decisions on the right information, in the right order.",
+     "text": "Most teams are still optimizing for the metrics platforms are happy to show them. You're working from a different read. Context and judgment are the differentiator now, not data access — and that gap is only going to widen.",
+     "steps": [
+      "If you have a documented source hierarchy and decision framework, make sure your team is trained on it, not just aware of it. The framework is only as strong as whoever is in the account on any given week.",
+      "Keep your baselines current. Seasonality, market shifts, and new campaign types can all move the baseline in ways that make normal performance look like a problem. Documented baselines stop that conversation before it starts.",
+      "Watch how AI tools are being used to challenge expert recommendations in your organization. Having clear, written reasoning behind your decisions is what holds up when someone runs the same question through a model and gets a different answer."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual-reporting-cost",
+   "label": "Annual Manual Reporting Cost",
+   "format": "currency_per_period",
+   "formula": "manual_report_hours * 75 * 12",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your situation right now?",
+  "answers": [
+   {
+    "label": "In-house marketing leader (CMO, VP, Director)",
+    "tag": "inhouse_leader"
+   },
+   {
+    "label": "Paid media manager or specialist",
+    "tag": "paid_specialist"
+   },
+   {
+    "label": "Agency owner or consultant",
+    "tag": "agency"
+   },
+   {
+    "label": "Founder managing paid media directly",
+    "tag": "founder"
+   }
+  ]
+ }
+}

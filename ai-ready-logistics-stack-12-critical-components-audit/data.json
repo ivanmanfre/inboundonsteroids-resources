@@ -1,0 +1,768 @@
+{
+  "slug": "ai-ready-logistics-stack-12-critical-components-audit",
+  "title": "AI-Ready Logistics Stack: 12 Critical Components Audit",
+  "subtitle": "For operations leaders at 50-200 employee logistics firms. Score your stack against the 12 components that decide whether agentic automation lands or leaks.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "audience": {
+    "vertical": "logistics and freight operations",
+    "locations": "the US, UK, and Canada",
+    "count_band": "50-200"
+  },
+  "benchmarks": [
+    {
+      "metric": "Delivery effectiveness lift from AI document validation (Domina case)",
+      "value": "15%",
+      "source": "Google Cloud Customer Stories",
+      "year": "2024",
+      "url": ""
+    },
+    {
+      "metric": "Real-time data access improvement after unified event stream (Domina case)",
+      "value": "80%",
+      "source": "Google Cloud Customer Stories",
+      "year": "2024",
+      "url": ""
+    }
+  ],
+  "estimated_minutes": 12,
+  "methodology_anchor": {
+    "name": "Agent-Ready Ops",
+    "preconditions": [
+      "Structured input data. Your shipment, document, and event sources are clean enough to be the input layer for an automated decision.",
+      "Documentable decision logic. The rules your senior dispatchers and ops leads follow can be written down explicitly.",
+      "Narrow initial scope. The first cut handles a single decision in a single workflow, not the whole dispatch floor.",
+      "Human-in-the-loop by design. Every agent output touches a dispatcher, ops lead, or compliance reviewer before it ships externally."
+    ],
+    "intro": "This assessment scores your logistics stack against the four preconditions for Agent-Ready Ops. Hit all four and the workflow is ready for AI to carry weight. Miss one and any AI build will leak six weeks in."
+  },
+  "proof_card": {
+    "score_label": "Stack Readiness Score",
+    "sample_score": 54,
+    "sample_top_leak": "shipment status reconciliation across TMS, WMS, and carrier APIs (~18 hrs/week of dispatcher rework)"
+  },
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your logistics operation?",
+    "answers": [
+      {
+        "label": "Under 50 employees, single facility",
+        "tag": "boutique"
+      },
+      {
+        "label": "50-100 employees, 1-2 facilities",
+        "tag": "growing"
+      },
+      {
+        "label": "101-200 employees, multi-facility or multi-mode",
+        "tag": "established"
+      },
+      {
+        "label": "200+ employees, regional or national network",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "data-foundation",
+      "name": "Data Foundation",
+      "questions": [
+        {
+          "id": "shipment-status-source-of-truth",
+          "text": "How consistently do you have a single source of truth for shipment status across TMS, WMS, and carrier APIs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Status lives in 3+ systems, reconciled nightly or by hand",
+              "score": 1
+            },
+            {
+              "label": "2. One primary system but dispatchers cross-check 2 others daily",
+              "score": 2
+            },
+            {
+              "label": "3. System of record exists but carrier APIs lag by hours",
+              "score": 3
+            },
+            {
+              "label": "4. Single source of truth, near real-time sync, occasional drift",
+              "score": 4
+            },
+            {
+              "label": "5. Unified status layer, sub-minute sync, agents can trust it",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "structured-shipment-intake",
+          "text": "How structured is your shipment order intake (addresses, weights, dimensions, special handling)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Free-text fields everywhere, optional weight, no validation",
+              "score": 1
+            },
+            {
+              "label": "2. Some structured fields but free-text addresses are common",
+              "score": 2
+            },
+            {
+              "label": "3. Most fields structured, validation on critical ones, gaps remain",
+              "score": 3
+            },
+            {
+              "label": "4. Fully structured intake, address verification, required dims and weight",
+              "score": 4
+            },
+            {
+              "label": "5. Structured intake with API-enforced schemas, zero free-text on routing fields",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "real-time-event-stream",
+          "text": "How real-time is your event stream from scanners, GPS, and POD devices into a single warehouse?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Events live in device-specific silos, pulled into reports weekly",
+              "score": 1
+            },
+            {
+              "label": "2. Daily batch loads into a warehouse, no real-time path",
+              "score": 2
+            },
+            {
+              "label": "3. Hourly loads, partial coverage of scanner and GPS sources",
+              "score": 3
+            },
+            {
+              "label": "4. Near real-time stream, most sources unified, gaps on POD",
+              "score": 4
+            },
+            {
+              "label": "5. Full real-time event stream, all device classes feeding one warehouse",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "queryable-historical-data",
+          "text": "How queryable is your historical shipment data (24+ months) for pattern analysis?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Most history archived in PDFs or carrier portals, not queryable",
+              "score": 1
+            },
+            {
+              "label": "2. 6-12 months queryable, older data in PDFs or flat files",
+              "score": 2
+            },
+            {
+              "label": "3. 24 months queryable but spread across systems, no unified schema",
+              "score": 3
+            },
+            {
+              "label": "4. 24+ months in a warehouse, unified schema, dispatchers can self-serve",
+              "score": 4
+            },
+            {
+              "label": "5. 36+ months queryable, clean schema, ready for return prediction and routing models",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your data foundation will sink any AI build",
+          "text": "Status spread across 3 systems, free-text addresses, and PDF-archived history mean any agent you wire in will hallucinate ETAs by the second shift. Fix the foundation before the model.",
+          "steps": [
+            "Pick one system as the shipment status source of truth and write the reconciliation rules between it and the other two",
+            "Lock down structured intake on the 5 fields that drive routing: origin, destination, weight, dims, handling code",
+            "Stand up a single warehouse (Snowflake, BigQuery, or Supabase) and pipe scanner + GPS + POD events into it before touching any AI"
+          ]
+        },
+        "mid": {
+          "headline": "Foundation is partial, agents will work then break",
+          "text": "You have a system of record but carrier APIs lag, and your event stream has coverage gaps. Agents will run fine on the happy path and fail on the 20% of shipments that touch the gap.",
+          "steps": [
+            "Close the carrier API sync lag to under 15 minutes for tier-1 carriers",
+            "Map every event source (scanners, GPS, POD, customs) and identify the 1-2 still loading in batch, move them to streaming",
+            "Migrate the last archived historical year out of PDFs into the warehouse so return-pattern queries work"
+          ]
+        },
+        "high": {
+          "headline": "Foundation is ready, agents can carry weight",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Add data quality monitoring on the event stream, alert on schema drift before agents see bad input",
+            "Run a 90-day return prediction model on your historical warehouse, see if the pattern depth holds up",
+            "Document data contracts between TMS, WMS, and the warehouse so vendor swaps don't break agents downstream"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~18 hrs/week of dispatcher rework recoverable from a single source of truth",
+        "lever": "Pick the system of record for shipment status this quarter and stop the nightly reconciliation game.",
+        "talking_points": [
+          "Every hour a dispatcher spends cross-checking status across TMS, WMS, and carrier portals is an hour they're not exception-managing",
+          "The 80% real-time data access lift in the Domina case happened because the event stream existed before AI was added, not after",
+          "Free-text address fields are the single biggest source of routing failure when agents take over dispatch decisions"
+        ],
+        "proof_of_concept": "In one week, instrument shipment status reconciliation time across your top 3 dispatchers and quantify weekly hours lost to cross-system lookups."
+      }
+    },
+    {
+      "id": "document-validation",
+      "name": "Document & Validation Layer",
+      "questions": [
+        {
+          "id": "ocr-capture-coverage",
+          "text": "How automated is OCR capture for BOLs, PODs, customs forms, and damage reports?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Documents are scanned and filed, no OCR, ops keys data manually",
+              "score": 1
+            },
+            {
+              "label": "2. Basic OCR on BOLs only, everything else manual",
+              "score": 2
+            },
+            {
+              "label": "3. OCR on BOLs and PODs, customs and damage still manual",
+              "score": 3
+            },
+            {
+              "label": "4. OCR across all 4 doc types, human review on exceptions",
+              "score": 4
+            },
+            {
+              "label": "5. OCR + structured extraction across all doc types, agents validate against shipment record",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "doc-to-shipment-validation",
+          "text": "How automated is the validation of document data against the shipment record?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No automated validation, mismatches caught at billing or audit",
+              "score": 1
+            },
+            {
+              "label": "2. Manual spot-checks by ops on high-value shipments",
+              "score": 2
+            },
+            {
+              "label": "3. Rules engine flags mismatches on weight or count, rest is manual",
+              "score": 3
+            },
+            {
+              "label": "4. Validation across most fields, ops reviews flagged exceptions",
+              "score": 4
+            },
+            {
+              "label": "5. Full doc-to-record validation, agents auto-resolve clean matches, route exceptions",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "exception-routing",
+          "text": "How structured is the routing of doc exceptions to the right human reviewer?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Exceptions pile up in an inbox, anyone with time grabs one",
+              "score": 1
+            },
+            {
+              "label": "2. Manual triage by an ops coordinator each morning",
+              "score": 2
+            },
+            {
+              "label": "3. Basic routing rules by doc type, no SLA tracking",
+              "score": 3
+            },
+            {
+              "label": "4. Routing by doc type + value + customer tier, SLAs tracked",
+              "score": 4
+            },
+            {
+              "label": "5. Auto-routing by 5+ attributes, SLA dashboard, escalation paths defined",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Document layer is keying data your stack should be reading",
+          "text": "Manual keying of BOLs and PODs is the most visible leak in a 50-200 person op. Domina's 15% delivery effectiveness lift came from this layer specifically.",
+          "steps": [
+            "Pick the highest-volume doc type (usually BOL or POD) and stand up OCR + structured extraction in one week",
+            "Write the validation rules between extracted doc data and shipment record, weight + count + address are table stakes",
+            "Define the exception inbox owner and the SLA before any agent is wired in"
+          ]
+        },
+        "mid": {
+          "headline": "Doc capture works, validation is the gap",
+          "text": "You're capturing data but not validating it against the shipment record automatically. That gap is where the billing disputes and damage claims hide.",
+          "steps": [
+            "Extend validation rules to all 4 doc types: BOL, POD, customs, damage",
+            "Build the exception routing logic by customer tier and dollar value, not just doc type",
+            "Track SLA on exception resolution weekly, surface the recurring failure modes to ops leadership"
+          ]
+        },
+        "high": {
+          "headline": "Doc layer is agent-ready",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Add agent-driven auto-resolution on clean matches above 95% confidence, route the rest",
+            "Instrument confidence-score drift over time, retrain or retune when accuracy slips",
+            "Pipe validation outcomes into your shipment record so downstream agents inherit the audit trail"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~22 hrs/week of manual doc keying and validation recoverable",
+        "lever": "Wire OCR + structured extraction into your highest-volume doc type this quarter before adding any predictive AI.",
+        "talking_points": [
+          "Domina's 15% delivery effectiveness lift came from AI doc validation, the doc layer is the highest-ROI starting point",
+          "Manual doc keying is where billing errors and damage claim disputes originate, both hit margin directly",
+          "Exception routing by dollar value and customer tier is what turns a doc backlog into managed risk"
+        ],
+        "proof_of_concept": "In one week, run a sample of 200 BOLs through an OCR + extraction tool and measure accuracy + time saved versus your current manual baseline."
+      }
+    },
+    {
+      "id": "decision-logic",
+      "name": "Decision Logic & Dispatch Rules",
+      "questions": [
+        {
+          "id": "documented-dispatch-rules",
+          "text": "How documented are the decision rules your senior dispatchers use to assign loads?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Tribal knowledge, top dispatchers just know",
+              "score": 1
+            },
+            {
+              "label": "2. A few rules in a wiki, mostly out of date",
+              "score": 2
+            },
+            {
+              "label": "3. Core rules documented, edge cases still tribal",
+              "score": 3
+            },
+            {
+              "label": "4. Full rule set documented with examples, reviewed quarterly",
+              "score": 4
+            },
+            {
+              "label": "5. Rules documented + version-controlled, ready to encode into an agent",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "routing-decision-consistency",
+          "text": "How consistent are routing decisions across dispatchers for similar shipments?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Two dispatchers route the same shipment 3 different ways",
+              "score": 1
+            },
+            {
+              "label": "2. Major decisions consistent, edge cases vary widely",
+              "score": 2
+            },
+            {
+              "label": "3. Standard playbook followed, exceptions handled differently",
+              "score": 3
+            },
+            {
+              "label": "4. Tight consistency, variance is intentional based on context",
+              "score": 4
+            },
+            {
+              "label": "5. Near-zero variance on standard shipments, exceptions documented and reviewed",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "exception-decision-logic",
+          "text": "How structured is your decision logic for exception handling (delays, damage, cancellations)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Each exception is handled ad hoc by whoever picks it up",
+              "score": 1
+            },
+            {
+              "label": "2. Senior dispatchers handle escalations, no playbook",
+              "score": 2
+            },
+            {
+              "label": "3. Basic playbook by exception type, judgment calls common",
+              "score": 3
+            },
+            {
+              "label": "4. Detailed playbook with decision trees, ops lead reviews weekly",
+              "score": 4
+            },
+            {
+              "label": "5. Fully documented decision logic, agent-ready, human-in-the-loop on judgment calls",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "If your best dispatcher can't write it down, you can't encode it",
+          "text": "Decision logic that lives in tribal knowledge will not survive agent automation. Get the rules out of your senior dispatchers' heads before you ask a model to mimic them.",
+          "steps": [
+            "Sit with your top 2 dispatchers for 90 minutes each and capture the rules they use to assign loads",
+            "Document the top 10 exception types and the decision tree for each",
+            "Version-control the rules in a shared doc, review monthly, flag drift"
+          ]
+        },
+        "mid": {
+          "headline": "Rules are documented, consistency is the gap",
+          "text": "You have a playbook but dispatchers diverge on edge cases. Encode the standard path first, leave the edge cases as routed exceptions.",
+          "steps": [
+            "Audit 50 recent shipments and quantify decision variance across dispatchers",
+            "Extend the playbook to cover the top 5 exception types currently handled ad hoc",
+            "Set a quarterly review cadence with the dispatch lead to update rules as carriers and customers change"
+          ]
+        },
+        "high": {
+          "headline": "Decision logic is ready for an agent",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Pilot agent-driven dispatch on a narrow lane (single customer, single mode) with human-in-the-loop review",
+            "Track agent decisions versus dispatcher overrides, retrain on the overrides",
+            "Expand scope only when override rate drops below 10% on the pilot lane"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~12 hrs/week recoverable from consistent routing across dispatchers",
+        "lever": "Document the top 10 dispatch decisions this quarter and stop letting tribal knowledge gate your AI roadmap.",
+        "talking_points": [
+          "An agent can only mimic decision logic that's already explicit, tribal knowledge is the bottleneck before tooling",
+          "Variance across dispatchers on similar shipments is a margin leak, not a quirk",
+          "The first agent pilot should be a narrow lane with high-volume + low-variance, not the messiest part of the floor"
+        ],
+        "proof_of_concept": "In one week, shadow your top dispatcher for 4 hours and capture every routing decision they make, then compare to your written playbook to find the gaps."
+      }
+    },
+    {
+      "id": "integration-layer",
+      "name": "Integration & Connectivity",
+      "questions": [
+        {
+          "id": "tms-wms-api-quality",
+          "text": "How API-accessible are your TMS, WMS, and carrier systems?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. CSV exports and email-based handoffs dominate",
+              "score": 1
+            },
+            {
+              "label": "2. Partial APIs, heavy reliance on screen scraping for some carriers",
+              "score": 2
+            },
+            {
+              "label": "3. APIs exist on core systems, carrier coverage is uneven",
+              "score": 3
+            },
+            {
+              "label": "4. All core systems on stable APIs, tier-1 carriers covered",
+              "score": 4
+            },
+            {
+              "label": "5. Full API coverage across TMS, WMS, and tier-1/2 carriers, documented and monitored",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "automation-platform",
+          "text": "How reliable is your workflow automation layer (n8n, Make, Workato, custom)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No automation platform, everything runs through people or scripts",
+              "score": 1
+            },
+            {
+              "label": "2. A few Zapier flows, no monitoring or error handling",
+              "score": 2
+            },
+            {
+              "label": "3. Workflow platform in place, partial coverage, ad hoc maintenance",
+              "score": 3
+            },
+            {
+              "label": "4. Self-hosted or enterprise platform, monitored, error handling defined",
+              "score": 4
+            },
+            {
+              "label": "5. Production-grade platform with versioning, monitoring, retry logic, and clear ownership",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "customer-portal-edi",
+          "text": "How automated are customer-facing data exchanges (portals, EDI, status webhooks)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. Customers call or email for status, ops keys it manually",
+              "score": 1
+            },
+            {
+              "label": "2. Basic portal with manual updates, EDI for top 1-2 customers only",
+              "score": 2
+            },
+            {
+              "label": "3. Portal auto-updates, EDI on top 5 customers, gaps on mid-tier",
+              "score": 3
+            },
+            {
+              "label": "4. Portal + EDI + webhooks across most customers, monitored",
+              "score": 4
+            },
+            {
+              "label": "5. Fully automated exchanges with all tiered customers, status events flow without human touch",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your stack can't talk to itself, agents can't help",
+          "text": "If CSV exports and email handoffs dominate, no agent can move information end-to-end. The integration layer is the wiring AI runs on.",
+          "steps": [
+            "Inventory every system in your stack and mark API coverage: full, partial, none",
+            "Stand up n8n (self-hosted) or a comparable platform to start consolidating the manual handoffs",
+            "Pick one customer EDI flow to automate first, prove the pattern, expand"
+          ]
+        },
+        "mid": {
+          "headline": "Integration coverage is partial, agent reach is limited",
+          "text": "You have the bones but gaps in carrier coverage and mid-tier customer exchanges will cap what any agent can do.",
+          "steps": [
+            "Close the carrier API gap on tier-2 carriers, screen scraping is technical debt that breaks under load",
+            "Add monitoring + retry logic to every workflow, silent failures kill agent trust faster than anything else",
+            "Roll EDI or webhook status exchanges to your next 10 customers by revenue"
+          ]
+        },
+        "high": {
+          "headline": "Connectivity is agent-ready",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Add SLA tracking on every workflow and alert on degradation, not just failure",
+            "Build a workflow catalog with ownership, version, and rollback path for each",
+            "Pilot agent-orchestrated workflows on a narrow lane, measure latency and error budget"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "~14 hrs/week of manual data movement recoverable from closing integration gaps",
+        "lever": "Run a stack inventory this month and rank systems by API coverage and business criticality.",
+        "talking_points": [
+          "Screen scraping carriers is hidden technical debt, it works until volume doubles or the carrier updates their portal",
+          "A workflow automation platform without monitoring is a future incident waiting to happen, ownership matters more than tool choice",
+          "Customer EDI and webhook coverage directly reduces the inbound 'where's my shipment' call volume on ops"
+        ],
+        "proof_of_concept": "In one week, automate one recurring customer status report end-to-end with n8n or a comparable tool and measure the hours saved versus the ops coordinator's prior baseline."
+      }
+    },
+    {
+      "id": "human-loop-governance",
+      "name": "Human-in-the-Loop & Governance",
+      "questions": [
+        {
+          "id": "review-routing",
+          "text": "How clearly defined is the human review path for AI or agent outputs that touch customers, carriers, or compliance?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No defined review path, outputs ship without a human in the loop",
+              "score": 1
+            },
+            {
+              "label": "2. Spot-check reviews by whoever has time",
+              "score": 2
+            },
+            {
+              "label": "3. Defined reviewer per workflow, SLA undefined",
+              "score": 3
+            },
+            {
+              "label": "4. Reviewer + SLA + escalation path defined per workflow",
+              "score": 4
+            },
+            {
+              "label": "5. Full review governance with metrics, drift monitoring, and quarterly audit",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "audit-trail",
+          "text": "How complete is your audit trail for automated decisions (who decided, what input, what output, what override)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No audit trail, decisions disappear into the system",
+              "score": 1
+            },
+            {
+              "label": "2. Basic logs, not queryable, scattered across systems",
+              "score": 2
+            },
+            {
+              "label": "3. Logs centralized but reviewed only on incident",
+              "score": 3
+            },
+            {
+              "label": "4. Full audit trail per decision, reviewed weekly",
+              "score": 4
+            },
+            {
+              "label": "5. Audit trail with override tracking and retraining feedback loop",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "ownership-and-sla",
+          "text": "How clearly is ownership of each automated workflow defined (who owns it, who fixes it, what SLA)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1. No defined ownership, breaks get hot-potatoed",
+              "score": 1
+            },
+            {
+              "label": "2. Informal ownership, depends on who built it",
+              "score": 2
+            },
+            {
+              "label": "3. Named owner per workflow, no SLA",
+              "score": 3
+            },
+            {
+              "label": "4. Owner + SLA + backup defined, reviewed quarterly",
+              "score": 4
+            },
+            {
+              "label": "5. Full RACI per workflow with monitoring, on-call, and quarterly business review",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Without governance, the first agent failure costs you a customer",
+          "text": "Agents that ship outputs to customers, carriers, or compliance without a defined human review path are an incident waiting to happen. Build governance before the build.",
+          "steps": [
+            "Define the human reviewer for every workflow that touches external parties, full stop",
+            "Stand up a basic audit log capturing input, decision, output, and override per automated decision",
+            "Assign a named owner to each workflow with SLA on response time when it breaks"
+          ]
+        },
+        "mid": {
+          "headline": "Governance exists but it's not load-bearing yet",
+          "text": "You have reviewers and logs but they're not connected to a feedback loop. That's where override patterns get missed and agent quality drifts unnoticed.",
+          "steps": [
+            "Add weekly review cadence on override rates per workflow, surface drift to ops leadership",
+            "Define escalation paths for each workflow when SLAs slip",
+            "Build a retraining or rule-update process when override patterns recur"
+          ]
+        },
+        "high": {
+          "headline": "Governance is mature, agents can scale safely",
+          "text": "Keep sharpening. Here is the frontier.",
+          "steps": [
+            "Run quarterly audits on agent decisions versus dispatcher overrides, retire workflows that consistently underperform",
+            "Publish workflow ownership and SLA externally to customer success and account teams",
+            "Add agent confidence scoring to the audit trail and alert when confidence drift exceeds threshold"
+          ]
+        }
+      },
+      "operator_brief": {
+        "headline_number": "Customer churn risk from one ungoverned agent decision: $50K-$500K per account",
+        "lever": "Stand up a basic human-in-the-loop review path and audit trail before deploying any agent that touches customers or carriers.",
+        "talking_points": [
+          "15-20% of agent outputs should route to a human reviewer by design, that's not failure, that's the model working",
+          "An ungoverned agent decision that hits a customer wrong is a contract conversation, not a workflow tweak",
+          "Audit trail data is what makes future retraining possible, without it, every model update is starting from scratch"
+        ],
+        "proof_of_concept": "In one week, map every existing automated workflow to a named human reviewer, an SLA, and an escalation path, and surface the gaps to ops leadership."
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_loom",
+      "when": "(persona === 'growing' || persona === 'established' || persona === 'scaling') && overall_score < 70",
+      "headline": "Want a personalized Loom breakdown of your logistics stack readiness?",
+      "description": "Drop your email + I'll review your exact answers, stack them against logistics firms your size, and send a 5-minute Loom within 48h with the ONE fix I'd prioritize first. Async, no scheduling pain, no pitch. If we both see signal, we book a working call from there.",
+      "button": "Request a personalized Loom →",
+      "url": "https://ivanmanfredi.com/agent-ready-assessment"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === 'boutique'",
+      "headline": "Under 50 employees? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer. Follow me on LinkedIn. I post tactical logistics automation breakdowns 3x/week. When you cross 50 employees, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight. Here's what logistics firms your size miss next.",
+      "description": "At your score, the low-hanging fruit is already picked. The next gains come from agent-orchestrated multi-carrier optimization, confidence-score drift monitoring on doc validation, and override-driven retraining loops on dispatch agents. I'm writing teardowns on each. Follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    },
+    {
+      "headline": "Get the weekly logistics ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market logistics firms run lean. No fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/iv%C3%A1n-manfredi-120841202/"
+    }
+  ],
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

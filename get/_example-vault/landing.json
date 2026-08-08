@@ -1,0 +1,18 @@
+{
+  "slug": "_example-vault",
+  "format_label": "Vault",
+  "category": "Agency AI Ops",
+  "headline": "Three tools that change how your agency uses AI",
+  "headline_emphasis": "change how your agency uses AI",
+  "subhead": "One keyword unlocks a hand-picked bundle: a diagnostic, a guide, and a ready-to-deploy workflow. Each one stands alone. Together they cover the full stack.",
+  "subhead_secondary": "Leave your email and the vault link lands in your inbox in under a minute.",
+  "inside": [
+    "Example Resource 1: the one-line promise that makes this worth opening",
+    "Example Resource 2: what it diagnoses, builds, or fixes in plain terms",
+    "Example Resource 3: why this rounds out the bundle and what you do with it"
+  ],
+  "proof": "<b>Built from real agency work.</b> I build automation systems for $1-10M service firms. Every resource in this vault comes from a live client engagement, not a theory deck.",
+  "gate_keyword": "EXAMPLEVAULT",
+  "resource_url": "https://resources.inboundonsteroids.com/vault/_example-vault/",
+  "cta_label": "Email me the vault"
+}

@@ -1,0 +1,555 @@
+{
+ "slug": "hal-smith-5f-assessment",
+ "title": "DTC Revenue Engine Score",
+ "subtitle": "Find out how ready your outdoor brand is to scale profitable direct-to-consumer revenue — and where the real gaps are.",
+ "brand": {
+  "accent": "#1144c2",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "unit_economics_clarity",
+   "name": "Unit Economics Clarity",
+   "questions": [
+    {
+     "id": "roas-vs-cac",
+     "text": "When a Meta campaign hits a 4x ROAS, how do you decide whether to scale it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "4x ROAS is our target — if it hits that, we scale it",
+       "score": 1
+      },
+      {
+       "label": "We check ROAS against a benchmark we set based on gut or past spend",
+       "score": 2
+      },
+      {
+       "label": "We check ROAS and also look at new vs. returning customer split",
+       "score": 3
+      },
+      {
+       "label": "We compare CAC to a target we derived from our contribution margin",
+       "score": 4
+      },
+      {
+       "label": "We model CAC against our full unit economics before scaling — contribution margin, LTV, and profitability floor",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "profitability-clarity",
+     "text": "How confident are you that your current ad spend is producing profitable customer acquisition?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not confident — we track ROAS and hope the margin works out",
+       "score": 1
+      },
+      {
+       "label": "Somewhat confident — we track spend and revenue but not margin impact",
+       "score": 2
+      },
+      {
+       "label": "Fairly confident — we have a rough sense of blended CAC and margin",
+       "score": 3
+      },
+      {
+       "label": "Confident — we track CAC per channel and compare it to a margin-derived target weekly",
+       "score": 4
+      },
+      {
+       "label": "Very confident — we have a live model connecting every ad dollar to unit economics and net profitability",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "average_order_value",
+     "type": "number",
+     "text": "What is your average order value (AOV) in dollars?",
+     "hint": "Check your Shopify analytics dashboard. AOV = total revenue divided by total orders for your last 90 days.",
+     "suffix": "dollars",
+     "min": 10,
+     "max": 1000,
+     "step": 5,
+     "default": 75,
+     "normalize_formula": "x <= 40 ? 10 : x >= 300 ? 100 : ((x - 40) / 260) * 90 + 10"
+    },
+    {
+     "id": "contribution_margin_pct",
+     "type": "number",
+     "text": "What is your blended contribution margin percentage after COGS, fulfillment, and payment processing?",
+     "hint": "Formula: (Revenue minus COGS minus fulfillment minus payment fees) divided by Revenue, times 100. Healthy outdoor DTC brands typically land between 50 and 70 percent. Use your best estimate if you do not have an exact figure.",
+     "suffix": "percent",
+     "min": 5,
+     "max": 90,
+     "step": 1,
+     "default": 50,
+     "normalize_formula": "x <= 20 ? 5 : x >= 65 ? 100 : ((x - 20) / 45) * 95 + 5"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are flying blind on profitability.",
+     "text": "Most brands in this position are growing revenue while quietly losing money on every order. ROAS is not a profitability metric. Until you know your contribution margin per order and your CAC ceiling, every scaling decision is a guess. There is a graveyard full of brands that grew fast on ROAS and disappeared because none of their decisions came from real profitability.",
+     "steps": [
+      "Calculate your true contribution margin: revenue minus COGS, fulfillment, and payment processing fees, divided by revenue.",
+      "Set a CAC target by multiplying your contribution margin per order by your acceptable profit percentage. That is your ceiling — every channel gets measured against it.",
+      "Build a simple monthly spreadsheet that ties total ad spend to new customers acquired. Compare your actual CAC to your target every week, not every quarter."
+     ]
+    },
+    "mid": {
+     "headline": "You know the numbers. Now wire them into every decision.",
+     "text": "You have a working sense of your unit economics, but there is usually a gap between knowing the numbers and using them as the actual input to ad spend decisions. The brands that scale profitably have a live model they check weekly, not a spreadsheet they open before a planning meeting.",
+     "steps": [
+      "Build a forecasting model that projects new customer volume and revenue at your current CAC. Run the scenario at 1.5x and 2x spend.",
+      "Set explicit CAC targets per channel and review them every week — not blended across everything.",
+      "Replace ROAS as the primary metric in your ad platform dashboards. Set up a custom column for estimated CAC based on new customer conversion rate."
+     ]
+    },
+    "high": {
+     "headline": "You have the foundation. Now scale the dial.",
+     "text": "You know what profitable customer acquisition looks like for your brand. If your contribution margin is 60 to 70 percent and your CAC stays at 30 percent, that leaves roughly 30 percent profit. As long as CAC holds and unit economics stay stable, you can scale spend and revenue scales with it. The next move is building systems that alert you when the economics drift.",
+     "steps": [
+      "Build automated alerts that flag when CAC drifts above your target threshold by more than 10 percent for three consecutive days.",
+      "Share your unit economics model with your media buyer so every creative test gets evaluated against profitability, not just CTR or ROAS.",
+      "Run a quarterly P&L model on your top three acquisition channels. Where is contribution dollar volume actually coming from?"
+     ]
+    }
+   }
+  },
+  {
+   "id": "dtc_infrastructure_and_a",
+   "name": "DTC Infrastructure and Attribution",
+   "questions": [
+    {
+     "id": "ecom-platform",
+     "text": "Which platform does your brand run on for eCommerce?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "WooCommerce or a custom-built setup",
+       "score": 1
+      },
+      {
+       "label": "BigCommerce, Squarespace, or Wix",
+       "score": 2
+      },
+      {
+       "label": "Shopify with basic integrations",
+       "score": 3
+      },
+      {
+       "label": "Shopify with email, SMS, and some attribution tooling connected",
+       "score": 4
+      },
+      {
+       "label": "Shopify with full integrations: email, SMS, server-side events, pixel, and a third-party attribution tool",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "signal-infrastructure",
+     "text": "How would you describe your current pixel tracking and server-side event setup?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We rely on the standard browser-side Meta pixel with no server-side setup",
+       "score": 1
+      },
+      {
+       "label": "We have server-side events installed but have not audited event match quality",
+       "score": 2
+      },
+      {
+       "label": "Server-side events are running and we check event match quality occasionally",
+       "score": 3
+      },
+      {
+       "label": "Server-side events are set up, audited, and our event match quality is above 7.0 in Meta Events Manager",
+       "score": 4
+      },
+      {
+       "label": "Full signal setup in place: server-side events, clean data feeds, attribution tool, and a regular audit cadence",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "attribution-approach",
+     "text": "How do you handle attribution across paid channels and email or SMS?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at what each ad platform reports and use those numbers to make decisions",
+       "score": 1
+      },
+      {
+       "label": "We know platform numbers are inflated but do not have a cleaner alternative in place",
+       "score": 2
+      },
+      {
+       "label": "We use a blended metric like MER or new customer CAC alongside platform reporting",
+       "score": 3
+      },
+      {
+       "label": "We use a third-party attribution tool and cross-reference it with platform data and MER",
+       "score": 4
+      },
+      {
+       "label": "We have a multi-source attribution model with clear rules for how each signal gets weighted and acted on",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your infrastructure is limiting what you can scale.",
+     "text": "The integrations you need to run modern performance marketing — pixel tracking, server-side events, email and SMS platforms, attribution tools — all of them work better on Shopify. Most of them were built for Shopify. If you are on WooCommerce or a custom setup, you are spending money and time patching problems that Shopify solves by default. Every brand we have worked with that was on WooCommerce has made the switch.",
+     "steps": [
+      "Migrate to Shopify. The short-term cost is real. The long-term cost of staying on WooCommerce is higher.",
+      "Once on Shopify, install server-side events through the Meta integration and verify your event match quality in Events Manager. Anything below 7.0 is costing you targeting efficiency.",
+      "Connect an attribution tool (Triple Whale, Northbeam, or a comparable option) so you have a performance read that is not coming from the platforms themselves."
+     ]
+    },
+    "mid": {
+     "headline": "Good foundation. Plug the signal gaps.",
+     "text": "You are on the right platform and you have infrastructure in place. The gap is usually signal quality — events that are not matching cleanly, attribution that leans too heavily on platform data, or a MER metric that you track but do not act on consistently.",
+     "steps": [
+      "Pull your event match quality in Meta Events Manager right now. If it is below 7.0, fixing it is the highest-leverage technical task on your list.",
+      "Set a MER (marketing efficiency ratio) target and review it weekly alongside channel-level CAC.",
+      "If you are spending more than $20k per month on paid ads and do not have a third-party attribution tool, evaluate one. The clarity pays for the tool quickly."
+     ]
+    },
+    "high": {
+     "headline": "Your infrastructure is ready. Now feed it better creative.",
+     "text": "You have the signal, the attribution, and the platform dialed in. At this stage, most brands find that creative is the bottleneck — not budget, not infrastructure. The volume and quality of ad creative being tested is what limits growth.",
+     "steps": [
+      "Audit your creative testing cadence. Are you generating and testing new concepts weekly or monthly?",
+      "Build a persona matrix for your key buyer profiles and make sure creative is speaking to each one explicitly — including buyers who are hard to reach through normal ad categories.",
+      "Use your attribution data to identify which creative angles are acquiring new customers specifically, not just driving clicks or revenue from existing buyers."
+     ]
+    }
+   }
+  },
+  {
+   "id": "owned_channel_engine",
+   "name": "Owned Channel Engine",
+   "questions": [
+    {
+     "id": "email-frequency",
+     "text": "How often does your brand send emails to your list?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "A few times a month or less",
+       "score": 1
+      },
+      {
+       "label": "1 to 2 times per week",
+       "score": 2
+      },
+      {
+       "label": "3 to 4 times per week",
+       "score": 3
+      },
+      {
+       "label": "5 or more times per week",
+       "score": 4
+      },
+      {
+       "label": "5 or more times per week with segmented sends, deliverability monitoring, and an unsubscribe rate below 0.2 percent per send",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "list-building-offseason",
+     "text": "How actively does your brand build its email and SMS list during the offseason?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We are not actively building the list — it grows when we run peak campaigns",
+       "score": 1
+      },
+      {
+       "label": "We have a signup form on the site but no dedicated list-building effort running",
+       "score": 2
+      },
+      {
+       "label": "We run occasional list-building campaigns during the offseason",
+       "score": 3
+      },
+      {
+       "label": "Offseason list-building is a planned budget line and we track list growth as a KPI",
+       "score": 4
+      },
+      {
+       "label": "We build the list year-round with higher investment in the offseason when CPMs are cheapest and competition is lowest",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "owned-channel-reliance",
+     "text": "If Meta and Google both went offline for a week, how would your brand generate revenue?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We would have almost nothing — nearly all revenue runs through paid ads",
+       "score": 1
+      },
+      {
+       "label": "We have some email flows running but nothing that would cover much revenue",
+       "score": 2
+      },
+      {
+       "label": "We would activate our email list and generate meaningful but reduced revenue",
+       "score": 3
+      },
+      {
+       "label": "We would run a full email and SMS campaign and cover most of our normal weekly revenue",
+       "score": 4
+      },
+      {
+       "label": "Our owned channels generate consistent revenue on their own — paid ads add to it, not sustain it",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are renting your audience, not owning it.",
+     "text": "A brand that lives entirely on paid traffic is one algorithm change away from a revenue problem. The outdoor brands building durable businesses own their lists. Montana Knife Company sends five emails a week with near-zero unsubscribes because they built the list the right way from the start and treated subscribers like people, not an ad channel.",
+     "steps": [
+      "Set a minimum email cadence of two sends per week and measure unsubscribe rate per send. If it stays below 0.2 percent, you have room to push frequency higher.",
+      "Add an active list-building effort: a lead magnet, early-access waitlist tied to a product launch, or a giveaway that attracts your actual buyer profile.",
+      "Start SMS collection at checkout or in post-purchase flows. SMS open rates are significantly higher than email and the list size of most outdoor brands is far below where it could be."
+     ]
+    },
+    "mid": {
+     "headline": "Your list exists. Now make it work harder.",
+     "text": "You have a list and some cadence, but you are likely leaving revenue on the table by underusing it. For most outdoor brands, email is the highest-return channel available. It just takes consistent investment in content and send volume — and most brands are far below the frequency that actually causes churn.",
+     "steps": [
+      "Increase send frequency and watch unsubscribes closely for the next 30 days. Most brands find they can push much higher than they expected.",
+      "Segment your list by purchase history and engagement level. Sending everything to everyone burns unsubscribes on the wrong audience and leaves personalized revenue on the table.",
+      "Build offseason-specific email sequences that warm buyers 90 to 180 days before your peak season. That is when the consideration window opens."
+     ]
+    },
+    "high": {
+     "headline": "Your owned channel is a real asset. Protect it.",
+     "text": "You have built something most outdoor brands have not: a list that drives revenue without paid amplification. The brands that sustain this advantage over time add a community layer on top of the list and treat deliverability as an infrastructure problem, not a marketing problem.",
+     "steps": [
+      "Audit deliverability every quarter: list health, domain reputation, spam complaint rate, and inbox placement. These decay quietly.",
+      "Build a community layer: a private group, a drop-access waitlist, or a loyalty tier that gives your best customers something they cannot buy.",
+      "Use your owned channel data to inform product and creative decisions, not just promotional sends. Your list is a signal source, not just a distribution channel."
+     ]
+    }
+   }
+  },
+  {
+   "id": "seasonality_and_offer_st",
+   "name": "Seasonality and Offer Strategy",
+   "questions": [
+    {
+     "id": "offseason-advertising",
+     "text": "What does your paid media strategy look like during your brand's offseason?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We turn everything off and wait for peak season to come back",
+       "score": 1
+      },
+      {
+       "label": "We run minimal spend just to keep the pixel warm",
+       "score": 2
+      },
+      {
+       "label": "We keep some spend running and do occasional creative tests",
+       "score": 3
+      },
+      {
+       "label": "We run a structured offseason plan: list building, creator relationships, and creative testing at low CPMs",
+       "score": 4
+      },
+      {
+       "label": "Offseason is a high-priority growth period for us — cheap CPMs, creative tests, list builds, brand content, and community investment",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "consideration-window",
+     "text": "How far in advance of your peak season does your brand start advertising to buyers in the consideration phase?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We start when the season arrives — we turn on spend when demand shows up",
+       "score": 1
+      },
+      {
+       "label": "We start 2 to 4 weeks before peak season",
+       "score": 2
+      },
+      {
+       "label": "We start 4 to 8 weeks out and ramp as the season approaches",
+       "score": 3
+      },
+      {
+       "label": "We start 2 to 3 months out with a structured warm-up campaign",
+       "score": 4
+      },
+      {
+       "label": "We advertise year-round at different intensity levels, with spend shifting to match where buyers are in the consideration window",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "promotion-margin",
+     "text": "When you run a promotional offer, what is your default approach?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Percentage discount on our hero product — it converts best",
+       "score": 1
+      },
+      {
+       "label": "Sitewide discount or a free shipping threshold",
+       "score": 2
+      },
+      {
+       "label": "Gift with purchase on orders above a dollar threshold",
+       "score": 3
+      },
+      {
+       "label": "Bundle the hero with complementary products, price the bundle at a higher anchor, and discount off that anchor",
+       "score": 4
+      },
+      {
+       "label": "We never discount the hero product — all promos use bundles, gifts with purchase, or value adds that protect contribution margin",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "promotion-audit",
+     "text": "After a major sale or promotion, how do you evaluate whether it was worth running?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at total revenue during the promo period",
+       "score": 1
+      },
+      {
+       "label": "We compare revenue to the prior period or the same window last year",
+       "score": 2
+      },
+      {
+       "label": "We track revenue and unit volume but do not calculate margin impact",
+       "score": 3
+      },
+      {
+       "label": "We calculate the margin impact: contribution dollars generated versus what we gave up in discount",
+       "score": 4
+      },
+      {
+       "label": "We run a full P&L review on every major promo: margin, new vs. returning customer split, and the LTV profile of buyers acquired at a discount",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You are competing for attention after buyers have already decided.",
+     "text": "Considered outdoor purchases — tents, knives, fishing rods, hunting gear — have a 3 to 6 month consideration window. When you turn on ads the week before peak season, you are entering a conversation the buyer started months ago and doing it when CPMs are highest because every other brand is spending at the same time. And if your default promo is a percentage off the hero product, that discount comes straight out of your contribution margin.",
+     "steps": [
+      "Map when your buyers start researching versus when they actually purchase. That gap is your advertising window — start filling it.",
+      "Launch your next peak season campaign at least 90 days earlier than last year with steady low spend and awareness-level creative.",
+      "Replace your next percentage-off promo with a bundle: pair the hero with a complementary product, anchor the bundle price higher, and discount off that anchor. The customer sees a better deal. You keep more margin."
+     ]
+    },
+    "mid": {
+     "headline": "You are thinking ahead. Now build the system.",
+     "text": "You understand the consideration window and you are protecting margin better than most brands at your level. The gap is usually systemizing it so the same playbook runs every offseason without depending on someone remembering to kick it off.",
+     "steps": [
+      "Build an offseason marketing calendar with explicit goals attached: list size target, number of creative concepts tested, creator relationships initiated.",
+      "Set a contribution margin floor for every promotional offer before you build the creative. If the promo does not hit the floor, it does not run.",
+      "Test one bundle offer in your next promo cycle and compare contribution dollars to your last percentage-discount promo. The math usually closes the debate."
+     ]
+    },
+    "high": {
+     "headline": "You are playing the long game. Most brands are not.",
+     "text": "You are running promos with margin discipline, advertising before the consideration window closes, and using the offseason to build infrastructure. That is exactly what Montana Knife Company did: no outside funding, no retail, no discounts, ever, and $50M in revenue in four years at roughly 40 percent margin. The next move is compounding — each offseason builds on the last.",
+     "steps": [
+      "Document your offseason playbook so it is repeatable and does not live in one person's head.",
+      "Add a community layer to your retention strategy: a private group, a drop-access waitlist, or a randomized rewards system that gives your best customers something they cannot just buy.",
+      "Track NPS alongside revenue and CAC. The brands with the best long-term unit economics have customers who sell for them."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "contribution-per-order",
+   "label": "Contribution dollars per order",
+   "format": "currency",
+   "formula": "average_order_value * (contribution_margin_pct / 100)",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes your role?",
+  "answers": [
+   {
+    "label": "Brand founder or owner",
+    "tag": "founder"
+   },
+   {
+    "label": "In-house marketing lead or director",
+    "tag": "marketing-lead"
+   },
+   {
+    "label": "eCommerce or digital manager",
+    "tag": "ecom-manager"
+   }
+  ]
+ }
+}

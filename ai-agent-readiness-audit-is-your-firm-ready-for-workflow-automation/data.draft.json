@@ -1,0 +1,732 @@
+{
+  "slug": "ai-agent-readiness-audit-is-your-firm-ready-for-workflow-automation",
+  "title": "PHASE A SMOKE TEST",
+  "subtitle": "Built for operations leaders at 10-200 person professional services firms deciding between hiring staff or deploying agents. Score your firm in 12 minutes, get a tier, a category breakdown, and a specific next move per workflow category.",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 12,
+  "persona_selector": {
+    "id": "size",
+    "text": "Which best describes your firm?",
+    "answers": [
+      {
+        "label": "Boutique (1-10 people) — founder still in most delivery",
+        "tag": "boutique"
+      },
+      {
+        "label": "Growing (11-30 people) — first ops hire made or imminent",
+        "tag": "growing"
+      },
+      {
+        "label": "Established (31-100 people) — multiple service lines, dedicated ops function",
+        "tag": "established"
+      },
+      {
+        "label": "Scaling (101-200 people) — partner-led, formal delivery leadership",
+        "tag": "scaling"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "data-readiness",
+      "name": "Data Readiness",
+      "questions": [
+        {
+          "id": "source-of-truth",
+          "text": "How consolidated is the data for your most painful workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Nobody can fully map where it lives",
+              "score": 1
+            },
+            {
+              "label": "2 — 4+ systems, some in spreadsheets or email",
+              "score": 2
+            },
+            {
+              "label": "3 — 2-3 systems but handoffs break weekly",
+              "score": 3
+            },
+            {
+              "label": "4 — 2-3 connected systems with clean handoffs",
+              "score": 4
+            },
+            {
+              "label": "5 — Single source of truth in one system",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "structured-intake",
+          "text": "How structured is the intake data when a new client, case, or project enters your pipeline?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Mostly free-form email or phone notes",
+              "score": 1
+            },
+            {
+              "label": "2 — Under 30% structured, the rest is narrative",
+              "score": 2
+            },
+            {
+              "label": "3 — Roughly 50/50 structured vs. free text",
+              "score": 3
+            },
+            {
+              "label": "4 — 60-80% structured fields",
+              "score": 4
+            },
+            {
+              "label": "5 — 80%+ structured (dropdowns, dates, numbers)",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "field-consistency",
+          "text": "How consistently do the same fields get filled the same way across team members?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Everyone has their own format and abbreviations",
+              "score": 1
+            },
+            {
+              "label": "2 — Some conventions exist but drift constantly",
+              "score": 2
+            },
+            {
+              "label": "3 — Documented but enforced only on new hires",
+              "score": 3
+            },
+            {
+              "label": "4 — Standardized with occasional drift on edge cases",
+              "score": 4
+            },
+            {
+              "label": "5 — Validated at entry, enforced across the team",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "historical-access",
+          "text": "How quickly can you pull the last 12 months of a specific workflow's data into one clean table?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Would require a multi-week manual project",
+              "score": 1
+            },
+            {
+              "label": "2 — Possible but takes days of cleanup",
+              "score": 2
+            },
+            {
+              "label": "3 — A few hours of export and reconciling",
+              "score": 3
+            },
+            {
+              "label": "4 — Under an hour with existing reports",
+              "score": 4
+            },
+            {
+              "label": "5 — One query or dashboard, already live",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your data isn't ready — don't buy an agent yet",
+          "text": "Agents read whatever you feed them, and right now you'd be feeding them fog. Before any AI workflow ships, you need one painful workflow where intake is structured and the source of truth is obvious. Otherwise every agent output is a coin flip.",
+          "steps": [
+            "Pick the single workflow with the highest pain and map every system its data touches",
+            "Replace free-text intake with structured forms (dropdowns, dates, enumerated fields) — Typeform, Fillout, or a branded form builder",
+            "Consolidate to one system of record for that workflow before anything else"
+          ]
+        },
+        "mid": {
+          "headline": "Good bones, but handoffs are leaking",
+          "text": "You have structure where it counts but the seams between systems are where agents will fail silently. The next gain is closing those seams, not adding intelligence on top of broken plumbing.",
+          "steps": [
+            "Audit every system-to-system handoff in your top 3 workflows and log where data is re-keyed",
+            "Enforce field validation at the entry point so bad data can't enter the pipeline",
+            "Build one consolidated view (warehouse, Airtable, or Supabase) that unifies the 2-3 systems before the agent layer"
+          ]
+        },
+        "high": {
+          "headline": "Your data layer is agent-ready",
+          "text": "Keep sharpening — here's the frontier. At this level the bottleneck shifts from data hygiene to data enrichment: layering context that humans carry in their heads into the same structured store an agent reads.",
+          "steps": [
+            "Capture the soft signals (priority reasoning, risk flags, client tone) as structured fields, not free-text",
+            "Version your schemas so agents don't break when you add fields",
+            "Move toward an event-sourced log so agents can replay decisions and you can audit them"
+          ]
+        }
+      }
+    },
+    {
+      "id": "decision-logic",
+      "name": "Decision Logic Clarity",
+      "questions": [
+        {
+          "id": "documented-rules",
+          "text": "How documented are the decision rules for your most repeatable workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — All in people's heads",
+              "score": 1
+            },
+            {
+              "label": "2 — Informal notes in Slack or Notion",
+              "score": 2
+            },
+            {
+              "label": "3 — Documented but stale",
+              "score": 3
+            },
+            {
+              "label": "4 — Documented and updated quarterly",
+              "score": 4
+            },
+            {
+              "label": "5 — Documented, versioned, and referenced daily",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "edge-case-rate",
+          "text": "How often does the workflow hit an edge case that breaks the standard path?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Every other case is an exception",
+              "score": 1
+            },
+            {
+              "label": "2 — A quarter of cases need judgment calls",
+              "score": 2
+            },
+            {
+              "label": "3 — Roughly 10-15% need escalation",
+              "score": 3
+            },
+            {
+              "label": "4 — Under 10%, predictable categories",
+              "score": 4
+            },
+            {
+              "label": "5 — Under 5%, all edge cases are enumerated",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "judgment-transferable",
+          "text": "How transferable is the senior judgment on this workflow to a new hire?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Takes a year and still inconsistent",
+              "score": 1
+            },
+            {
+              "label": "2 — 6+ months of shadowing",
+              "score": 2
+            },
+            {
+              "label": "3 — 2-3 months with heavy review",
+              "score": 3
+            },
+            {
+              "label": "4 — A few weeks with a clear checklist",
+              "score": 4
+            },
+            {
+              "label": "5 — Under a week because the logic is written down",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're automating tribal knowledge — that's a trap",
+          "text": "If your senior people can't explain the rules, an agent won't learn them either. The first move isn't AI, it's documentation. Every firm that tried to skip this step ended up with agents that hallucinated the decisions their best people make by instinct.",
+          "steps": [
+            "Shadow your senior operator on the workflow for a week and capture every decision point",
+            "Turn those decisions into an if-then rulebook, not a narrative SOP",
+            "Run the rulebook past a junior hire — if they can't execute it, it's not ready for an agent"
+          ]
+        },
+        "mid": {
+          "headline": "Logic is partially legible — tighten the edges",
+          "text": "The happy path is understood, but your agents will fail on the 15% of edge cases nobody wrote down. Agent-ready logic means the exceptions are enumerated, not absorbed by a senior brain.",
+          "steps": [
+            "Audit the last 90 days of escalations and categorize every edge case",
+            "Write an explicit handoff rule for each category (agent handles or human handles)",
+            "Add a confidence threshold so the agent escalates on anything outside the enumerated set"
+          ]
+        },
+        "high": {
+          "headline": "Decision logic is agent-grade",
+          "text": "Keep sharpening — here's the frontier. When your rulebook is this clean, the gain moves to feedback loops: letting the agent's outputs sharpen the rules over time without silent drift.",
+          "steps": [
+            "Instrument every agent decision with a human review sample rate (start at 10%)",
+            "Capture overrides as training signal, not just corrections",
+            "Review rule changes monthly — treat your decision logic like a product, not a document"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workflow-scope",
+      "name": "Workflow Scope & Boundaries",
+      "questions": [
+        {
+          "id": "scope-narrowness",
+          "text": "How narrow is the scope of the workflow you'd automate first?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — End-to-end delivery, dozens of steps",
+              "score": 1
+            },
+            {
+              "label": "2 — A full service line with branching paths",
+              "score": 2
+            },
+            {
+              "label": "3 — A clear phase with some variability",
+              "score": 3
+            },
+            {
+              "label": "4 — A single sub-process with defined inputs and outputs",
+              "score": 4
+            },
+            {
+              "label": "5 — One task, one input type, one output type",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "volume-frequency",
+          "text": "How high is the volume of this workflow per month?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Under 10 times per month",
+              "score": 1
+            },
+            {
+              "label": "2 — 10-30 per month",
+              "score": 2
+            },
+            {
+              "label": "3 — 30-100 per month",
+              "score": 3
+            },
+            {
+              "label": "4 — 100-500 per month",
+              "score": 4
+            },
+            {
+              "label": "5 — 500+ per month or continuous",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "inputs-outputs-defined",
+          "text": "How clearly can you state the exact inputs and outputs of the workflow on a single page?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Can't — it depends too much on context",
+              "score": 1
+            },
+            {
+              "label": "2 — Rough sketch, lots of asterisks",
+              "score": 2
+            },
+            {
+              "label": "3 — Mostly clear but a few fuzzy edges",
+              "score": 3
+            },
+            {
+              "label": "4 — One page, minor ambiguity",
+              "score": 4
+            },
+            {
+              "label": "5 — One page, zero ambiguity, already written down",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "success-measurable",
+          "text": "How measurable is the success of a single run of this workflow?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — We'd know a month later, if at all",
+              "score": 1
+            },
+            {
+              "label": "2 — Measurable but nobody checks",
+              "score": 2
+            },
+            {
+              "label": "3 — Measured quarterly",
+              "score": 3
+            },
+            {
+              "label": "4 — Measured weekly with clear KPIs",
+              "score": 4
+            },
+            {
+              "label": "5 — Measured per run with automated scoring",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your scope is too wide to automate",
+          "text": "Agent-ready workflows are narrow by design. If you're trying to automate 'client onboarding' or 'proposal delivery' as a whole, you'll fail. The Agent-Ready Ops methodology starts with one task, one input type, one output type — everything else is scope creep dressed up as ambition.",
+          "steps": [
+            "Break your target workflow into its smallest repeatable unit with a single input and output",
+            "Pick the unit that happens most often (volume is the multiplier on ROI)",
+            "Write the inputs, outputs, and success criteria on one page before any build starts"
+          ]
+        },
+        "mid": {
+          "headline": "Scope is tightening — now verify volume and measurability",
+          "text": "You've narrowed the target but the economics still need to pencil. An automation that runs 10 times a month won't pay back; one that runs 500 times will. Make sure the narrow workflow you picked actually has the frequency to justify it.",
+          "steps": [
+            "Confirm monthly volume of the target workflow is above 100 runs — otherwise pick a higher-volume neighbor",
+            "Define a per-run success metric and start measuring it manually for a month",
+            "Lock the scope in writing so no stakeholder expands it mid-build"
+          ]
+        },
+        "high": {
+          "headline": "Scope discipline is tight",
+          "text": "Keep sharpening — here's the frontier. At this level the risk isn't scope creep, it's scope atrophy: an agent that keeps running on a workflow that no longer matters. Build the review cadence now.",
+          "steps": [
+            "Quarterly, re-validate that each deployed agent still owns a workflow with live volume and live value",
+            "Sunset agents whose workflow volume drops below your threshold",
+            "Keep a staged pipeline of the next 3 narrow workflows so you never run out of build targets"
+          ]
+        }
+      }
+    },
+    {
+      "id": "human-in-loop",
+      "name": "Human-in-the-Loop Design",
+      "questions": [
+        {
+          "id": "review-layer",
+          "text": "How deliberately is a human review step designed into the workflows you'd automate?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No review layer planned",
+              "score": 1
+            },
+            {
+              "label": "2 — Ad-hoc spot checks only",
+              "score": 2
+            },
+            {
+              "label": "3 — Review exists but nobody owns it",
+              "score": 3
+            },
+            {
+              "label": "4 — Owned review with clear criteria",
+              "score": 4
+            },
+            {
+              "label": "5 — Structured review with sampling, overrides, and feedback capture",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "override-path",
+          "text": "How clear is the override path when the agent gets it wrong?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No override path defined",
+              "score": 1
+            },
+            {
+              "label": "2 — Somebody emails somebody",
+              "score": 2
+            },
+            {
+              "label": "3 — Logged but not triaged",
+              "score": 3
+            },
+            {
+              "label": "4 — Routed to a named owner with SLA",
+              "score": 4
+            },
+            {
+              "label": "5 — Automatic escalation with learning capture",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "trust-calibration",
+          "text": "How calibrated is your team's trust in the agent's output?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Team either rubber-stamps or ignores it",
+              "score": 1
+            },
+            {
+              "label": "2 — Trust varies wildly by person",
+              "score": 2
+            },
+            {
+              "label": "3 — General sense of when to trust, undocumented",
+              "score": 3
+            },
+            {
+              "label": "4 — Confidence thresholds set per output type",
+              "score": 4
+            },
+            {
+              "label": "5 — Confidence thresholds enforced with automated gating",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Without review layers, agents compound errors",
+          "text": "Deploying an agent without a human-in-the-loop design is how firms end up with confidently-wrong outputs going to clients. The review layer isn't overhead — it's the thing that turns an experiment into a production system.",
+          "steps": [
+            "Design the review step before the agent — name the reviewer, the criteria, and the sample rate",
+            "Build an override path that's one click, not an email chain",
+            "Log every override as structured training signal, not a comment thread"
+          ]
+        },
+        "mid": {
+          "headline": "Review exists but ownership is fuzzy",
+          "text": "The review layer only works if one person owns it with a clear SLA. Shared ownership is no ownership — and that's where agent drift starts.",
+          "steps": [
+            "Assign a named owner per deployed agent with weekly review responsibility",
+            "Set confidence thresholds per output type and route low-confidence outputs to human first",
+            "Hold a monthly override review to turn corrections into rule updates"
+          ]
+        },
+        "high": {
+          "headline": "Your review architecture is production-grade",
+          "text": "Keep sharpening — here's the frontier. With calibrated trust and clean overrides, the next gain is reducing human load without losing oversight — sample-based review, not 100% review.",
+          "steps": [
+            "Move from full review to statistical sampling once an agent clears a 90-day accuracy benchmark",
+            "Build a real-time dashboard of agent confidence, override rate, and drift",
+            "Use override patterns to predict where the next agent should be deployed"
+          ]
+        }
+      }
+    },
+    {
+      "id": "capacity-economics",
+      "name": "Capacity & Economics",
+      "questions": [
+        {
+          "id": "hire-vs-build",
+          "text": "How clearly do you know the cost of hiring the next person vs. building a system to replace that hire?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Never compared them side by side",
+              "score": 1
+            },
+            {
+              "label": "2 — Rough gut sense, no numbers",
+              "score": 2
+            },
+            {
+              "label": "3 — Some numbers but incomplete",
+              "score": 3
+            },
+            {
+              "label": "4 — Modeled for the top 2 roles",
+              "score": 4
+            },
+            {
+              "label": "5 — Modeled across every role, reviewed quarterly",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "payback-discipline",
+          "text": "How disciplined are you about demanding a 90-day payback on any automation investment?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No payback standard exists",
+              "score": 1
+            },
+            {
+              "label": "2 — We talk about ROI but don't measure",
+              "score": 2
+            },
+            {
+              "label": "3 — Measured post-hoc, inconsistently",
+              "score": 3
+            },
+            {
+              "label": "4 — Required on paper, sometimes enforced",
+              "score": 4
+            },
+            {
+              "label": "5 — Enforced per project with named owner",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "capacity-visibility",
+          "text": "How visibly do you track which workflows consume the most senior-hour capacity?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — No visibility on where senior hours go",
+              "score": 1
+            },
+            {
+              "label": "2 — Anecdotal sense from partner meetings",
+              "score": 2
+            },
+            {
+              "label": "3 — Tracked but rarely reviewed",
+              "score": 3
+            },
+            {
+              "label": "4 — Monthly capacity review",
+              "score": 4
+            },
+            {
+              "label": "5 — Live dashboard of senior-hour drain by workflow",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "scale-without-payroll",
+          "text": "How much of your next 12 months of growth can you absorb without adding headcount?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "1 — Every new client means a new hire",
+              "score": 1
+            },
+            {
+              "label": "2 — Maybe 10-20% more volume before hiring",
+              "score": 2
+            },
+            {
+              "label": "3 — Up to 30% before the next hire",
+              "score": 3
+            },
+            {
+              "label": "4 — 30-60% growth absorbed by existing systems",
+              "score": 4
+            },
+            {
+              "label": "5 — Can scale without scaling payroll",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're hiring when you should be systematizing",
+          "text": "Every firm that scales profitably hits a point where the next hire is actually a system, not a person. If you're not modeling hire-vs-build, you're leaving the 90-Day Payback Rule on the table — and paying payroll for work a well-scoped agent could do for a fraction.",
+          "steps": [
+            "Model the fully-loaded cost of your next hire vs. a one-time build for the same workflow",
+            "Instrument senior-hour drain so you can see where the payroll is actually going",
+            "Pick the highest-drain workflow and run the Hire a System decision on it this quarter"
+          ]
+        },
+        "mid": {
+          "headline": "Economics are visible, discipline is patchy",
+          "text": "You see the numbers but enforcement is inconsistent. The 90-Day Payback Rule only works when it's a hard gate, not a soft preference — otherwise you accumulate half-built automations with no owner and no payback.",
+          "steps": [
+            "Require a written payback model before any automation spend over $5,000",
+            "Name an owner per deployed system accountable for the payback number",
+            "Kill or rebuild any automation that misses its 90-day mark"
+          ]
+        },
+        "high": {
+          "headline": "You're running the Hire a System playbook",
+          "text": "Keep sharpening — here's the frontier. At this level the compounding play is turning your systems into operating leverage that grows faster than headcount — the real definition of scaling without scaling payroll.",
+          "steps": [
+            "Shift from payback-per-project to portfolio-level capacity freed per quarter",
+            "Build a reinvestment loop: hours saved fund the next system, not discretionary spend",
+            "Benchmark revenue-per-employee quarterly and treat it as the north-star efficiency metric"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "ctas": [
+    {
+      "id": "qualified_call",
+      "when": "(persona === \"growing\" || persona === \"established\" || persona === \"scaling\") && overall_score < 70",
+      "headline": "Want a working call on your agent-readiness gaps?",
+      "description": "Book a 30-minute working call where I'll walk you through your exact answers, stack them against professional services firms your size, and pinpoint the ONE workflow I'd automate first. No pitch — if we both see signal, we keep going.",
+      "button": "Book a 30-min working call →",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    },
+    {
+      "id": "too_small",
+      "when": "persona === \"boutique\"",
+      "headline": "Under 10 people? You're early for a custom audit.",
+      "description": "Automation ROI at your scale is real but payback is longer and the Hire a System math doesn't pencil until you've got repeat workflows at volume. Follow me on LinkedIn — I post tactical professional services automation breakdowns 3x/week. When you cross 10-15 people, come back and retake; the CTA will change.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "id": "dialed_content",
+      "when": "overall_score >= 70",
+      "headline": "You're running tight — here's what professional services firms your size miss next.",
+      "description": "At your score, the obvious leaks are closed. The next gains come from event-sourced decision logs that let agents learn from overrides, confidence-gated sampling that replaces 100% review, and portfolio-level capacity accounting that turns hours saved into compounding leverage. I'm writing teardowns on each — follow along.",
+      "button": "Follow for the teardowns →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    },
+    {
+      "headline": "Get the weekly professional services ops teardown",
+      "description": "One tactical case study + one n8n workflow breakdown per week. How mid-market professional services firms scale without scaling payroll — no fluff, no pitch.",
+      "button": "Follow on LinkedIn →",
+      "url": "https://www.linkedin.com/in/ivanmanfredi/"
+    }
+  ],
+  "data_version": 4
+}

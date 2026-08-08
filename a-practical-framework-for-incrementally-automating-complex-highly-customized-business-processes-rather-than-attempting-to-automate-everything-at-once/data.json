@@ -1,0 +1,39 @@
+{
+  "slug": "a-practical-framework-for-incrementally-automating-complex-highly-customized-business-processes-rather-than-attempting-to-automate-everything-at-once",
+  "title": "The Incremental Automation Framework",
+  "subtitle": "A practical framework for automating complex, customized business processes in batches - not all at once. Built for ops teams with messy, real-world workflows.",
+  "estimated_minutes": 10,
+  "brand": {
+    "hero_badge": "Guide"
+  },
+  "intro": {
+    "paragraph": "You made the right call. This framework is exactly how I approach complex, customized processes with clients - the kind where \"Kentucky does it differently than Texas\" and suddenly your automation dream turns into a nightmare. Read through once, figure out which phase you're in, then pick ONE process to start with. That's it."
+  },
+  "sections": [
+    {
+      "id": "what-to-do-with-this",
+      "title": "What To Do With This",
+      "html": "<ul><li>Read through once (20-30 minutes)</li>\n<li>Identify which phase you're in right now</li>\n<li>Pick ONE process to start with using the prioritization framework</li>\n<li>Follow the batch approach I lay out here</li>\n</ul>\n<p>Pretty familiar scenario, right?</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "why-this-matters",
+      "title": "Why This Matters",
+      "html": "<p>Here's what I see constantly: someone decides they want to automate their operations. They get excited. They try to automate everything at once. Three months later, they've spent a ton of money, nothing works reliably, and they're back to doing things manually while paying for software they don't use.</p>\n<p>The problem isn't automation. The problem is approach.</p>\n<p>Complex business processes - especially the ones that are \"a little bit custom\" depending on the situation - can't be automated in one shot. I mean, I just can't do the whole thing in a few hours. It's a really long thing to do. But if you wanna go slowly, we can slowly automate things and go with that.</p>\n<p>That's not me being lazy. That's me being realistic about what actually works.</p>\n<p>When you have processes that vary by region, by client tier, by compliance requirements, by whatever - you need a different strategy. You need to automate in batches. You need to build incrementally. You need to validate as you go.</p>\n<p>This guide gives you that framework.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "the-core-problem-with-automate-everything",
+      "title": "The Core Problem With \"Automate Everything\"",
+      "html": "<p>Let me paint a picture. You have a process - let's say it's something like generating compliance documents. Sounds simple enough. But then:</p>\n<ul><li>Kentucky has different requirements than Texas</li>\n<li>Your enterprise clients need different formatting than your SMB clients</li>\n<li>Some projects need 15 fields populated, others need 40</li>\n<li>There are edge cases that only your most experienced team members know about</li>\n</ul>\n<strong>highly customized process</strong>\n<p>When you try to automate a highly customized process all at once, you end up with one of two outcomes:</p>\n<p>1. <strong>The automation is so rigid it breaks constantly</strong> - because it can't handle the variations<br>2. <strong>The automation is so complex nobody can maintain it</strong> - because you tried to account for every edge case upfront</p>\n<p>Neither is good. Both waste money and time.</p>",
+      "self_prompt": "Is your team already doing this?"
+    },
+    {
+      "id": "the-batch-approach-how-incremental-automation-actually-works",
+      "title": "The Batch Approach: How Incremental Automation Actually Works",
+      "html": "<p>Instead of trying to automate the whole process, you automate in batches. Each batch is a contained piece that you can build, test, and validate before moving on.</p>\n<h3>Phase 1: Map the Variations</h3>\n<p>Before you automate anything, you need to understand what actually varies. I'm talking about documenting:</p>\n<ul><li><strong>Geographic variations</strong> - what's different by state, region, country</li>\n<li><strong>Client-type variations</strong> - what's different by tier, industry, size</li>\n<li><strong>Process-type variations</strong> - what's different by project type, service type, product type</li>\n<li><strong>Compliance variations</strong> - what's different by regulatory requirement</li>\n</ul>\n<ul><ul><li><strong>Process Step: </strong>Document header<strong> | Standard Version: </strong>Company logo + date<strong> | Variation 1: </strong>State-specific disclaimer (KY)<strong> | Variation 2: </strong>State-specific disclaimer (TX)<strong> | Variation 3: </strong>Enterprise client custom header</li><li><strong>Process Step: </strong>Required fields<strong> | Standard Version: </strong>15 core fields<strong> | Variation 1: </strong>+5 compliance fields<strong> | Variation 2: </strong>+3 compliance fields<strong> | Variation 3: </strong>+10 client-specific fields</li></ul></ul>\n<h3>Phase 2: Identify the Common Core</h3>\n<p>Once you've mapped the variations, something interesting happens: you start to see what's actually common across</p>",
+      "self_prompt": "Is your team already doing this?"
+    }
+  ],
+  "data_version": 1
+}

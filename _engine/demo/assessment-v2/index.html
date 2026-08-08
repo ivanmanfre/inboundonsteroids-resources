@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Assessment v2 DEMO | Ivan Manfredi</title>
+<meta name="description" content="Engine v2 preview with mixed-type inputs + computed output.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/_engine/assessment-v2.css">
+<style>
+body { margin: 0; font-family: 'Space Grotesk', sans-serif; background: #F7F4EF; color: #1A1A1A; }
+.skip-link { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.skip-link:focus { position: fixed; top: .5rem; left: .5rem; width: auto; height: auto; background: #4C6E3D; color: #F7F4EF; padding: .5rem 1rem; z-index: 100; font-weight: 700; text-decoration: none; font-family: monospace; letter-spacing: .1em; text-transform: uppercase; font-size: .8rem; }
+.im-nav { position: sticky; top: 0; z-index: 50; background: #F7F4EF; border-bottom: 1px solid rgba(26,26,26,0.15); padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.im-nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; color: inherit; }
+.im-nav-mark { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; background: #1A1A1A; color: #4C6E3D; font-family: monospace; font-weight: 700; font-size: .78rem; letter-spacing: .15em; }
+.im-nav-name { font-family: monospace; font-size: .72rem; text-transform: uppercase; letter-spacing: .2em; color: #1A1A1A; font-weight: 700; }
+.im-nav-cta { display: inline-block; padding: .5rem 1rem; background: #1A1A1A; color: #4C6E3D; font-family: monospace; font-weight: 700; text-transform: uppercase; letter-spacing: .15em; text-decoration: none; font-size: .7rem; transition: background .15s; }
+.im-nav-cta:hover { background: #4C6E3D; color: #F7F4EF; }
+.demo-banner { background: #1A1A1A; color: #E8366D; padding: .4rem 1rem; text-align: center; font-family: monospace; font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .2em; }
+</style>
+</head>
+<body>
+<a id="skip-link" class="skip-link" href="#lmc-root">Skip to content</a>
+<div class="demo-banner">Demo — Engine v2 Preview</div>
+<nav class="im-nav">
+  <a class="im-nav-logo" href="https://inboundonsteroids.com">
+    <span class="im-nav-mark">IM</span>
+    <span class="im-nav-name">Ivan Manfredi</span>
+  </a>
+  <a class="im-nav-cta" href="https://calendly.com/ivan-intelligents/30min" target="_blank" rel="noopener">Let\'s Talk</a>
+</nav>
+<main id="lmc-root" class="lmc-root" data-lm-assessment-src="./data.json"></main>
+<script>window.__lm_slug="demo-assessment-v2";window.__lm_beacon_url="https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";</script>
+<script src="/_engine/assessment-score.js"></script>
+<script src="/_engine/embed-brand.js"></script>
+<script src="/_engine/assessment-v2.js" defer></script>
+</body>
+</html>

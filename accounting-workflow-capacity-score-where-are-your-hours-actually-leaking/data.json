@@ -1,0 +1,760 @@
+{
+  "slug": "accounting-workflow-capacity-score-where-are-your-hours-actually-leaking",
+  "title": "Accounting Workflow Capacity Score",
+  "subtitle": "Where are your hours actually leaking? An 18-question diagnostic for boutique accounting firms.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Assessment"
+  },
+  "estimated_minutes": 8,
+  "persona_selector": {
+    "id": "role",
+    "text": "Which one are you in this firm?",
+    "answers": [
+      {
+        "label": "Owner or Managing Partner",
+        "tag": "owner"
+      },
+      {
+        "label": "Operations Lead or Practice Manager",
+        "tag": "ops"
+      },
+      {
+        "label": "Senior Accountant, Tax Lead, or IC",
+        "tag": "ic"
+      }
+    ]
+  },
+  "categories": [
+    {
+      "id": "intake",
+      "name": "Client Intake & Onboarding",
+      "questions": [
+        {
+          "id": "intake_q1",
+          "text": "When a new client signs the engagement letter, how does their information get into your practice management system?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Manual re-typing from email or PDF",
+              "score": 1
+            },
+            {
+              "label": "Form submission, but someone manually copies fields into one other system",
+              "score": 2
+            },
+            {
+              "label": "Form submission, but someone copies fields into 2+ systems",
+              "score": 3
+            },
+            {
+              "label": "Partial automation, one or two systems still need manual touch",
+              "score": 4
+            },
+            {
+              "label": "One intake form populates everything (PM tool, CRM, document vault, billing)",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_q2",
+          "text": "How many days between engagement signature and the client's onboarding pack landing in their inbox?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "5+ days, often forgotten",
+              "score": 1
+            },
+            {
+              "label": "4-5 days, depends entirely on workload",
+              "score": 2
+            },
+            {
+              "label": "2-4 days, depends on who's covering",
+              "score": 3
+            },
+            {
+              "label": "1-2 days, mostly consistent",
+              "score": 4
+            },
+            {
+              "label": "Same day, automated",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_q3",
+          "text": "Who chases missing documents (W-9s, prior returns, bank access, signed authorizations)?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A senior accountant, in between billable work",
+              "score": 1
+            },
+            {
+              "label": "A senior accountant, but only after a deadline slips",
+              "score": 2
+            },
+            {
+              "label": "An admin, manually, via email",
+              "score": 3
+            },
+            {
+              "label": "An admin using templated reminders in the PM tool",
+              "score": 4
+            },
+            {
+              "label": "Automated reminders with a client portal",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "intake_q4",
+          "text": "When a client provides a list of bank accounts, vendors, or entities, how does it get structured for the team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Lives in an email thread",
+              "score": 1
+            },
+            {
+              "label": "Pasted into a Word doc someone has to hunt for",
+              "score": 2
+            },
+            {
+              "label": "Manually entered into a spreadsheet",
+              "score": 3
+            },
+            {
+              "label": "Entered into a shared template, but not connected to workpapers",
+              "score": 4
+            },
+            {
+              "label": "Structured at intake, flows into workpapers automatically",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your intake is the bottleneck before work even starts",
+          "text": "You're paying skilled accountants to do data entry. Every new client costs you 4-8 hours of senior time before a single billable task begins. This compounds across the book.",
+          "steps": [
+            "Build a single intake form (Typeform, Tally, or Jotform) that writes directly to your PM tool via webhook or Zapier",
+            "Set up automated document request sequences with deadlines and reminders (no human in the loop until day 7)",
+            "Standardize the client information sheet so it becomes the source of truth for workpapers, billing, and CRM"
+          ]
+        },
+        "mid": {
+          "headline": "Intake works, but it leaks at the handoffs",
+          "text": "You've solved the front door. The leak is between systems. Each manual re-entry is a place where data drifts and someone has to reconcile it later.",
+          "steps": [
+            "Map every system that receives client data at onboarding and identify which two require duplicate entry",
+            "Connect those two systems via API or middleware (n8n, Make, Zapier) so intake writes once",
+            "Add a 48-hour automated check that flags any client missing required onboarding artifacts"
+          ]
+        },
+        "high": {
+          "headline": "Intake is no longer a capacity question",
+          "text": "You've removed onboarding as a constraint on growth. The next move is using intake data to pre-classify work and route engagements without partner triage.",
+          "steps": [
+            "Use intake data to auto-assign engagement type, complexity tier, and lead accountant",
+            "Feed onboarding data into a capacity forecasting view so partners see workload 30 days out",
+            "Audit annually for new fields that could be captured upfront instead of mid-engagement"
+          ]
+        }
+      }
+    },
+    {
+      "id": "documents",
+      "name": "Document & Source Data Collection",
+      "questions": [
+        {
+          "id": "docs_q1",
+          "text": "What percentage of source documents (bank statements, receipts, payroll reports) arrive in a structured, parseable format?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Under 25% - mostly PDFs, screenshots, photos of receipts",
+              "score": 1
+            },
+            {
+              "label": "25-50% - some direct feeds, mostly unstructured",
+              "score": 2
+            },
+            {
+              "label": "50-70% - mixed",
+              "score": 3
+            },
+            {
+              "label": "70-80% - mostly structured with some exceptions",
+              "score": 4
+            },
+            {
+              "label": "Over 80% - direct feeds, OCR'd, categorized at ingestion",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "docs_q2",
+          "text": "How does your team handle a client who drops a Dropbox link with 200 unsorted PDFs?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "A junior staffer spends a day sorting and renaming",
+              "score": 1
+            },
+            {
+              "label": "A junior staffer sorts but only the most urgent items",
+              "score": 2
+            },
+            {
+              "label": "We push back on the client, sometimes successfully",
+              "score": 3
+            },
+            {
+              "label": "We have a naming convention the client mostly follows",
+              "score": 4
+            },
+            {
+              "label": "Automated classification routes documents to the right workpaper folder",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "docs_q3",
+          "text": "When a bank feed breaks or a transaction misclassifies, who notices?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "The client, three weeks later, in a panic email",
+              "score": 1
+            },
+            {
+              "label": "The accountant during month-end close, after work has piled up",
+              "score": 2
+            },
+            {
+              "label": "The accountant during weekly review",
+              "score": 3
+            },
+            {
+              "label": "An automated daily check flags it within 24 hours",
+              "score": 4
+            },
+            {
+              "label": "Real-time monitoring with auto-classification rules that learn from corrections",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "docs_q4",
+          "text": "How long does it take a new staff member to find a specific document from a closed engagement two years ago?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "30+ minutes, often impossible",
+              "score": 1
+            },
+            {
+              "label": "15-30 minutes, requires asking someone senior",
+              "score": 2
+            },
+            {
+              "label": "5-15 minutes with the right folder knowledge",
+              "score": 3
+            },
+            {
+              "label": "Under 5 minutes via consistent folder structure",
+              "score": 4
+            },
+            {
+              "label": "Searchable in seconds across all client engagements",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your team is doing librarian work, not accounting work",
+          "text": "Document chaos consumes 10-15 hours per accountant per week. The most expensive part is not the time. It is the senior judgment applied to filing instead of advisory work.",
+          "steps": [
+            "Implement a document classification layer (Dext, Hubdoc, or a Claude-powered intake bot) that auto-routes incoming files",
+            "Standardize folder structure across all clients with a strict naming convention enforced at intake",
+            "Add weekly automated checks for missing or stale bank feeds so issues surface in days, not weeks"
+          ]
+        },
+        "mid": {
+          "headline": "Document handling works but doesn't scale",
+          "text": "You have systems but they depend on individual discipline. The next person you hire will break them within 60 days unless the rules are enforced by software, not training.",
+          "steps": [
+            "Move folder structure enforcement from human checklist to automated template provisioning on new engagements",
+            "Add OCR and classification on top of your existing document storage so search works across PDFs",
+            "Build a weekly anomaly report that flags missing documents before month-end close starts"
+          ]
+        },
+        "high": {
+          "headline": "Documents are a data layer, not a chore",
+          "text": "You've turned source documents into structured data. The use now is using that data for advisory insight, not just compliance.",
+          "steps": [
+            "Use parsed document data to populate first-draft workpapers automatically",
+            "Surface anomalies and trends to clients proactively as part of monthly reporting",
+            "Audit your document pipeline quarterly for new document types that should be captured automatically"
+          ]
+        }
+      }
+    },
+    {
+      "id": "workpapers",
+      "name": "Workpapers & Close Process",
+      "questions": [
+        {
+          "id": "work_q1",
+          "text": "How is your monthly close checklist tracked across the team?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "In someone's head or a private spreadsheet",
+              "score": 1
+            },
+            {
+              "label": "A shared spreadsheet that nobody updates in real time",
+              "score": 2
+            },
+            {
+              "label": "A shared checklist in the PM tool, updated manually",
+              "score": 3
+            },
+            {
+              "label": "PM tool with status updates and assignments per client",
+              "score": 4
+            },
+            {
+              "label": "Automated checklist with dependencies, deadlines, and roll-forward from prior periods",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "work_q2",
+          "text": "When the same reconciliation question comes up across 30 clients, how is the answer captured?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Re-derived from scratch each time",
+              "score": 1
+            },
+            {
+              "label": "Asked to a senior, who answers from memory",
+              "score": 2
+            },
+            {
+              "label": "Documented in a shared doc nobody reads",
+              "score": 3
+            },
+            {
+              "label": "In a searchable knowledge base the team uses",
+              "score": 4
+            },
+            {
+              "label": "In a knowledge base plus an AI assistant trained on firm precedent",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "work_q3",
+          "text": "How are workpapers reviewed before sign-off?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Partner reviews everything line by line",
+              "score": 1
+            },
+            {
+              "label": "Partner reviews most files, samples the rest",
+              "score": 2
+            },
+            {
+              "label": "Senior reviews, partner samples exceptions",
+              "score": 3
+            },
+            {
+              "label": "Senior reviews using a standardized review checklist",
+              "score": 4
+            },
+            {
+              "label": "Automated pre-checks flag exceptions, humans review only flagged items",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "work_q4",
+          "text": "What happens when a client misses a deadline that blocks your close?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We absorb the delay and work weekends",
+              "score": 1
+            },
+            {
+              "label": "We escalate manually, often too late",
+              "score": 2
+            },
+            {
+              "label": "Automated reminder, then manual escalation",
+              "score": 3
+            },
+            {
+              "label": "Tiered reminders, partner notified at day 5",
+              "score": 4
+            },
+            {
+              "label": "Automated escalation with re-pricing or scope-change trigger",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Your close process is held together by one or two people",
+          "text": "The firm cannot grow past those people. When they take vacation, deadlines slip. When they leave, the firm has a crisis. Document the close before you hire the next accountant.",
+          "steps": [
+            "Move the close checklist out of spreadsheets into your PM tool with explicit owners and due dates per task",
+            "Document the top 20 reconciliation patterns into a searchable internal wiki this quarter",
+            "Implement a tiered client deadline system with automated escalation, not partner-driven chase work"
+          ]
+        },
+        "mid": {
+          "headline": "Your close runs, but partner review is the bottleneck",
+          "text": "You've systematized the work but not the review. Partners are spending billable hours on quality control that software can flag. This caps how many clients each partner can carry.",
+          "steps": [
+            "Build automated pre-review checks that flag common workpaper exceptions before partner review",
+            "Codify the firm's top reconciliation precedents into a queryable knowledge base (Notion, Confluence, or AI-built)",
+            "Add a deadline-management layer that automatically re-prices or re-scopes when clients block your close"
+          ]
+        },
+        "high": {
+          "headline": "Your close is a system, not a sprint",
+          "text": "You've turned monthly close from an event into a process. use now means using the structured close data to power advisory conversations.",
+          "steps": [
+            "Extract close-time data to identify which clients consistently consume the most senior time",
+            "Build client-specific dashboards from close data to drive monthly advisory conversations",
+            "Use AI to draft first-pass workpaper narratives, freeing seniors for judgment calls"
+          ]
+        }
+      }
+    },
+    {
+      "id": "communication",
+      "name": "Client Communication & Reporting",
+      "questions": [
+        {
+          "id": "comm_q1",
+          "text": "How does a client get an answer to a quick tax question?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Email to partner, response in 3-7 days",
+              "score": 1
+            },
+            {
+              "label": "Email to partner, response in 1-3 days",
+              "score": 2
+            },
+            {
+              "label": "Email or PM tool, routed by admin, 24-hour SLA",
+              "score": 3
+            },
+            {
+              "label": "Client portal with assigned owner and tracked SLA",
+              "score": 4
+            },
+            {
+              "label": "Tiered intake with same-day resolution for routine questions",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "comm_q2",
+          "text": "How are monthly reports delivered to clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "PDF attached to an email, drafted manually each month",
+              "score": 1
+            },
+            {
+              "label": "PDF from accounting software, lightly customized",
+              "score": 2
+            },
+            {
+              "label": "Templated PDF report with consistent structure",
+              "score": 3
+            },
+            {
+              "label": "Client portal with interactive reports and commentary",
+              "score": 4
+            },
+            {
+              "label": "Auto-generated reports with AI-drafted commentary, partner reviewed",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "comm_q3",
+          "text": "When a client asks why a number changed month over month, how fast can you answer?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Requires hours of digging by a senior",
+              "score": 1
+            },
+            {
+              "label": "Within a few hours if the senior is available",
+              "score": 2
+            },
+            {
+              "label": "Same day, by checking workpaper notes",
+              "score": 3
+            },
+            {
+              "label": "Within an hour using structured commentary",
+              "score": 4
+            },
+            {
+              "label": "Instantly via dashboard with drill-down",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "comm_q4",
+          "text": "How do you handle the post-tax-season check-in conversation with clients?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "We don't, we move on to the next deadline",
+              "score": 1
+            },
+            {
+              "label": "Partners do it for the top 5 clients only",
+              "score": 2
+            },
+            {
+              "label": "Manual outreach for tier-1 and tier-2 clients",
+              "score": 3
+            },
+            {
+              "label": "Templated outreach with automated scheduling",
+              "score": 4
+            },
+            {
+              "label": "Structured advisory program with automated touchpoints",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "Clients judge you on responsiveness, not technical depth",
+          "text": "Slow communication is the number one reason mid-market clients leave boutique firms. You are losing renewals to firms that answer faster, even when your work is better.",
+          "steps": [
+            "Implement a client portal or PM-tool intake with a published SLA (24 hours for routine, same day for urgent)",
+            "Build a templated monthly report that pulls data from your accounting software so commentary is the only manual piece",
+            "Set up post-deadline outreach as an automated sequence, not a partner to-do"
+          ]
+        },
+        "mid": {
+          "headline": "Communication is consistent but not differentiated",
+          "text": "You're delivering on the basics. The growth opportunity is moving from reactive answers to proactive insight, which is what justifies advisory pricing.",
+          "steps": [
+            "Add monthly commentary to client reports that explains variance and surfaces one recommendation",
+            "Build a tiered SLA model where premium clients get faster response and proactive outreach",
+            "Move post-deadline check-ins from email to scheduled video conversations with a structured agenda"
+          ]
+        },
+        "high": {
+          "headline": "Communication is now a moat",
+          "text": "Your client experience is better than firms three times your size. The strategic move is productizing that experience so it scales without diluting quality.",
+          "steps": [
+            "Package your advisory cadence into a named program with clear deliverables and a premium price",
+            "Use client interaction data to identify which clients are ready for an upsell or at risk of churn",
+            "Train an AI assistant on your firm's communication style so juniors draft client emails that sound like partners"
+          ]
+        }
+      }
+    },
+    {
+      "id": "capacity",
+      "name": "Capacity, Pricing & Profitability",
+      "questions": [
+        {
+          "id": "cap_q1",
+          "text": "Do you know which clients are profitable and which are losing you money?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "No, we look at revenue per client, not margin",
+              "score": 1
+            },
+            {
+              "label": "We have a rough sense based on partner gut feel",
+              "score": 2
+            },
+            {
+              "label": "We track time per client but don't link it to fees",
+              "score": 3
+            },
+            {
+              "label": "We have a profitability report we review quarterly",
+              "score": 4
+            },
+            {
+              "label": "Live per-client profitability with automatic alerts on margin drops",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cap_q2",
+          "text": "How is pricing set for new engagements?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Whatever the client offered, or matched to a similar client",
+              "score": 1
+            },
+            {
+              "label": "Hourly estimate multiplied by a target rate",
+              "score": 2
+            },
+            {
+              "label": "Tiered pricing based on engagement complexity",
+              "score": 3
+            },
+            {
+              "label": "Value-based pricing for advisory, scoped pricing for compliance",
+              "score": 4
+            },
+            {
+              "label": "Dynamic pricing model informed by historical data on similar engagements",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cap_q3",
+          "text": "When work backs up, what's the first lever you pull?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "Partner works the weekend",
+              "score": 1
+            },
+            {
+              "label": "We hire a contractor under pressure",
+              "score": 2
+            },
+            {
+              "label": "We push deadlines with clients",
+              "score": 3
+            },
+            {
+              "label": "We rebalance work across the team using PM-tool data",
+              "score": 4
+            },
+            {
+              "label": "Capacity forecasting flagged the issue weeks ago and we already adjusted",
+              "score": 5
+            }
+          ]
+        },
+        {
+          "id": "cap_q4",
+          "text": "What percentage of senior accountant time is spent on work a junior could do with the right system?",
+          "max_score": 5,
+          "answers": [
+            {
+              "label": "More than 40%",
+              "score": 1
+            },
+            {
+              "label": "25-40%",
+              "score": 2
+            },
+            {
+              "label": "15-25%",
+              "score": 3
+            },
+            {
+              "label": "Under 15%",
+              "score": 4
+            },
+            {
+              "label": "Under 5%, seniors do senior work",
+              "score": 5
+            }
+          ]
+        }
+      ],
+      "recommendations": {
+        "low": {
+          "headline": "You're running blind on the metrics that determine whether the firm grows or stalls",
+          "text": "Firms at your tier almost always discover that 20% of clients consume 60% of capacity at a loss. Without per-client profitability, every hiring decision is a guess.",
+          "steps": [
+            "Implement time tracking at the client level for 90 days, even if you don't bill hourly, just to see where time actually goes",
+            "Calculate gross margin per client and identify the bottom quartile, then re-price or re-scope those engagements",
+            "Build a simple capacity forecasting view that shows committed work versus available hours 30 days out"
+          ]
+        },
+        "mid": {
+          "headline": "You see the numbers but the firm doesn't act on them fast enough",
+          "text": "You have the data. The gap is the decision loop. Reviewing profitability quarterly means a bad engagement runs for 90 days before anyone notices.",
+          "steps": [
+            "Set up automated alerts when a client's realized rate drops below threshold, partner notified within the week",
+            "Move from quarterly profitability review to a monthly partner conversation with a standing agenda",
+            "Move to value-based or scoped pricing for advisory work, decoupling fees from hours"
+          ]
+        },
+        "high": {
+          "headline": "Capacity is a strategic asset, not a constraint",
+          "text": "You're operating like a top-decile firm. The next move is using capacity data to expand into higher-margin advisory work and acquire the right clients, not just more clients.",
+          "steps": [
+            "Use historical engagement data to build a pricing model that quotes new clients accurately and profitably",
+            "Identify the top 10% of your clients by profitability and design a referral program targeting their peers",
+            "Reinvest freed capacity into building productized advisory services with predictable margins"
+          ]
+        }
+      }
+    }
+  ],
+  "tier_thresholds": {
+    "low": 40,
+    "mid": 70
+  },
+  "cta": {
+    "headline": "Want a partner who turns this score into an actual capacity plan?",
+    "description": "Most firms don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two leaks to fix first, based on your score, your stage, and your team. No pitch deck, no junior consultant, just the sequencing call.",
+    "button": "Book Strategy Call",
+    "url": "https://calendly.com/ivan-intelligents/30min"
+  },
+  "tier_names": {
+    "low": "Developing",
+    "mid": "Growth Stage",
+    "high": "Advanced"
+  }
+}

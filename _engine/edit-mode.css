@@ -1,0 +1,476 @@
+/* LM Edit Mode styles — only loaded when ?edit=<token> in URL */
+
+/* Toolbar */
+.lme-toolbar {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 99998;
+  background: #111;
+  color: #fff;
+  border: 2px solid #131210;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+  user-select: none;
+}
+.lme-toolbar-label { font-weight: 700; letter-spacing: 0.3px; }
+.lme-toolbar-slug { color: #131210; font-family: ui-monospace, monospace; font-size: 12px; }
+.lme-toolbar-dirty { color: #ff9800; font-weight: 700; }
+.lme-toolbar-btn {
+  background: transparent;
+  color: #fff;
+  border: 1px solid #444;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms;
+}
+.lme-toolbar-btn:hover { background: #222; }
+.lme-toolbar-btn-primary { background: #131210; border-color: #131210; }
+.lme-toolbar-btn-primary:hover { background: #131210; }
+.lme-toolbar-btn-danger { color: #C8361B; }
+
+/* Field hover state */
+[data-lme-field] {
+  position: relative;
+  outline: 1px dashed transparent;
+  outline-offset: 2px;
+  transition: outline-color 80ms, background 80ms;
+}
+[data-lme-field]:hover {
+  outline-color: #131210;
+  background: rgba(19, 18, 16, 0.06);
+  cursor: pointer;
+}
+[data-lme-field-editing] { outline: 2px solid #131210; background: rgba(19, 18, 16, 0.1); }
+
+/* Inline input — match surrounding typography */
+.lme-inline-input,
+.lme-inline-textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  color: inherit;
+  background: #FFFFFF;
+  border: 1px solid #131210;
+  border-radius: 4px;
+  padding: 2px 6px;
+  margin: -3px -7px;
+  box-sizing: border-box;
+  outline: none;
+}
+.lme-inline-textarea { resize: vertical; min-height: 60px; }
+
+/* Array container */
+[data-lme-array] { position: relative; }
+[data-lme-array-item] {
+  position: relative;
+  padding-left: 24px;
+}
+.lme-handle {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  cursor: grab;
+  color: #888;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 80ms;
+}
+[data-lme-array-item]:hover .lme-handle { opacity: 1; }
+.lme-handle:active { cursor: grabbing; }
+.lme-remove-btn {
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: #C8361B;
+  color: #fff;
+  font-weight: 700;
+  font-size: 12px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 80ms;
+}
+[data-lme-array-item]:hover .lme-remove-btn { opacity: 1; }
+.lme-add-btn {
+  display: inline-block;
+  margin: 12px 0;
+  padding: 6px 12px;
+  border: 1px dashed #131210;
+  background: transparent;
+  color: #131210;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lme-add-btn:hover { background: rgba(19, 18, 16, 0.1); }
+
+/* Locked field indicator (stable IDs) */
+.lme-field-locked::before {
+  content: "🔒";
+  font-size: 10px;
+  margin-right: 4px;
+  opacity: 0.5;
+}
+
+/* Modal */
+.lme-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lme-modal {
+  background: #fff;
+  border-radius: 10px;
+  max-width: min(900px, 92vw);
+  width: 100%;
+  max-height: 86vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+.lme-modal-header {
+  padding: 14px 18px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lme-modal-title { font-weight: 700; font-size: 14px; letter-spacing: 0.2px; }
+.lme-modal-close { background: none; border: none; font-size: 18px; cursor: pointer; color: #888; }
+.lme-modal-body { padding: 16px 18px; overflow: auto; flex: 1; }
+.lme-modal-warning {
+  background: #FFFFFF;
+  border-left: 4px solid #ff9800;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  color: #4A463E;
+  line-height: 1.5;
+}
+.lme-modal-textarea {
+  width: 100%;
+  min-height: 50vh;
+  font-family: ui-monospace, "SF Mono", Menlo, monospace;
+  font-size: 13px;
+  line-height: 1.5;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  outline: none;
+  resize: vertical;
+}
+.lme-modal-textarea:focus { border-color: #131210; }
+.lme-modal-validation {
+  font-family: ui-monospace, monospace;
+  font-size: 12px;
+  margin-top: 8px;
+  padding: 8px;
+  border-radius: 4px;
+}
+.lme-modal-validation-ok { color: #131210; background: rgba(19, 18, 16, 0.08); }
+.lme-modal-validation-error { color: #C8361B; background: rgba(198, 40, 40, 0.06); white-space: pre-wrap; }
+.lme-modal-footer {
+  padding: 12px 18px;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+/* Toast (override engines' toast color in edit mode) */
+.lme-edit-toast {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #131210;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 13px;
+  z-index: 99997;
+  opacity: 0;
+  transition: opacity 160ms;
+}
+.lme-edit-toast.show { opacity: 1; }
+.lme-edit-toast-error { background: #C8361B; }
+
+/* Recent saves panel */
+.lme-saves-panel {
+  position: fixed;
+  bottom: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(560px, 92vw);
+  max-height: 50vh;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-shadow: 0 16px 50px rgba(0, 0, 0, 0.2);
+  z-index: 99998;
+  overflow: auto;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 13px;
+}
+.lme-save-row {
+  padding: 10px 14px;
+  border-bottom: 1px solid #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.lme-save-row:hover { background: #FFFFFF; }
+.lme-save-msg { font-weight: 500; flex: 1; }
+.lme-save-meta { color: #888; font-size: 11px; font-family: ui-monospace, monospace; }
+.lme-revert-btn {
+  background: transparent;
+  border: 1px solid #C8361B;
+  color: #C8361B;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.lme-revert-btn:hover { background: #C8361B; color: #fff; }
+
+/* Contenteditable rich-text field (guide section bodies) */
+.lme-field-contenteditable {
+  outline: 2px dashed rgba(19, 18, 16, 0.35);
+  outline-offset: 6px;
+  border-radius: 4px;
+  transition: outline-color .15s ease, background .15s ease;
+  cursor: text;
+}
+.lme-field-contenteditable:hover {
+  outline-color: rgba(19, 18, 16, 0.65);
+  background: rgba(19, 18, 16, 0.04);
+}
+.lme-field-contenteditable[data-lme-field-editing="true"] {
+  outline-color: #131210;
+  outline-style: solid;
+  background: rgba(255, 255, 255, 0.55);
+}
+
+/* Between-item add button (insert mid-array) */
+.lme-add-between {
+  display: block;
+  margin: 8px auto;
+  font-size: 11px;
+  padding: 4px 12px;
+  opacity: 0.55;
+  transition: opacity .15s ease, transform .15s ease;
+}
+.lme-add-between:hover { opacity: 1; transform: scale(1.05); }
+
+/* ── AI rewrite (✨) ──────────────────────────────────────────────────── */
+
+/* Single floating chip, repositioned to whichever field is hovered/focused.
+   Never a child of the field element — must not pollute its textContent
+   or innerHTML, which are read back into state.data on commit. */
+.lme-ai-chip {
+  position: fixed;
+  z-index: 99997;
+  width: 22px;
+  height: 22px;
+  border-radius: 4px;
+  border: 1px solid rgba(19, 18, 16, 0.35);
+  background: rgba(255, 255, 255, 0.95);
+  color: #131210;
+  font-size: 12px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-2px);
+  transition: opacity 120ms ease, transform 120ms ease, background 120ms ease;
+}
+.lme-ai-chip-visible {
+  opacity: 0.85;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+.lme-ai-chip:hover {
+  opacity: 1;
+  background: rgba(19, 18, 16, 0.12);
+}
+
+/* Prompt / loading / proposal panel */
+.lme-ai-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(38, 30, 20, 0.35);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.lme-ai-panel {
+  background: #FFFFFF;
+  border: 1px solid rgba(19, 18, 16, 0.25);
+  border-radius: 8px;
+  width: min(480px, 92vw);
+  max-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.lme-ai-panel-header {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(19, 18, 16, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.lme-ai-panel-title { font-weight: 700; font-size: 13px; color: #131210; }
+.lme-ai-panel-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+}
+.lme-ai-panel-close:hover { color: #131210; }
+.lme-ai-panel-body { padding: 16px; overflow: auto; }
+
+.lme-ai-input {
+  display: block;
+  width: 100%;
+  font: inherit;
+  font-size: 13px;
+  padding: 8px 10px;
+  border: 1px solid rgba(19, 18, 16, 0.35);
+  border-radius: 4px;
+  background: #fff;
+  box-sizing: border-box;
+  outline: none;
+}
+.lme-ai-input:focus { border-color: #131210; }
+.lme-ai-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+.lme-ai-preset {
+  border: 1px solid rgba(19, 18, 16, 0.35);
+  background: rgba(19, 18, 16, 0.06);
+  color: #131210;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 80ms;
+}
+.lme-ai-preset:hover { background: rgba(19, 18, 16, 0.14); }
+
+.lme-ai-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 16px;
+}
+.lme-ai-btn {
+  background: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  color: #131210;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.lme-ai-btn:hover { background: rgba(0, 0, 0, 0.04); }
+.lme-ai-btn-primary { background: #131210; border-color: #131210; color: #fff; }
+.lme-ai-btn-primary:hover { background: #131210; }
+
+.lme-ai-loading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 0;
+  font-size: 13px;
+  color: #131210;
+}
+.lme-ai-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(19, 18, 16, 0.25);
+  border-top-color: #131210;
+  border-radius: 50%;
+  animation: lme-ai-spin 700ms linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lme-ai-spinner { animation: none; }
+}
+@keyframes lme-ai-spin {
+  to { transform: rotate(360deg); }
+}
+
+.lme-ai-block { margin-bottom: 14px; }
+.lme-ai-block-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  color: #888;
+  margin-bottom: 4px;
+}
+.lme-ai-block-content {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #222;
+  padding: 8px 10px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  max-height: 180px;
+  overflow: auto;
+}
+.lme-ai-block-proposed .lme-ai-block-content {
+  background: rgba(19, 18, 16, 0.06);
+  border-color: rgba(19, 18, 16, 0.25);
+}
+.lme-ai-block-proposed .lme-ai-block-label { color: #131210; }
+
+/* Optimistic-save syncing indicator (D1) */
+.lme-toolbar-dirty.lme-syncing {
+  color: #6B675E;
+  opacity: 0.9;
+}

@@ -1,0 +1,354 @@
+/* Stack Picker engine — decision-tree LM.
+   Brand: paper #FFFFFF, ink #131210, sage #131210 as accent only.
+   Editorial typography (Schibsted Grotesk + Source Serif 4), ink-filled primary CTAs.
+   Shares tokens from shared.css. */
+
+.lmc-sp-stage {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 6rem;
+  position: relative;
+  z-index: 1;
+  perspective: 1400px;
+}
+
+/* ── Breadcrumbs ──────────────────────────────────────────────────────── */
+.lmc-sp-crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .35rem .5rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 13px;
+  color: var(--ink-mute);
+  margin-bottom: 1.5rem;
+  letter-spacing: .02em;
+}
+.lmc-sp-crumb {
+  font-family: inherit;
+  background: transparent;
+  color: var(--ink-soft);
+  border: none;
+  border-bottom: 1px solid transparent;
+  padding: .15rem 0;
+  font-size: 13px;
+  cursor: pointer;
+  text-align: left;
+  transition: color 120ms, border-color 120ms;
+  font-weight: 500;
+}
+.lmc-sp-crumb:hover { color: var(--ink); border-bottom-color: #131210; }
+.lmc-sp-crumb-start { font-weight: 600; }
+.lmc-sp-crumb-sep { color: var(--hairline-bold); padding: 0 .15rem; }
+
+/* ── Card ─────────────────────────────────────────────────────────────── */
+.lmc-sp-card {
+  background: var(--paper-raise);
+  border: 1px solid var(--hairline-bold);
+  border-radius: var(--radius-lg);
+  padding: 3rem 2.75rem;
+  box-shadow: var(--shadow-lift);
+  transform-style: preserve-3d;
+  transform-origin: 50% 50%;
+  transition: transform 260ms var(--ease), opacity 260ms var(--ease);
+  opacity: 1;
+}
+.lmc-sp-card.is-flipping {
+  transform: rotateY(90deg);
+  opacity: 0;
+}
+@media (max-width: 640px) {
+  .lmc-sp-card { padding: 2rem 1.5rem; }
+  .lmc-sp-stage { padding: 2rem 1rem 4rem; }
+}
+
+/* Question */
+.lmc-sp-q {
+  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-size: clamp(1.6rem, 4vw, 2.15rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin: 0 0 2rem;
+}
+
+.lmc-sp-branches {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.lmc-sp-branch {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 1.05rem 1.35rem;
+  background: var(--paper-raise);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.45;
+  border: 1px solid var(--hairline-bold);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 140ms var(--ease), transform 140ms var(--ease), background 140ms var(--ease), box-shadow 140ms var(--ease);
+  position: relative;
+}
+.lmc-sp-branch:hover {
+  border-color: #131210;
+  background: rgba(19, 18, 16,0.04);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-subtle);
+}
+.lmc-sp-branch:focus-visible {
+  outline: 2px solid #131210;
+  outline-offset: 2px;
+}
+.lmc-sp-branch::after {
+  content: "\2192";
+  position: absolute;
+  right: 1.35rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--ink-mute);
+  font-size: 1.1rem;
+  transition: color 140ms, transform 140ms var(--ease);
+}
+.lmc-sp-branch:hover::after {
+  color: #131210;
+  transform: translateY(-50%) translateX(3px);
+}
+
+/* Back button */
+.lmc-sp-back {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1.5rem;
+  padding: .55rem 1rem;
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--ink-soft);
+  background: transparent;
+  border: 1px solid var(--hairline-bold);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: color 120ms, border-color 120ms;
+}
+.lmc-sp-back:hover { color: var(--ink); border-color: var(--ink); }
+
+/* ── Result card ──────────────────────────────────────────────────────── */
+.lmc-sp-card-result { padding: 3.5rem 3rem; }
+@media (max-width: 640px) {
+  .lmc-sp-card-result { padding: 2.25rem 1.5rem; }
+}
+
+.lmc-sp-result-h {
+  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-size: clamp(2rem, 5vw, 2.85rem);
+  font-weight: 400;
+  letter-spacing: -0.015em;
+  line-height: 1.1;
+  margin: 0 0 1.5rem;
+  color: var(--ink);
+}
+.lmc-sp-result-h em {
+  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-style: italic;
+  color: #131210;
+}
+
+.lmc-sp-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  margin: 0 0 2rem;
+}
+.lmc-sp-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: .35rem .8rem;
+  background: var(--paper-sunk);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .03em;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+}
+.lmc-sp-chip::before {
+  content: "";
+  width: 5px;
+  height: 5px;
+  background: #131210;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: .5rem;
+}
+
+.lmc-sp-body {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0 0 2rem;
+}
+.lmc-sp-body p { margin: 0 0 1rem; }
+.lmc-sp-body p:last-child { margin-bottom: 0; }
+.lmc-sp-body strong { color: var(--ink); font-weight: 600; }
+.lmc-sp-body em { color: #131210; font-style: italic; }
+
+/* Alternatives */
+.lmc-sp-alt {
+  margin: 0 0 2.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--hairline);
+}
+.lmc-sp-alt-label {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #131210;
+  margin-bottom: .9rem;
+}
+.lmc-sp-alt-item {
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-md);
+  padding: .9rem 1.1rem;
+  margin-bottom: .55rem;
+  background: var(--paper);
+}
+.lmc-sp-alt-item[open] {
+  background: var(--paper-sunk);
+  border-color: var(--hairline-bold);
+}
+.lmc-sp-alt-item summary {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  list-style: none;
+  position: relative;
+  padding-right: 1.5rem;
+}
+.lmc-sp-alt-item summary::-webkit-details-marker { display: none; }
+.lmc-sp-alt-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #131210;
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.lmc-sp-alt-item[open] summary::after { content: "\2013"; }
+.lmc-sp-alt-item p {
+  font-family: 'Source Serif 4', Georgia, serif;
+  margin: .55rem 0 0;
+  color: var(--ink-soft);
+  font-size: .98rem;
+  line-height: 1.55;
+}
+
+/* CTA inside result */
+.lmc-sp-cta {
+  margin: 2rem 0 2rem;
+  padding: 2rem 1.85rem;
+  background: var(--ink);
+  color: var(--paper);
+  border-radius: var(--radius-md);
+}
+.lmc-sp-cta-h {
+  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.005em;
+  line-height: 1.15;
+  color: var(--paper);
+  margin: 0 0 .55rem;
+}
+.lmc-sp-cta-d {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: rgba(255, 255, 255,0.82);
+  margin: 0 0 1.5rem;
+}
+.lmc-sp-cta-btn {
+  background: #131210;
+  color: var(--paper);
+  display: inline-block;
+  text-decoration: none;
+}
+.lmc-sp-cta-btn:hover { background: #131210; color: var(--paper); }
+
+/* Share row */
+.lmc-sp-share-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem;
+  margin: 0 0 2rem;
+}
+
+/* Capture form (result page) */
+.lmc-sp-capture {
+  padding-top: 2rem;
+  border-top: 1px solid var(--hairline);
+}
+.lmc-sp-capture h3 {
+  font-family: 'Schibsted Grotesk', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 400;
+  margin: 0 0 .45rem;
+  color: var(--ink);
+}
+.lmc-sp-capture p {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin: 0 0 1.2rem;
+  line-height: 1.5;
+}
+.lmc-sp-capture .lmc-input {
+  flex: 1 1 240px;
+  min-width: 0;
+  padding: .8rem 1rem;
+  border: 1px solid var(--hairline-bold);
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: 1rem;
+  border-radius: var(--radius-md);
+}
+.lmc-sp-capture .lmc-input:focus {
+  outline: none;
+  border-color: #131210;
+  background: var(--paper-raise);
+}
+.lmc-sp-capture .lmc-note {
+  font-family: 'Source Serif 4', Georgia, serif;
+  font-size: .8rem;
+  color: var(--ink-mute);
+  margin: .85rem 0 0;
+}
+.lmc-sp-capture-ok {
+  padding: 1rem 1.25rem;
+  background: var(--paper-sunk);
+  color: var(--ink);
+  font-weight: 500;
+  margin: 0;
+  border-radius: var(--radius-sm);
+}
+
+/* Motion-safe */
+@media (prefers-reduced-motion: reduce) {
+  .lmc-sp-card { transition: none !important; }
+  .lmc-sp-branch { transition: none !important; }
+  .lmc-sp-branch::after { transition: none !important; }
+}

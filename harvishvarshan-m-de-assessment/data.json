@@ -1,0 +1,547 @@
+{
+ "slug": "harvishvarshan-m-de-assessment",
+ "title": "Digital Growth Readiness Score",
+ "subtitle": "Measures how ready your business is to grow through digital marketing — before you invest a rupee in ads.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "digital_foundation",
+   "name": "Digital Foundation",
+   "questions": [
+    {
+     "id": "foundation-searchability",
+     "text": "When a potential client searches for your business online right now, what do they find?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing — no website, no active social profiles",
+       "score": 1
+      },
+      {
+       "label": "An outdated or broken website, or a social page that hasn't been updated in months",
+       "score": 2
+      },
+      {
+       "label": "A working website and some profiles, but nothing that builds immediate trust",
+       "score": 3
+      },
+      {
+       "label": "A professional website with results or testimonials and an active social presence",
+       "score": 4
+      },
+      {
+       "label": "A complete digital presence with clear proof, reviews, and content that earns trust before any conversation happens",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "foundation-linkedin",
+     "text": "How would you describe your business's LinkedIn presence today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "No LinkedIn page or profile for the business at all",
+       "score": 1
+      },
+      {
+       "label": "Profile exists but hasn't been posted to or updated in months",
+       "score": 2
+      },
+      {
+       "label": "Active occasionally, but no consistent posting or meaningful engagement",
+       "score": 3
+      },
+      {
+       "label": "Posting regularly with growing engagement from the right type of audience",
+       "score": 4
+      },
+      {
+       "label": "LinkedIn is a consistent source of warm leads and credibility for the business",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "foundation-trust",
+     "text": "How much does a prospect already trust your business before they speak to you for the first time?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Not at all — they only reach out because someone they know personally referred them",
+       "score": 1
+      },
+      {
+       "label": "Slightly — they've heard the name but can't verify your work anywhere online",
+       "score": 2
+      },
+      {
+       "label": "Somewhat — they've found a website but haven't seen real proof of results",
+       "score": 3
+      },
+      {
+       "label": "Fairly — they've read your content or seen client results before reaching out",
+       "score": 4
+      },
+      {
+       "label": "Strongly — your digital presence does most of the trust-building long before the first call",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Your foundation is the gap — not your ads",
+     "text": "In my outreach work I've met manufacturing businesses with decades of experience and genuinely great products that are operating with almost no online presence. Prospects can't trust what they can't find. Digital marketing isn't just about running Meta Ads or Google Ads — before investing in advertising, you need a foundation that makes potential customers trust you. Build that first.",
+     "steps": [
+      "Get a clean, working website live — this is the non-negotiable starting point for everything else",
+      "Complete your LinkedIn company page with a clear description of exactly who you help and what outcome you deliver",
+      "Collect 3 to 5 client testimonials or case study snapshots and make them easy to find before anyone has to ask"
+     ]
+    },
+    "mid": {
+     "headline": "You're online — but your presence isn't doing the trust-building work yet",
+     "text": "Having a website and some active profiles already puts you ahead of more businesses than you'd expect. The next step is making sure those assets are actually building confidence in a prospect before they reach out — not just confirming that you exist.",
+     "steps": [
+      "Audit your website — does it show specific results, or just describe services in general terms?",
+      "Post on LinkedIn at least 3 times a week with real lessons from your client work — not announcements",
+      "Add at least one specific case study or client result to your website and LinkedIn profile this week"
+     ]
+    },
+    "high": {
+     "headline": "Your foundation is solid — now amplify it with paid traffic",
+     "text": "You've built the kind of digital presence that earns trust before anyone speaks to you. That's rarer than you'd think. The opportunity now is driving paid traffic to that foundation and making sure your conversion system captures every interested prospect who arrives.",
+     "steps": [
+      "Test a small paid campaign pointing directly to your strongest proof page or case study",
+      "Set up retargeting so prospects who've visited your site see a relevant follow-up offer",
+      "Review your analytics monthly — find where visitors are dropping off and fix that before increasing spend"
+     ]
+    }
+   }
+  },
+  {
+   "id": "offer_clarity",
+   "name": "Offer Clarity",
+   "questions": [
+    {
+     "id": "offer-one-liner",
+     "text": "If someone asked what your business does in one sentence, how clear would your answer be?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We do many things — the answer depends on who's asking",
+       "score": 1
+      },
+      {
+       "label": "I can explain it but it usually takes a few minutes and a lot of context",
+       "score": 2
+      },
+      {
+       "label": "I have a rough one-liner but it doesn't always land the way I want",
+       "score": 3
+      },
+      {
+       "label": "We have one clear sentence that most people understand immediately",
+       "score": 4
+      },
+      {
+       "label": "Our one-liner is specific enough that prospects often say 'that's exactly what I've been looking for'",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer-focus",
+     "text": "How would you describe the type of business you work with?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Any business that needs marketing help — we don't turn work away based on industry",
+       "score": 1
+      },
+      {
+       "label": "A few different industries with no clear pattern between them",
+       "score": 2
+      },
+      {
+       "label": "Mostly one or two types of business but we haven't formally committed to them",
+       "score": 3
+      },
+      {
+       "label": "A specific type of business and we've actively turned down work that falls outside that focus",
+       "score": 4
+      },
+      {
+       "label": "A clearly defined audience — our positioning, content, and outreach all reflect that single choice",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer-diagnosis",
+     "text": "When a campaign isn't performing, what is your first instinct?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Adjust the targeting, change the creative, or increase the budget — and keep running",
+       "score": 1
+      },
+      {
+       "label": "Pause the campaign and wait to see if results improve on their own",
+       "score": 2
+      },
+      {
+       "label": "Look at the landing page and test a few changes there",
+       "score": 3
+      },
+      {
+       "label": "Check whether the offer itself is compelling before touching anything in the campaign",
+       "score": 4
+      },
+      {
+       "label": "Run a structured diagnosis — offer, audience, creative, landing page, timing — and fix the actual root cause",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "offer-price-objections",
+     "text": "How often do prospects push back on your price before you've had a chance to explain your offer properly?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Almost every conversation — price is the first and biggest objection",
+       "score": 1
+      },
+      {
+       "label": "Frequently — we often have to discount to close",
+       "score": 2
+      },
+      {
+       "label": "Sometimes — but we can usually justify the value if given the chance",
+       "score": 3
+      },
+      {
+       "label": "Rarely — the offer communicates the return clearly enough that price rarely comes up first",
+       "score": 4
+      },
+      {
+       "label": "Almost never — by the time prospects reach us, they already understand the value",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The problem probably isn't your ads",
+     "text": "After working with different businesses across industries, one thing has become very clear to me: performance marketing can only amplify a good offer. It cannot make a weak or unclear offer look attractive. Before you change your targeting or increase your budget, get your offer sharper. That one shift changes everything downstream.",
+     "steps": [
+      "Write down the single specific problem you solve and exactly who you solve it for — if it takes more than two sentences, keep cutting",
+      "Ask your last three clients what made them choose you — their words are almost always clearer than the language you've been using",
+      "Remove anything from your pitch that doesn't directly connect to that one specific problem"
+     ]
+    },
+    "mid": {
+     "headline": "You're getting clearer — now commit to it fully",
+     "text": "You've started building clarity around your offer, but there's still some hedging. The businesses that grow fastest are the ones brave enough to say 'this is exactly what I do' and stop trying to appeal to everyone. Removing distractions is not the same as losing opportunity — it's often how you create it.",
+     "steps": [
+      "Pick your one strongest service and lead with it in every conversation, proposal, and piece of content",
+      "Rewrite your website headline to name a specific outcome, not a service category",
+      "Test your one-liner with five prospects this week and watch whether they understand it immediately without follow-up explanation"
+     ]
+    },
+    "high": {
+     "headline": "Your offer is doing the selling — now let ads do the reaching",
+     "text": "A clear, compelling offer is what everything else is built on. You've got that. When campaigns underperform now, you know to look at the system — not doubt the offer. That's a significant advantage over most businesses running paid traffic.",
+     "steps": [
+      "Document your offer framework so any future team member can explain it the same way you would",
+      "Build one strong case study around your best client result and use it as the anchor in your ad creatives",
+      "Set a standing rule: before changing any campaign element, confirm the offer has been clearly communicated first"
+     ]
+    }
+   }
+  },
+  {
+   "id": "lead_capture_conversion_",
+   "name": "Lead Capture & Conversion System",
+   "questions": [
+    {
+     "id": "system-follow-up",
+     "text": "What happens the moment someone shows interest in your business — fills in a form, clicks a contact button, or sends a message?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing automated — we wait for them to call back or find us again",
+       "score": 1
+      },
+      {
+       "label": "They get a generic auto-reply and someone follows up manually when we notice it",
+       "score": 2
+      },
+      {
+       "label": "We follow up within a day or two with a call or email",
+       "score": 3
+      },
+      {
+       "label": "We have an automated sequence that responds within an hour and starts qualifying them",
+       "score": 4
+      },
+      {
+       "label": "We have a system that captures, qualifies, follows up, and books a call — usually within minutes",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "system-tracking",
+     "text": "How clearly can you trace which specific marketing activity brought in your last paying client?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We can't — most clients come through word-of-mouth and we don't know the exact source",
+       "score": 1
+      },
+      {
+       "label": "We ask informally but don't record or analyse the answer",
+       "score": 2
+      },
+      {
+       "label": "We use basic platform reporting but can't connect it to actual revenue",
+       "score": 3
+      },
+      {
+       "label": "We track leads from source to close and know our rough cost per client",
+       "score": 4
+      },
+      {
+       "label": "We have full visibility — lead source, stage conversion rates, and cost per acquisition every month",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "system-timing",
+     "text": "How deliberate are you about showing your offer at the exact moment a prospect is most likely to say yes?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We present our offer the same way to everyone regardless of where they are in their buying process",
+       "score": 1
+      },
+      {
+       "label": "We occasionally follow up after events or content but there's no real structure to it",
+       "score": 2
+      },
+      {
+       "label": "We have some follow-up in place but timing is not a deliberate part of the strategy",
+       "score": 3
+      },
+      {
+       "label": "We time outreach to high-intent moments — after content downloads, events, or specific page visits",
+       "score": 4
+      },
+      {
+       "label": "Our system automatically identifies high-intent moments and presents the right offer at that exact point",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Most of your interested prospects are going cold before you reach them",
+     "text": "Good marketing is not just about showing the right offer — it's about showing the offer at the right moment, and having a system ready to catch the interest before it fades. Right now, every person who's visited your site or seen your content and done nothing is a potential client who left because there was no clear next step waiting for them.",
+     "steps": [
+      "Set up a simple contact form connected to an instant email notification — so you know the second someone raises their hand",
+      "Write one follow-up message template you can send within two hours of any new enquiry",
+      "Add one tracking link to your most important page so you can see how many people are arriving but not converting"
+     ]
+    },
+    "mid": {
+     "headline": "You're catching some leads — but missing the high-intent window",
+     "text": "You have the basics in place. The gap is speed and automation. When someone has just read your content or visited your pricing page, that's the moment they're most likely to say yes. If your follow-up takes 24 hours, that window has usually already closed.",
+     "steps": [
+      "Set up an automated response that goes out within 15 minutes of any form submission — not hours",
+      "Add retargeting to your ad accounts so people who've visited your site see a relevant follow-up offer",
+      "Review your last 10 enquiries — how long did it take you to respond, and how many of those actually converted?"
+     ]
+    },
+    "high": {
+     "headline": "Your system catches leads — now find and close the gaps",
+     "text": "You've built what most businesses are still missing: a system that works even when you're not watching. Now the work is identifying exactly where prospects are still slipping through and tightening those points.",
+     "steps": [
+      "Map your full funnel on paper — find the stage where the highest percentage of prospects drop off",
+      "Test your follow-up timing — try responding in 5 minutes versus 30 and measure which converts at a higher rate",
+      "Build a monthly review habit: source, stage conversion rate, and cost per acquisition — compare month on month"
+     ]
+    }
+   }
+  },
+  {
+   "id": "ad_campaign_readiness",
+   "name": "Ad Campaign Readiness",
+   "questions": [
+    {
+     "id": "ads-preparation",
+     "text": "Before launching a Meta Ads or Google Ads campaign, how do you typically prepare?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Set a budget and launch — figure out what works as we go",
+       "score": 1
+      },
+      {
+       "label": "Do some audience research and set up basic targeting before going live",
+       "score": 2
+      },
+      {
+       "label": "Build a landing page, set up basic tracking, and define a target audience",
+       "score": 3
+      },
+      {
+       "label": "Validate the offer, set up conversion tracking, prepare the landing page, and define a target cost per lead before any spend goes live",
+       "score": 4
+      },
+      {
+       "label": "Run a full readiness check — offer, audience, creative, landing page, tracking, and a clear test hypothesis — before the first rupee is spent",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "ads-measurement",
+     "text": "How do you decide whether an ad campaign is actually working?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "We look at clicks, reach, and likes and judge from there",
+       "score": 1
+      },
+      {
+       "label": "We use the platform's reported results and make decisions based on what it shows us",
+       "score": 2
+      },
+      {
+       "label": "We track leads generated and follow up manually to see how many became paying clients",
+       "score": 3
+      },
+      {
+       "label": "We track cost per lead and cost per acquisition and compare both against our targets",
+       "score": 4
+      },
+      {
+       "label": "We trace the full path from ad spend to revenue and know our exact return on every campaign",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "manual_outreach_hours",
+     "type": "number",
+     "text": "How many hours per week does your team (or you personally) spend on manual outreach and lead follow-up with no automation?",
+     "hint": "Include cold calls, manual DMs, email chasing, and manual check-ins. Do not include ad management or strategy time.",
+     "suffix": "hours/week",
+     "min": 0,
+     "max": 40,
+     "step": 1,
+     "default": 8,
+     "normalize_formula": "Math.max(0, 100 - (x / 40) * 100)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "Spending on ads before fixing the system is the most expensive mistake in performance marketing",
+     "text": "Running paid traffic without clear tracking, a validated offer, and a conversion system in place is like filling a bucket with holes — the budget disappears, results are unclear, and the instinct is to blame the targeting or the platform. Fix the system first. Every time.",
+     "steps": [
+      "Set up conversion tracking in Google or Meta before spending another rupee — without this, every campaign decision is a guess",
+      "Define what a successful campaign looks like in numbers before you launch: how much can you spend per lead and still be profitable?",
+      "Run one small test campaign with a tight budget, one audience, one offer, and measure only cost per lead — nothing else for the first run"
+     ]
+    },
+    "mid": {
+     "headline": "You're tracking — now connect what you're tracking to actual revenue",
+     "text": "You're ahead of most businesses that run ads. The next step is closing the loop between campaign metrics and what actually lands in the bank. Do you know which campaign last month brought in a paying client, and what that client was worth to the business?",
+     "steps": [
+      "Add UTM parameters to every ad so you can trace a lead all the way back to the exact campaign and creative that generated it",
+      "Set up a simple CRM or even a spreadsheet that records every lead from source to closed or lost",
+      "Calculate your true cost per acquisition this month — not just cost per lead"
+     ]
+    },
+    "high": {
+     "headline": "You think in systems, not just campaigns — that's the real skill in performance marketing",
+     "text": "Most business owners think performance marketing is about running good ads. You already know it's about building a system where every rupee spent is traceable to a result. That clarity is what lets you scale without guessing.",
+     "steps": [
+      "Document your campaign launch process so any future team member follows the same pre-launch checklist",
+      "Test one new audience segment or creative format each month with a clear hypothesis before you start",
+      "Run a monthly budget review: if cost per acquisition is within your target, increase spend — if not, diagnose before you scale"
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "annual-manual-hours",
+   "label": "Hours spent on manual outreach per year at your current pace",
+   "format": "hours_per_period",
+   "formula": "manual_outreach_hours * 52",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which best describes where your business gets most of its new clients right now?",
+  "answers": [
+   {
+    "label": "Almost entirely offline — referrals, word-of-mouth, direct networking",
+    "tag": "offline-first"
+   },
+   {
+    "label": "A mix of offline and digital, but no clear system in place",
+    "tag": "hybrid-unstructured"
+   },
+   {
+    "label": "Running ads already but results are inconsistent or hard to explain",
+    "tag": "running-ads"
+   },
+   {
+    "label": "Growing digitally and looking to scale faster and more predictably",
+    "tag": "scaling"
+   }
+  ]
+ }
+}

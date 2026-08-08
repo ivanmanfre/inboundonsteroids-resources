@@ -1,0 +1,125 @@
+{
+  "slug": "should-you-use-n8n",
+  "data_version": 1,
+  "title": "n8n, Zapier, or Make — pick your stack",
+  "subtitle": "Five honest questions, one opinionated recommendation. Built by someone who runs all three in production.",
+  "estimated_minutes": 2,
+  "brand": { "hero_badge": "Decision Tree" },
+  "intro": {
+    "paragraph": "I've shipped automation in n8n, Zapier, and Make for the last four years. Most 'which tool' posts are written by people selling one of them. This one isn't — pick the wrong stack and you'll either pay 5x for what you need or fight self-hosting at 2am. Five questions, then I'll tell you what I'd actually build.",
+    "point_time": "2 minutes, 5 questions",
+    "point_value": "Opinionated answer — not a feature matrix",
+    "point_next": "Shareable result URL — send to a teammate to decide together",
+    "note": "No signup. Your path is encoded in the URL so you can replay it later."
+  },
+  "tree": {
+    "start": "team_size",
+    "nodes": {
+      "team_size": {
+        "question": "Who's going to maintain this automation 12 months from now?",
+        "branches": [
+          { "label": "Just me — non-technical or marketing-leaning", "value": "just_me", "next": "complexity_light" },
+          { "label": "Me + 1-3 ops/marketing teammates (no engineers)", "value": "small_team", "next": "complexity_light" },
+          { "label": "We have at least one engineer or technical operator", "value": "tech_team", "next": "complexity_heavy" }
+        ]
+      },
+      "complexity_light": {
+        "question": "What's the most complex thing you'll automate in the next 6 months?",
+        "branches": [
+          { "label": "Move data between SaaS apps when something happens (form → CRM → Slack)", "value": "simple_glue", "next": "budget_low" },
+          { "label": "Multi-step branching logic with conditionals and loops", "value": "branching", "next": "budget_low" },
+          { "label": "AI workflows — calling LLMs, scraping, processing documents", "value": "ai_heavy", "next": "result_make" }
+        ]
+      },
+      "complexity_heavy": {
+        "question": "How custom does the logic need to be?",
+        "branches": [
+          { "label": "Mostly off-the-shelf integrations — occasional custom code", "value": "mostly_glue", "next": "budget_high" },
+          { "label": "Heavy custom code, self-hosted services, AI pipelines, scraping", "value": "deep_custom", "next": "result_n8n" },
+          { "label": "Internal tools + automations for a non-technical team to use", "value": "internal_tools", "next": "result_n8n" }
+        ]
+      },
+      "budget_low": {
+        "question": "How many automation runs per month do you expect?",
+        "branches": [
+          { "label": "Under 1,000 (a few per hour, max)", "value": "low_volume", "next": "result_zapier" },
+          { "label": "1,000 - 10,000 (steady drip)", "value": "mid_volume", "next": "result_make" },
+          { "label": "10,000+ (high frequency, real-time)", "value": "high_volume", "next": "result_n8n" }
+        ]
+      },
+      "budget_high": {
+        "question": "Are you comfortable running a server (or paying ~$50/mo for managed n8n)?",
+        "branches": [
+          { "label": "Yes — we have devops or I'll pay for n8n Cloud", "value": "yes_server", "next": "result_n8n" },
+          { "label": "No — keep everything managed and zero-ops", "value": "no_server", "next": "result_make" }
+        ]
+      },
+      "result_zapier": {
+        "type": "result",
+        "headline": "Zapier — and don't apologize for it",
+        "body_html": "<p>For your volume and team, Zapier is the right call. The hate Zapier gets online is mostly from engineers who could build it themselves; if you're a small team gluing SaaS apps under 1,000 runs/month, you'll ship 10x faster with Zapier than with Make or n8n.</p><p>Where Zapier earns its premium: the integration library is unmatched, the error UX is the best in the category, and your non-technical teammates can actually own workflows without you. Where it bites: pricing scales fast past 5,000 tasks/month, and complex branching gets ugly.</p><p>Start with the Professional plan ($73/mo at the time of writing), build 5-10 zaps, and revisit in 6 months. If you cross 5,000 tasks/month with growing complexity, that's your signal to migrate to Make or n8n.</p>",
+        "stack": ["Zapier", "Webhooks by Zapier", "Filter + Paths"],
+        "alternatives": [
+          { "name": "Make", "when_to_consider": "If you'd rather get 70% of Zapier's polish at 30% of the cost and you don't mind a slightly steeper UI." },
+          { "name": "n8n Cloud", "when_to_consider": "If you know you'll want AI-heavy workflows in the next 6 months — invest the learning curve now." }
+        ],
+        "cta_id": "zapier_starter"
+      },
+      "result_make": {
+        "type": "result",
+        "headline": "Make (Integromat) — best price-to-power ratio",
+        "body_html": "<p>Make is the answer when you've outgrown Zapier's pricing but you're not ready for n8n's self-host overhead. It handles 80% of what n8n does for 30% of the operational burden.</p><p>It's the right call for branching logic, mid-volume work, and most AI-glue use cases. The visual editor is the best in the category once you adapt to the radial flow (give it 2 days, you'll prefer it).</p><p>Where Make wins: error handling is genuinely good, iteration through arrays is first-class, and the pricing is fair (~$30-50/mo for serious use). Where it loses: ecosystem is smaller than Zapier, and once you need custom self-hosted services or full code freedom, you'll hit a ceiling that n8n doesn't have.</p><p>For 90% of $1-10M service firms, Make + a couple of Lambdas / Cloud Functions is the actual right answer. Not n8n. Not Zapier.</p>",
+        "stack": ["Make.com", "HTTP module", "Iterator + Aggregator", "OpenAI module"],
+        "alternatives": [
+          { "name": "n8n", "when_to_consider": "If you'll write JS in code nodes weekly, or run heavy AI pipelines (web scraping, multi-step agent chains)." },
+          { "name": "Zapier", "when_to_consider": "If your team is fully non-technical and you'd rather pay 3x for better UX and the deepest integration library." }
+        ],
+        "cta_id": "make_bridge"
+      },
+      "result_n8n": {
+        "type": "result",
+        "headline": "n8n — and probably self-hosted",
+        "body_html": "<p>n8n is the right call. You've got either the volume, the custom-code needs, or the technical bench to justify it — and once you're in, you'll never go back.</p><p>What n8n unlocks: full JS in code nodes, native LangChain / AI agent support, your own Postgres for state, webhooks without rate limits, and the ability to fork the platform if you ever need to. The self-hosted edition runs on a $5/mo Railway box and handles tens of thousands of executions/day.</p><p>The catch is real: you own the uptime. Backups, version control, error monitoring — all on you. If your team can't handle a 2am alert when the queue worker dies, pay for n8n Cloud (~$50/mo) and let them deal with it.</p><p>This is what I run for my own business and almost every client. Start with the queue + worker mode from day 1, mirror your prod database, and keep workflows in git via the public API. You'll thank yourself in 12 months.</p>",
+        "stack": ["n8n self-hosted (Railway)", "Postgres", "Redis (queue mode)", "Custom code nodes"],
+        "alternatives": [
+          { "name": "Make", "when_to_consider": "If you want 80% of n8n's power without owning a server. Real answer for most teams." },
+          { "name": "Temporal / Inngest", "when_to_consider": "If your workflows are truly bespoke long-running jobs (>1hr) and you have full-time engineers." }
+        ],
+        "cta_id": "n8n_done_for_you"
+      }
+    }
+  },
+  "ctas": [
+    {
+      "id": "n8n_done_for_you",
+      "headline": "Want me to set up your n8n self-host?",
+      "description": "Full setup: Railway deploy, queue mode, Postgres, backups, monitoring, and 5 of your highest-leverage workflows live in 2 weeks. Fixed price, no retainer.",
+      "button": "Book a 30-min scoping call",
+      "url": "https://calendly.com/ivan-intelligents/30min",
+      "when": "result_id == 'result_n8n'"
+    },
+    {
+      "id": "zapier_starter",
+      "headline": "Get my 5 most-used Zapier templates",
+      "description": "Form-to-CRM, slack-on-error, weekly digest, AI auto-tagger, inbox-to-task. Free, no signup — just enter your email and I'll send them.",
+      "button": "Send me the templates",
+      "url": "https://ivanmanfredi.com/newsletter?ref=stack-picker-zapier",
+      "when": "result_id == 'result_zapier'"
+    },
+    {
+      "id": "make_bridge",
+      "headline": "Make + n8n bridge guide",
+      "description": "When to use Make alone, when to add a small n8n instance for the parts Make can't do well. Free guide, no signup.",
+      "button": "Get the bridge guide",
+      "url": "https://ivanmanfredi.com/newsletter?ref=stack-picker-make",
+      "when": "result_id == 'result_make'"
+    },
+    {
+      "id": "default_chat",
+      "headline": "Not sure? Let's talk about your stack.",
+      "description": "If your situation doesn't fit a clean box, jump on a 30-min call. No pitch — I'll just tell you what I'd build.",
+      "button": "Book a 30-min call",
+      "url": "https://calendly.com/ivan-intelligents/30min"
+    }
+  ]
+}

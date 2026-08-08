@@ -1,0 +1,151 @@
+{
+  "_archived": true,
+  "archived": true,
+  "public": false,
+  "hide_from_library": true,
+  "slug": "5-manual-processes-costing-your-construction-company-10-hours-a-week-and-how-to-fix-them",
+  "title": "5 Manual Processes Costing Your Construction Company 10+ Hours a Week",
+  "subtitle": "A 30-minute self-audit to spot where your team is bleeding time and what to fix first",
+  "brand": {
+    "accent": "#2A8F65",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 30,
+  "sections": [
+    {
+      "id": "document-signing",
+      "title": "Document Signing & Certification",
+      "description": "PDFs signed page-by-page with certificates and passwords are a hidden tax on your authorized signers and a compliance risk when pages get skipped.",
+      "items": [
+        {
+          "id": "manual-page-signing",
+          "text": "Audit how many PDFs your team signs page-by-page in Adobe each day",
+          "tip": "Track one signer for 48 hours and count documents plus pages per document",
+          "impact": "high"
+        },
+        {
+          "id": "signer-volume",
+          "text": "Identify every authorized signer handling 10+ multi-page documents daily",
+          "tip": "Owners and ops leads are usually the bottleneck here",
+          "impact": "high"
+        },
+        {
+          "id": "missed-signatures",
+          "text": "Pull the last 30 days of signed documents and flag any with skipped pages or missing certs",
+          "tip": "Compliance risk compounds fast on SWPPPs and debit notes",
+          "impact": "high"
+        },
+        {
+          "id": "batch-signing-workflow",
+          "text": "Set up a watched folder that auto-signs designated pages and routes completed PDFs for one-click approval",
+          "tip": "Replace 200 clicks per batch with a single review-and-approve step",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "job-order-entry",
+      "title": "Job Order & Project Data Entry",
+      "description": "The same project info gets retyped into PM tools, Trello cards, job orders, and bid documents every time a new job opens.",
+      "items": [
+        {
+          "id": "map-data-touchpoints",
+          "text": "List every system where new job data is entered manually (PM tool, Trello, job orders, bid docs)",
+          "tip": "Most teams find 4-6 duplicate entry points",
+          "impact": "high"
+        },
+        {
+          "id": "single-source-intake",
+          "text": "Create one intake form that captures project description, area, address, and client once",
+          "tip": "Use a simple web form or ClickUp template as the source of truth",
+          "impact": "high"
+        },
+        {
+          "id": "auto-sync-systems",
+          "text": "Connect the intake form to all downstream tools so data populates automatically",
+          "tip": "n8n or Zapier can fan out one record to every system in under a minute",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "client-communication",
+      "title": "Client & Subcontractor Communication",
+      "description": "Status updates, change orders, and schedule changes get retyped across email, text, and phone calls to every team member.",
+      "items": [
+        {
+          "id": "audit-update-channels",
+          "text": "Map which clients and subs get updates by email, text, or call and how often",
+          "tip": "Look for the same message sent three different ways",
+          "impact": "medium"
+        },
+        {
+          "id": "templated-status-updates",
+          "text": "Build status update templates triggered by project milestones in your PM tool",
+          "tip": "Auto-send when a stage moves from In Progress to Complete",
+          "impact": "high"
+        },
+        {
+          "id": "central-comm-log",
+          "text": "Centralize all client and sub communications into one threaded log per project",
+          "tip": "Eliminates the \"who told who what\" problem during disputes",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "invoicing-payments",
+      "title": "Invoicing & Payment Tracking",
+      "description": "Pulling hours from timesheets, matching them to jobs, generating invoices, and chasing payments is usually a multi-day manual loop.",
+      "items": [
+        {
+          "id": "timesheet-to-invoice",
+          "text": "Map the steps from timesheet entry to invoice sent and time each one",
+          "tip": "Most companies lose 4-6 hours per week here",
+          "impact": "high"
+        },
+        {
+          "id": "auto-invoice-generation",
+          "text": "Connect timesheets and job costs directly to invoice generation in QuickBooks or Xero",
+          "tip": "Eliminates the spreadsheet middle step entirely",
+          "impact": "high"
+        },
+        {
+          "id": "payment-reminder-automation",
+          "text": "Set automated payment reminders at 7, 14, and 30 days past due",
+          "tip": "Recovers $5,000-$15,000 in late receivables for most mid-size GCs",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "reporting-compliance",
+      "title": "Reporting & Compliance Documentation",
+      "description": "Weekly progress reports, safety logs, and compliance docs get assembled by hand from photos, notes, and field updates every Friday.",
+      "items": [
+        {
+          "id": "identify-recurring-reports",
+          "text": "List every recurring report your team builds manually each week or month",
+          "tip": "Safety logs, progress reports, and SWPPP docs are the usual suspects",
+          "impact": "medium"
+        },
+        {
+          "id": "field-data-capture",
+          "text": "Standardize field data capture with a mobile form crews fill out daily",
+          "tip": "One photo plus three fields beats end-of-week reconstruction",
+          "impact": "high"
+        },
+        {
+          "id": "auto-report-assembly",
+          "text": "Auto-assemble weekly reports from field data into a branded PDF ready for client delivery",
+          "tip": "Friday afternoon disappears as a reporting day",
+          "impact": "medium"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "Found 3+ checked boxes? You're losing 10+ hours a week.",
+    "description": "Book a free 30-minute automation audit and I'll map the highest-ROI fix for your top section, with a clear cost and timeline. No pitch, just the plan."
+  }
+}

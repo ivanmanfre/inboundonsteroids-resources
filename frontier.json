@@ -1,0 +1,57 @@
+{
+ "schema_version": 1,
+ "generated_at": "2026-07-10T20:03:22.901Z",
+ "as_of": "2026-07-10",
+ "stale": false,
+ "source": "frontier_models (curated + human-confirmed)",
+ "models": [
+  {
+   "provider": "anthropic",
+   "model_id": "claude-opus-4-8",
+   "display_name": "Claude Opus 4.8",
+   "family": "opus",
+   "tier": "flagship",
+   "is_current_flagship": true,
+   "status": "current",
+   "pricing": {
+    "input": 5,
+    "output": 25,
+    "cached_input": 0.5,
+    "unit": "per_mtok",
+    "currency": "USD"
+   },
+   "context_window": 1000000,
+   "max_output_tokens": 64000,
+   "knowledge_cutoff": null,
+   "released_on": "2026-05-28",
+   "source_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+   "confirmed_at": "2026-07-10"
+  }
+ ],
+ "flagships": {
+  "anthropic": "claude-opus-4-8"
+ },
+ "constants": {
+  "frontier_input_per_mtok": 5,
+  "frontier_output_per_mtok": 25,
+  "frontier_context_window": 1000000
+ },
+ "model_currency": {
+  "as_of": "2026-07-10",
+  "stamp": "Models and pricing current as of Jul 10, 2026",
+  "current_models_line": "Claude Opus 4.8",
+  "tested_against": [
+   "claude-opus-4-8"
+  ]
+ },
+ "changelog": [
+  {
+   "date": "2026-07-10",
+   "event": "model_launch",
+   "models": [
+    "claude-opus-4-8"
+   ],
+   "summary": "Claude Opus 4.8 launched — $5/$25 per Mtok"
+  }
+ ]
+}

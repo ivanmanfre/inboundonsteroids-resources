@@ -1,0 +1,12 @@
+{
+  "name": "Demo workflow",
+  "nodes": [
+    {"name": "Webhook", "type": "n8n-nodes-base.webhook", "parameters": {}, "position": [0, 0]},
+    {"name": "Enrich", "type": "n8n-nodes-base.httpRequest", "parameters": {"url": "https://api.example.com"}, "position": [200, 0]},
+    {"name": "Output", "type": "n8n-nodes-base.respondToWebhook", "parameters": {}, "position": [400, 0]}
+  ],
+  "connections": {
+    "Webhook": {"main": [[{"node": "Enrich", "type": "main", "index": 0}]]},
+    "Enrich": {"main": [[{"node": "Output", "type": "main", "index": 0}]]}
+  }
+}

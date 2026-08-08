@@ -1,0 +1,179 @@
+{
+  "slug": "agency-ai-agent-roi-calculator-50k-investment-vs-billable-hours",
+  "title": "Agency AI Agent ROI Calculator",
+  "subtitle": "Model a $50K AI agent build against your billable hour economics in under 90 seconds",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 2,
+  "inputs": [
+    {
+      "id": "build_cost",
+      "label": "AI Agent Build Cost",
+      "type": "range",
+      "prefix": "$",
+      "min": 20000,
+      "max": 250000,
+      "step": 5000,
+      "default": 50000,
+      "slider": true,
+      "hint": "Fixed-price quote from your build partner. Domain agents run $40K to $120K, agentic with retrieval runs $60K to $200K."
+    },
+    {
+      "id": "annual_maintenance",
+      "label": "Annual Maintenance and API Cost",
+      "type": "range",
+      "prefix": "$",
+      "suffix": "/yr",
+      "min": 0,
+      "max": 60000,
+      "step": 1000,
+      "default": 10000,
+      "slider": true,
+      "hint": "Hosting, model API spend, monitoring, partner retainer. Default to 15 to 25 percent of build cost."
+    },
+    {
+      "id": "hours_per_week",
+      "label": "Hours per Week on This Workflow",
+      "type": "range",
+      "suffix": "hrs",
+      "min": 1,
+      "max": 120,
+      "step": 1,
+      "default": 25,
+      "slider": true,
+      "hint": "Total team hours, not just one person. Add every account manager, coordinator, and strategist who touches it."
+    },
+    {
+      "id": "loaded_cost",
+      "label": "Loaded Hourly Cost of the Team",
+      "type": "range",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 40,
+      "max": 300,
+      "step": 5,
+      "default": 95,
+      "slider": true,
+      "hint": "Salary plus benefits plus overhead. Account managers $65 to $120, senior strategists $150 to $250."
+    },
+    {
+      "id": "billable_rate",
+      "label": "Billable Rate for the Same Hour",
+      "type": "range",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 0,
+      "max": 500,
+      "step": 10,
+      "default": 175,
+      "slider": true,
+      "hint": "What you charge clients for that hour. Set to zero if freed hours stay internal with no redeployment."
+    },
+    {
+      "id": "redeployment_rate",
+      "label": "Realistic Redeployment Rate",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "default": 60,
+      "slider": true,
+      "hint": "Share of saved hours that actually gets redirected to billable work. Most firms land at 50 to 70 percent."
+    },
+    {
+      "id": "error_reduction",
+      "label": "Expected Error Rate Reduction",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 40,
+      "step": 1,
+      "default": 8,
+      "slider": true,
+      "hint": "Share of rework and escalation hours the system removes. Onboarding handoffs typically lose 5 to 15 percent."
+    },
+    {
+      "id": "build_timeline",
+      "label": "Build Timeline Until Live",
+      "type": "range",
+      "suffix": "months",
+      "min": 1,
+      "max": 12,
+      "step": 1,
+      "default": 3,
+      "slider": true,
+      "hint": "Window where you pay without saving yet. Most builds in this range ship in 2 to 4 months."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "payback_months",
+      "label": "Payback Period",
+      "format": "decimal",
+      "primary": true,
+      "formula": "build_cost / Math.max(1, ((hours_per_week * 52 * loaded_cost) + (hours_per_week * 52 * (redeployment_rate / 100) * billable_rate) + (hours_per_week * 52 * loaded_cost * (error_reduction / 100)) - annual_maintenance) / 12) + build_timeline",
+      "tier_thresholds": {
+        "excellent": 9,
+        "good": 18,
+        "warning": 30
+      }
+    },
+    {
+      "id": "three_year_net",
+      "label": "3-Year Net Return",
+      "format": "currency",
+      "formula": "(((hours_per_week * 52 * loaded_cost) + (hours_per_week * 52 * (redeployment_rate / 100) * billable_rate) + (hours_per_week * 52 * loaded_cost * (error_reduction / 100)) - annual_maintenance) * 3) - build_cost - (((hours_per_week * 52 * loaded_cost) + (hours_per_week * 52 * (redeployment_rate / 100) * billable_rate) + (hours_per_week * 52 * loaded_cost * (error_reduction / 100))) * (build_timeline / 12))"
+    },
+    {
+      "id": "annual_hours_recovered",
+      "label": "Annual Hours Recovered",
+      "format": "hours",
+      "formula": "hours_per_week * 52"
+    },
+    {
+      "id": "total_annual_value",
+      "label": "Total Annual Value Created",
+      "format": "currency",
+      "formula": "(hours_per_week * 52 * loaded_cost) + (hours_per_week * 52 * (redeployment_rate / 100) * billable_rate) + (hours_per_week * 52 * loaded_cost * (error_reduction / 100))"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "green-light",
+      "when": "payback_months <= 9 && three_year_net > build_cost * 2",
+      "text": "This clears the 90-Day Payback Rule with room to spare. Sign the SOW and lock the build slot before your team finds a reason to delay another quarter."
+    },
+    {
+      "tag": "solid-investment",
+      "when": "payback_months > 9 && payback_months <= 18 && three_year_net > 0",
+      "text": "Payback lands in the typical mid-market window. Negotiate a milestone-based payment schedule tied to the go-live date to de-risk the build timeline."
+    },
+    {
+      "tag": "redeployment-risk",
+      "when": "redeployment_rate < 50 && billable_rate > 0",
+      "text": "Your redeployment assumption is conservative, which is honest. Build a written plan for where the freed hours go before kickoff or this becomes a cost-cut, not a growth lever."
+    },
+    {
+      "tag": "maintenance-heavy",
+      "when": "annual_maintenance > build_cost * 0.3",
+      "text": "Maintenance is eating more than 30 percent of build cost annually. Push your partner for a fixed retainer cap or move hosting to self-hosted n8n and Supabase to compress this line."
+    },
+    {
+      "tag": "underwater",
+      "when": "three_year_net < 0 || payback_months > 36",
+      "text": "The math does not work at this build price for this workflow. Either find a higher-volume workflow to bundle in, or scope down to a $15K to $25K targeted automation instead of a full agent."
+    },
+    {
+      "tag": "scope-too-small",
+      "when": "hours_per_week < 10 && build_cost > 40000",
+      "text": "Less than 10 weekly hours rarely justifies a $40K+ agent build. Combine two or three adjacent workflows into one scope, or start with a $10K to $20K point automation."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Get the SOW Negotiation Checklist",
+    "description": "The 14-point checklist I use with mid-market agencies before signing any AI agent build SOW. Covers payment milestones, IP ownership, maintenance caps, and the three clauses that kill 80 percent of failed builds."
+  }
+}

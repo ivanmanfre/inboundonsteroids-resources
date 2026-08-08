@@ -1,0 +1,138 @@
+=== COMMITS ===
+1f16df9 feat(editor): architecture+ai-walkthrough+n8n-workflow field coverage (skip SVG text)
+
+=== STAT ===
+ _engine/architecture.js | 14 +++++++++++++-
+ _engine/n8n-workflow.js | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 41 insertions(+), 1 deletion(-)
+
+=== DIFF ===
+diff --git a/_engine/architecture.js b/_engine/architecture.js
+index b75c9e1..7071e65 100644
+--- a/_engine/architecture.js
++++ b/_engine/architecture.js
+@@ -543,26 +543,38 @@
+     return wrap;
+   }
+ 
+   // ── Mobile node list ──────────────────────────────────────────────────
+   function renderMobileList(data) {
+     var nodes = (data.diagram && data.diagram.nodes) || [];
+     var wrap = make("section", { class: "lma-mobile-list", "aria-label": "Node list (mobile)" });
+     var ol = make("ol");
+-    nodes.forEach(function (n) {
++    nodes.forEach(function (n, nIdx) {
+       var card = make("button", {
+         class: "lma-mobile-card" + (state.viewedNodes[n.id] ? " is-visited" : ""),
+         type: "button",
+         "data-node-id": n.id
+       });
+       card.innerHTML =
+         '<span class="m-type">' + esc((n.type || "transform").toUpperCase()) + '</span>' +
+         '<span class="m-label">' + esc(n.label || n.id) + '</span>' +
+         (n.panel && n.panel.headline ? '<span class="m-hint">' + esc(n.panel.headline) + '</span>' : '');
++      // HTML twin of the SVG node label/headline (architecture.js:411/622) — the SVG
++      // versions can't host an inline-edit <input>, so register these instead.
++      if (window.LM && window.LM.editMode) {
++        if (n.label) {
++          window.LM.editMode.registerField(card.querySelector(".m-label"), "diagram.nodes[" + nIdx + "].label");
++        }
++        if (n.panel && n.panel.headline) {
++          // Same path as the drawer's headline field (openDrawerForNode) — intentional
++          // dual registration, two DOM twins of one field.
++          window.LM.editMode.registerField(card.querySelector(".m-hint"), "diagram.nodes[" + nIdx + "].panel.headline");
++        }
++      }
+       var li = make("li");
+       li.appendChild(card);
+       ol.appendChild(li);
+     });
+     wrap.appendChild(ol);
+     return wrap;
+   }
+ 
+diff --git a/_engine/n8n-workflow.js b/_engine/n8n-workflow.js
+index d42e0ad..dc82e8e 100644
+--- a/_engine/n8n-workflow.js
++++ b/_engine/n8n-workflow.js
+@@ -24,18 +24,20 @@
+     ];
+     root.appendChild(L.buildHero(data, {
+       badge: (data.brand && data.brand.hero_badge) || "n8n Workflow",
+       metaChips: chips,
+     }));
+ 
+     var heroH1 = root.querySelector(".lmc-h1");
+     var heroSub = root.querySelector(".lmc-sub");
++    var heroBadge = root.querySelector(".lmc-badge");
+     if (heroH1 && L.editMode) L.editMode.registerField(heroH1, "title");
+     if (heroSub && L.editMode) L.editMode.registerField(heroSub, "subtitle");
++    if (heroBadge && L.editMode) L.editMode.registerField(heroBadge, "brand.hero_badge");
+ 
+     root.appendChild(L.buildIntro(data, ".lmw-download", {
+       tool_type: "n8n-workflow",
+       defaultValueBullet: "Drop the JSON into your n8n, plug in creds, run",
+       defaultNextBullet: "Use the walkthrough below to understand each stage before customizing",
+       startLabel: "Get the workflow",
+       defaultNote: "",
+     }));
+@@ -78,16 +80,35 @@
+     var envs = data.env_vars || [];
+     if (creds.length || envs.length) {
+       var setup = L.make("section", { class: "lmw-setup" });
+       var credsList = creds.map(function (c) { return '<li>' + L.esc(c) + '</li>'; }).join('');
+       var envsList = envs.map(function (e) { return '<li><code>' + L.esc(e) + '</code></li>'; }).join('');
+       setup.innerHTML = '<h2>Before you import</h2>' +
+         (creds.length ? '<h3>Credentials</h3><ul>' + credsList + '</ul>' : '') +
+         (envs.length ? '<h3>Env vars</h3><ul>' + envsList + '</ul>' : '');
++      // Register each requirement li against its array index — position-based
++      // lookup (h3 textContent -> next sibling ul) so no attrs/classes are added
++      // to keep rendered DOM byte-identical outside edit mode.
++      if (L.editMode) {
++        Array.prototype.forEach.call(setup.querySelectorAll("h3"), function (h3) {
++          var ul = h3.nextElementSibling;
++          if (!ul || ul.tagName !== "UL") return;
++          if (h3.textContent === "Credentials") {
++            Array.prototype.forEach.call(ul.querySelectorAll("li"), function (li, i) {
++              L.editMode.registerField(li, "credentials_required[" + i + "]");
++            });
++          } else if (h3.textContent === "Env vars") {
++            Array.prototype.forEach.call(ul.querySelectorAll("li"), function (li, i) {
++              var code = li.querySelector("code") || li;
++              L.editMode.registerField(code, "env_vars[" + i + "]");
++            });
++          }
++        });
++      }
+       main.appendChild(setup);
+     }
+ 
+     // Per-stage walkthrough sections
+     var sectionsContainer = L.make("div", { class: "lmw-sections-container" });
+     (data.sections || []).forEach(function (s, sIdx) {
+       var attrs = { class: "lmw-section lmg-section" };
+       if (s.id) attrs.id = "section-" + s.id;
+@@ -116,16 +137,23 @@
+     // ctas[0] box; a per-LM data.ctas[0] with a custom URL still wins.
+     if (Array.isArray(data.ctas) && data.ctas.length && data.ctas[0].url) {
+       var cta = data.ctas[0];
+       var ctaSec = L.make("section", { class: "lmw-cta" });
+       ctaSec.innerHTML = '<h2>' + L.esc(cta.headline || "Want this customized?") + '</h2>' +
+         '<a class="lmc-btn" href="' + L.esc(cta.url) + '" target="_blank" rel="noopener">' +
+           L.esc(cta.button || "Talk to me") +
+         '</a>';
++      // Only register when the fallback literal wasn't used — textContent must
++      // equal the raw stored value (ctas[0].url is a fixed, non-dynamic pick,
++      // unlike architecture/ai-walkthrough's runtime pickCta selection).
++      if (L.editMode) {
++        if (cta.headline) L.editMode.registerField(ctaSec.querySelector("h2"), "ctas[0].headline");
++        if (cta.button) L.editMode.registerField(ctaSec.querySelector("a"), "ctas[0].button");
++      }
+       main.appendChild(ctaSec);
+     } else {
+       main.appendChild(L.buildClosingCta("n8n_workflow", data, { toolType: "n8n-workflow" }));
+     }
+ 
+     // Share row
+     var shareText = "Free n8n workflow: " + (data.title || "this one") + ", by Ivan Manfredi.";
+     var shareRow = L.make("div", { class: "lmc-share lmw-share" });

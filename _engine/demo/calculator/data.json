@@ -1,0 +1,30 @@
+{
+  "slug": "demo-calculator",
+  "title": "The 10-Minute Automation ROI Calculator",
+  "subtitle": "Plug in 5 numbers. Get your monthly savings, payback window, and the 3 automations I'd prioritize for your setup.",
+  "brand": { "accent": "#00E676", "hero_badge": "Interactive Calculator" },
+  "estimated_minutes": 5,
+  "inputs": [
+    { "id": "team_size", "label": "Team size (headcount)", "type": "number", "min": 1, "max": 500, "step": 1, "default": 15, "suffix": "people", "hint": "Full-time equivalents on billable work." },
+    { "id": "manual_hours_per_week", "label": "Manual hours per person per week", "type": "range", "slider": true, "min": 0, "max": 30, "step": 1, "default": 8, "suffix": "hrs/wk", "hint": "Repetitive data entry, status reports, intake, invoicing." },
+    { "id": "avg_hourly_cost", "label": "Fully-loaded hourly cost", "type": "number", "prefix": "$", "min": 20, "max": 500, "step": 5, "default": 75, "suffix": "/hr", "hint": "Salary + benefits + overhead ÷ billable hours." },
+    { "id": "automation_coverage", "label": "Expected automation coverage", "type": "range", "slider": true, "min": 0, "max": 100, "step": 5, "default": 60, "suffix": "%", "hint": "How much of the manual work realistically automates." },
+    { "id": "build_investment", "label": "One-time build investment", "type": "number", "prefix": "$", "min": 0, "max": 100000, "step": 500, "default": 12000, "hint": "What you'd pay an agency or internal team for the initial build." }
+  ],
+  "outputs": [
+    { "id": "monthly_savings", "label": "Monthly savings", "format": "currency", "primary": true, "formula": "team_size * manual_hours_per_week * (automation_coverage / 100) * avg_hourly_cost * 4.33", "tier_thresholds": { "low": 0, "mid": 5000, "high": 20000, "low_label": "Too small to bother", "mid_label": "Clear ROI zone", "high_label": "Leave money on the table if you don't" } },
+    { "id": "annual_savings", "label": "Annual savings", "format": "currency", "formula": "monthly_savings * 12" },
+    { "id": "hours_recovered", "label": "Hours recovered per month", "format": "hours", "formula": "team_size * manual_hours_per_week * (automation_coverage / 100) * 4.33" },
+    { "id": "payback_months", "label": "Payback window", "format": "decimal", "formula": "monthly_savings > 0 ? build_investment / monthly_savings : 99" }
+  ],
+  "recommendations": [
+    { "tag": "Automate first", "when": "monthly_savings >= 5000 && manual_hours_per_week >= 6", "text": "Your top leak is likely intake + onboarding. Build a n8n workflow that does intake-form → CRM → welcome email in one hop. Usually saves 3-5 hrs/person/week." },
+    { "tag": "Automate second", "when": "monthly_savings >= 10000 && team_size >= 10", "text": "Status reports are the next win. Claude + your PM tool API can auto-generate weekly client updates in 30 seconds instead of 30 minutes per account." },
+    { "tag": "Skip for now", "when": "payback_months >= 12 && monthly_savings < 3000", "text": "Build investment is too high relative to savings. Shrink the scope — pick ONE process under $4K build cost, prove ROI, then expand." },
+    { "tag": "Fast payback", "when": "payback_months <= 3 && monthly_savings >= 5000", "text": "Payback window under 90 days. Don't delay — every month you wait is the monthly savings number, burned." }
+  ],
+  "capture_cta": {
+    "headline": "Want the full breakdown?",
+    "description": "I'll send your numbers + the 3 automations I'd prioritize for your setup (ranked by payback period), plus the exact n8n workflows I'd build for each."
+  }
+}

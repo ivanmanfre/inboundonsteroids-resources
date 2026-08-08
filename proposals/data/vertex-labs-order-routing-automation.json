@@ -1,0 +1,121 @@
+{
+  "sections": [
+    "cover",
+    "problem",
+    "solution",
+    "scope",
+    "timeline",
+    "investment",
+    "roi",
+    "requirements",
+    "agreement",
+    "cta"
+  ],
+  "client_name": "Marcus Rivera",
+  "client_company": "Vertex Labs",
+  "client_email": "marcus@vertexlabs.io",
+  "project_title": "Order Routing Automation",
+  "date": "July 18, 2025",
+  "primary_problem": "Manual order fulfillment requires 3 people touching every order across ShipStation, Shopify, and their 3PL portal, taking 15 minutes per order across 80-100 daily orders, creating bottlenecks and an 8% error rate.",
+  "hours_wasted": "20-25",
+  "desired_outcome": "Fully automated order routing from Shopify to the correct 3PL based on product type and shipping zone, with tracking sync, customer notifications, and exception flagging  -  enabling same-day fulfillment and scaling to 500+ orders/day without additional staff.",
+  "automation_platform": "n8n",
+  "current_tools": "Shopify, ShipStation, Klaviyo, 3PL portal",
+  "trigger_description": "A new order is placed in Shopify, firing a webhook to kick off the automation.",
+  "process_description": "The automation evaluates the order's product type and shipping zone, routes it to the correct 3PL via API, syncs the tracking number back to Shopify, triggers a shipping notification in Klaviyo, and flags any exceptions for manual review with error handling and retry logic.",
+  "output_description": "Orders are automatically routed to the correct 3PL, tracking numbers are synced to Shopify, and exception reports are generated for manual review.",
+  "notification_description": "Customers are notified of shipping updates via Klaviyo, and the team is alerted to flagged exceptions requiring manual review.",
+  "scope_items": [
+    {
+      "label": "Shopify webhook integration",
+      "included": true
+    },
+    {
+      "label": "3PL API integration (2 providers)",
+      "included": true
+    },
+    {
+      "label": "Smart routing logic (product type + shipping zone)",
+      "included": true
+    },
+    {
+      "label": "Tracking number sync back to Shopify",
+      "included": true
+    },
+    {
+      "label": "Klaviyo shipping notification triggers",
+      "included": true
+    },
+    {
+      "label": "Exception flagging for manual review",
+      "included": true
+    },
+    {
+      "label": "Error handling and retry logic",
+      "included": true
+    },
+    {
+      "label": "30 days post-launch support",
+      "included": true
+    },
+    {
+      "label": "3PL account setup",
+      "included": false
+    },
+    {
+      "label": "Shopify theme changes",
+      "included": false
+    }
+  ],
+  "out_of_scope": "3PL account setup and Shopify theme changes are not included in this engagement.",
+  "phases": [
+    {
+      "name": "Integration Setup",
+      "duration": "3 days",
+      "deliverable": "Shopify + 3PL API connections established and authenticated"
+    },
+    {
+      "name": "Routing Logic",
+      "duration": "4 days",
+      "deliverable": "Smart routing engine with exception handling built and configured"
+    },
+    {
+      "name": "Testing & Launch",
+      "duration": "3 days",
+      "deliverable": "End-to-end testing completed and system goes live"
+    },
+    {
+      "name": "Optimization",
+      "duration": "2 days",
+      "deliverable": "Performance tuning and monitoring setup"
+    }
+  ],
+  "total_timeline": "2 weeks",
+  "quoted_price": "4200",
+  "currency": "$",
+  "pricing_model_details": "Fixed project fee",
+  "payment_terms": "50% upfront, 50% on completion",
+  "support_period": "30 days",
+  "start_date": "Upon agreement",
+  "monthly_recurring_costs": "~$50/mo n8n hosting",
+  "roi_details": "Saves 20-25 hours/week in manual processing, eliminates the current ~8% order routing error rate, enables same-day fulfillment instead of 24-hour delays, and allows scaling to 500+ orders/day without hiring additional staff.",
+  "hours_saved": "20-25",
+  "scale_factor": "5",
+  "access_requirements": [
+    "Shopify admin API credentials and webhook configuration access",
+    "API credentials and documentation for both 3PL providers",
+    "Klaviyo API key and account access",
+    "Product type and shipping zone routing rules documentation",
+    "Exception criteria definitions for manual review flagging"
+  ],
+  "agreement_terms": [],
+  "upsell_opportunities": "Future automations could include inventory sync across 3PLs with low-stock alerts, automated returns/exchange processing, and a real-time fulfillment analytics dashboard.",
+  "case_studies": [],
+  "slug": "vertex-labs-order-routing-automation",
+  "task_id": "86afqwkv3",
+  "proposal_url": "https://ivanmanfre.github.io/resources/proposals/vertex-labs-order-routing-automation.html",
+  "_source": "regen",
+  "stripe_payment_url": "https://buy.stripe.com/dRmdR162nbrP8l0cdJfEk0n",
+  "proposalUrl": "https://ivanmanfre.github.io/resources/proposals/vertex-labs-order-routing-automation.html",
+  "_feedback": "Change the quoted price to 4200 and add a 4th phase: Optimization (2 days) - Performance tuning and monitoring setup"
+}

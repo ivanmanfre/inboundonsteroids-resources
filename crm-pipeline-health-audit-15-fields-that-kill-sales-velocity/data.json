@@ -1,0 +1,141 @@
+{
+  "slug": "crm-pipeline-health-audit-15-fields-that-kill-sales-velocity",
+  "title": "CRM Pipeline Health Audit: 15 Fields That Kill Sales Velocity",
+  "subtitle": "Run this audit against your top pipeline stage first. If three items fail, your forecast is already lying to you.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Action Checklist"
+  },
+  "estimated_minutes": 25,
+  "sections": [
+    {
+      "id": "stage-gate-fields",
+      "title": "Stage Gate Fields",
+      "description": "The 4 fields that actually move deals through the pipeline.",
+      "items": [
+        {
+          "id": "exit-criteria-required",
+          "text": "Require Exit Criteria Met (Y/N) before any rep can advance a stage.",
+          "tip": "If a rep can drag a deal to Proposal without checking this, the stage means nothing.",
+          "impact": "high"
+        },
+        {
+          "id": "next-step-date",
+          "text": "Populate Next Step Date on every open opportunity.",
+          "tip": "Flag anything blank or scheduled more than 14 days out. No date equals no deal.",
+          "impact": "high"
+        },
+        {
+          "id": "decision-maker-confirmed",
+          "text": "Confirm Decision Maker (Y/N) before the Proposal stage.",
+          "tip": "Attended a call does not count. Require explicit rep confirmation in the field.",
+          "impact": "high"
+        },
+        {
+          "id": "validated-budget",
+          "text": "Fill Validated Budget Range before pricing goes out.",
+          "tip": "Free-text TBD fails the check. Use a picklist with bands.",
+          "impact": "high"
+        }
+      ]
+    },
+    {
+      "id": "data-hygiene-fields",
+      "title": "Data Hygiene Fields",
+      "description": "The 4 fields that kill forecast accuracy when neglected.",
+      "items": [
+        {
+          "id": "email-verification-7day",
+          "text": "Refresh email verification status every 7 days, not every 6 weeks.",
+          "tip": "Tools like Prospeo hit 98% verified accuracy on a 7-day cycle versus the 6-week industry average.",
+          "impact": "high"
+        },
+        {
+          "id": "verified-phone-and-email",
+          "text": "Verify both phone AND email on every primary contact, not one or the other.",
+          "tip": "Single-channel contacts are the number one source of ghost pipeline.",
+          "impact": "medium"
+        },
+        {
+          "id": "auto-enrich-firmographics",
+          "text": "Auto-enrich firmographic fields (employee count, industry, revenue band) instead of letting reps type them.",
+          "tip": "Rep-typed firmographics fail accuracy checks at 30% or higher.",
+          "impact": "medium"
+        },
+        {
+          "id": "weekly-duplicate-detection",
+          "text": "Run duplicate detection weekly with auto-merge rules for matches above 95%.",
+          "tip": "Manual dedupe never actually happens. Automate or accept the mess.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "governance-fields",
+      "title": "Governance Fields",
+      "description": "The 3 fields that stop rep gaming and protect forecast integrity.",
+      "items": [
+        {
+          "id": "lock-stage-history",
+          "text": "Lock stage history from manual edits across all roles.",
+          "tip": "Reps should never be able to backdate a stage change. Zero exceptions.",
+          "impact": "high"
+        },
+        {
+          "id": "close-date-reason-codes",
+          "text": "Log every Close Date change with a reason code picklist.",
+          "tip": "If a deal slips three times with no reason code, it is not a deal anymore.",
+          "impact": "high"
+        },
+        {
+          "id": "amount-approval-workflow",
+          "text": "Trigger manager approval on Amount changes greater than 20%.",
+          "tip": "Silent pricing drops are how forecasts break mid-quarter.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "activity-fields",
+      "title": "Activity Fields",
+      "description": "The 2 fields that surface real progress instead of vanity engagement.",
+      "items": [
+        {
+          "id": "last-meaningful-activity",
+          "text": "Auto-update Last Meaningful Activity only from logged calls, meetings, or replied emails.",
+          "tip": "Opens and clicks do not count. This is the single best stale-deal filter you can build.",
+          "impact": "high"
+        },
+        {
+          "id": "multithreading-count",
+          "text": "Track Multithreading Count (distinct contacts engaged per deal) at every stage gate.",
+          "tip": "Single-threaded deals past Discovery are a forecast risk flag.",
+          "impact": "medium"
+        }
+      ]
+    },
+    {
+      "id": "weekly-scorecard",
+      "title": "Weekly Scorecard",
+      "description": "The 1 field that keeps reps, managers, and RevOps honest.",
+      "items": [
+        {
+          "id": "field-completeness-score",
+          "text": "Publish a Field Completeness Score per rep weekly, not monthly.",
+          "tip": "RevOps owns the flag, managers own the conversation. Reps should hear about bad data from their manager, using your scorecard.",
+          "impact": "high"
+        },
+        {
+          "id": "scorecard-thresholds",
+          "text": "Set a minimum completeness threshold (90%+) tied to pipeline review eligibility.",
+          "tip": "If a rep is below threshold, their deals do not get reviewed in the forecast call.",
+          "impact": "medium"
+        }
+      ]
+    }
+  ],
+  "completion_cta": {
+    "headline": "You finished the audit. Now fix one stage this week.",
+    "description": "Do not boil the ocean. Pick your top pipeline stage, run these 15 checks against it, and ship the fixes inside 7 days. Then move to the next stage. A clean pipeline is built one gate at a time, not in a quarterly overhaul."
+  }
+}

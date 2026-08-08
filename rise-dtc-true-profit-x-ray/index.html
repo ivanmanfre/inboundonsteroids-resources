@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>True Profit Per Order X-Ray | RISE DTC</title>
+<meta name="description" content="Seven numbers you already know. The math runs live and shows every dollar between order value and profit, after COGS, shipping, returns, processing, and CAC.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1F1F1F">
+<meta name="author" content="RISE DTC">
+<meta property="og:title" content="True Profit Per Order X-Ray | RISE DTC">
+<meta property="og:description" content="Seven numbers you already know. The math runs live and shows every dollar from order value down to profit. Swap in yours and read the verdict.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RISE DTC">
+<meta property="og:image" content="./assets/cover.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1340">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="True Profit Per Order X-Ray | RISE DTC">
+<meta name="twitter:description" content="Seven numbers you already know. The math runs live from order value down to profit.">
+<meta name="twitter:image" content="./assets/cover.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to the content</a>
+
+<!-- ═══════════════════════════ STATE 1 · LANDING (hard gate) ═══════════════════════════ -->
+<div id="landing-view" class="view" hidden>
+  <header class="c-hero reveal">
+    <div class="wrap">
+      <a class="c-logo" href="https://risedtc.com" target="_blank" rel="noopener" aria-label="RISE DTC">
+        <img src="./assets/rise-logo-white.png" alt="RISE DTC">
+      </a>
+      <p class="c-eyebrow">RISE DTC &middot; Financial Health</p>
+      <h1 class="c-h1">Your true profit per order, after every cost.</h1>
+      <p class="c-sub">Seven numbers you already know. The math runs live and shows every dollar between order value and profit. Get the X-Ray and run yours.</p>
+    </div>
+  </header>
+
+  <main id="main" class="landing-body">
+    <div class="wrap landing-grid">
+      <aside class="inside reveal" aria-label="What you get">
+        <p class="inside-eyebrow">What you get</p>
+        <h2 class="inside-h">Seven inputs. One honest profit line.</h2>
+        <ul class="inside-list">
+          <li><span class="in-name">Average order value</span><span class="in-desc">Straight off your Shopify overview.</span></li>
+          <li><span class="in-name">COGS, % of price</span><span class="in-desc">What the unit costs you to make.</span></li>
+          <li><span class="in-name">Outbound shipping per order</span><span class="in-desc">What you pay to ship one order.</span></li>
+          <li><span class="in-name">Return rate</span><span class="in-desc">Returns divided by orders.</span></li>
+          <li><span class="in-name">Blended CAC</span><span class="in-desc">Ad spend divided by new customers.</span></li>
+          <li><span class="in-name">Payment processing</span><span class="in-desc">The published card rate, 2.9% plus 30&cent;.</span></li>
+          <li><span class="in-name">Repeat purchase rate</span><span class="in-desc">Optional. Turns one order into a customer.</span></li>
+        </ul>
+        <p class="inside-out">Move a slider and the verdict moves with it: a live waterfall from order value down to profit, the one cost line that binds, your break-even order count, and the single fix that moves it most.</p>
+        <p class="inside-note">Every number is computed from what you enter, with the math shown. Nothing invented.</p>
+      </aside>
+
+      <div class="gate-card reveal" id="gate-card">
+        <h3 class="gate-h">Get the X-Ray</h3>
+        <p class="gate-sub">Tell us where to send it. You get the calculator now, and a copy in your inbox.</p>
+        <form id="gate-form" novalidate>
+          <label class="sr-only" for="g-name">First name</label>
+          <input type="text" id="g-name" autocomplete="given-name" placeholder="First name" required>
+          <label class="sr-only" for="g-email">Email</label>
+          <input type="email" id="g-email" autocomplete="email" placeholder="you@yourstore.com" required>
+          <label class="sr-only" for="g-store">Store URL (optional)</label>
+          <input type="url" id="g-store" autocomplete="url" placeholder="yourstore.com (optional)">
+          <p class="gate-err" id="gate-err" role="alert"></p>
+          <button class="btn-gold" type="submit">Show me my profit line</button>
+        </form>
+        <div class="gate-meta"><span>7 inputs</span><i aria-hidden="true">&middot;</i><span>Math shown</span><i aria-hidden="true">&middot;</i><span>Free</span></div>
+        <p class="gate-note">Your numbers stay yours. Rise reads them only if you book a call.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+<!-- ═══════════════════════════ STATE 2 · THANK-YOU (built by app.js) ═══════════════════════════ -->
+<div id="thankyou-view" class="view" hidden></div>
+
+<!-- ═══════════════════════════ STATE 3 · RESOURCE (the calculator) ═══════════════════════════ -->
+<div id="resource-view" class="view" hidden>
+  <header class="app-bar">
+    <div class="wrap app-bar-inner">
+      <a class="app-logo" href="https://risedtc.com" target="_blank" rel="noopener" aria-label="RISE DTC">
+        <img src="./assets/rise-logo-white.png" alt="RISE DTC">
+      </a>
+      <div class="app-titles">
+        <span class="app-title">True Profit Per Order X-Ray</span>
+        <span class="app-pillar">RISE Method &middot; Financial Health</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- sticky compact result bar (mobile) -->
+  <div class="rbar" id="rbar" role="status" aria-live="polite" aria-label="Live profit result">
+    <span class="rbar-label">Profit / order</span>
+    <span class="big-num rbar-num" id="hero-num">&hellip;<span class="per"> / order</span></span>
+    <span class="badge" id="hero-badge">&hellip;</span>
+    <span class="sr-only" id="hero-verdict"></span>
+  </div>
+
+  <main id="main" class="wrap tool-grid">
+    <!-- inputs -->
+    <section class="inputs-col" id="tool">
+      <p class="eyebrow eyebrow-ink">The seven inputs</p>
+      <h2 class="sec-h">Move a slider. Watch the profit line move.</h2>
+      <p class="sec-sub">Every default is an editable apparel example except payment processing, which is the published card rate. Nothing is saved unless you book.</p>
+
+      <div class="fields" id="fields"><!-- generated by app.js --></div>
+
+      <details class="explain">
+        <summary>How this is computed</summary>
+        <div class="explain-body">
+          <p>Deterministic arithmetic, no averages or industry studies. <code id="explain-formulas">loading&hellip;</code></p>
+          <p><strong>Assumptions:</strong></p>
+          <ul>
+            <li>Returned orders: revenue is refunded and the unit is restocked (COGS recovered), but you still eat outbound shipping, processing fees, and acquisition.</li>
+            <li>Return shipping and handling are <strong>not</strong> modeled, so the real number is worse than this one.</li>
+            <li>Payment processing uses 2.9% + 30&cent;, the published Shopify Payments / Stripe standard card rate. Every other default is a labeled example.</li>
+            <li>Repeat lifetime orders use a geometric approximation, 1 / (1 - repeat rate). It is an estimate, not a cohort model.</li>
+          </ul>
+        </div>
+      </details>
+    </section>
+
+    <!-- results (sticky on desktop, fold-visible) -->
+    <aside class="results-col">
+      <div class="result-card">
+        <p class="rlabel">Profit per order, after every cost</p>
+        <p class="big-num" id="result-num">&hellip;<span class="per"> / order</span></p>
+        <span class="badge" id="result-badge">&hellip;</span>
+        <p class="verdict-line" id="result-verdict"></p>
+      </div>
+      <div class="wf-panel">
+        <p class="wf-eyebrow">Where the money goes</p>
+        <div class="waterfall" id="waterfall"><!-- generated --></div>
+      </div>
+    </aside>
+  </main>
+
+  <!-- verdict, read-my-shape, CTA -->
+  <section class="sec-dark verdict-sec reveal">
+    <div class="wrap">
+      <div class="verdict-block">
+        <p class="binding" id="binding-line"></p>
+        <p class="fix-line" id="fix-line"></p>
+        <p class="breakeven-line" id="breakeven-line"></p>
+        <p class="repeat-line" id="repeat-line" style="display:none"></p>
+      </div>
+
+      <div class="shape-block">
+        <button class="btn-shape" id="btn-shape" type="button">Read my shape <span aria-hidden="true">&rarr;</span></button>
+        <div class="shape-card" id="shape-card">
+          <p class="shape-tag" id="shape-tag">Live read</p>
+          <p class="shape-text" id="shape-text"></p>
+        </div>
+      </div>
+
+      <div class="cta-block" id="cta-block"><!-- routed by tier --></div>
+    </div>
+  </section>
+</div>
+
+<!-- ═══════════════════════════ FOOTER (shared) ═══════════════════════════ -->
+<footer class="rise-footer">
+  <div class="wrap">
+    <p class="quote">Profit is just math. <span>Down to the order.</span></p>
+    <p class="pillar">Part of the RISE Method Financial Health pillar.</p>
+    <div class="foot-meta">
+      <img src="./assets/rise-logo-white.png" alt="RISE DTC">
+      <span class="foot-tag">True Profit Per Order X-Ray</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Slide-over (SAFE / FIX FIRST) -->
+<div class="slideover-back" id="so-back"></div>
+<aside class="slideover" id="slideover" aria-hidden="true" aria-label="Booking preview">
+  <button class="slideover-close" id="so-close" type="button" aria-label="Close">&times;</button>
+  <p class="so-eyebrow" id="so-eyebrow">Next step</p>
+  <h3 id="so-title">What Rise receives when you book</h3>
+  <p class="so-sub" id="so-sub"></p>
+  <div class="brief" id="so-brief"><!-- underwriting sheet --></div>
+  <p class="so-note">This is the exact packet Rise receives the moment you book, so the first call starts on your numbers, not a blank page.</p>
+</aside>
+
+<script>
+  window.__lm_slug = "rise-dtc-true-profit-x-ray";
+  window.__lm_client = true;
+  window.__lm_beacon_url = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
+</script>
+<script src="./app.js" defer></script>
+</body>
+</html>

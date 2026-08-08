@@ -1,0 +1,559 @@
+{
+ "slug": "vuk-sretenovic-1d-assessment",
+ "title": "The Pre-Sold Pipeline Score",
+ "subtitle": "See how close your YouTube channel is to booking qualified calls from people who've already decided to work with you.",
+ "brand": {
+  "accent": "#5B82A6",
+  "hero_badge": "Interactive Assessment"
+ },
+ "estimated_minutes": 8,
+ "categories": [
+  {
+   "id": "lead_temperature",
+   "name": "Lead Temperature",
+   "questions": [
+    {
+     "id": "lead-source",
+     "text": "How do most of your qualified leads find you today?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Referrals only — nothing I control",
+       "score": 1
+      },
+      {
+       "label": "Cold outreach or paid ads",
+       "score": 2
+      },
+      {
+       "label": "Mix of cold and warm, but nothing consistent",
+       "score": 3
+      },
+      {
+       "label": "YouTube plus one or two other channels",
+       "score": 4
+      },
+      {
+       "label": "Mostly YouTube — people come to me already warmed up",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "call-familiarity",
+     "text": "When someone books a call with you, how much have they already seen from you?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Total stranger — I explain everything from scratch",
+       "score": 1
+      },
+      {
+       "label": "They saw an ad or read one post",
+       "score": 2
+      },
+      {
+       "label": "They've followed me a while but haven't gone deep",
+       "score": 3
+      },
+      {
+       "label": "They've watched at least 30 minutes of my content",
+       "score": 4
+      },
+      {
+       "label": "They've watched hours of my content — the call is basically paperwork",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "call-friction",
+     "text": "What's the most common dynamic on a first sales call?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "'So what exactly do you do?' — full education mode every time",
+       "score": 1
+      },
+      {
+       "label": "I spend most of the call convincing them they need this at all",
+       "score": 2
+      },
+      {
+       "label": "They're interested but negotiating hard on price",
+       "score": 3
+      },
+      {
+       "label": "They're sold on the concept, just sorting out logistics",
+       "score": 4
+      },
+      {
+       "label": "They quote my own videos back to me before I say anything",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're starting every sale from zero.",
+     "text": "Cold leads negotiate. Cold leads ghost. Cold leads ask 'what makes you different?' every single time. Your sales process is carrying all the weight because your content isn't doing any of it yet. That's exactly the problem YouTube solves. But only if you treat it like a pipeline, not a platform.",
+     "steps": [
+      "List the three objections you hear most on sales calls. Make one video per objection.",
+      "Send every new lead a 'watch this before we talk' message with two videos that explain your method.",
+      "Track whether leads who watched your content close faster and with less friction than those who didn't."
+     ]
+    },
+    "mid": {
+     "headline": "Some leads arrive warm. Most still don't.",
+     "text": "You're getting a glimpse of what YouTube can do, but it's inconsistent. The difference between a warm lead and a pre-sold lead is usually two to three hours of content watched. Right now your channel probably doesn't have a clear path that pulls someone through that journey on its own.",
+     "steps": [
+      "Map your top five videos to the specific buyer question each one answers.",
+      "Create a 'start here' video that connects to three or four others — give people a reason to keep watching.",
+      "Ask every new client: 'Which video made you decide to book?' Let that data tell you what's working."
+     ]
+    },
+    "high": {
+     "headline": "Your leads are arriving pre-sold.",
+     "text": "When someone watches two hours of your content before booking, the call isn't a sales call. It's a confirmation. You're building real channel gravity. The next move is making more leads hit that two-hour mark before they ever reach out.",
+     "steps": [
+      "Build a playlist specifically engineered for the pre-call journey.",
+      "Add a CTA in your top videos pointing directly to your booking page — not a subscribe button.",
+      "Track average content consumed per lead and use it as a qualification signal before the call."
+     ]
+    }
+   }
+  },
+  {
+   "id": "content_system",
+   "name": "Content System",
+   "questions": [
+    {
+     "id": "topic-selection",
+     "text": "How do you decide what to make a video about?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Whatever feels right or what I'm thinking about that week",
+       "score": 1
+      },
+      {
+       "label": "Keyword research, but not tied to what my buyers actually ask",
+       "score": 2
+      },
+      {
+       "label": "Questions I hear on sales calls and in DMs",
+       "score": 3
+      },
+      {
+       "label": "Sales call questions plus competitor gap analysis",
+       "score": 4
+      },
+      {
+       "label": "A database of proven formats filtered for my niche. I pull from outliers, not guessing.",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "publishing-consistency",
+     "text": "How consistent is your YouTube publishing schedule right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I post when I get around to it — no schedule",
+       "score": 1
+      },
+      {
+       "label": "Maybe once a month, sometimes less",
+       "score": 2
+      },
+      {
+       "label": "Every two to three weeks, roughly",
+       "score": 3
+      },
+      {
+       "label": "Weekly, with occasional gaps",
+       "score": 4
+      },
+      {
+       "label": "Weekly or more, no missed weeks",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "scripting-system",
+     "text": "How systematized is your scripting and title process?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Blank page every time — no process, no templates",
+       "score": 1
+      },
+      {
+       "label": "Loose templates but mostly manual, still slow",
+       "score": 2
+      },
+      {
+       "label": "Some AI help but it doesn't sound like me yet",
+       "score": 3
+      },
+      {
+       "label": "AI-assisted with my voice calibrated into the workflow",
+       "score": 4
+      },
+      {
+       "label": "Full workflow: research, hook, script, title, repurposing — all systematized and fast",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "videos_per_month",
+     "type": "number",
+     "text": "How many videos do you publish per month right now?",
+     "hint": "Count only videos actually published and live — not drafts or planned ones",
+     "suffix": "videos/month",
+     "min": 0,
+     "max": 30,
+     "step": 1,
+     "default": 2,
+     "normalize_formula": "Math.min(100, x * 25)"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're rebuilding from zero every time you hit record.",
+     "text": "No system means every video is a mountain. The blank page, the title guessing, the three hours second-guessing your hook — it compounds. The channels that quietly out-earn influencers aren't making better videos. They're running a better machine. The content is almost secondary.",
+     "steps": [
+      "Write down the ten questions you get asked most on sales calls. Those are your next ten videos.",
+      "Pick one AI scripting workflow and run it on your next video — even if the first output needs work.",
+      "Commit to publishing once a week for eight straight weeks before changing anything else."
+     ]
+    },
+    "mid": {
+     "headline": "You have pieces of a system. They're not connected yet.",
+     "text": "You're doing some things right — probably pulling from buyer questions and publishing with some regularity. But it's still fragmented. A real content pipeline means topic research, scripting, and repurposing flow into each other with almost no friction. You're not there yet.",
+     "steps": [
+      "Write down every step you take from idea to upload. Find the one that eats the most time.",
+      "Replace that bottleneck with an AI workflow first.",
+      "Set a publishing calendar for the next 90 days and protect it like a client deliverable."
+     ]
+    },
+    "high": {
+     "headline": "You're running a real content operation.",
+     "text": "When topic research, scripting, and titles are systematized, you're not just publishing faster. You're compounding. Every video is an asset that keeps pulling leads into the pipeline. You're close to the point where the channel runs without you fighting it every week.",
+     "steps": [
+      "Audit your last ten videos. Which ones got 10x your channel average? Find the pattern.",
+      "Double down on the format and angle that's already working — don't rotate out of it too fast.",
+      "Add repurposing to every upload so one video automatically feeds shorts, newsletter, and LinkedIn."
+     ]
+    }
+   }
+  },
+  {
+   "id": "hook_and_opening_strateg",
+   "name": "Hook and Opening Strategy",
+   "questions": [
+    {
+     "id": "opening-style",
+     "text": "How do you typically open your videos?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I introduce myself, then explain what the video will cover",
+       "score": 1
+      },
+      {
+       "label": "Give some context and background before getting into it",
+       "score": 2
+      },
+      {
+       "label": "Open with the problem the viewer is dealing with",
+       "score": 3
+      },
+      {
+       "label": "Drop into a number, a result, or a bold claim with no intro",
+       "score": 4
+      },
+      {
+       "label": "Mid-thought, confession, or scene — straight into tension, zero setup",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "retention-30s",
+     "text": "What's your typical viewer retention at the 30-second mark?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I don't check retention data at all",
+       "score": 1
+      },
+      {
+       "label": "Below 40% — I'm losing most people fast",
+       "score": 2
+      },
+      {
+       "label": "40-55% — average, not great",
+       "score": 3
+      },
+      {
+       "label": "55-70% — solid but room to improve",
+       "score": 4
+      },
+      {
+       "label": "70%+ — the hook is holding and I know why it works",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "hook-source",
+     "text": "Where do your video hooks come from?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "I write them in the moment with no real process",
+       "score": 1
+      },
+      {
+       "label": "I try a few options and pick the one that feels right",
+       "score": 2
+      },
+      {
+       "label": "I model creators I admire and adapt their opening style",
+       "score": 3
+      },
+      {
+       "label": "I study outlier videos in my niche and reverse-engineer what makes them open strong",
+       "score": 4
+      },
+      {
+       "label": "Trained AI on outlier video patterns — hooks come from data, not instinct",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "The first 30 seconds are killing your videos before they start.",
+     "text": "The fastest way to kill a video is to open by telling people what it's about. Most channels do exactly this. The ones that travel drop you into a number, a confession, or a mid-thought with zero setup. If you're still opening with an intro, you're giving the algorithm a reason to bury you.",
+     "steps": [
+      "Rewatch your last five videos. Write down word-for-word what you're saying at the 30-second mark.",
+      "Rewrite your next opening to start mid-scene, mid-sentence, or with a specific number that creates a question.",
+      "Open YouTube Studio and pull your retention graph — find the exact second people drop off and work backward."
+     ]
+    },
+    "mid": {
+     "headline": "Your hooks are decent. They're not pulling people into the pre-sold pipeline yet.",
+     "text": "Getting 40-55% at 30 seconds means you're not losing everyone at the top. But the gap between decent retention and 70%+ is the gap between a channel that coasts and one that compounds. The data is in your analytics. You just haven't turned it into a repeatable system yet.",
+     "steps": [
+      "Pull your top three videos by total watch time. Study what all three openings have in common.",
+      "Find five channels in your niche that are outperforming and write down word-for-word how they open.",
+      "Build a three-template hook bank from those patterns and test each one for a month."
+     ]
+    },
+    "high": {
+     "headline": "You know what makes people stay. Now scale it.",
+     "text": "Holding 70%+ at 30 seconds is a real edge — most channels never get there. You've found patterns that work. The job now is making sure every video starts from those patterns and not from a blank page. One great hook formula running consistently beats ten experiments.",
+     "steps": [
+      "Write down your working hook formulas explicitly so you can train AI on them.",
+      "Run every new video hook through your pattern checklist before you record.",
+      "Study what's working in adjacent niches — patterns that travel across categories are the strongest signals."
+     ]
+    }
+   }
+  },
+  {
+   "id": "channel_stage_and_produc",
+   "name": "Channel Stage and Production Speed",
+   "questions": [
+    {
+     "id": "current-stage",
+     "text": "Which stage best describes where your channel is right now?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Stage zero — no channel or nothing live yet",
+       "score": 1
+      },
+      {
+       "label": "Stage 1 — small channel, still waiting on the first client from YouTube",
+       "score": 2
+      },
+      {
+       "label": "Between stages — getting occasional leads, no consistent pipeline",
+       "score": 3
+      },
+      {
+       "label": "Stage 2 — qualified calls coming from content, fewer than 30 per month",
+       "score": 4
+      },
+      {
+       "label": "Stage 3 — 30+ qualified calls a month and the channel is compounding on its own",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "production_time",
+     "type": "number",
+     "text": "How many hours does it currently take you to produce one video from idea to upload?",
+     "hint": "Include research, scripting, recording, editing, and upload prep. Be honest.",
+     "suffix": "hours/video",
+     "min": 1,
+     "max": 40,
+     "step": 1,
+     "default": 8,
+     "normalize_formula": "x <= 2 ? 100 : x <= 4 ? 80 : x <= 8 ? 60 : x <= 16 ? 40 : x <= 24 ? 20 : 10"
+    },
+    {
+     "id": "ai-in-production",
+     "text": "How much of your current production pipeline uses AI?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "None — everything is done by hand",
+       "score": 1
+      },
+      {
+       "label": "I've tried it once or twice but have no real workflow",
+       "score": 2
+      },
+      {
+       "label": "I use AI for scripts or titles but not the full pipeline",
+       "score": 3
+      },
+      {
+       "label": "AI is integrated into most steps: research, scripting, and titles",
+       "score": 4
+      },
+      {
+       "label": "Full workflow with voice calibrated: research, scripting, hooks, repurposing — all AI-driven",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    },
+    {
+     "id": "repurposing",
+     "text": "What happens to a video after you upload it?",
+     "max_score": 5,
+     "answers": [
+      {
+       "label": "Nothing — it sits on YouTube and that's it",
+       "score": 1
+      },
+      {
+       "label": "I manually clip a short sometimes, inconsistently",
+       "score": 2
+      },
+      {
+       "label": "Someone on my team handles some repurposing",
+       "score": 3
+      },
+      {
+       "label": "Semi-automated — one or two platforms get the content reliably",
+       "score": 4
+      },
+      {
+       "label": "Full flow: one video automatically becomes shorts, newsletter, and LinkedIn content",
+       "score": 5
+      }
+     ],
+     "type": "likert"
+    }
+   ],
+   "recommendations": {
+    "low": {
+     "headline": "You're at Stage 1 — or not on the board yet.",
+     "text": "Stage 1 isn't a bad place to be. Every client result we've generated started there. But the most common mistake at this stage is spending too much time on production and not enough on hook quality and distribution. You can produce a strong video in a fraction of the time if the workflow is right.",
+     "steps": [
+      "Cut your production time in half before you optimize anything else. Use AI for scripting first.",
+      "Make your first ten videos each answer a specific question your ideal client is already searching.",
+      "Don't wait for the channel to grow — send your videos directly to prospects before every sales call."
+     ]
+    },
+    "mid": {
+     "headline": "You're in the pipeline. It's not pre-sold yet.",
+     "text": "Leads are coming from YouTube, but not consistently enough to call it a system. The gap between occasional leads and 30+ qualified calls a month usually comes down to three things: not enough publishing volume, hooks that aren't holding retention, and not enough total watch time per prospect for the pre-sell to happen.",
+     "steps": [
+      "Get AI into your scripting workflow so you can double publishing frequency without burning out.",
+      "Build a pre-call playlist that prospects can watch before they talk to you.",
+      "Add a direct booking CTA at the end of every video — not a subscribe button, a link to your calendar."
+     ]
+    },
+    "high": {
+     "headline": "The channel is compounding. Now protect the machine.",
+     "text": "Thirty-plus qualified calls a month from people who've watched hours of your content is a different business than the one most people run. The question at this stage isn't how to get leads. It's how to keep the machine running without it depending on you for every piece.",
+     "steps": [
+      "Document every workflow your team is running so it doesn't live in anyone's head.",
+      "Audit which videos are sending the most qualified leads — not most views, most qualified — and make more of those.",
+      "Build the Stage 3 asset: a lead magnet that pulls the right buyers from your videos into your calendar faster."
+     ]
+    }
+   }
+  }
+ ],
+ "tier_thresholds": {
+  "low": 40,
+  "mid": 70
+ },
+ "tier_names": {
+  "low": "Developing",
+  "mid": "Growth Stage",
+  "high": "Advanced"
+ },
+ "cta": {
+  "headline": "Want a partner who turns this score into an actual plan?",
+  "description": "Most people don't fail at the assessment. They fail at sequencing. In 30 minutes I'll show you which two things to fix first, based on your score and your stage. No pitch deck, just the sequencing call.",
+  "button": "Book Strategy Call",
+  "url": "https://calendly.com/im-ivanmanfredi/30min"
+ },
+ "computed_outputs": [
+  {
+   "id": "monthly-production-hours",
+   "label": "Monthly hours spent on video production",
+   "format": "hours_per_period",
+   "formula": "videos_per_month * production_time",
+   "show_in_result": true
+  }
+ ],
+ "schema_version": "v2",
+ "persona_selector": {
+  "id": "role",
+  "text": "Which describes you best?",
+  "answers": [
+   {
+    "label": "Info seller — coach, consultant, or course creator",
+    "tag": "info-seller"
+   },
+   {
+    "label": "B2B service business or agency owner",
+    "tag": "b2b-service"
+   },
+   {
+    "label": "Creator trying to turn expertise into revenue",
+    "tag": "creator"
+   },
+   {
+    "label": "Pre-channel — haven't started yet",
+    "tag": "beginner"
+   }
+  ]
+ }
+}

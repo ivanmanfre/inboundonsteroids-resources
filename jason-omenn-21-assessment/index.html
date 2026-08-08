@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AEO Readiness Score | Jason Omenn</title>
+<meta name="description" content="Measures how clearly your brand makes the AI shortlist before the first buyer call.">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="https://resources.inboundonsteroids.com/jason-omenn-21-assessment/">
+<meta property="og:title" content="AEO Readiness Score">
+<meta property="og:description" content="Measures how clearly your brand makes the AI shortlist before the first buyer call.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://resources.inboundonsteroids.com/jason-omenn-21-assessment/">
+<meta property="og:site_name" content="Jason Omenn">
+
+<meta name="twitter:card" content="summary">
+
+<!-- shared.js self-heals a shared.css <link> onto document.head when none is
+     present, which would land AFTER the block below and win the cascade on
+     source order. Linking it ourselves here keeps our rules last. -->
+<link rel="stylesheet" href="/_engine/shared.css">
+<link rel="stylesheet" href="/_engine/assessment-v2.css">
+<style>
+:root {
+  --ground: #ffffff;
+  --ground-ink: #14161c;
+  --ground-ink-soft: #515357;
+  --ground-line: #d5d5d6;
+  --surface: #ffffff;
+  --ink: #14161c;
+  --ink-soft: #515357;
+  --ink-mute: #7b7d80;
+  --hairline: #dcdcdd;
+  --sunk: #f6f6f6;
+  --accent: #5b82a6;
+  --accent-ink: #14161c;
+  --accent-readable: #5b82a6;
+  --accent-on-ground: #5b82a6;
+  --radius: 4px;
+  --radius-sm: min(4px, 8px);
+  --font-body: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-head: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --logo-max-h: 48px;
+  --bar-bg: #ffffff;
+  --bar-ink: #14161c;
+  --bar-line: #d9dadb;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+/* shared.css sets `html body { font-family:'Source Serif 4'; background:#F7F4EF }`
+   at (0,0,2). A bare `body` rule loses to it regardless of order, so this rule
+   ties on specificity and wins on source order. Both halves are load bearing. */
+html body {
+  margin: 0; background: var(--surface); color: var(--ink);
+  font-family: var(--font-body); font-size: 17px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; overflow-x: hidden;
+}
+em, i, address, cite, dfn { font-style: normal; }
+img { max-width: 100%; }
+a { color: inherit; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 34px; }
+.wrap-tight { width: 100%; max-width: 900px; margin: 0 auto; padding: 0 34px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { position: fixed; left: 12px; top: 12px; z-index: 99; background: var(--accent); color: var(--accent-ink); padding: 10px 16px; border-radius: var(--radius-sm); font-weight: 600; }
+.mark { display: flex; align-items: center; flex: 0 0 auto; min-width: 0; }
+.logo-img { display: block; height: auto; max-height: var(--logo-max-h); width: auto; max-width: 240px; object-fit: contain; }
+.wordmark { font-family: var(--font-head); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.015em; line-height: 1.2; }
+
+/* ---------- action row (start + meta columns) ---------- */
+.act { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 30px 44px; }
+.act-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--accent); color: var(--accent-ink);
+  border-radius: var(--radius); padding: 15px 26px;
+  font-family: var(--font-head); font-size: 0.95rem; font-weight: 600;
+  letter-spacing: 0.005em; text-decoration: none; line-height: 1.3;
+}
+.act-btn span { font-size: 1.05em; line-height: 1; }
+.act-meta { display: flex; gap: 40px; flex-wrap: wrap; }
+.act-cell { display: block; }
+.act-k { display: block; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.17em; text-transform: uppercase; margin-bottom: 7px; }
+.act-v { display: block; font-family: var(--font-head); font-size: 1rem; font-weight: 600; line-height: 1.3; }
+
+/* ---------- contents grammars (one is emitted per lead) ---------- */
+.cts { padding: 58px 0 8px; }
+.cts-h {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 20px;
+  margin: 0 0 26px; padding-bottom: 15px; border-bottom: 1px solid var(--hairline);
+}
+.cts-h b { font-family: var(--font-head); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+.cts-h i { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-mute); }
+.cts ol { list-style: none; margin: 0; padding: 0; }
+
+/* register: one column, oversized numerals, hairline per row (long items) */
+.g-register li { display: grid; grid-template-columns: 74px 1fr; gap: 0 22px; padding: 22px 0; border-bottom: 1px solid var(--hairline); }
+.g-register li:last-child { border-bottom: 0; }
+.g-register .n { font-family: var(--font-head); font-size: 2.1rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.03em; color: var(--accent-readable); font-variant-numeric: tabular-nums; padding: 0 0 5px; }
+.g-register .t { font-size: 1.04rem; line-height: 1.55; color: var(--ink-soft); padding-bottom: 2px; }
+
+/* columns: two column grid, rule above each cell (short labels) */
+.g-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 56px; }
+.g-columns li { padding: 20px 0 22px; border-top: 1px solid var(--hairline); }
+.g-columns .n { display: block; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; color: var(--accent-readable); margin-bottom: 9px; font-variant-numeric: tabular-nums; }
+.g-columns .t { display: block; font-family: var(--font-head); font-size: 1.08rem; font-weight: 600; line-height: 1.4; color: var(--ink); padding-bottom: 2px; }
+
+/* inline: one horizontal run divided by vertical hairlines (few short labels) */
+.g-inline { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.g-inline li { padding: 4px 26px 6px; border-left: 1px solid var(--hairline); }
+.g-inline li:first-child { padding-left: 0; border-left: 0; }
+.g-inline .n { display: block; font-family: var(--font-head); font-size: 2.6rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.04em; color: var(--accent-readable); margin-bottom: 10px; font-variant-numeric: tabular-nums; padding-bottom: 5px; }
+.g-inline .t { display: block; font-size: 0.95rem; line-height: 1.45; color: var(--ink-soft); padding-bottom: 2px; }
+
+/* ---------- assessment mount ---------- */
+.mount { padding: 52px 0 78px; }
+/* shared.css hangs a fixed full viewport paper grain off `.lmc-root::before`.
+   (1,0,1) beats (0,1,1), so this kills the maker's texture on the lead's page. */
+#lmc-root::before { content: none; }
+/* assessment.css declares every engine token ON `.lmc-root` itself, which beats
+   a `:root` handoff for content inside the mount. Id scope is what wins, so the
+   mounted assessment wears the lead's type and colour, not Source Serif 4. */
+#lmc-root {
+  --paper: #ffffff;
+  --paper-raise: #ffffff;
+  --paper-sunk: #f6f6f6;
+  --ink: #14161c;
+  --ink-soft: #515357;
+  --ink-mute: #7b7d80;
+  --hairline: #dcdcdd;
+  --hairline-bold: #dcdcdd;
+  --accent: #5b82a6;
+  --accent-light: #5b82a6;
+  --accent-ink: #5b82a6;
+  --accent-soft: #f6f6f6;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-drama: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  display: block; min-height: 620px;
+  background: var(--sunk); border: 1px solid var(--hairline); border-radius: var(--radius);
+}
+.skel { padding: 54px clamp(20px, 4vw, 54px); }
+.skel-track { height: 5px; border-radius: 3px; background: var(--hairline); overflow: hidden; margin-bottom: 42px; }
+.skel-fill { display: block; height: 100%; width: 18%; background: var(--accent); border-radius: 3px; }
+.skel-bar { background: var(--hairline); border-radius: 4px; height: 13px; }
+.skel-h { height: 22px; width: min(58%, 430px); margin-bottom: 16px; }
+.skel-s { width: min(36%, 270px); margin-bottom: 44px; }
+.skel-opt { display: flex; align-items: center; gap: 16px; padding: 20px 22px; border: 1px solid var(--hairline); border-radius: var(--radius-sm); background: var(--surface); margin-bottom: 13px; }
+.skel-dot { flex: 0 0 auto; width: 18px; height: 18px; border-radius: 50%; border: 2px solid var(--hairline); }
+.skel-opt .skel-bar { flex: 1 1 auto; }
+.skel-opt:nth-child(2) .skel-bar { max-width: 70%; }
+.skel-opt:nth-child(3) .skel-bar { max-width: 86%; }
+.skel-opt:nth-child(4) .skel-bar { max-width: 58%; }
+
+/* ---------- foot ---------- */
+.foot { border-top: 1px solid var(--hairline); background: var(--sunk); padding: 32px 0 38px; }
+.foot-in { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; }
+.foot-org:empty { display: none; }
+.foot-org { font-family: var(--font-head); font-size: 0.88rem; font-weight: 600; color: var(--ink-soft); }
+.maker { margin: 0; font-size: 0.74rem; letter-spacing: 0.02em; color: var(--ink-mute); }
+.maker a { text-decoration: none; color: inherit; }
+.maker b { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-weight: 800; letter-spacing: -0.005em; color: var(--ink-soft); }
+/* Lead pages carry no maker brand color (ballot Q3a, 2026-08-07): the wordmark
+   sits in the same ink as the rest of the footer line. */
+.maker b u { text-decoration: none; color: inherit; }
+
+
+
+
+
+
+/* ============ composition: INSTRUMENT (a document the lead issued) =========
+   Default register, and the honest one for a thin or neutral capture: no band,
+   no borrowed chrome, a specimen masthead and a bordered spec strip. */
+.in-head { background: var(--bar-bg); color: var(--bar-ink); border-bottom: 2px solid var(--ink); }
+.in-head-in { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 92px; }
+.in-domain { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--bar-ink); opacity: 0.6; }
+.in-title { padding: 74px 0 40px; }
+.in-eyebrow { margin: 0 0 24px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-readable); }
+.in-title h1 { font-family: var(--font-head); margin: 0 0 20px; padding-bottom: 4px; font-size: clamp(2rem, 3.6vw, 2.9rem); line-height: 1.12; letter-spacing: -0.015em; font-weight: 700; text-transform: none; max-width: 19ch; color: var(--ink); }
+.in-title .promise { margin: 0; font-size: 1.1rem; line-height: 1.65; color: var(--ink-soft); max-width: 58ch; }
+.in-spec { padding: 8px 0 4px; }
+.in-spec-in { border: 1px solid var(--hairline); border-radius: var(--radius); padding: 28px 34px; background: var(--sunk); }
+.in-spec .act { align-items: center; justify-content: space-between; }
+.in-spec .act-k { color: var(--ink-mute); }
+.in-spec .act-v { color: var(--ink); }
+
+
+@media (max-width: 900px) {
+  .wrap, .wrap-tight { padding: 0 22px; }
+  .g-columns { grid-template-columns: 1fr; gap: 0; }
+  .g-inline { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 26px 0; }
+  .g-inline li { padding: 4px 20px 6px; }
+  .g-inline li:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .g-register li { grid-template-columns: 54px 1fr; gap: 0 16px; }
+  .g-register .n { font-size: 1.7rem; padding-bottom: 4px; }
+  .cts { padding: 42px 0 6px; }
+  .mount { padding: 38px 0 56px; }
+  .skel { padding: 32px 20px; }
+  .act { gap: 26px 30px; }
+  .act-meta { gap: 30px; }
+
+
+
+  .in-head-in { min-height: 70px; }
+  .in-title { padding: 46px 0 30px; }
+  .in-spec-in { padding: 22px 22px 24px; }
+  .in-spec .act { align-items: flex-start; }
+
+}
+@media (max-width: 430px) {
+  html body { font-size: 16px; }
+  .logo-img { max-width: 150px; }
+  .act-btn { width: 100%; justify-content: center; }
+  .g-inline { grid-template-columns: 1fr; }
+  .g-inline li { padding: 4px 0 6px; border-left: 0; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#lmc-root">Skip to the assessment</a>
+
+
+
+
+
+
+
+<header class="in-head">
+  <div class="wrap in-head-in">
+    <span class="mark"><span class="wordmark">Jason Omenn</span></span>
+    <span class="in-domain"></span>
+  </div>
+</header>
+
+<section class="in-title">
+  <div class="wrap">
+    <p class="in-eyebrow">Issued instrument</p>
+    <h1>AEO Readiness Score</h1>
+    <p class="promise">Measures how clearly your brand makes the AI shortlist before the first buyer call.</p>
+  </div>
+</section>
+<section class="in-spec">
+  <div class="wrap"><div class="in-spec-in"><div class="act"><a class="act-btn" href="#lmc-root">Start the assessment <span aria-hidden="true">&#8595;</span></a><div class="act-meta"><span class="act-cell"><span class="act-k">Sections</span><span class="act-v">04</span></span><span class="act-cell"><span class="act-k">Issued by</span><span class="act-v">Jason Omenn</span></span></div></div></div></div>
+</section>
+<div class="in-body">
+  <div class="wrap"><section class="cts"><div class="cts-h"><b>What it measures</b><i>04 sections</i></div><ol class="g-inline"><li><span class="n">01</span><span class="t">Citation Tracking &amp; Measurement</span></li><li><span class="n">02</span><span class="t">Content Architecture for AI Extraction</span></li><li><span class="n">03</span><span class="t">Authority Signal Depth</span></li><li><span class="n">04</span><span class="t">Team Publishing &amp; Lane Structure</span></li></ol></section></div>
+  <div class="mount"><div class="wrap">
+
+
+    <main id="lmc-root" class="lmc-root" data-lm-brand="host" data-lm-assessment-src="./data.json">
+      <p class="sr-only">The assessment loads in this panel.</p>
+      <div class="skel" aria-hidden="true">
+        <div class="skel-track"><span class="skel-fill"></span></div>
+        <div class="skel-bar skel-h"></div>
+        <div class="skel-bar skel-s"></div>
+        <div class="skel-opt"><span class="skel-dot"></span><div class="skel-bar"></div></div>
+        <div class="skel-opt"><span class="skel-dot"></span><div class="skel-bar"></div></div>
+        <div class="skel-opt"><span class="skel-dot"></span><div class="skel-bar"></div></div>
+        <div class="skel-opt"><span class="skel-dot"></span><div class="skel-bar"></div></div>
+      </div>
+    </main>
+  </div></div>
+</div>
+
+<!-- shared.js appends a full maker footer (fit call heading, Calendly button,
+     copyright) to <body> when it finds no `.im-footer`. This inert one satisfies
+     the lookup and has no `.im-footer-cta` / `.im-footer-meta` child, so both
+     write guards skip and nothing is injected. -->
+<footer class="im-footer" hidden aria-hidden="true" style="display:none!important"></footer>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <span class="foot-org">Jason Omenn</span>
+    <p class="maker">Assessment engine by <a href="https://inboundonsteroids.com" target="_blank" rel="noopener"><b>INBOUND<u>ON</u>STEROIDS</b></a></p>
+  </div>
+</footer>
+
+<script>window.__lm_slug="jason-omenn-21-assessment";window.__lm_beacon_url="https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";</script>
+<script src="/_engine/shared.js" defer></script><script src="/_engine/assessment-score.js"></script><script src="/_engine/embed-brand.js"></script><script src="/_engine/assessment-v2.js" defer></script>
+</body>
+</html>

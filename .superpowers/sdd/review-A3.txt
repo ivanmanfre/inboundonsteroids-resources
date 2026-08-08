@@ -1,0 +1,489 @@
+=== COMMITS ===
+aa77e31 feat(editor): assessment coverage audit + full assessment-v2 field coverage
+
+=== STAT ===
+ _engine/assessment-v2.js | 185 +++++++++++++++++++++++++++++++++++++++--------
+ _engine/assessment.js    |  10 ++-
+ 2 files changed, 162 insertions(+), 33 deletions(-)
+
+=== DIFF ===
+diff --git a/_engine/assessment-v2.js b/_engine/assessment-v2.js
+index daaa3a9..0639034 100644
+--- a/_engine/assessment-v2.js
++++ b/_engine/assessment-v2.js
+@@ -225,17 +225,17 @@
+     // Weakest
+     var sorted = Object.entries(perCategory).sort(function (a, b) { return a[1].score - b[1].score; });
+     var weakest = sorted.length ? { id: sorted[0][0], name: sorted[0][1].name, score: sorted[0][1].score } : null;
+ 
+     // Computed outputs (the $ leak, hrs lost, etc)
+     var computed = {};
+     (data.computed_outputs || []).forEach(function (co) {
+       var v = safeEval(co.formula, Object.assign({}, ctx, { overall_score: overall, weakest_category: weakest && weakest.id }));
+-      computed[co.id] = { label: co.label, value: v, format: co.format, show: co.show_in_result !== false };
++      computed[co.id] = { id: co.id, label: co.label, value: v, format: co.format, show: co.show_in_result !== false };
+     });
+ 
+     return { overall: overall, tier: tier, per_category: perCategory, weakest: weakest, persona: ctx.persona, ctx: ctx, computed: computed };
+   }
+ 
+   // --- Intro block (unchanged from v1) ---
+   function buildIntro(data, startTargetSelector) {
+     var welcomeLine = (data.intro && data.intro.paragraph) || (data.subtitle ? "You just grabbed " + (data.title || "this resource") + ". " + String(data.subtitle).replace(/\.$/, "") + "." : "You just grabbed " + (data.title || "this resource") + ".");
+@@ -243,22 +243,31 @@
+     var pointB = (data.intro && data.intro.point_value) || "Honest inputs (not Likert vibes) so your output reflects your actual situation";
+     var pointC = (data.intro && data.intro.point_next) || "Score + tier shown free. Email unlocks per-category breakdown + personalized fixes.";
+     var sec = make("section", { class: "lmc-intro" });
+     var inner = make("div", { class: "lmc-intro-inner" });
+     inner.appendChild(make("img", { class: "lmc-intro-avatar", src: "https://ivanmanfredi.com/ivan-portrait.jpg", alt: "Ivan Manfredi" }));
+     var body = make("div", { class: "lmc-intro-body" });
+     body.appendChild(make("div", { class: "lmc-intro-badge" }, "Welcome"));
+     body.appendChild(make("h2", { class: "lmc-intro-h" }, "Hey, I&rsquo;m Ivan."));
+-    body.appendChild(make("p", { class: "lmc-intro-p" }, esc(welcomeLine)));
++    var introPara = make("p", { class: "lmc-intro-p" }, esc(welcomeLine));
++    if (window.LM && window.LM.editMode) {
++      window.LM.editMode.registerField(introPara, "intro.paragraph", { multiline: true });
++    }
++    body.appendChild(introPara);
+     var ul = make("ul", { class: "lmc-intro-points" });
+-    [["a", "⏱", pointA], ["b", "→", pointB], ["c", "✓", pointC]].forEach(function (p) {
++    var introPointPaths = ["intro.point_time", "intro.point_value", "intro.point_next"];
++    [["a", "⏱", pointA], ["b", "→", pointB], ["c", "✓", pointC]].forEach(function (p, ix) {
+       var li = make("li");
+       li.appendChild(make("span", { class: "lmc-intro-icon " + p[0] }, p[1]));
+-      li.appendChild(make("span", null, esc(p[2])));
++      var pointSpan = make("span", null, esc(p[2]));
++      if (window.LM && window.LM.editMode) {
++        window.LM.editMode.registerField(pointSpan, introPointPaths[ix], { multiline: true });
++      }
++      li.appendChild(pointSpan);
+       ul.appendChild(li);
+     });
+     body.appendChild(ul);
+     var startBtn = make("button", { class: "lmc-intro-start", type: "button" }, "Start the assessment <span>&darr;</span>");
+     startBtn.addEventListener("click", function () {
+       var t = document.querySelector(startTargetSelector);
+       if (t) t.scrollIntoView({ behavior: "smooth" });
+       beacon("cta_click", { answers: { target: "intro_start" } });
+@@ -284,17 +293,19 @@
+       idx = i + 1;
+     }
+     var captured = !!localStorage.getItem(key + ".email");
+     root.innerHTML = "";
+ 
+     // Hero
+     var hero = make("section", { class: "lmc-hero" });
+     var hi = make("div", { class: "lmc-container" });
+-    hi.appendChild(make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment")));
++    var heroBadgeEl = make("div", { class: "lmc-badge" }, esc((data.brand && data.brand.hero_badge) || "Interactive Assessment"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadgeEl, "brand.hero_badge");
++    hi.appendChild(heroBadgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     hi.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, esc(data.subtitle));
+       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
+       hi.appendChild(sub);
+@@ -314,40 +325,53 @@
+     widget.appendChild(card);
+     root.appendChild(widget);
+ 
+     function save() { try { localStorage.setItem(key + ".answers", JSON.stringify(answers)); } catch (_) {} }
+ 
+     function renderQuestion() {
+       card.innerHTML = "";
+       var q = questions[idx];
+-      if (q.category_name) card.appendChild(make("div", { class: "lmc-category" }, esc(q.category_name)));
+-      var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
+-      var catIdx = -1, qIdx = -1;
+-      if (q.category_id && q.id) {
++      // Resolve the data.json path for this question so edit-mode hooks can be
++      // wired for its text/hint + type-specific renderer. Persona classifier
++      // lives at "persona_selector" (not inside categories[]).
++      var isPersona = !!q.__persona;
++      var catIdx = -1, qIdx = -1, basePath = null;
++      if (isPersona) {
++        basePath = "persona_selector";
++      } else if (q.category_id && q.id) {
+         catIdx = (data.categories || []).findIndex(function (c) { return (c.id || c.name) === q.category_id; });
+         qIdx = catIdx >= 0 ? (data.categories[catIdx].questions || []).findIndex(function (qq) { return qq.id === q.id; }) : -1;
+-        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
+-          window.LM.editMode.registerField(qH, "categories[" + catIdx + "].questions[" + qIdx + "].text", { multiline: true });
++        if (catIdx >= 0 && qIdx >= 0) basePath = "categories[" + catIdx + "].questions[" + qIdx + "]";
++      }
++      if (q.category_name) {
++        var catEl = make("div", { class: "lmc-category" }, esc(q.category_name));
++        if (!isPersona && catIdx >= 0 && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(catEl, "categories[" + catIdx + "].name");
+         }
++        card.appendChild(catEl);
++      }
++      var qH = make("h2", { class: "lmc-question", id: "lmc-q" + idx, tabindex: "-1" }, esc(q.text || q.label || ""));
++      if (basePath && window.LM && window.LM.editMode) {
++        window.LM.editMode.registerField(qH, basePath + ".text", { multiline: true });
+       }
+       card.appendChild(qH);
+       if (q.hint) {
+         var hintEl = make("p", { class: "lmc-hint" }, esc(q.hint));
+-        if (window.LM && window.LM.editMode && catIdx >= 0 && qIdx >= 0) {
+-          window.LM.editMode.registerField(hintEl, "categories[" + catIdx + "].questions[" + qIdx + "].hint");
++        if (basePath && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(hintEl, basePath + ".hint");
+         }
+         card.appendChild(hintEl);
+       }
+ 
+       // Type-dispatched input
+-      if (q.type === "number") renderNumberInput(q);
+-      else if (q.type === "multi_select") renderMultiSelect(q);
++      if (q.type === "number") renderNumberInput(q, basePath);
++      else if (q.type === "multi_select") renderMultiSelect(q, basePath);
+       else if (q.type === "short_text") renderShortText(q);
+-      else renderLikert(q); // likert, likert_picker, or anything else defaults to radio list
++      else renderLikert(q, basePath); // likert, likert_picker, or anything else defaults to radio list
+ 
+       // Nav
+       var nav = make("div", { class: "lmc-nav" });
+       var back = make("button", { class: "lmc-btn lmc-btn-secondary", type: "button" }, "Back");
+       if (idx === 0) back.setAttribute("disabled", "disabled");
+       back.addEventListener("click", function () { if (idx > 0) { idx--; renderQuestion(); } });
+       var nextLabel = idx === questions.length - 1 ? "See result →" : "Next →";
+       var nextBtn = make("button", { class: "lmc-btn", type: "button", id: "lmc-next" }, nextLabel);
+@@ -361,92 +385,123 @@
+     function hasValidAnswer(q) {
+       var a = answers[q.id || "__persona"];
+       if (q.type === "number") return a != null && a !== "" && !isNaN(Number(a));
+       if (q.type === "multi_select") return Array.isArray(a) && a.length > 0;
+       if (q.type === "short_text") return typeof a === "string" && a.trim().length > 0;
+       return a != null;
+     }
+ 
+-    function renderLikert(q) {
++    function renderLikert(q, basePath) {
+       var options = q.answers || [
+         { label: "1 — Strongly disagree", score: 1 },
+         { label: "2 — Disagree", score: 2 },
+         { label: "3 — Neutral", score: 3 },
+         { label: "4 — Agree", score: 4 },
+         { label: "5 — Strongly agree", score: 5 }
+       ];
+       var ul = make("ul", { class: "lmc-options" });
+       options.forEach(function (opt, ix) {
+         var li = make("li");
+         var checked = (answers[q.id || "__persona"] === ix);
+         var label = make("label", { class: "lmc-opt" + (checked ? " selected" : ""), for: "lmc-q" + idx + "-o" + ix });
+         var input = make("input", { type: "radio", name: "q" + idx, id: "lmc-q" + idx + "-o" + ix, value: String(ix) });
+         if (checked) input.setAttribute("checked", "checked");
+         label.appendChild(input);
+-        label.appendChild(make("span", null, esc(opt.label || opt.text || String(opt))));
++        var labelSpan = make("span", null, esc(opt.label || opt.text || String(opt)));
++        if (basePath && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(labelSpan, basePath + ".answers[" + ix + "].label", { multiline: true });
++        }
++        label.appendChild(labelSpan);
+         li.appendChild(label); ul.appendChild(li);
+-        label.addEventListener("click", function () {
++        label.addEventListener("click", function (e) {
++          // In edit mode, clicks on the option should go to the inline editor on
++          // the label span, not record an answer. The span's edit-mode handler
++          // stops propagation, so this only fires for clicks outside the text
++          // (e.g. the radio hit-area) — guard those too.
++          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
++            if (e) e.preventDefault();
++            return;
++          }
+           answers[q.id || "__persona"] = ix;
+           save();
+           setTimeout(function () { goNext(); }, 200);
+         });
+       });
+       card.appendChild(ul);
+     }
+ 
+-    function renderNumberInput(q) {
++    function renderNumberInput(q, basePath) {
+       var wrap = make("div", { class: "lmc-input-row" });
+-      if (q.prefix) wrap.appendChild(make("span", { class: "lmc-prefix" }, esc(q.prefix)));
++      if (q.prefix) {
++        var prefixEl = make("span", { class: "lmc-prefix" }, esc(q.prefix));
++        if (basePath && window.LM && window.LM.editMode) window.LM.editMode.registerField(prefixEl, basePath + ".prefix");
++        wrap.appendChild(prefixEl);
++      }
+       var input = make("input", { type: "number", class: "lmc-number", id: "lmc-q" + idx + "-n", inputmode: "decimal" });
+       if (q.min != null) input.setAttribute("min", q.min);
+       if (q.max != null) input.setAttribute("max", q.max);
+       if (q.step != null) input.setAttribute("step", q.step);
+       var current = answers[q.id];
+       if (current != null) input.value = current;
+       else if (q.default != null) input.value = q.default;
+       input.addEventListener("input", function () {
+         answers[q.id] = input.value === "" ? null : Number(input.value);
+         save();
+         var nb = $("#lmc-next"); if (nb) { if (hasValidAnswer(q)) nb.removeAttribute("disabled"); else nb.setAttribute("disabled", "disabled"); }
+       });
+       wrap.appendChild(input);
+-      if (q.suffix) wrap.appendChild(make("span", { class: "lmc-suffix" }, esc(q.suffix)));
++      if (q.suffix) {
++        var suffixEl = make("span", { class: "lmc-suffix" }, esc(q.suffix));
++        if (basePath && window.LM && window.LM.editMode) window.LM.editMode.registerField(suffixEl, basePath + ".suffix");
++        wrap.appendChild(suffixEl);
++      }
+       card.appendChild(wrap);
+       setTimeout(function () { input.focus(); }, 50);
+     }
+ 
+-    function renderMultiSelect(q) {
++    function renderMultiSelect(q, basePath) {
+       var ul = make("ul", { class: "lmc-options lmc-multi" });
+       var current = Array.isArray(answers[q.id]) ? answers[q.id].slice() : [];
+       (q.answers || []).forEach(function (opt, ix) {
+         var li = make("li");
+         var selected = current.indexOf(opt.tag) !== -1;
+         var label = make("label", { class: "lmc-opt lmc-opt-check" + (selected ? " selected" : ""), for: "lmc-q" + idx + "-c" + ix });
+         var input = make("input", { type: "checkbox", id: "lmc-q" + idx + "-c" + ix, value: opt.tag });
+         if (selected) input.setAttribute("checked", "checked");
+         label.appendChild(input);
+         label.appendChild(make("span", { class: "lmc-check-box" }, "&#10003;"));
+-        label.appendChild(make("span", { class: "lmc-check-text" }, esc(opt.label || opt.text)));
++        var checkTextSpan = make("span", { class: "lmc-check-text" }, esc(opt.label || opt.text));
++        if (basePath && window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(checkTextSpan, basePath + ".answers[" + ix + "].label", { multiline: true });
++        }
++        label.appendChild(checkTextSpan);
+         li.appendChild(label); ul.appendChild(li);
+         label.addEventListener("click", function (e) {
+           e.preventDefault();
++          // In edit mode, clicks go to the inline editor on the label span
++          // (which stops propagation); guard clicks elsewhere on the label
++          // (checkbox hit-area) so they don't toggle a selection while editing.
++          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) return;
+           var arr = Array.isArray(answers[q.id]) ? answers[q.id].slice() : [];
+           var pos = arr.indexOf(opt.tag);
+           if (pos === -1) arr.push(opt.tag); else arr.splice(pos, 1);
+           answers[q.id] = arr;
+           save();
+           label.classList.toggle("selected", arr.indexOf(opt.tag) !== -1);
+           input.checked = arr.indexOf(opt.tag) !== -1;
+           var nb = $("#lmc-next"); if (nb) { if (hasValidAnswer(q)) nb.removeAttribute("disabled"); else nb.setAttribute("disabled", "disabled"); }
+         });
+       });
+       card.appendChild(ul);
+-      if (q.multi_hint) card.appendChild(make("p", { class: "lmc-multi-hint" }, esc(q.multi_hint)));
+-      else card.appendChild(make("p", { class: "lmc-multi-hint" }, "Check all that apply."));
++      var multiHintEl = make("p", { class: "lmc-multi-hint" }, esc(q.multi_hint || "Check all that apply."));
++      if (basePath && window.LM && window.LM.editMode) {
++        window.LM.editMode.registerField(multiHintEl, basePath + ".multi_hint");
++      }
++      card.appendChild(multiHintEl);
+     }
+ 
+     function renderShortText(q) {
+       var ta = make("textarea", { class: "lmc-textarea", id: "lmc-q" + idx + "-t", rows: "3", placeholder: q.placeholder || "One sentence is fine." });
+       var current = answers[q.id];
+       if (typeof current === "string") ta.value = current;
+       ta.addEventListener("input", function () {
+         answers[q.id] = ta.value;
+@@ -512,32 +567,51 @@
+     function renderResult() {
+       var res = computeResult(data, answers);
+       card.innerHTML = "";
+       var wrap = make("div", { class: "lmc-result" });
+       var circ = 2 * Math.PI * 70;
+       var finalOffset = circ - (res.overall / 100) * circ;
+       // D3.1: render arc fully empty initially, then transition to final offset for draw animation
+       wrap.innerHTML = '<div class="lmc-score-ring entering"><svg width="180" height="180" viewBox="0 0 180 180"><circle class="track" cx="90" cy="90" r="70"/><circle class="arc" cx="90" cy="90" r="70" stroke-dasharray="' + circ.toFixed(2) + '" stroke-dashoffset="' + circ.toFixed(2) + '" data-final-offset="' + finalOffset.toFixed(2) + '"/></svg><div class="score-num"><div class="num">0</div><div class="suffix">out of 100</div></div></div>';
+-      wrap.appendChild(make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name)));
++      var tierPillEl = make("div", { class: "lmc-tier-pill " + (res.tier.class || "") }, esc(res.tier.name));
++      if (window.LM && window.LM.editMode) {
++        // The pill shows whichever tier_thresholds.*_label the score selected —
++        // a tier name chosen by score logic, not free text. Locked: edit via Raw JSON.
++        var tierLabelKey = res.tier.class === "low" ? "low_label" : (res.tier.class === "medium" ? "mid_label" : "high_label");
++        window.LM.editMode.registerField(tierPillEl, "tier_thresholds." + tierLabelKey, { locked: true });
++      }
++      wrap.appendChild(tierPillEl);
+ 
+       // Computed outputs rendered prominently (this is the $ leak / hrs lost).
+       // D3.4: currency_per_period + hours_per_period get replaced with leaky-bucket SVG
+       var visibleComputed = Object.values(res.computed).filter(function (co) { return co.show; });
+       if (visibleComputed.length > 0) {
+         var cb = make("div", { class: "lmc-computed-block" });
+         visibleComputed.forEach(function (co) {
++          // Labels are raw copy (data.computed_outputs[i].label); values are
++          // fully computed from a formula with no backing text path — never
++          // registered.
++          var coIdx = (data.computed_outputs || []).findIndex(function (o) { return o.id === co.id; });
+           if (co.format === "currency_per_period" || co.format === "hours_per_period") {
+             var lb = make("div", { class: "lmc-leaky-wrap", "data-computed-id": co.id });
+             lb.innerHTML = leakyBucketSvg(co);
+             cb.appendChild(lb);
++            if (coIdx >= 0 && window.LM && window.LM.editMode) {
++              var leakyLabelEl = lb.querySelector(".lmc-leaky-label");
++              if (leakyLabelEl) window.LM.editMode.registerField(leakyLabelEl, "computed_outputs[" + coIdx + "].label");
++            }
+           } else {
+             var row = make("div", { class: "lmc-computed-row" });
+             row.innerHTML = '<div class="lmc-computed-label">' + esc(co.label) + '</div><div class="lmc-computed-value">' + fmt(co.format, co.value) + '</div>';
+             cb.appendChild(row);
++            if (coIdx >= 0 && window.LM && window.LM.editMode) {
++              var computedLabelEl = row.querySelector(".lmc-computed-label");
++              if (computedLabelEl) window.LM.editMode.registerField(computedLabelEl, "computed_outputs[" + coIdx + "].label");
++            }
+           }
+         });
+         wrap.appendChild(cb);
+       }
+ 
+       // Weakest-category headline sentence (uses real user inputs)
+       if (res.weakest) {
+         var headline = buildHeadline(data, res);
+@@ -612,28 +686,61 @@
+       });
+       renderUnlocked(res);
+     }
+ 
+     function renderUnlocked(res) {
+       var g = $("#lmc-capture"); if (g) g.parentNode.removeChild(g);
+       var unl = make("div", { class: "lmc-unlocked" });
+       unl.appendChild(make("h3", { style: "font-size:1.5rem;font-weight:900;text-transform:uppercase;margin:1.5rem 0 1rem;" }, "Your full report"));
+-      (data.categories || []).forEach(function (cat) {
++      (data.categories || []).forEach(function (cat, catIdx) {
+         var key2 = cat.id || cat.name;
+         var catRes = res.per_category[key2];
+         if (!catRes) return;
+         var block = make("div", { class: "lmc-category-block" });
+-        block.appendChild(make("h4", null, esc(cat.name || cat.id)));
++        var h4 = make("h4", null, esc(cat.name || cat.id));
++        if (window.LM && window.LM.editMode) {
++          window.LM.editMode.registerField(h4, "categories[" + catIdx + "].name");
++        }
++        block.appendChild(h4);
+         block.innerHTML += '<div class="lmc-cat-bar"><div class="lmc-cat-track"><div class="lmc-cat-fill" style="width:' + catRes.score + '%"></div></div><span class="lmc-cat-pct">' + catRes.score + '/100</span></div>';
+         var rec = pickRec(cat, catRes.score, res.ctx);
+         if (rec) {
+           var rc = make("div", { class: "lmc-rec" });
+           var tag = catRes.score <= 40 ? "Fix first" : catRes.score <= 70 ? "Next unlock" : "Keep sharpening";
+-          rc.innerHTML = '<strong>' + esc(tag) + '</strong>' + esc(rec.text || rec.headline || "") + (rec.steps ? '<ul>' + rec.steps.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join("") + '</ul>' : "");
++          rc.appendChild(make("strong", null, esc(tag)));
++          var recTextSpan = make("span", { class: "lmc-rec-text" }, esc(rec.text || rec.headline || ""));
++          rc.appendChild(recTextSpan);
++          // Only the legacy {low,mid,high} recommendations object resolves to a
++          // stable path (the matched key). The newer `when`-expression array
++          // format doesn't expose which entry matched, so it's left unregistered
++          // rather than risk writing to the wrong index.
++          var recIsLegacy = !Array.isArray(cat.recommendations);
++          var recPath = null;
++          if (recIsLegacy) {
++            var recTierKey = catRes.score <= 40 ? "low" : (catRes.score <= 70 ? "mid" : "high");
++            var recAltKey = ({ low: "critical", mid: "growth", high: "optimized" })[recTierKey];
++            var recsObj = cat.recommendations || {};
++            var recBranchKey = recsObj[recTierKey] != null ? recTierKey : (recsObj[recAltKey] != null ? recAltKey : recTierKey);
++            recPath = "categories[" + catIdx + "].recommendations." + recBranchKey;
++            if (window.LM && window.LM.editMode) {
++              window.LM.editMode.registerField(recTextSpan, recPath + ".text", { multiline: true });
++            }
++          }
++          if (rec.steps) {
++            var ulSteps = make("ul");
++            rec.steps.forEach(function (s, si) {
++              var li = make("li", null, esc(s));
++              if (recIsLegacy && recPath && window.LM && window.LM.editMode) {
++                window.LM.editMode.registerField(li, recPath + ".steps[" + si + "]", { multiline: true });
++              }
++              ulSteps.appendChild(li);
++            });
++            rc.appendChild(ulSteps);
++          }
+           block.appendChild(rc);
+         }
+         unl.appendChild(block);
+       });
+       // Share + retake
+       var share = make("div", { class: "lmc-share" });
+       var currentUrl = location.href.split("?")[0];
+       var shareText = "I scored " + res.overall + "/100 on Ivan Manfredi's " + (data.title || "assessment") + " (" + res.tier.name + (res.weakest ? "). Biggest gap: " + res.weakest.name : "") + ". Worth the time:";
+@@ -682,19 +789,33 @@
+           computed: Object.fromEntries(Object.entries(res.computed).map(function (e) { return [e[0], e[1].value]; })),
+           answers: res.ctx
+         });
+         optin.innerHTML = '<h4>Sent.</h4><p>Look for "your ' + esc(data.title || "report") + '" in your inbox. If it doesn\'t show in 2 min, check Promotions or Spam.</p>';
+       });
+ 
+       if (data.cta && data.cta.url) {
+         var cta = make("div", { class: "lmc-cta-box" });
+-        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener">' + esc(data.cta.button || "Book Strategy Call") + '</a>';
++        cta.innerHTML = '<h3>' + esc(data.cta.headline || "Want help closing these gaps?") + '</h3><p>' + esc(data.cta.description || "") + '</p><a class="lmc-btn" href="' + esc(data.cta.url) + '" target="_blank" rel="noopener"><span class="lmc-cta-btn-text">' + esc(data.cta.button || "Book Strategy Call") + '</span></a>';
+         unl.appendChild(cta);
+-        cta.querySelector("a").addEventListener("click", function () { beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } }); });
++        if (window.LM && window.LM.editMode) {
++          var ctaH3 = cta.querySelector("h3");
++          var ctaDescEl = cta.querySelector("p");
++          var ctaBtnTextEl = cta.querySelector(".lmc-cta-btn-text");
++          if (ctaH3) window.LM.editMode.registerField(ctaH3, "cta.headline", { multiline: true });
++          if (ctaDescEl) window.LM.editMode.registerField(ctaDescEl, "cta.description", { multiline: true });
++          if (ctaBtnTextEl) window.LM.editMode.registerField(ctaBtnTextEl, "cta.button");
++        }
++        cta.querySelector("a").addEventListener("click", function (e) {
++          if (window.LM && window.LM.editMode && window.LM.editMode.enabled && window.LM.editMode.enabled()) {
++            e.preventDefault();
++            return;
++          }
++          beacon("cta_click", { answers: { score: res.overall, tier: res.tier.name } });
++        });
+       } else {
+         // No per-LM CTA configured — default fit-call CTA so every assessment
+         // ends with a clear next step (2026-06-09).
+         var fallbackCta = make("div", { class: "lmc-cta-box" });
+         var fallbackUrl = window.LM && window.LM.callUrl ? window.LM.callUrl("closing-cta") : "https://calendly.com/ivan-intelligents/30min";
+         fallbackCta.innerHTML = '<h3>Want help closing these gaps?</h3>' +
+           '<p>Book a free 30-minute fit call. I\'ll walk your weakest category live and tell you exactly how I\'d fix it. If you can run it yourself, I\'ll tell you that too.</p>' +
+           '<a class="lmc-btn" href="' + esc(fallbackUrl) + '" target="_blank" rel="noopener">Book the free fit call</a>';
+diff --git a/_engine/assessment.js b/_engine/assessment.js
+index f00de1e..4a3cb53 100644
+--- a/_engine/assessment.js
++++ b/_engine/assessment.js
+@@ -386,17 +386,19 @@
+     // Hero
+     var hero = make("section", { class: "lmc-hero" });
+     var hi = make("div", { class: "lmc-container" });
+     if (embedLogoUrl) {
+       var __logo = make("img", { class: "lmc-embed-logo", src: embedLogoUrl, alt: (data.brand && data.brand.wordmark) || "" });
+       __logo.addEventListener("error", function () { __logo.remove(); });
+       hi.appendChild(__logo);
+     }
+-    hi.appendChild(make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment")));
++    var heroBadgeEl = make("div", { class: "lmc-badge" }, esc(data.brand && data.brand.hero_badge || "Interactive Assessment"));
++    if (window.LM && window.LM.editMode) window.LM.editMode.registerField(heroBadgeEl, "brand.hero_badge");
++    hi.appendChild(heroBadgeEl);
+     var h1 = make("h1", { class: "lmc-h1" });
+     h1.innerHTML = (window.LM && window.LM.italicizePivot) ? window.LM.italicizePivot(data.title || "Assessment") : esc(data.title || "Assessment");
+     if (window.LM && window.LM.editMode) window.LM.editMode.registerField(h1, "title");
+     hi.appendChild(h1);
+     if (data.subtitle) {
+       var sub = make("p", { class: "lmc-sub" }, esc(data.subtitle));
+       if (window.LM && window.LM.editMode) window.LM.editMode.registerField(sub, "subtitle");
+       hi.appendChild(sub);
+@@ -801,16 +803,22 @@
+             '<div class="lmc-gap-rank">' + (i + 1) + '</div>' +
+             '<div class="lmc-gap-body">' +
+               '<div class="lmc-gap-head"><span class="lmc-gap-text">' + esc(g.question) + '</span></div>' +
+               (g.fix ? '<div class="lmc-gap-fix"><span class="lmc-gap-fix-label">' + esc(gapFixLabel) + '</span>' + esc(g.fix) + '</div>' : '') +
+             '</div>' +
+           '</li>';
+         }).join("");
+         gapsSec.appendChild(list);
++        if (window.LM && window.LM.editMode) {
++          var fixLabelEls = list.querySelectorAll(".lmc-gap-fix-label");
++          for (var __fli = 0; __fli < fixLabelEls.length; __fli++) {
++            window.LM.editMode.registerField(fixLabelEls[__fli], "results_copy.gap_fix_label");
++          }
++        }
+ 
+         var mondayTxt = (topGaps[0] && topGaps[0].fix) || (res.weakest ? "Start with your weakest category: " + res.weakest.name + "." : "Pick the gap that hurts most this week and ship one fix.");
+         var nm = make("p", { class: "lmc-next-move" });
+         var mondayLabelEl = make("span", { class: "lmc-next-label" }, esc(mondayLabel));
+         var mondayBodyEl = document.createElement("span");
+         mondayBodyEl.className = "lmc-next-body";
+         mondayBodyEl.textContent = mondayTxt;
+         nm.appendChild(mondayLabelEl);

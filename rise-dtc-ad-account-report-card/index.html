@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Ad Account Report Card | RISE DTC</title>
+<meta name="description" content="Three Claude skills for your Meta ads: a letter-graded report card on your ad account, a scale-hold-cut budget triage, and a refresh brief for the ads going stale. Connect Meta, run it in Claude.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#ffc71d">
+<meta name="author" content="RISE DTC">
+<meta property="og:title" content="The Ad Account Report Card | RISE DTC">
+<meta property="og:description" content="Connect your Meta ad account to Claude and get a letter grade on every line that decides whether your spend makes money. Three skills, run it in Claude.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RISE DTC">
+<meta property="og:image" content="https://resources.inboundonsteroids.com/rise-dtc-ad-account-report-card/assets/cover.jpg">
+<meta property="og:image:width" content="928">
+<meta property="og:image:height" content="1152">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://resources.inboundonsteroids.com/rise-dtc-ad-account-report-card/assets/cover.jpg">
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/_engine/ai-kit.css">
+<style>
+  body { margin: 0; font-family: 'Manrope', system-ui, sans-serif; background: #fff; }
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+  #skip-link { position: absolute; left: -9999px; }
+  #skip-link:focus { position: fixed; top: .5rem; left: .5rem; width: auto; height: auto; background: #0e1512; color: #fff; padding: .5rem 1rem; z-index: 200; font-family: 'Sora', sans-serif; font-weight: 600; font-size: .82rem; text-decoration: none; border-radius: 4px; }
+</style>
+</head>
+<body>
+<a id="skip-link" href="#lmc-root">Skip to the pack</a>
+<main id="lmc-root" class="lmc-root" data-lm-ai-kit-src="./data.json"></main>
+<script>
+  window.__lm_client = true;
+  window.__lm_slug = "rise-dtc-ad-account-report-card";
+  window.__lm_beacon_url = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
+  window.__supabase_anon_key = "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
+</script>
+<script src="/_engine/shared.js"></script>
+<script>
+/* Capture-beacon fix, scoped to this page only.
+   The shared beacon() in _engine/shared.js sends via navigator.sendBeacon or a
+   header-less fetch, which hit the Supabase gateway with no auth header. This
+   override adds the publishable anon key (apikey + Bearer) on a single
+   authenticated fetch with keepalive:true (unload-safe on its own, so no
+   separate sendBeacon is needed and captures record exactly once). It replaces
+   only window.LM.beacon on this page and does not touch shared.js, which ~79
+   other LM pages share. */
+(function () {
+  if (!window.LM || typeof window.LM.canonicalBeaconEvent !== "function") return;
+  var BEACON = window.__lm_beacon_url || "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/lm-beacon";
+  var KEY = window.__supabase_anon_key || "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
+  window.LM.beacon = function (tool_type, event, extra) {
+    try {
+      var body = window.LM.canonicalBeaconEvent(tool_type, event, extra);
+      fetch(BEACON, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "apikey": KEY, "Authorization": "Bearer " + KEY },
+        body: JSON.stringify(body),
+        keepalive: true
+      }).catch(function () {});
+    } catch (_) {}
+  };
+})();
+</script>
+<script src="/_engine/ai-kit.js"></script>
+</body>
+</html>

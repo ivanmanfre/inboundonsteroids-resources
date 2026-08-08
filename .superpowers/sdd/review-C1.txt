@@ -1,0 +1,179 @@
+=== COMMITS ===
+fde4972 feat(editor): lm-copy-rewrite edge fn (voice from content_prompts, Railway proxy)
+
+=== DIFF ===
+diff --git a/supabase/functions/lm-copy-rewrite/index.ts b/supabase/functions/lm-copy-rewrite/index.ts
+new file mode 100644
+index 0000000..846bb85
+--- /dev/null
++++ b/supabase/functions/lm-copy-rewrite/index.ts
+@@ -0,0 +1,169 @@
++// DEPLOY WITH: supabase functions deploy lm-copy-rewrite --no-verify-jwt --project-ref bjbvqvzbzczjbatgmccb
++// --no-verify-jwt is required: this fn is called directly from the browser edit-mode UI with no
++// Supabase auth session. Without the flag, the platform's JWT gate 401s the request BEFORE it
++// reaches this code and the browser sees a bare "Failed to send a request" with no CORS headers.
++
++import { createClient } from "https://esm.sh/@supabase/supabase-js@2.45.0";
++
++const RAILWAY_PROXY_URL = Deno.env.get("RAILWAY_PROXY_URL") || "";
++const RAILWAY_PROXY_API_KEY = Deno.env.get("RAILWAY_PROXY_API_KEY") || "";
++const SUPABASE_URL = Deno.env.get("SUPABASE_URL") || "";
++const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") || "";
++
++const MODEL = "claude-sonnet-5";
++const MAX_TOKENS = 1500;
++const TEXT_CAP = 4000;
++const INSTRUCTION_CAP = 500;
++const CONTEXT_CAP = 2000;
++const IP_HOURLY_LIMIT = 40;
++
++function cors(): HeadersInit {
++  return {
++    "Access-Control-Allow-Origin": "*",
++    "Access-Control-Allow-Methods": "POST, OPTIONS",
++    "Access-Control-Allow-Headers": "Content-Type, Authorization, apikey",
++  };
++}
++
++function jsonResponse(body: unknown, status: number): Response {
++  return new Response(JSON.stringify(body), {
++    status,
++    headers: { ...cors(), "Content-Type": "application/json" },
++  });
++}
++
++// deno-lint-ignore no-explicit-any
++type SB = any;
++
++// content_prompts rows may store their text under different column names
++// depending on when they were authored (`content`, `body`, or `prompt`).
++// Inspect the row shape rather than hardcoding one.
++function extractPromptText(row: Record<string, unknown> | null | undefined): string {
++  if (!row) return "";
++  const val = row.content ?? row.body ?? row.prompt ?? "";
++  return typeof val === "string" ? val : "";
++}
++
++async function loadVoiceSystemPrompt(sb: SB): Promise<{ system: string; missing: string[] }> {
++  const taskInstruction =
++    "You rewrite one piece of copy for a lead-magnet web page. Rewrite the USER's `text` according to " +
++    "their `instruction`, staying strictly in the voice and forbidden-language rules above. Preserve " +
++    "meaning and any factual specifics. Return ONLY the rewritten copy as plain text — no preamble, no " +
++    "quotes, no markdown, no explanation. If the text contains inline HTML tags (e.g. <em>), preserve them.";
++
++  const missing: string[] = [];
++  let voiceText = "";
++  let forbiddenText = "";
++
++  try {
++    const { data, error } = await sb
++      .from("content_prompts")
++      .select("*")
++      .in("slug", ["forbidden-language", "author-voice"]);
++    if (error) throw error;
++    const rows: Record<string, unknown>[] = Array.isArray(data) ? data : [];
++    const voiceRow = rows.find((r) => r.slug === "author-voice");
++    const forbiddenRow = rows.find((r) => r.slug === "forbidden-language");
++    voiceText = extractPromptText(voiceRow);
++    forbiddenText = extractPromptText(forbiddenRow);
++    if (!voiceText) missing.push("author-voice");
++    if (!forbiddenText) missing.push("forbidden-language");
++  } catch (_e) {
++    missing.push("author-voice", "forbidden-language");
++  }
++
++  const parts = [voiceText, forbiddenText, taskInstruction].filter((p) => p && p.trim().length > 0);
++  return { system: parts.join("\n\n"), missing };
++}
++
++async function ipRateLimitOk(sb: SB, ip: string): Promise<boolean> {
++  try {
++    const { data, error } = await sb.rpc("bump_edge_rate", {
++      p_bucket: "hour",
++      p_ip: ip,
++      p_fn: "lm-copy-rewrite",
++      p_limit: IP_HOURLY_LIMIT,
++    });
++    if (error) return true; // RPC missing/erroring — don't block on it
++    return data !== false;
++  } catch (_e) {
++    return true;
++  }
++}
++
++export default async function handler(req: Request): Promise<Response> {
++  if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: cors() });
++  if (req.method !== "POST") return jsonResponse({ error: "method_not_allowed" }, 405);
++
++  let body: { text?: string; instruction?: string; context?: string } = {};
++  try {
++    body = await req.json();
++  } catch (_e) {
++    return jsonResponse({ error: "bad_json" }, 400);
++  }
++
++  const text = typeof body.text === "string" ? body.text : "";
++  const instruction = typeof body.instruction === "string" ? body.instruction : "";
++  const context = typeof body.context === "string" ? body.context : "";
++
++  if (!text.trim() || !instruction.trim()) {
++    return jsonResponse({ error: "text and instruction are required" }, 400);
++  }
++  if (text.length > TEXT_CAP) {
++    return jsonResponse({ error: `text exceeds ${TEXT_CAP} char limit` }, 400);
++  }
++  if (instruction.length > INSTRUCTION_CAP) {
++    return jsonResponse({ error: `instruction exceeds ${INSTRUCTION_CAP} char limit` }, 400);
++  }
++  if (context.length > CONTEXT_CAP) {
++    return jsonResponse({ error: `context exceeds ${CONTEXT_CAP} char limit` }, 400);
++  }
++
++  const sb = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY, { auth: { persistSession: false } });
++
++  const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || "0.0.0.0";
++  if (!(await ipRateLimitOk(sb, ip))) {
++    return jsonResponse({ error: "rate_limited" }, 429);
++  }
++
++  const { system } = await loadVoiceSystemPrompt(sb);
++
++  let userContent = "INSTRUCTION: " + instruction + "\n\nTEXT:\n" + text;
++  if (context.trim()) {
++    userContent += "\n\nPAGE CONTEXT (for tone only, do not include): " + context;
++  }
++
++  try {
++    const upstream = await fetch(RAILWAY_PROXY_URL, {
++      method: "POST",
++      headers: {
++        "Content-Type": "application/json",
++        "x-api-key": RAILWAY_PROXY_API_KEY,
++        "anthropic-version": "2023-06-01",
++      },
++      body: JSON.stringify({
++        model: MODEL,
++        max_tokens: MAX_TOKENS,
++        system,
++        messages: [{ role: "user", content: userContent }],
++      }),
++    });
++
++    if (!upstream.ok) {
++      return jsonResponse({ error: "rewrite_failed" }, 502);
++    }
++
++    const j = await upstream.json();
++    const rewritten = (j?.content?.[0]?.text as string | undefined)?.trim() || "";
++    if (!rewritten) {
++      return jsonResponse({ error: "rewrite_failed" }, 502);
++    }
++
++    return jsonResponse({ rewritten }, 200);
++  } catch (_e) {
++    return jsonResponse({ error: "rewrite_failed" }, 502);
++  }
++}
++
++// Always serve when running under Supabase Edge runtime.
++Deno.serve(handler);

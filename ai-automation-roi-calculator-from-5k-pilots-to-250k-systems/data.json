@@ -1,0 +1,181 @@
+{
+  "slug": "ai-automation-roi-calculator-from-5k-pilots-to-250k-systems",
+  "title": "The 90-Day Payback Calculator: Size Your AI Build From $5K Pilot to $250K System",
+  "subtitle": "For ops leaders at 10-200 person service firms. Plug in seven numbers, get back the right investment tier, payback window, and Year 1 net ROI before any vendor conversation.",
+  "brand": {
+    "accent": "#00E676",
+    "hero_badge": "Interactive Calculator"
+  },
+  "estimated_minutes": 5,
+  "inputs": [
+    {
+      "id": "hours_per_week",
+      "label": "Weekly hours consumed by the process",
+      "type": "range",
+      "suffix": "hrs/wk",
+      "min": 1,
+      "max": 80,
+      "step": 1,
+      "default": 18,
+      "slider": true,
+      "hint": "Total time across the whole team. Add up everyone who touches it, including handoffs and rework."
+    },
+    {
+      "id": "hourly_cost",
+      "label": "Fully-loaded hourly cost",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/hr",
+      "min": 20,
+      "max": 300,
+      "step": 1,
+      "default": 72,
+      "hint": "Salary + benefits + tax + overhead, divided by hours worked. Most service firm roles land between $45 and $120. If you don't have it, use 1.4x hourly salary."
+    },
+    {
+      "id": "monthly_volume",
+      "label": "Process volume",
+      "type": "number",
+      "suffix": "/month",
+      "min": 1,
+      "max": 5000,
+      "step": 1,
+      "default": 84,
+      "hint": "How many times this process runs per month. Onboardings, intake forms, proposals, reports, invoices, whatever the unit is."
+    },
+    {
+      "id": "rework_rate",
+      "label": "Rework rate",
+      "type": "range",
+      "suffix": "%",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "default": 22,
+      "slider": true,
+      "hint": "Portion of transactions that get redone or kicked back. Most service firm processes sit between 8% and 25%."
+    },
+    {
+      "id": "complexity",
+      "label": "Process complexity (1 = repetitive, 5 = many edge cases)",
+      "type": "range",
+      "min": 1,
+      "max": 5,
+      "step": 1,
+      "default": 3,
+      "slider": true,
+      "hint": "1 = single repetitive task, no decisions. 3 = a few decision points with documented rules. 5 = many edge cases, judgment calls, multiple systems to reconcile."
+    },
+    {
+      "id": "build_cost",
+      "label": "Estimated build cost",
+      "type": "number",
+      "prefix": "$",
+      "min": 1000,
+      "max": 500000,
+      "step": 500,
+      "default": 42000,
+      "hint": "Use the tier guidance below if you don't have a quote. $5K-$50K for low-complexity pilots, $50K-$150K for mid-complexity, $150K-$250K+ for enterprise-grade."
+    },
+    {
+      "id": "monthly_maintenance",
+      "label": "Monthly maintenance",
+      "type": "number",
+      "prefix": "$",
+      "suffix": "/mo",
+      "min": 0,
+      "max": 10000,
+      "step": 50,
+      "default": 850,
+      "hint": "API calls, hosting, model costs, plus any human review time. Most builds land between $300 and $2,500/month."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "net_year_one_roi",
+      "label": "Net Year 1 ROI",
+      "format": "percent",
+      "primary": true,
+      "formula": "((hours_per_week * 52 * hourly_cost * 0.75) + (((hours_per_week * 52 * hourly_cost * 0.75) / (1 - (rework_rate / 100))) * (rework_rate / 100)) - build_cost - (12 * monthly_maintenance)) / build_cost * 100",
+      "tier_thresholds": {
+        "low": 0,
+        "mid": 50,
+        "high": 150,
+        "low_label": "Re-scope or skip",
+        "mid_label": "Worth building, watch the scope",
+        "high_label": "Strong build, ship it"
+      }
+    },
+    {
+      "id": "annual_hours_recovered",
+      "label": "Annual hours recovered",
+      "format": "hours",
+      "formula": "hours_per_week * 52"
+    },
+    {
+      "id": "annual_labor_recovered",
+      "label": "Annual labor cost recovered",
+      "format": "currency",
+      "formula": "hours_per_week * 52 * hourly_cost * 0.75"
+    },
+    {
+      "id": "rework_eliminated",
+      "label": "Rework cost eliminated",
+      "format": "currency",
+      "formula": "(annual_labor_recovered / (1 - (rework_rate / 100))) * (rework_rate / 100)"
+    },
+    {
+      "id": "total_annual_value",
+      "label": "Total annual recovered value",
+      "format": "currency",
+      "formula": "annual_labor_recovered + rework_eliminated"
+    },
+    {
+      "id": "payback_months",
+      "label": "Payback period",
+      "format": "decimal",
+      "formula": "build_cost / Math.max(0.01, (total_annual_value / 12) - monthly_maintenance)"
+    }
+  ],
+  "recommendations": [
+    {
+      "tag": "Start here",
+      "when": "complexity <= 2 && payback_months < 3",
+      "text": "Pilot territory. Size this at $5K-$15K. Single-process RPA-style automation: invoice processing, intake form parsing, data entry between systems. If this is your first AI build, this is where to start. Don't let a vendor talk you into a $75K scope."
+    },
+    {
+      "tag": "Mid-market sweet spot",
+      "when": "complexity == 3 && payback_months >= 3 && payback_months <= 9",
+      "text": "Multi-agent orchestration band. $50K-$150K. Two or three agents passing structured handoffs with human review on 15-20% of cases. The bulk of mid-market builds live here. If your quote came in under $40K for a complexity-3 process, the scope is probably light."
+    },
+    {
+      "tag": "Enterprise-grade",
+      "when": "complexity >= 4 && payback_months >= 9 && payback_months <= 18",
+      "text": "$150K-$250K and up. Full agentic system across multiple departments, custom data integration, governance and audit trails. Don't start here unless you've already shipped a smaller build. The failure rate on first-time enterprise builds is brutal."
+    },
+    {
+      "tag": "Don't build it",
+      "when": "payback_months > 18",
+      "text": "The bottleneck is upstream of where AI can help. Redesign the process first: clean the input data, document the decision logic, narrow the scope. Then come back to this calculator. A build that takes 18+ months to pay back will be obsolete before it breaks even."
+    },
+    {
+      "tag": "Volume modifier",
+      "when": "monthly_volume >= 200 && complexity <= 2 && payback_months < 6",
+      "text": "High volume + low complexity = strong pilot candidate even when payback looks borderline. Unit economics get better the longer it runs. Push for the $5K-$15K range and a 6-week build window."
+    },
+    {
+      "tag": "Re-scope warning",
+      "when": "complexity >= 4 && monthly_volume < 50",
+      "text": "Low volume with high complexity rarely justifies the build. The fixed cost spreads across too few transactions. Either bundle this with a second process to share the architecture, or run it manually and revisit in 12 months."
+    },
+    {
+      "tag": "Pre-build sanity check",
+      "when": "rework_rate > 25",
+      "text": "Rework above 25% is a process problem, not an AI problem. Most of that ROI projection assumes the underlying logic is sound. Spend two weeks documenting where the rework comes from before scoping the build, or you'll automate the broken version."
+    }
+  ],
+  "capture_cta": {
+    "headline": "Send me your top 3 processes",
+    "description": "Fill in the seven inputs for each one and I'll return the tier recommendation plus a rough scope of what each build looks like. No vendor pitch, just the math."
+  }
+}

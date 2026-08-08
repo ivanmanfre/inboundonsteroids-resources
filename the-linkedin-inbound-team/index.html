@@ -6,30 +6,32 @@
 <title>The LinkedIn Inbound Team · 30 Claude agents</title>
 <meta name="description" content="Thirty small Claude agents for LinkedIn inbound, six each across profile, content, engagement, capture, and replies. One instruction file per agent, practice input included, free to download.">
 <link rel="canonical" href="https://resources.inboundonsteroids.com/the-linkedin-inbound-team/">
+<meta name="theme-color" content="#131210">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://resources.inboundonsteroids.com/the-linkedin-inbound-team/">
 <meta property="og:title" content="The LinkedIn Inbound Team · 30 Claude agents">
 <meta property="og:description" content="Thirty small Claude agents for LinkedIn inbound, six each across profile, content, engagement, capture, and replies. One instruction file per agent, practice input included.">
-<meta property="og:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-linkedin-inbound-team-grid-v2-2026-08-07.png">
+<meta property="og:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-linkedin-inbound-team-grid-v3-bb-2026-08-09.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="The LinkedIn Inbound Team · 30 Claude agents">
 <meta name="twitter:description" content="Thirty small Claude agents for LinkedIn inbound, six each across profile, content, engagement, capture, and replies.">
-<meta name="twitter:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-linkedin-inbound-team-grid-v2-2026-08-07.png">
+<meta name="twitter:image" content="https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-og/the-linkedin-inbound-team-grid-v3-bb-2026-08-09.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#FAF7F4;
+    --paper:#FFFFFF;
     --card:#FFFFFF;
-    --ink:#17171A;
-    --ink-2:#4A4640;
-    --muted:#6E6862;
-    --line:#E9E2DB;
-    --line-2:#EFE9E3;
-    --accent:#D64425;
-    --accent-soft:#FBE7E1;
-    --sans:"Archivo","Manrope","Helvetica Neue",Helvetica,Arial,sans-serif;
+    --ink:#131210;
+    --ink-2:#4A463E;
+    --muted:#6B675E;
+    --line:#C9C2B2;
+    --line-2:#C9C2B2;
+    --accent:#C8361B;
+    --accent-soft:#FFFFFF;
+    --sans:"Schibsted Grotesk",sans-serif;
+    --serif:"Source Serif 4",serif;
     --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
   }
   *{margin:0;padding:0;box-sizing:border-box}
@@ -44,148 +46,158 @@
   }
   .wrap{max-width:1080px;margin:0 auto;padding:0 22px}
   p{overflow-wrap:anywhere}
+  a{color:var(--ink)}
+  a:hover{color:var(--accent)}
 
   /* ---------- masthead ---------- */
-  .mast{display:flex;align-items:center;gap:10px;padding:26px 0 0}
-  .mast svg{width:20px;height:20px;flex:none}
-  .mast .wm{font-weight:900;font-size:15px;letter-spacing:.09em;color:var(--ink)}
+  .mast{display:flex;align-items:center;padding:26px 0 0}
+  .mast svg{display:none}
+  .mast .wm{font-family:var(--sans);font-size:20px;letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .mast .wm-a,.mast .wm-b{font-weight:500}
+  .mast .wm-on{font-weight:900;color:var(--accent)}
 
   /* ---------- hero ---------- */
-  .hero{padding:34px 0 42px;border-bottom:1px solid var(--line)}
-  .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+  .hero{padding:34px 0 42px;border-bottom:2.5px solid var(--ink)}
+  .eyebrow{font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);font-weight:800}
   h1{
-    font-weight:900;
+    font-family:var(--sans);
+    font-weight:800;
     font-size:clamp(38px,8.6vw,84px);
-    line-height:.98;
-    letter-spacing:-.018em;
+    line-height:.99;
+    letter-spacing:-.035em;
     margin:14px 0 0;
+    color:var(--ink);
   }
   .swipe{position:relative;display:inline-block;white-space:nowrap}
   .swipe > svg{position:absolute;left:-3%;top:6%;width:106%;height:84%;z-index:0}
   .swipe > span{position:relative;z-index:1;color:var(--ink)}
   .count{
-    margin-top:18px;font-family:var(--mono);font-size:clamp(12px,3.1vw,15px);
-    letter-spacing:.13em;font-weight:700;color:var(--accent);text-transform:uppercase;
+    margin-top:18px;font-family:var(--sans);font-size:clamp(12px,3.1vw,15px);
+    letter-spacing:.1em;font-weight:800;color:var(--accent);text-transform:uppercase;
   }
   .lede{margin-top:22px;max-width:64ch;font-size:clamp(16px,4.1vw,20px);color:var(--ink-2)}
   .lede + .lede{margin-top:14px}
   .facts{display:grid;grid-template-columns:1fr;gap:10px;margin-top:28px}
   .fact{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    background:var(--card);border:1px solid var(--line);border-radius:0;
     padding:14px 16px;display:flex;gap:12px;align-items:flex-start;
   }
   .fact svg{width:22px;height:22px;flex:none;margin-top:2px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
   .fact b{display:block;font-size:15px;font-weight:800}
   .fact span{display:block;font-size:14px;color:var(--muted);line-height:1.4}
 
-  /* ---------- download pill ---------- */
+  /* ---------- download button ---------- */
   .dlwrap{margin-top:26px}
   .dl{
     display:inline-flex;align-items:center;gap:10px;
-    background:var(--accent);color:#fff;text-decoration:none;
-    font-weight:800;font-size:clamp(15px,3.9vw,17px);letter-spacing:-.005em;
-    padding:15px 24px;border-radius:999px;border:1px solid var(--accent);
-    box-shadow:0 2px 12px rgba(214,68,37,.22);
+    background:var(--ink);color:#fff;text-decoration:none;
+    font-family:var(--sans);font-weight:700;font-size:clamp(15px,3.9vw,17px);letter-spacing:-.005em;
+    padding:15px 26px;border-radius:0;border:0;
+    box-shadow:none;
     max-width:100%;
+    transition:background .15s ease;
   }
   .dl svg{width:19px;height:19px;flex:none;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .dl:hover{background:#B93818;border-color:#B93818}
-  .dlnote{margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+  .dl:hover{background:var(--accent);color:#fff}
+  .dlnote{margin-top:10px;font-family:var(--sans);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 
   /* ---------- cta band ---------- */
   .cta{
-    background:var(--card);border:1px solid var(--line);border-radius:20px;
-    padding:22px 20px;margin-top:26px;display:grid;gap:18px;align-items:center;
-    box-shadow:0 1px 4px rgba(23,23,26,.04);
+    background:var(--card);border:4px solid var(--ink);outline:1px solid var(--ink);outline-offset:3px;border-radius:0;
+    padding:22px 20px;margin-top:30px;display:grid;gap:18px;align-items:center;
+    box-shadow:none;
   }
-  .cta img{width:92px;height:92px;border-radius:22px;object-fit:cover;display:block;border:1px solid var(--line)}
+  .cta img{width:92px;height:92px;border-radius:0;object-fit:cover;display:block;border:1px solid var(--line)}
   .cta p{font-size:16px;color:var(--ink-2);margin-top:10px;max-width:58ch}
-  .cta .who{font-weight:900;font-size:18px;color:var(--ink)}
+  .cta .who{font-family:var(--sans);font-weight:800;font-size:18px;color:var(--ink)}
   .ctabtn{
     display:inline-flex;align-items:center;gap:9px;margin-top:18px;
     background:var(--accent);color:#fff;text-decoration:none;
-    font-weight:800;font-size:16px;padding:13px 22px;border-radius:999px;
-    border:1px solid var(--accent);box-shadow:0 2px 12px rgba(214,68,37,.22);
+    font-family:var(--sans);font-weight:700;font-size:16px;padding:14px 24px;border-radius:0;
+    border:0;box-shadow:none;transition:background .15s ease;
   }
   .ctabtn svg{width:17px;height:17px;flex:none;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-  .ctabtn:hover{background:#B93818;border-color:#B93818}
+  .ctabtn:hover{background:var(--ink)}
 
   /* ---------- section furniture ---------- */
   section{padding:46px 0;border-bottom:1px solid var(--line)}
   .kicker{
-    font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
-    color:var(--accent);font-weight:700;display:flex;align-items:center;gap:10px;
+    font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);font-weight:800;display:flex;align-items:center;gap:10px;
   }
   .kicker i{display:block;width:26px;height:2px;background:var(--accent);flex:none}
-  h2{font-weight:900;font-size:clamp(27px,6.2vw,42px);line-height:1.04;letter-spacing:-.015em;margin:12px 0 0}
-  h3{font-weight:900;font-size:clamp(19px,4.6vw,24px);line-height:1.2;margin:0 0 8px}
+  h2{font-family:var(--sans);font-weight:800;font-size:clamp(27px,6.2vw,42px);line-height:1.04;letter-spacing:-.035em;margin:12px 0 0;color:var(--ink)}
+  h3{font-family:var(--sans);font-weight:800;font-size:clamp(19px,4.6vw,24px);line-height:1.2;margin:0 0 8px;color:var(--ink)}
   .sec-lede{margin-top:14px;max-width:62ch;color:var(--ink-2)}
 
   /* ---------- stage panels ---------- */
   .panels{margin-top:30px;display:grid;gap:16px}
-  .panel{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px 18px 8px;box-shadow:0 1px 4px rgba(23,23,26,.04)}
+  .panel{background:var(--card);border:1px solid var(--line);border-radius:0;padding:20px 18px 8px;box-shadow:none}
   .phead{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line-2)}
-  .phead .pico{width:38px;height:38px;flex:none;border:1px solid var(--line);border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(--paper)}
+  .phead .pico{width:38px;height:38px;flex:none;border:1px solid var(--line);border-radius:0;display:flex;align-items:center;justify-content:center;background:var(--paper)}
   .phead .pico svg{width:21px;height:21px;fill:none;stroke:var(--accent);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-  .phead .pn{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--muted)}
-  .phead .pt{font-weight:900;font-size:20px;letter-spacing:.01em}
+  .phead .pn{font-family:var(--sans);font-size:12px;font-weight:800;letter-spacing:.12em;color:var(--muted)}
+  .phead .pt{font-family:var(--sans);font-weight:800;font-size:20px;letter-spacing:.01em;color:var(--ink)}
   .phead .ps{font-size:14px;color:var(--muted);line-height:1.35;margin-top:2px}
   .rows{list-style:none}
   .rows li{display:grid;grid-template-columns:26px 1fr;gap:10px;padding:14px 0;border-bottom:1px solid var(--line-2)}
   .rows li:last-child{border-bottom:0}
   .rn{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);padding-top:2px}
-  .agent-name{display:block;font-weight:800;font-size:16px;letter-spacing:-.005em}
+  .agent-name{display:block;font-family:var(--sans);font-weight:800;font-size:16px;letter-spacing:-.005em;color:var(--ink)}
   .slug{display:block;font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-top:3px;overflow-wrap:anywhere}
   .ret{display:block;font-size:15px;color:var(--ink-2);margin-top:6px;line-height:1.42}
-  .ret em{font-style:normal;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:block;margin-bottom:2px}
+  .ret em{font-style:normal;color:var(--muted);font-family:var(--sans);font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:2px;font-weight:700}
 
   /* ---------- guide ---------- */
   .step{margin-top:32px}
   .step-head{display:flex;align-items:baseline;gap:12px}
-  .step-num{font-family:var(--mono);font-weight:800;font-size:13px;color:#fff;background:var(--ink);padding:3px 8px;border-radius:4px;letter-spacing:.08em;flex:none}
-  .path{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:14px}
-  .path h4{font-size:16px;font-weight:900;margin-bottom:8px}
+  .step-num{font-family:var(--sans);font-weight:800;font-size:13px;color:#fff;background:var(--ink);padding:3px 9px;border-radius:0;letter-spacing:.08em;flex:none}
+  .path{background:var(--card);border:1px solid var(--line);border-radius:0;padding:18px;margin-top:14px}
+  .path h4{font-family:var(--sans);font-size:16px;font-weight:800;margin-bottom:8px;color:var(--ink)}
   .path ol{margin:0 0 0 18px;font-size:15.5px;color:var(--ink-2)}
   .path ol li{margin-bottom:7px}
-  .path .tag{font-family:var(--mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);font-weight:700;display:block;margin-bottom:6px}
+  .path .tag{font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);font-weight:800;display:block;margin-bottom:6px}
   .note{margin-top:14px;padding-left:14px;border-left:2px solid var(--accent);color:var(--ink-2);font-size:15.5px}
 
   pre{
-    background:var(--card);border:1px solid var(--line);border-radius:14px;
+    background:var(--card);border:1px solid var(--line);border-radius:0;
     padding:15px 16px;margin-top:14px;
     font-family:var(--mono);font-size:12.5px;line-height:1.62;color:var(--ink);
     white-space:pre-wrap;overflow-wrap:anywhere;
   }
-  pre.io{background:#FCFAF8}
+  pre.io{background:#FBF9F6}
   pre b{color:var(--accent);font-weight:700}
 
   .rail{margin-top:22px;width:100%;height:auto;display:block}
 
-  .ex{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin-top:16px}
+  .ex{background:var(--card);border:1px solid var(--line);border-radius:0;padding:18px;margin-top:16px}
   .ex .exhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
-  .ex .stage-tag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;color:#fff;background:var(--accent);padding:2px 7px;border-radius:4px}
-  .ex .exname{font-weight:900;font-size:17px}
+  .ex .stage-tag{font-family:var(--sans);font-size:11px;font-weight:800;letter-spacing:.12em;color:#fff;background:var(--accent);padding:3px 8px;border-radius:0}
+  .ex .exname{font-family:var(--sans);font-weight:800;font-size:17px;color:var(--ink)}
   .ex .exslug{font-family:var(--mono);font-size:11.5px;color:var(--muted);overflow-wrap:anywhere}
-  .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:14px;display:block}
+  .lbl{font-family:var(--sans);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-top:14px;display:block}
   .after{margin-top:12px;font-size:15px;color:var(--muted)}
 
   /* ---------- refusal ---------- */
-  .refusal-block{background:var(--accent-soft);border:1px solid #F2CFC4;border-radius:18px;padding:18px;margin-top:18px}
-  .refusal-block pre{background:#fff;border-color:#F2CFC4}
+  .refusal-block{background:var(--paper);border:1px solid var(--line);border-left:2.5px solid var(--accent);border-radius:0;padding:18px;margin-top:18px}
+  .refusal-block pre{background:#fff;border-color:var(--line)}
   .refusal-block .src{font-family:var(--mono);font-size:11.5px;color:var(--accent);font-weight:700;letter-spacing:.06em;margin-top:10px;display:block;overflow-wrap:anywhere}
 
   /* ---------- faq ---------- */
   .faq{margin-top:26px;display:grid;gap:12px}
-  .qa{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px 18px}
-  .qa b{display:block;font-size:16.5px;font-weight:900;margin-bottom:6px}
+  .qa{background:var(--card);border:1px solid var(--line);border-radius:0;padding:16px 18px}
+  .qa b{display:block;font-family:var(--sans);font-size:16.5px;font-weight:800;margin-bottom:6px;color:var(--ink)}
   .qa p{font-size:15.5px;color:var(--ink-2)}
 
   /* ---------- footer ---------- */
-  footer{padding:40px 0 54px}
-  .fmark{display:flex;align-items:center;gap:11px}
-  .fmark svg{width:24px;height:24px;flex:none}
-  .fmark .fw{font-weight:900;font-size:clamp(17px,4.4vw,22px);letter-spacing:.06em}
-  .fline{margin-top:10px;font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+  footer{padding:40px 0 54px;border-top:2.5px solid var(--ink);margin-top:8px}
+  .fmark{display:flex;align-items:center}
+  .fmark svg{display:none}
+  .fmark .fw{font-family:var(--sans);font-size:clamp(17px,4.4vw,22px);letter-spacing:-.01em;color:var(--ink);text-decoration:none}
+  .fmark .fw:hover{color:var(--ink)}
+  .fmark .wm-a,.fmark .wm-b{font-weight:500}
+  .fmark .wm-on{font-weight:900;color:var(--accent)}
+  .fline{margin-top:10px;font-family:var(--serif);font-style:italic;font-size:15px;letter-spacing:0;color:var(--muted);text-transform:none}
 
   @media (min-width:700px){
     .facts{grid-template-columns:repeat(3,1fr)}
@@ -204,8 +216,7 @@
 
 <div class="wrap">
   <div class="mast">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" stroke="#D64425" stroke-width="2.1" stroke-linecap="round" fill="none"/></svg>
-    <div class="wm">INBOUNDONSTEROIDS</div>
+    <a class="wm" href="https://inboundonsteroids.com" aria-label="InboundOnSteroids home"><span class="wm-a">Inbound</span><span class="wm-on">On</span><span class="wm-b">Steroids</span></a>
   </div>
 
   <!-- ============ HERO ============ -->
@@ -214,8 +225,8 @@
     <h1>The LinkedIn<br>
       <span class="swipe">
         <svg viewBox="0 0 420 100" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M5 90 C 80 82, 210 86, 300 84 C 358 83, 398 87, 415 79 L 413 13 C 332 6, 198 11, 108 14 C 58 16, 22 12, 7 21 Z" fill="#D64425" opacity=".26"/>
-          <path d="M7 88 C 90 80, 215 84, 305 82 C 360 81, 398 85, 414 77" fill="none" stroke="#D64425" stroke-width="4" stroke-linecap="round" opacity=".55"/>
+          <path d="M5 90 C 80 82, 210 86, 300 84 C 358 83, 398 87, 415 79 L 413 13 C 332 6, 198 11, 108 14 C 58 16, 22 12, 7 21 Z" fill="#C8361B" opacity=".26"/>
+          <path d="M7 88 C 90 80, 215 84, 305 82 C 360 81, 398 85, 414 77" fill="none" stroke="#C8361B" stroke-width="4" stroke-linecap="round" opacity=".55"/>
         </svg>
         <span>Inbound Team</span>
       </span>
@@ -545,16 +556,16 @@
       <p class="sec-lede">Five real shapes, one per stage, so you can see what goes in and what comes back before you spend anything of your own on it. Inputs below are made up.</p>
 
       <svg class="rail" viewBox="0 0 640 62" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <rect x="4" y="16" width="150" height="32" rx="8" fill="none" stroke="#E9E2DB"/>
-        <text x="79" y="36" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="11.5" fill="#6E6862" letter-spacing="1.4">WHAT YOU PASTE</text>
-        <path d="M162 32h44" stroke="#D64425" stroke-width="1.6"/>
-        <path d="M200 27l6 5-6 5" fill="none" stroke="#D64425" stroke-width="1.6"/>
-        <rect x="214" y="14" width="196" height="36" rx="8" fill="#FBE7E1" stroke="#D64425"/>
-        <text x="312" y="37" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="12" fill="#D64425" letter-spacing="1.4">ONE SKILL.md</text>
-        <path d="M418 32h44" stroke="#D64425" stroke-width="1.6"/>
-        <path d="M456 27l6 5-6 5" fill="none" stroke="#D64425" stroke-width="1.6"/>
-        <rect x="470" y="16" width="166" height="32" rx="8" fill="none" stroke="#E9E2DB"/>
-        <text x="553" y="36" text-anchor="middle" font-family="ui-monospace,Menlo,monospace" font-size="11.5" fill="#6E6862" letter-spacing="1.4">ONE LINE BACK</text>
+        <rect x="4" y="16" width="150" height="32" rx="0" fill="none" stroke="#C9C2B2"/>
+        <text x="79" y="36" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-weight="700" font-size="11.5" fill="#6B675E" letter-spacing="1.4">WHAT YOU PASTE</text>
+        <path d="M162 32h44" stroke="#C8361B" stroke-width="1.6"/>
+        <path d="M200 27l6 5-6 5" fill="none" stroke="#C8361B" stroke-width="1.6"/>
+        <rect x="214" y="14" width="196" height="36" rx="0" fill="#FFFFFF" stroke="#C8361B" stroke-width="1.6"/>
+        <text x="312" y="37" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-weight="700" font-size="12" fill="#C8361B" letter-spacing="1.4">ONE SKILL.md</text>
+        <path d="M418 32h44" stroke="#C8361B" stroke-width="1.6"/>
+        <path d="M456 27l6 5-6 5" fill="none" stroke="#C8361B" stroke-width="1.6"/>
+        <rect x="470" y="16" width="166" height="32" rx="0" fill="none" stroke="#C9C2B2"/>
+        <text x="553" y="36" text-anchor="middle" font-family="'Schibsted Grotesk',sans-serif" font-weight="700" font-size="11.5" fill="#6B675E" letter-spacing="1.4">ONE LINE BACK</text>
       </svg>
 
       <!-- example 1 -->
@@ -703,8 +714,7 @@ convert/convert-03-inbound-reply-writer/fixtures/inbound-reply-thanks-only.md</p
 
   <footer>
     <div class="fmark">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M4.2 7.5l15.6 9M19.8 7.5l-15.6 9" stroke="#D64425" stroke-width="2.1" stroke-linecap="round" fill="none"/></svg>
-      <div class="fw">INBOUNDONSTEROIDS</div>
+      <a class="fw" href="https://inboundonsteroids.com" aria-label="InboundOnSteroids home"><span class="wm-a">Inbound</span><span class="wm-on">On</span><span class="wm-b">Steroids</span></a>
     </div>
     <div class="fline">The LinkedIn Inbound Team · 30 agents · 5 stages</div>
   </footer>

@@ -1,10 +1,20 @@
-/* Landing engine — gated opt-in front door. Reads landing.json, renders the
+/* Landing engine — opt-in front door. Reads landing.json, renders the
  * shared template, captures first name + email, POSTs lm-beacon
  * (event_type:'landing_capture' → lm_events + Resend delivery email), then
  * redirects to the static /thanks/ page. Data shape (landing.json):
  * { slug, format_label, category, headline, headline_emphasis, subhead,
  *   subhead_secondary, cover_url, inside:[..], proof, proof_avatar,
- *   resource_url, gate_keyword, cta_label } */
+ *   resource_url, gate_keyword, cta_label, gate_mode }
+ *
+ * gate_mode (2026-08-11) decides whether the email form is a WALL or an EXTRA.
+ * Absent = "always" so every pre-existing landing keeps its current behaviour.
+ *   "always"      — form is the only way through (legacy pages)
+ *   "public_only" — walled for feed/public traffic, open when the inbound link
+ *                   carries ?src=dm (we already own a reply channel there, so
+ *                   the email buys us nothing the DM thread hasn't)
+ *   "never"       — resource is always one click away, capture is optional
+ * Open modes need `resource_url`. The landing 'view' beacon fires in every
+ * mode, so visitor telemetry (and the client board tile) is unaffected. */
 (function () {
   "use strict";
   var L = window.LM || {};
@@ -62,6 +72,12 @@
     var ctaLabel = esc(d.cta_label || ("Email me the " + (d.format_label ? d.format_label.toLowerCase() : "resource")));
     var eyebrow = [d.format_label, d.category].filter(Boolean).map(esc).join(" · ");
 
+    // Gate mode — see header comment. Default "always" keeps legacy pages byte-identical.
+    var mode = d.gate_mode || "always";
+    var srcParam = new URLSearchParams(location.search).get("src");
+    var openDirect = !!d.resource_url && (mode === "never" || (mode === "public_only" && srcParam === "dm"));
+    window.__lm_open_direct = openDirect;
+
     // NOTE on registration exclusions (see report for full detail):
     // - eyebrow is a computed join of format_label + category, no single path
     // - the CTA button text below has a literal " →" arrow appended in the
@@ -82,14 +98,21 @@
           "</div>" +
           '<div class="lp-form-card">' +
             cover +
+            (openDirect
+              ? '<a class="lp-cta lp-cta-open" id="lp-open" href="' + esc(d.resource_url) + '">' + esc(d.cta_open_label || "Open it now") + " &rarr;</a>" +
+                '<p class="lp-micro">' + esc(d.open_micro || "No email needed. Yours to keep.") + "</p>" +
+                '<div class="lp-optin-split"><span>' + esc(d.optin_head || "Want it in your inbox too?") + "</span></div>"
+              : "") +
             '<form id="lp-form" novalidate>' +
               '<label class="lp-label" for="lp-first">First name</label>' +
               '<input class="lp-input" id="lp-first" name="first_name" type="text" autocomplete="given-name" placeholder="First name" required>' +
               '<label class="lp-label" for="lp-email">Work email</label>' +
               '<input class="lp-input" id="lp-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required>' +
-              '<button class="lp-cta" id="lp-submit" type="submit">' + ctaLabel + " &rarr;</button>" +
+              '<button class="lp-cta' + (openDirect ? " lp-cta-secondary" : "") + '" id="lp-submit" type="submit">' + ctaLabel + " &rarr;</button>" +
               '<p class="lp-err" id="lp-err"></p>' +
-              '<p class="lp-micro">One email. The link lands in your inbox in under a minute.</p>' +
+              '<p class="lp-micro">' + esc(openDirect
+                  ? (d.optin_micro || "One email with the link. Nothing else.")
+                  : "One email. The link lands in your inbox in under a minute.") + "</p>" +
             "</form>" +
           "</div>" +
         "</section>" +
@@ -127,10 +150,10 @@
     }
 
     try { if (L.beacon) L.beacon("landing", "view"); } catch (_) {}
-    wireForm(d);
+    wireForm(d, openDirect);
   }
 
-  function wireForm(d) {
+  function wireForm(d, openDirect) {
     var form = document.getElementById("lp-form");
     var errEl = document.getElementById("lp-err");
     var btn = document.getElementById("lp-submit");
@@ -163,6 +186,13 @@
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (res) {
           if (!res.ok) throw new Error((res.j && res.j.error) || "send_failed");
+          // In open modes the reader already has the resource one click above,
+          // so bouncing them to /thanks/ would take it away. Confirm in place.
+          if (openDirect) {
+            form.innerHTML = '<p class="lp-optin-done">' +
+              esc(d.optin_done || "Sent. Check your inbox in a minute.") + "</p>";
+            return;
+          }
           window.location.href = "/thanks/?lm=" + encodeURIComponent(d.slug || "");
         })
         .catch(function () {

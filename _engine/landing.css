@@ -29,6 +29,25 @@
 .lp-micro{font-size:.8rem;color:var(--muted);text-align:center;margin:.8rem 0 0}
 .lp-err{color:#C8361B;font-size:.85rem;margin:.5rem 0 0;min-height:1em;text-align:center}
 
+/* open modes (gate_mode public_only / never) — direct link is primary, the
+ * capture form drops to a secondary block underneath. Only layout properties
+ * live here so each host's own .lp-cta colour re-skin still wins. */
+.lp-cta-open{display:block;text-align:center;text-decoration:none;line-height:1.2}
+.lp-optin-split{display:flex;align-items:center;gap:.8rem;margin:1.5rem 0 1.1rem;color:var(--muted);font-size:.82rem}
+/* currentColor (not --line): RISE's dark re-skin never redefines --line, so a
+ * literal rule would draw an ink hairline on an ink panel. */
+.lp-optin-split::before,.lp-optin-split::after{content:"";flex:1;height:1px;background:currentColor;opacity:.28}
+/* Ghost treatment so the direct-open button is unmistakably the primary action.
+ * Scoped via .lp-form-card (0,2,0) to outrank each host's own .lp-cta re-skin
+ * (0,1,0), which would otherwise repaint this as a second solid button.
+ * color:inherit tracks the card's own text colour in both registers. */
+.lp-form-card .lp-cta-secondary{
+  background:transparent;color:inherit;border:1px solid currentColor;
+  opacity:.66;font-size:.92rem;font-weight:600;padding:.72rem 1rem;
+}
+.lp-form-card .lp-cta-secondary:hover{opacity:1;background:transparent;box-shadow:none;transform:none}
+.lp-optin-done{font-size:.92rem;color:var(--muted);text-align:center;margin:.4rem 0 0}
+
 /* inside */
 .lp-inside{padding:1rem 0 3rem;border-top:1px solid var(--line);margin-top:1rem}
 .lp-inside h2{font-family:'Bodoni Moda',serif;font-weight:500;font-size:1.6rem;margin:2rem 0 1.4rem}

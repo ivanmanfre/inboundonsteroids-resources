@@ -17,5 +17,12 @@
   "proof": "<b>I run this exact engine on my own feed.</b> The profile rewrites, comment angles, and DM replies in this pack are pieces of it, cut small enough for one person to run in a chat.",
   "proof_avatar": "https://resources.inboundonsteroids.com/assets/ivan.jpg",
   "cta_label": "Email me the 30 agents",
-  "proof_avatar_alt": "Ivan Manfredi"
+  "proof_avatar_alt": "Ivan Manfredi",
+  "gate_mode": "public_only",
+  "resource_url": "https://resources.inboundonsteroids.com/the-linkedin-inbound-team/",
+  "cta_open_label": "Open all 30 agents",
+  "open_micro": "No email needed. Yours to keep.",
+  "optin_head": "Want them in your inbox too?",
+  "optin_micro": "One email with the link. Nothing else.",
+  "optin_done": "Sent. Check your inbox in a minute."
 }

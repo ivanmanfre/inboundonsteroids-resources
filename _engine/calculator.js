@@ -16,7 +16,7 @@
     } catch (_) {}
     try {
       var q = new URLSearchParams(location.search);
-      var body = Object.assign({ event_type: event_type, lm_slug: window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || "", src: q.get("src") || "direct", utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign"), term: q.get("utm_term"), content: q.get("utm_content") }, prospect_id: q.get("pid") || null, referrer: document.referrer || "" }, payload || {});
+      var body = Object.assign({ event_type: event_type, lm_slug: window.__lm_slug || (window.__lm_data && window.__lm_data.slug) || "", src: q.get("src") || "direct", utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign"), term: q.get("utm_term"), content: q.get("utm_content") }, prospect_id: q.get("pid") || null, referrer: document.referrer || "", session_id: (window.LM && window.LM.readerIdentity) ? window.LM.readerIdentity().session_id : null }, payload || {});
       if (navigator.sendBeacon) navigator.sendBeacon(BEACON, new Blob([JSON.stringify(body)], { type: "application/json" }));
       else fetch(BEACON, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body), keepalive: true }).catch(function () {});
     } catch (_) {}

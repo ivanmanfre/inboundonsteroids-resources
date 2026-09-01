@@ -29,7 +29,8 @@
         src: q.get("src") || "direct",
         utm: { source: q.get("utm_source"), medium: q.get("utm_medium"), campaign: q.get("utm_campaign"), term: q.get("utm_term"), content: q.get("utm_content") },
         prospect_id: q.get("pid") || null,
-        referrer: document.referrer || ""
+        referrer: document.referrer || "",
+        session_id: (window.LM && window.LM.readerIdentity) ? window.LM.readerIdentity().session_id : null
       }, payload || {});
       if (navigator.sendBeacon) {
         navigator.sendBeacon(BEACON, new Blob([JSON.stringify(body)], { type: "application/json" }));

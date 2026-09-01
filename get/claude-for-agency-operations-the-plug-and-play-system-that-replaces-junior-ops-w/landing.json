@@ -18,5 +18,6 @@
   "resource_url": "https://resources.inboundonsteroids.com/claude-for-agency-operations-the-plug-and-play-system-that-replaces-junior-ops-w",
   "gate_keyword": "OPSKIT",
   "cta_label": "Email me the Ops Kit",
-  "proof_avatar_alt": "Ivan Manfredi"
+  "proof_avatar_alt": "Ivan Manfredi",
+  "gate_mode": "public_only"
 }

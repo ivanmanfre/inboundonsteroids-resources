@@ -18,5 +18,6 @@
   "resource_url": "https://bjbvqvzbzczjbatgmccb.supabase.co/storage/v1/object/public/lm-downloads/content-engine-starter-kit.zip",
   "gate_keyword": "ENGINE",
   "cta_label": "Email me the Starter Kit",
-  "proof_avatar_alt": "Ivan Manfredi"
+  "proof_avatar_alt": "Ivan Manfredi",
+  "gate_mode": "public_only"
 }

@@ -17,5 +17,6 @@
   "resource_url": "https://resources.inboundonsteroids.com/find-out-why-you-don-t-close-the-claude-system-that-reads-your-sales-calls",
   "gate_keyword": "CLOSER",
   "cta_label": "Email me the system",
-  "proof_avatar_alt": "Ivan Manfredi"
+  "proof_avatar_alt": "Ivan Manfredi",
+  "gate_mode": "public_only"
 }

@@ -18,5 +18,6 @@
   "resource_url": "https://resources.inboundonsteroids.com/the-agency-operating-system-for-claude-code",
   "gate_keyword": "SPINE",
   "cta_label": "Email me the AI Kit",
-  "proof_avatar_alt": "Ivan Manfredi"
+  "proof_avatar_alt": "Ivan Manfredi",
+  "gate_mode": "public_only"
 }

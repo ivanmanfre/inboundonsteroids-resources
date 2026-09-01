@@ -17,5 +17,6 @@
   "resource_url": "https://resources.inboundonsteroids.com/anti-ai-patterns-guide-the-tells-that-make-ai-written-content-obvious-and-how-to",
   "gate_keyword": "TELLS",
   "cta_label": "Email me the guide",
-  "proof_avatar_alt": "Ivan Manfredi"
+  "proof_avatar_alt": "Ivan Manfredi",
+  "gate_mode": "public_only"
 }

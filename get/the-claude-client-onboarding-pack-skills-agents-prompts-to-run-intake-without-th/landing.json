@@ -17,5 +17,6 @@
   "resource_url": "https://resources.inboundonsteroids.com/the-claude-client-onboarding-pack-skills-agents-prompts-to-run-intake-without-th",
   "gate_keyword": "INTAKE",
   "cta_label": "Email me the pack",
-  "proof_avatar_alt": "Ivan Manfredi"
+  "proof_avatar_alt": "Ivan Manfredi",
+  "gate_mode": "public_only"
 }

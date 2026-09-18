@@ -5,8 +5,7 @@
 /* hero variant + motion gate, runs before first paint so the right hero is the only one ever painted */
 (function(d){
   var r=d.documentElement,h="a";
-  try{ h=(new URLSearchParams(location.search).get("h")||"a").toLowerCase(); }catch(e){}
-  if(h!=="a"&&h!=="b"&&h!=="c") h="a";
+  /* headline A chosen 2026-09-19; B and C removed */
   r.setAttribute("data-hero",h);
   r.className+=(r.className?" ":"")+"js";
   try{ if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches) r.className+=" motion"; }catch(e){}
@@ -49,7 +48,7 @@ img{max-width:100%;display:block}
 
 /* three hero variants live in the DOM; data-hero on <html> is set before first paint */
 .hv{display:none}
-:root[data-hero="a"] .hv-a,:root[data-hero="b"] .hv-b,:root[data-hero="c"] .hv-c{display:block}
+:root[data-hero="a"] .hv-a{display:block}
 
 /* rotating deliverable: all five share one grid cell, so the box never reflows */
 .rotline{margin-top:16px;display:flex;align-items:flex-end;flex-wrap:wrap;gap:0 .38em;font-size:18px;line-height:1.6;color:var(--grey)}
@@ -218,17 +217,6 @@ img{max-width:100%;display:block}
         <h1>Your next client <em>reads your feed</em> before you ever get on a call.</h1>
         <p class="lede">Paste your LinkedIn URL. 30 post ideas built from your profile land in 10 minutes, four more pieces over five days.</p>
       </div>
-      <div class="hv hv-b">
-        <span class="kicker">For agency owners and B2B founders</span>
-        <h1>Content <em>decides which agency</em> gets the next client.</h1>
-        <p class="lede">Paste your LinkedIn URL. 30 post ideas built from your profile land in 10 minutes, four more pieces over five days.</p>
-      </div>
-      <div class="hv hv-c">
-        <span class="kicker">For agency owners and B2B founders</span>
-        <h1>Your feed <em>makes or breaks</em> the agency you built.</h1>
-        <p class="lede">Paste your LinkedIn URL. 30 post ideas built from your profile land in 10 minutes, four more pieces over five days.</p>
-      </div>
-
       <p class="rotline">
         <span>You get</span>
         <span class="roll" aria-hidden="true">

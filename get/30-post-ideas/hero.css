@@ -13,6 +13,16 @@
   :root.motion .roll-i.is-on { transform: none; }
   :root.motion .roll-i.is-out { transform: translateY(-.62em); }
 
+  /* three-step form: 200ms slide between steps, card height follows ------ */
+  :root.motion .steps { transition: height .2s ease; }
+  :root.motion .step-pane { transition: opacity .2s ease, transform .2s ease; }
+  :root.motion .step-pane.on { transform: none; }
+  :root.motion form.signup[data-dir="fwd"] .step-pane:not(.on):not(.out) { transform: translateX(18px); }
+  :root.motion form.signup[data-dir="fwd"] .step-pane.out { transform: translateX(-18px); }
+  :root.motion form.signup[data-dir="back"] .step-pane:not(.on):not(.out) { transform: translateX(-18px); }
+  :root.motion form.signup[data-dir="back"] .step-pane.out { transform: translateX(18px); }
+  :root.motion .dots i { transition: background .2s ease; }
+
   /* (c) hero illustration, slow ambient float --------------------------- */
   :root.motion .heroart img { animation: heroFloat 6s ease-in-out infinite; will-change: transform; }
   @keyframes heroFloat {

@@ -1,0 +1,56 @@
+/* Motion layer. Everything here is gated twice:
+   - the OS preference, via @media (prefers-reduced-motion: no-preference)
+   - the .motion class, set on <html> by the head script only when JS runs and the
+     OS preference is not "reduce". With JS off, no rule below applies and every
+     element sits in its natural, fully visible state.
+   Transform and opacity only. Nothing over 400ms except the ambient hero float. */
+
+@media (prefers-reduced-motion: no-preference) {
+
+  /* (a) rotating deliverable in the hero -------------------------------- */
+  :root.motion .roll-i { transition: opacity .28s ease, transform .28s ease; }
+  :root.motion .roll-i:not(.is-on) { transform: translateY(.62em); }
+  :root.motion .roll-i.is-on { transform: none; }
+  :root.motion .roll-i.is-out { transform: translateY(-.62em); }
+
+  /* (c) hero illustration, slow ambient float --------------------------- */
+  :root.motion .heroart img { animation: heroFloat 6s ease-in-out infinite; will-change: transform; }
+  @keyframes heroFloat {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+
+  /* (c) five drip tiles, light hover lift ------------------------------- */
+  :root.motion .drip .art { transition: transform .2s ease, box-shadow .2s ease; }
+  :root.motion .drip .step:hover .art { transform: translateY(-4px); box-shadow: 0 10px 22px rgba(19, 18, 16, .1); }
+
+  /* (b) five-day thread draws in, nodes pop in sequence ----------------- */
+  :root.motion .drip .node::before { transform: scaleX(0); transform-origin: left center; transition: transform .36s ease; }
+  :root.motion .drip .node::after  { transform: scale(0); transition: transform .26s cubic-bezier(.34, 1.4, .64, 1); }
+  :root.motion .drip.is-in .node::before { transform: scaleX(1); }
+  :root.motion .drip.is-in .node::after  { transform: scale(1); }
+
+  :root.motion .drip.is-in .step:nth-child(1) .node::before { transition-delay: .00s }
+  :root.motion .drip.is-in .step:nth-child(2) .node::before { transition-delay: .13s }
+  :root.motion .drip.is-in .step:nth-child(3) .node::before { transition-delay: .26s }
+  :root.motion .drip.is-in .step:nth-child(4) .node::before { transition-delay: .39s }
+  :root.motion .drip.is-in .step:nth-child(5) .node::before { transition-delay: .52s }
+  :root.motion .drip.is-in .step:nth-child(1) .node::after  { transition-delay: .10s }
+  :root.motion .drip.is-in .step:nth-child(2) .node::after  { transition-delay: .23s }
+  :root.motion .drip.is-in .step:nth-child(3) .node::after  { transition-delay: .36s }
+  :root.motion .drip.is-in .step:nth-child(4) .node::after  { transition-delay: .49s }
+  :root.motion .drip.is-in .step:nth-child(5) .node::after  { transition-delay: .62s }
+
+  /* under 700px the thread is vertical, so it draws downward */
+  @media (max-width: 700px) {
+    :root.motion .drip .node::before { transform: scaleY(0); transform-origin: center top; }
+    :root.motion .drip.is-in .node::before { transform: scaleY(1); }
+  }
+
+  /* (d) the three hooks on the anatomy card fade up in sequence --------- */
+  :root.motion .idea .hooks li { opacity: 0; transform: translateY(10px); transition: opacity .32s ease, transform .32s ease; }
+  :root.motion .idea.is-in .hooks li { opacity: 1; transform: none; }
+  :root.motion .idea.is-in .hooks li:nth-child(1) { transition-delay: .04s }
+  :root.motion .idea.is-in .hooks li:nth-child(2) { transition-delay: .16s }
+  :root.motion .idea.is-in .hooks li:nth-child(3) { transition-delay: .28s }
+}

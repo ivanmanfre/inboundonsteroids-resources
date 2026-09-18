@@ -8,7 +8,8 @@
   try{ h=(new URLSearchParams(location.search).get("h")||"a").toLowerCase(); }catch(e){}
   if(h!=="a"&&h!=="b"&&h!=="c") h="a";
   r.setAttribute("data-hero",h);
-  try{ if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches) r.className+=(r.className?" ":"")+"motion"; }catch(e){}
+  r.className+=(r.className?" ":"")+"js";
+  try{ if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches) r.className+=" motion"; }catch(e){}
 })(document);
 </script>
 <meta charset="utf-8">
@@ -77,6 +78,28 @@ img{max-width:100%;display:block}
 .runs{margin-top:12px;font-size:13.5px;font-weight:650;color:var(--ink);display:flex;align-items:center;gap:8px}
 .runs::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);flex:none}
 
+/* three-step form: one field per step, same card */
+.steps{position:relative}
+.step-pane{min-width:0}
+:root.js .step-pane{opacity:0;pointer-events:none;position:absolute;top:0;left:0;right:0}
+:root.js .step-pane.on{opacity:1;pointer-events:auto;position:relative}
+.step-head{font-size:17px;font-weight:650;letter-spacing:-.02em;line-height:1.35;color:var(--ink);margin-bottom:16px}
+.helpwrap{margin-top:12px}
+.help-toggle{background:0;border:0;padding:0;font:650 13px/1.5 var(--body);color:var(--grey-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.help-toggle:hover{color:var(--red)}
+.help{margin-top:11px;padding:13px 15px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+.help p{font-size:13.5px;line-height:1.55;color:var(--grey)}
+.help p+p{margin-top:6px}
+.help a{display:inline-block;margin-top:10px;font-size:13.5px;font-weight:650;color:var(--red);text-decoration:none;border-bottom:1px solid currentColor}
+.skip{display:block;margin:14px auto 0;background:0;border:0;padding:4px;font:400 13.5px/1.5 var(--body);color:var(--grey-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.skip:hover{color:var(--ink)}
+.formfoot{display:flex;align-items:center;gap:16px;margin-top:20px;min-height:20px}
+.back{background:0;border:0;padding:4px 0;font:650 13px/1.5 var(--body);color:var(--grey-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.back:hover{color:var(--ink)}
+.dots{display:flex;gap:7px;margin-left:auto}
+.dots i{width:7px;height:7px;border-radius:50%;background:#d6d2ca}
+.dots i.on{background:var(--red)}
+
 .heroart{margin-top:34px;max-width:300px}
 .heroart img{width:100%;height:auto;border-radius:18px;background:var(--cream)}
 
@@ -132,6 +155,14 @@ img{max-width:100%;display:block}
 .close .note{color:#bdb7ae}
 .close .runs{color:var(--white)}
 .close .err{color:#f0846d}
+.close .step-head{color:var(--white)}
+.close .help{background:#0e0d0c;border-color:rgba(255,255,255,.16)}
+.close .help p{color:#bdb7ae}
+.close .help-toggle,.close .skip,.close .back{color:#bdb7ae}
+.close .help-toggle:hover{color:var(--white)}
+.close .skip:hover,.close .back:hover{color:var(--white)}
+.close .dots i{background:rgba(255,255,255,.24)}
+.close .dots i.on{background:var(--red)}
 
 .foot{padding:34px 0 46px;display:flex;justify-content:center}
 
@@ -215,26 +246,53 @@ img{max-width:100%;display:block}
       </div>
     </div>
 
-    <form class="panel signup" novalidate>
-      <div class="field">
-        <label for="li-1">Your LinkedIn profile URL</label>
-        <input id="li-1" name="linkedin_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="linkedin.com/in/yourname">
-        <span class="err" data-err="linkedin" role="alert"></span>
-      </div>
-      <div class="field">
-        <label for="ws-1">Your website</label>
-        <input id="ws-1" name="website" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="yourcompany.com">
-        <span class="err" data-err="website" role="alert"></span>
-      </div>
-      <div class="field">
-        <label for="em-1">Your email</label>
-        <input id="em-1" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@company.com">
-        <span class="err" data-err="email" role="alert"></span>
+    <form class="panel signup" novalidate data-step="1" data-dir="fwd">
+      <div class="steps">
+        <div class="step-pane on" data-pane="1">
+          <div class="field">
+            <label for="li-1">Your LinkedIn profile URL</label>
+            <input id="li-1" name="linkedin_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="linkedin.com/in/yourname">
+            <span class="err" data-err="linkedin" role="alert"></span>
+          </div>
+          <div class="helpwrap">
+            <button class="help-toggle" type="button" aria-expanded="false" aria-controls="help-1">Show me how to find it</button>
+            <div class="help" id="help-1" hidden>
+              <p>Open LinkedIn, tap your photo, copy the address bar.</p>
+              <p>On desktop it is the address when you open your profile.</p>
+              <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer">Open my LinkedIn profile</a>
+            </div>
+          </div>
+          <button class="cta" type="submit">Show me my 30 ideas <span aria-hidden="true">&#8599;</span></button>
+        </div>
+
+        <div class="step-pane" data-pane="2">
+          <p class="step-head">Want sharper ideas? Add your website</p>
+          <div class="field">
+            <label for="ws-1">Your website</label>
+            <input id="ws-1" name="website" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="yourcompany.com">
+            <span class="err" data-err="website" role="alert"></span>
+          </div>
+          <button class="cta" type="submit">Continue <span aria-hidden="true">&#8599;</span></button>
+          <button class="skip" type="button">Skip, use my LinkedIn only</button>
+        </div>
+
+        <div class="step-pane" data-pane="3">
+          <p class="step-head">Where should the ideas land?</p>
+          <div class="field">
+            <label for="em-1">Your email</label>
+            <input id="em-1" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@company.com">
+            <span class="err" data-err="email" role="alert"></span>
+          </div>
+          <button class="cta" type="submit">Send my 30 ideas <span aria-hidden="true">&#8599;</span></button>
+          <span class="err" data-err="form" role="alert"></span>
+          <p class="note">First email lands in about ten minutes. Four more follow over five days.</p>
+        </div>
       </div>
       <input class="hp" type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="cta" type="submit">Send my 30 ideas <span aria-hidden="true">&#8599;</span></button>
-      <span class="err" data-err="form" role="alert"></span>
-      <p class="note">First email lands in about ten minutes. Four more follow over five days.</p>
+      <div class="formfoot">
+        <button class="back" type="button" hidden>Back</button>
+        <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+      </div>
       <p class="runs" id="runs" hidden></p>
     </form>
   </section>
@@ -312,26 +370,53 @@ img{max-width:100%;display:block}
 
   <section class="close"><div class="wrap grid">
     <h2>Send me the 30 ideas.</h2>
-    <form class="panel signup" novalidate>
-      <div class="field">
-        <label for="li-2">Your LinkedIn profile URL</label>
-        <input id="li-2" name="linkedin_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="linkedin.com/in/yourname">
-        <span class="err" data-err="linkedin" role="alert"></span>
-      </div>
-      <div class="field">
-        <label for="ws-2">Your website</label>
-        <input id="ws-2" name="website" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="yourcompany.com">
-        <span class="err" data-err="website" role="alert"></span>
-      </div>
-      <div class="field">
-        <label for="em-2">Your email</label>
-        <input id="em-2" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@company.com">
-        <span class="err" data-err="email" role="alert"></span>
+    <form class="panel signup" novalidate data-step="1" data-dir="fwd">
+      <div class="steps">
+        <div class="step-pane on" data-pane="1">
+          <div class="field">
+            <label for="li-2">Your LinkedIn profile URL</label>
+            <input id="li-2" name="linkedin_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="linkedin.com/in/yourname">
+            <span class="err" data-err="linkedin" role="alert"></span>
+          </div>
+          <div class="helpwrap">
+            <button class="help-toggle" type="button" aria-expanded="false" aria-controls="help-2">Show me how to find it</button>
+            <div class="help" id="help-2" hidden>
+              <p>Open LinkedIn, tap your photo, copy the address bar.</p>
+              <p>On desktop it is the address when you open your profile.</p>
+              <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer">Open my LinkedIn profile</a>
+            </div>
+          </div>
+          <button class="cta" type="submit">Show me my 30 ideas <span aria-hidden="true">&#8599;</span></button>
+        </div>
+
+        <div class="step-pane" data-pane="2">
+          <p class="step-head">Want sharper ideas? Add your website</p>
+          <div class="field">
+            <label for="ws-2">Your website</label>
+            <input id="ws-2" name="website" type="text" inputmode="url" autocomplete="off" spellcheck="false" placeholder="yourcompany.com">
+            <span class="err" data-err="website" role="alert"></span>
+          </div>
+          <button class="cta" type="submit">Continue <span aria-hidden="true">&#8599;</span></button>
+          <button class="skip" type="button">Skip, use my LinkedIn only</button>
+        </div>
+
+        <div class="step-pane" data-pane="3">
+          <p class="step-head">Where should the ideas land?</p>
+          <div class="field">
+            <label for="em-2">Your email</label>
+            <input id="em-2" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@company.com">
+            <span class="err" data-err="email" role="alert"></span>
+          </div>
+          <button class="cta" type="submit">Send my 30 ideas <span aria-hidden="true">&#8599;</span></button>
+          <span class="err" data-err="form" role="alert"></span>
+          <p class="note">First email lands in about ten minutes. Four more follow over five days.</p>
+        </div>
       </div>
       <input class="hp" type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button class="cta" type="submit">Send my 30 ideas <span aria-hidden="true">&#8599;</span></button>
-      <span class="err" data-err="form" role="alert"></span>
-      <p class="note">First email lands in about ten minutes. Four more follow over five days.</p>
+      <div class="formfoot">
+        <button class="back" type="button" hidden>Back</button>
+        <span class="dots" aria-hidden="true"><i class="on"></i><i></i><i></i></span>
+      </div>
     </form>
   </div></section>
 </main>
@@ -398,28 +483,87 @@ img{max-width:100%;display:block}
     return { value: s };
   }
 
-  function submit(form) {
-    clearErrs(form);
-    var li = checkLinkedin(form.querySelector('[name="linkedin_url"]').value);
-    var ws = checkSite(form.querySelector('[name="website"]').value);
-    var em = checkEmail(form.querySelector('[name="email"]').value);
-    if (li.err) setErr(form, "linkedin", li.err);
-    if (ws.err) setErr(form, "website", ws.err);
-    if (em.err) setErr(form, "email", em.err);
-    if (li.err || ws.err || em.err) {
-      var firstKey = li.err ? "linkedin" : ws.err ? "website" : "email";
-      form.querySelector('[name="' + NAMES[firstKey] + '"]').focus();
+  function val(form, name) { return form.querySelector('[name="' + name + '"]').value; }
+  function focusField(form, key) {
+    var el = form.querySelector('[name="' + NAMES[key] + '"]');
+    if (el) el.focus({ preventScroll: true });
+  }
+
+  /* ---- three-step flow: one field per step, same card ---- */
+  function sizeSteps(form) {
+    var box = form.querySelector(".steps");
+    var pane = form.querySelector(".step-pane.on");
+    if (box && pane) box.style.height = pane.offsetHeight + "px";
+  }
+
+  function setStep(form, n, dir) {
+    var cur = form.querySelector(".step-pane.on");
+    var next = form.querySelector('.step-pane[data-pane="' + n + '"]');
+    if (!next) return;
+    form.setAttribute("data-dir", dir || "fwd");
+    form.setAttribute("data-step", String(n));
+    if (cur && cur !== next) {
+      cur.classList.remove("on");
+      cur.classList.add("out");
+      setTimeout(function () { cur.classList.remove("out"); }, 240);
+    }
+    next.classList.add("on");
+    Array.prototype.forEach.call(form.querySelectorAll(".step-pane"), function (p) {
+      if (p === next) p.removeAttribute("inert"); else p.setAttribute("inert", "");
+    });
+    var back = form.querySelector(".back");
+    if (back) back.hidden = (n === 1);
+    Array.prototype.forEach.call(form.querySelectorAll(".dots i"), function (d, k) {
+      d.classList.toggle("on", k < n);
+    });
+    if (n === 2) form.dataset.skipped = "";
+    sizeSteps(form);
+    if (cur && cur !== next) focusField(form, n === 1 ? "linkedin" : n === 2 ? "website" : "email");
+  }
+
+  function advance(form) {
+    var step = Number(form.getAttribute("data-step") || 1);
+    if (step === 1) {
+      var li = checkLinkedin(val(form, "linkedin_url"));
+      setErr(form, "linkedin", li.err || "");
+      if (li.err) { focusField(form, "linkedin"); sizeSteps(form); return; }
+      setStep(form, 2, "fwd");
       return;
     }
+    if (step === 2) {
+      var ws = checkSite(val(form, "website"));
+      setErr(form, "website", ws.err || "");
+      if (ws.err) { focusField(form, "website"); sizeSteps(form); return; }
+      form.dataset.skipped = "";
+      setStep(form, 3, "fwd");
+      return;
+    }
+    submit(form);
+  }
 
-    var btn = form.querySelector("button[type=submit]");
+  function submit(form) {
+    clearErrs(form);
+    var li = checkLinkedin(val(form, "linkedin_url"));
+    if (li.err) { setErr(form, "linkedin", li.err); setStep(form, 1, "back"); return; }
+
+    var site = "";
+    if (form.dataset.skipped !== "1") {
+      var ws = checkSite(val(form, "website"));
+      if (ws.err) { setErr(form, "website", ws.err); setStep(form, 2, "back"); return; }
+      site = ws.value;
+    }
+
+    var em = checkEmail(val(form, "email"));
+    if (em.err) { setErr(form, "email", em.err); focusField(form, "email"); sizeSteps(form); return; }
+
+    var btn = form.querySelector('.step-pane[data-pane="3"] button[type=submit]');
     var label = btn.innerHTML;
     btn.disabled = true;
     btn.innerHTML = "Sending";
 
     var body = {
       linkedin_url: li.value,
-      website: ws.value,
+      website: site,
       email: em.value,
       company_site: form.querySelector('[name="company_site"]').value || "",
       utm_source: q.get("utm_source"),
@@ -435,28 +579,70 @@ img{max-width:100%;display:block}
       .then(function (res) {
         if (res.j && res.j.ok) { location.href = THANKS; return; }
         var e = res.j && res.j.error;
-        if (e === "bad_linkedin_url") setErr(form, "linkedin", COPY.li_bad);
-        else if (e === "bad_email") setErr(form, "email", COPY.em_bad);
+        btn.disabled = false; btn.innerHTML = label;
+        if (e === "bad_linkedin_url") { setErr(form, "linkedin", COPY.li_bad); setStep(form, 1, "back"); return; }
+        if (e === "bad_email") setErr(form, "email", COPY.em_bad);
         else if (e === "not_open_yet") setErr(form, "form", COPY.closed);
         else setErr(form, "form", COPY.server);
-        btn.disabled = false; btn.innerHTML = label;
+        sizeSteps(form);
       })
       .catch(function () {
         setErr(form, "form", COPY.net);
         btn.disabled = false; btn.innerHTML = label;
+        sizeSteps(form);
       });
   }
 
   Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function (form) {
-    form.addEventListener("submit", function (ev) { ev.preventDefault(); submit(form); });
+    form.addEventListener("submit", function (ev) { ev.preventDefault(); advance(form); });
+
+    var back = form.querySelector(".back");
+    if (back) back.addEventListener("click", function () {
+      var step = Number(form.getAttribute("data-step") || 1);
+      if (step > 1) setStep(form, step - 1, "back");
+    });
+
+    var skip = form.querySelector(".skip");
+    if (skip) skip.addEventListener("click", function () {
+      form.querySelector('[name="website"]').value = "";
+      setErr(form, "website", "");
+      form.dataset.skipped = "1";
+      setStep(form, 3, "fwd");
+    });
+
+    var toggle = form.querySelector(".help-toggle");
+    var help = form.querySelector(".help");
+    if (toggle && help) toggle.addEventListener("click", function () {
+      var open = help.hidden;
+      help.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      sizeSteps(form);
+    });
+
     Array.prototype.forEach.call(form.querySelectorAll("input"), function (i) {
       i.addEventListener("input", function () {
         var k = i.name === "linkedin_url" ? "linkedin" : i.name === "website" ? "website" : i.name === "email" ? "email" : null;
         if (k) setErr(form, k, "");
         setErr(form, "form", "");
+        sizeSteps(form);
       });
     });
+
+    Array.prototype.forEach.call(form.querySelectorAll(".step-pane"), function (p) {
+      if (!p.classList.contains("on")) p.setAttribute("inert", "");
+    });
+    form.dataset.skipped = "";
+    sizeSteps(form);
   });
+
+  window.addEventListener("resize", function () {
+    Array.prototype.forEach.call(document.querySelectorAll("form.signup"), sizeSteps);
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      Array.prototype.forEach.call(document.querySelectorAll("form.signup"), sizeSteps);
+    });
+  }
 
   fetch(FN + "?count=1", { method: "GET" })
     .then(function (r) { return r.json(); })

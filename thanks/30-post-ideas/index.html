@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Your 30 post ideas are on the way</title>
 <link rel="preconnect" href="https://inboundonsteroids.com" crossorigin>
+<link rel="stylesheet" href="/get/30-post-ideas/proof.css">
 <style>
 @font-face{font-family:Manrope;src:url(https://inboundonsteroids.com/assets/home-v7/e310b55a7fd9677f.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
 :root{
@@ -43,13 +44,20 @@ img{max-width:100%;display:block}
 
 .band{margin-top:62px;background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:62px 0}
 .band h2{font-size:clamp(26px,2.9vw,38px)}
-.time{margin-top:34px;position:relative;padding-left:26px}
-.time::before{content:"";position:absolute;left:4px;top:8px;bottom:8px;width:1px;background:var(--line)}
-.time .step{position:relative;padding:0 0 26px}
+.time{list-style:none;margin:34px 0 0;padding:0 0 0 26px;position:relative}
+.time::before{content:"";position:absolute;left:4px;top:26px;bottom:34px;width:2px;margin-left:-1px;background:var(--red)}
+.time .step{position:relative;display:grid;grid-template-columns:92px minmax(0,1fr);gap:22px;align-items:center;padding:0 0 22px}
 .time .step:last-child{padding-bottom:0}
-.time .step::before{content:"";position:absolute;left:-26px;top:7px;width:9px;height:9px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--cream)}
+.time .step::before{content:"";position:absolute;left:-26px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--cream)}
 .time .when{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
 .time .what{display:block;font-size:17px;line-height:1.55;color:var(--ink)}
+.time .txt{min-width:0;grid-column:2;grid-row:1}
+.time .art{grid-column:1;grid-row:1;width:92px;height:92px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;flex:none}
+.time .art img{width:100%;height:100%;object-fit:contain;display:block}
+
+/* collapses to nothing while proof.json is empty: the spacing rides on the block itself */
+.social{padding:0}
+.social .proof.is-on{padding-top:54px}
 
 .connect{padding:48px 0 72px}
 .connect p{font-size:17px;line-height:1.7;color:var(--grey);max-width:34em}
@@ -64,6 +72,10 @@ img{max-width:100%;display:block}
   .slot-poster{gap:14px}
   .slot-poster img{width:72px;height:72px}
   .slot-poster .line{font-size:15.5px}
+  .time .step{grid-template-columns:68px minmax(0,1fr);gap:14px}
+  .time .art{width:68px;height:68px;border-radius:12px}
+  .time .what{font-size:16px}
+  .social .proof.is-on{padding-top:42px}
   .connect{padding:38px 0 54px}
 }
 </style>
@@ -94,12 +106,30 @@ img{max-width:100%;display:block}
 
   <section class="band"><div class="wrap">
     <h2>What arrives, and when.</h2>
-    <div class="time">
-      <div class="step"><span class="when">10 minutes</span><span class="what">30 post ideas, each with the reason it fits you and three hooks.</span></div>
-      <div class="step"><span class="when">Day 2</span><span class="what">Your voice profile, with your own lines quoted back.</span></div>
-      <div class="step"><span class="when">Day 3</span><span class="what">A week of posts, your words and your brand.</span></div>
-      <div class="step"><span class="when">Day 4</span><span class="what">A profile rewrite. Three headlines and a new About.</span></div>
-      <div class="step"><span class="when">Day 5</span><span class="what">Your lead magnet. The concept, a designed cover and the post that gives it away.</span></div>
+    <ol class="time">
+      <li class="step">
+        <span class="txt"><span class="when">10 minutes</span><span class="what">30 post ideas, each with the reason it fits you and three hooks.</span></span>
+        <span class="art"><img src="/get/30-post-ideas/img/idea-grid.png" width="760" height="760" alt="A grid of post idea cards, three of them marked in red" loading="lazy" decoding="async"></span>
+      </li>
+      <li class="step">
+        <span class="txt"><span class="when">Day 2</span><span class="what">Your voice profile, with your own lines quoted back.</span></span>
+        <span class="art"><img src="/get/30-post-ideas/img/voice-wave.png" width="760" height="760" alt="A red audio waveform on cream" loading="lazy" decoding="async"></span>
+      </li>
+      <li class="step">
+        <span class="txt"><span class="when">Day 3</span><span class="what">A week of posts, your words and your brand.</span></span>
+        <span class="art"><img src="/get/30-post-ideas/img/week-calendar.png" width="760" height="760" alt="Five post cards in a row with a red line running through them" loading="lazy" decoding="async"></span>
+      </li>
+      <li class="step">
+        <span class="txt"><span class="when">Day 4</span><span class="what">A profile rewrite. Three headlines and a new About.</span></span>
+        <span class="art"><img src="/get/30-post-ideas/img/profile-highlight.png" width="760" height="760" alt="A profile page with one line under a red marker swipe" loading="lazy" decoding="async"></span>
+      </li>
+      <li class="step">
+        <span class="txt"><span class="when">Day 5</span><span class="what">Your lead magnet. The concept, a designed cover and the post that gives it away.</span></span>
+        <span class="art"><img src="/get/30-post-ideas/img/cover-stand.png" width="760" height="760" alt="A lead magnet cover standing on an easel" loading="lazy" decoding="async"></span>
+      </li>
+    </ol>
+    <div class="social">
+      <div class="proof" data-proof-src="/get/30-post-ideas/proof.json" data-proof-title="What people replied" data-proof-max="3"></div>
     </div>
   </div></section>
 
@@ -110,5 +140,6 @@ img{max-width:100%;display:block}
 
 <footer class="foot"><a class="wordmark" href="https://inboundonsteroids.com/">INBOUND<b>ON</b>STEROIDS</a></footer>
 
+<script src="/get/30-post-ideas/proof.js" defer></script>
 </body>
 </html>

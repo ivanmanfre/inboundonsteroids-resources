@@ -6,6 +6,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>30 post ideas built from your LinkedIn profile</title>
 <link rel="preconnect" href="https://inboundonsteroids.com" crossorigin>
+<link rel="stylesheet" href="proof.css">
 <style>
 @font-face{font-family:Manrope;src:url(https://inboundonsteroids.com/assets/home-v7/e310b55a7fd9677f.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
 :root{
@@ -53,12 +54,41 @@ img{max-width:100%;display:block}
 .runs{margin-top:12px;font-size:13.5px;font-weight:650;color:var(--ink);display:flex;align-items:center;gap:8px}
 .runs::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);flex:none}
 
+.heroart{margin-top:34px;max-width:300px}
+.heroart img{width:100%;height:auto;border-radius:18px;background:var(--cream)}
+
 .band{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:78px 0}
 .band h2{font-size:clamp(30px,3.3vw,45px)}
-.sched{margin-top:42px;border-top:1px solid var(--line)}
-.sched .row{display:grid;grid-template-columns:132px minmax(0,1fr);gap:28px;padding:22px 0;border-bottom:1px solid var(--line);align-items:baseline}
-.sched .when{font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
-.sched .what{font-size:17px;line-height:1.55;color:var(--ink)}
+
+/* five-day drip: five nodes on one red thread, each carrying its illustration */
+.drip{list-style:none;margin:46px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+.drip .step{min-width:0;display:flex;flex-direction:column}
+.drip .art{width:100%;aspect-ratio:1;border:1px solid var(--line);border-radius:16px;background:var(--white);overflow:hidden}
+.drip .art img{width:100%;height:100%;object-fit:contain}
+.drip .node{position:relative;height:30px;display:flex;align-items:center;justify-content:center;flex:none}
+.drip .node::before{content:"";position:absolute;left:calc(-50% - 12px);right:calc(-50% - 12px);top:50%;height:2px;margin-top:-1px;background:var(--red)}
+.drip .node::after{content:"";position:relative;width:11px;height:11px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--cream)}
+.drip .step:first-child .node::before{left:50%}
+.drip .step:last-child .node::before{right:50%}
+.drip .when{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.drip .what{display:block;margin-top:7px;font-size:15.5px;line-height:1.5;color:var(--ink)}
+
+/* anatomy of one idea */
+.anat{padding:78px 0 0}
+.anat h2{font-size:clamp(27px,2.8vw,38px);max-width:17em}
+.idea{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px 30px 30px;max-width:860px}
+.idea h3{font-size:clamp(23px,2.3vw,30px)}
+.idea .quote{margin-top:22px;padding-left:18px;border-left:3px solid var(--red);font-size:17px;line-height:1.6;color:var(--ink)}
+.idea .src{display:block;margin-top:8px;padding-left:18px;font-size:13px;font-weight:650;letter-spacing:-.01em;color:var(--grey-2)}
+.idea .lbl{display:block;margin-top:28px;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-2)}
+.idea .why{margin-top:10px;font-size:16.5px;line-height:1.65;color:var(--grey)}
+.idea .hooks{margin:10px 0 0;padding:0;list-style:none;counter-reset:h}
+.idea .hooks li{counter-increment:h;position:relative;padding:12px 0 12px 38px;border-top:1px solid var(--line);font-size:16.5px;line-height:1.55;color:var(--ink)}
+.idea .hooks li::before{content:counter(h);position:absolute;left:0;top:12px;width:24px;height:24px;border-radius:50%;background:var(--white);border:1px solid var(--line);font-size:12px;font-weight:750;color:var(--red);display:flex;align-items:center;justify-content:center}
+
+/* collapses to nothing while proof.json is empty: the spacing rides on the block itself */
+.social{padding:0}
+.social .proof.is-on{padding-bottom:78px}
 
 .made{padding:78px 0}
 .made h2{font-size:clamp(27px,2.8vw,38px);max-width:16em}
@@ -86,14 +116,33 @@ img{max-width:100%;display:block}
   .wrap{width:calc(100% - 64px)}
   .hero,.close .grid{grid-template-columns:minmax(0,1fr);gap:36px}
   .hero{padding:44px 0 60px}
+  .heroart{display:none}
+  .drip{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+  .drip .node::before{left:calc(-50% - 7px);right:calc(-50% - 7px)}
+  .drip .what{font-size:14.5px}
+}
+@media (max-width:700px){
+  /* stack the drip: the thread turns vertical, the art becomes a thumbnail */
+  .drip{grid-template-columns:minmax(0,1fr);gap:0;margin-top:34px}
+  .drip .step{display:grid;grid-template-columns:76px 30px minmax(0,1fr);gap:0 16px;align-items:start;padding:14px 0}
+  .drip .art{grid-column:1;grid-row:1/span 2;aspect-ratio:1;border-radius:12px}
+  .drip .node{grid-column:2;grid-row:1/span 2;height:auto;align-self:stretch;justify-content:center;align-items:flex-start;padding-top:6px}
+  .drip .node::before{left:50%;right:auto;top:-14px;bottom:-14px;height:auto;width:2px;margin:0 0 0 -1px}
+  .drip .step:first-child .node::before{top:11px}
+  .drip .step:last-child .node::before{bottom:auto;height:25px}
+  .drip .node::after{margin-top:0}
+  .drip .when{grid-column:3;grid-row:1}
+  .drip .what{grid-column:3;grid-row:2;margin-top:5px;font-size:15.5px}
 }
 @media (max-width:620px){
   .wrap{width:calc(100% - 40px)}
   .hero h1{font-size:clamp(31px,8.4vw,40px)}
   .hero .lede{font-size:16.5px}
   .band,.made,.close{padding:56px 0}
+  .anat{padding:56px 0 0}
+  .social .proof.is-on{padding-bottom:56px}
   .panel{padding:24px 20px 22px;border-radius:20px}
-  .sched .row{grid-template-columns:minmax(0,1fr);gap:8px;padding:18px 0}
+  .idea{padding:24px 20px 22px;border-radius:20px}
   .by{gap:16px}
   .by img{width:60px;height:60px}
 }
@@ -112,6 +161,9 @@ img{max-width:100%;display:block}
       <span class="kicker">For agency owners and B2B founders</span>
       <h1><em>30 post ideas</em> built from your profile.</h1>
       <p class="lede">Paste your LinkedIn URL. I read your profile, your posts and your site, then send you 30 ideas with the reason each one fits you and three hooks to open with.</p>
+      <div class="heroart" aria-hidden="true">
+        <img src="img/profile-stack.png" width="760" height="760" alt="" decoding="async">
+      </div>
     </div>
 
     <form class="panel signup" novalidate>
@@ -136,13 +188,56 @@ img{max-width:100%;display:block}
   <section class="band"><div class="wrap">
     <span class="kicker">What arrives</span>
     <h2>Five days, five pieces of your content.</h2>
-    <div class="sched">
-      <div class="row"><span class="when">10 minutes</span><span class="what">30 post ideas, each with the reason it fits you and three hooks.</span></div>
-      <div class="row"><span class="when">Day 2</span><span class="what">Your voice profile, with your own lines quoted back.</span></div>
-      <div class="row"><span class="when">Day 3</span><span class="what">A week of posts, your words and your brand.</span></div>
-      <div class="row"><span class="when">Day 4</span><span class="what">A profile rewrite. Three headlines and a new About.</span></div>
-      <div class="row"><span class="when">Day 5</span><span class="what">Your lead magnet. The concept, a designed cover and the post that gives it away.</span></div>
-    </div>
+    <ol class="drip">
+      <li class="step">
+        <span class="art"><img src="img/idea-grid.png" width="760" height="760" alt="A grid of post idea cards, three of them marked in red" loading="lazy" decoding="async"></span>
+        <span class="node" aria-hidden="true"></span>
+        <span class="when">10 minutes</span>
+        <span class="what">30 post ideas, each with the reason it fits you and three hooks.</span>
+      </li>
+      <li class="step">
+        <span class="art"><img src="img/voice-wave.png" width="760" height="760" alt="A red audio waveform on cream" loading="lazy" decoding="async"></span>
+        <span class="node" aria-hidden="true"></span>
+        <span class="when">Day 2</span>
+        <span class="what">Your voice profile, with your own lines quoted back.</span>
+      </li>
+      <li class="step">
+        <span class="art"><img src="img/week-calendar.png" width="760" height="760" alt="Five post cards in a row with a red line running through them" loading="lazy" decoding="async"></span>
+        <span class="node" aria-hidden="true"></span>
+        <span class="when">Day 3</span>
+        <span class="what">A week of posts, your words and your brand.</span>
+      </li>
+      <li class="step">
+        <span class="art"><img src="img/profile-highlight.png" width="760" height="760" alt="A profile page with one line under a red marker swipe" loading="lazy" decoding="async"></span>
+        <span class="node" aria-hidden="true"></span>
+        <span class="when">Day 4</span>
+        <span class="what">A profile rewrite. Three headlines and a new About.</span>
+      </li>
+      <li class="step">
+        <span class="art"><img src="img/cover-stand.png" width="760" height="760" alt="A lead magnet cover standing on an easel" loading="lazy" decoding="async"></span>
+        <span class="node" aria-hidden="true"></span>
+        <span class="when">Day 5</span>
+        <span class="what">Your lead magnet. The concept, a designed cover and the post that gives it away.</span>
+      </li>
+    </ol>
+  </div></section>
+
+  <section class="anat"><div class="wrap">
+    <span class="kicker">One of the thirty</span>
+    <h2>Idea 10, from my own profile.</h2>
+    <article class="idea">
+      <h3>The Ghostwriter Didn&#8217;t Sound Like You</h3>
+      <p class="quote">&#8220;You tried a ghostwriter, and the posts didn&#8217;t sound like you&#8221;</p>
+      <span class="src">From your About section</span>
+      <span class="lbl">Why it fits you</span>
+      <p class="why">What you have not explained is why a recorded call gives a writer something a brief never can.</p>
+      <span class="lbl">Three hooks</span>
+      <ol class="hooks">
+        <li>A brief cannot teach a writer how you talk. Recorded calls can, and that is the whole difference.</li>
+        <li>You tried a ghostwriter and the posts did not sound like you. So you rewrote them yourself.</li>
+        <li>Every post on Kyle&#8217;s feed since early 2026 started from his own sales calls and went out written as him.</li>
+      </ol>
+    </article>
   </div></section>
 
   <section class="made"><div class="wrap">
@@ -155,6 +250,10 @@ img{max-width:100%;display:block}
         <p>I run LinkedIn content for agency owners and founders.</p>
       </div>
     </div>
+  </div></section>
+
+  <section class="social"><div class="wrap">
+    <div class="proof" data-proof-src="proof.json" data-proof-title="What people replied" data-proof-max="6"></div>
   </div></section>
 
   <section class="close"><div class="wrap grid">
@@ -180,6 +279,7 @@ img{max-width:100%;display:block}
 
 <footer class="foot"><a class="wordmark" href="https://inboundonsteroids.com/">INBOUND<b>ON</b>STEROIDS</a></footer>
 
+<script src="proof.js" defer></script>
 <script>
 (function () {
   var FN = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/ios-drip-signup";

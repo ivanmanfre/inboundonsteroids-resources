@@ -427,6 +427,7 @@ img{max-width:100%;display:block}
     em_empty: "Add the email I should send this to.",
     em_bad: "That email looks off. Check the spelling.",
     closed: "This opens soon.",
+    full: "I cap this at a few runs a day and today is full. Try again tomorrow.",
     net: "That did not go through. Check your connection and try again.",
     server: "Something broke on my side. Try again in a minute."
   };
@@ -571,6 +572,7 @@ img{max-width:100%;display:block}
         if (e === "bad_linkedin_url") { setErr(form, "linkedin", COPY.li_bad); setStep(form, 1, "back"); return; }
         if (e === "bad_email") setErr(form, "email", COPY.em_bad);
         else if (e === "not_open_yet") setErr(form, "form", COPY.closed);
+        else if (e === "full_today") setErr(form, "form", COPY.full);
         else setErr(form, "form", COPY.server);
         sizeSteps(form);
       })

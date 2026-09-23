@@ -419,6 +419,23 @@ img{max-width:100%;display:block}
   var THANKS = "/thanks/30-post-ideas/";
   var q = new URLSearchParams(location.search);
 
+  /* funnel tracking: one row per step in ios_drip_funnel_events, never blocks the form */
+  var TRACK = "https://bjbvqvzbzczjbatgmccb.supabase.co/rest/v1/rpc/ios_drip_track";
+  var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYnZxdnpiemN6amJhdGdtY2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgzMDUwODAsImV4cCI6MjA4Mzg4MTA4MH0.yqghcn-Rw5dIFadLhvUASIeUARPvu_CyPOGayI8KyTI";
+  var SID;
+  try { SID = sessionStorage.getItem("ios_sid"); if (!SID) { SID = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem("ios_sid", SID); } }
+  catch (e) { SID = Math.random().toString(36).slice(2) + Date.now().toString(36); }
+  function track(step, detail, form) {
+    try {
+      fetch(TRACK, { method: "POST", keepalive: true,
+        headers: { "content-type": "application/json", apikey: ANON, authorization: "Bearer " + ANON },
+        body: JSON.stringify({ p_session: SID, p_step: step, p_detail: detail || null,
+          p_form: form ? Number(form.dataset.fi || 0) : null,
+          p_utm_source: q.get("utm_source"), p_utm_medium: q.get("utm_medium"), p_utm_campaign: q.get("utm_campaign"),
+          p_referrer: document.referrer || null, p_ua: navigator.userAgent }) }).catch(function () {});
+    } catch (e) {}
+  }
+
   var COPY = {
     li_empty: "Add your LinkedIn profile URL.",
     li_company: "That is a company page. Paste your own profile, the link with /in/ in it.",
@@ -515,14 +532,16 @@ img{max-width:100%;display:block}
     if (step === 1) {
       var li = checkLinkedin(val(form, "linkedin_url"));
       setErr(form, "linkedin", li.err || "");
-      if (li.err) { focusField(form, "linkedin"); sizeSteps(form); return; }
+      if (li.err) { track("li_error", li.err === COPY.li_company ? "company_page" : li.err === COPY.li_empty ? "empty" : "bad_url", form); focusField(form, "linkedin"); sizeSteps(form); return; }
+      track("step1", null, form);
       setStep(form, 2, "fwd");
       return;
     }
     if (step === 2) {
       var ws = checkSite(val(form, "website"));
       setErr(form, "website", ws.err || "");
-      if (ws.err) { focusField(form, "website"); sizeSteps(form); return; }
+      if (ws.err) { track("site_error", null, form); focusField(form, "website"); sizeSteps(form); return; }
+      track("step2_site", null, form);
       form.dataset.skipped = "";
       setStep(form, 3, "fwd");
       return;
@@ -543,7 +562,8 @@ img{max-width:100%;display:block}
     }
 
     var em = checkEmail(val(form, "email"));
-    if (em.err) { setErr(form, "email", em.err); focusField(form, "email"); sizeSteps(form); return; }
+    if (em.err) { track("email_error", null, form); setErr(form, "email", em.err); focusField(form, "email"); sizeSteps(form); return; }
+    track("submit", null, form);
 
     var btn = form.querySelector('.step-pane[data-pane="3"] button[type=submit]');
     var label = btn.innerHTML;
@@ -566,8 +586,9 @@ img{max-width:100%;display:block}
     fetch(FN, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) })
       .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, j: j }; }); })
       .then(function (res) {
-        if (res.j && res.j.ok) { location.href = THANKS; return; }
+        if (res.j && res.j.ok) { track("signup_ok", null, form); setTimeout(function () { location.href = THANKS; }, 150); return; }
         var e = res.j && res.j.error;
+        track("signup_err", String(e || res.status), form);
         btn.disabled = false; btn.innerHTML = label;
         if (e === "bad_linkedin_url") { setErr(form, "linkedin", COPY.li_bad); setStep(form, 1, "back"); return; }
         if (e === "bad_email") setErr(form, "email", COPY.em_bad);
@@ -577,13 +598,15 @@ img{max-width:100%;display:block}
         sizeSteps(form);
       })
       .catch(function () {
+        track("net_err", null, form);
         setErr(form, "form", COPY.net);
         btn.disabled = false; btn.innerHTML = label;
         sizeSteps(form);
       });
   }
 
-  Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function (form) {
+  Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function (form, fi) {
+    form.dataset.fi = String(fi);
     form.addEventListener("submit", function (ev) { ev.preventDefault(); advance(form); });
 
     var back = form.querySelector(".back");
@@ -597,6 +620,7 @@ img{max-width:100%;display:block}
       form.querySelector('[name="website"]').value = "";
       setErr(form, "website", "");
       form.dataset.skipped = "1";
+      track("step2_skip", null, form);
       setStep(form, 3, "fwd");
     });
 
@@ -633,6 +657,8 @@ img{max-width:100%;display:block}
       Array.prototype.forEach.call(document.querySelectorAll("form.signup"), sizeSteps);
     });
   }
+
+  track("view");
 
   fetch(FN + "?count=1", { method: "GET" })
     .then(function (r) { return r.json(); })

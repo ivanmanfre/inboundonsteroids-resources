@@ -1,0 +1,575 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>
+(function(d){var r=d.documentElement;r.className+=(r.className?" ":"")+"js";})(document);
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Free LinkedIn profile audit</title>
+<link rel="preconnect" href="https://inboundonsteroids.com" crossorigin>
+<style>
+@font-face{font-family:Manrope;src:url(https://inboundonsteroids.com/assets/home-v7/e310b55a7fd9677f.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+:root{
+  --ink:#131210; --red:#C8361B; --red-dark:#ac2e17; --white:#fff;
+  --cream:#f6f5f2; --card:#f5f3ef; --soft:#eeeae5; --line:#e2ded7;
+  --grey:#5f574c; --grey-2:#716b63;
+  --body:Manrope,Arial,Helvetica,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:650;letter-spacing:-.05em;line-height:1.1;text-wrap:balance}
+img{max-width:100%;display:block}
+[hidden]{display:none!important}
+.wrap{width:calc(100% - 96px);max-width:1180px;margin:auto}
+
+.masthead{padding:28px 0 0}
+.wordmark{display:inline-block;font:500 22px/1 var(--body);letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.wordmark b{font-weight:900;color:var(--red)}
+
+.kicker{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+
+.hero{padding:56px 0 76px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:56px;align-items:start}
+.hero h1{font-size:clamp(36px,4.3vw,58px);letter-spacing:-.055em;line-height:1.06}
+.hero h1 em{font-style:normal;color:var(--red)}
+.hero .lede{margin-top:22px;font-size:18px;line-height:1.6;color:var(--grey);max-width:30em}
+
+/* three hero variants live in the DOM; data-hero on <html> is set before first paint */
+.hv{display:none}
+:root[data-hero="a"] .hv-a{display:block}
+
+/* rotating deliverable: all five share one grid cell, so the box never reflows */
+.rotline{margin-top:16px;display:flex;align-items:flex-end;flex-wrap:wrap;gap:0 .38em;font-size:18px;line-height:1.6;color:var(--grey)}
+.rotline>span{line-height:1.6}
+.roll{display:inline-grid;justify-items:start;overflow:hidden;color:var(--red);font-weight:650}
+.roll-i{grid-area:1/1;white-space:nowrap;opacity:0}
+.roll-i.is-on{opacity:1}
+.vh{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+
+.panel{background:var(--card);border:1px solid var(--line);border-radius:24px;padding:30px 28px 26px}
+.field{margin-top:18px}
+.field:first-of-type{margin-top:0}
+.field label{display:block;font-size:13px;font-weight:650;letter-spacing:-.01em;color:var(--ink);margin-bottom:8px}
+.field input{width:100%;height:52px;padding:0 16px;font:400 16px/1.5 var(--body);color:var(--ink);background:var(--white);border:1px solid #d6d2ca;border-radius:12px;outline:0;transition:border-color .14s,box-shadow .14s}
+.field input::placeholder{color:#a19a90}
+.field input:focus{border-color:var(--red);box-shadow:0 0 0 3px rgba(200,54,27,.14)}
+.field input[aria-invalid="true"]{border-color:var(--red)}
+.err{display:block;margin-top:7px;font-size:13.5px;line-height:1.45;color:var(--red)}
+.err:empty{display:none}
+.hp{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;border:0}
+.cta{margin-top:24px;width:100%;display:inline-flex;align-items:center;justify-content:space-between;gap:20px;background:var(--red);color:var(--white);border:0;border-radius:100px;padding:18px 24px;font:650 16px/1.5 var(--body);cursor:pointer;text-decoration:none;box-shadow:0 5px 15px rgba(19,18,16,.08);transition:transform .16s,background .16s}
+.cta span{font-size:21px;line-height:1}
+.cta:hover{background:var(--red-dark);transform:translateY(-2px)}
+.cta[disabled]{opacity:.62;cursor:default;transform:none}
+.note{margin-top:14px;font-size:13.5px;line-height:1.5;color:var(--grey-2)}
+.runs{margin-top:12px;font-size:13.5px;font-weight:650;color:var(--ink);display:flex;align-items:center;gap:8px}
+.runs::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--red);flex:none}
+
+/* three-step form: one field per step, same card */
+.steps{position:relative}
+.step-pane{min-width:0}
+:root.js .step-pane{opacity:0;pointer-events:none;position:absolute;top:0;left:0;right:0}
+:root.js .step-pane.on{opacity:1;pointer-events:auto;position:relative}
+.step-head{font-size:17px;font-weight:650;letter-spacing:-.02em;line-height:1.35;color:var(--ink);margin-bottom:16px}
+.helpwrap{margin-top:12px}
+.help-toggle{background:0;border:0;padding:0;font:650 13px/1.5 var(--body);color:var(--grey-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.help-toggle:hover{color:var(--red)}
+.help{margin-top:11px;padding:13px 15px;background:var(--white);border:1px solid var(--line);border-radius:12px}
+.help p{font-size:13.5px;line-height:1.55;color:var(--grey)}
+.help p+p{margin-top:6px}
+.help a{display:inline-block;margin-top:10px;font-size:13.5px;font-weight:650;color:var(--red);text-decoration:none;border-bottom:1px solid currentColor}
+.skip{display:block;margin:14px auto 0;background:0;border:0;padding:4px;font:400 13.5px/1.5 var(--body);color:var(--grey-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.skip:hover{color:var(--ink)}
+.formfoot{display:flex;align-items:center;gap:16px;margin-top:20px;min-height:20px}
+.back{background:0;border:0;padding:4px 0;font:650 13px/1.5 var(--body);color:var(--grey-2);cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.back:hover{color:var(--ink)}
+.dots{display:flex;gap:7px;margin-left:auto}
+.dots i{width:7px;height:7px;border-radius:50%;background:#d6d2ca}
+.dots i.on{background:var(--red)}
+
+.heroart{margin-top:34px;max-width:300px}
+.heroart img{width:100%;height:auto;border-radius:18px;background:var(--cream)}
+
+.band{background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:78px 0}
+.band h2{font-size:clamp(30px,3.3vw,45px)}
+
+/* five-day drip: five nodes on one red thread, each carrying its illustration */
+.drip{list-style:none;margin:46px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px}
+.drip .step{min-width:0;display:flex;flex-direction:column}
+.drip .art{width:100%;aspect-ratio:1;border:1px solid var(--line);border-radius:16px;background:var(--white);overflow:hidden}
+.drip .art img{width:100%;height:100%;object-fit:contain}
+.drip .node{position:relative;height:30px;display:flex;align-items:center;justify-content:center;flex:none}
+.drip .node::before{content:"";position:absolute;left:calc(-50% - 12px);right:calc(-50% - 12px);top:50%;height:2px;margin-top:-1px;background:var(--red)}
+.drip .node::after{content:"";position:relative;width:11px;height:11px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--cream)}
+.drip .step:first-child .node::before{left:50%}
+.drip .step:last-child .node::before{right:50%}
+.drip .when{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.drip .what{display:block;margin-top:7px;font-size:15.5px;line-height:1.5;color:var(--ink)}
+
+/* anatomy of one idea */
+.anat{padding:78px 0 0}
+.anat h2{font-size:clamp(27px,2.8vw,38px);max-width:17em}
+.idea{margin-top:32px;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:32px 30px 30px;max-width:860px}
+.idea h3{font-size:clamp(23px,2.3vw,30px)}
+.idea .quote{margin-top:22px;padding-left:18px;border-left:3px solid var(--red);font-size:17px;line-height:1.6;color:var(--ink)}
+.idea .src{display:block;margin-top:8px;padding-left:18px;font-size:13px;font-weight:650;letter-spacing:-.01em;color:var(--grey-2)}
+.idea .lbl{display:block;margin-top:28px;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--grey-2)}
+.idea .why{margin-top:10px;font-size:16.5px;line-height:1.65;color:var(--grey)}
+.idea .hooks{margin:10px 0 0;padding:0;list-style:none;counter-reset:h}
+.idea .hooks li{counter-increment:h;position:relative;padding:12px 0 12px 38px;border-top:1px solid var(--line);font-size:16.5px;line-height:1.55;color:var(--ink)}
+.idea .hooks li::before{content:counter(h);position:absolute;left:0;top:12px;width:24px;height:24px;border-radius:50%;background:var(--white);border:1px solid var(--line);font-size:12px;font-weight:750;color:var(--red);display:flex;align-items:center;justify-content:center}
+
+/* collapses to nothing while proof.json is empty: the spacing rides on the block itself */
+.social{padding:0}
+.social .proof.is-on{padding-bottom:78px}
+
+.made{padding:78px 0}
+.made h2{font-size:clamp(27px,2.8vw,38px);max-width:16em}
+.made p{margin-top:20px;font-size:17px;line-height:1.75;color:var(--grey);max-width:34em}
+
+.by{display:flex;align-items:center;gap:20px;padding:30px 0 0;border-top:1px solid var(--line);margin-top:46px}
+.by img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex:none;background:var(--soft)}
+.by .name{font-size:17px;font-weight:650;letter-spacing:-.02em}
+.by p{margin-top:4px;font-size:15.5px;line-height:1.6;color:var(--grey);max-width:38em}
+
+.close{background:var(--ink);color:var(--white);padding:78px 0 84px}
+.close h2{font-size:clamp(30px,3.3vw,45px);color:var(--white);max-width:13em}
+.close .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,440px);gap:56px;align-items:center}
+.close .panel{background:#191917;border-color:rgba(255,255,255,.14)}
+.close .field label{color:var(--white)}
+.close .field input{background:#0e0d0c;border-color:rgba(255,255,255,.2);color:var(--white)}
+.close .field input::placeholder{color:#7d766d}
+.close .note{color:#bdb7ae}
+.close .runs{color:var(--white)}
+.close .err{color:#f0846d}
+.close .step-head{color:var(--white)}
+.close .help{background:#0e0d0c;border-color:rgba(255,255,255,.16)}
+.close .help p{color:#bdb7ae}
+.close .help-toggle,.close .skip,.close .back{color:#bdb7ae}
+.close .help-toggle:hover{color:var(--white)}
+.close .skip:hover,.close .back:hover{color:var(--white)}
+.close .dots i{background:rgba(255,255,255,.24)}
+.close .dots i.on{background:var(--red)}
+
+.foot{padding:34px 0 46px;display:flex;justify-content:center}
+
+@media (max-width:1000px){
+  .wrap{width:calc(100% - 64px)}
+  .hero,.close .grid{grid-template-columns:minmax(0,1fr);gap:36px}
+  .hero{padding:44px 0 60px}
+  .heroart{display:none}
+  .drip{grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+  .drip .node::before{left:calc(-50% - 7px);right:calc(-50% - 7px)}
+  .drip .what{font-size:14.5px}
+}
+@media (max-width:700px){
+  /* stack the drip: the thread turns vertical, the art becomes a thumbnail */
+  .drip{grid-template-columns:minmax(0,1fr);gap:0;margin-top:34px}
+  .drip .step{display:grid;grid-template-columns:76px 30px minmax(0,1fr);gap:0 16px;align-items:start;padding:14px 0}
+  .drip .art{grid-column:1;grid-row:1/span 2;aspect-ratio:1;border-radius:12px}
+  .drip .node{grid-column:2;grid-row:1/span 2;height:auto;align-self:stretch;justify-content:center;align-items:flex-start;padding-top:6px}
+  .drip .node::before{left:50%;right:auto;top:-14px;bottom:-14px;height:auto;width:2px;margin:0 0 0 -1px}
+  .drip .step:first-child .node::before{top:11px}
+  .drip .step:last-child .node::before{bottom:auto;height:25px}
+  .drip .node::after{margin-top:0}
+  .drip .when{grid-column:3;grid-row:1}
+  .drip .what{grid-column:3;grid-row:2;margin-top:5px;font-size:15.5px}
+}
+@media (max-width:620px){
+  .wrap{width:calc(100% - 40px)}
+  .hero h1{font-size:clamp(31px,8.4vw,40px)}
+  .hero .lede{font-size:16.5px}
+  .rotline{font-size:16.5px}
+  .band,.made,.close{padding:56px 0}
+  .anat{padding:56px 0 0}
+  .social .proof.is-on{padding-bottom:56px}
+  .panel{padding:24px 20px 22px;border-radius:20px}
+  .idea{padding:24px 20px 22px;border-radius:20px}
+  .by{gap:16px}
+  .by img{width:60px;height:60px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* what's on the page: four rows on one red thread */
+.fixes{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.fixes li{background:var(--white);border:1px solid var(--line);border-radius:18px;padding:22px 20px}
+.fixes .part{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.fixes .what{display:block;margin-top:8px;font-size:15.5px;line-height:1.55;color:var(--ink)}
+.idea .fix{margin-top:10px;font-size:16.5px;line-height:1.65;color:var(--ink)}
+@media (max-width:1000px){.fixes{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
+@media (max-width:620px){.fixes{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="https://inboundonsteroids.com/">INBOUND<b>ON</b>STEROIDS</a>
+</div></header>
+
+<main>
+  <section class="wrap hero">
+    <div>
+      <span class="kicker">Free LinkedIn profile audit</span>
+      <h1>Your LinkedIn profile is a <em>sales page</em>. You just never wrote it like one.</h1>
+      <p class="lede">Paste your LinkedIn URL. I go through your profile the way a buyer does and send you one fix for each part, on your own page built from your profile and your posts.</p>
+    </div>
+    <form class="panel signup" novalidate data-step="1" data-dir="fwd">
+      <div class="steps">
+        <div class="step-pane on" data-pane="1">
+          <div class="field">
+            <label for="li-1">Your LinkedIn profile URL</label>
+            <input id="li-1" name="linkedin_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="linkedin.com/in/yourname">
+            <span class="err" data-err="linkedin" role="alert"></span>
+          </div>
+          <div class="helpwrap">
+            <button class="help-toggle" type="button" aria-expanded="false" aria-controls="help-1">Show me how to find it</button>
+            <div class="help" id="help-1" hidden>
+              <p>Open LinkedIn, tap your photo, copy the address bar.</p>
+              <p>On desktop it is the address when you open your profile.</p>
+              <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer">Open my LinkedIn profile</a>
+            </div>
+          </div>
+          <button class="cta" type="submit">Audit my profile <span aria-hidden="true">&#8599;</span></button>
+        </div>
+
+        <div class="step-pane" data-pane="2">
+          <p class="step-head">Where should I send your audit?</p>
+          <div class="field">
+            <label for="em-1">Your email</label>
+            <input id="em-1" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@company.com">
+            <span class="err" data-err="email" role="alert"></span>
+          </div>
+          <button class="cta" type="submit">Send my audit <span aria-hidden="true">&#8599;</span></button>
+          <span class="err" data-err="form" role="alert"></span>
+          <p class="note">It lands in your inbox, usually within a few hours.</p>
+        </div>
+      </div>
+      <input class="hp" type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="formfoot">
+        <button class="back" type="button" hidden>Back</button>
+        <span class="dots" aria-hidden="true"><i class="on"></i><i></i></span>
+      </div>
+    </form>
+  </section>
+
+  <section class="band"><div class="wrap">
+    <span class="kicker">What is on your page</span>
+    <h2>One fix for every part a buyer reads.</h2>
+    <ol class="fixes">
+      <li><span class="part">Headline</span><span class="what">What it tells a buyer in two seconds, and the line to change.</span></li>
+      <li><span class="part">About</span><span class="what">The line where buyers go &#8220;meh&#8221;, with what to write instead.</span></li>
+      <li><span class="part">Booking</span><span class="what">How much work it takes a buyer to book a call with you.</span></li>
+      <li><span class="part">Your posts</span><span class="what">Sample posts written from your own profile and posts.</span></li>
+    </ol>
+  </div></section>
+
+  <section class="anat"><div class="wrap">
+    <span class="kicker">From my own audit</span>
+    <h2>I ran it on my profile first.</h2>
+    <article class="idea">
+      <span class="lbl">Headline</span>
+      <p class="quote">&#8220;Agency owners: add $15k-$50k/mo from LinkedIn in 90 days with content + outreach, run for you.&#8221;</p>
+      <span class="src">My headline</span>
+      <span class="lbl">Fix</span>
+      <p class="fix">Your About says $15k-$60k/mo, so the two figures do not match. Change your headline figure to match your About.</p>
+      <span class="lbl">How a buyer books</span>
+      <p class="fix">Right now a buyer has to read to the end of your About or open your contact info to find this link. Add it as the button at the top of your profile, with the label: Book a free fit call.</p>
+    </article>
+  </div></section>
+
+  <section class="made"><div class="wrap">
+    <h2>Built from your profile, your posts and your site.</h2>
+    <p>Every fix quotes a line from your own profile, so you know exactly what to change and where.</p>
+    <div class="by">
+      <img src="https://inboundonsteroids.com/ivan-portrait-400.webp" width="400" height="400" alt="Ivan Manfredi" loading="lazy">
+      <div>
+        <div class="name">Ivan Manfredi</div>
+        <p>I run LinkedIn content for agency owners and founders.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="close"><div class="wrap grid">
+    <h2>Send me my profile audit.</h2>
+    <form class="panel signup" novalidate data-step="1" data-dir="fwd">
+      <div class="steps">
+        <div class="step-pane on" data-pane="1">
+          <div class="field">
+            <label for="li-2">Your LinkedIn profile URL</label>
+            <input id="li-2" name="linkedin_url" type="url" inputmode="url" autocomplete="url" spellcheck="false" placeholder="linkedin.com/in/yourname">
+            <span class="err" data-err="linkedin" role="alert"></span>
+          </div>
+          <div class="helpwrap">
+            <button class="help-toggle" type="button" aria-expanded="false" aria-controls="help-2">Show me how to find it</button>
+            <div class="help" id="help-2" hidden>
+              <p>Open LinkedIn, tap your photo, copy the address bar.</p>
+              <p>On desktop it is the address when you open your profile.</p>
+              <a href="https://www.linkedin.com/in/" target="_blank" rel="noopener noreferrer">Open my LinkedIn profile</a>
+            </div>
+          </div>
+          <button class="cta" type="submit">Audit my profile <span aria-hidden="true">&#8599;</span></button>
+        </div>
+
+        <div class="step-pane" data-pane="2">
+          <p class="step-head">Where should I send your audit?</p>
+          <div class="field">
+            <label for="em-2">Your email</label>
+            <input id="em-2" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@company.com">
+            <span class="err" data-err="email" role="alert"></span>
+          </div>
+          <button class="cta" type="submit">Send my audit <span aria-hidden="true">&#8599;</span></button>
+          <span class="err" data-err="form" role="alert"></span>
+          <p class="note">It lands in your inbox, usually within a few hours.</p>
+        </div>
+      </div>
+      <input class="hp" type="text" name="company_site" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="formfoot">
+        <button class="back" type="button" hidden>Back</button>
+        <span class="dots" aria-hidden="true"><i class="on"></i><i></i></span>
+      </div>
+    </form>
+  </div></section>
+</main>
+
+<footer class="foot"><a class="wordmark" href="https://inboundonsteroids.com/">INBOUND<b>ON</b>STEROIDS</a></footer>
+
+<script>
+(function () {
+  var FN = "https://bjbvqvzbzczjbatgmccb.supabase.co/functions/v1/profile-audit-signup";
+  var THANKS = "/thanks/profile-audit/";
+  var q = new URLSearchParams(location.search);
+
+  /* funnel tracking: one row per step in ios_drip_funnel_events, never blocks the form */
+  var TRACK = "https://bjbvqvzbzczjbatgmccb.supabase.co/rest/v1/rpc/ios_drip_track";
+  var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYnZxdnpiemN6amJhdGdtY2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgzMDUwODAsImV4cCI6MjA4Mzg4MTA4MH0.yqghcn-Rw5dIFadLhvUASIeUARPvu_CyPOGayI8KyTI";
+  var SID;
+  try { SID = sessionStorage.getItem("ios_sid"); if (!SID) { SID = Math.random().toString(36).slice(2) + Date.now().toString(36); sessionStorage.setItem("ios_sid", SID); } }
+  catch (e) { SID = Math.random().toString(36).slice(2) + Date.now().toString(36); }
+  function track(step, detail, form) {
+    try {
+      fetch(TRACK, { method: "POST", keepalive: true,
+        headers: { "content-type": "application/json", apikey: ANON, authorization: "Bearer " + ANON },
+        body: JSON.stringify({ p_session: SID, p_step: step, p_detail: detail || null,
+          p_form: form ? Number(form.dataset.fi || 0) : null,
+          p_utm_source: q.get("utm_source"), p_utm_medium: q.get("utm_medium"), p_utm_campaign: q.get("utm_campaign") || "profile-audit",
+          p_referrer: document.referrer || null, p_ua: navigator.userAgent }) }).catch(function () {});
+    } catch (e) {}
+  }
+
+  var COPY = {
+    li_empty: "Add your LinkedIn profile URL.",
+    li_company: "That is a company page. Paste your own profile, the link with /in/ in it.",
+    li_bad: "That does not look like a LinkedIn profile. It looks like linkedin.com/in/yourname.",
+    site: "Add your site, like yourcompany.com",
+    em_empty: "Add the email I should send this to.",
+    em_bad: "That email looks off. Check the spelling.",
+    closed: "This opens soon.",
+    full: "I cap this at a few audits a day and today is full. Try again tomorrow.",
+    nf: "I could not find that profile. Check the link and try again.",
+    net: "That did not go through. Check your connection and try again.",
+    server: "Something broke on my side. Try again in a minute."
+  };
+
+  var NAMES = { linkedin: "linkedin_url", website: "website", email: "email" };
+
+  function setErr(form, key, msg) {
+    var el = form.querySelector('[data-err="' + key + '"]');
+    if (el) el.textContent = msg || "";
+    var input = NAMES[key] ? form.querySelector('[name="' + NAMES[key] + '"]') : null;
+    if (input) { if (msg) input.setAttribute("aria-invalid", "true"); else input.removeAttribute("aria-invalid"); }
+  }
+  function clearErrs(form) { ["linkedin", "website", "email", "form"].forEach(function (k) { setErr(form, k, ""); }); }
+
+  function checkLinkedin(raw) {
+    var s = String(raw || "").trim();
+    if (!s) return { err: COPY.li_empty };
+    if (!/^https?:\/\//i.test(s)) s = "https://" + s.replace(/^\/+/, "");
+    var u;
+    try { u = new URL(s); } catch (e) { return { err: COPY.li_bad }; }
+    if (!/(^|\.)linkedin\.com$/i.test(u.hostname)) return { err: COPY.li_bad };
+    if (/\/(company|school|showcase)\//i.test(u.pathname)) return { err: COPY.li_company };
+    if (!/\/in\/[^\/?#]+/i.test(u.pathname)) return { err: COPY.li_bad };
+    return { value: u.origin + u.pathname.replace(/\/+$/, "") };
+  }
+  function checkSite(raw) {
+    var s = String(raw || "").replace(/\s+/g, "");
+    if (!s) return { err: COPY.site };
+    if (!/^https?:\/\//i.test(s)) s = "https://" + s.replace(/^\/+/, "");
+    var u;
+    try { u = new URL(s); } catch (e) { return { err: COPY.site }; }
+    var h = u.hostname.replace(/\.$/, "");
+    if (h.length > 253) return { err: COPY.site };
+    if (!/^[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*\.[a-z]{2,}$/i.test(h)) return { err: COPY.site };
+    return { value: u.origin + (u.pathname === "/" ? "" : u.pathname.replace(/\/+$/, "")) };
+  }
+
+  function checkEmail(raw) {
+    var s = String(raw || "").trim();
+    if (!s) return { err: COPY.em_empty };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(s) || s.length > 200) return { err: COPY.em_bad };
+    return { value: s };
+  }
+
+  function val(form, name) { return form.querySelector('[name="' + name + '"]').value; }
+  function focusField(form, key) {
+    var el = form.querySelector('[name="' + NAMES[key] + '"]');
+    if (el) el.focus({ preventScroll: true });
+  }
+
+  /* ---- three-step flow: one field per step, same card ---- */
+  function sizeSteps(form) {
+    var box = form.querySelector(".steps");
+    var pane = form.querySelector(".step-pane.on");
+    if (box && pane) box.style.height = pane.offsetHeight + "px";
+  }
+
+  function setStep(form, n, dir) {
+    var cur = form.querySelector(".step-pane.on");
+    var next = form.querySelector('.step-pane[data-pane="' + n + '"]');
+    if (!next) return;
+    form.setAttribute("data-dir", dir || "fwd");
+    form.setAttribute("data-step", String(n));
+    if (cur && cur !== next) {
+      cur.classList.remove("on");
+      cur.classList.add("out");
+      setTimeout(function () { cur.classList.remove("out"); }, 240);
+    }
+    next.classList.add("on");
+    Array.prototype.forEach.call(form.querySelectorAll(".step-pane"), function (p) {
+      if (p === next) p.removeAttribute("inert"); else p.setAttribute("inert", "");
+    });
+    var back = form.querySelector(".back");
+    if (back) back.hidden = (n === 1);
+    Array.prototype.forEach.call(form.querySelectorAll(".dots i"), function (d, k) {
+      d.classList.toggle("on", k < n);
+    });
+    if (n === 2) form.dataset.skipped = "";
+    sizeSteps(form);
+    if (cur && cur !== next) focusField(form, n === 1 ? "linkedin" : "email");
+  }
+
+  function advance(form) {
+    var step = Number(form.getAttribute("data-step") || 1);
+    if (step === 1) {
+      var li = checkLinkedin(val(form, "linkedin_url"));
+      setErr(form, "linkedin", li.err || "");
+      if (li.err) { track("li_error", li.err === COPY.li_company ? "company_page" : li.err === COPY.li_empty ? "empty" : "bad_url", form); focusField(form, "linkedin"); sizeSteps(form); return; }
+      track("step1", null, form);
+      setStep(form, 2, "fwd");
+      return;
+    }
+    submit(form);
+  }
+
+  function submit(form) {
+    clearErrs(form);
+    var li = checkLinkedin(val(form, "linkedin_url"));
+    if (li.err) { setErr(form, "linkedin", li.err); setStep(form, 1, "back"); return; }
+
+
+    var em = checkEmail(val(form, "email"));
+    if (em.err) { track("email_error", null, form); setErr(form, "email", em.err); focusField(form, "email"); sizeSteps(form); return; }
+    track("submit", null, form);
+
+    var btn = form.querySelector('.step-pane[data-pane="2"] button[type=submit]');
+    var label = btn.innerHTML;
+    btn.disabled = true;
+    btn.innerHTML = "Sending";
+
+    var body = {
+      linkedin_url: li.value,
+      email: em.value,
+      company_site: form.querySelector('[name="company_site"]').value || "",
+      utm_source: q.get("utm_source"),
+      utm_medium: q.get("utm_medium"),
+      utm_id: q.get("utm_id"),
+      utm_campaign: q.get("utm_campaign"),
+      utm_content: q.get("utm_content"),
+      referrer: document.referrer || null
+    };
+
+    fetch(FN, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { status: r.status, j: j }; }); })
+      .then(function (res) {
+        if (res.j && res.j.ok) { track("signup_ok", null, form); setTimeout(function () { location.href = THANKS; }, 150); return; }
+        var e = res.j && res.j.error;
+        track("signup_err", String(e || res.status), form);
+        btn.disabled = false; btn.innerHTML = label;
+        if (e === "bad_linkedin_url") { setErr(form, "linkedin", COPY.li_bad); setStep(form, 1, "back"); return; }
+        if (e === "profile_not_found") { setErr(form, "linkedin", COPY.nf); setStep(form, 1, "back"); return; }
+        if (e === "bad_email") setErr(form, "email", COPY.em_bad);
+        else if (e === "not_open_yet") setErr(form, "form", COPY.closed);
+        else if (e === "full_today") setErr(form, "form", COPY.full);
+        else setErr(form, "form", COPY.server);
+        sizeSteps(form);
+      })
+      .catch(function () {
+        track("net_err", null, form);
+        setErr(form, "form", COPY.net);
+        btn.disabled = false; btn.innerHTML = label;
+        sizeSteps(form);
+      });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll("form.signup"), function (form, fi) {
+    form.dataset.fi = String(fi);
+    form.addEventListener("submit", function (ev) { ev.preventDefault(); advance(form); });
+
+    var back = form.querySelector(".back");
+    if (back) back.addEventListener("click", function () {
+      var step = Number(form.getAttribute("data-step") || 1);
+      if (step > 1) setStep(form, step - 1, "back");
+    });
+
+    var skip = form.querySelector(".skip");
+    if (skip) skip.addEventListener("click", function () {
+      form.querySelector('[name="website"]').value = "";
+      setErr(form, "website", "");
+      form.dataset.skipped = "1";
+      track("step2_skip", null, form);
+      setStep(form, 3, "fwd");
+    });
+
+    var toggle = form.querySelector(".help-toggle");
+    var help = form.querySelector(".help");
+    if (toggle && help) toggle.addEventListener("click", function () {
+      var open = help.hidden;
+      help.hidden = !open;
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      sizeSteps(form);
+    });
+
+    Array.prototype.forEach.call(form.querySelectorAll("input"), function (i) {
+      i.addEventListener("input", function () {
+        var k = i.name === "linkedin_url" ? "linkedin" : i.name === "website" ? "website" : i.name === "email" ? "email" : null;
+        if (k) setErr(form, k, "");
+        setErr(form, "form", "");
+        sizeSteps(form);
+      });
+    });
+
+    Array.prototype.forEach.call(form.querySelectorAll(".step-pane"), function (p) {
+      if (!p.classList.contains("on")) p.setAttribute("inert", "");
+    });
+    form.dataset.skipped = "";
+    sizeSteps(form);
+  });
+
+  window.addEventListener("resize", function () {
+    Array.prototype.forEach.call(document.querySelectorAll("form.signup"), sizeSteps);
+  });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () {
+      Array.prototype.forEach.call(document.querySelectorAll("form.signup"), sizeSteps);
+    });
+  }
+
+  track("view");
+
+})();
+</script>
+</body>
+</html>

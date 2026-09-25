@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Your profile audit is on the way</title>
+<link rel="preconnect" href="https://inboundonsteroids.com" crossorigin>
+<style>
+@font-face{font-family:Manrope;src:url(https://inboundonsteroids.com/assets/home-v7/e310b55a7fd9677f.woff2) format("woff2");font-weight:200 800;font-style:normal;font-display:swap}
+:root{
+  --ink:#131210; --red:#C8361B; --white:#fff;
+  --cream:#f6f5f2; --line:#e2ded7; --grey:#5f574c; --grey-2:#716b63;
+  --body:Manrope,Arial,Helvetica,sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--white);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+h1,h2,p{margin:0}
+h1,h2{font-weight:650;letter-spacing:-.05em;line-height:1.1;text-wrap:balance}
+img{max-width:100%;display:block}
+.wrap{width:calc(100% - 96px);max-width:900px;margin:auto}
+
+.masthead{padding:28px 0 0}
+.wordmark{display:inline-block;font:500 22px/1 var(--body);letter-spacing:-.02em;color:var(--ink);text-decoration:none}
+.wordmark b{font-weight:900;color:var(--red)}
+
+.kicker{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:18px}
+
+.head{padding:52px 0 34px}
+.head h1{font-size:clamp(33px,4vw,54px);letter-spacing:-.055em}
+.head p{margin-top:18px;font-size:18px;line-height:1.6;color:var(--grey);max-width:30em}
+
+/* 16:9 video slot. Replace the .slot-poster block below with the embed iframe:
+   <iframe src="<embed url>" title="..." allow="autoplay; fullscreen; picture-in-picture"
+           allowfullscreen style="position:absolute;inset:0;width:100%;height:100%;border:0"></iframe> */
+.slot{position:relative;aspect-ratio:16/9;width:100%;border-radius:24px;overflow:hidden;background:var(--ink);box-shadow:0 18px 50px rgba(19,18,16,.14)}
+.slot-poster{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;text-align:center;padding:28px}
+.slot-poster::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 0%,rgba(200,54,27,.28),rgba(19,18,16,0) 62%)}
+.slot-poster img{position:relative;width:96px;height:96px;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.22);background:#26231f}
+.slot-poster .line{position:relative;color:var(--white);font-size:17px;font-weight:650;letter-spacing:-.025em;line-height:1.35;max-width:22em}
+.slot-poster .sub{position:relative;color:#bdb7ae;font-size:13.5px;line-height:1.5}
+
+.band{margin-top:62px;background:var(--cream);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:62px 0}
+.band h2{font-size:clamp(26px,2.9vw,38px)}
+.time{list-style:none;margin:34px 0 0;padding:0 0 0 26px;position:relative}
+.time::before{content:"";position:absolute;left:4px;top:26px;bottom:34px;width:2px;margin-left:-1px;background:var(--red)}
+.time .step{position:relative;display:grid;grid-template-columns:92px minmax(0,1fr);gap:22px;align-items:center;padding:0 0 22px}
+.time .step:last-child{padding-bottom:0}
+.time .step::before{content:"";position:absolute;left:-26px;top:22px;width:11px;height:11px;border-radius:50%;background:var(--red);box-shadow:0 0 0 4px var(--cream)}
+.time .when{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red);margin-bottom:5px}
+.time .what{display:block;font-size:17px;line-height:1.55;color:var(--ink)}
+.time .txt{min-width:0;grid-column:2;grid-row:1}
+.time .art{grid-column:1;grid-row:1;width:92px;height:92px;border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden;flex:none}
+.time .art img{width:100%;height:100%;object-fit:contain;display:block}
+
+/* collapses to nothing while proof.json is empty: the spacing rides on the block itself */
+.social{padding:0}
+.social .proof.is-on{padding-top:54px}
+
+.connect{padding:48px 0 72px}
+.connect p{font-size:17px;line-height:1.7;color:var(--grey);max-width:34em}
+
+.foot{padding:0 0 46px;display:flex;justify-content:center}
+
+@media (max-width:620px){
+  .wrap{width:calc(100% - 40px)}
+  .head{padding:40px 0 28px}
+  .band{margin-top:46px;padding:46px 0}
+  .slot{border-radius:18px}
+  .slot-poster{gap:14px}
+  .slot-poster img{width:72px;height:72px}
+  .slot-poster .line{font-size:15.5px}
+  .time .step{grid-template-columns:68px minmax(0,1fr);gap:14px}
+  .time .art{width:68px;height:68px;border-radius:12px}
+  .time .what{font-size:16px}
+  .social .proof.is-on{padding-top:42px}
+  .connect{padding:38px 0 54px}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead"><div class="wrap">
+  <a class="wordmark" href="https://inboundonsteroids.com/">INBOUND<b>ON</b>STEROIDS</a>
+</div></header>
+
+<main>
+  <section class="wrap head">
+    <span class="kicker">You are in</span>
+    <h1>Your profile audit is being built.</h1>
+    <p>It lands in your inbox, usually within a few hours. Check the spam folder if it has not shown up by then.</p>
+  </section>
+  <section class="wrap connect">
+    <p>When it lands, reply to the email and tell me which fix you are doing first.</p>
+  </section>
+</main>
+
+<footer class="foot"><a class="wordmark" href="https://inboundonsteroids.com/">INBOUND<b>ON</b>STEROIDS</a></footer>
+
+</body>
+</html>

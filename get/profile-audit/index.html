@@ -255,6 +255,74 @@ img{max-width:100%;display:block}
   .stick .cta{margin-top:0;padding:15px 22px}
   body{padding-bottom:84px}
 }
+
+/* 09-26 pass 2: authority strip, how it works, the plan around it, proof, FAQ */
+.auth{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.auth .wrap{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1fr);gap:32px;align-items:center;padding:28px 0}
+.auth .me{display:flex;align-items:center;gap:16px}
+.auth .me img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex:none;background:var(--soft)}
+.auth .me p{font-size:15px;line-height:1.5;color:var(--grey)}
+.auth .me b{display:block;color:var(--ink);font-weight:650;font-size:16px;letter-spacing:-.02em}
+.auth .stat{border-left:1px solid var(--line);padding-left:24px}
+.auth .num{display:block;font-size:26px;font-weight:700;letter-spacing:-.04em;line-height:1.15;color:var(--ink)}
+.auth .num em{font-style:normal;color:var(--red)}
+.auth .who{display:block;margin-top:4px;font-size:13.5px;line-height:1.45;color:var(--grey-2)}
+
+.how{padding:78px 0}
+.how h2,.plan h2,.proofs h2,.faq h2{font-size:clamp(27px,2.8vw,38px);max-width:18em}
+.howrow{list-style:none;margin:36px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;counter-reset:s}
+.howrow li{counter-increment:s;border-top:2px solid var(--ink);padding-top:18px}
+.howrow li::before{content:counter(s);display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;background:var(--red);color:var(--white);font-size:13px;font-weight:750;border-radius:4px}
+.howrow h3{margin-top:14px;font-size:20px;letter-spacing:-.03em}
+.howrow p{margin-top:8px;font-size:15.5px;line-height:1.6;color:var(--grey)}
+
+.plan{padding:78px 0 0}
+.plan .lede2,.proofs .lede2{margin-top:16px;font-size:17px;line-height:1.65;color:var(--grey);max-width:36em}
+.planrow{list-style:none;margin:30px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.planrow li{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px}
+.planrow .part{display:block;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--red)}
+.planrow .what{display:block;margin-top:8px;font-size:15.5px;line-height:1.55;color:var(--ink)}
+
+.proofs{padding:78px 0 0}
+.pcards{margin-top:30px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.pcard{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 26px 24px;display:flex;flex-direction:column}
+.pcard .head{display:flex;align-items:center;gap:14px}
+.pcard .head img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex:none;background:var(--soft)}
+.pcard .name{font-size:16px;font-weight:650;letter-spacing:-.02em}
+.pcard .role{font-size:13.5px;color:var(--grey-2)}
+.pcard .big{margin-top:22px;font-size:clamp(34px,3.6vw,46px);font-weight:700;letter-spacing:-.05em;line-height:1.05}
+.pcard .big em{font-style:normal;color:var(--red)}
+.pcard .sub{margin-top:6px;font-size:15px;color:var(--grey)}
+.pcard .say{margin-top:18px;padding-left:16px;border-left:3px solid var(--red);font-size:16px;line-height:1.6;color:var(--ink)}
+.pcard .go{margin-top:auto;padding-top:18px;font-size:14px;font-weight:650;color:var(--ink);text-decoration:none}
+.pcard .go span{border-bottom:1px solid currentColor}
+.pcard .go:hover{color:var(--red)}
+
+.faq{padding:78px 0}
+.qa{margin-top:26px;max-width:820px;border-top:1px solid var(--line)}
+.qa details{border-bottom:1px solid var(--line)}
+.qa summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:20px 0;font-size:17px;font-weight:650;letter-spacing:-.02em}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";font-size:22px;line-height:1;color:var(--red);font-weight:500}
+.qa details[open] summary::after{content:"\2212"}
+.qa details p{padding:0 0 20px;font-size:16px;line-height:1.65;color:var(--grey);max-width:40em}
+
+@media (max-width:1000px){
+  .auth .wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  .auth .wrap{align-items:start}
+  .auth .me{grid-column:1/-1;align-items:center}
+  .auth .stat:nth-of-type(2){border-left:0;padding-left:0}
+  .howrow,.planrow{grid-template-columns:minmax(0,1fr)}
+  .howrow{gap:26px}
+  .pcards{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:620px){
+  .auth .wrap{gap:18px 20px;padding:22px 0}
+  .auth .num{font-size:19px;white-space:nowrap}
+  .how,.faq{padding:56px 0}
+  .plan,.proofs{padding:56px 0 0}
+  .pcard{padding:22px 20px 20px}
+}
 </style>
 </head>
 <body>
@@ -317,6 +385,26 @@ img{max-width:100%;display:block}
     </form>
   </section>
 
+
+  <section class="auth"><div class="wrap">
+    <div class="me">
+      <img src="https://inboundonsteroids.com/ivan-portrait-400.webp" width="400" height="400" alt="Ivan Manfredi">
+      <p><b>Ivan Manfredi</b>I run LinkedIn content, lead magnets and outreach for agency owners and founders.</p>
+    </div>
+    <div class="stat"><span class="num">$30k <em>&#8594;</em> $80k/mo</span><span class="who">Kyle Hunt, agency ops coach, across 90 days</span></div>
+    <div class="stat"><span class="num">18 calls</span><span class="who">booked in month 2 for Mattan Danino, RISE DTC</span></div>
+  </div></section>
+
+  <section class="how"><div class="wrap">
+    <span class="kicker">How it works</span>
+    <h2>Two fields, then a page built for you.</h2>
+    <ol class="howrow">
+      <li><h3>Paste your profile</h3><p>Your LinkedIn URL, then the email to send it to. That is the whole form.</p></li>
+      <li><h3>I read it the way a buyer does</h3><p>Your headline, your About, how a buyer books you, your recent posts, the people engaging with them, and your site.</p></li>
+      <li><h3>Your page lands in your inbox</h3><p>Usually within a few hours. Every fix quotes a line from your own profile, so you know exactly what to change and where.</p></li>
+    </ol>
+  </div></section>
+
   <section class="band"><div class="wrap">
     <span class="kicker">What is on your page</span>
     <h2>One fix for every part a buyer reads.</h2>
@@ -327,6 +415,17 @@ img{max-width:100%;display:block}
       <li><img src="assets/fix-booking.webp" width="640" height="640" alt="Booking button fix on an example profile" loading="lazy"><div class="txt"><span class="part"><b>4</b>Booking</span><span class="what">How much work it takes a buyer to book a call with you.</span></div></li>
       <li><img src="assets/fix-posts.webp" width="640" height="640" alt="A sample post written from an example profile" loading="lazy"><div class="txt"><span class="part"><b>5</b>Posts</span><span class="what">Sample posts written from your own profile and posts.</span></div></li>
     </ol>
+  </div></section>
+
+  <section class="plan"><div class="wrap">
+    <span class="kicker">Also on your page</span>
+    <h2>The plan around the profile.</h2>
+    <p class="lede2">A better profile gets you more of the right people reading. The page also shows what to do with them.</p>
+    <ul class="planrow">
+      <li><span class="part">A lead magnet</span><span class="what">One resource idea written for the people you sell to, so a reader leaves a name.</span></li>
+      <li><span class="part">A message for your engagers</span><span class="what">What to send the buyers already liking and commenting, so a like becomes a conversation.</span></li>
+      <li><span class="part">The path to a call</span><span class="what">How a reader goes from your post to a booked call, step by step.</span></li>
+    </ul>
   </div></section>
 
   <section class="ba"><div class="wrap">
@@ -350,15 +449,37 @@ img{max-width:100%;display:block}
     <p class="cap">Screenshots from my real audit page, 24 Sept 2026.</p>
   </div></section>
 
-  <section class="made"><div class="wrap">
-    <h2>Built from your profile, your posts and your site.</h2>
-    <p>Every fix quotes a line from your own profile, so you know exactly what to change and where.</p>
-    <div class="by">
-      <img src="https://inboundonsteroids.com/ivan-portrait-400.webp" width="400" height="400" alt="Ivan Manfredi" loading="lazy">
-      <div>
-        <div class="name">Ivan Manfredi</div>
-        <p>I run LinkedIn content for agency owners and founders.</p>
-      </div>
+  <section class="proofs"><div class="wrap">
+    <span class="kicker">Running today</span>
+    <h2>Two founders run their LinkedIn with me.</h2>
+    <p class="lede2">Same approach this audit starts: a profile a buyer understands, posts from your own work, and a path from reader to call.</p>
+    <div class="pcards">
+      <article class="pcard">
+        <div class="head"><img src="assets/kyle.webp" width="400" height="400" alt="Kyle Hunt" loading="lazy"><div><div class="name">Kyle Hunt</div><div class="role">Agency ops coach</div></div></div>
+        <p class="big">$30k <em>&#8594;</em> $80k</p>
+        <p class="sub">a month, across 90 days</p>
+        <p class="say">&#8220;Leads come in with a name and the guide they pulled. By the time we talk, they already know the offer.&#8221;</p>
+        <a class="go" href="https://inboundonsteroids.com/case/kyle-hunt/" target="_blank" rel="noopener"><span>See Kyle&#8217;s case study</span> &#8599;</a>
+      </article>
+      <article class="pcard">
+        <div class="head"><img src="assets/mattan.jpg" width="900" height="639" alt="Mattan Danino" loading="lazy"><div><div class="name">Mattan Danino</div><div class="role">Founder, RISE DTC</div></div></div>
+        <p class="big">18 calls</p>
+        <p class="sub">booked in month 2</p>
+        <p class="say">We run Mattan&#8217;s whole inbound: the content, the lead magnets and the outreach, through to the booked call.</p>
+        <a class="go" href="https://resources.risedtc.com/tools/" target="_blank" rel="noopener"><span>See his lead magnets</span> &#8599;</a>
+      </article>
+    </div>
+  </div></section>
+
+  <section class="faq"><div class="wrap">
+    <span class="kicker">Questions</span>
+    <h2>Before you paste your link.</h2>
+    <div class="qa">
+      <details><summary>Is it really free?</summary><p>Yes. No call and no card. Your page has a link to book a call if you want me to run it for you, and that is the only ask.</p></details>
+      <details><summary>What do you look at?</summary><p>Only what is public: your profile, your recent posts, the people engaging with them, and your site. I never log into your account, and nothing gets posted or sent in your name.</p></details>
+      <details><summary>How long does it take?</summary><p>Usually a few hours. It arrives by email as a link to your own page.</p></details>
+      <details><summary>Why is there a daily limit?</summary><p>Every page is built one by one, so I cap it at 10 a day. If today is full, the form tells you and you can try again tomorrow.</p></details>
+      <details><summary>Who is it for?</summary><p>Agency owners and founders who sell through LinkedIn and want more of the people reading their posts to book a call.</p></details>
     </div>
   </div></section>
 

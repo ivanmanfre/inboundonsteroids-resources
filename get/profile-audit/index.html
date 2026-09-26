@@ -201,6 +201,60 @@ img{max-width:100%;display:block}
 .idea .fix{margin-top:10px;font-size:16.5px;line-height:1.65;color:var(--ink)}
 @media (max-width:1000px){.fixes{grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}}
 @media (max-width:620px){.fixes{grid-template-columns:minmax(0,1fr)}}
+
+/* revamp 09-26: the ad's demo loop carries into the hero, stills from it illustrate each fix */
+.hero{grid-template-columns:minmax(0,1fr) minmax(0,1fr);grid-template-areas:"copy media" "form media";gap:30px 56px}
+.hero-copy{grid-area:copy}
+.hero .signup{grid-area:form;max-width:470px}
+.media{grid-area:media;margin:0}
+.media .frame{position:relative;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--cream);aspect-ratio:1;box-shadow:0 18px 50px rgba(19,18,16,.10)}
+.media video,.media .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.media figcaption{margin-top:12px;font-size:13px;line-height:1.5;color:var(--grey-2)}
+
+.fixrow{list-style:none;margin:40px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:22px}
+.fixrow li{grid-column:span 2;background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.fixrow li:nth-child(4){grid-column:2/span 2}
+.fixrow img{width:100%;height:auto;aspect-ratio:1;object-fit:cover;background:var(--cream);border-bottom:1px solid var(--line)}
+.fixrow .txt{padding:18px 20px 22px}
+.fixrow .part{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}
+.fixrow .part b{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:var(--ink);color:var(--white);font-size:12px;border-radius:4px}
+.fixrow .what{display:block;margin-top:9px;font-size:15.5px;line-height:1.55;color:var(--grey)}
+
+.ba{padding:78px 0 0}
+.ba h2,.receipt h2{font-size:clamp(27px,2.8vw,38px);max-width:18em}
+.ba-img{margin-top:32px;position:relative;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:var(--cream)}
+.ba-img img{width:100%;height:auto}
+.ba-tags{position:absolute;inset:14px 14px auto 14px;display:flex;justify-content:space-between;pointer-events:none}
+.ba-tags span{font-size:12px;font-weight:750;letter-spacing:.06em;text-transform:uppercase;padding:6px 10px;border-radius:6px;background:var(--ink);color:var(--white)}
+.ba-tags span+span{background:var(--red)}
+.ba .cap,.receipt .cap{margin-top:12px;font-size:13px;line-height:1.5;color:var(--grey-2)}
+
+.receipt{padding:78px 0 0}
+.receipt .lede2{margin-top:16px;font-size:17px;line-height:1.65;color:var(--grey);max-width:34em}
+.shots{margin-top:30px;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:22px;align-items:start}
+.shots img{width:100%;height:auto;border:1px solid var(--line);border-radius:20px;background:var(--white);box-shadow:0 10px 30px rgba(19,18,16,.07)}
+
+.stick{display:none}
+@media (max-width:1000px){
+  .hero{grid-template-columns:minmax(0,1fr);grid-template-areas:"copy" "media" "form";gap:28px}
+  .hero .signup{max-width:none}
+  .media{max-width:560px}
+  .fixrow{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .fixrow li,.fixrow li:nth-child(4){grid-column:auto}
+}
+@media (max-width:700px){
+  /* the five fixes become a swipe rail: the peek of card two says there is more */
+  .fixrow{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:30px -20px 0;padding:0 20px 6px;scrollbar-width:none}
+  .fixrow::-webkit-scrollbar{display:none}
+  .fixrow li{flex:0 0 78%;scroll-snap-align:start}
+  .shots{grid-template-columns:minmax(0,1fr)}
+  .ba,.receipt{padding:56px 0 0}
+  .ba-tags span{font-size:10.5px;padding:4px 7px}
+  .stick{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(255,255,255,.96);border-top:1px solid var(--line);transform:translateY(110%);transition:transform .22s ease}
+  .stick.on{transform:none}
+  .stick .cta{margin-top:0;padding:15px 22px}
+  body{padding-bottom:84px}
+}
 </style>
 </head>
 <body>
@@ -211,11 +265,19 @@ img{max-width:100%;display:block}
 
 <main>
   <section class="wrap hero">
-    <div>
+    <div class="hero-copy">
       <span class="kicker">Free LinkedIn profile audit</span>
-      <h1>Your LinkedIn profile is a <em>sales page</em>. You just never wrote it like one.</h1>
-      <p class="lede">Paste your LinkedIn URL. I go through your profile the way a buyer does and send you one fix for each part, on your own page built from your profile and your posts.</p>
+      <h1>See where your LinkedIn profile is <em>losing clients</em>.</h1>
+      <p class="lede">Paste your LinkedIn URL. You get your own page: who in your audience could hire you, one fix for each part of your profile, and posts written from your own feed.</p>
     </div>
+    <figure class="media">
+      <div class="frame">
+        <video class="demo" autoplay muted loop playsinline preload="auto" poster="assets/audit-demo-poster.webp" aria-label="An example profile audit: headline, About, audience, booking and posts, each fixed in turn">
+          <source src="assets/audit-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+      <figcaption>Example profile. Yours is built from your own profile, posts and audience.</figcaption>
+    </figure>
     <form class="panel signup" novalidate data-step="1" data-dir="fwd">
       <div class="steps">
         <div class="step-pane on" data-pane="1">
@@ -258,26 +320,34 @@ img{max-width:100%;display:block}
   <section class="band"><div class="wrap">
     <span class="kicker">What is on your page</span>
     <h2>One fix for every part a buyer reads.</h2>
-    <ol class="fixes">
-      <li><span class="part">Headline</span><span class="what">What it tells a buyer in two seconds, and the line to change.</span></li>
-      <li><span class="part">About</span><span class="what">The line where buyers go &#8220;meh&#8221;, with what to write instead.</span></li>
-      <li><span class="part">Booking</span><span class="what">How much work it takes a buyer to book a call with you.</span></li>
-      <li><span class="part">Your posts</span><span class="what">Sample posts written from your own profile and posts.</span></li>
+    <ol class="fixrow">
+      <li><img src="assets/fix-headline.webp" width="640" height="640" alt="Headline fix on an example profile" loading="lazy"><div class="txt"><span class="part"><b>1</b>Headline</span><span class="what">What it tells a buyer in two seconds, and the line to change.</span></div></li>
+      <li><img src="assets/fix-about.webp" width="640" height="640" alt="About section rewrite on an example profile" loading="lazy"><div class="txt"><span class="part"><b>2</b>About</span><span class="what">The line where buyers go &#8220;meh&#8221;, with what to write instead.</span></div></li>
+      <li><img src="assets/fix-audience.webp" width="640" height="640" alt="Audience scan showing which engagers could hire you" loading="lazy"><div class="txt"><span class="part"><b>3</b>Audience</span><span class="what">Who among the people engaging with your posts could actually hire you.</span></div></li>
+      <li><img src="assets/fix-booking.webp" width="640" height="640" alt="Booking button fix on an example profile" loading="lazy"><div class="txt"><span class="part"><b>4</b>Booking</span><span class="what">How much work it takes a buyer to book a call with you.</span></div></li>
+      <li><img src="assets/fix-posts.webp" width="640" height="640" alt="A sample post written from an example profile" loading="lazy"><div class="txt"><span class="part"><b>5</b>Posts</span><span class="what">Sample posts written from your own profile and posts.</span></div></li>
     </ol>
   </div></section>
 
-  <section class="anat"><div class="wrap">
+  <section class="ba"><div class="wrap">
+    <span class="kicker">Before and after</span>
+    <h2>The same profile, rewritten for the person who might hire you.</h2>
+    <div class="ba-img">
+      <img src="assets/before-after.webp" width="1200" height="517" alt="An example profile before the audit, with a vague headline and no booking button, and after, with a clear offer and a booking button" loading="lazy">
+      <div class="ba-tags" aria-hidden="true"><span>Before</span><span>After</span></div>
+    </div>
+    <p class="cap">Example profile.</p>
+  </div></section>
+
+  <section class="receipt"><div class="wrap">
     <span class="kicker">From my own audit</span>
-    <h2>I ran it on my profile first.</h2>
-    <article class="idea">
-      <span class="lbl">Headline</span>
-      <p class="quote">&#8220;Agency owners: add $15k-$50k/mo from LinkedIn in 90 days with content + outreach, run for you.&#8221;</p>
-      <span class="src">My headline</span>
-      <span class="lbl">Fix</span>
-      <p class="fix">Your About says $15k-$60k/mo, so the two figures do not match. Change your headline figure to match your About.</p>
-      <span class="lbl">How a buyer books</span>
-      <p class="fix">Right now a buyer has to read to the end of your About or open your contact info to find this link. Add it as the button at the top of your profile, with the label: Book a free fit call.</p>
-    </article>
+    <h2>I ran it on my own profile first.</h2>
+    <p class="lede2">3 of the 28 people engaging with my last 5 posts matched my buyer. And my headline and About quoted two different numbers.</p>
+    <div class="shots">
+      <img src="assets/real-audience.webp" alt="My audience scan: 3 of 28 people matched the buyer criteria across 5 posts" loading="lazy">
+      <img src="assets/real-headline.webp" alt="My headline fix: the headline says $15k-$50k/mo while the About says $15k-$60k/mo" loading="lazy">
+    </div>
+    <p class="cap">Screenshots from my real audit page, 24 Sept 2026.</p>
   </div></section>
 
   <section class="made"><div class="wrap">
@@ -333,6 +403,8 @@ img{max-width:100%;display:block}
     </form>
   </div></section>
 </main>
+
+<div class="stick" aria-hidden="true"><button class="cta" type="button" tabindex="-1">Get my free audit <span aria-hidden="true">&#8599;</span></button></div>
 
 <footer class="foot"><a class="wordmark" href="https://inboundonsteroids.com/">INBOUND<b>ON</b>STEROIDS</a></footer>
 
@@ -564,6 +636,27 @@ img{max-width:100%;display:block}
   if (document.fonts && document.fonts.ready) {
     document.fonts.ready.then(function () {
       Array.prototype.forEach.call(document.querySelectorAll("form.signup"), sizeSteps);
+    });
+  }
+
+  /* demo loop: respect reduced motion; sticky mobile CTA while no form is on screen */
+  var demo = document.querySelector("video.demo");
+  if (demo && window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    demo.removeAttribute("autoplay"); demo.pause();
+  }
+  var stick = document.querySelector(".stick");
+  var forms = document.querySelectorAll("form.signup");
+  if (stick && "IntersectionObserver" in window) {
+    var seen = new Set();
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) seen.add(e.target); else seen.delete(e.target); });
+      stick.classList.toggle("on", seen.size === 0);
+    }, { threshold: 0.25 });
+    Array.prototype.forEach.call(forms, function (f) { io.observe(f); });
+    stick.querySelector("button").addEventListener("click", function () {
+      var f = forms[0];
+      f.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(function () { var i = f.querySelector('[name="linkedin_url"]'); if (i) i.focus({ preventScroll: true }); }, 450);
     });
   }
 

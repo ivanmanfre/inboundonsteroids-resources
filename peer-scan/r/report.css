@@ -387,6 +387,37 @@ a.cal-post .dn { color: var(--sink2); display: flex; justify-content: space-betw
 .diff p { font-size: 14px; color: var(--tx2); }
 .band-sum { margin-top: 30px; font: 800 clamp(24px, 2.6vw, 34px)/1.08 var(--disp); font-variation-settings: "opsz" 96; letter-spacing: -.025em; max-width: 900px; text-wrap: balance; }
 
+/* ── 30-day re-scan: before and after ───────────────────── */
+.ba { padding: 8px 28px; }
+.ba-row { display: grid; grid-template-columns: minmax(0, 1.6fr) 96px 28px 96px 120px; gap: 14px; align-items: center; padding: 20px 0; border-top: 1px solid var(--hair2); }
+.ba-row:first-child { border-top: 0; }
+.ba-head { padding: 14px 0 10px; }
+.ba-head .mono { font-size: 11px; }
+.ba-head span:nth-child(2), .ba-head span:nth-child(4), .ba-head span:nth-child(5) { text-align: right; }
+.ba-l h4 { font: 600 17px/1.3 var(--sans); }
+.ba-l .small { display: block; margin-top: 2px; color: var(--tx3); }
+.ba-v { font: 800 30px/1 var(--disp); font-variation-settings: "opsz" 96; letter-spacing: -.03em; text-align: right; color: var(--tx2); }
+.ba-v.ba-now { color: var(--tx); }
+.ba-arrow { font-style: normal; color: var(--tx3); text-align: center; }
+.ba-d { justify-self: end; font: 500 12px/1 var(--mono); letter-spacing: .04em; color: var(--tx2); padding: 7px 10px; border-radius: 99px; box-shadow: inset 0 0 0 1px var(--hair); white-space: nowrap; }
+.ba-d.up { color: var(--tx); background: rgba(243,239,230,.09); box-shadow: inset 0 0 0 1px rgba(243,239,230,.28); }
+.ba-grid { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); gap: 28px; margin-top: 28px; align-items: start; }
+.ba-grid > .panel:only-child { grid-column: 1 / -1; }
+.ba-topics > .small { margin-top: 6px; }
+.ba-topic { padding: 18px 0 4px; border-top: 1px solid var(--hair2); margin-top: 18px; }
+.ba-topic h4 { font: 600 16px/1.3 var(--sans); margin-bottom: 10px; }
+.ba-line { display: grid; grid-template-columns: 52px minmax(0, 1fr) minmax(0, 190px); gap: 12px; align-items: center; margin-top: 8px; }
+.ba-line .mono { font-size: 10.5px; color: var(--tx3); }
+.ba-line b { font: 500 13px/1.3 var(--sans); color: var(--tx2); }
+.ba-line.now b { color: var(--tx); font-weight: 600; }
+.ba-bar { display: block; height: 10px; border-radius: 5px; background: rgba(243,239,230,.07); overflow: hidden; }
+.ba-bar i { display: block; height: 100%; border-radius: 5px; background: rgba(243,239,230,.45); }
+.ba-line.now .ba-bar i { background: var(--redt); }
+.ba-note { margin-top: 34px; color: var(--tx); max-width: 760px; }
+.ba-since .h3 { margin-bottom: 14px; }
+.ba-since .stat-lab { font-size: 15px; }
+.ba-since .small { margin-top: 10px; }
+
 /* ── closing: rescan, offer, method ─────────────────────── */
 .close-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 28px; align-items: stretch; }
 .rescan { display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 24px; align-items: center; }
@@ -483,6 +514,15 @@ a.cal-post .dn { color: var(--sink2); display: flex; justify-content: space-betw
   .lm-obj { height: 380px; max-width: 340px; }
   .diffs { padding: 6px 20px; }
   .diff { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .ba { padding: 4px 20px; }
+  .ba-head { display: none; }
+  .ba-row { grid-template-columns: minmax(0, 1fr) auto auto auto; gap: 8px 10px; padding: 16px 0; }
+  .ba-l { grid-column: 1 / -1; }
+  .ba-v { font-size: 26px; text-align: left; }
+  .ba-d { justify-self: end; }
+  .ba-grid { grid-template-columns: minmax(0, 1fr); }
+  .ba-line { grid-template-columns: 44px minmax(0, 1fr); }
+  .ba-line b { grid-column: 2; }
   .rescan { grid-template-columns: 96px minmax(0, 1fr); gap: 18px; }
   .calpage { width: 96px; }
   .calpage .d { font-size: 50px; }
@@ -568,6 +608,10 @@ html.pr .diff h4 { font-size: 14px; }
 html.pr .diff p { font-size: 12px; }
 html.pr .close-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; }
 html.pr .rescan h3, html.pr .offer h3 { font-size: 26px; }
+html.pr .ba { padding: 4px 18px; }
+html.pr .ba-row { padding: 12px 0; }
+html.pr .ba-v { font-size: 24px; }
+html.pr .ba-grid { grid-template-columns: minmax(0, 1fr); gap: 16px; margin-top: 18px; }
 html.pr .method { grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 24px; padding: 20px; }
 html.pr .method li { font-size: 12.5px; }
 html.pr .foot { padding: 20px 0 30px; }
@@ -575,7 +619,7 @@ html.pr .rv { opacity: 1 !important; transform: none !important; filter: none !i
 html.pr .pbreak { break-before: page; page-break-before: always; }
 html.pr .sec-hd, html.pr .week-hd, html.pr .chart-cap, html.pr .moves-hd { break-after: avoid; page-break-after: avoid; }
 html.pr #moves { break-inside: avoid; page-break-inside: avoid; }
-html.pr .panel, html.pr .sheet, html.pr .pat, html.pr .post-row, html.pr .rw, html.pr .sw, html.pr .caro, html.pr .diff, html.pr .person, html.pr .stat, html.pr .move { break-inside: avoid; page-break-inside: avoid; }
+html.pr .ba-row, html.pr .ba-topic, html.pr .panel, html.pr .sheet, html.pr .pat, html.pr .post-row, html.pr .rw, html.pr .sw, html.pr .caro, html.pr .diff, html.pr .person, html.pr .stat, html.pr .move { break-inside: avoid; page-break-inside: avoid; }
 html.pr .cal, html.pr .diffs, html.pr .people { break-inside: auto; }
 @page { size: A4; margin: 0; }
 @media print {

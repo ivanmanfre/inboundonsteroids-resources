@@ -507,6 +507,97 @@
     return s;
   }
 
+  /* ── 30-day re-scan: before and after, from data.rescan.result ── */
+  function buildRescanResult(d) {
+    var res = obj(obj(d.rescan).result);
+    var rk = obj(res.rank), b = obj(rk.before), a = obj(rk.after), pe = obj(rk.peers), en = obj(res.engagers), eb = obj(en.before), ea = obj(en.after), fo = obj(res.followers), since = obj(res.since);
+    var rows = [
+      { l: "Percentile for likes", sub: isNum(rk.peer_count) ? "among " + fmt(rk.peer_count) + " peers" : "", b: b.percentile_likes, a: a.percentile_likes, f: function (n) { return fmt(n) + ord(n); }, dl: "points" },
+      { l: "Percentile for comments", sub: isNum(rk.peer_count) ? "among " + fmt(rk.peer_count) + " peers" : "", b: b.percentile_comments, a: a.percentile_comments, f: function (n) { return fmt(n) + ord(n); }, dl: "points" },
+      { l: "Typical likes per post", sub: isNum(pe.median_likes) ? "peer median " + fmt(pe.median_likes) : "", b: b.median_likes, a: a.median_likes, f: fmt },
+      { l: "Typical comments per post", sub: isNum(pe.median_comments) ? "peer median " + fmt(pe.median_comments) : "", b: b.median_comments, a: a.median_comments, f: fmt },
+      { l: "Likely buyers among the people who engage", sub: isNum(ea.unique) ? "out of " + fmt(ea.unique) + " people now" : "", b: eb.buyers_pct, a: ea.buyers_pct, f: function (n) { return fmt(n) + "%"; }, dl: "points" },
+      { l: "Followers", sub: "", b: fo.before, a: fo.after, f: fmt }
+    ].filter(function (r) { return isNum(r.b) && isNum(r.a); });
+    var topics = arr(res.topics).filter(function (t) { return isObj(t) && str(t.name) && (isObj(t.before) || isObj(t.after)); });
+    if (!rows.length && !str(res.headline)) return null;
+    var sh = shell("rescan", "Re-scan", ["Before and ", { m: "after" }], str(res.headline));
+    var when = fmtDate(res.scanned_at), first = fmtDate(res.first_report_at);
+    if (when) {
+      var cap = T("p", "mono ba-when", "Re-scan of " + when + (first ? " against your report of " + first : ""));
+      cap.style.marginTop = "-28px"; cap.style.marginBottom = "28px";
+      sh.wrap.appendChild(cap);
+    }
+
+    if (rows.length) {
+      var tb = rv(T("div", "panel ba"));
+      var head = T("div", "ba-row ba-head");
+      put(head, T("span"), T("span", "mono", "Before"), T("span"), T("span", "mono", "Now"), T("span", "mono", "Change"));
+      tb.appendChild(head);
+      rows.forEach(function (r) {
+        var row = T("div", "ba-row");
+        var lab = T("div", "ba-l");
+        lab.appendChild(T("h4", null, r.l));
+        if (r.sub) lab.appendChild(T("span", "small", r.sub));
+        var diff = Math.round((r.a - r.b) * 10) / 10;
+        var dtxt = diff === 0 ? "same" : (diff > 0 ? "+" : "") + fmt(diff) + (r.dl ? " " + (Math.abs(diff) === 1 ? "point" : r.dl) : "");
+        put(row, lab, T("b", "ba-v", r.f(r.b)), T("i", "ba-arrow", "→"), T("b", "ba-v ba-now", r.f(r.a)), T("span", "ba-d" + (diff > 0 ? " up" : diff < 0 ? " down" : ""), dtxt));
+        row.querySelector(".ba-arrow").setAttribute("aria-hidden", "true");
+        tb.appendChild(row);
+      });
+      sh.wrap.appendChild(tb);
+    }
+
+    var grid = T("div", "ba-grid");
+    var tp = topics.filter(function (t) { return (isObj(t.before) && isNum(t.before.median_likes)) || (isObj(t.after) && isNum(t.after.median_likes)); });
+    if (tp.length) {
+      var tpan = rv(T("div", "panel ba-topics"));
+      tpan.appendChild(T("h3", "h3", "Topic results"));
+      tpan.appendChild(T("p", "small", "Typical likes per post, by topic. A topic with fewer than 3 posts on a side is too small to compare."));
+      var mx = 0;
+      tp.forEach(function (t) { ["before", "after"].forEach(function (k) { var g = obj(t[k]); if (isNum(g.median_likes) && g.median_likes > mx) mx = g.median_likes; }); });
+      if (!(mx > 0)) mx = 1;
+      tp.forEach(function (t) {
+        var box = T("div", "ba-topic");
+        box.appendChild(T("h4", null, t.name));
+        [["before", "Before"], ["after", "Now"]].forEach(function (k) {
+          var g = obj(t[k[0]]);
+          var line = T("div", "ba-line" + (k[0] === "after" ? " now" : ""));
+          line.appendChild(T("span", "mono", k[1]));
+          var bar = T("span", "ba-bar"), fill = T("i");
+          fill.style.width = isNum(g.median_likes) ? Math.max(2, (g.median_likes / mx) * 100) + "%" : "0%";
+          bar.appendChild(fill);
+          line.appendChild(bar);
+          var txt = isNum(g.median_likes) ? cnt(g.median_likes, "like") + " · " + cnt(g.n, "post") : "no posts";
+          if (isNum(g.n) && g.n < 3) txt += " (too few)";
+          line.appendChild(T("b", null, txt));
+          box.appendChild(line);
+        });
+        tpan.appendChild(box);
+      });
+      grid.appendChild(tpan);
+    }
+
+    if (isNum(since.posts)) {
+      var sp = rv(T("div", "panel ba-since"), 100);
+      sp.appendChild(T("h3", "h3", "Since your first report"));
+      sp.appendChild(put(T("div", "stat-num"), fmt(since.posts), T("small", null, since.posts === 1 ? "new post" : "new posts")));
+      var line1;
+      if (since.settled_posts > 0 && isNum(since.median_likes)) {
+        line1 = "Of those, " + fmt(since.settled_posts) + (since.settled_posts === 1 ? " is" : " are") + " old enough to count (a post counts after a week). A typical one got " + cnt(since.median_likes, "like") + " and " + cnt(since.median_comments || 0, "comment") + ".";
+        if (isNum(b.median_likes)) line1 += " Your typical post in the first report got " + cnt(b.median_likes, "like") + " and " + cnt(b.median_comments || 0, "comment") + ".";
+      } else line1 = since.posts ? "None of them is old enough to count yet. A post counts after a week." : "You have not posted since the first report, so there is nothing new to measure.";
+      sp.appendChild(T("p", "stat-lab", line1));
+      if (since.settled_posts > 0 && since.settled_posts < 5) sp.appendChild(T("p", "small", "With fewer than 5 counted posts, read this as a first look."));
+      grid.appendChild(sp);
+    }
+    if (grid.children.length) sh.wrap.appendChild(grid);
+
+    if (str(res.note)) sh.wrap.appendChild(rv(T("p", "lede ba-note", res.note)));
+    sh.wrap.appendChild(rv(T("p", "note", "Same method as your first report. Your peers are the same creators with the numbers they had in your first report, so only your side moves. The figures come from public LinkedIn data.")));
+    return sh.sec;
+  }
+
   function buildRank(d) {
     var rk = obj(d.rank), you = obj(rk.you), peers = obj(rk.peers), b = obj(d.buyer);
     var dist = arr(rk.distribution).filter(function (x) { return isObj(x) && isNum(x.median_likes); });
@@ -1149,7 +1240,8 @@
   function buildClose(d) {
     var rs = obj(d.rescan), of = obj(d.offer), me = obj(d.method), win = obj(d.window), rk = obj(d.rank), en = obj(d.engagers);
     var lines = arr(me.lines).filter(function (l) { return str(l); });
-    var rdate = toDate(rs.date), offerOk = str(of.headline) || str(of.body);
+    var done = isObj(rs.result) && toDate(rs.result.scanned_at);
+    var rdate = done || toDate(rs.date), offerOk = str(of.headline) || str(of.body);
     var counts = [];
     if (isNum(win.posts_analyzed)) counts.push({ n: win.posts_analyzed, l: "of your posts analyzed", cls: "" });
     if (isNum(rk.peer_count)) counts.push({ n: rk.peer_count, l: "peers compared", cls: "ppl" });
@@ -1165,8 +1257,8 @@
       cal.appendChild(T("div", "w", rdate.toLocaleDateString("en-GB", { weekday: "long", timeZone: "UTC" }) + " " + rdate.getUTCFullYear()));
       rc.appendChild(cal);
       var rt = T("div");
-      rt.appendChild(T("h3", null, "Your free re-scan"));
-      rt.appendChild(T("p", null, str(rs.note) || ("We scan again on " + fmtDate(rs.date) + " and show your numbers before and after.")));
+      rt.appendChild(T("h3", null, done ? "Your re-scan is done" : "Your free re-scan"));
+      rt.appendChild(T("p", null, done ? "Scanned on " + fmtDate(rs.result.scanned_at) + ". Your before and after is near the top of this page." : (str(rs.note) || ("We scan again on " + fmtDate(rs.date) + " and show your numbers before and after."))));
       rc.appendChild(rt);
       grid.appendChild(rc);
     }
@@ -1262,7 +1354,7 @@
     frag.appendChild(hero);
     var navMain = NAV.slice();
     NAV = [];
-    [buildRank(d), buildPatterns(d), buildEngagers(d), buildCalendar(d, carMap), buildCarousels(d, carousels), buildRewrites(d),
+    [buildRescanResult(d), buildRank(d), buildPatterns(d), buildEngagers(d), buildCalendar(d, carMap), buildCarousels(d, carousels), buildRewrites(d),
       buildProfile(d), buildSwipe(d), buildLeadMagnet(d), buildBandUp(d), buildClose(d), buildFiles(d)].forEach(function (s) { if (s) frag.appendChild(s); });
     frag.appendChild(buildFooter(d));
     var allNav = navMain.concat(NAV).filter(function (n) { return n.id !== "files" && n.id !== "next"; });
@@ -1270,7 +1362,7 @@
     drawAll();
 
     /* print: new page before the big blocks */
-    if (PRINT) ["rank", "patterns", "engagers", "calendar", "carousels", "rewrites", "profile", "swipe", "leadmagnet", "bandup", "next"].forEach(function (id) { var e = document.getElementById(id); if (e) e.classList.add("pbreak"); });
+    if (PRINT) ["rescan", "rank", "patterns", "engagers", "calendar", "carousels", "rewrites", "profile", "swipe", "leadmagnet", "bandup", "next"].forEach(function (id) { var e = document.getElementById(id); if (e) e.classList.add("pbreak"); });
 
     var b = obj(d.buyer);
     if (str(b.name)) document.title = b.name + " | LinkedIn Peer Scan | InboundOnSteroids";

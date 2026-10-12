@@ -11,7 +11,9 @@ refuses anything that is not an sk_test_/rk_test_ key, then (idempotent, safe to
 
 Store the key first:   security add-generic-password -s stripe-test-secret-key -a ivan -w 'sk_test_...'
 Run:                   python3 scripts/peer-scan-stripe-setup.py [--check]
-Never prints a key. Live mode is out of scope until Ivan says "launch".
+Never prints a key.
+--live (2026-10-12, test key expired): uses keychain "stripe-live-secret-key" and "stripe-live-webhook-secret" instead.
+Live setup does not open orders: the page stays closed until integration_config.peer_scan_orders_open = 'true'.
 """
 import base64, json, subprocess, sys, urllib.parse, urllib.request
 
@@ -58,15 +60,16 @@ def stripe(key, method, path, params=None):
 
 
 def main():
-    key = keychain("stripe-test-secret-key")
+    mode = "live" if "--live" in sys.argv else "test"
+    key = keychain(f"stripe-{mode}-secret-key")
     if not key:
-        print("MISSING: no keychain item service=stripe-test-secret-key account=ivan")
+        print(f"MISSING: no keychain item service=stripe-{mode}-secret-key account=ivan")
         return 2
-    if not key.startswith(("sk_test_", "rk_test_")):
-        print("REFUSED: the stored key is not a TEST key; this script only runs in Stripe test mode")
+    if not key.startswith((f"sk_{mode}_", f"rk_{mode}_")):
+        print(f"REFUSED: the stored key is not a {mode} key")
         return 3
     acct = stripe(key, "GET", "account")
-    print("stripe test account ok:", acct.get("id"), "| charges_enabled:", acct.get("charges_enabled"))
+    print(f"stripe {mode} account ok:", acct.get("id"), "| charges_enabled:", acct.get("charges_enabled"))
     if "--check" in sys.argv:
         return 0
 
@@ -85,7 +88,7 @@ def main():
         "on conflict (key) do update set value = excluded.value" % link["url"].replace("'", "").replace('"', ""))
 
     eps = [e for e in stripe(key, "GET", "webhook_endpoints", {"limit": 100})["data"] if e["url"] == FN]
-    whsec = keychain("stripe-test-webhook-secret")
+    whsec = keychain(f"stripe-{mode}-webhook-secret")
     if eps and not whsec:  # the signing secret is only shown at creation: recreate so we hold it
         for e in eps:
             stripe(key, "DELETE", "webhook_endpoints/" + e["id"])
@@ -96,13 +99,13 @@ def main():
             params[f"enabled_events[{i}]"] = ev
         ep = stripe(key, "POST", "webhook_endpoints", params)
         whsec = ep["secret"]
-        keychain_set("stripe-test-webhook-secret", whsec)
+        keychain_set(f"stripe-{mode}-webhook-secret", whsec)
         print("webhook endpoint created:", ep["id"])
     else:
         print("webhook endpoint exists:", eps[0]["id"])
     edge_secret("STRIPE_WEBHOOK_SECRET", whsec)
     edge_secret("STRIPE_SECRET_KEY", key)
-    print("edge secrets set: STRIPE_WEBHOOK_SECRET, STRIPE_SECRET_KEY (test)")
+    print(f"edge secrets set: STRIPE_WEBHOOK_SECRET, STRIPE_SECRET_KEY ({mode})")
     return 0
 
 

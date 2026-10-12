@@ -1,0 +1,1203 @@
+{
+  "version": 1,
+  "token": "sample-fixture-token",
+  "generated_at": "2026-10-11T09:42:00Z",
+  "is_sample": true,
+  "buyer": {
+    "name": "Sample Creator",
+    "headline": "Fractional CFO for SaaS | Finance | Helping companies grow",
+    "avatar_url": null,
+    "profile_url": "https://www.linkedin.com/in/sample-creator-example/",
+    "followers": 4820,
+    "niche_label": "Finance advice for SaaS founders"
+  },
+  "window": {
+    "from": "2026-07-13",
+    "to": "2026-10-04",
+    "posts_analyzed": 38,
+    "min_age_days": 7
+  },
+  "summary": {
+    "headline_finding": "Your posts with a number in the first line get twice the likes. You use one in 1 post out of 5.",
+    "moves": [
+      {
+        "title": "Open with a number",
+        "body": "Your number-led posts beat your other posts on likes and comments. Your next 12 posts all start this way."
+      },
+      {
+        "title": "Post a carousel every week",
+        "body": "Carousels lead on comments in your niche. Three are ready to post below."
+      },
+      {
+        "title": "Give away one simple tool",
+        "body": "Founders ask you about runway. A free cash flow calendar turns those questions into conversations."
+      }
+    ]
+  },
+  "rank": {
+    "peer_count": 32,
+    "band": {
+      "min": 2500,
+      "max": 10000
+    },
+    "you": {
+      "median_likes": 41,
+      "median_comments": 9,
+      "posts": 38
+    },
+    "percentile_likes": 28,
+    "percentile_comments": 28,
+    "peers": {
+      "median_likes": 54,
+      "median_comments": 12,
+      "p75_likes": 74,
+      "p90_likes": 101
+    },
+    "distribution": [
+      {
+        "name": "Morgan Sample",
+        "followers": 3198,
+        "median_likes": 11,
+        "median_comments": 2,
+        "is_you": false
+      },
+      {
+        "name": "Zion Demo",
+        "followers": 4210,
+        "median_likes": 16,
+        "median_comments": 4,
+        "is_you": false
+      },
+      {
+        "name": "Cruz Testwood",
+        "followers": 9347,
+        "median_likes": 22,
+        "median_comments": 4,
+        "is_you": false
+      },
+      {
+        "name": "Oakley Example",
+        "followers": 8809,
+        "median_likes": 30,
+        "median_comments": 8,
+        "is_you": false
+      },
+      {
+        "name": "Jules Placeholder",
+        "followers": 6801,
+        "median_likes": 32,
+        "median_comments": 8,
+        "is_you": false
+      },
+      {
+        "name": "Lane Mockford",
+        "followers": 2738,
+        "median_likes": 32,
+        "median_comments": 4,
+        "is_you": false
+      },
+      {
+        "name": "Frankie Demo",
+        "followers": 4043,
+        "median_likes": 37,
+        "median_comments": 5,
+        "is_you": false
+      },
+      {
+        "name": "Tatum Demo",
+        "followers": 5294,
+        "median_likes": 38,
+        "median_comments": 9,
+        "is_you": false
+      },
+      {
+        "name": "Blake Demo",
+        "followers": 9185,
+        "median_likes": 40,
+        "median_comments": 6,
+        "is_you": false
+      },
+      {
+        "name": "Sample Creator",
+        "followers": 4820,
+        "median_likes": 41,
+        "median_comments": 9,
+        "is_you": true
+      },
+      {
+        "name": "Yael Sample",
+        "followers": 8542,
+        "median_likes": 44,
+        "median_comments": 10,
+        "is_you": false
+      },
+      {
+        "name": "Kai Testwood",
+        "followers": 5880,
+        "median_likes": 45,
+        "median_comments": 11,
+        "is_you": false
+      },
+      {
+        "name": "Reese Mockford",
+        "followers": 4343,
+        "median_likes": 50,
+        "median_comments": 9,
+        "is_you": false
+      },
+      {
+        "name": "Avery Sample",
+        "followers": 6414,
+        "median_likes": 51,
+        "median_comments": 14,
+        "is_you": false
+      },
+      {
+        "name": "Bowie Placeholder",
+        "followers": 4690,
+        "median_likes": 52,
+        "median_comments": 7,
+        "is_you": false
+      },
+      {
+        "name": "Parker Placeholder",
+        "followers": 4143,
+        "median_likes": 53,
+        "median_comments": 12,
+        "is_you": false
+      },
+      {
+        "name": "Devon Placeholder",
+        "followers": 9893,
+        "median_likes": 54,
+        "median_comments": 11,
+        "is_you": false
+      },
+      {
+        "name": "Quinn Testwood",
+        "followers": 3672,
+        "median_likes": 54,
+        "median_comments": 13,
+        "is_you": false
+      },
+      {
+        "name": "Ellis Sample",
+        "followers": 3207,
+        "median_likes": 54,
+        "median_comments": 12,
+        "is_you": false
+      },
+      {
+        "name": "Casey Example",
+        "followers": 3371,
+        "median_likes": 59,
+        "median_comments": 15,
+        "is_you": false
+      },
+      {
+        "name": "Noel Demo",
+        "followers": 5359,
+        "median_likes": 63,
+        "median_comments": 14,
+        "is_you": false
+      },
+      {
+        "name": "Vale Placeholder",
+        "followers": 5644,
+        "median_likes": 64,
+        "median_comments": 14,
+        "is_you": false
+      },
+      {
+        "name": "Wren Testwood",
+        "followers": 9418,
+        "median_likes": 67,
+        "median_comments": 14,
+        "is_you": false
+      },
+      {
+        "name": "Emery Testwood",
+        "followers": 6310,
+        "median_likes": 71,
+        "median_comments": 20,
+        "is_you": false
+      },
+      {
+        "name": "Sage Sample",
+        "followers": 3798,
+        "median_likes": 74,
+        "median_comments": 9,
+        "is_you": false
+      },
+      {
+        "name": "Indy Example",
+        "followers": 9483,
+        "median_likes": 76,
+        "median_comments": 16,
+        "is_you": false
+      },
+      {
+        "name": "Arden Example",
+        "followers": 3243,
+        "median_likes": 79,
+        "median_comments": 16,
+        "is_you": false
+      },
+      {
+        "name": "Finley Mockford",
+        "followers": 2722,
+        "median_likes": 88,
+        "median_comments": 13,
+        "is_you": false
+      },
+      {
+        "name": "Gray Sample",
+        "followers": 7441,
+        "median_likes": 93,
+        "median_comments": 16,
+        "is_you": false
+      },
+      {
+        "name": "Uma Example",
+        "followers": 4309,
+        "median_likes": 102,
+        "median_comments": 13,
+        "is_you": false
+      },
+      {
+        "name": "Xan Mockford",
+        "followers": 3862,
+        "median_likes": 104,
+        "median_comments": 16,
+        "is_you": false
+      },
+      {
+        "name": "Harper Demo",
+        "followers": 6694,
+        "median_likes": 122,
+        "median_comments": 27,
+        "is_you": false
+      },
+      {
+        "name": "Drew Mockford",
+        "followers": 8501,
+        "median_likes": 134,
+        "median_comments": 27,
+        "is_you": false
+      }
+    ],
+    "note": "Medians use posts at least 7 days old, so late likes are counted. Reposts and polls are left out."
+  },
+  "patterns": [
+    {
+      "key": "opening",
+      "label": "How the first line starts",
+      "finding": "Peer posts that open with a number or a result get about twice the likes of posts that open with advice.",
+      "groups": [
+        {
+          "name": "A number or result",
+          "n": 112,
+          "median_likes": 88,
+          "median_comments": 19,
+          "vs_you_pct": 115
+        },
+        {
+          "name": "A story moment",
+          "n": 74,
+          "median_likes": 61,
+          "median_comments": 14,
+          "vs_you_pct": 49
+        },
+        {
+          "name": "A question",
+          "n": 41,
+          "median_likes": 39,
+          "median_comments": 12,
+          "vs_you_pct": -5
+        },
+        {
+          "name": "Advice or a tip",
+          "n": 129,
+          "median_likes": 44,
+          "median_comments": 8,
+          "vs_you_pct": 7
+        }
+      ],
+      "niche_context": "Founders in this niche scroll for proof. A figure in line one tells them the post has some.",
+      "confidence": "clear"
+    },
+    {
+      "key": "format",
+      "label": "Post format",
+      "finding": "Carousels lead on saves and comments. Plain text still beats single images here.",
+      "groups": [
+        {
+          "name": "Carousel",
+          "n": 63,
+          "median_likes": 79,
+          "median_comments": 17,
+          "vs_you_pct": 93
+        },
+        {
+          "name": "Text only",
+          "n": 188,
+          "median_likes": 57,
+          "median_comments": 12,
+          "vs_you_pct": 39
+        },
+        {
+          "name": "Single image",
+          "n": 105,
+          "median_likes": 42,
+          "median_comments": 8,
+          "vs_you_pct": 2
+        }
+      ],
+      "niche_context": "Carousels work best when each slide carries one number or one step.",
+      "confidence": "clear"
+    },
+    {
+      "key": "length",
+      "label": "Post length",
+      "finding": "Mid-length posts do a little better. The gap is small, so treat it as a lean.",
+      "groups": [
+        {
+          "name": "Under 600 characters",
+          "n": 97,
+          "median_likes": 49,
+          "median_comments": 9,
+          "vs_you_pct": 20
+        },
+        {
+          "name": "600 to 1,300",
+          "n": 168,
+          "median_likes": 63,
+          "median_comments": 13,
+          "vs_you_pct": 54
+        },
+        {
+          "name": "Over 1,300",
+          "n": 91,
+          "median_likes": 55,
+          "median_comments": 14,
+          "vs_you_pct": 34
+        }
+      ],
+      "niche_context": "Longer posts collect more comments even when likes stay flat.",
+      "confidence": "lean"
+    },
+    {
+      "key": "link",
+      "label": "Link in the post",
+      "finding": "Posts with a link in the body get fewer likes. A link in the first comment does about as well as no link.",
+      "groups": [
+        {
+          "name": "No link",
+          "n": 241,
+          "median_likes": 60,
+          "median_comments": 12,
+          "vs_you_pct": 46
+        },
+        {
+          "name": "Link in first comment",
+          "n": 52,
+          "median_likes": 56,
+          "median_comments": 13,
+          "vs_you_pct": 37
+        },
+        {
+          "name": "Link in the post",
+          "n": 63,
+          "median_likes": 37,
+          "median_comments": 7,
+          "vs_you_pct": -10
+        }
+      ],
+      "niche_context": "Peers who share tools tend to post the link as a comment.",
+      "confidence": "lean"
+    },
+    {
+      "key": "weekday",
+      "label": "Day of the week",
+      "finding": "Weekend posts look stronger, but there are too few of them to call it.",
+      "groups": [
+        {
+          "name": "Tue to Thu",
+          "n": 214,
+          "median_likes": 58,
+          "median_comments": 12,
+          "vs_you_pct": 41
+        },
+        {
+          "name": "Mon or Fri",
+          "n": 118,
+          "median_likes": 54,
+          "median_comments": 11,
+          "vs_you_pct": 32
+        },
+        {
+          "name": "Weekend",
+          "n": 9,
+          "median_likes": 71,
+          "median_comments": 15,
+          "vs_you_pct": 73
+        }
+      ],
+      "niche_context": "Only 9 weekend posts in the peer set.",
+      "confidence": "too_few"
+    }
+  ],
+  "engagers": {
+    "unique": 412,
+    "posts_covered": 20,
+    "shares": {
+      "buyers": 31,
+      "peers": 22,
+      "other": 47
+    },
+    "top": [
+      {
+        "name": "Morgan Placeholder",
+        "headline": "Co-founder & CEO at a seed-stage SaaS (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-morgan/",
+        "kind": "buyer",
+        "why": "Runs a SaaS company at the stage you sell to.",
+        "times": 6
+      },
+      {
+        "name": "Parker Demo",
+        "headline": "Founder, B2B analytics startup (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-parker/",
+        "kind": "buyer",
+        "why": "Founder who asked about cash runway under your August post.",
+        "times": 5
+      },
+      {
+        "name": "Reese Example",
+        "headline": "Fractional CFO for agencies (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-reese/",
+        "kind": "peer",
+        "why": "Works in your field. Good for comment swaps.",
+        "times": 5
+      },
+      {
+        "name": "Quinn Testwood",
+        "headline": "Head of Finance at a Series A SaaS (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-quinn/",
+        "kind": "buyer",
+        "why": "Finance lead at a company your size of client.",
+        "times": 4
+      },
+      {
+        "name": "Sage Mockford",
+        "headline": "SaaS pricing consultant (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-sage/",
+        "kind": "peer",
+        "why": "Shares your audience on pricing topics.",
+        "times": 4
+      },
+      {
+        "name": "Tatum Sample",
+        "headline": "COO, vertical SaaS (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-tatum/",
+        "kind": "buyer",
+        "why": "Operator who signs off on finance help.",
+        "times": 3
+      },
+      {
+        "name": "Lane Demo",
+        "headline": "Recruiter, finance roles (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-lane/",
+        "kind": "other",
+        "why": "Engages often, outside your buyer group.",
+        "times": 3
+      },
+      {
+        "name": "Jules Example",
+        "headline": "Founder, dev tools startup (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-jules/",
+        "kind": "buyer",
+        "why": "Commented twice on your pricing posts.",
+        "times": 3
+      },
+      {
+        "name": "Wren Placeholder",
+        "headline": "Bookkeeping firm owner (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-wren/",
+        "kind": "peer",
+        "why": "Adjacent service, refers founders.",
+        "times": 2
+      },
+      {
+        "name": "Noel Testwood",
+        "headline": "Student, finance (sample)",
+        "profile_url": "https://www.linkedin.com/in/sample-noel/",
+        "kind": "other",
+        "why": "Friendly reader, outside your buyer group.",
+        "times": 2
+      }
+    ],
+    "note": "Counted from likes and comments on your 20 most recent posts. Buyer means a founder, CEO or finance lead at a company you could sell to."
+  },
+  "calendar": {
+    "start_date": "2026-10-12",
+    "weeks": [
+      {
+        "n": 1,
+        "posts": [
+          {
+            "day": "Tue",
+            "date": "2026-10-13",
+            "topic": "Runway math founders get wrong",
+            "why": "Opens with a number, your strongest pattern.",
+            "format": "text",
+            "text": "Most founders I talk to think they have 14 months of runway.\n\nThey have 9.\n\nThe gap comes from three things they leave out:\n\n1. Annual contracts paid upfront. That cash is already spent on the months you owe the customer.\n2. Hiring plans. Every open role in the plan is a cost from the start date, plus 3 months of ramp.\n3. Payment terms. Net 60 customers fund you two months late.\n\nRun the number again with all three in.\n\nIf it drops below 12 months, start the raise conversation now. Six months before you need it is the earliest that feels calm.\n\nWhat number did you get?",
+            "carousel_id": null
+          },
+          {
+            "day": "Thu",
+            "date": "2026-10-15",
+            "topic": "The pricing page test",
+            "why": "Carousel format leads on comments in your niche.",
+            "format": "carousel",
+            "text": "I looked at 40 SaaS pricing pages this month.\n\nThe ones that convert share 5 habits. I put them in the carousel below, one per slide.\n\nSlide 4 is the one most founders skip.\n\nSave it for your next pricing review.",
+            "carousel_id": "c1"
+          },
+          {
+            "day": "Fri",
+            "date": "2026-10-16",
+            "topic": "A board deck story",
+            "why": "Story openings sit second in your peer set.",
+            "format": "text",
+            "text": "Last quarter a founder sent me his board deck at 11pm the night before the meeting.\n\n42 slides.\n\nWe cut it to 9.\n\nHere is what stayed:\n\n- Cash and runway on slide 1\n- The one metric the board cares about this quarter\n- What changed since last time, in three lines\n- The decision you need from them\n\nThe meeting ran 40 minutes shorter. The board approved the hire.\n\nYour board reads slide 1 closely and skims the rest. Put the decision there.",
+            "carousel_id": null
+          }
+        ]
+      },
+      {
+        "n": 2,
+        "posts": [
+          {
+            "day": "Tue",
+            "date": "2026-10-20",
+            "topic": "Churn is a cash problem",
+            "why": "Number-led opening with a simple chart image.",
+            "format": "image",
+            "text": "A 2% monthly churn rate sounds small.\n\nOver a year it removes about 22% of your customers.\n\nThat is why I treat churn as a cash flow line, and I put it next to burn in every model I build.\n\nThe chart shows what 1%, 2% and 3% monthly churn do to the same starting revenue over 12 months.\n\nWhich line is closest to yours?",
+            "carousel_id": null
+          },
+          {
+            "day": "Thu",
+            "date": "2026-10-22",
+            "topic": "Five numbers for your Monday review",
+            "why": "Carousel, one number per slide.",
+            "format": "carousel",
+            "text": "Every Monday I check five numbers with each founder I work with.\n\nIt takes 15 minutes. It replaces a monthly panic.\n\nThe five are in the carousel. Steal the list and make it your own.",
+            "carousel_id": "c2"
+          },
+          {
+            "day": "Fri",
+            "date": "2026-10-23",
+            "topic": "When to hire your first finance person",
+            "why": "Answers the question buyers asked under your posts.",
+            "format": "text",
+            "text": "Founders ask me this every week: when should I hire my first finance person?\n\nMy rule of thumb:\n\nUnder $1M ARR, a good bookkeeper plus a few hours of fractional help.\nBetween $1M and $5M, a fractional CFO for planning and the board.\nPast $5M or a Series B, a full-time finance lead.\n\nThe trigger is usually the first board that asks a question nobody can answer by Friday.\n\nWhere are you on this ladder?",
+            "carousel_id": null
+          }
+        ]
+      },
+      {
+        "n": 3,
+        "posts": [
+          {
+            "day": "Tue",
+            "date": "2026-10-27",
+            "topic": "Discounts that cost you a year",
+            "why": "Number-led opening, your best pattern.",
+            "format": "text",
+            "text": "A 20% discount on a $30k contract costs you $6k.\n\nIt also resets the price your customer remembers for the renewal.\n\nThree things I ask founders to try first:\n\n1. Trade the discount for a longer term.\n2. Trade it for upfront payment.\n3. Trade it for a case study.\n\nYou keep the price. You get something back.",
+            "carousel_id": null
+          },
+          {
+            "day": "Thu",
+            "date": "2026-10-29",
+            "topic": "The cash flow calendar",
+            "why": "Carousel walk-through of one tool.",
+            "format": "carousel",
+            "text": "The simplest finance tool I give founders is a cash flow calendar.\n\nOne row per week. Money in, money out, balance.\n\nThe carousel walks through how to build it in 20 minutes.\n\nComment CALENDAR and I will send you the template.",
+            "carousel_id": "c3"
+          },
+          {
+            "day": "Fri",
+            "date": "2026-10-30",
+            "topic": "What investors look at first",
+            "why": "Story-led, built from a real meeting type.",
+            "format": "text",
+            "text": "I sat in on 6 investor meetings with founders this year.\n\nThe first finance question was the same every time:\n\n\"How long does your cash last?\"\n\nTwo founders answered in one sentence. Both got second meetings.\n\nKnow your runway to the month. Say it before they ask.",
+            "carousel_id": null
+          }
+        ]
+      },
+      {
+        "n": 4,
+        "posts": [
+          {
+            "day": "Tue",
+            "date": "2026-11-03",
+            "topic": "Gross margin in plain words",
+            "why": "Short explainer with one image.",
+            "format": "image",
+            "text": "Gross margin is what you keep from each dollar after the costs of serving that customer.\n\nFor most SaaS companies, healthy sits between 70% and 80%.\n\nIf yours is lower, look at hosting, support and onboarding first.\n\nThe image shows where each of those costs usually sits.",
+            "carousel_id": null
+          },
+          {
+            "day": "Thu",
+            "date": "2026-11-05",
+            "topic": "Your Q4 planning checklist",
+            "why": "Seasonal and practical, a strong save driver.",
+            "format": "text",
+            "text": "Q4 planning checklist for SaaS founders:\n\n- Update runway with real Q3 numbers\n- Set next year's hiring plan by month\n- Review pricing before renewals land\n- Book your board date for January now\n- Pick the one metric you will report every month\n\nFive items. One afternoon.\n\nWhich one is still open for you?",
+            "carousel_id": null
+          },
+          {
+            "day": "Fri",
+            "date": "2026-11-06",
+            "topic": "What changed in 4 weeks",
+            "why": "Closes the month with your own numbers.",
+            "format": "text",
+            "text": "Four weeks ago I started opening every post with a number.\n\nI kept a simple log of what happened next.\n\nI will share the full log next week. For now, one question:\n\nWhat would you like me to test next?",
+            "carousel_id": null
+          }
+        ]
+      }
+    ]
+  },
+  "carousels": [
+    {
+      "id": "c1",
+      "title": "5 habits of SaaS pricing pages that convert",
+      "pdf_url": "https://example.com/peer-scan/sample/carousel-1.pdf",
+      "cover_png_url": null,
+      "slides": [
+        {
+          "title": "5 habits of pricing pages that convert",
+          "body": "From 40 SaaS pricing pages."
+        },
+        {
+          "title": "One plan is marked as the pick",
+          "body": "Buyers want to be told where most people land."
+        },
+        {
+          "title": "Prices are on the page",
+          "body": "Hidden prices filter out buyers who would have paid."
+        },
+        {
+          "title": "Annual savings are shown in dollars",
+          "body": "A dollar figure reads faster than a percentage."
+        },
+        {
+          "title": "Limits are written in plain words",
+          "body": "Seats, usage and support in one line each."
+        },
+        {
+          "title": "There is one clear next step",
+          "body": "Start trial or book a call. Pick one per plan."
+        },
+        {
+          "title": "Save this for your next pricing review",
+          "body": "Follow for more SaaS finance."
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "title": "The 5 numbers I check every Monday",
+      "pdf_url": "https://example.com/peer-scan/sample/carousel-2.pdf",
+      "cover_png_url": null,
+      "slides": [
+        {
+          "title": "The 5 numbers I check every Monday",
+          "body": "15 minutes a week."
+        },
+        {
+          "title": "Cash in the bank",
+          "body": "The real balance, today."
+        },
+        {
+          "title": "Weeks of runway",
+          "body": "Cash divided by weekly net burn."
+        },
+        {
+          "title": "New MRR this week",
+          "body": "Wins minus churn and downgrades."
+        },
+        {
+          "title": "Bills due in 14 days",
+          "body": "So nothing surprises you."
+        },
+        {
+          "title": "Pipeline closing this month",
+          "body": "Weighted, with dates."
+        },
+        {
+          "title": "Make the list your own",
+          "body": "Swap any number for one your board asks about."
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "title": "Build a cash flow calendar in 20 minutes",
+      "pdf_url": "https://example.com/peer-scan/sample/carousel-3.pdf",
+      "cover_png_url": null,
+      "slides": [
+        {
+          "title": "Build a cash flow calendar in 20 minutes",
+          "body": "One sheet, one row per week."
+        },
+        {
+          "title": "Columns",
+          "body": "Week, money in, money out, closing balance."
+        },
+        {
+          "title": "Money in",
+          "body": "Invoices by due date, then pull in 10 days for late payers."
+        },
+        {
+          "title": "Money out",
+          "body": "Payroll, rent, tools, taxes. Add planned hires from their start week."
+        },
+        {
+          "title": "The red line",
+          "body": "Mark the week your balance drops under 3 months of costs."
+        },
+        {
+          "title": "Update it on Mondays",
+          "body": "Ten minutes, real numbers only."
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:sample-1",
+      "posted_at": "2026-09-22",
+      "likes": 18,
+      "comments": 3,
+      "opening": "Here are some thoughts on why founders should care more about their cash flow.",
+      "new_opening": "9 of the last 10 founders I met had less runway than they thought.",
+      "why": "A number in line one is your niche's strongest opening. The old line asks the reader to trust you first."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:sample-2",
+      "posted_at": "2026-09-08",
+      "likes": 24,
+      "comments": 4,
+      "opening": "Pricing is one of the most important decisions a SaaS company makes.",
+      "new_opening": "A founder raised prices 30% last month. 2 customers left. MRR went up 24%.",
+      "why": "The rewrite opens with a result and a small story, the two groups that lead in your peer set."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:sample-3",
+      "posted_at": "2026-08-27",
+      "likes": 31,
+      "comments": 6,
+      "opening": "I want to talk about board meetings today.",
+      "new_opening": "The best board deck I saw this year had 9 slides.",
+      "why": "Concrete and short. It gives the reader a reason to keep going."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:sample-4",
+      "posted_at": "2026-08-14",
+      "likes": 22,
+      "comments": 2,
+      "opening": "Do you know what your burn multiple is?",
+      "new_opening": "Burn multiple of 3.1. That one number ended a founder's Series A talks.",
+      "why": "Questions sit low in your niche. A figure plus a stake does the same job better."
+    },
+    {
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:sample-5",
+      "posted_at": "2026-07-30",
+      "likes": 27,
+      "comments": 5,
+      "opening": "Some tips for founders preparing for due diligence.",
+      "new_opening": "Due diligence took one founder 11 weeks. The next one took 3. Here is the difference.",
+      "why": "Two numbers set up a before and after, which pulls the reader into the list."
+    }
+  ],
+  "profile": {
+    "current": {
+      "headline": "Fractional CFO | Finance | SaaS | Helping companies grow",
+      "about": "I am a finance professional with 12 years of experience across startups and scaleups. I help companies with their finance function, including planning, reporting and fundraising support. Feel free to connect."
+    },
+    "proposed": {
+      "headline": "Fractional CFO for B2B SaaS founders from $1M to $10M ARR | Runway, pricing and board decks",
+      "about": "I help B2B SaaS founders know their numbers before their board asks.\n\nMost founders I meet have less runway than they think. I build the cash plan, fix the pricing questions and get the board deck down to what matters.\n\nWhat I do:\n- Runway and cash flow plans you update in 10 minutes a week\n- Pricing reviews before renewals\n- Board decks and investor finance prep\n\n12 years in finance, the last 5 with SaaS companies.\n\nSend me a message with your ARR and your next board date.",
+      "featured": [
+        {
+          "title": "The 5 numbers I check every Monday",
+          "why": "Your carousel that buyers saved most."
+        },
+        {
+          "title": "Cash flow calendar template",
+          "why": "A free resource that starts conversations."
+        },
+        {
+          "title": "Runway math founders get wrong",
+          "why": "Your strongest post format, pinned for profile visitors."
+        }
+      ]
+    },
+    "notes": [
+      "Your headline names who you help and the stage they are at. Peers with this pattern get more profile visits from buyers.",
+      "The About opens with the reader's problem in the first line, which shows before the 'see more' cut.",
+      "Featured holds three things a founder can use today."
+    ]
+  },
+  "swipe": [
+    {
+      "author": "Bowie Placeholder",
+      "followers": 16269,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-9",
+      "posted_at": "2026-09-06",
+      "likes": 792,
+      "comments": 145,
+      "author_median_likes": 88,
+      "multiple": 9.0,
+      "opening": "$0 to $1M ARR with 2 people in finance. Here is the stack.",
+      "why": "A result plus a practical list."
+    },
+    {
+      "author": "Arden Example",
+      "followers": 17081,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-18",
+      "posted_at": "2026-08-09",
+      "likes": 1116,
+      "comments": 209,
+      "author_median_likes": 124,
+      "multiple": 9.0,
+      "opening": "Stop sending your board 40 slides.",
+      "why": "A direct instruction."
+    },
+    {
+      "author": "Kai Testwood",
+      "followers": 13445,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-2",
+      "posted_at": "2026-09-25",
+      "likes": 400,
+      "comments": 67,
+      "author_median_likes": 45,
+      "multiple": 8.9,
+      "opening": "I raised prices 40% and lost one customer.",
+      "why": "A result in seven words."
+    },
+    {
+      "author": "Quinn Testwood",
+      "followers": 13418,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-12",
+      "posted_at": "2026-08-27",
+      "likes": 528,
+      "comments": 101,
+      "author_median_likes": 60,
+      "multiple": 8.8,
+      "opening": "Most SaaS pricing pages hide the one thing buyers look for.",
+      "why": "Curiosity with a clear payoff."
+    },
+    {
+      "author": "Uma Example",
+      "followers": 13794,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-8",
+      "posted_at": "2026-09-08",
+      "likes": 365,
+      "comments": 33,
+      "author_median_likes": 44,
+      "multiple": 8.3,
+      "opening": "I reviewed 100 SaaS P&Ls. The same 4 mistakes kept showing up.",
+      "why": "Big sample, small list."
+    },
+    {
+      "author": "Indy Example",
+      "followers": 9163,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-20",
+      "posted_at": "2026-08-04",
+      "likes": 1079,
+      "comments": 136,
+      "author_median_likes": 130,
+      "multiple": 8.3,
+      "opening": "Our first finance hire was the wrong one. Here is why.",
+      "why": "A personal mistake with a lesson."
+    },
+    {
+      "author": "Morgan Sample",
+      "followers": 18534,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-16",
+      "posted_at": "2026-08-15",
+      "likes": 902,
+      "comments": 169,
+      "author_median_likes": 127,
+      "multiple": 7.1,
+      "opening": "Investors asked for our cohort chart. We did not have one.",
+      "why": "A gap readers fear having too."
+    },
+    {
+      "author": "Reese Mockford",
+      "followers": 7198,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-3",
+      "posted_at": "2026-09-22",
+      "likes": 649,
+      "comments": 55,
+      "author_median_likes": 94,
+      "multiple": 6.9,
+      "opening": "The board asked one question. I could not answer it.",
+      "why": "A short story moment with stakes."
+    },
+    {
+      "author": "Xan Mockford",
+      "followers": 17035,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-13",
+      "posted_at": "2026-08-24",
+      "likes": 800,
+      "comments": 144,
+      "author_median_likes": 116,
+      "multiple": 6.9,
+      "opening": "We almost missed payroll. Twice.",
+      "why": "Short, tense and true to the niche."
+    },
+    {
+      "author": "Ellis Sample",
+      "followers": 19460,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-14",
+      "posted_at": "2026-08-22",
+      "likes": 247,
+      "comments": 29,
+      "author_median_likes": 38,
+      "multiple": 6.5,
+      "opening": "A churn rate of 3% a month means you lose a third of your customers a year.",
+      "why": "Turns a small number into a big one."
+    },
+    {
+      "author": "Yael Sample",
+      "followers": 14313,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-4",
+      "posted_at": "2026-09-19",
+      "likes": 186,
+      "comments": 22,
+      "author_median_likes": 30,
+      "multiple": 6.2,
+      "opening": "3 spreadsheets every seed founder needs.",
+      "why": "A number plus a promise of a list."
+    },
+    {
+      "author": "Finley Mockford",
+      "followers": 10143,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-15",
+      "posted_at": "2026-08-17",
+      "likes": 242,
+      "comments": 23,
+      "author_median_likes": 39,
+      "multiple": 6.2,
+      "opening": "The 15-minute Monday finance check I run with every founder.",
+      "why": "A ritual with a time box."
+    },
+    {
+      "author": "Blake Demo",
+      "followers": 10811,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-19",
+      "posted_at": "2026-08-07",
+      "likes": 393,
+      "comments": 61,
+      "author_median_likes": 69,
+      "multiple": 5.7,
+      "opening": "I asked 20 founders their runway. 14 were wrong.",
+      "why": "A tiny survey with a striking result."
+    },
+    {
+      "author": "Devon Placeholder",
+      "followers": 21348,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-1",
+      "posted_at": "2026-09-30",
+      "likes": 352,
+      "comments": 32,
+      "author_median_likes": 64,
+      "multiple": 5.5,
+      "opening": "Our burn was $180k a month. Our runway was a guess.",
+      "why": "Opens with a number and a confession."
+    },
+    {
+      "author": "Noel Demo",
+      "followers": 4057,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-7",
+      "posted_at": "2026-09-10",
+      "likes": 534,
+      "comments": 90,
+      "author_median_likes": 97,
+      "multiple": 5.5,
+      "opening": "Your CAC payback is longer than you think.",
+      "why": "Speaks straight to the reader."
+    },
+    {
+      "author": "Gray Sample",
+      "followers": 7076,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-6",
+      "posted_at": "2026-09-15",
+      "likes": 617,
+      "comments": 55,
+      "author_median_likes": 121,
+      "multiple": 5.1,
+      "opening": "Net 60 payment terms nearly killed my company.",
+      "why": "A concrete mistake readers recognise."
+    },
+    {
+      "author": "Tatum Demo",
+      "followers": 22646,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-17",
+      "posted_at": "2026-08-13",
+      "likes": 382,
+      "comments": 54,
+      "author_median_likes": 75,
+      "multiple": 5.1,
+      "opening": "Gross margin went from 61% to 78% in two quarters.",
+      "why": "A clean before and after."
+    },
+    {
+      "author": "Jules Placeholder",
+      "followers": 5570,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-11",
+      "posted_at": "2026-08-29",
+      "likes": 378,
+      "comments": 35,
+      "author_median_likes": 105,
+      "multiple": 3.6,
+      "opening": "Annual plans saved our runway in 2024.",
+      "why": "A specific win with a date."
+    },
+    {
+      "author": "Frankie Demo",
+      "followers": 23446,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-5",
+      "posted_at": "2026-09-18",
+      "likes": 102,
+      "comments": 14,
+      "author_median_likes": 32,
+      "multiple": 3.2,
+      "opening": "We cut our board deck from 38 slides to 8.",
+      "why": "Before and after in one line."
+    },
+    {
+      "author": "Casey Example",
+      "followers": 15128,
+      "url": "https://www.linkedin.com/feed/update/urn:li:activity:swipe-sample-10",
+      "posted_at": "2026-09-02",
+      "likes": 323,
+      "comments": 48,
+      "author_median_likes": 101,
+      "multiple": 3.2,
+      "opening": "The cheapest hire we made was a fractional CFO.",
+      "why": "A clear opinion with a twist on cost."
+    }
+  ],
+  "lead_magnet": {
+    "title": "The SaaS Cash Flow Calendar",
+    "what": "A one-sheet weekly cash flow template with a worked example and a 20-minute setup guide.",
+    "why": "Your buyers ask about runway more than any other topic, and peers who give away a simple tool get the most comments.",
+    "launch_post": "Most founders find out they are short on cash about 6 weeks too late.\n\nSo I built the cash flow calendar I use with every client and made it free.\n\nOne sheet. One row per week. Money in, money out, balance.\n\nIt takes 20 minutes to set up and 10 minutes every Monday.\n\nInside:\n- The template\n- A worked example for a $2M ARR company\n- The 5 lines founders forget to include\n\nComment CALENDAR and I will send it to you."
+  },
+  "band_up": {
+    "band": {
+      "min": 10000,
+      "max": 25000
+    },
+    "creators": [
+      {
+        "name": "Harper Sample",
+        "followers": 14800,
+        "url": "https://www.linkedin.com/in/sample-harper/",
+        "median_likes": 162
+      },
+      {
+        "name": "Kai Demo",
+        "followers": 19300,
+        "url": "https://www.linkedin.com/in/sample-kai/",
+        "median_likes": 214
+      },
+      {
+        "name": "Emery Example",
+        "followers": 11900,
+        "url": "https://www.linkedin.com/in/sample-emery/",
+        "median_likes": 131
+      },
+      {
+        "name": "Zion Placeholder",
+        "followers": 22600,
+        "url": "https://www.linkedin.com/in/sample-zion/",
+        "median_likes": 247
+      },
+      {
+        "name": "Bowie Mockford",
+        "followers": 16400,
+        "url": "https://www.linkedin.com/in/sample-bowie/",
+        "median_likes": 188
+      }
+    ],
+    "differences": [
+      {
+        "label": "Posts per week",
+        "you": "1.4",
+        "them": "3.2",
+        "note": "They post more than twice as often."
+      },
+      {
+        "label": "Posts that open with a number",
+        "you": "18%",
+        "them": "52%",
+        "note": "Half their openings carry a figure."
+      },
+      {
+        "label": "Carousels per month",
+        "you": "0.5",
+        "them": "3",
+        "note": "Most post one carousel a week."
+      },
+      {
+        "label": "Replies to comments",
+        "you": "41%",
+        "them": "86%",
+        "note": "They answer almost every comment within a day."
+      },
+      {
+        "label": "Free resource offered",
+        "you": "None",
+        "them": "4 of 5",
+        "note": "Four of the five run a comment-to-get offer."
+      }
+    ],
+    "summary": "The creators one band up post more often, lead with numbers and offer a free tool. Those are the three things your calendar already starts."
+  },
+  "rescan": {
+    "date": "2026-11-10",
+    "note": "Run it again from the link in your email. You will see how your numbers moved after the calendar."
+  },
+  "offer": {
+    "headline": "Want this run for you every week?",
+    "body": "I write the posts, build the carousels and handle the conversations they start. You review and take the calls.",
+    "cta_label": "Book a call with Ivan",
+    "cta_url": "https://calendly.com/im-ivanmanfredi/30min"
+  },
+  "method": {
+    "lines": [
+      "Your last 38 public posts, each at least 7 days old.",
+      "32 creators in your niche with 2,500 to 10,000 followers, matched by topic and audience.",
+      "Medians for every comparison, so one viral post does not skew a group.",
+      "Patterns marked clear need a steady gap across enough posts. Too few means the sample is small.",
+      "Posts and profile text were written for you and checked against what works in your peer set."
+    ]
+  },
+  "files": {
+    "pdf_url": "https://example.com/peer-scan/sample/report.pdf",
+    "carousel_pdf_urls": [
+      "https://example.com/peer-scan/sample/carousel-1.pdf",
+      "https://example.com/peer-scan/sample/carousel-2.pdf",
+      "https://example.com/peer-scan/sample/carousel-3.pdf"
+    ]
+  }
+}

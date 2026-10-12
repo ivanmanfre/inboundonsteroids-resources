@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0F0E0D">
+<title>Get your Peer Scan report link again</title>
+<link rel="icon" type="image/png" href="https://inboundonsteroids.com/assets/favicon.png">
+<link rel="preload" href="../assets/fonts/Brico.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/ps.css">
+<script>document.documentElement.className = "js";</script>
+</head>
+<body data-page="resend">
+<div class="room" aria-hidden="true"><div class="pool p1"></div><div class="pool p2"></div><div class="vig"></div></div>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="https://inboundonsteroids.com/" aria-label="InboundOnSteroids">inbound<b>on</b>steroids</a>
+  </div>
+</header>
+
+<main class="solo">
+  <div class="wrap">
+    <h1 class="disp">Get your report link again.</h1>
+    <p class="lede">Type the email you ordered with. We send the link to your report there.</p>
+
+    <div class="resend-form">
+      <form class="order sheet dark" id="resend" novalidate>
+        <div class="field">
+          <label for="em">Your email</label>
+          <input id="em" name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" placeholder="you@company.com" aria-describedby="em-err">
+          <span class="err" id="em-err" role="alert"></span>
+        </div>
+        <button class="btn" type="submit">Send my report link <i aria-hidden="true">&#8599;</i></button>
+      </form>
+      <div class="sheet dark order done" id="done" role="status" hidden>
+        <span class="ok" aria-hidden="true"></span>
+        <div>
+          <p>If that email bought a scan, the link is on its way to that inbox.</p>
+          <p>It can take a few minutes. Check spam or promotions too.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a class="mark" href="https://inboundonsteroids.com/" aria-label="InboundOnSteroids">inbound<b>on</b>steroids</a>
+    <div class="links"><a href="../">LinkedIn Peer Scan</a><a href="https://inboundonsteroids.com/">inboundonsteroids.com</a></div>
+  </div>
+</footer>
+
+<script src="../assets/ps.js"></script>
+<script>
+/* POST { email } to peer-scan-resend. The page shows the same message whatever comes back, so it never says whether an email bought. */
+(function () {
+  var PS = window.PS;
+  var form = document.getElementById("resend");
+  var done = document.getElementById("done");
+  var input = document.getElementById("em");
+  var err = document.getElementById("em-err");
+  var btn = form.querySelector("button");
+  var shown = false;
+  function show() {
+    if (shown) return;
+    shown = true;
+    form.hidden = true;
+    done.hidden = false;
+  }
+  input.addEventListener("input", function () { err.textContent = ""; input.removeAttribute("aria-invalid"); });
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (btn.disabled) return;
+    var em = PS ? PS.checkEmail(input.value) : { value: input.value.trim() };
+    if (em.err) {
+      err.textContent = em.err === "empty" ? "Add the email you ordered with." : "That email looks off. Check the spelling.";
+      input.setAttribute("aria-invalid", "true");
+      input.focus();
+      return;
+    }
+    btn.disabled = true;
+    btn.innerHTML = "Sending <i aria-hidden=\"true\">&#8599;</i>";
+    if (PS) PS.track("resend_submit", {});
+    var t = setTimeout(show, 8000);
+    var p = PS ? PS.post("peer-scan-resend", { email: em.value }) : Promise.resolve();
+    p.then(function () { clearTimeout(t); show(); }, function () { clearTimeout(t); show(); });
+  });
+})();
+</script>
+</body>
+</html>

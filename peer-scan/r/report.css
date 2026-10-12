@@ -573,7 +573,8 @@ html.pr .method li { font-size: 12.5px; }
 html.pr .foot { padding: 20px 0 30px; }
 html.pr .rv { opacity: 1 !important; transform: none !important; filter: none !important; }
 html.pr .pbreak { break-before: page; page-break-before: always; }
-html.pr .sec-hd, html.pr .week-hd, html.pr .chart-cap { break-after: avoid; page-break-after: avoid; }
+html.pr .sec-hd, html.pr .week-hd, html.pr .chart-cap, html.pr .moves-hd { break-after: avoid; page-break-after: avoid; }
+html.pr #moves { break-inside: avoid; page-break-inside: avoid; }
 html.pr .panel, html.pr .sheet, html.pr .pat, html.pr .post-row, html.pr .rw, html.pr .sw, html.pr .caro, html.pr .diff, html.pr .person, html.pr .stat, html.pr .move { break-inside: avoid; page-break-inside: avoid; }
 html.pr .cal, html.pr .diffs, html.pr .people { break-inside: auto; }
 @page { size: A4; margin: 0; }

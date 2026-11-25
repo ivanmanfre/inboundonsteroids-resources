@@ -21,7 +21,7 @@ import json, re, sys, os, urllib.request, urllib.error, argparse
 from collections import defaultdict
 
 SUPABASE_URL = "https://bjbvqvzbzczjbatgmccb.supabase.co"
-SUPABASE_KEY = os.environ.get("SUPABASE_SERVICE_ROLE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYnZxdnpiemN6amJhdGdtY2NiIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2ODMwNTA4MCwiZXhwIjoyMDgzODgxMDgwfQ.1ioXfrOjVR2QKNW1XW1WggdrxjVIB-5eW3AaT7byqw8")
+SUPABASE_KEY = os.environ["SUPABASE_SERVICE_ROLE_KEY"]
 RESOURCES_BASE = "https://resources.ivanmanfredi.com"
 
 FORBIDDEN_IDENTITY = re.compile(

@@ -6,7 +6,7 @@
 (function () {
   "use strict";
   var BASE = "https://bjbvqvzbzczjbatgmccb.supabase.co";
-  var ANON = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJqYnZxdnpiemN6amJhdGdtY2NiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgzMDUwODAsImV4cCI6MjA4Mzg4MTA4MH0.yqghcn-Rw5dIFadLhvUASIeUARPvu_CyPOGayI8KyTI";
+  var ANON = "sb_publishable_Q-kfisfhqxXV5xiIhCduMQ_QSIflf4h";
   var HEADERS = { "content-type": "application/json", apikey: ANON, authorization: "Bearer " + ANON };
   var UTM_KEYS = ["source", "medium", "campaign", "content", "term"];
 

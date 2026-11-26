@@ -1,5 +1,5 @@
 # Resource smoke failures
 
-Deploy: 63d6dda3301365ebf04dfaac2afd267c2e4b06f9 at 2026-10-12T12:24:42.472Z
+Deploy: de8fa54ffc800bef59b261b0417c7a15855da4ed at 2026-11-26T11:17:08.471Z
 
 - peer-scan: page HTTP 404
